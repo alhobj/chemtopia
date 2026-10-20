@@ -28,5 +28,125 @@
     "modified": false,
     "sha256": "524793205bb4b037c5dd79637eab080046c149a48ecc5c4e04d1df0d77d4cbaa",
     "bytes": 1861631
+  },
+  {
+    "id": "P03",
+    "file": "proposals/lab-equipment-03.png",
+    "origin": "AI-generated original concept using image_gen, using P02 as style reference",
+    "brief": "HANDLING: plastic wash bottle with bent dispensing spout; glass Pasteur dropper with rubber teat; rubber three-valve pipette filler bulb; amber reagent storage bottle with plain closed cap and blank label; stainless steel double-ended laboratory spatula; white plastic weighing boat",
+    "status": "proposal; not approved; not a scientifically validated diagram",
+    "modified": false,
+    "sha256": "41fa6c93150512d1d1882bdcb017c824b6af86ea64faa5364d44352c3dd9c49a",
+    "bytes": 1372633
+  },
+  {
+    "id": "P04",
+    "file": "proposals/lab-equipment-04.png",
+    "origin": "AI-generated original concept using image_gen, using P02 as style reference",
+    "brief": "FILTRATION: simple conical glass filter funnel with long stem; white porcelain Buchner funnel with cylindrical perforated bowl and stem; side-arm vacuum filter flask; folded cone of white filter paper; concave glass watch glass; laboratory glass desiccator with thick lid and internal perforated support plate",
+    "status": "proposal; not approved; not a scientifically validated diagram",
+    "modified": false,
+    "sha256": "da0ffc78ce070fcd91e20d8f8694eae464016393de4e9d567a93b7472cc5917f",
+    "bytes": 1455426
+  },
+  {
+    "id": "P05",
+    "file": "proposals/lab-equipment-05.png",
+    "origin": "AI-generated original concept using image_gen, using P02 as style reference",
+    "brief": "HEATING: laboratory tripod with three legs and circular top; square wire gauze with white ceramic centre; small porcelain crucible with separate lid beside it; long steel crucible tongs with curved tips; white porcelain evaporating basin with pouring spout; square heat-resistant bench mat",
+    "status": "proposal; not approved; not a scientifically validated diagram",
+    "modified": false,
+    "sha256": "f19d7a68c892dbca50dd3a5db406bb8eb672e1b07be4dbb263673fd5ef7a4b7a",
+    "bytes": 1555119
+  },
+  {
+    "id": "P06",
+    "file": "proposals/lab-equipment-06.png",
+    "origin": "AI-generated original concept using image_gen, using P02 as style reference",
+    "brief": "MEASUREMENT: bench pH meter with separate glass electrode on holder; handheld conductivity meter with separate probe; digital temperature data logger with thin metal probe; horizontal laboratory gas syringe with plunger and support; U-tube manometer on upright stand; simple digital laboratory timer",
+    "status": "proposal; not approved; not a scientifically validated diagram",
+    "modified": false,
+    "sha256": "c7a913301ad99c431abe3a69a5e00b9dbdb895f5cc988532f025a0403618a68a",
+    "bytes": 1472017
+  },
+  {
+    "id": "P07",
+    "file": "proposals/lab-equipment-07.png",
+    "origin": "AI-generated original concept using image_gen, using P02 as style reference",
+    "brief": "SEPARATION: pear-shaped separatory funnel with stopper and bottom stopcock on a stand; round-bottom flask with one neck on a cork support ring; isolated straight Liebig condenser with clear central tube and two angled water ports; isolated Vigreux fractionating column with side indentations; curved glass distillation receiver adapter with side vacuum port; empty glass chromatography developing chamber with fitted lid",
+    "status": "proposal; not approved; not a scientifically validated diagram",
+    "modified": false,
+    "sha256": "d7650b507d95aa27b34646569e9e09e182987c4c064572e6b9c5566c0cd7fd13",
+    "bytes": 1423222
+  },
+  {
+    "id": "P08",
+    "file": "proposals/lab-equipment-08.png",
+    "origin": "AI-generated original concept using image_gen, using P02 as style reference",
+    "brief": "ELECTROCHEMISTRY: compact DC laboratory power supply with blank display; handheld digital multimeter with blank screen and two probes; pair of graphite rod electrodes; two disconnected insulated leads with crocodile clips; rectangular copper metal strip; inverted U-shaped empty glass salt bridge tube",
+    "status": "proposal; not approved; not a scientifically validated diagram",
+    "modified": false,
+    "sha256": "7a76644c1a07735047c7c6970c2afbf9a37a50024f320474c9931d6d9b4f16e0",
+    "bytes": 1455726
+  },
+  {
+    "id": "P09",
+    "file": "proposals/lab-equipment-09.png",
+    "origin": "AI-generated original concept using image_gen, using P02 as style reference",
+    "brief": "OPTICAL ANALYSIS: compact educational colorimeter with hinged sample lid; larger benchtop UV-visible spectrophotometer with closed sample compartment; clear rectangular optical cuvette; small rack holding four empty optical cuvettes; blank white rectangular TLC plate with no spots or lines; bundle of thin open-ended glass capillary tubes",
+    "status": "proposal; not approved; not a scientifically validated diagram",
+    "modified": false,
+    "sha256": "e09ecb77443037496c2a4797a1e9b2ac579c63429b5c041cd149ce07469631e4",
+    "bytes": 1607477
+  },
+  {
+    "id": "P10",
+    "file": "proposals/lab-equipment-10.png",
+    "origin": "AI-generated original concept using image_gen, using P02 as style reference",
+    "brief": "SAFETY AND STORAGE: wall-mounted laboratory eyewash with twin nozzles; fire blanket storage case with two pull tabs; folded white laboratory coat; pair of blue nitrile gloves; empty chemistry fume cupboard with raised transparent sash and vent at top; rigid broken-glass disposal box with simple glass icon and closed lid",
+    "status": "proposal; not approved; not a scientifically validated diagram",
+    "modified": false,
+    "sha256": "e2225f29cc0217bc0f3588005fdd9b257a08be7af36aaa8b5176dc950a252b2d",
+    "bytes": 1469858
+  },
+  {
+    "id": "P11",
+    "file": "proposals/lab-equipment-11.png",
+    "origin": "AI-generated original concept using image_gen, using P02 as style reference",
+    "brief": "SMALL TOOLS: white porcelain mortar with separate pestle; straight glass stirring rod; white porcelain spotting tile with six round wells; flat folded square of weighing paper; long metal scoopula with curved channel tip; wooden spring test-tube holder with gripping end",
+    "status": "proposal; not approved; not a scientifically validated diagram",
+    "modified": false,
+    "sha256": "3f35dd3ce1043775a39e6c553bb693a5c2b3b9a7d18383ff2bc62cedf6847565",
+    "bytes": 1440026
+  },
+  {
+    "id": "P12",
+    "file": "proposals/lab-equipment-12.png",
+    "origin": "AI-generated original concept using image_gen, using P02 as style reference",
+    "brief": "SUPPORTS: retort stand with heavy flat base and vertical rod, no attached clamp; metal bosshead clamp connector with two thumb screws; three-prong laboratory clamp with screw adjustment; metal support ring with short attachment stem; adjustable scissor laboratory jack with square top; cork support ring for round-bottom glassware",
+    "status": "proposal; not approved; not a scientifically validated diagram",
+    "modified": false,
+    "sha256": "ed12c8c19d6682ab583ed1e6137b25f610a42d8b8578efca6fc7e7a2b08c3643",
+    "bytes": 1449310
+  },
+  {
+    "id": "P13",
+    "file": "proposals/lab-equipment-13.png",
+    "origin": "AI-generated original concept using image_gen, using P02 as style reference",
+    "brief": "BENCH APPARATUS: benchtop thermostatic water bath with empty metal basin and blank display; small laboratory drying oven with closed glass window door; overhead mechanical stirrer on support stand with bare shaft and no vessel; hemispherical heating mantle with empty round opening; compact laboratory diaphragm vacuum pump with two hose ports; small closed-lid benchtop centrifuge with blank display",
+    "status": "proposal; not approved; not a scientifically validated diagram",
+    "modified": false,
+    "sha256": "d84ea1966071187a293a1c4e325656f7f878fb01f003849e5c2afa62174b1952",
+    "bytes": 1496769
+  },
+  {
+    "id": "P14",
+    "file": "proposals/lab-equipment-14.png",
+    "origin": "AI-generated original concept using image_gen, using P02 as style reference",
+    "brief": "PRECISION INSTRUMENTS: analytical balance inside transparent draft shield with sliding side panels; adjustable single-channel micropipette with blank readout; open rack of disposable pipette tips; bottle-top dispenser on empty clear reagent bottle with delivery spout; compact melting-point apparatus with small observation magnifier; benchtop digital polarimeter with horizontal sample chamber and blank display",
+    "status": "proposal; not approved; not a scientifically validated diagram",
+    "modified": false,
+    "sha256": "1c173e776567588c9da941ef88239240ebea0fff5a63cc1ccaf087d4baf6bf3f",
+    "bytes": 1527160
   }
 ]

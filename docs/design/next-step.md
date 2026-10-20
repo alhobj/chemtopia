@@ -59,3 +59,9 @@ Ingen spillmotor, avhengigheter eller kjørbar app inngår i dette steget.
 45 interne dokumentlenker ble kontrollert uten mangler. Alle 15 lokale bilder i referanse- og genereringsmanifestene bestod kontrollsumkontroll og formatkontroll. De fem nye eksterne referansebildene og de tre genererte arkene ble visuelt gjennomgått. Forskjellen mellom generert S2 og S3 er mindre enn bestilt, og dette er dokumentert sammen med apparatdetaljer som må bearbeides.
 
 Samlet materiale: 13 eksterne referanser, tre genererte ark, 28 idéforslag og ti nye spørsmål R01–R10. Q21–Q62 står fortsatt åpne. Ingen apptester gjelder dette steget, siden det fortsatt ikke finnes spillkode.
+
+## Utvidet Equipment Studies-runde
+
+Etter positiv tilbakemelding og uttrykkelig bestilling er P03–P14 laget: tolv nye ark med 72 utstyrsmotiver i 144 varianter. De er katalogisert med norske navn, rad-/kolonne-ID-er, bevarte genereringsbestillinger og filkontrollsummer. Synlige genereringsfeil er dokumentert, blant annet Vigreux-kolonnens form og en hul ende på den tiltenkte glasstaven. Ingen feilaktige motiver regnes som faglig godkjent. Ingen spillkode er endret.
+
+Kontroll i denne runden: 62 interne dokumentlenker uten mangler, 15 genererte bildefiler med gyldig bildeformat og samsvarende kontrollsum. Alle tolv nye ark er visuelt gjennomgått. Godkjent omfang er grafikkforslag og Git-push; spillimplementering og faglig godkjenning er fortsatt åpne.

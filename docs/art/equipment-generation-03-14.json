@@ -1,0 +1,182 @@
+[
+  {
+    "id": "P03",
+    "theme": "HANDLING",
+    "objects": [
+      "plastic wash bottle with bent dispensing spout",
+      "glass Pasteur dropper with rubber teat",
+      "rubber three-valve pipette filler bulb",
+      "amber reagent storage bottle with plain closed cap and blank label",
+      "stainless steel double-ended laboratory spatula",
+      "white plastic weighing boat"
+    ],
+    "prompt": "Use the reference ONLY for consistent visual style, do not repeat its objects. Create an ORIGINAL new CHEMTOPIA - EQUIPMENT STUDIES 03 sheet, subtitle HANDLING. Landscape ivory background, navy text, two rows labelled A and B, SIX columns numbered 1-6, distinct object in each column with SAME object in both rows. Objects in exact column order: plastic wash bottle with bent dispensing spout; glass Pasteur dropper with rubber teat; rubber three-valve pipette filler bulb; amber reagent storage bottle with plain closed cap and blank label; stainless steel double-ended laboratory spatula; white plastic weighing boat. Row A simple chunky clean pixel art; row B more detailed three-quarter pixel art, consistent cool glass, ivory, charcoal, muted teal accents. Generous spacing, crisp pixel edges. Match reference's polished serious welcoming style. Each object separate, no combined experiments. No chemical reactions, readings, liquid contents, numbers on equipment, brands or chemical formulae. Blank screens. Empty glassware. Keep technical silhouettes recognisable. Header exact EQUIPMENT STUDIES 03; footer DESIGN PROPOSALS - NOT APPROVED. This is a concept comparison, not a validated scientific diagram or production sprite atlas.",
+    "file": "proposals/lab-equipment-03.png",
+    "original_filename": "exec-885913b8-5ed2-455d-ba8a-96d9282bab0b.png"
+  },
+  {
+    "id": "P04",
+    "theme": "FILTRATION",
+    "objects": [
+      "simple conical glass filter funnel with long stem",
+      "white porcelain Buchner funnel with cylindrical perforated bowl and stem",
+      "side-arm vacuum filter flask",
+      "folded cone of white filter paper",
+      "concave glass watch glass",
+      "laboratory glass desiccator with thick lid and internal perforated support plate"
+    ],
+    "prompt": "Use the reference ONLY for consistent visual style, do not repeat its objects. Create an ORIGINAL new CHEMTOPIA - EQUIPMENT STUDIES 04 sheet, subtitle FILTRATION. Landscape ivory background, navy text, two rows labelled A and B, SIX columns numbered 1-6, distinct object in each column with SAME object in both rows. Objects in exact column order: simple conical glass filter funnel with long stem; white porcelain Buchner funnel with cylindrical perforated bowl and stem; side-arm vacuum filter flask; folded cone of white filter paper; concave glass watch glass; laboratory glass desiccator with thick lid and internal perforated support plate. Row A simple chunky clean pixel art; row B more detailed three-quarter pixel art, consistent cool glass, ivory, charcoal, muted teal accents. Generous spacing, crisp pixel edges. Match reference's polished serious welcoming style. Each object separate, no combined experiments. No chemical reactions, readings, liquid contents, numbers on equipment, brands or chemical formulae. Blank screens. Empty glassware. Keep technical silhouettes recognisable. Header exact EQUIPMENT STUDIES 04; footer DESIGN PROPOSALS - NOT APPROVED. This is a concept comparison, not a validated scientific diagram or production sprite atlas.",
+    "file": "proposals/lab-equipment-04.png",
+    "original_filename": "exec-9f860416-c1e3-4362-993f-d39c38e13f90.png"
+  },
+  {
+    "id": "P05",
+    "theme": "HEATING",
+    "objects": [
+      "laboratory tripod with three legs and circular top",
+      "square wire gauze with white ceramic centre",
+      "small porcelain crucible with separate lid beside it",
+      "long steel crucible tongs with curved tips",
+      "white porcelain evaporating basin with pouring spout",
+      "square heat-resistant bench mat"
+    ],
+    "prompt": "Use reference ONLY for visual style. Make NEW original CHEMTOPIA - EQUIPMENT STUDIES 05, theme HEATING. Landscape ivory background, navy text, TWO rows A B and SIX columns 1-6. Same object in both rows, these SIX DIFFERENT objects in exact column order: laboratory tripod with three legs and circular top; square wire gauze with white ceramic centre; small porcelain crucible with separate lid beside it; long steel crucible tongs with curved tips; white porcelain evaporating basin with pouring spout; square heat-resistant bench mat. A simple chunky crisp pixel art; B more detailed three-quarter pixel art. Muted teal accents, blue glass, ivory and charcoal. Plenty of separation, readable silhouettes. Every object isolated, no operating experiment. No brands, readings, numerical scales, chemistry formulas or reactions. All screens blank, glassware empty. Do not repeat objects from reference. Header CHEMTOPIA - EQUIPMENT STUDIES 05, footer DESIGN PROPOSALS - NOT APPROVED. Technical shape recognisable, concept art not scientifically validated.",
+    "file": "proposals/lab-equipment-05.png",
+    "original_filename": "exec-989d6033-370b-4222-a926-f4493c0e698c.png"
+  },
+  {
+    "id": "P06",
+    "theme": "MEASUREMENT",
+    "objects": [
+      "bench pH meter with separate glass electrode on holder",
+      "handheld conductivity meter with separate probe",
+      "digital temperature data logger with thin metal probe",
+      "horizontal laboratory gas syringe with plunger and support",
+      "U-tube manometer on upright stand",
+      "simple digital laboratory timer"
+    ],
+    "prompt": "Use reference ONLY for visual style. Make NEW original CHEMTOPIA - EQUIPMENT STUDIES 06, theme MEASUREMENT. Landscape ivory background, navy text, TWO rows A B and SIX columns 1-6. Same object in both rows, these SIX DIFFERENT objects in exact column order: bench pH meter with separate glass electrode on holder; handheld conductivity meter with separate probe; digital temperature data logger with thin metal probe; horizontal laboratory gas syringe with plunger and support; U-tube manometer on upright stand; simple digital laboratory timer. A simple chunky crisp pixel art; B more detailed three-quarter pixel art. Muted teal accents, blue glass, ivory and charcoal. Plenty of separation, readable silhouettes. Every object isolated, no operating experiment. No brands, readings, numerical scales, chemistry formulas or reactions. All screens blank, glassware empty. Do not repeat objects from reference. Header CHEMTOPIA - EQUIPMENT STUDIES 06, footer DESIGN PROPOSALS - NOT APPROVED. Technical shape recognisable, concept art not scientifically validated.",
+    "file": "proposals/lab-equipment-06.png",
+    "original_filename": "exec-dd884005-58e9-46c0-ba92-7e267e623214.png"
+  },
+  {
+    "id": "P07",
+    "theme": "SEPARATION",
+    "objects": [
+      "pear-shaped separatory funnel with stopper and bottom stopcock on a stand",
+      "round-bottom flask with one neck on a cork support ring",
+      "isolated straight Liebig condenser with clear central tube and two angled water ports",
+      "isolated Vigreux fractionating column with side indentations",
+      "curved glass distillation receiver adapter with side vacuum port",
+      "empty glass chromatography developing chamber with fitted lid"
+    ],
+    "prompt": "Create ORIGINAL new CHEMTOPIA EQUIPMENT STUDIES 07, theme SEPARATION, matching supplied reference layout and pixel art style ONLY. TWO rows A B, SIX columns numbered 1-6, same object repeated in two styles per column, no repeating reference subjects. Exact SIX objects in order: pear-shaped separatory funnel with stopper and bottom stopcock on a stand; round-bottom flask with one neck on a cork support ring; isolated straight Liebig condenser with clear central tube and two angled water ports; isolated Vigreux fractionating column with side indentations; curved glass distillation receiver adapter with side vacuum port; empty glass chromatography developing chamber with fitted lid. A simple crisp chunky pixel art, B detailed three-quarter pixel art. Consistent ivory background, navy outlines, cool blue glass, muted teal accents, generous whitespace. Keep each item isolated and empty, no active experiment or chemicals. All screens blank, no numerical markings or brand names. For glass tubes show plausible open ends, fittings, and continuous glass paths, no decorative fantasy parts. Copper may be copper coloured, graphite charcoal. Header CHEMTOPIA - EQUIPMENT STUDIES 07, footer DESIGN PROPOSALS - NOT APPROVED. A visual concept study, not a validated technical diagram.",
+    "file": "proposals/lab-equipment-07.png",
+    "original_filename": "exec-5724e453-bab0-4f72-a1ab-fdba40f731fd.png"
+  },
+  {
+    "id": "P08",
+    "theme": "ELECTROCHEMISTRY",
+    "objects": [
+      "compact DC laboratory power supply with blank display",
+      "handheld digital multimeter with blank screen and two probes",
+      "pair of graphite rod electrodes",
+      "two disconnected insulated leads with crocodile clips",
+      "rectangular copper metal strip",
+      "inverted U-shaped empty glass salt bridge tube"
+    ],
+    "prompt": "Create ORIGINAL new CHEMTOPIA EQUIPMENT STUDIES 08, theme ELECTROCHEMISTRY, matching supplied reference layout and pixel art style ONLY. TWO rows A B, SIX columns numbered 1-6, same object repeated in two styles per column, no repeating reference subjects. Exact SIX objects in order: compact DC laboratory power supply with blank display; handheld digital multimeter with blank screen and two probes; pair of graphite rod electrodes; two disconnected insulated leads with crocodile clips; rectangular copper metal strip; inverted U-shaped empty glass salt bridge tube. A simple crisp chunky pixel art, B detailed three-quarter pixel art. Consistent ivory background, navy outlines, cool blue glass, muted teal accents, generous whitespace. Keep each item isolated and empty, no active experiment or chemicals. All screens blank, no numerical markings or brand names. For glass tubes show plausible open ends, fittings, and continuous glass paths, no decorative fantasy parts. Copper may be copper coloured, graphite charcoal. Header CHEMTOPIA - EQUIPMENT STUDIES 08, footer DESIGN PROPOSALS - NOT APPROVED. A visual concept study, not a validated technical diagram.",
+    "file": "proposals/lab-equipment-08.png",
+    "original_filename": "exec-dae4731c-1183-4360-b45b-b7ee47588170.png"
+  },
+  {
+    "id": "P09",
+    "theme": "OPTICAL ANALYSIS",
+    "objects": [
+      "compact educational colorimeter with hinged sample lid",
+      "larger benchtop UV-visible spectrophotometer with closed sample compartment",
+      "clear rectangular optical cuvette",
+      "small rack holding four empty optical cuvettes",
+      "blank white rectangular TLC plate with no spots or lines",
+      "bundle of thin open-ended glass capillary tubes"
+    ],
+    "prompt": "Use reference only for style and layout. Create ORIGINAL new CHEMTOPIA EQUIPMENT STUDIES 09, theme OPTICAL ANALYSIS. Landscape ivory background, dark navy, TWO rows labelled A B, SIX numbered columns 1-6. Exact six new objects in column order, same object each row: compact educational colorimeter with hinged sample lid; larger benchtop UV-visible spectrophotometer with closed sample compartment; clear rectangular optical cuvette; small rack holding four empty optical cuvettes; blank white rectangular TLC plate with no spots or lines; bundle of thin open-ended glass capillary tubes. A simple crisp chunky pixel art, B more detailed three-quarter pixel art. Keep reference palette cool blue glass, ivory and charcoal instruments, muted teal, restrained colours. All items separate and unoperated, no experiment, no chemical formulae or reaction, no brands. Blank screens and labels, no numerical scales. Glass objects transparent and empty. Footer DESIGN PROPOSALS - NOT APPROVED. Header CHEMTOPIA - EQUIPMENT STUDIES 09. Readable plausible object silhouettes, not validated scientific diagrams or final game sprites.",
+    "file": "proposals/lab-equipment-09.png",
+    "original_filename": "exec-2da6729a-10b9-473d-8c4f-d6ceb276f8f2.png"
+  },
+  {
+    "id": "P10",
+    "theme": "SAFETY AND STORAGE",
+    "objects": [
+      "wall-mounted laboratory eyewash with twin nozzles",
+      "fire blanket storage case with two pull tabs",
+      "folded white laboratory coat",
+      "pair of blue nitrile gloves",
+      "empty chemistry fume cupboard with raised transparent sash and vent at top",
+      "rigid broken-glass disposal box with simple glass icon and closed lid"
+    ],
+    "prompt": "Use reference only for style and layout. Create ORIGINAL new CHEMTOPIA EQUIPMENT STUDIES 10, theme SAFETY AND STORAGE. Landscape ivory background, dark navy, TWO rows labelled A B, SIX numbered columns 1-6. Exact six new objects in column order, same object each row: wall-mounted laboratory eyewash with twin nozzles; fire blanket storage case with two pull tabs; folded white laboratory coat; pair of blue nitrile gloves; empty chemistry fume cupboard with raised transparent sash and vent at top; rigid broken-glass disposal box with simple glass icon and closed lid. A simple crisp chunky pixel art, B more detailed three-quarter pixel art. Keep reference palette cool blue glass, ivory and charcoal instruments, muted teal, restrained colours. All items separate and unoperated, no experiment, no chemical formulae or reaction, no brands. Blank screens and labels, no numerical scales. Glass objects transparent and empty. Footer DESIGN PROPOSALS - NOT APPROVED. Header CHEMTOPIA - EQUIPMENT STUDIES 10. Readable plausible object silhouettes, not validated scientific diagrams or final game sprites.",
+    "file": "proposals/lab-equipment-10.png",
+    "original_filename": "exec-a596fddf-accb-4dac-aa95-24b3698798f2.png"
+  },
+  {
+    "id": "P11",
+    "theme": "SMALL TOOLS",
+    "objects": [
+      "white porcelain mortar with separate pestle",
+      "straight glass stirring rod",
+      "white porcelain spotting tile with six round wells",
+      "flat folded square of weighing paper",
+      "long metal scoopula with curved channel tip",
+      "wooden spring test-tube holder with gripping end"
+    ],
+    "prompt": "Use supplied reference for style ONLY. Original CHEMTOPIA - EQUIPMENT STUDIES 11, theme SMALL TOOLS, polished pixel art concept sheet. Landscape ivory, navy outlines, blue glass, ivory/charcoal/teal accents. Grid TWO rows A B and SIX numbered columns 1-6. The SIX column objects in order: white porcelain mortar with separate pestle; straight glass stirring rod; white porcelain spotting tile with six round wells; flat folded square of weighing paper; long metal scoopula with curved channel tip; wooden spring test-tube holder with gripping end. Repeat same object per column in row A simple chunky pixel art, row B more detailed three-quarter pixel art. Keep silhouettes distinct, empty, unoperated, isolated, generous spacing. NO chemicals, operating experiments, readings, numbers on objects, or branding. All screens blank. Technical object shapes plausible, concept study only. Header CHEMTOPIA - EQUIPMENT STUDIES 11; footer DESIGN PROPOSALS - NOT APPROVED. Do not duplicate subjects from reference.",
+    "file": "proposals/lab-equipment-11.png",
+    "original_filename": "exec-31ebcdae-c4c9-4d6e-9b2f-2ea765cc6093.png"
+  },
+  {
+    "id": "P12",
+    "theme": "SUPPORTS",
+    "objects": [
+      "retort stand with heavy flat base and vertical rod, no attached clamp",
+      "metal bosshead clamp connector with two thumb screws",
+      "three-prong laboratory clamp with screw adjustment",
+      "metal support ring with short attachment stem",
+      "adjustable scissor laboratory jack with square top",
+      "cork support ring for round-bottom glassware"
+    ],
+    "prompt": "Use supplied reference for style ONLY. Original CHEMTOPIA - EQUIPMENT STUDIES 12, theme SUPPORTS, polished pixel art concept sheet. Landscape ivory, navy outlines, blue glass, ivory/charcoal/teal accents. Grid TWO rows A B and SIX numbered columns 1-6. The SIX column objects in order: retort stand with heavy flat base and vertical rod, no attached clamp; metal bosshead clamp connector with two thumb screws; three-prong laboratory clamp with screw adjustment; metal support ring with short attachment stem; adjustable scissor laboratory jack with square top; cork support ring for round-bottom glassware. Repeat same object per column in row A simple chunky pixel art, row B more detailed three-quarter pixel art. Keep silhouettes distinct, empty, unoperated, isolated, generous spacing. NO chemicals, operating experiments, readings, numbers on objects, or branding. All screens blank. Technical object shapes plausible, concept study only. Header CHEMTOPIA - EQUIPMENT STUDIES 12; footer DESIGN PROPOSALS - NOT APPROVED. Do not duplicate subjects from reference.",
+    "file": "proposals/lab-equipment-12.png",
+    "original_filename": "exec-8012cda4-db06-4b6e-a015-8fcf023d63d9.png"
+  },
+  {
+    "id": "P13",
+    "theme": "BENCH APPARATUS",
+    "objects": [
+      "benchtop thermostatic water bath with empty metal basin and blank display",
+      "small laboratory drying oven with closed glass window door",
+      "overhead mechanical stirrer on support stand with bare shaft and no vessel",
+      "hemispherical heating mantle with empty round opening",
+      "compact laboratory diaphragm vacuum pump with two hose ports",
+      "small closed-lid benchtop centrifuge with blank display"
+    ],
+    "prompt": "Create ORIGINAL CHEMTOPIA - EQUIPMENT STUDIES 13, theme BENCH APPARATUS. Reference only defines visual style. SIX columns numbered 1-6, TWO rows A B with same objects repeated. Exact six column subjects: benchtop thermostatic water bath with empty metal basin and blank display; small laboratory drying oven with closed glass window door; overhead mechanical stirrer on support stand with bare shaft and no vessel; hemispherical heating mantle with empty round opening; compact laboratory diaphragm vacuum pump with two hose ports; small closed-lid benchtop centrifuge with blank display. A chunky simple pixel art, B detailed three-quarter pixel art, visibly crisp pixel edges, restrained ivory charcoal cool blue teal palette on ivory background. Every object isolated, empty, unoperated. No brands, no chemical formulae, no numerical scale or readings; blank screens. Plausible recognisable hardware shapes, not fantasy devices. Even spacing and readable silhouettes. Header CHEMTOPIA - EQUIPMENT STUDIES 13; footer DESIGN PROPOSALS - NOT APPROVED. Concept illustration, not validated apparatus instructions or final production assets.",
+    "file": "proposals/lab-equipment-13.png",
+    "original_filename": "exec-0a262fdf-020b-422d-af0d-410ac9f4eaec.png"
+  },
+  {
+    "id": "P14",
+    "theme": "PRECISION INSTRUMENTS",
+    "objects": [
+      "analytical balance inside transparent draft shield with sliding side panels",
+      "adjustable single-channel micropipette with blank readout",
+      "open rack of disposable pipette tips",
+      "bottle-top dispenser on empty clear reagent bottle with delivery spout",
+      "compact melting-point apparatus with small observation magnifier",
+      "benchtop digital polarimeter with horizontal sample chamber and blank display"
+    ],
+    "prompt": "Create ORIGINAL CHEMTOPIA - EQUIPMENT STUDIES 14, theme PRECISION INSTRUMENTS. Reference only defines visual style. SIX columns numbered 1-6, TWO rows A B with same objects repeated. Exact six column subjects: analytical balance inside transparent draft shield with sliding side panels; adjustable single-channel micropipette with blank readout; open rack of disposable pipette tips; bottle-top dispenser on empty clear reagent bottle with delivery spout; compact melting-point apparatus with small observation magnifier; benchtop digital polarimeter with horizontal sample chamber and blank display. A chunky simple pixel art, B detailed three-quarter pixel art, visibly crisp pixel edges, restrained ivory charcoal cool blue teal palette on ivory background. Every object isolated, empty, unoperated. No brands, no chemical formulae, no numerical scale or readings; blank screens. Plausible recognisable hardware shapes, not fantasy devices. Even spacing and readable silhouettes. Header CHEMTOPIA - EQUIPMENT STUDIES 14; footer DESIGN PROPOSALS - NOT APPROVED. Concept illustration, not validated apparatus instructions or final production assets.",
+    "file": "proposals/lab-equipment-14.png",
+    "original_filename": "exec-541a5d03-0d32-47b3-9511-825d3a23fb45.png"
+  }
+]

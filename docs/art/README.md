@@ -2,6 +2,10 @@
 
 Bildene her er AI-genererte originalforslag laget med `image_gen` etter uttrykkelig bestilling. De er ikke eksterne referansebilder, ferdige spillressurser eller godkjente fagillustrasjoner. Ingen stil er valgt.
 
+## Nye ark P03–P14
+
+[Åpne katalogen med tolv nye Equipment Studies-ark](equipment-03-14.md): 72 utstyrsmotiver i 144 varianter, fra småredskaper og filtrering til analyseinstrumenter og stativer. Alle har rad A/B og stabile celle-ID-er. Katalogen har også konkrete merknader om genereringsfeil som må bearbeides.
+
 ## P01 — Seks typer utstyr, tre stilvarianter
 
 ![Tre rader med pixel art-forslag til laboratorieutstyr](proposals/lab-equipment-01.png)

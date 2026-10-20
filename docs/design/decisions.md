@@ -49,3 +49,7 @@ Ingen spillimplementering er godkjent ennå. Ingen begrunnelser som brukeren ikk
 Brukeren har bedt om flere referanser og åpnet for **2,5D eller et uttrykk uten pikselgrafikk**. Den opprinnelige visuelle rammen er derfor et historisk utgangspunkt, ikke lenger en låst grafikkretning. Q18–Q20 beholdes som opprinnelige svar; eventuelle endringer i perspektiv eller kamera skal avklares uttrykkelig.
 
 Det er nå tillatt å lage genererte forslag til pikselgrafikk for kjemilabutstyr, lage flere ideer og spørsmål til gjennomgang og committe/pushe nåværende dokumentasjon og bilder til GitHub. Dette godkjenner ikke en bestemt stil, bruk av et apparat i et forsøk, nye spillmekanikker eller offentlig publisering av en app.
+
+## Tilbakemelding og ny grafikkrunde
+
+Brukeren liker Equipment Studies-bildene svært godt og har bedt om mange flere med mer ulikt kjemilabutstyr, samt Git-push. Dette gir tillatelse til videre grafikkforslag i samme uttrykk. Det er ikke en endelig beslutning om hele spillets visuelle retning, apparatutvalg, forsøk eller implementering. P03–P14 er forslag til gjennomgang.
