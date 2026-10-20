@@ -1,0 +1,254 @@
+I want to build a chemistry learning game from scratch, slowly and thoughtfully. Your first task is to help me decide what the game should be—not to start implementing it.
+
+Treat this as a collaborative design process in which I make all chemistry, educational, visual, and gameplay decisions. You may recommend options and explain tradeoffs, but do not silently choose for me.
+
+PROJECT PREMISE
+
+The game is for students aged 16–19 studying IB Diploma Programme Chemistry.
+
+It should be a browser game that works on computers, phones, and tablets. The visual and exploration starting point is a 2D, top-down, tile-based pixel-art game inspired by Pokémon Red. This is a reference for discussion, not permission to copy its assets or assume its other mechanics.
+
+Ideas I want to carry forward from an earlier game:
+- A laboratory.
+- Different map regions associated with different sections of the chemistry syllabus.
+- Unlocking areas and laboratory equipment.
+- Exploration and dialogue.
+
+The details of these ideas still need my approval.
+
+Chemistry should remain central. Some exploration and interaction with the environment are welcome, but students should not spend long stretches travelling, completing errands, or doing unrelated activities before reaching meaningful chemistry.
+
+The game must be welcoming to students of any gender, including those who rarely or never play games. Do not assume familiarity with gaming conventions. Ask how we should make controls, instructions, navigation, and progression understandable.
+
+We will build from scratch in a new folder, probably in a new Git repository. The previous project may be available for inspiration, but its files will not necessarily be in their old location. Do not assume you can find it, import it, or modify it.
+
+YOUR FIRST RESPONSE: A LARGE DESIGN QUESTIONNAIRE
+
+Start with one substantial questionnaire, grouped by topic, using Markdown checkboxes.
+
+Do not start coding, scaffold the project, create files, install dependencies, or create a repository before I have answered the questionnaire and approved your interpretation of my answers.
+
+Use as many questions as necessary to establish a thoughtful foundation. Make the questions concrete and understandable without technical knowledge. Avoid repetitive questions or unnecessary choices.
+
+For each question:
+- State whether I should select one option or any number.
+- Offer useful, distinct options.
+- Include “Undecided—discuss with me” where appropriate.
+- Allow a written alternative or additional notes.
+- Leave boxes unchecked.
+- Explain unfamiliar terms briefly.
+- Where a decision has substantial consequences, explain the tradeoffs briefly without steering me into a default.
+
+Give every question a stable identifier so I can answer by number instead of copying the whole questionnaire.
+
+Distinguish the few things I have already specified from details that remain open. Do not make me reconfirm the exact same requirements, but ask about their implementation and boundaries.
+
+Include the following topics, plus anything important that is missing:
+
+1. EDUCATIONAL GOALS AND SYLLABUS
+- Which syllabus version and examination years to target.
+- Standard Level, Higher Level, or both.
+- Which chemistry topics to include in the first version and eventually.
+- How map regions should relate to syllabus topics and their connections.
+- Learning, practice, revision, assessment, or a combination.
+- Conceptual understanding, calculations, practical skills, data interpretation, and scientific reasoning.
+- How closely terminology, notation, units, and question styles should follow IB expectations.
+- Which sources should establish chemistry accuracy.
+- How I will review and approve chemistry content.
+- How to handle simplifications and the limits of scientific models.
+
+2. THE CENTRAL PLAY EXPERIENCE
+- What students actually do most often.
+- What a typical short session should feel like.
+- The balance between chemistry, exploration, dialogue, and laboratory work.
+- Whether chemistry should appear in environmental interactions, explicit challenges, experiments, or other formats.
+- Expected session length.
+- How much freedom students have to choose their next activity.
+- How quickly they should reach meaningful chemistry.
+- Whether there should be a direct route to activities already discovered.
+
+3. WORLD AND MAP STRUCTURE
+- The role of the laboratory.
+- A connected world, separate regions, a central hub, or another structure.
+- Region size and travel time.
+- How regions correspond to the syllabus.
+- Whether students can revisit regions freely.
+- Map navigation, signs, objectives, and fast travel.
+- Whether exploration should reveal optional chemistry activities.
+- How to prevent wandering or navigation from becoming a barrier.
+
+4. MOVEMENT AND THE POKÉMON RED REFERENCE
+- Which aspects of that reference I want to retain.
+- Grid movement versus smoother movement within a tile-based world.
+- Camera behaviour and screen layout.
+- Interaction with objects and characters.
+- Buildings, interiors, doors, and transitions.
+- Whether encounters, battles, collecting, or companions belong in this game at all.
+- Which conventions would confuse students who do not play games.
+- How much precision, timing, or coordination should be required.
+
+5. LABORATORY AND EXPERIMENTS
+- What students should be able to do in the lab.
+- Guided versus open-ended experiments.
+- Apparatus selection, setup, measurement, observation, and interpretation.
+- Whether procedures are simulated step by step or represented more simply.
+- How experimental uncertainty, errors, and unexpected results should work.
+- Whether practical safety is taught and how.
+- How equipment unlocks relate to learning.
+- Whether resources or consumables are limited.
+- How much repetition is useful before it becomes busywork.
+- Whether students record results or maintain a lab notebook.
+
+6. CHEMISTRY CHALLENGES
+- Suitable activity and question formats.
+- Calculations and entering equations or chemical formulae.
+- Molecular, particulate, graphical, and symbolic representations.
+- Hints, worked examples, feedback, and retries.
+- Whether mistakes have consequences.
+- Whether there are timers.
+- How difficulty changes.
+- How to support different levels of prior knowledge.
+- How to distinguish understanding from guessing.
+- Whether any assessment results should be stored.
+
+7. PROGRESSION AND UNLOCKING
+- What unlocks regions and equipment.
+- Whether progression follows topic completion, demonstrated understanding, exploration, or another condition.
+- Whether teachers or students can bypass locks.
+- Whether there should be a skill tree.
+- If so, whether it represents chemistry knowledge, laboratory capabilities, or something else.
+- Whether experience points, levels, badges, currencies, inventories, or achievements belong in the game.
+- What happens when a student gets stuck.
+- How to avoid forcing students to repeat content they already understand.
+- Whether progression should be linear, branching, or mostly open.
+
+8. STORY, CHARACTERS, AND DIALOGUE
+- Whether there should be a story and how prominent it should be.
+- Setting, tone, and the student’s role.
+- The purpose of non-player characters.
+- Dialogue length and frequency.
+- Whether dialogue is optional, skippable, or replayable.
+- How dialogue teaches chemistry without lengthy exposition.
+- Character customisation, if any.
+- How much reading should be required.
+
+9. VISUAL DESIGN
+- Pixel-art style, level of detail, and overall mood.
+- Whether different syllabus regions should have distinct colours or visual identities.
+- How colour should communicate meaning.
+- How to support students who cannot distinguish certain colours.
+- Text size, contrast, interface clarity, and visual clutter.
+- How realistic or stylised laboratory equipment and chemical representations should be.
+- Whether animation should be decorative, instructional, or both.
+- How visual assets should be sourced and approved.
+
+10. CONTROLS, DEVICES, AND ACCESSIBILITY
+- Keyboard, mouse, and touch interactions.
+- Portrait and landscape layouts on phones and tablets.
+- On-screen movement controls versus tapping destinations.
+- How to make chemical notation and calculation input practical on small screens.
+- Tutorials and guidance for students unfamiliar with games.
+- Readability and accessible alternatives to colour, sound, or precise movement.
+- Reduced motion and sound settings.
+- Whether activities should be usable without time pressure.
+- What “works well on a phone” should mean in practice.
+
+11. CHEMISTRY DENSITY AND RESPECT FOR STUDENTS’ TIME
+- How much travel or dialogue is acceptable between chemistry activities.
+- Whether students can skip or shorten familiar sequences.
+- Which non-chemistry activities add value.
+- What should never become a prerequisite for learning.
+- How objectives and next steps should be communicated.
+- How to make short sessions worthwhile.
+- How we will recognise and remove repetitive or distracting mechanics.
+
+12. SAVING, ACCOUNTS, AND PRIVACY
+- Whether progress needs saving.
+- Local device saves versus cross-device progress.
+- Whether accounts are necessary.
+- Whether the game should work without signing in.
+- Whether any teacher features are wanted.
+- Whether any student information or analytics should be collected.
+- Whether offline use matters.
+- Keep these as questions; do not add accounts, tracking, or a backend by default.
+
+13. SOUND AND LANGUAGE
+- Music and sound effects.
+- Default audio behaviour.
+- Whether any learning information may depend on sound.
+- Interface and chemistry language.
+- Whether multiple languages are needed.
+
+14. FIRST VERSION AND DEVELOPMENT PACE
+- The smallest useful playable version.
+- Which chemistry topic it should demonstrate.
+- Which features are essential for that first version.
+- Which ideas should be explicitly postponed.
+- How small each development step should be.
+- How I want to review prototypes.
+- What should count as a successful first playtest.
+- When and how students might test it.
+
+15. PROJECT SETUP AND OLD PROJECT REFERENCES
+- The exact new project location.
+- Whether I want a new Git repository and where it should be hosted.
+- Where the old project is, if I want you to inspect it.
+- Which old ideas or assets I want considered.
+- Whether any reuse is permitted.
+- Any existing deployment or hosting preferences.
+- Do not treat the earlier project as the specification for this one.
+
+HOW TO HANDLE MY ANSWERS
+
+After I answer:
+1. Summarise what I have explicitly chosen.
+2. Identify unanswered questions, contradictions, dependencies, and decisions that need more discussion.
+3. Ask focused follow-up questions without filling gaps yourself.
+4. Present a proposed design premise for my approval.
+5. Do not begin implementation until I approve that premise and the first small development step.
+
+An unanswered question means “undecided,” not permission to choose. If I answer only part of the questionnaire, retain the remaining questions as open.
+
+If the questionnaire or my answers are too long for one message, keep stable numbering and let me answer in sections. Do not turn partial answers into an approved design.
+
+DECISION AUTHORITY DURING DEVELOPMENT
+
+You may make routine technical decisions without asking, provided they do not change the approved experience, chemistry, appearance, scope, cost, privacy, or compatibility.
+
+Examples include ordinary code organisation, internal naming, straightforward refactoring, and fixes that restore already approved behaviour.
+
+Always ask before adding or changing:
+- Chemistry content, examples, explanations, questions, or scientific simplifications.
+- Learning objectives or syllabus coverage.
+- Gameplay mechanics or progression rules.
+- Regions, equipment, characters, dialogue, or story.
+- Visual direction or meaningful interface behaviour.
+- Rewards, penalties, difficulty, timers, or unlocking conditions.
+- Features that affect student data, accounts, paid services, or publishing.
+
+You may propose concrete options and recommend one, with reasons. Wait for my choice before implementing it.
+
+If a technical choice affects the student experience or limits future approved requirements, explain the effect and ask. Do not use “technical decision” as a reason to settle a design question.
+
+Use clearly identified placeholders when needed. Do not invent chemistry or game content to make a prototype feel complete.
+
+WORKING RECORD AND DEVELOPMENT PROCESS
+
+After approval to create project files, keep a concise, persistent record in the repository of:
+- Approved design and requirements.
+- Approved chemistry scope and sources.
+- Decisions and their reasons.
+- Open questions.
+- Deferred ideas.
+- The current development step and its acceptance criteria.
+- Completed work and relevant verification.
+
+Clearly distinguish approved decisions from suggestions. Do not promote a suggestion into a requirement.
+
+Develop in small, reviewable increments. Before each increment, describe the intended result and surface any decisions that need my input. Once that increment is approved, complete its routine implementation and appropriate checks without asking about every line of code.
+
+At the end of each increment, explain what changed, how I can try it, what was checked, and what remains undecided. Let me review it before moving to the next feature.
+
+Preserve the old project. Do not delete, overwrite, copy from, or modify it without my explicit permission.
+
+Start now with the grouped checkbox questionnaire. Take your time with the questions. Do not implement anything yet.

@@ -1,0 +1,150 @@
+[
+  {
+    "id": "V01",
+    "title": "Enkel kart- og interaksjonsscene",
+    "file": "images/godot-object.png",
+    "url": "https://raw.githubusercontent.com/godotengine/godot-demo-projects/master/2d/role_playing_game/screenshots/object.png",
+    "author": "Godot Engine contributors",
+    "license": "MIT; repositoryets lisens. Kontroller eventuelle særvilkår før spillbruk.",
+    "sha256": "874ff2e91354782ae7a730fee65a0dd499b2900a7a035b28a1bcae2592ce03b1",
+    "bytes": 20511,
+    "modified": false
+  },
+  {
+    "id": "V02",
+    "title": "LPC: regioner og fargepaletter",
+    "file": null,
+    "url": "https://raw.githubusercontent.com/ElizaWy/LPC/main/GithubReadme.png",
+    "author": "LPC Revised / Eliza Wyatt og bidragsytere",
+    "license": "README oppgir CC-BY 3.0 eller OGA-BY 3.0; individuelle bidrag har egne krediteringer. Referanselenke, ikke importert spillressurs.",
+    "sha256": "09b20fb009c49fa737428d070eb2134d0b401524eaf18bce801527be73c6a82e",
+    "bytes": 42671,
+    "modified": false
+  },
+  {
+    "id": "V03",
+    "title": "Benker i pikselstil",
+    "file": "images/lpc-countertop.png",
+    "url": "https://raw.githubusercontent.com/ElizaWy/LPC/main/Objects/Furniture/Countertop.png",
+    "author": "Lanea Zimmerman (Sharm), Eliza Wyatt (DeathsDarling)",
+    "license": "OGA-BY 3.0 ifølge Objects/Furniture/Credits.txt",
+    "sha256": "d3ff59068bd4aafada8fe162cc3aeefa7ea04ab58093d4be44ac6791ad70a264",
+    "bytes": 4796,
+    "modified": false
+  },
+  {
+    "id": "V04",
+    "title": "Vasker i pikselstil",
+    "file": "images/lpc-sink.png",
+    "url": "https://raw.githubusercontent.com/ElizaWy/LPC/main/Objects/Furniture/Sink%2C%20Countertop.png",
+    "author": "Lanea Zimmerman (Sharm), Eliza Wyatt (DeathsDarling)",
+    "license": "OGA-BY 3.0 ifølge Objects/Furniture/Credits.txt",
+    "sha256": "f6ade47e6db97bea3fe5e57e0f7a6b41c0061e8572767ac954fe2f05bb6a4189",
+    "bytes": 1760,
+    "modified": false
+  },
+  {
+    "id": "V05",
+    "title": "Begerglass: enkel fagillustrasjon",
+    "file": "images/beakers.svg",
+    "url": "https://raw.githubusercontent.com/duerrsimon/bioicons/master/static/icons/cc-0/Lab_apparatus/Xavax/Beakers.svg",
+    "author": "Xavax via Bioicons",
+    "license": "CC0 ifølge Bioicons icons.json",
+    "sha256": "2bd67b8dc6fd6a7958cc1b9eb3e2ff24573f44e83b45381d6688db0ce2099a84",
+    "bytes": 21165,
+    "modified": false
+  },
+  {
+    "id": "V06",
+    "title": "Erlenmeyerkolbe: fagillustrasjon",
+    "file": "images/erlenmeyer.svg",
+    "url": "https://raw.githubusercontent.com/duerrsimon/bioicons/master/static/icons/cc-0/Lab_apparatus/Xavax/1000_ml_Erlenmeyer_flask.svg",
+    "author": "Xavax via Bioicons",
+    "license": "CC0 ifølge Bioicons icons.json",
+    "sha256": "d2a72acdae666fb2564c1b3ab223284d86d7391878bb87ef8b6aec7f30f59755",
+    "bytes": 9050,
+    "modified": false
+  },
+  {
+    "id": "V07",
+    "title": "Byretteoppsett: alternativ detaljgrad",
+    "file": "images/burette.svg",
+    "url": "https://raw.githubusercontent.com/duerrsimon/bioicons/master/static/icons/cc-by-3.0/Chemistry/Servier/burette-assembled.svg",
+    "author": "Servier Medical Art, https://smart.servier.com/ via Bioicons",
+    "license": "CC-BY 3.0 Unported ifølge Bioicons icons.json; https://creativecommons.org/licenses/by/3.0/",
+    "sha256": "1c82da54088404c6b35fa4fc3a18c124bc443d81f66ccc02cc238ae410114ffe",
+    "bytes": 53679,
+    "modified": false
+  },
+  {
+    "id": "V08",
+    "title": "Begerglass: alternativ tegnestil",
+    "file": "images/beaker-servier.svg",
+    "url": "https://raw.githubusercontent.com/duerrsimon/bioicons/master/static/icons/cc-by-3.0/Chemistry/Servier/beaker-empty.svg",
+    "author": "Servier Medical Art, https://smart.servier.com/ via Bioicons",
+    "license": "CC-BY 3.0 Unported ifølge Bioicons icons.json; https://creativecommons.org/licenses/by/3.0/",
+    "sha256": "6f76f55a3905858cc64ac90e3018b9b3bb57af84e5e4965074c59330faa0935d",
+    "bytes": 9059,
+    "modified": false
+  },
+  {
+    "id": "V09",
+    "title": "Godot: isometrisk rom",
+    "file": "images/godot-isometric.webp",
+    "url": "https://raw.githubusercontent.com/godotengine/godot-demo-projects/master/2d/isometric/screenshots/isometric.webp",
+    "source_page": "https://github.com/godotengine/godot-demo-projects",
+    "author": "Godot Engine contributors",
+    "license": "Godot repository MIT; see credits/godot-MIT.txt",
+    "sha256": "fd0672e8c07c7381a753d1b376c8689b60086a42454965a21fb8b321285ccca7",
+    "bytes": 702948,
+    "modified": false
+  },
+  {
+    "id": "V10",
+    "title": "Kenney: liten by i 3D",
+    "file": "images/kenney-city.png",
+    "url": "https://raw.githubusercontent.com/kenneyNL/Starter-Kit-City-Builder/main/screenshots/screenshot.png",
+    "source_page": "https://github.com/kenneyNL/Starter-Kit-City-Builder",
+    "author": "Kenney",
+    "license": "Kenney starter kit MIT; assets CC0 per repository README; see credits/Starter-Kit-City-Builder-README.md",
+    "sha256": "bd95124ffee827ff7f0ea9f86e8a7e92db6920abc8827a4d76d242ad9cd30c08",
+    "bytes": 115410,
+    "modified": false
+  },
+  {
+    "id": "V11",
+    "title": "Kenney: enkel stilisert 3D",
+    "file": "images/kenney-platformer.png",
+    "url": "https://raw.githubusercontent.com/kenneyNL/Starter-Kit-3D-Platformer/main/screenshots/screenshot.png",
+    "source_page": "https://github.com/kenneyNL/Starter-Kit-3D-Platformer",
+    "author": "Kenney",
+    "license": "Kenney starter kit MIT; assets CC0 per repository README; see credits/Starter-Kit-3D-Platformer-README.md",
+    "sha256": "326fa3e6a073631d1c4d37a81cea47626428ab61d9fb934e60e3ca529ae11a75",
+    "bytes": 329721,
+    "modified": false
+  },
+  {
+    "id": "V12",
+    "title": "Kenney: tydelige former i 2D",
+    "file": "images/kenney-match3.png",
+    "url": "https://raw.githubusercontent.com/kenneyNL/Starter-Kit-Match-3/main/screenshots/screenshot.png",
+    "source_page": "https://github.com/kenneyNL/Starter-Kit-Match-3",
+    "author": "Kenney",
+    "license": "Kenney starter kit MIT; assets CC0 per repository README; see credits/Starter-Kit-Match-3-README.md",
+    "sha256": "8d1478fbf06bb089a99bba011de172bdd41db310b6023f9ef4b0d1eb77027e05",
+    "bytes": 481565,
+    "modified": false
+  },
+  {
+    "id": "V13",
+    "title": "Kenney: lys og enkle romformer",
+    "file": "images/kenney-basic-scene.png",
+    "url": "https://raw.githubusercontent.com/kenneyNL/Starter-Kit-Basic-Scene/main/screenshots/screenshot.png",
+    "source_page": "https://github.com/kenneyNL/Starter-Kit-Basic-Scene",
+    "author": "Kenney",
+    "license": "Kenney starter kit MIT; assets CC0 per repository README; see credits/Starter-Kit-Basic-Scene-README.md",
+    "sha256": "f294c7c08a24f5621aac1f0ee451d21b7b9354ddf64dce3cd5c670bced596103",
+    "bytes": 340265,
+    "modified": false
+  }
+]

@@ -1,0 +1,32 @@
+[
+  {
+    "id": "P01",
+    "file": "proposals/lab-equipment-01.png",
+    "origin": "AI-generated original concept using image_gen",
+    "brief": "Sammenlign seks tomme laboratorieapparater i tre rader med enkel, detaljert og isometrisk pikselstil; ingen kjemiforsøk eller måleverdier.",
+    "status": "proposal; not approved; not a scientifically validated diagram",
+    "modified": false,
+    "sha256": "0dfb991f5b4dee597de9fd9c75fcabeef0602bafb99ad3ecaa510b125d509a23",
+    "bytes": 1369520
+  },
+  {
+    "id": "P02",
+    "file": "proposals/lab-equipment-02.png",
+    "origin": "AI-generated original concept using image_gen",
+    "brief": "Sammenlign byrette, volumpipette, reagensrørstativ, vernebriller, varmeplate og termometer i enkel og detaljert pikselstil.",
+    "status": "proposal; not approved; not a scientifically validated diagram",
+    "modified": false,
+    "sha256": "7e472c3a9006bf3389e70f21531322d62a92b12a3c105a044b79a5c487eb2112",
+    "bytes": 1428408
+  },
+  {
+    "id": "S1-S3",
+    "file": "proposals/style-comparison.png",
+    "origin": "AI-generated original concept using image_gen",
+    "brief": "Sammenlign samme lille undervisningslaboratorium i pikselstil, tegnet 2,5D og enkel 3D-preget dioramastil; ingen spillgrensesnitt eller personer.",
+    "status": "proposal; not approved; not a scientifically validated diagram",
+    "modified": false,
+    "sha256": "524793205bb4b037c5dd79637eab080046c149a48ecc5c4e04d1df0d77d4cbaa",
+    "bytes": 1861631
+  }
+]
