@@ -28,47 +28,59 @@ try{
  const key=async(key,code=key)=>{const windowsVirtualKeyCode=({Enter:13,Escape:27,Tab:9,ArrowLeft:37,ArrowUp:38,ArrowRight:39,ArrowDown:40,Space:32})[code]||0;await send('Input.dispatchKeyEvent',{type:'keyDown',key,code,windowsVirtualKeyCode,text:key==='Enter'?'\r':key===' '?' ':undefined});await send('Input.dispatchKeyEvent',{type:'keyUp',key,code,windowsVirtualKeyCode});};
  const point=async(id,dx=0,dy=40)=>evaluate(`(()=>{const o=document.querySelector('[data-id="${id}"]');const p=new DOMPoint(${dx},${dy}).matrixTransform(o.getScreenCTM());return {x:p.x,y:p.y};})()`);
  const click=async selector=>{const p=await evaluate(`(()=>{const e=document.querySelector(${JSON.stringify(selector)});e.scrollIntoView({block:'center'});const r=e.getBoundingClientRect();return {x:r.x+r.width/2,y:r.y+r.height/2};})()`);await send('Input.dispatchMouseEvent',{type:'mousePressed',button:'left',clickCount:1,...p});await send('Input.dispatchMouseEvent',{type:'mouseReleased',button:'left',clickCount:1,...p});};
- async function drag(id,x,y,dy=40){
+ async function drag(id,x,y,dy=40,release=true){
   await evaluate("document.querySelector('#bench').scrollIntoView({block:'center'})");
-  const start=await point(id,0,dy);const end=await evaluate(`(()=>{const p=new DOMPoint(${x},${y+dy}).matrixTransform(document.querySelector('#bench').getScreenCTM());return {x:p.x,y:p.y};})()`);
+  const start=await point(id,0,dy);
+  const end=await evaluate(`(()=>{const g=document.querySelector('[data-id="${id}"]');const matrix=document.querySelector('#bench').getScreenCTM();const start=new DOMPoint(0,${dy}).matrixTransform(g.getScreenCTM()).matrixTransform(matrix.inverse());const anchor=new DOMPoint(0,0).matrixTransform(g.getScreenCTM()).matrixTransform(matrix.inverse());const p=new DOMPoint(${x}+start.x-anchor.x,${y}+start.y-anchor.y).matrixTransform(matrix);return {x:p.x,y:p.y};})()`);
   await send('Input.dispatchMouseEvent',{type:'mousePressed',button:'left',clickCount:1,...start});
   for(let i=1;i<=6;i++)await send('Input.dispatchMouseEvent',{type:'mouseMoved',buttons:1,x:start.x+(end.x-start.x)*i/6,y:start.y+(end.y-start.y)*i/6});
-  await send('Input.dispatchMouseEvent',{type:'mouseReleased',button:'left',clickCount:1,...end});
- }
- async function holdPour(ms){
-  const p=await evaluate("(()=>{const e=document.querySelector('#pour');e.scrollIntoView({block:'center'});const r=e.getBoundingClientRect();return {x:r.x+r.width/2,y:r.y+r.height/2};})()");
-  await send('Input.dispatchMouseEvent',{type:'mousePressed',button:'left',clickCount:1,...p});await pause(ms);await send('Input.dispatchMouseEvent',{type:'mouseReleased',button:'left',clickCount:1,...p});
+  const drop=()=>send('Input.dispatchMouseEvent',{type:'mouseReleased',button:'left',clickCount:1,...end});
+  if(release)await drop();return drop;
  }
  const screenshot=async name=>{const r=await send('Page.captureScreenshot',{format:'png',captureBeyondViewport:false});await writeFile(path.join(tmpdir(),name),Buffer.from(r.data,'base64'));};
  await screenshot('chemtopia-initial.png');console.log('PASS initial workbench and all six apparatus controls');
- await drag('paper',760,214,10);await drag('funnel',573,328,65);await drag('receiverA',573,425);await drag('source',538.6,225);
- await holdPour(1700);
+ // Unsupported released beaker falls; held beaker remains where the mouse puts it.
+ let drop=await drag('source',150,180,40,false);await pause(250);
+ assert.ok(Math.abs((await evaluate("document.querySelector('[data-id=source]').transform.baseVal.consolidate().matrix.f"))-180)<.01);
+ await drop();await pause(750);
+ assert.ok(Math.abs((await evaluate("document.querySelector('[data-id=source]').transform.baseVal.consolidate().matrix.f"))-413)<.01);
+ await drag('funnel',790,240,65);await pause(800);
+ assert.ok((await evaluate("document.querySelector('[data-id=funnel]').getAttribute('transform')")).includes('rotate(90)'));
+ assert.equal(await evaluate("document.querySelector('[data-id=funnel]').transform.baseVal.consolidate().matrix.f"),467);
+ console.log('PASS held apparatus stays aloft; released beaker falls and unsupported funnel falls/tips');
+ await drag('funnel',573,337,65);await drag('paper',573,341,10);await drag('receiverA',573,429);
+ drop=await drag('source',538.6,225,40,false);
+ await key(' ','Space');await pause(500);
+ assert.equal(await evaluate("document.querySelector('#pour').getAttribute('aria-pressed')"),'true','Space keyup does not stop pouring');
+ await send('Input.dispatchKeyEvent',{type:'keyDown',key:' ',code:'Space',autoRepeat:true});
+ assert.equal(await evaluate("document.querySelector('#pour').getAttribute('aria-pressed')"),'true','repeat does not toggle');
+ await key(' ','Space');
+ const stopped=await evaluate("document.querySelector('[data-id=source]').innerHTML");await pause(300);
+ assert.equal(await evaluate("document.querySelector('[data-id=source]').innerHTML"),stopped,'second Space stops transfer');
  assert.equal(await evaluate("document.querySelector('#result').hidden"),true);
- assert.ok(await evaluate("document.querySelector('[data-id=paper]').innerHTML.includes('#bb904f')"));
- await drag('receiverA',350,425);await drag('receiverB',573,425);await click('[data-equipment=source]');await holdPour(2400);
- await click('#finish');assert.ok(await evaluate("!!document.querySelector('#explanation')"),'mouse filtration succeeds');
+ await key(' ','Space');await pause(500);await drop();
+ assert.equal(await evaluate("document.querySelector('#pour').getAttribute('aria-pressed')"),'false','release safely ends action');
+ await pause(700);await drag('receiverA',350,429);await drag('receiverB',573,429);
+ drop=await drag('source',538.6,225,40,false);await key(' ','Space');await pause(3500);await drop();await pause(700);
+ await click('#finish');assert.ok(await evaluate("!!document.querySelector('#explanation')"),'filtration remains completable with gravity');
  await click('input[value="1"]');await click('#explanation button');assert.ok((await evaluate("document.querySelector('#question-feedback').textContent")).includes('Choose another answer'));
- await click('input[value="0"]');await click('#explanation button');assert.ok((await evaluate("document.querySelector('#question-feedback').textContent")).includes('Activity complete'));
- await screenshot('chemtopia-completed.png');console.log('PASS mouse drag, attach, interrupted pouring, two receivers, Finish and question retry/completion');
- await click('#restart');assert.equal(await evaluate("document.querySelector('#selected-name').textContent"),'Nothing selected');assert.equal(await evaluate("document.querySelector('#spills').children.length"),0);
- await drag('funnel',573,328,65);await drag('receiverA',573,425);await drag('source',538.6,225);await holdPour(3900);await click('#finish');
- assert.equal(await evaluate("!!document.querySelector('#explanation')"),false);
- assert.ok((await evaluate("document.querySelector('#result').textContent")).includes('Collecting beaker A: water and sand'));
- assert.ok(await evaluate("document.querySelector('#spills').children.length>0"));console.log('PASS missing-paper experiment and real overflow remain possible; incomplete attempt has no question');
- await click('#restart');
- async function focusItem(id){await evaluate(`document.querySelector('[data-equipment="${id}"]').focus()`);}
- async function arrows(keyName,count){for(let i=0;i<count;i++)await key(keyName);}
- await focusItem('source');const original=await evaluate("document.querySelector('[data-id=source]').getAttribute('transform')");await key('ArrowRight');await key('Escape');assert.equal(await evaluate("document.querySelector('[data-id=source]').getAttribute('transform')"),original);
- await focusItem('paper');await arrows('ArrowLeft',14);await arrows('ArrowUp',19);await key('Enter');
- await focusItem('funnel');await arrows('ArrowLeft',23);await arrows('ArrowDown',15);await key('Enter');
- await focusItem('receiverA');await arrows('ArrowRight',28);await key('Enter');
- await focusItem('source');await arrows('ArrowRight',49);await arrows('ArrowUp',18);await key('Enter');
- await evaluate("document.querySelector('#pour').focus()");await send('Input.dispatchKeyEvent',{type:'keyDown',key:' ',code:'Space'});await pause(3900);await send('Input.dispatchKeyEvent',{type:'keyUp',key:' ',code:'Space'});
- await evaluate("document.querySelector('#finish').focus()");await key('Enter');assert.ok(await evaluate("!!document.querySelector('#explanation')"),'keyboard filtering succeeds');
  await evaluate("document.querySelector('input[value=\"0\"]').focus()");await key(' ','Space');
  await evaluate("document.querySelector('#explanation button').focus()");await key('Enter');
  assert.ok((await evaluate("document.querySelector('#question-feedback').textContent")).includes('Activity complete'));
- console.log('PASS keyboard focus, movement, placement, Escape and hold-Space use the same chemistry rules');
+ await screenshot('chemtopia-completed.png');
+ console.log('PASS Space toggle, repeat protection, release safety, two receivers and question completion');
+ await click('#restart');assert.equal(await evaluate("document.querySelector('#selected-name').textContent"),'Nothing selected');assert.equal(await evaluate("document.querySelector('#spills').children.length"),0);
+ await click('[data-equipment=source]');const original=await evaluate("document.querySelector('[data-id=source]').getAttribute('transform')");
+ await key('ArrowRight');await key('ArrowUp');await key('Enter');
+ assert.equal(await evaluate("document.querySelector('[data-id=source]').getAttribute('transform')"),original,'keyboard movement removed');
+ await click('#pour');await pause(200);assert.equal(await evaluate("document.querySelector('#pour').getAttribute('aria-pressed')"),'true');await click('#pour');
+ assert.equal(await evaluate("document.querySelector('#pour').getAttribute('aria-pressed')"),'false');
+ await click('#restart');await drag('funnel',573,337,65);await drag('receiverA',573,429);
+ drop=await drag('source',538.6,225,40,false);await key(' ','Space');await pause(3900);await drop();await click('#finish');
+ assert.equal(await evaluate("!!document.querySelector('#explanation')"),false);
+ assert.ok((await evaluate("document.querySelector('#result').textContent")).includes('Collecting beaker A: water and sand'));
+ assert.ok(await evaluate("document.querySelector('#spills').children.length>0"));
+ console.log('PASS movement shortcuts removed; button toggle, restart, missing-paper and overflow still work');
  assert.deepEqual(exceptions,[],'no browser runtime exceptions');console.log('PASS no browser runtime exceptions');
  console.log('Browser checks complete. Screenshots: /tmp/chemtopia-initial.png and /tmp/chemtopia-completed.png');
 }finally{

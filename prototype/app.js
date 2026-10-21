@@ -1,4 +1,4 @@
-import {createState,NAMES,moveItem,detach,placeItem,pour,pourPoint,outcome,EPS} from './model.js';
+import {createState,NAMES,moveItem,detach,placeItem,pour,outcome,stepPhysics,EPS} from './model.js';
 const $=id=>document.getElementById(id);
 const bench=$('bench'),layer=$('apparatus'),spillLayer=$('spills'),streams=$('streams');
 let state=createState(),selected=null,drag=null,placement=null,pouring=false,last=0;
@@ -31,21 +31,23 @@ function art(o){
  ${o.sand>EPS?`<path d="M-22 8Q0 1 22 8L0 29Z" fill="#bb904f"/>${dots(o.sand,.12,34,13,7)}`:''}<rect class="select-outline" x="-55" y="-17" width="110" height="69" rx="7"/>`;
 }
 function render(){
- for(const id of ORDER){const o=state.items[id],g=groups.get(id);g.setAttribute('transform',`translate(${o.x} ${o.y})${pouring&&id===selected?' rotate(35)':''}`);g.innerHTML=art(o);g.classList.toggle('selected',id===selected);g.classList.toggle('lifted',drag?.id===id||placement?.id===id);g.setAttribute('aria-disabled',String(state.phase!=='working'));}
+ for(const id of ORDER){const o=state.items[id],g=groups.get(id);const parent=o.parent?state.items[o.parent]:null;const angle=o.angle||0;g.setAttribute('transform',parent?.angle?`translate(${parent.x} ${parent.y}) rotate(${parent.angle}) translate(${o.x-parent.x} ${o.y-parent.y})`:`translate(${o.x} ${o.y}) rotate(${pouring&&id===selected?35:angle})`);g.innerHTML=art(o);g.classList.toggle('selected',id===selected);g.classList.toggle('lifted',drag?.id===id||placement?.id===id);g.setAttribute('aria-disabled',String(state.phase!=='working'));}
  if(selected)layer.append(groups.get(selected));
  spillLayer.innerHTML=state.spills.map(o=>`<g><ellipse cx="${o.x}" cy="${o.y}" rx="${Math.min(70,12+o.water*100)}" ry="${Math.min(16,4+o.water*28)}" fill="#6caab6" opacity=".65"/>${o.sand>EPS?`<g transform="translate(${o.x} ${o.y-9})">${dots(o.sand,.12,70,12)}</g>`:''}</g>`).join('');
  streams.innerHTML=pouring?state.flow.map(f=>`<path d="M${f.from.x} ${f.from.y}L${f.to.x} ${f.to.y}" stroke="${f.sand?'#8bb9ba':'#70b6c7'}" stroke-width="6" opacity=".85" stroke-linecap="round"/>`).join(''):'';
  $('selected-name').textContent=selected?NAMES[selected]:'Nothing selected';
  $('pour').disabled=state.phase!=='working'||state.items[selected]?.kind!=='beaker';
  $('pour').classList.toggle('active',pouring);
- $('pour-state').textContent=state.items[selected]?.kind==='beaker'?'Hold with the mouse, or focus here and hold Space.':'Select a beaker to use this control.';
+ $('pour').setAttribute('aria-pressed',String(pouring));
+ $('pour').innerHTML=`${pouring?'Stop pouring':'Start pouring'} <span aria-hidden="true">↓</span>`;
+ $('pour-state').textContent=state.items[selected]?.kind==='beaker'?'Press Space to start or stop pouring. Hold the beaker above a receiver while dragging.':'Select a beaker to use this control.';
  for(const b of $('equipment').querySelectorAll('button')){b.setAttribute('aria-pressed',String(b.dataset.equipment===selected));b.disabled=state.phase!=='working';}
  $('finish').disabled=state.phase!=='working';
 }
 function stopPour(){pouring=false;state.flow=[];render();}
 function select(id){if(state.phase!=='working')return;if(placement&&placement.id!==id)finishPlacement();stopPour();selected=id;render();}
 function coords(e){return new DOMPoint(e.clientX,e.clientY).matrixTransform(bench.getScreenCTM().inverse());}
-function clamp(o,x,y){return {x:Math.max(o.kind==='stand'?65:65,Math.min(935,x)),y:Math.max(o.kind==='stand'?260:65,Math.min(o.kind==='stand'?510:o.kind==='beaker'?430:475,y))};}
+function clamp(o,x,y){return {x:Math.max(65,Math.min(935,x)),y:Math.max(o.kind==='stand'?260:65,Math.min(o.kind==='stand'?510:o.kind==='beaker'?430:475,y))};}
 function beginPlacement(id){
  if(placement?.id===id)return;
  if(placement)placeItem(state,placement.id);
@@ -57,27 +59,23 @@ bench.addEventListener('pointerdown',e=>{
  select(id);groups.get(id).focus({preventScroll:true});beginPlacement(id);const p=coords(e),o=state.items[id];drag={id,dx:p.x-o.x,dy:p.y-o.y};bench.setPointerCapture(e.pointerId);e.preventDefault();render();
 });
 bench.addEventListener('pointermove',e=>{if(!drag)return;const p=coords(e),o=state.items[drag.id],pos=clamp(o,p.x-drag.dx,p.y-drag.dy);moveItem(state,o.id,pos.x,pos.y);render();});
-bench.addEventListener('pointerup',()=>{if(drag){drag=null;finishPlacement();}});
+bench.addEventListener('pointerup',()=>{if(drag){stopPour();drag=null;finishPlacement();}});
 bench.addEventListener('pointercancel',()=>{drag=null;finishPlacement();});
 $('equipment').addEventListener('focusin',e=>{const id=e.target.closest('[data-equipment]')?.dataset.equipment;if(id&&id!==selected)select(id);});
 $('equipment').addEventListener('click',e=>{const id=e.target.closest('[data-equipment]')?.dataset.equipment;if(id){finishPlacement();select(id);}});
 for(const [id,g] of groups)g.addEventListener('focus',()=>{if(state.phase==='working'&&selected!==id)select(id);});
+function togglePour(){
+ if(state.phase!=='working'||state.items[selected]?.kind!=='beaker')return;
+ pouring=!pouring;if(!pouring)state.flow=[];render();
+}
 document.addEventListener('keydown',e=>{
- if(e.target===$('pour')&&(e.code==='Space'||e.code==='Enter')){e.preventDefault();if(!$('pour').disabled){pouring=true;render();}return;}
- if(state.phase!=='working')return;
- const isObject=e.target.closest?.('[data-id],[data-equipment]');
- if(e.key==='Escape'&&placement){e.preventDefault();const p=placement;moveItem(state,p.id,p.x,p.y);state.items[p.id].parent=p.parent;placement=null;drag=null;render();return;}
- if(!selected||!isObject)return;
- if(e.key==='Enter'){e.preventDefault();finishPlacement();return;}
- if(['ArrowLeft','ArrowRight','ArrowUp','ArrowDown'].includes(e.key)){
-  e.preventDefault();stopPour();beginPlacement(selected);const o=state.items[selected],step=e.shiftKey?2:8;
-  const pos=clamp(o,o.x+(e.key==='ArrowRight'?step:e.key==='ArrowLeft'?-step:0),o.y+(e.key==='ArrowDown'?step:e.key==='ArrowUp'?-step:0));moveItem(state,selected,pos.x,pos.y);render();
- }
+ if(e.code!=='Space'||state.phase!=='working')return;
+ // Keep native Space behaviour for form answers and other buttons.
+ const control=e.target.closest?.('button,input,select,textarea,[contenteditable="true"]');
+ if(control&&control.id!=='pour'&&!control.dataset.equipment)return;
+ e.preventDefault();if(!e.repeat)togglePour();
 });
-document.addEventListener('keyup',e=>{if(e.code==='Space'||e.code==='Enter')stopPour();});
-$('pour').addEventListener('pointerdown',e=>{if(e.button!==0||$('pour').disabled)return;e.preventDefault();$('pour').focus();finishPlacement();pouring=true;$('pour').setPointerCapture(e.pointerId);render();});
-window.addEventListener('pointerup',()=>{if(pouring)stopPour();});
-window.addEventListener('pointercancel',()=>{if(pouring)stopPour();});
+$('pour').addEventListener('click',togglePour);
 window.addEventListener('blur',()=>{if(pouring)stopPour();});
 document.addEventListener('visibilitychange',()=>{if(document.hidden&&pouring)stopPour();});
 $('restart').addEventListener('click',()=>{pouring=false;drag=null;placement=null;state=createState();selected=null;$('result').hidden=true;$('result').innerHTML='';render();});
@@ -100,5 +98,5 @@ $('finish').addEventListener('click',()=>{
  });
  panel.focus({preventScroll:true});panel.scrollIntoView({behavior:'smooth',block:'nearest'});
 });
-function frame(time){const dt=Math.min(.08,(time-last)/1000);last=time;if(pouring){pour(state,selected,.32*dt);render();}requestAnimationFrame(frame);}
+function frame(time){const dt=Math.min(.05,(time-last)/1000);last=time;const moved=stepPhysics(state,dt,drag?.id),didPour=pouring;if(pouring){pour(state,selected,.32*dt);if(state.items[selected].water+state.items[selected].sand<=EPS){pouring=false;state.flow=[];}}if(moved||didPour)render();requestAnimationFrame(frame);}
 render();requestAnimationFrame(frame);

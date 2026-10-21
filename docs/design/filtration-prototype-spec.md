@@ -2,6 +2,12 @@
 
 **Status: approved by the owner’s “Yes” on 21 October 2026.** Approval includes the additional implementation boundaries and drafted completion question below. This specification translates P01–P09 into the first implemented increment; see [the review](filtration-prototype-review.md). The P IDs in this questionnaire are contextual question IDs, not the existing P01–P14 art-sheet IDs.
 
+## Current owner-requested revision
+
+After playtesting, the owner requested gravity for released unsupported objects, funnel tipping unless supported in the stand, removal of keyboard movement for now, and Space as an action toggle. These requests supersede the original free-air placement, beaker-supported funnel, arrow/Enter/Escape movement and hold-to-pour requirements recorded below. Hold a beaker above a receiver with the mouse; press Space to start and again to stop. Releasing the beaker stops pouring and lets it fall. The action button also toggles flow. See [current controls](../../prototype/README.md) and [the decision record](decisions.md).
+
+The remaining text preserves the originally approved first-build specification and questionnaire history; superseded controls are not current requirements.
+
 ## Recorded answers
 
 ```text

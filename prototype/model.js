@@ -4,12 +4,12 @@ export const NAMES = {source:'Mixture beaker',receiverA:'Collecting beaker A',re
 export function createState() {
   return {
     items: {
-      source: {id:'source',kind:'beaker',x:150,y:365,water:1,sand:.12,capacity:1.35,parent:null},
-      receiverA: {id:'receiverA',kind:'beaker',x:350,y:425,water:0,sand:0,capacity:.65,parent:null},
-      receiverB: {id:'receiverB',kind:'beaker',x:740,y:425,water:0,sand:0,capacity:.65,parent:null},
-      funnel: {id:'funnel',kind:'funnel',x:760,y:210,parent:null},
-      paper: {id:'paper',kind:'paper',x:875,y:365,sand:0,parent:null},
-      stand: {id:'stand',kind:'stand',x:515,y:500,parent:null}
+      source: {id:'source',kind:'beaker',x:150,y:413,water:1,sand:.12,capacity:1.35,parent:null},
+      receiverA: {id:'receiverA',kind:'beaker',x:350,y:429,water:0,sand:0,capacity:.65,parent:null},
+      receiverB: {id:'receiverB',kind:'beaker',x:680,y:429,water:0,sand:0,capacity:.65,parent:null},
+      funnel: {id:'funnel',kind:'funnel',x:805,y:467,angle:90,parent:null},
+      paper: {id:'paper',kind:'paper',x:910,y:487,sand:0,parent:null},
+      stand: {id:'stand',kind:'stand',x:515,y:509,parent:null}
     },
     spills: [], flow: [], phase:'working', initial:{water:1,sand:.12}
   };
@@ -20,10 +20,10 @@ export function moveItem(state,id,x,y) {
   item.x=x;item.y=y;
   for(const c of children(state,id))moveItem(state,c.id,c.x+dx,c.y+dy);
 }
-export function detach(state,id) {state.items[id].parent=null;}
+export function detach(state,id) {const item=state.items[id];item.parent=null;item.velocity=0;if(item.kind==='funnel')item.angle=0;}
 function attach(state,id,parent,x,y) {moveItem(state,id,x,y);state.items[id].parent=parent;}
 export function placeItem(state,id) {
-  const item=state.items[id]; item.parent=null;
+  const item=state.items[id]; item.parent=null;item.velocity=0;
   if(item.kind==='paper') {
     const f=state.items.funnel;
     if(Math.abs(item.x-f.x)<50&&Math.abs(item.y-f.y)<45)attach(state,id,f.id,f.x,f.y+4);
@@ -31,10 +31,9 @@ export function placeItem(state,id) {
   if(item.kind==='funnel') {
     const s=state.items.stand;
     if(Math.abs(item.x-(s.x+58))<36&&Math.abs(item.y-(s.y-172))<28) {
-      attach(state,id,s.id,s.x+58,s.y-172); return;
+      attach(state,id,s.id,s.x+58,s.y-172);item.angle=0; return;
     }
-    const b=Object.values(state.items).find(o=>o.kind==='beaker'&&Math.abs(item.x-o.x)<35&&Math.abs(item.y-(o.y-62))<28);
-    if(b)attach(state,id,b.id,b.x,b.y-62);
+
   }
 }
 export function pourPoint(item) {return {x:item.x+34.4,y:item.y+24.1};}
@@ -48,7 +47,7 @@ export function receiverBelow(state,point,excluded,sourceId) {
   return Object.values(state.items).filter(o=> {
     if(excluded.has(o.id)||o.id===sourceId||hasAncestor(state,o,sourceId))return false;
     if(o.kind==='beaker')return Math.abs(point.x-o.x)<40&&point.y<=o.y+55;
-    if(o.kind==='funnel')return Math.abs(point.x-o.x)<52&&point.y<=o.y+12;
+    if(o.kind==='funnel'&&o.parent==='stand')return Math.abs(point.x-o.x)<52&&point.y<=o.y+12;
     return false;
   }).sort((a,b)=>Math.max(0,a.y-point.y)-Math.max(0,b.y-point.y))[0]??null;
 }
@@ -100,4 +99,21 @@ export function outcome(state) {
     paperSand:state.items.paper.sand,
     containers:beakers.map(o=>({id:o.id,water:o.water,sand:o.sand}))
   };
+}
+
+// Simple vertical gravity; attached children travel with their support. No impact/breakage model.
+export const BENCH_Y=525;
+export function stepPhysics(state,seconds,heldId=null) {
+  if(state.phase!=='working'||!Number.isFinite(seconds)||seconds<=0)return false;
+  const dt=Math.min(seconds,.05);let changed=false;
+  for(const item of Object.values(state.items)) {
+    if(item.parent||item.id===heldId)continue;
+    const bottom=item.kind==='beaker'?(item.id==='source'?112:96):item.kind==='stand'?16:item.kind==='paper'?38:58;
+    const floor=BENCH_Y-bottom;
+    if(item.kind==='funnel'&&(item.angle||0)<90){item.angle=Math.min(90,(item.angle||0)+240*dt);changed=true;}
+    if(item.y<floor){item.velocity=(item.velocity||0)+1800*dt;moveItem(state,item.id,item.x,Math.min(floor,item.y+item.velocity*dt));changed=true;}
+    else if(item.y>floor){moveItem(state,item.id,item.x,floor);changed=true;}
+    if(item.y>=floor)item.velocity=0;
+  }
+  return changed;
 }

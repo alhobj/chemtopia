@@ -97,3 +97,11 @@ The owner selected one complete filtration task first, direct close-up workbench
 On 21 October 2026, the owner replied “Yes” to the concrete filtration prototype specification. This approves its additional qualitative-model boundaries, six apparatus items, recovery criterion, drafted explanation question and static local first increment. This supersedes the pending approval statements in the earlier P01–P09 entry for this increment only.
 
 The implementation uses dependency-free HTML/CSS/JavaScript/SVG, with explicitly labelled functional placeholder artwork. Mouse and keyboard share one material model. The owner should playtest this increment before further features. See [the review](filtration-prototype-review.md); public deployment, student data collection and additional techniques remain outside this approval.
+
+## Playtest revision — gravity and Space action toggle
+
+The owner liked the prototype and requested four concrete changes: unsupported objects fall to the bench, funnels tip unless placed in the stand, keyboard movement is removed for now, and pressing Space starts/stops the current action. This supersedes the first build's suspended placements, vessel-supported funnel and full keyboard movement/hold-Space mapping. The owner reported that keyboard movement did not work in their setup; it is removed rather than claimed fixed.
+
+The revised interaction keeps the mouse held while positioning a pouring beaker; Space toggles flow without needing to hold the key. Releasing the object stops pouring and starts its fall. The visible action button also toggles flow. Selection changes, focus loss, Finish and Restart stop the action. Gravity and tipping use a small qualitative positional model, with no impact damage or new material loss from tipping. Attached paper keeps its retained sand; a tipped unsupported funnel does not act as an upright receiving opening.
+
+The owner also requested Node.js use, convenient terminal execution in VS Code, and a Git push. The existing Node.js local server is retained, with a VS Code run task and a beginner-oriented development guide. Knowing Python/HTML/CSS is recorded as context, not interpreted as a request to rewrite the game or add a Python backend.

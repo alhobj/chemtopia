@@ -2,7 +2,7 @@
 
 ## Current step — implemented, awaiting playtest
 
-The owner approved the [filtration specification](filtration-prototype-spec.md) with “Yes”. A standalone local workbench now implements that bounded first increment, including mouse/keyboard operation, physically compatible attachments, material transfer, wrong actions, restart, Finish and the approved explanation question.
+The owner approved the [filtration specification](filtration-prototype-spec.md) with “Yes”. A standalone local workbench now implements that bounded first increment, including mouse-held placement and Space action toggling, gravity, funnel tipping, physically compatible attachments, material transfer, wrong actions, restart, Finish and the approved explanation question.
 
 See [the review and verification](filtration-prototype-review.md) and [launch instructions](../../prototype/README.md). Review this playable increment before choosing the next development step. Additional separation techniques, production art, room navigation, avatars, currency, persistence and publication are outside this increment.
 

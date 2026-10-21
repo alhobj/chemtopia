@@ -6,9 +6,11 @@ The first playable increment is a local sand-and-water filtration workbench. Eng
 
 ## Try the prototype
 
-With Node.js 22 or newer, run `npm start` from this repository and open `http://127.0.0.1:4173` on the same machine. No dependency installation is needed. Drag equipment, align receiving openings, and hold Pour to transfer material. Keyboard controls and limitations are in [the prototype guide](prototype/README.md).
+With Node.js 22 or newer, run `npm start` from this repository and open `http://127.0.0.1:4173` on the same machine. No dependency installation is needed. Hold a beaker above a receiver while dragging, and press Space to start or stop pouring. Unsupported equipment falls; the stand holds the funnel upright. Controls and limitations are in [the prototype guide](prototype/README.md).
 
 Run `npm test` for the material-model checks and `npm run test:browser` for Chromium mouse/keyboard checks. See [the prototype review](docs/design/filtration-prototype-review.md).
+
+For step-by-step terminal instructions and a file guide, see [Run and edit in VS Code](docs/development.md).
 
 ## Start here
 

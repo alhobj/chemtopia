@@ -1,0 +1,23 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Chemtopia: run prototype",
+      "type": "process",
+      "command": "node",
+      "args": ["scripts/serve.mjs"],
+      "options": {"cwd": "${workspaceFolder}"},
+      "problemMatcher": [],
+      "presentation": {"reveal": "always", "panel": "dedicated"}
+    },
+    {
+      "label": "Chemtopia: test material model",
+      "type": "process",
+      "command": "node",
+      "args": ["--test", "tests/model.test.mjs"],
+      "options": {"cwd": "${workspaceFolder}"},
+      "problemMatcher": [],
+      "group": "test"
+    }
+  ]
+}

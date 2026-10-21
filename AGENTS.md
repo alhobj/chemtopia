@@ -41,3 +41,7 @@ For the first separation activity, follow docs/design/separation-activity.md: al
 ## Approved first implementation
 
 The owner approved docs/design/filtration-prototype-spec.md with “Yes”. Its sand-and-water filtration workbench, qualitative chemistry, completion question and mouse/keyboard controls are authorised. The static dependency-free prototype is in prototype/; run/check instructions are in prototype/README.md. This supersedes the earlier implementation gate only for this bounded increment. Review the implemented result before starting additional techniques or features. Existing commit/push authorisation applies; public deployment remains unapproved.
+
+## Owner's interaction revision
+
+After playing the prototype, the owner requested that released unsupported equipment fall to the bench, funnels tip unless supported by the stand, keyboard movement be removed for now, and Space toggle the current action (pouring). These explicit requests supersede the original keyboard-equivalence, hold-to-pour and free-air-placement requirements for this prototype. Preserve native keyboard operation of ordinary controls. This is an authorised revision, not an unanswered design question.
