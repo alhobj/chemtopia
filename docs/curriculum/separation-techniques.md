@@ -1,48 +1,74 @@
-# Separation techniques: project scope and syllabus verification
+# Separation techniques — verified guide mapping
 
-## Chosen learning direction
+Source: owner-supplied IB *Chemistry guide*, first assessment 2025, published February 2023. See [source metadata](sources.json). The following is an original summary checked directly against the supplied PDF, not an unverified web list.
 
-The first chemistry activity concerns separation of heterogeneous and homogeneous mixtures. Students choose an appropriate technique and carry out the practical actions using apparatus. Equipment needed for the separation activities is available from the beginning, as an explicit exception to later equipment unlocking.
+## Explicit common SL/HL coverage
 
-The following examples were approved through S01:
+**Structure 1.1.1**, printed p. **33**, PDF p. **39**, is in the standard-level-and-higher-level section. Alongside distinguishing elements, compounds and mixtures, it explicitly names the following physical processes for coverage and calls for understanding homogeneous versus heterogeneous mixtures.
 
-| Technique | Approved example / intended recovery | Evidence |
+| Named process | Guide evidence | Project status and interpretation |
 | --- | --- | --- |
-| Filtration | Sand and water; recover sand | Owner selected S01-A |
-| Evaporation | Salt solution; recover salt | Owner selected S01-C |
-| Simple distillation | Salt solution; collect water while salt remains | Owner selected S01-D |
-| Paper chromatography | Technique selected; sample, solvent, stationary phase and detailed objective not yet selected | Owner's written S01-E addition |
+| Solvation | Structure 1.1.1; p. 33 / PDF 39 | Newly verified part of the requested syllabus coverage. Treat as a dissolution process supporting separation; the specific sample and selective-dissolution task still need approval. |
+| Filtration | Same | Owner already chose sand/water filtration to recover sand. Detailed setup/actions/outcomes remain to approve. |
+| Recrystallisation | Same; also Tool 1, p. 29 / PDF 35 | Newly verified addition to planned coverage. Choose a substance, solvent, purification objective and model before implementation. |
+| Evaporation | Structure 1.1.1; p. 33 / PDF 39 | Owner already chose salt recovery from solution. Do not treat evaporation alone as equivalent to recrystallisation. |
+| Distillation | Same; also Tool 1, p. 29 / PDF 35 | Owner chose simple distillation of salt solution to collect water. This general syllabus wording does not by itself name a separate compulsory fractional-distillation task. |
+| Paper chromatography | Structure 1.1.1; p. 33 / PDF 39 | Owner explicitly selected it. Sample, solvent, paper and expected results are not yet chosen. |
 
-These are **owner-selected project content**, not independently verified claims about IB syllabus wording. No particular chromatography mixture, solvent, result pattern or retention-factor task is approved by this table. The oil/water example S01-B was not selected and must not be treated as approved merely because it was offered.
+Solvation is included because the guide explicitly names it; it is not automatically a complete isolation technique on its own. A combined dissolution/filtering/recovery task is a possible teaching approach, not a newly approved experiment.
 
-## Request still to fulfil
+The owner requested the other separation techniques needed for IB. Solvation and recrystallisation therefore belong in the planned syllabus-aligned coverage, but this does not approve particular materials or place every process in the first implementation increment.
 
-The owner also requests the other separation techniques needed for IB DP Chemistry. The current official guide must be checked before declaring an exhaustive list or classifying specific techniques as compulsory, SL, HL or optional.
+## Chromatography understanding and scope
 
-## Research checklist — not an IB requirement list
+**Structure 2.2.10**, printed p. **41**, PDF p. **47**, occurs before the additional-higher-level subsection, so the requirement is common SL/HL content. In summary:
 
-| Technique or concept to investigate | What to verify in the actual guide |
-| --- | --- |
-| Filtration | Explicit practical requirements, related learning outcomes and expected setup knowledge |
-| Evaporation / crystallisation / recrystallisation | Distinctions in purpose, named requirements, purification and recovery expectations |
-| Simple versus fractional distillation | Whether each is explicitly named, context and expected apparatus/method detail |
-| Paper chromatography | Explicit scope, interpretation and any required calculations |
-| Other chromatography methods | Whether named techniques such as thin-layer chromatography belong to required content or supporting knowledge |
-| Liquid–liquid separation / extraction | Whether and where a separating funnel or extraction is required |
-| Purity and separation evidence | Any associated requirements involving observations, data interpretation or purity checks |
+- Explain separation through different attractions to the mobile and stationary phases, using intermolecular interactions.
+- Explain, calculate and interpret retardation-factor values, written **R_F** in the guide.
+- Knowledge of locating-agent use is not required.
+- Technical and operational details of gas chromatography and HPLC will not be assessed.
 
-These are search targets for primary-source verification, not approved additions to the first version. No section numbers or compulsory labels have been invented.
+Its linking question refers to paper chromatography or thin-layer chromatography. **Tool 1: Applying techniques**, printed p. **29**, PDF p. **35**, likewise names paper **or** thin-layer chromatography and describes awareness of practical purpose and practice.
 
-## Mapping to complete when the guide is available
+Do not turn that alternative into a requirement to simulate both paper and TLC, or into a detailed GC/HPLC machinery objective. Paper chromatography is independently explicit in Structure 1.1.1 and is the owner's selected starting format. The R_F requirement should inform a proposed later learning step, not silently add an unapproved calculation interface to the first scene.
 
-For each verified item, record:
+## Related practical context
 
-- Official source edition/revision and page/section.
-- Required technique or broader learning outcome, paraphrased precisely.
-- SL, HL, both or another stated scope; do not infer without evidence.
-- Prerequisite practical skills and notation.
-- Proposed game activity and intended product(s).
-- Apparatus and supported actions, with scientific limitations.
-- Status: proposed, reviewed, approved or deferred.
+Tool 1 also names separation of mixtures, recrystallisation, distillation/reflux, drying to constant mass and melting-point determination. The skills section is course-wide, not a separate game equipment shopping list.
 
-The source remains blocked as described in [the curriculum reference](README.md). The exact required list is therefore unresolved.
+**Reactivity 3.2.9**, printed p. **60**, PDF p. **66**, includes understanding experimental setups for distillation and reflux in an alcohol-oxidation context within common SL/HL material. Reflux is relevant practical knowledge, but is not itself a method for collecting separated components. This is a later topic connection, not a reason to add organic oxidation to the separation lesson.
+
+## Not established as separately named compulsory techniques in this copy
+
+The text search and relevant pages do not establish **fractional distillation**, **separating-funnel/liquid–liquid extraction**, **centrifugation**, **decantation** or **magnetic separation** as individually named compulsory separation techniques. A general separation requirement can still support such examples pedagogically; absence of a name is not a claim that a method can never be taught, used or appear in a new context.
+
+**Sublimation** is explicitly present as a change of state in Structure 1.1.2, p. 33 / PDF 39. That does not by itself establish a separately compulsory sublimation-separation practical.
+
+The previously offered oil/water separating-funnel task was not selected in S01. Keep it as a possible later proposal rather than presenting it as selected or compulsory.
+
+## Owner-selected examples and remaining decisions
+
+| Activity | Chosen recovery/objective | What still needs approval |
+| --- | --- | --- |
+| Sand and water | Recover sand by filtration | Setup, represented particle/material states, pouring controls, wrong arrangements and outcomes |
+| Salt solution: evaporation | Recover salt | Substance specification, heating/drying limits, observation model and feedback |
+| Salt solution: simple distillation | Collect water while salt remains | Apparatus, heating/cooling controls, connections and consequences of incorrect assembly |
+| Paper chromatography | Separate mixture components | Sample, solvent, baseline/spotting model, development, observations and when R_F is introduced |
+| Solvation-based separation | Newly verified requested coverage | Whether to use a combined task, sample and which component dissolves |
+| Recrystallisation | Newly verified requested coverage | Substance, solvent, purification goal, cooling/filtration/drying model and comparison with evaporation |
+
+All needed equipment remains available from the start. No placement guides, hidden correct-only snapping or single Run Experiment button. Physically possible supported wrong actions remain available, with owner-approved simulated consequences and equivalent keyboard controls.
+
+## Proposed sequence — not a decided implementation plan
+
+1. A small filtration task to establish move/assemble/pour/observe interactions.
+2. A combined selective-dissolution and recovery task, if approved, to connect solvation and filtration with recovery.
+3. Compare evaporation with recrystallisation using approved materials and goals.
+4. Simple distillation, with approved heating and apparatus behaviour.
+5. Paper chromatography, then an approved interpretation/R_F task.
+
+This preserves the full requested coverage while allowing reviewable increments. It does not select materials, invent observations, or authorise implementation before the concrete first step is approved.
+
+## Verification boundary
+
+The named coverage above is checked against this February 2023 edition. Later IB corrections have not been checked online. The chapter navigation index is not a complete transcription, and syllabus alignment is not a claim that a game replaces real laboratory work.

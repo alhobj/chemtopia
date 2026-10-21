@@ -1,0 +1,87 @@
+{
+  "source_sha256": "2f43a8bbedefe7654de4ae23d3e6451d2205f9bac660a26f18c1ca660407eb56",
+  "reviewed_on": "2026-10-21",
+  "requirements": [
+    {
+      "process": "solvation",
+      "source_id": "IB-CHEM-GUIDE-2025",
+      "section": "Structure 1.1.1",
+      "printed_page": 33,
+      "pdf_page": 39,
+      "level_scope": "common SL and HL",
+      "evidence_type": "explicitly named coverage",
+      "project_scope": "requested syllabus-aligned coverage; specific activity content requires approval"
+    },
+    {
+      "process": "filtration",
+      "source_id": "IB-CHEM-GUIDE-2025",
+      "section": "Structure 1.1.1",
+      "printed_page": 33,
+      "pdf_page": 39,
+      "level_scope": "common SL and HL",
+      "evidence_type": "explicitly named coverage",
+      "project_scope": "requested syllabus-aligned coverage; specific activity content requires approval"
+    },
+    {
+      "process": "recrystallisation",
+      "source_id": "IB-CHEM-GUIDE-2025",
+      "section": "Structure 1.1.1",
+      "printed_page": 33,
+      "pdf_page": 39,
+      "level_scope": "common SL and HL",
+      "evidence_type": "explicitly named coverage",
+      "project_scope": "requested syllabus-aligned coverage; specific activity content requires approval"
+    },
+    {
+      "process": "evaporation",
+      "source_id": "IB-CHEM-GUIDE-2025",
+      "section": "Structure 1.1.1",
+      "printed_page": 33,
+      "pdf_page": 39,
+      "level_scope": "common SL and HL",
+      "evidence_type": "explicitly named coverage",
+      "project_scope": "requested syllabus-aligned coverage; specific activity content requires approval"
+    },
+    {
+      "process": "distillation",
+      "source_id": "IB-CHEM-GUIDE-2025",
+      "section": "Structure 1.1.1",
+      "printed_page": 33,
+      "pdf_page": 39,
+      "level_scope": "common SL and HL",
+      "evidence_type": "explicitly named coverage",
+      "project_scope": "requested syllabus-aligned coverage; specific activity content requires approval"
+    },
+    {
+      "process": "paper chromatography",
+      "source_id": "IB-CHEM-GUIDE-2025",
+      "section": "Structure 1.1.1",
+      "printed_page": 33,
+      "pdf_page": 39,
+      "level_scope": "common SL and HL",
+      "evidence_type": "explicitly named coverage",
+      "project_scope": "requested syllabus-aligned coverage; specific activity content requires approval"
+    },
+    {
+      "process": "chromatography interpretation and retardation factor",
+      "source_id": "IB-CHEM-GUIDE-2025",
+      "section": "Structure 2.2.10",
+      "printed_page": 41,
+      "pdf_page": 47,
+      "level_scope": "common SL and HL",
+      "evidence_type": "explicit understanding and explain/calculate/interpret R_F requirement",
+      "limits": [
+        "Locating-agent knowledge not required",
+        "GC/HPLC technical and operational details not assessed"
+      ],
+      "project_scope": "propose specific explanatory/calculation activity for owner approval"
+    }
+  ],
+  "practical_skill_reference": {
+    "section": "Tool 1: Applying techniques",
+    "printed_page": 29,
+    "pdf_page": 35,
+    "chromatography_alternative": "paper or thin-layer chromatography"
+  },
+  "latest_revision_independently_verified": false
+}

@@ -9,6 +9,8 @@ The project is in its design phase. This repository currently contains documenta
 - [Decisions and requirements](docs/design/decisions.md)
 - [First activity: separation techniques](docs/design/separation-activity.md)
 - [IB curriculum reference and source status](docs/curriculum/README.md)
+- [Syllabus topic index](docs/curriculum/syllabus-index.md)
+- [Verified separation-technique mapping](docs/curriculum/separation-techniques.md)
 - [Recorded answers Q01–Q20](docs/design/answers.md)
 - [Recorded answers Q21–Q62](docs/design/answers-21-62.md)
 - [Focused follow-ups and visual choices](docs/design/follow-up-01.md)

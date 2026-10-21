@@ -15,7 +15,7 @@ S04 A
 
 ## Chosen content and interaction
 
-- **S01:** sand/water filtration, salt recovery by evaporation, water recovery by simple distillation, and paper chromatography. The remaining IB-required techniques must be researched against the current guide; the exact list is not yet verified.
+- **S01:** sand/water filtration, salt recovery by evaporation, water recovery by simple distillation, and paper chromatography. The supplied guide now verifies solvation and recrystallisation as additional named common SL/HL coverage in Structure 1.1.1. Specific materials and implementation increments remain to approve.
 - **Equipment:** all apparatus needed for the included activities is available immediately. This is a local exception to the broader equipment-unlock preference, not cancellation of that later system.
 - **S02-C:** no placement guides. Students arrange the setup themselves. Feedback can explain a problematic arrangement, but it must not act as a hidden correct-only placement gate.
 - **S03:** students perform the practical actions themselves, including heater controls and dragging a beaker over a funnel to pour. Do not substitute a single Run Experiment button, complete the procedure automatically or accept only the correct sequence.
@@ -32,9 +32,9 @@ No optional placement outline should reveal the correct location. The previously
 
 ## Research and retained references
 
-Use [the curriculum folder](../curriculum/README.md) when proposing future chemistry activities. It distinguishes owner selections, primary-source requirements, supporting knowledge and new suggestions. At present it is explicitly pending official-source access; it is not a downloaded or verified complete syllabus.
+Use [the curriculum folder](../curriculum/README.md) when proposing future chemistry activities. It distinguishes owner selections, primary-source requirements, supporting knowledge and new suggestions. The owner-supplied February 2023 guide is now retained locally in a Git-ignored folder, with a public syllabus index and verified separation mapping. This is verification against the supplied edition, not independent confirmation of later online revisions.
 
-The source page was blocked by the environment proxy. A narrow network draft was saved for the official IB hosts. The remaining techniques must not be described as verified until access changes or the owner supplies an authorised guide.
+The earlier website block remains in the source history, but no longer blocks review of the uploaded guide. See Structure 1.1.1, printed p. 33 / PDF p. 39; Tool 1, printed p. 29 / PDF p. 35; and Structure 2.2.10, printed p. 41 / PDF p. 47. The first named list includes solvation, filtration, recrystallisation, evaporation, distillation and paper chromatography. R_F explanation, calculation and interpretation is also common SL/HL content; a specific chromatography task and calculation interface are not automatically approved.
 
 ## Proposed design premise — not yet approved as an implementation specification
 
@@ -46,4 +46,4 @@ This paraphrases the chosen direction. Before coding, approve the finite action/
 
 A single sand-and-water filtration task could establish the shared interaction system first: move apparatus, assemble the filter setup, pour the mixture, observe the approved outcome, and compare an ineffective but physically possible arrangement. Equipment remains available and there are no placement guides. Which wrong arrangements and outcomes are represented must be approved before implementation.
 
-After that review, add evaporation, distillation, paper chromatography and any guide-verified additions in separately approved increments. This sequence is a recommendation, not a decision to narrow the owner's requested overall content.
+After that review, add evaporation, distillation, paper chromatography and the verified additional coverage in solvation and recrystallisation in separately approved increments. This sequence is a recommendation, not a decision to narrow the owner's requested overall content.

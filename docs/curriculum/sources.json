@@ -2,10 +2,13 @@
   "target": {
     "programme": "IB Diploma Programme Chemistry",
     "first_assessment": 2025,
-    "levels": ["SL", "HL"],
+    "levels": [
+      "SL",
+      "HL"
+    ],
     "examination_years": "not yet specified"
   },
-  "verification_status": "pending_primary_source_access",
+  "verification_status": "verified_relevant_requirements_against_user_supplied_february_2023_guide",
   "sources": [
     {
       "id": "IB-CHEM-PAGE",
@@ -20,16 +23,27 @@
       "id": "IB-CHEM-GUIDE-2025",
       "title": "Chemistry guide, first assessment 2025",
       "publisher": "International Baccalaureate",
-      "edition_revision": null,
-      "status": "not yet obtained or verified",
-      "local_document": null,
-      "note": "Obtain an authorised current guide and record exact edition and references before claiming complete syllabus coverage."
+      "edition_revision": "Published February 2023; no later revision identified in supplied copy",
+      "status": "supplied by owner; relevant separation, chromatography, skills and outline pages reviewed",
+      "local_document": "private/chemistry-guide-2025.pdf",
+      "note": "Full source and extraction retained locally in a Git-ignored directory. Public files contain original summaries and page references.",
+      "local_extraction": "private/chemistry-guide-2025.txt",
+      "sha256": "2f43a8bbedefe7654de4ae23d3e6451d2205f9bac660a26f18c1ca660407eb56",
+      "bytes": 4994770,
+      "pdf_pages": 89,
+      "independently_verified_latest_revision": false,
+      "redistributed_in_git": false
     }
   ],
   "network_change": {
     "draft_saved": true,
-    "added_hosts": ["ibo.org", "www.ibo.org"],
+    "added_hosts": [
+      "ibo.org",
+      "www.ibo.org"
+    ],
     "applied_to_runtime": false,
-    "requires_publish": true
-  }
+    "requires_publish": true,
+    "needed_for_uploaded_guide_review": false
+  },
+  "reviewed_on": "2026-10-21"
 }

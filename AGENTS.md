@@ -24,7 +24,7 @@ Update the decision log with reasons when decisions are actually made. Preserve 
 
 Do not use the previous project without explicit permission to inspect or reuse it. Do not automatically delete, change or copy from it. It is not the specification for this project.
 
-The IB guide and textbook are planned sources; they have not yet been supplied or reviewed. Do not reproduce textbook questions or add PDFs to Git without clarified rights and the user's permission. Visual references are for discussion, not approved game assets. Record authorship and licensing before any use.
+The owner supplied the IB Chemistry guide (first assessment 2025, published February 2023). Relevant syllabus, separation and chromatography pages are reviewed and indexed in docs/curriculum/. The full PDF and extraction are local and Git-ignored under docs/curriculum/private/. The textbook has not yet been supplied. Do not reproduce textbook questions or add PDFs to Git without clarified rights and the user's permission. Visual references are for discussion, not approved game assets. Record authorship and licensing before any use.
 
 Do not add accounts, analytics, a backend or publication without approval. Use clearly labelled placeholders where needed, without inventing chemistry content.
 
@@ -34,6 +34,6 @@ Use English throughout the project, including documentation, questions, lists, f
 
 ## Curriculum references for chemistry proposals
 
-Consult docs/curriculum/README.md and its source-status record before suggesting syllabus coverage, techniques or related questions. Use the selected first-assessment-2025 syllabus and preserve separate SL/HL scope. A pending source is not verified evidence. Distinguish explicit IB requirements, supporting practical knowledge, owner-selected content and proposals. Record exact source edition and section/page when available. Do not claim a complete required-techniques list while primary-source access is unresolved.
+Consult docs/curriculum/README.md and its source-status record before suggesting syllabus coverage, techniques or related questions. Use the selected first-assessment-2025 syllabus and preserve separate SL/HL scope. A pending source is not verified evidence. Distinguish explicit IB requirements, supporting practical knowledge, owner-selected content and proposals. Record exact source edition and section/page when available. Use the verified Structure 1.1.1 mapping for the named common SL/HL processes, and Structure 2.2.10 for chromatography/R_F. Do not claim online confirmation of the latest revision or extend the list beyond what the supplied guide supports.
 
 For the first separation activity, follow docs/design/separation-activity.md: all needed equipment is available, no placement guides, student-operated practical actions, physically possible wrong actions allowed, and keyboard-equivalent controls. Scientific consequences and an implementation step still require approval.

@@ -23,7 +23,7 @@ The audience is students aged 16–19 studying IB DP Chemistry. Browser support 
 | Q04 | Learning, practice, revision and scientific curiosity | Formal assessment and diagnosis have not been explicitly selected as primary purposes. |
 | Q05 | All six listed skills | Concepts, calculations, practical skills, data, reasoning and representations. Priorities remain open. |
 | Q06 | IB terminology and questions, alongside freer activities using precise language | How these approaches combine needs clarification; do not assume every activity must resemble an exam. |
-| Q07 | IB guide and textbook; approval of individual content items and small packages | Sources have not been uploaded. The approval workflow needs clarification. |
+| Q07 | IB guide and textbook; approval of individual content items and small packages | Guide now supplied and relevant pages reviewed; textbook still pending. The approval workflow needs clarification. |
 | Q08 | A short note when a simplification is introduced | No particular scientific simplification has been approved. |
 | Q09 | Undecided — discuss | No main activity or percentage balance has been selected. |
 | Q10 | Short missions combining world, laboratory and chemistry | Content, story and specific mission mechanics remain open. |
@@ -80,4 +80,10 @@ All six C01 avatars are selected as player options. L01-1 is the chosen laborato
 
 The first topic is separation techniques for heterogeneous and homogeneous mixtures. S01 selects sand/water filtration, salt recovery by evaporation, water recovery by simple distillation and paper chromatography, plus the other required techniques once verified against the current IB guide. All needed equipment is available from the outset for this activity. S02-C rejects placement guides. S03 requires student-operated actions, including dragging to pour and heater controls; physically possible wrong actions remain possible. S04-A retains keyboard-equivalent operation. These requirements supersede a simplified correct-only assembly or single-run-button approach for this activity.
 
-See [the full activity record](separation-activity.md) and [curriculum source status](../curriculum/README.md). Official-source lookup was blocked by network policy; the required-techniques list is not verified yet. No game implementation or unreviewed scientific consequences have been approved.
+See [the full activity record](separation-activity.md) and [curriculum source status](../curriculum/README.md). The initial website lookup was blocked by network policy. This has since been superseded for document review by the owner-supplied guide and its verified mapping. No game implementation or unreviewed scientific consequences have been approved.
+
+## Uploaded Chemistry guide and verified separation mapping
+
+The owner supplied Chemistry Guide 2025.pdf. Its publication information identifies first assessment 2025 and publication in February 2023. Relevant source pages are reviewed, and the local full source/extraction are excluded from Git. Public curriculum files provide original summaries, exact references and a topic navigation index for future suggestions. Later online revisions have not been independently checked.
+
+Structure 1.1.1 (printed p. 33 / PDF p. 39) explicitly names solvation, filtration, recrystallisation, evaporation, distillation and paper chromatography in common SL/HL material. Solvation and recrystallisation are therefore part of the owner's requested syllabus-aligned coverage; specific examples, models and increments still need approval. Structure 2.2.10 (printed p. 41 / PDF p. 47) requires explaining, calculating and interpreting R_F. Tool 1 (printed p. 29 / PDF p. 35) mentions paper or thin-layer chromatography; do not turn the alternative into a requirement to build both. GC/HPLC technical/operational details are excluded from assessment in the cited statement. No new experiment content or game code is implemented by this research update.
