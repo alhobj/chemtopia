@@ -101,3 +101,7 @@ Chemistry Guide 2025.pdf was supplied and reviewed. The title/publication pages 
 No chemistry simulation or game implementation has started. Specific examples, outcomes, models and a bounded first coding step still require approval.
 
 Guide-reference checks: source publication/assessment identifiers confirmed; six named processes verified on printed p. 33 / PDF p. 39; common-level chromatography boundary and R_F requirement verified on printed p. 41 / PDF p. 47; Tool 1 and distillation/reflux cross-reference checked. All 22 section entry pages were indexed; 109 internal documentation links had no missing targets; source SHA-256 matches the retained PDF. The full PDF and extraction are ignored and untracked.
+
+## Concrete filtration prototype specification prepared
+
+P01–P09 were answered. A reviewable specification now records the selected scope and proposes the finite apparatus/actions, conservation rules, recovery criterion, completion question, keyboard mapping, acceptance checks and verification plan. The owner must approve the concrete specification before coding, as promised in the questionnaire and required by AGENTS.md. No further questionnaire is needed unless that review exposes a new unresolved decision.

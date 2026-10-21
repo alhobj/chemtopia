@@ -45,3 +45,7 @@ An overall design premise and first implementation step still need explicit appr
 ## Separation activity follow-up
 
 S01–S04 are recorded in [separation-activity.md](separation-activity.md). The uploaded February 2023 guide now verifies the named coverage and is indexed in docs/curriculum/. Remaining issues are first-version versus later technique coverage, solvation/recrystallisation examples, paper-chromatography sample/solvent/objective and R_F step, a finite action/material/temperature model and approved wrong-action outcomes. Later guide revisions have not been checked online. Placement guides and a single Run Experiment button are not open defaults: the user rejected those approaches. Keyboard-equivalent practical controls remain required.
+
+## Current implementation approval
+
+The owner answered prototype questions P01–P09. See [the concrete filtration prototype specification](filtration-prototype-spec.md). The first task and general model are chosen; proposed completion criteria, drafted question and finite implementation details need one review/approval before coding. Tablet/phone support and the other separation techniques remain later milestones, not cancelled requirements.
