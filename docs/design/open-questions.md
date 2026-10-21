@@ -13,7 +13,7 @@ Use the stable **F01–F06** questions in [the focused follow-up](follow-up-01.m
 | F03 | Currency purpose, first-try bonus details, hints/retries and learning access |
 | F04 | Q13 laboratory as home base, anywhere-accessible function or approved combination |
 | F05 | All six avatars, L01-1 and H01-1 chosen; other buildings retained. Walking awaits motion review; production details remain open. |
-| F06 | Q09 main learning activity and Q55 first specific chemistry objective |
+| F06 | First topic resolved: separation techniques with hands-on apparatus operation. Specific tasks, outcomes, source mapping and the bounded first implementation remain to approve. |
 
 ## Explicitly undecided answers
 
@@ -21,7 +21,7 @@ Use the stable **F01–F06** questions in [the focused follow-up](follow-up-01.m
 - **Q27 H:** notebook, experiment log and recording/repetition arrangements.
 - **Q29 H:** chemistry input and calculators.
 - **Q43 I:** detailed mobile behaviour; basic phone/tablet compatibility remains required.
-- **Q55 D:** first chemistry learning objective.
+- **Q55:** the initial undecided answer is superseded by the separation-techniques topic. Exact task objectives and scientific models still require approval.
 
 ## Boundaries still requiring discussion
 
@@ -41,3 +41,7 @@ Use the stable **F01–F06** questions in [the focused follow-up](follow-up-01.m
 - Q53 explicitly confirms English; Q59 confirms the existing project location.
 
 An overall design premise and first implementation step still need explicit approval.
+
+## Separation activity follow-up
+
+S01–S04 are recorded in [separation-activity.md](separation-activity.md). Remaining issues are current-guide verification, first-version versus later technique coverage, paper-chromatography sample/solvent/objective, a finite action/material/temperature model and approved wrong-action outcomes. Placement guides and a single Run Experiment button are not open defaults: the user rejected those approaches. Keyboard-equivalent practical controls remain required.

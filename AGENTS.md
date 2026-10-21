@@ -31,3 +31,9 @@ Do not add accounts, analytics, a backend or publication without approval. Use c
 ## Language
 
 Use English throughout the project, including documentation, questions, lists, filenames, folders, image labels and future authored content. Translate historical notes faithfully while retaining question IDs, option order, approval status, source attribution and proper names. The English-only working language does not authorise adding multilingual features or changing the approved experience.
+
+## Curriculum references for chemistry proposals
+
+Consult docs/curriculum/README.md and its source-status record before suggesting syllabus coverage, techniques or related questions. Use the selected first-assessment-2025 syllabus and preserve separate SL/HL scope. A pending source is not verified evidence. Distinguish explicit IB requirements, supporting practical knowledge, owner-selected content and proposals. Record exact source edition and section/page when available. Do not claim a complete required-techniques list while primary-source access is unresolved.
+
+For the first separation activity, follow docs/design/separation-activity.md: all needed equipment is available, no placement guides, student-operated practical actions, physically possible wrong actions allowed, and keyboard-equivalent controls. Scientific consequences and an implementation step still require approval.

@@ -85,7 +85,7 @@ Q09 and Q55 are explicitly undecided. If F01-A is selected, the first chemistry 
 - [ ] **D.** Alternate between these; desired emphasis: ___
 - [ ] **E.** Undecided — discuss with me.
 
-**First chemistry topic — written answer or undecided:** ___
+**First chemistry topic — now selected:** separation techniques. See [the S01–S04 record](separation-activity.md) for chosen examples and hands-on interaction. Specific task objectives and outcomes still need review.
 
 Possible topic labels to discuss include a narrow part of stoichiometry, bonding/structure, reaction rates or measurement/data interpretation. No specific question, model or scientific simplification is proposed as approved content.
 

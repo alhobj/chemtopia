@@ -1,0 +1,35 @@
+{
+  "target": {
+    "programme": "IB Diploma Programme Chemistry",
+    "first_assessment": 2025,
+    "levels": ["SL", "HL"],
+    "examination_years": "not yet specified"
+  },
+  "verification_status": "pending_primary_source_access",
+  "sources": [
+    {
+      "id": "IB-CHEM-PAGE",
+      "url": "https://www.ibo.org/programmes/diploma-programme/curriculum/sciences/chemistry/",
+      "publisher": "International Baccalaureate",
+      "attempted_on": "2026-10-21",
+      "result": "environment proxy denied connection: Tunnel connection failed: 403 Forbidden",
+      "contents_read": false,
+      "local_document": null
+    },
+    {
+      "id": "IB-CHEM-GUIDE-2025",
+      "title": "Chemistry guide, first assessment 2025",
+      "publisher": "International Baccalaureate",
+      "edition_revision": null,
+      "status": "not yet obtained or verified",
+      "local_document": null,
+      "note": "Obtain an authorised current guide and record exact edition and references before claiming complete syllabus coverage."
+    }
+  ],
+  "network_change": {
+    "draft_saved": true,
+    "added_hosts": ["ibo.org", "www.ibo.org"],
+    "applied_to_runtime": false,
+    "requires_publish": true
+  }
+}
