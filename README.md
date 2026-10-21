@@ -15,6 +15,7 @@ The project is in its design phase. This repository currently contains documenta
 - [Visual references V01–V13](docs/references/README.md)
 - [Generated art proposals P01–P14 and S1–S3](docs/art/README.md)
 - [Twelve additional Equipment Studies sheets P03–P14](docs/art/equipment-03-14.md)
+- [Characters, laboratory, buildings and motion in style B](docs/art/world-and-motion.md)
 - [Review questions R01–R10](docs/design/review-tomorrow.md)
 - [Working rules](AGENTS.md)
 - [Original brief](docs/design/original-brief.txt)

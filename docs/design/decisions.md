@@ -57,3 +57,7 @@ The user likes the Equipment Studies images very much and requested many more wi
 ## Project language — chosen
 
 The user requested English throughout the project: drawings, text, lists, questions, folder names and other project content. English is now the working language and the language of authored project text and labels. Historical notes are translated without changing their meaning or choice IDs. This does not add multilingual features or approve any unanswered gameplay or chemistry decisions. The historical Q53 option list remains available for context; any additional language support is still undecided.
+
+## Design B preference and world-art proposals
+
+The user particularly likes design B and requested suggestions for characters, the laboratory, houses and other images/animations in the same style. This proposal round uses Equipment Studies row B, specifically P02, as its working reference. C01, L01, H01 and M01 are generated studies; motion is presented as static storyboards and further written ideas. The request authorises these suggestions, not final character selection, new required locations, gameplay features or game implementation.

@@ -1,0 +1,34 @@
+[
+  {
+    "id": "C01",
+    "file": "proposals/character-studies-c01.png",
+    "prompt": "Create an ORIGINAL CHEMTOPIA CHARACTER STUDIES sheet matching ONLY ROW B of the reference equipment sheet: detailed crisp pixel art, navy outlines, restrained teal/ivory/slate palette, three-quarter overhead game view. Landscape ivory presentation board, SIX columns labelled 1-6. Six different student avatar design proposals ages16-19, diverse skin tones, hair textures and gender expression without stereotypes, sensible closed shoes and simple modern casual clothing; no character biographies, names, weapons, backpacks as gameplay items, uniforms, or prescribed roles. Top row same-height full-body small game sprites in a three-quarter FRONT view; bottom row corresponding BACK views of exact same six outfits and hairstyles, each aligned under its front view. Give each figure readable silhouette and slightly more mature proportions than chibi; friendly modest facial detail, not childish toys. Pixelated hard edges, NO vector art NO 3D renders. Two row labels FRONT and BACK. No lab apparatus, experiments or unsafe depicted behaviour. Header CHEMTOPIA - CHARACTER STUDIES C01. Footer PROPOSALS - NOT APPROVED. Faces and clothing are discussion options, not approved characters.",
+    "style_reference": "P02 row B",
+    "status": "proposal; not approved; static image",
+    "original_filename": "exec-96d59ef6-3c29-4ae0-8414-b96dfc0c01c0.png"
+  },
+  {
+    "id": "L01",
+    "file": "proposals/laboratory-studies-l01.png",
+    "prompt": "Create an original CHEMTOPIA LABORATORY STUDIES board in ONLY ROW B visual style of reference: detailed crisp pixel art with three-quarter overhead view, dark slate outlines, pale cool glass, ivory cabinetry, muted teal accents and warm wood touches. THREE large equal panels labelled L01-1, L01-2, L01-3. Different SMALL laboratory layout concepts: 1 perimeter benches and a completely open centre with one central work station; 2 two short parallel workbenches with wide obvious aisle; 3 compact room with a single horseshoe-shaped workbench and visible entrance. Each has recognizable empty beakers/flasks, one balance, one sink, closed storage cabinets, daylight, no chemicals or operating experiment. Readable walkable floors, no occluding foreground walls, no figures, no HUD, no markers, no locks or story elements. Present room interiors as original coherent pixel art cutaways with consistent camera angle and equipment scale. All English text. Header CHEMTOPIA - LABORATORY STUDIES L01. Footer LAYOUT PROPOSALS - NOT APPROVED. Not a game screenshot, not a scientifically validated lab layout. Clear differences in layout, not different colours of same layout.",
+    "style_reference": "P02 row B",
+    "status": "proposal; not approved; static image",
+    "original_filename": "exec-3b7b529e-b258-4fd5-b618-88981fd6d7ee.png"
+  },
+  {
+    "id": "H01",
+    "file": "proposals/building-studies-h01.png",
+    "prompt": "Create ORIGINAL CHEMTOPIA BUILDING STUDIES H01 sheet using ONLY ROW B of reference as art style: detailed crisp pixel art, three-quarter overhead RPG camera, dark navy/slate outlines, ivory stone or plaster, teal roofs/window trim, warm wood doors, restrained foliage, gentle ground shadows. Landscape ivory board grid TWO rows by THREE columns. SIX different isolated small buildings labelled H01-1 through H01-6, no alternative rows: 1 compact contemporary chemistry laboratory with broad windows, NO giant flask roof; 2 small brick-and-ivory school science building; 3 modest one-storey plaster house with tiled roof; 4 modest two-storey timber-and-plaster house; 5 small glass-roof greenhouse with closed door; 6 compact covered courtyard building with two visible wings and simple entrance. Buildings have readable entrances and different silhouettes, clear proportions suitable for tiny explorable game world. No interior views no HUD no text on signs no chemistry formulae no locks no shops or currencies no characters. No implied regional theme. Each is architectural proposal only, not approved location. Crisp actual visible pixels, no smooth 3D render. Header CHEMTOPIA - BUILDING STUDIES H01. Footer PROPOSALS - NOT APPROVED.",
+    "style_reference": "P02 row B",
+    "status": "proposal; not approved; static image",
+    "original_filename": "exec-05626e91-f44a-46e9-8fa8-d51ff8c89cc6.png"
+  },
+  {
+    "id": "M01",
+    "file": "proposals/motion-studies-m01.png",
+    "prompt": "Create an ORIGINAL CHEMTOPIA MOTION STUDIES M01 PIXEL ART STORYBOARD SHEET in detailed ROW B style of reference: navy outlines, ivory teal slate colours, clear crisp pixel edges, generous spacing. Landscape ivory board FOUR horizontal rows, each with FOUR clearly different sequential frames numbered 1 2 3 4 left-to-right. Row M01-1: one simple gender-neutral student game character in teal sweater dark trousers closed shoes, side-on walking poses showing alternating feet and arm positions, same size and identity all four frames. Row M01-2: same empty lab door on hinges opening from CLOSED through one-third to two-thirds to OPEN, fixed frame and camera; no magical teleport particles. Row M01-3: same paper laboratory notebook on desk going CLOSED then partly open then almost open then fully open with BLANK pages, no chemistry text. Row M01-4: same small drawer in laboratory bench CLOSED then one-third out then two-thirds out then fully out, empty drawer. All object motion frames different but geometry consistent and anchoring clear. NO actual moving image is requested: this is a STATIC storyboard, English header CHEMTOPIA - MOTION STUDIES M01, footer STATIC STORYBOARD - NOT IMPLEMENTED. Do NOT include science effects, chemical reactions, reward sparkles, progress bars, timers, coins. The walking character is only a silhouette example not a selected character. No game UI. Explain motion by drawings, not long text.",
+    "style_reference": "P02 row B",
+    "status": "proposal; not approved; static image",
+    "original_filename": "exec-6da8be13-f96d-4ff9-86df-56dbadd005d4.png"
+  }
+]

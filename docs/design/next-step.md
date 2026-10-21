@@ -73,3 +73,9 @@ The user requested English throughout all project content. Translate documentati
 This is a language change, not approval of new mechanics, chemistry content, art direction or implementation. The record of earlier checks above is historical, not a claim that those checks were rerun unchanged for the translation.
 
 English conversion checks: 62 internal documentation links had no missing targets. All 20 recorded answers retained their selections; all 42 remaining question IDs and option counts, ten review IDs and 28 idea IDs were preserved. All 27 local image files retained their original paths and checksums and passed format validation. OCR was run as an additional check on 23 raster images; SVG visible text was inspected separately. Existing drawing labels are English or numeric, so no drawings needed regeneration. English paths were retained. No Norwegian prose remained in the checked text files. Source credits and licences were preserved.
+
+## Row B world and motion proposals
+
+Following the user's request, C01, L01, H01 and M01 were generated using Equipment Studies row B as the style reference. The proposal catalogue includes six character options with front/back views, three laboratory layouts, six building exteriors, four static motion sequences and eight further motion suggestions. These remain proposals; no playable animation, new mechanics or game code was implemented. Walking-frame similarity, door-angle inconsistency and softer rendering in room illustrations are documented.
+
+Checks: all 19 generated images passed checksum and format validation; 70 local documentation links had no missing targets; Git whitespace checks passed.
