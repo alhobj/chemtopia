@@ -1,73 +1,43 @@
-# Open questions
+# Open questions after the questionnaire
 
-Choices in this file remain open unless explicitly superseded by a later user instruction. The conversation questionnaire governs the letter options; do not assign new meanings to letters under the same ID.
+All Q01–Q62 items now have recorded responses. Some explicitly say undecided; others select none or leave feature boundaries open. [The latest answers](answers-21-62.md) preserve those distinctions. Do not treat the old list of unanswered Q21–Q62 items as current.
 
-## Follow-up on Q01–Q20
+## Answer next
 
-| ID | What needs clarification? |
+Use the stable **F01–F06** questions in [the focused follow-up](follow-up-01.md). Prioritise F01, F02 and the visual choices in F05.
+
+| Follow-up | Main issue |
 | --- | --- |
-| Q01 | Which examination years should be supported? |
-| Q03 | First narrow learning objective and later content sequence. “All” does not establish priority. |
-| Q06 | When should activities use IB question style, and when freer formats? |
-| Q07 | Which textbook/edition, which source references, and how should individual-item and package approvals combine? |
-| Q09 | What does the student do most often? Compare specific activity flows before choosing. |
-| Q13 | Laboratory as a place, an anywhere-accessible function or an explicitly approved combination? |
-| Q14–Q15 | How should actual syllabus areas and their connections appear in a connected world? |
-| Q19–Q20 | How do free movement, proximity and an interaction button work on small screens? Controls are chosen later. |
+| F01 | Q54 small lab plus activity versus Q56 movement/interaction only: one milestone or two? |
+| F02 | Cross-device progress, teacher features and optional accounts versus local progress and a backend-free first version; school data requirements |
+| F03 | Currency purpose, first-try bonus details, hints/retries and learning access |
+| F04 | Q13 laboratory as home base, anywhere-accessible function or approved combination |
+| F05 | Avatar shortlist, laboratory layout/exterior, optional house scenery and motion preferences |
+| F06 | Q09 main learning activity and Q55 first specific chemistry objective |
 
-## Unanswered questionnaire items — continue at Q21
+## Explicitly undecided answers
 
-| ID | Topic |
-| --- | --- |
-| Q21 | Other game conventions |
-| Q22 | Gaming skill |
-| Q23 | Laboratory actions |
-| Q24 | Guidance and detail |
-| Q25 | Uncertainty and unexpected results |
-| Q26 | Safety, equipment and consumables |
-| Q27 | Recording and repetition |
-| Q28 | Activity formats |
-| Q29 | Input |
-| Q30 | Representations |
-| Q31 | Help and mistakes |
-| Q32 | Level, timing and understanding |
-| Q33 | Unlocking |
-| Q34 | Prior knowledge or getting stuck |
-| Q35 | Progression and rewards |
-| Q36 | Story and student role |
-| Q37 | Tone and characters |
-| Q38 | Dialogue and player character |
-| Q39 | Visual style |
-| Q40 | Colour, text and detail |
-| Q41 | Scientific images, animation and sources |
-| Q42 | Controls |
-| Q43 | Mobile |
-| Q44 | New players |
-| Q45 | Accessibility |
-| Q46 | Travel/dialogue between activities |
-| Q47 | Value beyond direct chemistry and absolute limits |
-| Q48 | Unnecessary time use |
-| Q49 | Saving |
-| Q50 | Access and teachers |
-| Q51 | Data and offline use |
-| Q52 | Audio |
-| Q53 | Language — English is now required throughout the project; additional languages remain undecided. |
-| Q54 | Smallest version |
-| Q55 | First learning objective |
-| Q56 | First or later |
-| Q57 | Step size and review |
-| Q58 | First test |
-| Q59 | Project location; the foundation in the current repository is now authorised. |
-| Q60 | Previous project |
-| Q61 | Reuse |
-| Q62 | Hosting, costs and publication |
+- **Q21 G:** encounters, battles, collecting and companions.
+- **Q27 H:** notebook, experiment log and recording/repetition arrangements.
+- **Q29 H:** chemistry input and calculators.
+- **Q43 I:** detailed mobile behaviour; basic phone/tablet compatibility remains required.
+- **Q55 D:** first chemistry learning objective.
 
-The original Q53 was not answered by letter. The later English-language instruction now governs project text; do not treat that requirement as undecided.
+## Boundaries still requiring discussion
 
-## Important dependencies
+- Exact examination years (Q01), first-topic priority (Q03), IB question-style use (Q06), textbook edition and content approval workflow (Q07).
+- Laboratory role (Q13), exact syllabus-region mapping and connections (Q14–Q15), camera framing and interaction details (Q19–Q20). Keyboard and tap-to-destination with full keyboard operation are now selected in Q42.
+- Hint/feedback/retry rules (Q31), timers and assessment storage (Q32), how completion and understanding combine for unlocking (Q33), and skill-tree structure (Q35).
+- Specific story, apprentice/researcher role and character functions (Q36–Q37).
+- Avatar selection and scene details. Detailed style B is the preferred proposal direction, not approval of every asset.
+- Saving, optional sync, teacher features and offline boundaries (Q49–Q51/Q62).
+- Audio defaults (Q52) and success criteria beyond the owner testing first (Q58).
 
-- Understand educational activities and data requirements before selecting a framework or game engine.
-- Scientifically sound regions require checking the guide, not just general topic names.
-- Mobile input and accessibility affect activity format, not just screen size.
-- Separate SL/HL paths require clarification of shared activities and progress before fixing a data structure.
-- Approved visual references establish direction, not automatic permission to import assets.
+## Answers that should not be overwritten by defaults
+
+- Q45 selects **none**. Preserve Q40 alternatives to colour and Q42 keyboard access; do not silently add an accessibility feature package or remove separately chosen features.
+- Q56 requires only movement/interaction in the first version, pending clarification against Q54. Do not add later requirements to that milestone automatically.
+- Q60 forbids old-project inspection now. Possible future access and Q61 approved-content reuse are not current inspection permission.
+- Q53 explicitly confirms English; Q59 confirms the existing project location.
+
+An overall design premise and first implementation step still need explicit approval.

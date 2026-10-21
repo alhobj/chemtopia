@@ -1,6 +1,6 @@
 # Choices for the next conversation
 
-All boxes are unchecked. These are additional discussion questions **R01–R10**, not a renumbering of Q01–Q62. Q21–Q62 have not been answered by option letter; the subsequent English-language instruction governs project language. You can answer in sections with written alternatives or notes. Selecting a reference means liking a property, not approving all its details or mechanics.
+All boxes are unchecked. These are additional discussion questions **R01–R10**, not a renumbering of Q01–Q62. Q21–Q62 now have recorded responses in [the answer record](answers-21-62.md), including explicit undecided selections. Use [the focused follow-up](follow-up-01.md) next; this older visual questionnaire remains an optional reference. You can answer in sections with written alternatives or notes. Selecting a reference means liking a property, not approving all its details or mechanics.
 
 See [additional external references V09–V13](../references/README.md) and [generated proposals P01, P02 and S1–S3](../art/README.md).
 

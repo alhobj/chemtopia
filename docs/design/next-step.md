@@ -79,3 +79,7 @@ English conversion checks: 62 internal documentation links had no missing target
 Following the user's request, C01, L01, H01 and M01 were generated using Equipment Studies row B as the style reference. The proposal catalogue includes six character options with front/back views, three laboratory layouts, six building exteriors, four static motion sequences and eight further motion suggestions. These remain proposals; no playable animation, new mechanics or game code was implemented. Walking-frame similarity, door-angle inconsistency and softer rendering in room illustrations are documented.
 
 Checks: all 19 generated images passed checksum and format validation; 70 local documentation links had no missing targets; Git whitespace checks passed.
+
+## Questionnaire completion and focused follow-up
+
+The user submitted Q21–Q62. Raw answers and option-based interpretation are preserved in answers-21-62.md. Explicit undecided and none selections remain distinct. The old unanswered-question list was replaced by current follow-ups. Key dependencies are first-version scope (Q54 versus Q56), data sharing and school requirements (Q49–Q51/Q62), and currency rules. F01–F06 include visual choices using existing C01/L01/H01/M01 references. No game implementation has begun or been approved.

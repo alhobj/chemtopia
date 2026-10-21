@@ -61,3 +61,11 @@ The user requested English throughout the project: drawings, text, lists, questi
 ## Design B preference and world-art proposals
 
 The user particularly likes design B and requested suggestions for characters, the laboratory, houses and other images/animations in the same style. This proposal round uses Equipment Studies row B, specifically P02, as its working reference. C01, L01, H01 and M01 are generated studies; motion is presented as static storyboards and further written ideas. The request authorises these suggestions, not final character selection, new required locations, gameplay features or game implementation.
+
+## Questionnaire answers Q21–Q62
+
+The user has submitted all remaining questionnaire items, including explicit undecided and none responses. The authoritative record and interpretation are [answers-21-62.md](answers-21-62.md). These are explicit selections, not a complete approved design premise.
+
+The chosen direction includes broad practical work, partial guidance and simple controls, realistic variation and uncertainty, equipment unlocking, unlimited consumables, branching chemistry/equipment skill trees and badges, a story with an apprentice/researcher role and light humour, short skippable/replayable dialogue, ready-made avatar choices, detailed visuals, keyboard and tap-to-destination controls, and first-use control help. First-try correct answers earn more currency; spending and reward rules remain open. English and the current repository location are explicitly confirmed.
+
+Important unresolved dependencies are the Q54/Q56 first-version scope difference and the relationship between cross-device progress/teacher features/optional accounts and local-only progress/a backend-free first version. School GDPR concerns are an explicit constraint to investigate, not a licence to invent a compliance architecture. No old-project inspection is permitted now. Reviewed chemistry content can be considered later if access and specific reuse are approved.

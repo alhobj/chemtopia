@@ -8,6 +8,8 @@ The project is in its design phase. This repository currently contains documenta
 
 - [Decisions and requirements](docs/design/decisions.md)
 - [Recorded answers Q01–Q20](docs/design/answers.md)
+- [Recorded answers Q21–Q62](docs/design/answers-21-62.md)
+- [Focused follow-ups and visual choices](docs/design/follow-up-01.md)
 - [Open questions](docs/design/open-questions.md)
 - [Option key Q21–Q62](docs/design/questionnaire-options.md)
 - [Ideas for discussion](docs/design/ideas.md)
@@ -24,4 +26,4 @@ Approved decisions, proposals and open questions must remain distinct. Detailed 
 
 ## Status
 
-The documentation foundation was created with explicit permission. There is no app to start and no app test suite to run. Visual direction is also being explored through 2.5D and alternatives to pixel art. The next design round can use R01–R10 and continue at Q21; earlier open questions remain open.
+The documentation foundation was created with explicit permission. There is no app to start and no app test suite to run. Visual direction is also being explored through 2.5D and alternatives to pixel art. All Q01–Q62 items now have recorded responses, including explicit undecided selections. The next round uses focused follow-ups and visual choices; no design premise or implementation step has been approved.

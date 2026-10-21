@@ -28,3 +28,7 @@ Q20 A
 Later permission, translated: “You can start setting up the basic structure in the Git repository if anything can already be done. You can also find reference images for different parts of the game for me to choose between tomorrow.”
 
 This authorises the foundation and reference work. It does not automatically approve unresolved design choices or game implementation.
+
+## Later answers
+
+The user has also submitted [Q21–Q62 answers and their interpretation](answers-21-62.md). Earlier unresolved choices remain open unless a later answer settles them.

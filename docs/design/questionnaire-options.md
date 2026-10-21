@@ -1,6 +1,6 @@
 # Option key for further answers
 
-Questions and options from the conversation questionnaire, in abbreviated English. Letters follow the original option order. This is an answer key, not a list of adopted features. Every question allows written alternatives and notes. No answers are filled in here.
+Questions and options from the conversation questionnaire, in abbreviated English. Letters follow the original option order. This is an answer key, not a list of adopted features. Every question allows written alternatives and notes. This remains an unfilled reference key; actual Q21–Q62 answers are recorded separately in answers-21-62.md.
 
 Q01–Q20 have already been answered; recorded answers and interpretation are in answers.md and decisions.md. This key preserves the meaning of letters from Q21 onwards across later conversations.
 
