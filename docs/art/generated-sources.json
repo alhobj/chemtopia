@@ -188,5 +188,25 @@
     "modified": false,
     "sha256": "96102658bbd38cd30be0c630d5b8b4eba7537386d1d6b98c89fafae717dbd22c",
     "bytes": 1522679
+  },
+  {
+    "id": "W01-source",
+    "file": "proposals/walk-cycle-w01.png",
+    "origin": "AI-generated using image_gen with C01-1 as reference",
+    "brief": "Four-pose right-facing walk for review",
+    "status": "motion study; not approved",
+    "modified": false,
+    "sha256": "6f9082ea394e6b91e2062cd4b24f683d6a8e947de2fb4ce01a73d33b67085fd8",
+    "bytes": 767274
+  },
+  {
+    "id": "W01-preview",
+    "file": "previews/walk-cycle-w01.gif",
+    "origin": "Assembly of W01-source cells using scripts/assemble-walk-preview.sh",
+    "brief": "Four-pose right-facing walk for review",
+    "status": "animated review preview; not a final game asset",
+    "modified": true,
+    "sha256": "45362406a142fa72af0dff9cbfe75076be8e138f3cf0b5935f0113549b79bbcd",
+    "bytes": 63859
   }
 ]

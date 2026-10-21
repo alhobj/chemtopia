@@ -1,13 +1,13 @@
 # Focused follow-up after Q21–Q62
 
-All Q01–Q62 items have responses, including explicit undecided and none selections. We do not need another full questionnaire. Answer **F01, F02 and the visual choices in F05 first**; the remaining points can wait. Every question permits notes or a written alternative. Unchecked choices are proposals, not selected defaults.
+All Q01–Q62 items have responses, including explicit undecided and none selections. We do not need another full questionnaire. F01, F02 and F05 have now been answered; see [the recorded selections](follow-up-answers-01.md). The remaining questions stay open. The original options below are retained for reference. Every question permits notes or a written alternative. Unchecked choices are proposals, not selected defaults.
 
 ## F01 — Which milestone should we build first? Select one.
 
 Q54 selects a small laboratory with one chemistry activity. Q56 says only movement/interaction is needed in the first version. These can describe two successive milestones, but that interpretation needs your approval.
 
 - [ ] **A.** First a movement/interaction prototype in one small laboratory; the first chemistry activity comes in the next approved step.
-- [ ] **B.** The first playable version includes the laboratory and one chemistry activity; choose its learning objective before implementation.
+- [x] **B.** The first playable version includes the laboratory and one chemistry activity; choose its learning objective before implementation.
 - [ ] **C.** Another boundary: ___
 - [ ] **D.** Undecided — discuss with me.
 
@@ -21,7 +21,7 @@ Q49 requests cross-device progress. Q50 requests play without sign-in, optional 
 
 These do not require accounts in the first prototype. Offline learning and optional online synchronisation can coexist later, but automatic transfer, teacher reporting and accounts involve additional data handling. A backend-free first version could instead transfer student-controlled files manually; this is an option, not an approved solution or a compliance guarantee.
 
-- [ ] **A.** Keep the first version local and backend-free. Explore manual progress-file export/import later for device transfer and teacher review.
+- [x] **A.** Keep the first version local and backend-free. Explore manual progress-file export/import later for device transfer and teacher review.
 - [ ] **B.** Keep the first version local and backend-free. Defer automatic sync/accounts/teacher features to a later school-approved service or infrastructure plan.
 - [ ] **C.** Discuss with the school before choosing any sharing or account approach; continue independent visual and prototype planning.
 - [ ] **D.** Another arrangement or undecided: ___
@@ -70,6 +70,8 @@ Use the [world and motion sheets](../art/world-and-motion.md). You do not need t
 Changes to proportions, palette, hair, outfits, roof style or detail: ___
 
 Recommendation for discussion: start with a laboratory layout and exterior, then an avatar shortlist. Notebook and drawer motions can wait until those functions are chosen. This is not an implementation decision.
+
+F05 selections: all six C01 avatars; L01-1; H01-1 for the lab with the other buildings retained; M01-1 pending a moving preview; remaining M01 motion directions liked with the door correction deferred. A01–A03 and A05–A08 are accepted directions; A04 is rejected. See the answer record for boundaries.
 
 ## F06 — What should students do most often, and what should the first chemistry activity teach?
 

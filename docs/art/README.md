@@ -2,6 +2,10 @@
 
 These images are original AI-generated proposals made with `image_gen` following explicit requests. They are not external reference images, finished game assets or approved scientific illustrations. The user prefers design B; it is the working reference for the latest proposals. Final asset choices and a production specification remain open.
 
+## Walking preview
+
+[Watch W01 in motion](walking-preview.md). Selected scene and avatar directions are recorded in the [follow-up answers](../design/follow-up-answers-01.md).
+
 ## Characters, rooms, buildings and motion
 
 [Explore the row B world and motion proposals](world-and-motion.md): six character options, three laboratory layouts, six building exteriors, four static motion sequences and eight additional animation ideas.

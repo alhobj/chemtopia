@@ -10,6 +10,8 @@ The project is in its design phase. This repository currently contains documenta
 - [Recorded answers Q01–Q20](docs/design/answers.md)
 - [Recorded answers Q21–Q62](docs/design/answers-21-62.md)
 - [Focused follow-ups and visual choices](docs/design/follow-up-01.md)
+- [Selected scope, characters, laboratory and animations](docs/design/follow-up-answers-01.md)
+- [Walking animation preview W01](docs/art/walking-preview.md)
 - [Open questions](docs/design/open-questions.md)
 - [Option key Q21–Q62](docs/design/questionnaire-options.md)
 - [Ideas for discussion](docs/design/ideas.md)

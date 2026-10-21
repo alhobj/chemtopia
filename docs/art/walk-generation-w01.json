@@ -1,0 +1,8 @@
+{
+  "id": "W01",
+  "file": "proposals/walk-cycle-w01.png",
+  "prompt": "Create a NEW animation-ready sprite strip based on character C01-1 (first column, front row) in the reference. Show ONLY this character: navy tousled short hair, teal zip hoodie over ivory shirt, charcoal trousers, blue/white closed sneakers, same identity and consistent body proportions. Detailed crisp pixel art in design B. EXACTLY FOUR equal-width cells in ONE HORIZONTAL ROW, no borders no text no labels no other objects. All four sprites face RIGHT in strict side profile, same scale and same torso/hip/head horizontal position relative to their cell centre, same ground baseline. Full-body character occupies around 75 percent of cell height. Four DISTINCT walk-cycle poses in chronological order: cell1 LEFT leg forward RIGHT leg back, arms counter-swing; cell2 passing pose feet nearly together right leg bending forward; cell3 RIGHT leg forward LEFT leg back, opposite arm swing; cell4 opposite passing pose left leg bending forward. Alternate near and far leg visibly, do NOT repeat the same pose four times. Keep head and outfit identical, no camera turns or height drift, no morphing, no weapons. Minimal two-pixel vertical bob only. Transparent background. Prefer a wide 4:1 canvas with four precisely evenly spaced sprites. This is a proposal for a looping motion review, not a character redesign; no characters from columns2-6. No scene or shadow outside feet.",
+  "style_reference": "C01-1; detailed Equipment Studies row B",
+  "original_filename": "exec-702ada44-0b2a-4104-ad99-9743be2313ee.png",
+  "status": "generated motion source; review required"
+}

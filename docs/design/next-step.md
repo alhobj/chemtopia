@@ -83,3 +83,9 @@ Checks: all 19 generated images passed checksum and format validation; 70 local 
 ## Questionnaire completion and focused follow-up
 
 The user submitted Q21–Q62. Raw answers and option-based interpretation are preserved in answers-21-62.md. Explicit undecided and none selections remain distinct. The old unanswered-question list was replaced by current follow-ups. Key dependencies are first-version scope (Q54 versus Q56), data sharing and school requirements (Q49–Q51/Q62), and currency rules. F01–F06 include visual choices using existing C01/L01/H01/M01 references. No game implementation has begun or been approved.
+
+## Scope and visual selections; walking preview
+
+F01-B and F02-A are now selected: one laboratory plus one chemistry activity in the first playable version, local and backend-free, with manual progress transfer to explore later. All six C01 avatars should be player options; L01-1 and H01-1 are chosen for the laboratory. Other H01 exteriors are retained for future buildings without assigned functions. Motion choices are recorded in follow-up-answers-01.md, including A04 rejection and deferred door-frame correction.
+
+W01 supplies a standalone four-frame looping walking GIF for assessment, using C01-1 only as the sample. Artwork was generated through image_gen and assembled using the recorded ImageMagick helper; no game implementation was started. Similar contact poses and silhouette changes remain limitations. Checks: four distinct consecutive GIF frames, 140 ms per frame, infinite loop metadata, format/checksum validation, 93 local documentation links, helper shell syntax and repeatable GIF checksum. First chemistry objective, activity content and the concrete implementation premise/step remain to be approved.

@@ -4,15 +4,15 @@ All Q01–Q62 items now have recorded responses. Some explicitly say undecided; 
 
 ## Answer next
 
-Use the stable **F01–F06** questions in [the focused follow-up](follow-up-01.md). Prioritise F01, F02 and the visual choices in F05.
+Use the stable **F01–F06** questions in [the focused follow-up](follow-up-01.md). F01, F02 and F05 are now answered in [the follow-up record](follow-up-answers-01.md). The first chemistry objective in F06 is the next priority.
 
 | Follow-up | Main issue |
 | --- | --- |
-| F01 | Q54 small lab plus activity versus Q56 movement/interaction only: one milestone or two? |
-| F02 | Cross-device progress, teacher features and optional accounts versus local progress and a backend-free first version; school data requirements |
+| F01 | Resolved: first version contains a small laboratory and one chemistry activity. |
+| F02 | Resolved first-version direction: local and backend-free; explore manual transfer later. Detailed data handling and school requirements still need review before implementation. |
 | F03 | Currency purpose, first-try bonus details, hints/retries and learning access |
 | F04 | Q13 laboratory as home base, anywhere-accessible function or approved combination |
-| F05 | Avatar shortlist, laboratory layout/exterior, optional house scenery and motion preferences |
+| F05 | All six avatars, L01-1 and H01-1 chosen; other buildings retained. Walking awaits motion review; production details remain open. |
 | F06 | Q09 main learning activity and Q55 first specific chemistry objective |
 
 ## Explicitly undecided answers
@@ -36,7 +36,7 @@ Use the stable **F01–F06** questions in [the focused follow-up](follow-up-01.m
 ## Answers that should not be overwritten by defaults
 
 - Q45 selects **none**. Preserve Q40 alternatives to colour and Q42 keyboard access; do not silently add an accessibility feature package or remove separately chosen features.
-- Q56 requires only movement/interaction in the first version, pending clarification against Q54. Do not add later requirements to that milestone automatically.
+- F01-B supersedes the earlier Q54/Q56 ambiguity: include one chemistry activity in the first version. This does not automatically include all later requirements.
 - Q60 forbids old-project inspection now. Possible future access and Q61 approved-content reuse are not current inspection permission.
 - Q53 explicitly confirms English; Q59 confirms the existing project location.
 

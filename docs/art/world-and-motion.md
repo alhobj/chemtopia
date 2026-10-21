@@ -1,8 +1,12 @@
 # Characters, laboratory, buildings and motion — row B proposals
 
-The user particularly likes design B. For these studies, **B is interpreted as the detailed bottom row of the Equipment Studies sheets**, specifically P02. This is the working reference for this proposal round, not approval of every character, room, building or animation shown below. If “B” meant a different reference, these remain options to discuss.
+The user particularly likes design B. For these studies, **B is interpreted as the detailed bottom row of the Equipment Studies sheets**, specifically P02. The user has now selected all six C01 avatars as player options, L01-1 as the laboratory layout and H01-1 as its exterior. H01-2–H01-6 are retained for other buildings. These choices establish directions, not unreviewed production details.
 
 The common direction is detailed pixel illustration, dark slate outlines, blue-green glass, ivory surfaces, muted teal accents and a three-quarter view. The larger scenes sometimes look softer than the equipment; a final consistent pixel grid and production scale have not been established.
+
+## Current motion selections
+
+A01–A03 and A05–A08 are accepted directions. A04 (greeting) is rejected. M01-1 still needs motion assessment; [W01 provides an actual looping preview](walking-preview.md). The other M01 directions are liked, with the door angle correction explicitly deferred. Notebook/drawer functionality and scientific content are not automatically approved by accepting their animation directions.
 
 ## C01 — Character silhouettes and outfits
 
@@ -62,7 +66,7 @@ This is a **static storyboard**, not an animated GIF, working animation or produ
 
 The sample walker is a temporary silhouette, not a selected character. Selecting motion should not automatically add notebooks, inventories, drawer puzzles or extra navigation.
 
-## Further animation suggestions — discussion only
+## Further animation directions — selection status recorded above
 
 | ID | Suggestion | Purpose and boundary |
 | --- | --- | --- |
@@ -92,4 +96,4 @@ For example: “C01-3 silhouette, L01-3 layout, H01-1 exterior; explore A02 and 
 
 ## Source and status
 
-All four sheets were generated using `image_gen`, with P02 as the style reference. [world-generation.json](world-generation.json) preserves the prompts and IDs; [generated-sources.json](generated-sources.json) records checksums and files. Images are unchanged copies of the generated originals. No previous-project assets were used. They remain proposals, with no game code or playable animation implemented.
+All four sheets were generated using `image_gen`, with P02 as the style reference. [world-generation.json](world-generation.json) preserves the prompts and IDs; [generated-sources.json](generated-sources.json) records checksums and files. Images are unchanged copies of the generated originals. No previous-project assets were used. Selection status is recorded above and in the design log. No game code has been implemented; the separate W01 GIF is a motion preview, not an in-game animation.
