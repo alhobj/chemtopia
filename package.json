@@ -1,0 +1,11 @@
+{
+  "name": "chemtopia-filtration-prototype",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "node scripts/serve.mjs",
+    "test": "node --test tests/model.test.mjs",
+    "test:browser": "node tests/browser.mjs"
+  },
+  "engines": { "node": ">=22" }
+}

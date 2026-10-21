@@ -2,13 +2,19 @@
 
 A chemistry learning game for students aged 16–19 studying IB Diploma Programme Chemistry.
 
-The project is in its design phase. This repository currently contains documentation, not a runnable app. No game engine, framework, dependencies, data storage or hosting solution has been selected. English is the project's working language, including text and image labels.
+The first playable increment is a local sand-and-water filtration workbench. English is the project's working language. The larger game remains in design.
+
+## Try the prototype
+
+With Node.js 22 or newer, run `npm start` from this repository and open `http://127.0.0.1:4173` on the same machine. No dependency installation is needed. Drag equipment, align receiving openings, and hold Pour to transfer material. Keyboard controls and limitations are in [the prototype guide](prototype/README.md).
+
+Run `npm test` for the material-model checks and `npm run test:browser` for Chromium mouse/keyboard checks. See [the prototype review](docs/design/filtration-prototype-review.md).
 
 ## Start here
 
 - [Decisions and requirements](docs/design/decisions.md)
 - [First activity: separation techniques](docs/design/separation-activity.md)
-- [Filtration prototype specification for approval](docs/design/filtration-prototype-spec.md)
+- [Approved filtration prototype specification](docs/design/filtration-prototype-spec.md)
 - [IB curriculum reference and source status](docs/curriculum/README.md)
 - [Syllabus topic index](docs/curriculum/syllabus-index.md)
 - [Verified separation-technique mapping](docs/curriculum/separation-techniques.md)
@@ -33,4 +39,4 @@ Approved decisions, proposals and open questions must remain distinct. Detailed 
 
 ## Status
 
-The documentation foundation was created with explicit permission. There is no app to start and no app test suite to run. Visual direction is also being explored through 2.5D and alternatives to pixel art. All Q01–Q62 items now have recorded responses, including explicit undecided selections. The next round uses focused follow-ups and visual choices; no design premise or implementation step has been approved.
+The owner approved the first filtration specification with “Yes”. This increment uses functional placeholder artwork and a qualitative material model. It has no accounts, analytics, saving, backend or deployment. Additional techniques, production artwork and room navigation await review and a further approved step.

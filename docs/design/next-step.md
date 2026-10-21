@@ -1,35 +1,14 @@
 # Work steps and verification
 
-## Current step — approved scope
+## Current step — implemented, awaiting playtest
 
-Record explicit choices, preserve open questions and collect visual references and proposals. No runnable app, game engine or dependencies.
+The owner approved the [filtration specification](filtration-prototype-spec.md) with “Yes”. A standalone local workbench now implements that bounded first increment, including mouse/keyboard operation, physically compatible attachments, material transfer, wrong actions, restart, Finish and the approved explanation question.
 
-Acceptance criteria:
+See [the review and verification](filtration-prototype-review.md) and [launch instructions](../../prototype/README.md). Review this playable increment before choosing the next development step. Additional separation techniques, production art, room navigation, avatars, currency, persistence and publication are outside this increment.
 
-- Recorded Q01–Q20 answers are preserved and interpreted without turning alternatives into requirements.
-- Q21–Q62 remain open.
-- Proposals are clearly labelled and include benefits, drawbacks and a concrete decision point.
-- References identify their sources and explain what they help evaluate.
-- No game assets are adopted and no invented chemistry questions are presented as finished content.
-- Internal documentation links and Git changes are checked.
+## Historical work record
 
-## Proposed next step — approval required
-
-Complete the key design choices and review two or three static screen sketches for one selected activity. Sketches could show the map, task, explanation and controls. Chemistry content must be approved or clearly blank/labelled as a placeholder.
-
-This is a proposal. It has not been approved or started.
-
-## Before the first game implementation
-
-1. Clarify one learning objective, source and activity format.
-2. Clarify the smallest complete flow, including mobile controls and expected help.
-3. Present the design premise and acceptance criteria.
-4. Obtain approval of the premise and specific development step.
-5. Choose suitable technology within approved boundaries; ask if the choice changes them.
-
-## Deferred from this step
-
-Game code, engine selection, dependencies, production art, specific chemistry questions, accounts, analytics, a backend, deployment and inspection of the old project. “Deferred” means outside this step, not rejected as an idea.
+The sections below describe earlier rounds and their checks; statements that no app existed apply to those dates.
 
 ## Completed and checked in the initial round
 

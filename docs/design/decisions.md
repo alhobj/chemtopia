@@ -91,3 +91,9 @@ Structure 1.1.1 (printed p. 33 / PDF p. 39) explicitly names solvation, filtrati
 ## Prototype questionnaire P01–P09
 
 The owner selected one complete filtration task first, direct close-up workbench entry, free placement with physical alignment, hold-to-pour controls, the simplified sand/filter/water model, all five proposed wrong-action cases, objective/equipment names/outcomes without explanatory feedback until Finish, full restart, successful separation plus an explanation question, deferred currency, and desktop mouse/keyboard for this milestone. The exact answers and concrete proposed first build are in [filtration-prototype-spec.md](filtration-prototype-spec.md). The specification's additional details and drafted question still require approval; game coding has not started. These contextual P question IDs are not art-sheet IDs.
+
+## First filtration build approved and implemented
+
+On 21 October 2026, the owner replied “Yes” to the concrete filtration prototype specification. This approves its additional qualitative-model boundaries, six apparatus items, recovery criterion, drafted explanation question and static local first increment. This supersedes the pending approval statements in the earlier P01–P09 entry for this increment only.
+
+The implementation uses dependency-free HTML/CSS/JavaScript/SVG, with explicitly labelled functional placeholder artwork. Mouse and keyboard share one material model. The owner should playtest this increment before further features. See [the review](filtration-prototype-review.md); public deployment, student data collection and additional techniques remain outside this approval.

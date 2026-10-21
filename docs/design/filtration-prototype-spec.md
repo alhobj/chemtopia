@@ -1,6 +1,6 @@
-# Filtration prototype — proposed first build
+# Filtration prototype — approved first build
 
-**Status: ready for owner review; implementation not yet approved.** This specification translates the latest P01–P09 selections into a finite first increment. It does not approve itself. The P IDs in this questionnaire are contextual question IDs, not the existing P01–P14 art-sheet IDs.
+**Status: approved by the owner’s “Yes” on 21 October 2026.** Approval includes the additional implementation boundaries and drafted completion question below. This specification translates P01–P09 into the first implemented increment; see [the review](filtration-prototype-review.md). The P IDs in this questionnaire are contextual question IDs, not the existing P01–P14 art-sheet IDs.
 
 ## Recorded answers
 
@@ -116,4 +116,4 @@ Run meaningful material-model checks for filtering with/without paper, wrong rec
 
 ## Approval gate
 
-The owner has answered the scope questionnaire. This is the promised concrete build specification. Obtain approval of this document, including its proposed details and completion question, before creating game code. Changes requested during review must be incorporated rather than assumed approved.
+The owner approved this complete specification before coding. Wording marked “proposed” above records what was submitted for that review and is included in the approval. Further changes to scope or scientific behaviour still require review.
