@@ -1,340 +1,338 @@
-# Idéverksted — forslag til diskusjon
+# Idea workshop — proposals for discussion
 
-Alle idéene under er **forslag**, ikke beslutninger eller godkjent innhold. De er laget for å gjøre neste samtale konkret. Ingen av dem er implementert. De endrer ikke svarene Q01–Q20.
+All ideas below are **proposals**, not decisions or approved content. They make the next conversation concrete. None has been implemented, and they do not change Q01–Q20 answers.
 
-## De viktigste designspenningene
+## Main design tensions
 
-1. En verden inndelt etter læreplanen kan gjøre fremdriften forståelig, men kjemiforståelse krever forbindelser mellom temaene. Kartet bør ikke utilsiktet lære eleven at temaene er isolerte.
-2. Et tydelig fysisk laboratorium gir et hjemsted; et laboratorium tilgjengelig overalt sparer tid. Det er et reelt valg i Q13, ikke en detalj som kan bestemmes teknisk.
-3. Et 20–30 minutters oppdrag kan romme en undersøkelse, men bør også ha gode stoppunkter dersom eleven avbrytes. Det siste er et forslag, ikke et nytt varighetskrav.
-4. En liten pikselfigur kan være tydelig på kartet samtidig som små kjemiske symboler blir uleselige. Faglige bilder og tekst trenger ikke ha samme pikseloppløsning som verdenen.
-5. Separate SL- og HL-løp må planlegges uten å anta at alt innhold, lagring eller progresjon må dupliseres. Hva eleven opplever som separate løp, må avklares først.
+1. A syllabus-based world can clarify progression, but chemistry understanding requires connections between topics. The map must not accidentally teach that subjects are isolated.
+2. A physical laboratory creates a home base; an anywhere-accessible laboratory saves time. Q13 is a real choice, not a technical detail.
+3. A 20–30-minute mission can contain an investigation, but could also offer good stopping points for interruptions. That is a proposal, not a new session-length requirement.
+4. Small pixel characters may be clear on a map while small chemical symbols become unreadable. Scientific images and text need not share the world's pixel resolution.
+5. Separate SL/HL paths must be planned without assuming that all content, saves or progression must be duplicated. First clarify what separate paths mean to the student.
 
-## Aktivitetsforløp
+## Activity flows
 
-### I01 — Ett faglig spørsmål bærer et kort oppdrag
+### I01 — One chemistry question carries a short mission
 
-**Forslag:** Et oppdrag begynner med et forståelig spørsmål, gir eleven noe å undersøke og slutter med en forklaring eleven kan vurdere eller formulere. Historien støtter spørsmålet uten et ekstra henteoppdrag.
+**Proposal:** A mission starts with an understandable question, gives the student something to investigate and ends with an explanation they can evaluate or formulate. The story supports the question without an extra fetch quest.
 
-**Verdi:** Kan binde sammen Q10 og ønsket om rask tilgang til kjemi.
+**Benefit:** Connects Q10 with quick access to chemistry.
 
-**Ulempe:** Krever at oppgavene har en meningsfull sammenheng; et nytt fortellingslag rundt vanlige spørsmål gir ikke nødvendigvis bedre læring.
+**Drawback:** Tasks need a meaningful connection; adding a story around ordinary questions does not necessarily improve learning.
 
-**Valgpunkt:** Skal hovedforløpet være undersøkelse, problemløsing eller et praktisk forsøk? Hører til Q09 og Q23–Q30.
+**Decision:** Should the main flow be investigation, problem-solving or a practical experiment? Q09 and Q23–Q30.
 
-### I02 — Samme faglige mål i to aktivitetsformer
+### I02 — The same learning objective in two activity formats
 
-**Forslag:** En elev kan møte et læringsmål gjennom en utforskende aktivitet og senere en kort aktivitet med IB-liknende uttrykksmåte.
+**Proposal:** A student encounters an objective through exploration and later through a short activity with IB-like wording.
 
-**Verdi:** Kan forene de to valgene i Q06 uten at all læring blir eksamensspørsmål.
+**Benefit:** Could combine both Q06 choices without turning all learning into exam questions.
 
-**Ulempe:** Mer innhold å kvalitetssikre; fare for unødvendig gjentakelse.
+**Drawback:** More content to review and a risk of unnecessary repetition.
 
-**Valgpunkt:** Skal begge former være nødvendige, valgfrie eller brukes til ulike formål? Ingen av disse reglene er valgt.
+**Decision:** Should both formats be required, optional or serve different purposes? None of these rules has been chosen.
 
-### I03 — Forutsigelse, undersøkelse og forklaring
+### I03 — Prediction, investigation and explanation
 
-**Forslag:** Eleven angir en forventning, undersøker et godkjent fenomen og sammenholder resultatet med forventningen.
+**Proposal:** The student states an expectation, investigates an approved phenomenon and compares the result with the expectation.
 
-**Verdi:** Synliggjør resonnement, ikke bare sluttsvaret.
+**Benefit:** Makes reasoning visible, not just the final answer.
 
-**Ulempe:** Kan bli et tungt skjema hvis hvert lite forsøk krever omfattende tekst.
+**Drawback:** Can become a burdensome form if every small experiment requires extensive text.
 
-**Valgpunkt:** Hva slags forklaring er hensiktsmessig: valg, kort tekst, modell eller samtale? Ingen konkrete forsøk eller resultater foreslås som ferdig innhold her.
+**Decision:** What explanation format fits: a choice, short text, model or conversation? No specific experiment or result is proposed here as finished content.
 
-### I04 — Overføring som avslutning
+### I04 — Finish with transfer
 
-**Forslag:** Etter veiledning får eleven en kort, faglig godkjent variant i en litt annen situasjon.
+**Proposal:** After guidance, the student receives a short, scientifically approved variation in a slightly different situation.
 
-**Verdi:** Kan vise om eleven bruker forståelsen fremfor å gjenta et svar.
+**Benefit:** Could show whether the student applies understanding rather than repeats an answer.
 
-**Ulempe:** Øker innholdsomfanget og kan oppleves som en ekstra prøve.
+**Drawback:** Adds content and may feel like another test.
 
-**Valgpunkt:** Skal dette være valgfri refleksjon, del av læringsforløpet eller grunnlag for opplåsing? Q31–Q34.
+**Decision:** Optional reflection, part of learning or a basis for unlocking? Q31–Q34.
 
-## Verden, laboratorium og navigasjon
+## World, laboratory and navigation
 
-### I05 — Korte forbindelser mellom fagområdene
+### I05 — Short connections between subject areas
 
-**Forslag:** Naboregioner eller kartmarkører viser at en aktivitet bruker kunnskap fra flere områder. En region kan beholde en primær faglig tilknytning uten å påstå at den eier hele temaet.
+**Proposal:** Neighbouring regions or map markers show that an activity uses knowledge from several areas. A region retains its main subject association without claiming ownership of an entire topic.
 
-**Verdi:** Kan støtte helhetlig kjemiforståelse innen den valgte regionstrukturen.
+**Benefit:** Supports connected chemistry understanding within the selected regional structure.
 
-**Ulempe:** For mange forbindelser kan gjøre kartet vanskelig å forstå.
+**Drawback:** Too many connections can make the map hard to understand.
 
-**Valgpunkt:** Synlige forbindelser på kartet, omtale i aktiviteter eller begge? Endelig struktur må følge faktisk IB-guide.
+**Decision:** Visible map connections, references inside activities or both? Final structure must follow the actual IB guide.
 
-### I06 — Tre mulige laboratorieroller
+### I06 — Three possible laboratory roles
 
-**Alternativ A:** Laboratoriet er et fysisk hjemsted. Gir stedstilhørighet, men kan skape returreiser.
+**Option A:** a physical home base. Creates a sense of place, but may require return journeys.
 
-**Alternativ B:** Laboratoriet er en funksjon eleven kan åpne overalt. Gir rask tilgang, men kan svekke opplevelsen av sammenhengende sted.
+**Option B:** a function accessible anywhere. Offers quick access, but may weaken the sense of a connected place.
 
-**Alternativ C:** Et fysisk laboratorium kombinert med tilgang til enkelte arbeidsfunksjoner andre steder. Kan balansere tid og sted, men gir flere regler å forklare.
+**Option C:** a physical laboratory with some working functions accessible elsewhere. Balances time and place, but adds rules to explain.
 
-**Valgpunkt:** Q13 er åpent. C er et nytt forslag, ikke en tolkning av «B eller D» som at begge er godkjent.
+**Decision:** Q13 remains open. C is a new proposal, not an interpretation of “B or D” as approval of both.
 
-### I07 — Kartet beskriver aktivitetene med faglige verb
+### I07 — Map labels describe activities with learning verbs
 
-**Forslag:** Kartmarkører kan fortelle hva eleven faktisk skal gjøre, for eksempel undersøke, beregne eller tolke, med tekst i tillegg til symbol.
+**Proposal:** Markers describe what the student will do, such as investigate, calculate or interpret, using text as well as symbols.
 
-**Verdi:** Gjør valget forståelig uten kjennskap til spillikoner.
+**Benefit:** Makes choices understandable without familiarity with game icons.
 
-**Ulempe:** Mange etiketter kan gi visuelt rot, særlig på telefon.
+**Drawback:** Many labels can clutter the map, especially on phones.
 
-**Valgpunkt:** Hvor mye informasjon skal være synlig, og hva vises ved valg av markør? Q17 og Q40.
+**Decision:** How much is visible, and what appears when selecting a marker? Q17 and Q40.
 
-### I08 — Skill hurtigreise fra direkte aktivitetsvalg
+### I08 — Distinguish fast travel from direct activity selection
 
-**Forslag:** Sammenlign to skisser: reise til et besøkt sted og åpne en kjent aktivitet direkte.
+**Proposal:** Compare two sketches: travel to a visited place or open a familiar activity directly.
 
-**Verdi:** Gjør tidsbruk og betydningen av utforskning konkrete.
+**Benefit:** Makes time use and the role of exploration concrete.
 
-**Ulempe:** Direkte aktivitetsvalg kan gjøre verdenen til en meny; bare hurtigreise kan fortsatt kreve unødvendig bevegelse.
+**Drawback:** Direct selection can turn the world into a menu; fast travel alone may still require unnecessary movement.
 
-**Valgpunkt:** Hurtigreise er valgt i Q17. Direkte aktivitetsvalg er fortsatt åpent; det skal ikke innføres som en snarvei uten godkjenning.
+**Decision:** Fast travel was selected in Q17. Direct activity selection remains open and must not be added as a shortcut without approval.
 
-## Faglige modeller og laboratoriearbeid
+## Scientific models and laboratory work
 
-### I09 — Skill praktisk handling fra praktisk vurdering
+### I09 — Distinguish practical actions from practical judgement
 
-**Forslag:** Vi vurderer hvert forsøkstrinn: lærer eleven av å utføre handlingen, eller av å velge og begrunne den? Bare faglig meningsfulle håndgrep bør eventuelt få detaljert simulering.
+**Proposal:** Review each experiment step: does the student learn by performing it or by choosing and justifying it? Only educationally meaningful handling should potentially receive detailed simulation.
 
-**Verdi:** Kan gi rom for praktiske ferdigheter uten langvarig klikking.
+**Benefit:** Allows practical skills without prolonged clicking.
 
-**Ulempe:** En enklere representasjon kan miste viktige deler av den praktiske prosessen.
+**Drawback:** Simpler representations can omit important practical processes.
 
-**Valgpunkt:** Hvilke handlinger er selve læringsmålet i første aktivitet? Q23–Q24.
+**Decision:** Which actions are the actual learning objective of the first activity? Q23–Q24.
 
-### I10 — Synlig modellgrense ved første bruk
+### I10 — Make model limits visible on first use
 
-**Forslag:** Bruk den valgte korte merknaden fra Q08 til å si hvilken avgrensning som gjelder i den aktuelle aktiviteten, formulert og godkjent av deg.
+**Proposal:** Use the short note selected in Q08 to state the boundary applying to an activity, worded and approved by you.
 
-**Verdi:** Gjør det mulig å bruke en enkel modell uten at begrensningen skjules.
+**Benefit:** Allows a simple model without hiding its limitations.
 
-**Ulempe:** Merknader kan forsvinne i bakgrunnen hvis de blir mange eller generelle.
+**Drawback:** Numerous or generic notes may fade into the background.
 
-**Valgpunkt:** Hvor skal merknaden stå, og skal den kunne hentes frem igjen? Ingen konkret kjemisk modell er valgt.
+**Decision:** Where should the note appear, and can it be reopened? No specific chemistry model has been selected.
 
-### I11 — Notatbok med elevens resonnement
+### I11 — A notebook containing the student's reasoning
 
-**Forslag:** Hvis notatbok velges, kan den skille mellom observasjon, tolkning og konklusjon. Automatisk registrering av målinger og elevens egne ord bør ikke fremstå som det samme.
+**Proposal:** If a notebook is selected, distinguish observation, interpretation and conclusion. Automatically recorded measurements and the student's own words should not appear equivalent.
 
-**Verdi:** Kan støtte argumentasjon og gjøre en aktivitet lettere å gjenoppta.
+**Benefit:** Supports reasoning and makes activities easier to resume.
 
-**Ulempe:** Mer skriving på mobil og nye lagringsspørsmål.
+**Drawback:** More mobile typing and additional saving decisions.
 
-**Valgpunkt:** Q27 og Q49; en notatbok må ikke innføres bare fordi et laboratorium finnes.
+**Decision:** Q27 and Q49: do not add a notebook simply because there is a laboratory.
 
-### I12 — Godkjenning av små innholdspakker
+### I12 — Approve small content packages
 
-**Forslag:** En gjennomgangspakke kan inneholde læringsmål, kildested, oppgavetekst, representasjoner, godkjente svar, forventede misoppfatninger, hint, tilbakemelding og eventuelle forenklinger. Hvert element kan godkjennes inne i samme pakke.
+**Proposal:** A review package could contain the learning objective, source location, question text, representations, approved answers, expected misconceptions, hints, feedback and simplifications. Each item can be approved within the package.
 
-**Verdi:** Kan forene valgene E og F i Q07 og gjøre kontrollen oversiktlig.
+**Benefit:** Could combine choices E and F in Q07 and make review manageable.
 
-**Ulempe:** Krever en avtalt gjennomgangsrutine og tydelig håndtering av senere endringer.
+**Drawback:** Requires an agreed review workflow and clear handling of later changes.
 
-**Valgpunkt:** Vil du godkjenne samlet pakke med individuelle avkrysninger, eller ha to separate godkjenningsrunder? Dette dokumentet fyller ikke inn selve kjemiinnholdet.
+**Decision:** One package with individual approvals or two separate review rounds? This document does not fill in the chemistry content.
 
-## Tilbakemelding og fremdrift
+## Feedback and progression
 
-### I13 — Hint som bevarer elevens neste valg
+### I13 — Hints preserve the student's next choice
 
-**Forslag:** Første hjelp peker mot hva eleven kan undersøke. Senere hjelp kan bli mer konkret dersom eleven ber om det.
+**Proposal:** Initial help points towards what the student can investigate. Later help becomes more specific if requested.
 
-**Verdi:** Kan støtte selvstendighet uten at eleven blir stående fast.
+**Benefit:** Supports independence without leaving students stuck.
 
-**Ulempe:** Gode hint krever like mye faglig omtanke som oppgaven, og noen elever trenger direkte forklaring.
+**Drawback:** Good hints require as much scientific care as the question, and some students need a direct explanation.
 
-**Valgpunkt:** Q31; antall hint, tilgang og eventuelle konsekvenser er ikke valgt.
+**Decision:** Q31: hint count, access and consequences remain undecided.
 
-### I14 — Fremdrift med beskrivende språk
+### I14 — Progress described in words
 
-**Forslag:** Sammenlign en oversikt over faglige aktiviteter med poeng, nivåer og merker. En beskrivende oversikt kan vise hva eleven har arbeidet med uten å påstå at «gjennomført» betyr «mestret».
+**Proposal:** Compare an overview of learning activities with points, levels and badges. A descriptive overview shows what the student has worked on without claiming that completion means mastery.
 
-**Verdi:** Kan redusere press og gjøre fremdrift lett å forstå.
+**Benefit:** May reduce pressure and make progress understandable.
 
-**Ulempe:** Noen elever kan savne en tydelig belønning, og begrepet forståelse krever fortsatt en avtalt vurdering.
+**Drawback:** Some students may miss a clear reward; understanding still requires an agreed way to evaluate it.
 
-**Valgpunkt:** Q32–Q35. Ingen belønningsmodell anbefales som allerede bestemt.
+**Decision:** Q32–Q35. No reward model is presented as already decided.
 
-### I15 — Støtte uten ny sperre
+### I15 — Support without another barrier
 
-**Forslag:** Ved vansker kan spillet tilby en enklere forklaring, en alternativ representasjon eller et annet forsøk på samme læringsmål.
+**Proposal:** When students struggle, offer a simpler explanation, alternative representation or another attempt at the same objective.
 
-**Verdi:** Kan gi en faglig vei videre uten irrelevant aktivitet.
+**Benefit:** Provides an educational route forward without irrelevant activity.
 
-**Ulempe:** Alternative veier krever mer kvalitetssikret innhold og regler som er forståelige for eleven.
+**Drawback:** Alternative routes require more reviewed content and understandable rules.
 
-**Valgpunkt:** Hva skal være anbefaling, og hva skal være obligatorisk? Omgåelse av låser må avklares særskilt.
+**Decision:** What is recommended and what is compulsory? Bypassing locks needs separate clarification.
 
-## Visuelt uttrykk og betjening
+## Visual style and interaction
 
-### I16 — Pikselverden med lesbar fagflate
+### I16 — Pixel world with a readable learning surface
 
-**Alternativ A:** Pikselstil i både verden og aktivitetsflate. Sterk sammenheng, men kjemiske tegn og apparatdetaljer kan bli vanskelige å lese.
+**Option A:** pixel style in both the world and activity interface. Strong consistency, but chemical notation and apparatus details may be difficult to read.
 
-**Alternativ B:** Pikselverden med skarp tekst og tydelige fagillustrasjoner. Gir større faglig lesbarhet, men stilovergangen må utformes bevisst.
+**Option B:** pixel world with sharp text and clear scientific illustrations. Greater readability, but the stylistic transition needs deliberate design.
 
-**Alternativ C:** Piksellignende fagillustrasjoner i høyere detaljgrad enn kartet. Kan gi en mellomløsning, men øker behovet for tilpasset grafikk.
+**Option C:** pixel-like scientific illustrations at a higher detail level than the map. A possible compromise, but requires more custom artwork.
 
-**Valgpunkt:** Q39–Q41. Referanser i docs/references/ viser elementer til sammenligning, ikke ferdige skjermdesign.
+**Decision:** Q39–Q41. References in docs/references/ are comparison elements, not finished screen designs.
 
-### I17 — Samme aktivitet, ulik plass på skjermen
+### I17 — The same activity, different screen space
 
-**Forslag:** Sammenlign en aktivitetsflate ved siden av kartet på stor skjerm med en helskjermsaktivitet på mobil. En annen mulighet er helskjerm på alle enheter.
+**Proposal:** Compare an activity beside the map on larger screens with a full-screen activity on mobile. Full screen on every device is another possibility.
 
-**Verdi:** Kan gi telefonen nok plass til faginnhold og kontrollene.
+**Benefit:** Gives phones enough room for chemistry content and controls.
 
-**Ulempe:** Bytte av visning kan gjøre orientering vanskeligere; parallell visning kan bli trang.
+**Drawback:** Switching views may disorient; parallel views may become cramped.
 
-**Valgpunkt:** Q43. Ingen skjermretning, panelplassering eller mobilkontroll er valgt.
+**Decision:** Q43. No orientation, panel placement or mobile controls have been selected.
 
-### I18 — Interaksjon uten leting etter riktig piksel
+### I18 — Interaction without pixel hunting
 
-**Forslag:** Når eleven er nær noe som kan undersøkes, vises en forståelig tekst om handlingen. Sammenlign en synlig knapp med en forklaring av relevant tast.
+**Proposal:** When the student is near something investigable, show an understandable action description. Compare a visible button with an explanation of the relevant key.
 
-**Verdi:** Understøtter den valgte nærhetsinteraksjonen i Q20 og kan hjelpe elever uten spillerfaring.
+**Benefit:** Supports the proximity interaction selected in Q20 and students without gaming experience.
 
-**Ulempe:** Flere gjenstander tett sammen kan gjøre det uklart hvilken handling som er valgt.
+**Drawback:** Several nearby objects may make the selected action unclear.
 
-**Valgpunkt:** Interaksjonsavstand, valg mellom objekter og berøringskontroll må godkjennes. Ingen automatisk aktivering er foreslått som vedtatt.
+**Decision:** Interaction distance, object selection and touch controls require approval. Automatic activation is not proposed as adopted behaviour.
 
-## Mulige første faglige demonstrasjoner
+## Possible first educational demonstrations
 
-Dette er kandidater til Q55, ikke et valg av kjemiinnhold. Et presist læringsmål og alle modeller må avgrenses mot kildene og godkjennes av deg.
+These are candidates for Q55, not selections of chemistry content. A precise objective and every model must be bounded against sources and approved by you.
 
-| Kandidat | Hva den kan hjelpe oss å undersøke i designet | Kostnad eller risiko |
+| Candidate | What it helps investigate in the design | Cost or risk |
 | --- | --- | --- |
-| En avgrenset stoffmengde-/støkiometriaktivitet | Tall, enheter, tilbakemelding og praktisk mobilinntasting | Kan gi lite grunnlag for å vurdere laboratoriedelen |
-| En avgrenset aktivitet om binding/struktur | Visuelle representasjoner og faglige forklaringer | Modellforenklinger krever særlig gjennomgang |
-| En avgrenset aktivitet om reaksjonshastighet | Forsøksvalg, observasjoner og data | En troverdig simulering kan gjøre første steg større |
-| En avgrenset måle-/datatolkingsaktivitet | Tabeller, grafer, usikkerhet og argumentasjon | Kan bli teksttung eller ligne en vanlig oppgaveside |
+| A narrow amount-of-substance/stoichiometry activity | Numbers, units, feedback and practical mobile input | May offer little evidence about laboratory gameplay |
+| A narrow bonding/structure activity | Visual representations and scientific explanations | Model simplifications need careful review |
+| A narrow reaction-rate activity | Experimental choices, observations and data | A credible simulation may enlarge the first step |
+| A narrow measurement/data interpretation activity | Tables, graphs, uncertainty and reasoning | May become text-heavy or resemble an ordinary worksheet |
 
-Et viktig førstevalg er om vi først vil prøve den mest sentrale læringsaktiviteten eller koblingen mellom bevegelse og kjemi. Å prøve alt samtidig gjør det vanskeligere å forstå hva en brukertest faktisk forteller oss.
+An important first choice is whether to test the central learning activity or the link between movement and chemistry. Testing everything at once makes playtest findings harder to interpret.
 
-## Hva bør få vente til behovet er tydelig?
+## What could wait until the need is clear?
 
-Dette er forslag til avgrensning, ikke en vedtatt funksjonsliste:
+These are scope proposals, not an adopted feature list:
 
-- En omfattende fortelling før hovedaktiviteten fungerer.
-- Mange regioner før ett faglig forløp er kvalitetssikret.
-- Et fullstendig utstyrssystem før vi vet hvilke praktiske valg eleven skal lære.
-- Kontoer, læreroversikt og synkronisering før kravene til data er valgt.
-- Stor produksjon av grafikk før lesbarhet på telefon er prøvd.
-- Belønninger og samlemekanikker før vi vet hva de bidrar til læringen.
-- Detaljert simulering av håndgrep før deres læringsverdi er avklart.
+- An extensive story before the main activity works.
+- Many regions before one educational flow has been reviewed.
+- A complete equipment system before the intended practical choices are clear.
+- Accounts, teacher dashboards and synchronisation before data requirements are chosen.
+- Large-scale art production before phone readability has been tried.
+- Rewards and collecting before their contribution to learning is understood.
+- Detailed handling simulations before their educational value is established.
 
-## Forslag til en rolig neste designrunde
+## A proposed calm next design round
 
-1. Fortsett med Q21; behold spørsmålene som ikke blir besvart som åpne.
-2. Bruk referanse-ID-ene til å velge hva du liker og misliker ved detaljgrad, farger og fagillustrasjon.
-3. Velg én hovedaktivitet og ett presist læringsmål.
-4. Avklar laboratoriets rolle og de viktigste mobilkravene.
-5. Lag et konkret designpremiss og et lite første steg til godkjenning.
+1. Continue at Q21; retain unanswered questions as open.
+2. Use reference IDs to identify likes and dislikes in detail, colour and scientific illustration.
+3. Choose one main activity and one precise objective.
+4. Clarify the laboratory's role and key mobile requirements.
+5. Prepare a specific design premise and a small first step for approval.
 
-Ingen av disse punktene krever at vi beslutter hele det fremtidige spillet før vi kan lære noe av en liten, godkjent prototype.
+These do not require deciding the entire future game before learning from a small, approved prototype.
 
-## Flere ideer etter utvidelsen av visuell retning
+## Further ideas after reopening visual direction
 
-Alle følgende punkter er forslag. Ingen endrer tidligere svar eller låser kjemifaglig innhold.
+### I19 — An unobstructed view into the laboratory
 
-### I19 — Åpent innsyn i laboratoriet
+**Proposal:** Compare a room without a visible roof/front wall with one where the front wall fades when it covers the character.
 
-**Forslag:** sammenlign et rom uten synlig tak/fremvegg med et rom der fremre vegg dempes når den dekker figuren.
+**Benefit:** Can provide spatial depth in 2.5D without requiring camera control.
 
-**Verdi:** kan gi god romfølelse i 2,5D uten at eleven må styre kameraet.
+**Drawback:** Changing transparency can distract, and visual layers must be consistent.
 
-**Ulempe:** skiftende gjennomsiktighet kan være distraherende, og visuelle lag må være konsekvente.
+**Decision:** R05 and Q19. Depth does not automatically require a rotating camera.
 
-**Valgpunkt:** R05 og Q19. Vi trenger ikke et roterbart kamera bare fordi grafikken får dybde.
+### I20 — Equipment has a function, not a rarity rating
 
-### I20 — Utstyr har funksjon, ikke sjeldenhet
+**Proposal:** If equipment selection is included, explain purpose and relevant scientific properties rather than ranking apparatus as better or more valuable game items.
 
-**Forslag:** dersom utstyrsvalg inngår, gjør bruksområde og faglige egenskaper forståelige fremfor å rangere apparater som bedre eller mer verdifulle spillgjenstander.
+**Benefit:** Practical choices can concern chemistry and measurement needs.
 
-**Verdi:** praktiske valg kan handle om kjemi og målebehov.
+**Drawback:** Requires concise, reviewed descriptions and meaningful choices in the specific activity.
 
-**Ulempe:** krever korte, kvalitetssikrede beskrivelser og et meningsfullt valg i den konkrete aktiviteten.
+**Decision:** R07, Q23 and Q26. No equipment limitation or property has been adopted.
 
-**Valgpunkt:** R07, Q23 og Q26. Ingen utstyrsbegrensning eller egenskap er vedtatt.
+### I21 — Compare two investigations
 
-### I21 — Sammenligne to undersøkelser
+**Proposal:** Show two approved setups or datasets side by side, or let students switch easily between them on mobile.
 
-**Forslag:** la eleven se to godkjente oppsett eller datasett ved siden av hverandre, eller veksle enkelt mellom dem på mobil.
+**Benefit:** Differences may be easier to investigate without remembering the previous image.
 
-**Verdi:** forskjeller kan være lettere å undersøke når eleven slipper å huske det forrige bildet.
+**Drawback:** Two simultaneous views are cramped on phones; we must choose what students actually compare.
 
-**Ulempe:** to samtidige visninger blir trange på telefon. Vi må velge hva eleven faktisk skal sammenligne.
+**Decision:** Q28–Q30 and Q43. Setups, data and answers need separate approval.
 
-**Valgpunkt:** Q28–Q30 og Q43. Oppsett, data og svar må godkjennes separat.
+### I22 — Subject connections as route choices
 
-### I22 — Faglige forbindelser som veivalg
+**Proposal:** After an activity, optionally suggest a related objective in another region with a short explanation of the connection.
 
-**Forslag:** etter en aktivitet kan eleven få et valgfritt forslag til et beslektet læringsmål i en annen region, med en kort forklaring på forbindelsen.
+**Benefit:** Supports chemistry across regions and the selected recommended next step.
 
-**Verdi:** understøtter kjemi på tvers av regionene og det valgte anbefalte neste steget.
+**Drawback:** Too many links may obscure syllabus structure.
 
-**Ulempe:** kan bli en mengde lenker som gjør læreplanstrukturen mindre tydelig.
+**Decision:** How many alternatives, and when should they appear? No specific topic connections have been written or approved.
 
-**Valgpunkt:** hvor mange alternativer, og når de vises. Ingen konkrete emneforbindelser er ferdigskrevet eller godkjent.
+### I23 — A calm return after an interruption
 
-### I23 — En rolig vei tilbake etter avbrudd
+**Proposal:** If saving is selected, show a short summary of the previous activity and possible next steps.
 
-**Forslag:** hvis lagring velges, vis en kort oppsummering av hvilken aktivitet eleven var i og hva som er mulig neste steg.
+**Benefit:** Less time spent remembering the mission in the next session.
 
-**Verdi:** mindre tid brukt på å huske oppdraget ved neste økt.
+**Drawback:** Depends on what is saved and may be unnecessary if activities always finish in one session.
 
-**Ulempe:** avhenger av hva som skal lagres, og kan være unødvendig dersom aktivitetene alltid avsluttes i én økt.
+**Decision:** Q49 first. This idea does not imply creating accounts or a backend.
 
-**Valgpunkt:** Q49 først; denne idéen innebærer ikke at en konto eller serverdel skal opprettes.
+### I24 — Separate observation from interpretation
 
-### I24 — Observasjon og tolkning får hver sin plass
+**Proposal:** Where relevant, clearly separate what is shown or measured from what the student thinks it means.
 
-**Forslag:** i relevante aktiviteter kan det som vises eller måles, og det eleven mener det betyr, være tydelig atskilt.
+**Benefit:** Supports scientific reasoning without requiring long reports.
 
-**Verdi:** kan støtte vitenskapelig argumentasjon uten å kreve lange skriftlige rapporter.
+**Drawback:** A fixed form in every activity may become mechanical or text-heavy.
 
-**Ulempe:** et fast skjema i hver aktivitet kan bli mekanisk eller teksttungt.
+**Decision:** Which activities need this, and should answers use text, choices or representations? No observations or scientific explanations have been created.
 
-**Valgpunkt:** hvilke aktiviteter trenger dette, og om svar gis med tekst, valg eller representasjoner. Ingen observasjoner eller fagforklaringer er laget.
+### I25 — Separate learning progress from tool access
 
-### I25 — Skill faglig fremdrift fra verktøytilgang
+**Proposal:** If both exist, show what the student has worked on and which equipment is available as different kinds of information.
 
-**Forslag:** dersom begge finnes, vis hva eleven har arbeidet med og hvilket utstyr som er tilgjengelig som to forskjellige typer informasjon.
+**Benefit:** Unlocking an apparatus is not automatically presented as mastering the chemistry that uses it.
 
-**Verdi:** å ha åpnet et apparat blir ikke automatisk fremstilt som å mestre kjemien som bruker det.
+**Drawback:** Two overviews may make the interface more extensive.
 
-**Ulempe:** to oversikter kan gjøre grensesnittet mer omfattende.
+**Decision:** Q32–Q35. Whether equipment should be locked at all is undecided.
 
-**Valgpunkt:** Q32–Q35; det er ikke avgjort om utstyr skal låses i det hele tatt.
+### I26 — Guided and exploratory activities as deliberate alternatives
 
-### I26 — Støttet og utforskende aktivitet som bevisste alternativer
+**Proposal:** Compare a guided flow with one giving students more choices, using the same approved objective.
 
-**Forslag:** sammenlign et veiledet forløp med et forløp som gir eleven flere valg, med samme godkjente mål.
+**Benefit:** May reveal needed support without changing subject content.
 
-**Verdi:** kan vise hvilken støtte eleven trenger uten at fagstoffet må endres.
+**Drawback:** More content and states to check. Students should not be forced through two nearly identical tasks.
 
-**Ulempe:** dobbelt innhold og flere mulige tilstander å kontrollere. Det må ikke bli to nesten identiske oppgaver eleven tvinges gjennom.
+**Decision:** Q24 and Q32. No automatic adaptation rule has been adopted.
 
-**Valgpunkt:** Q24 og Q32; ingen regel for automatisk nivåtilpasning er vedtatt.
+### I27 — Separate control help from chemistry hints
 
-### I27 — Hjelp til spillhandlinger atskilt fra faglige hint
+**Proposal:** Students who do not understand a button should be able to get control help without it counting as chemistry help.
 
-**Forslag:** en elev som ikke forstår hvordan en knapp brukes, bør kunne få hjelp til betjening uten at det regnes som faglig hjelp.
+**Benefit:** Can make learning and any assessment fairer for new players.
 
-**Verdi:** kan gjøre læring og eventuell vurdering mer rettferdig for nye spillere.
+**Drawback:** Help must be easy to find without two competing systems.
 
-**Ulempe:** hjelpen må være lett å finne uten to konkurrerende hjelpesystemer.
+**Decision:** Q31 and Q44. Clarify whether hints have any consequences before making rules.
 
-**Valgpunkt:** Q31 og Q44. Vi må avklare om hint i det hele tatt skal ha konsekvenser før vi lager regler.
+### I28 — Try six equipment images before producing sixty
 
-### I28 — Prøv seks utstyrsbilder før vi lager seksti
+**Proposal:** After a style choice, create a small reviewed set and try it at actual map size and close-up size on a phone.
 
-**Forslag:** etter stilvalg, lag et lite kvalitetssikret sett som prøves i faktisk kartstørrelse og nærvisning på telefon.
+**Benefit:** Checks silhouettes, scale, glass transparency and readability before extensive production.
 
-**Verdi:** tidlig kontroll av silhuett, skala, glassgjennomsiktighet og lesbarhet før stort produksjonsarbeid.
+**Drawback:** A small test does not cover every equipment type and must not be overinterpreted.
 
-**Ulempe:** en slik prøve dekker ikke alle typer utstyr, så resultatet må ikke overtolkes.
-
-**Valgpunkt:** hvilke seks bilder og hvilke visninger som skal inngå. Dagens genererte ark er konseptbilder og oppfyller ikke dette steget alene.
+**Decision:** Which six images and views? Current generated sheets are concepts and do not themselves complete this step.

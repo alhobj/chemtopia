@@ -1,239 +1,239 @@
-# Flere Equipment Studies — P03–P14
+# More Equipment Studies — P03–P14
 
-Tolv nye AI-genererte konseptark i stilen du likte, med **72 utstyrsmotiver og 144 varianter**. Hvert ark har seks motiver i to rader. Utstyret er foreslått som visuell referanse; dette er ikke en godkjent utstyrsliste for spillet eller en utvidelse av første versjons faglige omfang.
+Twelve additional AI-generated concept sheets in the style you liked, with **72 equipment subjects and 144 variants**. Each sheet has six subjects in two rows. This equipment is proposed for visual discussion, not an approved game equipment list or an expansion of the first version's chemistry scope.
 
-**A** er enklere og vanligvis mer frontalt. **B** har flere detaljer og et mer skrått perspektiv. Et enkelt objekt velges med ark, rad og kolonne: **P08-B2** betyr multimeteret i nederste rad på ark 08.
+**A** is simpler and usually more frontal. **B** has more detail and a more angled perspective. Identify an object by sheet, row and column: **P08-B2** is the multimeter in the bottom row of sheet 08.
 
-Noen forskjeller gjelder også form, farge og perspektiv. Du kan derfor like formen i én celle og paletten i en annen. Arkene er ikke skalert til et fast pikselrutenett eller laget som gjennomsiktige spillressurser.
+Some differences also concern shape, colour and perspective. You may like one cell's shape and another's palette. Sheets are not scaled to a fixed pixel grid or prepared as transparent game assets.
 
-## Hurtigoversikt
+## Quick overview
 
-| Ark | Tema | Motiver |
+| Sheet | Theme | Subjects |
 | --- | --- | --- |
-| [P03](#p03) | Håndtering og småutstyr | Spruteflaske, Pasteurpipette med gummitopp, Pipettefyller med mer |
-| [P04](#p04) | Filtrering og tørking | Glasstrakt, Büchnertrakt, Sugekolbe med mer |
-| [P05](#p05) | Oppvarming og porselen | Trefot, Trådnett med keramisk sentrum, Digel med lokk med mer |
-| [P06](#p06) | Måling og sensorer | pH-meter med elektrode, Konduktivitetsmåler med probe, Temperaturlogger med probe med mer |
-| [P07](#p07) | Separasjon og glassdeler | Skilletrakt med stativ, Rundkolbe, Liebigkjøler med mer |
-| [P08](#p08) | Elektrokjemi og elektrisk utstyr | Laboratoriestrømforsyning, Multimeter med prober, Grafittelektroder med mer |
-| [P09](#p09) | Optisk analyse og kromatografi | Kolorimeter, UV–vis-spektrofotometer, Kyvette med mer |
-| [P10](#p10) | Sikkerhet og oppbevaring | Øyeskyllestasjon, Brannteppebeholder, Laboratoriefrakk med mer |
-| [P11](#p11) | Småredskaper | Morter med pistill, Tiltenkt glasstav — B2 må korrigeres, Dråpeplate med mer |
-| [P12](#p12) | Stativer og støtter | Stativ med fot og stang, Muffe, Trefingerklemme med mer |
-| [P13](#p13) | Benkapparater | Vannbad, Tørkeskap, Mekanisk rører med stativ med mer |
-| [P14](#p14) | Presisjonsinstrumenter | Analysevekt med trekkskjerm, Mikropipette, Stativ med pipettespisser med mer |
+| [P03](#p03) | Handling and small equipment | Wash bottle, Pasteur pipette with rubber teat, Pipette filler, and more |
+| [P04](#p04) | Filtration and drying | Glass funnel, Büchner funnel, Filter flask, and more |
+| [P05](#p05) | Heating and porcelain | Tripod, Wire gauze with ceramic centre, Crucible with lid, and more |
+| [P06](#p06) | Measurement and sensors | pH meter with electrode, Conductivity meter with probe, Temperature logger with probe, and more |
+| [P07](#p07) | Separation and glassware | Separating funnel with stand, Round-bottom flask, Liebig condenser, and more |
+| [P08](#p08) | Electrochemistry and electrical equipment | Laboratory power supply, Multimeter with probes, Graphite electrodes, and more |
+| [P09](#p09) | Optical analysis and chromatography | Colorimeter, UV–vis spectrophotometer, Cuvette, and more |
+| [P10](#p10) | Safety and storage | Eyewash station, Fire blanket case, Laboratory coat, and more |
+| [P11](#p11) | Small tools | Mortar and pestle, Intended glass stirring rod — B2 needs correction, Spotting tile, and more |
+| [P12](#p12) | Stands and supports | Retort stand with base and rod, Bosshead, Three-prong clamp, and more |
+| [P13](#p13) | Bench apparatus | Water bath, Drying oven, Overhead stirrer with stand, and more |
+| [P14](#p14) | Precision instruments | Analytical balance with draft shield, Micropipette, Pipette-tip rack, and more |
 
 <a id="p03"></a>
 
-## P03 — Håndtering og småutstyr
+## P03 — Handling and small equipment
 
-![Equipment Studies 03: Håndtering og småutstyr](proposals/lab-equipment-03.png)
+![Equipment Studies 03: Handling and small equipment](proposals/lab-equipment-03.png)
 
-| Kolonne | Tiltenkt utstyr i rad A og B |
+| Column | Intended equipment in rows A and B |
 | --- | --- |
-| 1 | Spruteflaske |
-| 2 | Pasteurpipette med gummitopp |
-| 3 | Pipettefyller |
-| 4 | Brun reagensflaske |
-| 5 | Dobbel laboratorie-spatel |
-| 6 | Veieskål |
+| 1 | Wash bottle |
+| 2 | Pasteur pipette with rubber teat |
+| 3 | Pipette filler |
+| 4 | Amber reagent bottle |
+| 5 | Double-ended laboratory spatula |
+| 6 | Weighing boat |
 
 <a id="p04"></a>
 
-## P04 — Filtrering og tørking
+## P04 — Filtration and drying
 
-![Equipment Studies 04: Filtrering og tørking](proposals/lab-equipment-04.png)
+![Equipment Studies 04: Filtration and drying](proposals/lab-equipment-04.png)
 
-| Kolonne | Tiltenkt utstyr i rad A og B |
+| Column | Intended equipment in rows A and B |
 | --- | --- |
-| 1 | Glasstrakt |
-| 2 | Büchnertrakt |
-| 3 | Sugekolbe |
-| 4 | Brettet filterpapir |
-| 5 | Urglass |
-| 6 | Eksikkator |
+| 1 | Glass funnel |
+| 2 | Büchner funnel |
+| 3 | Filter flask |
+| 4 | Folded filter paper |
+| 5 | Watch glass |
+| 6 | Desiccator |
 
 <a id="p05"></a>
 
-## P05 — Oppvarming og porselen
+## P05 — Heating and porcelain
 
-![Equipment Studies 05: Oppvarming og porselen](proposals/lab-equipment-05.png)
+![Equipment Studies 05: Heating and porcelain](proposals/lab-equipment-05.png)
 
-| Kolonne | Tiltenkt utstyr i rad A og B |
+| Column | Intended equipment in rows A and B |
 | --- | --- |
-| 1 | Trefot |
-| 2 | Trådnett med keramisk sentrum |
-| 3 | Digel med lokk |
-| 4 | Digeltang |
-| 5 | Porselensskål til inndamping |
-| 6 | Varmebestandig underlag |
+| 1 | Tripod |
+| 2 | Wire gauze with ceramic centre |
+| 3 | Crucible with lid |
+| 4 | Crucible tongs |
+| 5 | Porcelain evaporating basin |
+| 6 | Heat-resistant mat |
 
 <a id="p06"></a>
 
-## P06 — Måling og sensorer
+## P06 — Measurement and sensors
 
-![Equipment Studies 06: Måling og sensorer](proposals/lab-equipment-06.png)
+![Equipment Studies 06: Measurement and sensors](proposals/lab-equipment-06.png)
 
-| Kolonne | Tiltenkt utstyr i rad A og B |
+| Column | Intended equipment in rows A and B |
 | --- | --- |
-| 1 | pH-meter med elektrode |
-| 2 | Konduktivitetsmåler med probe |
-| 3 | Temperaturlogger med probe |
-| 4 | Gassprøyte |
-| 5 | U-rørsmanometer |
-| 6 | Laboratorietimer |
+| 1 | pH meter with electrode |
+| 2 | Conductivity meter with probe |
+| 3 | Temperature logger with probe |
+| 4 | Gas syringe |
+| 5 | U-tube manometer |
+| 6 | Laboratory timer |
 
 <a id="p07"></a>
 
-## P07 — Separasjon og glassdeler
+## P07 — Separation and glassware
 
-![Equipment Studies 07: Separasjon og glassdeler](proposals/lab-equipment-07.png)
+![Equipment Studies 07: Separation and glassware](proposals/lab-equipment-07.png)
 
-| Kolonne | Tiltenkt utstyr i rad A og B |
+| Column | Intended equipment in rows A and B |
 | --- | --- |
-| 1 | Skilletrakt med stativ |
-| 2 | Rundkolbe |
-| 3 | Liebigkjøler |
-| 4 | Tiltenkt Vigreux-kolonne — må korrigeres |
-| 5 | Destillasjonsadapter med sidearm |
-| 6 | Kromatografikammer |
+| 1 | Separating funnel with stand |
+| 2 | Round-bottom flask |
+| 3 | Liebig condenser |
+| 4 | Intended Vigreux column — needs correction |
+| 5 | Distillation adapter with side arm |
+| 6 | Chromatography chamber |
 
 <a id="p08"></a>
 
-## P08 — Elektrokjemi og elektrisk utstyr
+## P08 — Electrochemistry and electrical equipment
 
-![Equipment Studies 08: Elektrokjemi og elektrisk utstyr](proposals/lab-equipment-08.png)
+![Equipment Studies 08: Electrochemistry and electrical equipment](proposals/lab-equipment-08.png)
 
-| Kolonne | Tiltenkt utstyr i rad A og B |
+| Column | Intended equipment in rows A and B |
 | --- | --- |
-| 1 | Laboratoriestrømforsyning |
-| 2 | Multimeter med prober |
-| 3 | Grafittelektroder |
-| 4 | Ledninger med krokodilleklemmer |
-| 5 | Kobberstrimmel |
-| 6 | U-formet glassrør til saltbro |
+| 1 | Laboratory power supply |
+| 2 | Multimeter with probes |
+| 3 | Graphite electrodes |
+| 4 | Leads with crocodile clips |
+| 5 | Copper strip |
+| 6 | U-shaped glass salt-bridge tube |
 
 <a id="p09"></a>
 
-## P09 — Optisk analyse og kromatografi
+## P09 — Optical analysis and chromatography
 
-![Equipment Studies 09: Optisk analyse og kromatografi](proposals/lab-equipment-09.png)
+![Equipment Studies 09: Optical analysis and chromatography](proposals/lab-equipment-09.png)
 
-| Kolonne | Tiltenkt utstyr i rad A og B |
+| Column | Intended equipment in rows A and B |
 | --- | --- |
-| 1 | Kolorimeter |
-| 2 | UV–vis-spektrofotometer |
-| 3 | Kyvette |
-| 4 | Kyvettestativ |
-| 5 | Tom TLC-plate |
-| 6 | Kapillærrør |
+| 1 | Colorimeter |
+| 2 | UV–vis spectrophotometer |
+| 3 | Cuvette |
+| 4 | Cuvette rack |
+| 5 | Blank TLC plate |
+| 6 | Capillary tubes |
 
 <a id="p10"></a>
 
-## P10 — Sikkerhet og oppbevaring
+## P10 — Safety and storage
 
-![Equipment Studies 10: Sikkerhet og oppbevaring](proposals/lab-equipment-10.png)
+![Equipment Studies 10: Safety and storage](proposals/lab-equipment-10.png)
 
-| Kolonne | Tiltenkt utstyr i rad A og B |
+| Column | Intended equipment in rows A and B |
 | --- | --- |
-| 1 | Øyeskyllestasjon |
-| 2 | Brannteppebeholder |
-| 3 | Laboratoriefrakk |
-| 4 | Nitrilhansker |
-| 5 | Avtrekksskap |
-| 6 | Beholder for knust glass |
+| 1 | Eyewash station |
+| 2 | Fire blanket case |
+| 3 | Laboratory coat |
+| 4 | Nitrile gloves |
+| 5 | Fume cupboard |
+| 6 | Broken-glass disposal container |
 
 <a id="p11"></a>
 
-## P11 — Småredskaper
+## P11 — Small tools
 
-![Equipment Studies 11: Småredskaper](proposals/lab-equipment-11.png)
+![Equipment Studies 11: Small tools](proposals/lab-equipment-11.png)
 
-| Kolonne | Tiltenkt utstyr i rad A og B |
+| Column | Intended equipment in rows A and B |
 | --- | --- |
-| 1 | Morter med pistill |
-| 2 | Tiltenkt glasstav — B2 må korrigeres |
-| 3 | Dråpeplate |
-| 4 | Veiepapir |
-| 5 | Skjeformet metallspatel |
-| 6 | Reagensrørholder i tre |
+| 1 | Mortar and pestle |
+| 2 | Intended glass stirring rod — B2 needs correction |
+| 3 | Spotting tile |
+| 4 | Weighing paper |
+| 5 | Metal scoopula |
+| 6 | Wooden test-tube holder |
 
 <a id="p12"></a>
 
-## P12 — Stativer og støtter
+## P12 — Stands and supports
 
-![Equipment Studies 12: Stativer og støtter](proposals/lab-equipment-12.png)
+![Equipment Studies 12: Stands and supports](proposals/lab-equipment-12.png)
 
-| Kolonne | Tiltenkt utstyr i rad A og B |
+| Column | Intended equipment in rows A and B |
 | --- | --- |
-| 1 | Stativ med fot og stang |
-| 2 | Muffe |
-| 3 | Trefingerklemme |
-| 4 | Stativring |
-| 5 | Laboratorieløftebord |
-| 6 | Korkring |
+| 1 | Retort stand with base and rod |
+| 2 | Bosshead |
+| 3 | Three-prong clamp |
+| 4 | Support ring |
+| 5 | Laboratory jack |
+| 6 | Cork ring |
 
 <a id="p13"></a>
 
-## P13 — Benkapparater
+## P13 — Bench apparatus
 
-![Equipment Studies 13: Benkapparater](proposals/lab-equipment-13.png)
+![Equipment Studies 13: Bench apparatus](proposals/lab-equipment-13.png)
 
-| Kolonne | Tiltenkt utstyr i rad A og B |
+| Column | Intended equipment in rows A and B |
 | --- | --- |
-| 1 | Vannbad |
-| 2 | Tørkeskap |
-| 3 | Mekanisk rører med stativ |
-| 4 | Varmemantel |
-| 5 | Vakuumpumpe |
-| 6 | Benksentrifuge |
+| 1 | Water bath |
+| 2 | Drying oven |
+| 3 | Overhead stirrer with stand |
+| 4 | Heating mantle |
+| 5 | Vacuum pump |
+| 6 | Benchtop centrifuge |
 
 <a id="p14"></a>
 
-## P14 — Presisjonsinstrumenter
+## P14 — Precision instruments
 
-![Equipment Studies 14: Presisjonsinstrumenter](proposals/lab-equipment-14.png)
+![Equipment Studies 14: Precision instruments](proposals/lab-equipment-14.png)
 
-| Kolonne | Tiltenkt utstyr i rad A og B |
+| Column | Intended equipment in rows A and B |
 | --- | --- |
-| 1 | Analysevekt med trekkskjerm |
-| 2 | Mikropipette |
-| 3 | Stativ med pipettespisser |
-| 4 | Flasketoppdispenser |
-| 5 | Smeltepunktsapparat |
-| 6 | Digitalt polarimeter |
+| 1 | Analytical balance with draft shield |
+| 2 | Micropipette |
+| 3 | Pipette-tip rack |
+| 4 | Bottle-top dispenser |
+| 5 | Melting-point apparatus |
+| 6 | Digital polarimeter |
 
-## Synlige detaljer til bearbeiding
+## Visible details requiring revision
 
-Bildene er gjennomgått som konseptforslag. Dette er ikke faglig godkjenning av apparatene. Blant detaljene som må rettes eller avklares før eventuell spillbruk:
+The images were reviewed as concepts, not scientifically approved apparatus. Details to correct or clarify before potential game use include:
 
-- **P04-A4/B4:** filterpapiret ser mer ut som en brettet flate enn en tydelig åpen filterkjegle. Tredimensjonal form bør tegnes mer entydig.
-- **P06-A5/B5:** manometeret inneholder blå visuelle felt. Disse har ingen godkjent betydning som væske eller avlesning. Instrumentprober trenger også tydeligere funksjonell detaljering ved en eventuell nærvisning.
-- **P07-A4/B4:** den bestilte Vigreux-kolonnen ble tegnet med utvendige buler, mer som en kulekjøler. Dette er en feil i konseptet; en korrekt Vigreux-geometri med innvendige innstikk må tegnes i en senere revisjon.
-- **P07-A3/B3 og A5/B5:** glassbaner, skjøter og sidearmer må kontrolleres mot et valgt virkelig apparat før bruk som forklarende fagillustrasjon.
-- **P10:** sikkerhetsbeholdere og symboler er stilforslag, ikke godkjente standardiserte skilt eller instrukser.
-- **P11-B2:** enden ser hul ut, som et glassrør. Den tiltenkte glasstaven skal være massiv. Dette må rettes dersom motivet skal videreføres.
-- **P12-A2/B2:** muffens faktiske festeåpninger og skruer trenger en tydeligere mekanisk gjennomgang.
-- **P13-A5/B5:** motivet kan brukes til å diskutere en generell vakuumpumpe. Det er ikke verifisert som den spesifikke membranpumpetypen i bestillingen.
-- **P14:** pipettespisser, mikropipettens deler og presisjonsinstrumentenes betjening må kvalitetssikres dersom vi går videre fra silhuettstudie til faglig grafikk.
+- **P04-A4/B4:** the filter paper resembles a folded surface rather than a clearly open cone. Its three-dimensional shape needs to be more explicit.
+- **P06-A5/B5:** blue fields in the manometer have no approved meaning as liquid or readings. Instrument probes also need clearer functional detail in any close-up.
+- **P07-A4/B4:** the requested Vigreux column was drawn with external bulbs, resembling a bulb condenser. This is a concept error; proper Vigreux geometry with inward indentations needs a later revision.
+- **P07-A3/B3 and A5/B5:** glass paths, joints and side arms need checking against a selected real apparatus before use as explanatory scientific illustrations.
+- **P10:** safety containers and symbols are style proposals, not approved standard signs or instructions.
+- **P11-B2:** the end looks hollow, like glass tubing. The intended stirring rod should be solid and needs correction if developed further.
+- **P12-A2/B2:** the bosshead's actual attachment openings and screws need clearer mechanical review.
+- **P13-A5/B5:** the image can support discussion of a generic vacuum pump. It has not been verified as the particular diaphragm-pump type requested in the prompt.
+- **P14:** pipette tips, micropipette components and precision-instrument controls require review before moving from silhouette studies to scientific graphics.
 
-Genererte skalaer, porter, skjermer og symboler skal ikke brukes som fagdata. Forslagene innebærer ingen bruk av kjemikalier eller godkjent forsøksmetode.
+Generated scales, ports, screens and symbols must not be used as scientific data. The proposals do not imply chemical use or an approved experiment method.
 
-## En enkel måte å svare på
+## An easy way to reply
 
-Du trenger ikke vurdere alt i én melding:
+You do not need to review everything in one message:
 
-- Favorittark: ___
-- Foretrukket rad eller celler: ___
-- Former jeg vil beholde: ___
-- Farger eller detaljer jeg vil endre: ___
-- Utstyr jeg savner: ___
-- Utstyr jeg ikke vil prioritere: ___
+- Favourite sheets: ___
+- Preferred rows or cells: ___
+- Shapes to retain: ___
+- Colours or details to change: ___
+- Equipment still missing: ___
+- Equipment not to prioritise: ___
 
-Eksempel: «P03-B4 og P08-B2 liker jeg; behold fargene fra P01-B. Lag senere en faglig korrigert P07-B4.» Det er et eksempel på svarformat, ikke en foreslått beslutning.
+Example: “I like P03-B4 and P08-B2; retain the colours from P01-B. Later, make a scientifically corrected P07-B4.” This illustrates the response format, not a proposed decision.
 
-## Opphav
+## Origin
 
-Laget med `image_gen`, med P02 som stilreferanse. Eksakte bestillinger og motiver er bevart i [genereringsloggen](equipment-generation-03-14.json). [Kildemanifestet](generated-sources.json) inneholder kontrollsummer og filstørrelser. Bildene er kopiert uendret fra verktøyets originaler. Ingen eksterne eller tidligere prosjektressurser er importert i denne runden.
+Created with `image_gen`, using P02 as a style reference. Exact prompts and subjects are preserved in the [generation log](equipment-generation-03-14.json). The [source manifest](generated-sources.json) records checksums and sizes. Images were copied unchanged from the tool's originals. No external or previous-project resources were imported in this round.
 
-Tilbake til [grafikkoversikten](README.md).
+Return to the [art overview](README.md).

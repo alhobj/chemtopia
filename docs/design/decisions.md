@@ -1,55 +1,59 @@
-# Valg og krav
+# Decisions and requirements
 
-## Statusbegreper
+## Status terms
 
-- **Valgt:** uttrykkelig angitt i brukerens bestilling eller svar.
-- **Åpent:** ikke avgjort, eller krever avgrensning.
-- **Forslag:** idé fra assistenten; ikke vedtatt.
-- **Godkjent implementering:** et konkret utviklingssteg brukeren har godkjent.
+- **Chosen:** explicitly stated in the user's brief or answers.
+- **Open:** undecided or requiring a clearer boundary.
+- **Proposal:** an assistant suggestion, not an adopted decision.
+- **Approved implementation:** a specific development step approved by the user.
 
-Et samlet designpremiss er ennå ikke godkjent. Tabellen registrerer uttrykkelige valg, ikke en godkjenning av et komplett spilldesign.
+An overall design premise has not yet been approved. The table records explicit choices, not approval of a complete game design.
 
-## Opprinnelige rammer — valgt
+## Original requirements — chosen
 
-Målgruppen er elever på 16–19 år i IB DP Chemistry. Nettleser på datamaskin, telefon og nettbrett. Opprinnelig utgangspunkt var 2D ovenfra, flisbasert pikselgrafikk med Pokémon Red som samtalereferanse, uten kopiering av ressurser eller automatisk overtakelse av mekanikker. Kjemien skal være sentral. Inkluderende og forståelig også uten spillerfaring. Prosjekteieren avgjør faglige, pedagogiske, visuelle og spillmessige valg.
+The audience is students aged 16–19 studying IB DP Chemistry. Browser support on computers, phones and tablets. The original starting point was a top-down 2D tile-based pixel-art game, with Pokémon Red as a discussion reference, without copying assets or automatically adopting its mechanics. Chemistry must remain central. The experience must be inclusive and understandable without gaming experience. The project owner decides chemistry, education, visuals and gameplay.
 
-## Uttrykkelige svar
+## Explicit answers
 
-| ID | Valgt | Begrunnelse eller avgrensning |
+| ID | Chosen | Reason or boundary |
 | --- | --- | --- |
-| Q01 | Læreplan med første vurdering i 2025 | Eksakte eksamensår er ikke oppgitt. |
-| Q02 | Både SL og HL, med separate læringsløp | Felles verden, delt innhold og eventuelt bytte mellom løp er ikke avgjort. |
-| Q03 | Alle oppførte kjemitemaer | Ikke tolk dette som at alt skal være med i første versjon. Første tema og rekkefølge er åpne. |
-| Q04 | Innlæring, øving, repetisjon og faglig nysgjerrighet | Formell vurdering og diagnostisering er ikke uttrykkelig valgt som hovedformål. |
-| Q05 | Alle seks oppførte ferdigheter | Begreper, beregninger, praktiske ferdigheter, data, argumentasjon og representasjoner. Prioritering er åpen. |
-| Q06 | IB-terminologi og spørsmål, samt friere aktiviteter med presist språk | Hvordan de to modusene kombineres må avklares; ikke anta at alle aktiviteter må ligne eksamen. |
-| Q07 | IB-guide og lærebok; godkjenning av hvert innholdselement og små pakker | Kildene er ikke lastet opp. Godkjenningsrutinen må avklares. |
-| Q08 | Kort merknad når en forenkling introduseres | Ingen konkrete vitenskapelige forenklinger er godkjent. |
-| Q09 | Uavklart — diskuter | Ingen hovedaktivitet eller prosentfordeling er valgt. |
-| Q10 | Kort oppdrag med verden, laboratorium og kjemi | Innhold, historie og konkrete oppdragsmekanikker er åpne. |
-| Q11 | Økter på 20–30 minutter; kjemi etter høyst tre minutters introduksjon | Ingen bestemt tidsplan innen økten er vedtatt. |
-| Q12 | Anbefalt neste aktivitet med alternative valg | Reglene for hvilke alternativer som er tilgjengelige er åpne. |
-| Q13 | Laboratorium som hjemsted eller funksjon tilgjengelig overalt | Uttrykkelig ikke avgjort mellom B og D. |
-| Q14 | Sammenhengende verden | Kartets omfang og hvordan interiører inngår er åpne. |
-| Q15 | Region per valgt læreplanområde | Eksakt IB-inndeling og håndtering av tverrgående temaer må avklares. |
-| Q16 | Små områder med korte veier og få avstikkere; fri retur | Valgfrie skjulte aktiviteter er ikke valgt ennå. |
-| Q17 | Skilt, kart med aktiviteter og hurtigreise mellom besøkte steder | Direktevalg av alle oppdagede aktiviteter er ikke valgt. |
-| Q18 | Perspektiv ovenfra; små figurer og tydelige fliser; samhandling; interiører | Kamper, samling og følgesvenner er ikke avgjort. |
-| Q19 | Jevn fri bevegelse innen et flisbasert kart; kamera følger figuren | Kontroller, hastighet og kamerautsnitt er åpne. |
-| Q20 | Gå inntil og bruk tydelig interaksjonsknapp | Ikke en beslutning om tastatur eller berøringskontroller. |
+| Q01 | Syllabus first assessed in 2025 | Exact examination years have not been specified. |
+| Q02 | Both SL and HL, with separate learning paths | A shared world, shared content and switching between paths remain undecided. |
+| Q03 | All listed chemistry topics | This does not mean everything belongs in the first version. First topic and sequence are open. |
+| Q04 | Learning, practice, revision and scientific curiosity | Formal assessment and diagnosis have not been explicitly selected as primary purposes. |
+| Q05 | All six listed skills | Concepts, calculations, practical skills, data, reasoning and representations. Priorities remain open. |
+| Q06 | IB terminology and questions, alongside freer activities using precise language | How these approaches combine needs clarification; do not assume every activity must resemble an exam. |
+| Q07 | IB guide and textbook; approval of individual content items and small packages | Sources have not been uploaded. The approval workflow needs clarification. |
+| Q08 | A short note when a simplification is introduced | No particular scientific simplification has been approved. |
+| Q09 | Undecided — discuss | No main activity or percentage balance has been selected. |
+| Q10 | Short missions combining world, laboratory and chemistry | Content, story and specific mission mechanics remain open. |
+| Q11 | Sessions of 20–30 minutes; chemistry after an introduction of no more than three minutes | No particular timetable within a session has been adopted. |
+| Q12 | A recommended next activity with alternatives | Rules governing available alternatives remain open. |
+| Q13 | Laboratory as a home base or a function available anywhere | Explicitly undecided between B and D. |
+| Q14 | A connected world | Map extent and the role of interiors remain open. |
+| Q15 | One region per selected syllabus area | Exact IB divisions and cross-cutting topics need clarification. |
+| Q16 | Small areas, short routes, few detours and free return | Optional hidden activities have not yet been selected. |
+| Q17 | Signs, an activity map and fast travel between visited places | Direct selection of every discovered activity has not been selected. |
+| Q18 | Top-down view; small characters and clear tiles; interaction; interiors | Battles, collecting and companions remain undecided. |
+| Q19 | Smooth free movement within a tile-based map; a camera following the character | Controls, speed and camera framing remain open. |
+| Q20 | Move close and use a clear interaction button | This does not select keyboard or touch controls. |
 
-## Tillatt arbeid nå
+## Work currently authorised
 
-Dokumentasjonsstruktur i eksisterende repository, registrering av valg og åpne spørsmål, idéarbeid og innsamling av visuelle referanser til neste samtale.
+Documentation in the existing repository, recording choices and open questions, idea development and visual reference collection for the next conversation.
 
-Ingen spillimplementering er godkjent ennå. Ingen begrunnelser som brukeren ikke har gitt, er lagt til som brukerens egne.
+Game implementation is not yet approved. Reasons the user did not provide have not been presented as the user's own.
 
-## Ny uttrykkelig tillatelse og gjenåpnet valg
+## Further permission and a reopened choice
 
-Brukeren har bedt om flere referanser og åpnet for **2,5D eller et uttrykk uten pikselgrafikk**. Den opprinnelige visuelle rammen er derfor et historisk utgangspunkt, ikke lenger en låst grafikkretning. Q18–Q20 beholdes som opprinnelige svar; eventuelle endringer i perspektiv eller kamera skal avklares uttrykkelig.
+The user requested more references and opened the visual direction to **2.5D or a non-pixel-art style**. The original visual framework is therefore a historical starting point, not a locked art direction. Q18–Q20 remain recorded as original answers; changes to perspective or camera must be explicitly clarified.
 
-Det er nå tillatt å lage genererte forslag til pikselgrafikk for kjemilabutstyr, lage flere ideer og spørsmål til gjennomgang og committe/pushe nåværende dokumentasjon og bilder til GitHub. Dette godkjenner ikke en bestemt stil, bruk av et apparat i et forsøk, nye spillmekanikker eller offentlig publisering av en app.
+Generating pixel-art proposals for chemistry laboratory equipment, preparing further ideas and review questions, and committing/pushing current documentation and images to GitHub are authorised. This does not approve a particular style, use of an apparatus in an experiment, new mechanics or public app deployment.
 
-## Tilbakemelding og ny grafikkrunde
+## Feedback and an additional art round
 
-Brukeren liker Equipment Studies-bildene svært godt og har bedt om mange flere med mer ulikt kjemilabutstyr, samt Git-push. Dette gir tillatelse til videre grafikkforslag i samme uttrykk. Det er ikke en endelig beslutning om hele spillets visuelle retning, apparatutvalg, forsøk eller implementering. P03–P14 er forslag til gjennomgang.
+The user likes the Equipment Studies images very much and requested many more with a wider range of chemistry laboratory equipment, plus a Git push. This authorises further art proposals in the same style. It is not a final decision on the whole game's visual direction, equipment selection, experiments or implementation. P03–P14 are proposals for review.
+
+## Project language — chosen
+
+The user requested English throughout the project: drawings, text, lists, questions, folder names and other project content. English is now the working language and the language of authored project text and labels. Historical notes are translated without changing their meaning or choice IDs. This does not add multilingual features or approve any unanswered gameplay or chemistry decisions. The historical Q53 option list remains available for context; any additional language support is still undecided.

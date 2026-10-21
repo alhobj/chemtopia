@@ -1,71 +1,73 @@
-# Åpne spørsmål
+# Open questions
 
-Alle valg i denne filen er åpne. Originalspørreskjemaet i samtalen er styrende for bokstavalternativene; ikke lag nye bokstavbetydninger under samme ID.
+Choices in this file remain open unless explicitly superseded by a later user instruction. The conversation questionnaire governs the letter options; do not assign new meanings to letters under the same ID.
 
-## Oppfølging av Q01–Q20
+## Follow-up on Q01–Q20
 
-| ID | Hva må avklares? |
+| ID | What needs clarification? |
 | --- | --- |
-| Q01 | Hvilke eksamensår skal støttes? |
-| Q03 | Første avgrensede læringsmål og senere innholdsrekkefølge. «Alle» gir ingen prioritering. |
-| Q06 | Når skal aktivitetene bruke IB-spørsmålsstil, og når friere former? |
-| Q07 | Hvilken lærebok/utgave, hvilke kildehenvisninger og hvordan kombineres godkjenning av elementer og pakker? |
-| Q09 | Hva gjør eleven oftest? Sammenlign konkrete aktivitetsforløp før valg. |
-| Q13 | Laboratorium som sted, funksjon tilgjengelig overalt eller en uttrykkelig godkjent kombinasjon? |
-| Q14–Q15 | Hvordan representere de faktiske læreplanområdene og forbindelsene mellom dem i en sammenhengende verden? |
-| Q19–Q20 | Hvordan fungerer fri bevegelse, nærhetskrav og interaksjonsknapp på små skjermer? Kontroller velges senere. |
+| Q01 | Which examination years should be supported? |
+| Q03 | First narrow learning objective and later content sequence. “All” does not establish priority. |
+| Q06 | When should activities use IB question style, and when freer formats? |
+| Q07 | Which textbook/edition, which source references, and how should individual-item and package approvals combine? |
+| Q09 | What does the student do most often? Compare specific activity flows before choosing. |
+| Q13 | Laboratory as a place, an anywhere-accessible function or an explicitly approved combination? |
+| Q14–Q15 | How should actual syllabus areas and their connections appear in a connected world? |
+| Q19–Q20 | How do free movement, proximity and an interaction button work on small screens? Controls are chosen later. |
 
-## Ubesvarte spørsmål — fortsett ved Q21
+## Unanswered questionnaire items — continue at Q21
 
-| ID | Tema |
+| ID | Topic |
 | --- | --- |
-| Q21 | Møter, kamp, samling og følgesvenner |
-| Q22 | Krav til reaksjonstid, presisjon og koordinasjon |
-| Q23 | Handlinger i laboratoriet |
-| Q24 | Veiledning og detaljnivå i forsøk |
-| Q25 | Målevariasjon, usikkerhet og uventede resultater |
-| Q26 | Sikkerhet, utstyr og forbruksmateriell |
-| Q27 | Forsøkslogg, notatbok og gjentakelser |
-| Q28 | Aktivitets- og oppgaveformer |
-| Q29 | Inntasting av formler, likninger, tall og enheter; kalkulator |
-| Q30 | Kjemiske representasjoner og forbindelser mellom dem |
-| Q31 | Hint, tilbakemelding, nye forsøk og feilkonsekvenser |
-| Q32 | Vanskelighet, forkunnskaper, tid og lagring av resultater |
-| Q33 | Vilkår for opplåsing |
-| Q34 | Omgåelse av kjent stoff og hjelp ved fastlåsing |
-| Q35 | Fremdriftsstruktur, ferdighetstre og belønninger |
-| Q36 | Fortelling og elevrolle |
-| Q37 | Tone og personenes funksjon |
-| Q38 | Dialog, lesemengde og figurtilpasning |
-| Q39 | Visuell stil og stemning |
-| Q40 | Fargebruk, tekst, kontrast og detaljmengde |
-| Q41 | Faglige bilder, animasjon, ressurskilder og godkjenning |
-| Q42 | Tastatur-, mus- og berøringskontroller |
-| Q43 | Mobilkrav, skjermretninger, enheter og nettlesere |
-| Q44 | Introduksjon og støtte for elever uten spillerfaring |
-| Q45 | Tilgjengelighetskrav og alternative betjeningsmåter |
-| Q46 | Akseptabel reisetid mellom kjemiaktiviteter |
-| Q47 | Verdi av aktiviteter uten kjemi og grenser for sperrer |
-| Q48 | Hvordan oppdage repetisjon og unødvendig tidsbruk |
-| Q49 | Lagring av fremdrift |
-| Q50 | Innlogging og lærerfunksjoner |
-| Q51 | Elevdata, bruksstatistikk og bruk uten nett |
-| Q52 | Lyd og hvordan den slås på |
-| Q53 | Grensesnittspråk og kjemispråk |
-| Q54 | Minste nyttige spillbare versjon |
-| Q55 | Første konkrete læringsmål |
-| Q56 | Hva skal med først, og hva utsettes? |
-| Q57 | Størrelse på steg og vurdering av prototyper |
-| Q58 | Suksesskriterier og elevtesting |
-| Q59 | Endelig prosjektplassering; grunnstruktur i eksisterende repo er nå tillatt |
-| Q60 | Eventuell inspeksjon av gammelt prosjekt |
-| Q61 | Eventuell gjenbruk fra gammelt prosjekt |
-| Q62 | Hosting, kostnader og publisering |
+| Q21 | Other game conventions |
+| Q22 | Gaming skill |
+| Q23 | Laboratory actions |
+| Q24 | Guidance and detail |
+| Q25 | Uncertainty and unexpected results |
+| Q26 | Safety, equipment and consumables |
+| Q27 | Recording and repetition |
+| Q28 | Activity formats |
+| Q29 | Input |
+| Q30 | Representations |
+| Q31 | Help and mistakes |
+| Q32 | Level, timing and understanding |
+| Q33 | Unlocking |
+| Q34 | Prior knowledge or getting stuck |
+| Q35 | Progression and rewards |
+| Q36 | Story and student role |
+| Q37 | Tone and characters |
+| Q38 | Dialogue and player character |
+| Q39 | Visual style |
+| Q40 | Colour, text and detail |
+| Q41 | Scientific images, animation and sources |
+| Q42 | Controls |
+| Q43 | Mobile |
+| Q44 | New players |
+| Q45 | Accessibility |
+| Q46 | Travel/dialogue between activities |
+| Q47 | Value beyond direct chemistry and absolute limits |
+| Q48 | Unnecessary time use |
+| Q49 | Saving |
+| Q50 | Access and teachers |
+| Q51 | Data and offline use |
+| Q52 | Audio |
+| Q53 | Language — English is now required throughout the project; additional languages remain undecided. |
+| Q54 | Smallest version |
+| Q55 | First learning objective |
+| Q56 | First or later |
+| Q57 | Step size and review |
+| Q58 | First test |
+| Q59 | Project location; the foundation in the current repository is now authorised. |
+| Q60 | Previous project |
+| Q61 | Reuse |
+| Q62 | Hosting, costs and publication |
 
-## Viktige avhengigheter
+The original Q53 was not answered by letter. The later English-language instruction now governs project text; do not treat that requirement as undecided.
 
-- Faglig aktivitet og datakrav må forstås før rammeverk eller spillmotor velges.
-- Faglig riktig regionstruktur krever kontroll mot guiden, ikke bare generelle emnenavn.
-- Mobil inntasting og tilgjengelighet påvirker aktivitetsformatet, ikke bare skjermstørrelsen.
-- Separat SL/HL-løp krever avklaring av deling av aktiviteter og fremdrift før en datastruktur låses.
-- Godkjente visuelle referanser gir en retning, men ikke automatisk tillatelse til å importere ressursene.
+## Important dependencies
+
+- Understand educational activities and data requirements before selecting a framework or game engine.
+- Scientifically sound regions require checking the guide, not just general topic names.
+- Mobile input and accessibility affect activity format, not just screen size.
+- Separate SL/HL paths require clarification of shared activities and progress before fixing a data structure.
+- Approved visual references establish direction, not automatic permission to import assets.

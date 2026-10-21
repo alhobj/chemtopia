@@ -1,70 +1,70 @@
-# Forslag til grafikk — til gjennomgang
+# Art proposals — for review
 
-Bildene her er AI-genererte originalforslag laget med `image_gen` etter uttrykkelig bestilling. De er ikke eksterne referansebilder, ferdige spillressurser eller godkjente fagillustrasjoner. Ingen stil er valgt.
+These images are original AI-generated proposals made with `image_gen` following explicit requests. They are not external reference images, finished game assets or approved scientific illustrations. No style has been selected.
 
-## Nye ark P03–P14
+## Additional sheets P03–P14
 
-[Åpne katalogen med tolv nye Equipment Studies-ark](equipment-03-14.md): 72 utstyrsmotiver i 144 varianter, fra småredskaper og filtrering til analyseinstrumenter og stativer. Alle har rad A/B og stabile celle-ID-er. Katalogen har også konkrete merknader om genereringsfeil som må bearbeides.
+[Open the catalogue of twelve additional Equipment Studies sheets](equipment-03-14.md): 72 equipment subjects in 144 variants, from small tools and filtration to analytical instruments and stands. Each has rows A/B and stable cell IDs. The catalogue records specific generation defects requiring revision.
 
-## P01 — Seks typer utstyr, tre stilvarianter
+## P01 — Six equipment types, three style variants
 
-![Tre rader med pixel art-forslag til laboratorieutstyr](proposals/lab-equipment-01.png)
+![Three rows of pixel-art laboratory equipment proposals](proposals/lab-equipment-01.png)
 
-| Kolonne | Tiltenkt utstyr |
+| Column | Intended equipment |
 | --- | --- |
-| 1 | Begerglass |
-| 2 | Erlenmeyerkolbe |
-| 3 | Målekolbe |
-| 4 | Målesylinder |
-| 5 | Elektronisk vekt |
-| 6 | Bunsenbrenner, uten flamme |
+| 1 | Beaker |
+| 2 | Erlenmeyer flask |
+| 3 | Volumetric flask |
+| 4 | Measuring cylinder |
+| 5 | Electronic balance |
+| 6 | Unlit Bunsen burner |
 
-- **A:** enklere og grovere piksler; tydelige mørke konturer.
-- **B:** mer detaljert pikselstil med turkise glassflater og lysere apparater.
-- **C:** mer skråstilt uttrykk og fiolett palett, som et mulig 2,5D-uttrykk i pikselstil.
+- **A:** simpler, chunkier pixels with clear dark outlines.
+- **B:** more detailed pixel art with turquoise glass and lighter instruments.
+- **C:** a more angled view and purple palette, suggesting a possible 2.5D pixel-art style.
 
-Svar med for eksempel **P01-B1** for begerglasset i midterste rad, eller **P01-A** for hele første rad. Radene endrer både detalj, perspektiv og enkelte farger; et valg av én egenskap godkjenner ikke de øvrige.
+Reply with **P01-B1** for the beaker in the middle row, or **P01-A** for the whole first row. Rows change detail, perspective and some colours; choosing one property does not approve the others.
 
-## P02 — Seks nye utstyrstyper, to stilvarianter
+## P02 — Six more equipment types, two style variants
 
-![To rader med pixel art-forslag til mer laboratorieutstyr](proposals/lab-equipment-02.png)
+![Two rows of pixel-art proposals for additional laboratory equipment](proposals/lab-equipment-02.png)
 
-| Kolonne | Tiltenkt utstyr |
+| Column | Intended equipment |
 | --- | --- |
-| 1 | Byrette med stativ og klemme |
-| 2 | Volumpipette |
-| 3 | Reagensrørstativ |
-| 4 | Vernebriller |
-| 5 | Varmeplate med mulig magnetrørerfunksjon |
-| 6 | Termometer |
+| 1 | Burette with stand and clamp |
+| 2 | Volumetric pipette |
+| 3 | Test-tube rack |
+| 4 | Safety goggles |
+| 5 | Hotplate, potentially with magnetic stirring |
+| 6 | Thermometer |
 
-**A** er enklere og mer frontalt. **B** har flere detaljer og mer synlig dybde. Svar med for eksempel **P02-A4** eller **P02-B**.
+**A** is simpler and more frontal. **B** has more detail and visible depth. Reply with **P02-A4** or **P02-B**, for example.
 
-## S1–S3 — Samme laboratorium som stilundersøkelse
+## S1–S3 — The same laboratory as a style study
 
-![Laboratorier i tre ulike uttrykk](proposals/style-comparison.png)
+![Laboratories in three different visual styles](proposals/style-comparison.png)
 
-- **S1:** pikselpreget uttrykk.
-- **S2:** tegnet 2,5D med glatte former.
-- **S3:** et mykere, 3D-preget diorama.
+- **S1:** a pixel-art appearance.
+- **S2:** illustrated 2.5D with smooth shapes.
+- **S3:** a softer, 3D-like diorama.
 
-Dette er ett generert bilde. S2 og S3 ligger visuelt ganske nær hverandre; forskjellen er mindre enn bestilt. Panelet S3 er **ikke** et skjermbilde av en faktisk 3D-modell eller et bevis på en bestemt spillmotor. Bildet alene kan ikke avgjøre ytelse, mobilbruk eller produksjonskostnad.
+This is one generated image. S2 and S3 are visually quite similar; the difference is smaller than requested. S3 is **not** a screenshot of an actual 3D model or evidence of a particular engine. The image alone cannot determine performance, mobile usability or production cost.
 
-Innredning, planter, benker, farger og plassering av utstyr er forslag. De er ikke godkjente deler av laboratoriet.
+Furniture, plants, benches, colours and equipment placement are proposals, not approved laboratory features.
 
-## Hva som må bearbeides før eventuell spillbruk
+## Revisions needed before potential game use
 
-- Disse arkene er store konseptbilder, ikke spriteark med et fast pikselrutenett eller vedtatte 32/64-pikslers ressurser.
-- Målekolbenes kalibreringsmerker og bunnform må gjennomgås. Enkelte genererte merker ser ut som dekorative streker på kolbekroppen; det skal ikke videreføres som faglig informasjon.
-- Skalaer på målesylindre, byretter og termometre er skisser. De har ingen godkjent verdi eller målefunksjon.
-- Glass, fot, tut, klemmer og apparatdeler varierer mellom radene. Gjenkjennelse og faglig form må kontrolleres før en variant videreutvikles.
-- Farge eller glans i glass skal ikke automatisk bety en bestemt løsning, temperatur eller annen kjemisk tilstand.
-- En valgt stil trenger et eget, lite forsøk med korrekt størrelse, kontrast og lesbarhet på telefon før produksjon av mange ressurser.
+- These are large concept images, not sprite sheets with a fixed pixel grid or approved 32/64-pixel assets.
+- Review volumetric-flask calibration marks and base shapes. Some generated marks resemble decorative lines on the flask body; do not carry them forward as scientific information.
+- Scales on measuring cylinders, burettes and thermometers are sketches, not approved readings or measuring functions.
+- Glass, bases, spouts, clamps and other parts vary between rows. Check recognition and scientific form before developing a variant.
+- Glass colour or shine must not automatically represent a particular solution, temperature or other chemical state.
+- After a style choice, try a small set at the correct size, contrast and phone readability before producing many assets.
 
-Dette er kvalitetsoppgaver for en senere godkjent grafikkrunde. Ingen av illustrasjonene brukes i et spill nå.
+These are quality tasks for a later approved art round. None of the illustrations is currently used in a game.
 
-## Opphav og sporbarhet
+## Origin and traceability
 
-[generated-sources.json](generated-sources.json) registrerer verktøy, bestillingens hovedinnhold, fil og kontrollsum. Originale genererte filer er beholdt utenfor repositoryet; kopiene her er uendret. Ingen ressurser fra tidligere prosjekt er brukt. Eventuell prosjektlisens er ikke valgt; eksterne referansers lisenser gjelder ikke automatisk disse bildene.
+[generated-sources.json](generated-sources.json) records the tool, brief, file and checksum. Original generated files were retained outside the repository; these copies are unchanged. No previous-project resources were used. A project licence has not been selected; external references' licences do not automatically apply to these images.
 
-Neste valg kan tas i [morgendagens gjennomgang](../design/review-tomorrow.md).
+Further choices can be made in the [next review](../design/review-tomorrow.md).

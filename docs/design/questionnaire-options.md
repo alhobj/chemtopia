@@ -1,143 +1,536 @@
-# Alternativnøkkel for videre svar
+# Option key for further answers
 
-Spørsmål og alternativer fra spørreskjemaet i samtalen, i forkortet form. Bokstaver følger rekkefølgen i det opprinnelige skjemaet. Dette er en svarnøkkel, ikke en liste over vedtatte funksjoner. Alle spørsmål tillater skriftlige alternativer og notater. Ingen svar er fylt inn her.
+Questions and options from the conversation questionnaire, in abbreviated English. Letters follow the original option order. This is an answer key, not a list of adopted features. Every question allows written alternatives and notes. No answers are filled in here.
 
-Q01–Q20 er allerede besvart; råsvar og tolkning finnes i answers.md og decisions.md. Nøkkelen under gjør at svar fra Q21 kan tolkes etter en senere samtale uten at bokstavene endrer betydning.
+Q01–Q20 have already been answered; recorded answers and interpretation are in answers.md and decisions.md. This key preserves the meaning of letters from Q21 onwards across later conversations.
 
-## Q21–Q27
+## Q21 — Other game conventions
 
-**Q21 — Andre spillkonvensjoner. Flere valg; A utelukker de øvrige.**
-A Ingen møter, kamp, samling eller følgesvenner. B Planlagte faglige møter. C Overraskende møter, med begrunnelse. D Kamp, med faglig rolle. E Samling av faglig relevante ting. F Hjelpende følgesvenn. G Uavklart.
+Select any; A excludes the others. Written alternative/notes: ___
 
-**Q22 — Spillerferdighet. Ett valg.**
-A Ingen krav til reaksjon, presisjon eller koordinasjon. B Enkel bevegelse, men læring nås uten presisjonskrav. C Valgfrie ferdighetsinnslag med likeverdig alternativ. D Andre grenser. E Uavklart.
+- [ ] **A.** No encounters, battles, collecting or companions.
+- [ ] **B.** Planned chemistry encounters.
+- [ ] **C.** Surprise encounters, with reasons.
+- [ ] **D.** Battles, with a chemistry purpose.
+- [ ] **E.** Collecting scientifically relevant items.
+- [ ] **F.** A helpful companion.
+- [ ] **G.** Undecided.
 
-**Q23 — Laboratoriehandlinger. Flere valg.**
-A Velge utstyr. B Sette sammen oppsett. C Velge eller planlegge metode. D Måle. E Observere endringer. F Behandle og fremstille data. G Tolke resultater og konklusjoner. H Vurdere metode, sikkerhet og feilkilder. I Uavklart.
+## Q22 — Gaming skill
 
-**Q24 — Veiledning og detalj. Ett valg fra hver gruppe.**
-A Trinnvis veiledning. B Delvis støtte. C Åpne undersøkelser innen godkjente rammer. D Utføre sentrale praktiske trinn. E Velge handlinger fra enkle kontroller. F Fokusere på planlegging, resultater og tolkning. G Uavklart.
+Select one. Written alternative/notes: ___
 
-**Q25 — Usikkerhet og uventede resultater. Flere valg.**
-A Ideelle innledende resultater. B Realistisk variasjon i utvalgte aktiviteter. C Oppgitt usikkerhet brukes. D Undersøke systematiske feil. E Metodevalg kan gi mislykket forsøk med forklaring. F Særskilt godkjenning av slike modeller og resultater. G Uavklart.
+- [ ] **A.** No reaction-time, precision or coordination requirements.
+- [ ] **B.** Simple movement, but learning is accessible without precision.
+- [ ] **C.** Optional skill elements with an equivalent alternative route.
+- [ ] **D.** Other limits.
+- [ ] **E.** Undecided.
 
-**Q26 — Sikkerhet, utstyr, forbruk. Flere valg.**
-A Sikkerhetsvalg som aktiviteter. B Korte sikkerhetsforklaringer ved utstyr. C Ikke sikkerhet i første versjon. D Alt relevant utstyr fra start. E Utstyr låses opp med aktiviteter. F Ubegrenset forbruk. G Begrensning bare ved godkjent faglig hensikt. H Uavklart.
+## Q23 — Laboratory actions
 
-**Q27 — Registrering og gjentakelse. Flere valg.**
-A Automatisk forsøkslogg. B Elevutfylt notatbok. C Tabeller, grafer, konklusjoner. D Eksport/utskrift. E Faglig begrunnet gjentakelse av målinger. F Hoppe over kjent håndtering. G Ingen vedvarende notater. H Uavklart.
+Select any. Written alternative/notes: ___
 
-## Q28–Q35
+- [ ] **A.** Choose equipment.
+- [ ] **B.** Assemble apparatus.
+- [ ] **C.** Choose or plan a method.
+- [ ] **D.** Measure.
+- [ ] **E.** Observe changes.
+- [ ] **F.** Process and present data.
+- [ ] **G.** Interpret results and conclusions.
+- [ ] **H.** Evaluate methods, safety and sources of error.
+- [ ] **I.** Undecided.
 
-**Q28 — Aktivitetsformer. Flere valg.**
-A Flervalg. B Sortering/sammenkobling. C Kort forklaring. D Beregninger med enheter. E Skrive/balansere likninger. F Bygge/velge modeller og strukturer. G Tolke data/grafer/tabeller. H Forutsi, observere, forklare. I Uavklart.
+## Q24 — Guidance and detail
 
-**Q29 — Inntasting. Flere valg.**
-A Vanlig tastatur med tekstregler. B Kjemitastatur. C Ferdige uttrykksdeler. D Separat tallfelt og enhetsvalg. E Innebygd kalkulator. F Egen kalkulator. G Mobilskisser før valg. H Uavklart.
+Select one from each group: A–C for guidance; D–F for detail. Written alternative/notes: ___
 
-**Q30 — Representasjoner. Flere valg.**
-A Synlige observasjoner/egenskaper. B Partikkel-/molekylmodeller. C Formler/likninger. D Grafer/tabeller/matematikk. E Aktiv oversettelse mellom representasjoner. F Uavklart.
+- [ ] **A.** Step-by-step guidance.
+- [ ] **B.** Partial support.
+- [ ] **C.** Open investigations within approved boundaries.
+- [ ] **D.** Perform key practical steps.
+- [ ] **E.** Choose actions using simple controls.
+- [ ] **F.** Focus on planning, results and interpretation.
+- [ ] **G.** Undecided.
 
-**Q31 — Hjelp og feil. Flere valg.**
-A Hint på forespørsel. B Gradvis mer konkret hjelp. C Svarspesifikk forklaring. D Gjennomarbeidet løsning etter eget forsøk. E Ubegrensede forsøk. F Ny variant etter flere forsøk. G Bare faglig tilbakemelding som feilkonsekvens. H Andre konsekvenser. I Uavklart.
+## Q25 — Uncertainty and unexpected results
 
-**Q32 — Nivå, tid, forståelse. Flere valg.**
-A Eleven velger nivå. B Innledende forkunnskapsaktivitet. C Tilpasning etter godkjente regler. D Ingen tidsgrenser. E Valgfrie tidsøvelser. F Forklaring eller anvendelse i ny situasjon skiller forståelse fra gjetting. G Lagre vurderingsresultater, spesifiser hvilke. H Bare fremdrift, uten poeng/karakterliknende resultater. I Uavklart.
+Select any. Written alternative/notes: ___
 
-**Q33 — Opplåsing. Flere valg.**
-A Alt innen valgt nivå tilgjengelig. B Gjennomføring. C Forståelse etter godkjente kriterier. D Utforskning/samtaler. E Lærervalg. F Ulike område-/utstyrsregler. G Uavklart.
+- [ ] **A.** Ideal initial results.
+- [ ] **B.** Realistic variation in selected activities.
+- [ ] **C.** Use stated uncertainty.
+- [ ] **D.** Investigate systematic errors.
+- [ ] **E.** Method choices can cause an unsuccessful experiment, with an explanation.
+- [ ] **F.** Specific approval of these models and results.
+- [ ] **G.** Undecided.
 
-**Q34 — Forkunnskaper eller fastlåsing. Flere valg.**
-A Kort aktivitet for å hoppe over kjent stoff. B Elev kan omgå låser. C Lærer kan omgå låser. D Alternative aktiviteter med samme mål. E Veiledet hjelp åpner videre vei. F Uavklart.
+## Q26 — Safety, equipment and consumables
 
-**Q35 — Fremdrift og belønning. Flere valg.**
-A Lineær. B Forgrenet. C For det meste åpen. D Ferdighetstre for kjemi. E Ferdighetstre for laboratorium/utstyr. F Faglig fremdrift uten spillbelønning. G Erfaringspoeng/nivåer. H Merker/prestasjoner. I Valuta/inventar med faglig hensikt. J Uavklart.
+Select any. Written alternative/notes: ___
 
-## Q36–Q45
+- [ ] **A.** Safety choices as activities.
+- [ ] **B.** Short safety explanations at equipment.
+- [ ] **C.** No safety coverage in the first version.
+- [ ] **D.** All relevant equipment available from the start.
+- [ ] **E.** Equipment unlocks with activities.
+- [ ] **F.** Unlimited consumables.
+- [ ] **G.** Limits only for an approved educational purpose.
+- [ ] **H.** Undecided.
 
-**Q36 — Historie og elevrolle. Ett valg fra hver gruppe.**
-A Ingen sammenhengende fortelling. B Lett ramme. C Fortelling som binder kjemi sammen. D Elev/student. E Lærling/forsker. F Selvvalgt figur uten bestemt yrke. G Annen rolle/setting. H Uavklart.
+## Q27 — Recording and repetition
 
-**Q37 — Tone og personer. Flere valg.**
-A Varm/rolig. B Nysgjerrig/undersøkende. C Lett humor. D Alvorlig/virkelighetsnær. E Faglig støtte. F Problemer og perspektiver. G Misoppfatninger eleven undersøker. H Få eller ingen personer utover nødvendige. I Uavklart.
+Select any. Written alternative/notes: ___
 
-**Q38 — Dialog og figur. Flere valg.**
-A Svært korte dialoger. B Lengre samtaler på elevens initiativ. C Hoppe over/åpne igjen. D Nødvendig faginfo også utenfor dialog. E Velge utseende. F Velge ferdig figur. G Ingen tilpasning. H Egen grense for obligatorisk lesing. I Uavklart.
+- [ ] **A.** Automatic experiment log.
+- [ ] **B.** Student-written notebook.
+- [ ] **C.** Tables, graphs and conclusions.
+- [ ] **D.** Export/print.
+- [ ] **E.** Repeat measurements for an educational reason.
+- [ ] **F.** Skip familiar handling.
+- [ ] **G.** No persistent notes.
+- [ ] **H.** Undecided.
 
-**Q39 — Visuelt uttrykk. Flere valg.**
-A Enkel pikselgrafikk/få farger. B Mer detaljert. C Rolig/oversiktlig. D Lyst/lekent. E Virkelig skolelaboratorium som preg. F Regioner med forskjellig identitet. G Velge etter stilforslag. H Uavklart.
+## Q28 — Activity formats
 
-**Q40 — Farge, tekst, detaljer. Flere valg.**
-A Farge markerer fagområder. B Farge viser interaksjon/tilstand. C Alternative symboler/mønstre/tekst. D Justerbar tekst. E Høy kontrast-alternativ. F Lite dekor rundt fagaktiviteter. G Lesbarhetskrav via skisser. H Uavklart.
+Select any. Written alternative/notes: ___
 
-**Q41 — Fagbilder, animasjon, opphav. Flere valg.**
-A Stilisert gjenkjennelig utstyr. B Mer realistiske apparater i aktiviteter. C Godkjente tegneregler for fagmodeller. D Forklarende animasjon. E Også dekorativ animasjon. F Originalgrafikk. G Lisensierte ressurser. H Genererte forslag vurderes før bruk. I Du godkjenner stil og hver ressurspakke. J Uavklart.
+- [ ] **A.** Multiple choice.
+- [ ] **B.** Sorting/matching.
+- [ ] **C.** Short explanations.
+- [ ] **D.** Calculations with units.
+- [ ] **E.** Write/balance equations.
+- [ ] **F.** Build/select models and structures.
+- [ ] **G.** Interpret data/graphs/tables.
+- [ ] **H.** Predict, observe and explain.
+- [ ] **I.** Undecided.
 
-**Q42 — Kontroller. Flere valg.**
-A Tastatur. B Full musbetjening. C Trykk på mål. D Retningsknapper på berøringsskjerm. E Alle hovedfunksjoner med bare tastatur. F Tilpassbare kontroller. G Sammenligne skisser før valg. H Uavklart.
+## Q29 — Input
 
-**Q43 — Mobil. Flere valg.**
-A Hele løpet på liten telefon. B Korte aktiviteter på mobil. C Stående og liggende. D Én foretrukket retning, spesifiser. E Ingen nødvendig pekerholding over et element. F Ingen presis dragging/små mål. G Praktisk kjemiinntasting. H Bestemte enheter/nettlesere. I Uavklart.
+Select any. Written alternative/notes: ___
 
-**Q44 — Nye spillere. Flere valg.**
-A Kort valgfri introduksjon. B Hjelp ved første bruk. C Kontrollforklaringer tilgjengelige. D Trygg øvingsaktivitet uten fagvurdering. E Vanlige ord, ikke uforklarte spilluttrykk. F Uavklart.
+- [ ] **A.** Standard keyboard with plain-text rules.
+- [ ] **B.** Chemistry keyboard.
+- [ ] **C.** Ready-made expression components.
+- [ ] **D.** Separate number field and unit selection.
+- [ ] **E.** Built-in calculator.
+- [ ] **F.** Student uses their own calculator.
+- [ ] **G.** Mobile sketches before choosing.
+- [ ] **H.** Undecided.
 
-**Q45 — Tilgjengelighet. Flere valg.**
-A Redusert bevegelse. B Separate lydinnstillinger. C Ingen informasjon bare via farge/lyd. D Ingen obligatorisk tidspress. E Skjermleser i menyer/aktiviteter. F Tekstalternativ til kart. G Forstørring uten tap. H Spesifikke behov/mål. I Uavklart.
+## Q30 — Representations
 
-## Q46–Q53
+Select any. Written alternative/notes: ___
 
-**Q46 — Reise/dialog mellom aktiviteter. Ett valg.**
-A Ingen obligatorisk reise. B Vanligvis under 15 sekunder. C Vanligvis under 30 sekunder. D Opptil ett minutt med hensikt. E Avgjøre etter tidlig test. F Uavklart.
+- [ ] **A.** Visible observations/properties.
+- [ ] **B.** Particle/molecular models.
+- [ ] **C.** Formulae/equations.
+- [ ] **D.** Graphs/tables/mathematics.
+- [ ] **E.** Actively translate between representations.
+- [ ] **F.** Undecided.
 
-**Q47 — Verdi uten direkte kjemi og absolutte grenser. Flere valg.**
-A Kort utforskning med valg/oversikt. B Kort meningsskapende dialog. C Valgfri figurtilpasning. D Ingen obligatoriske henteoppdrag. E Ingen gjentatt innsamling for å lære. F Ingen krav til reaksjon/spillferdighet for faglig fremdrift. G Andre verdier/grenser. H Uavklart.
+## Q31 — Help and mistakes
 
-**Q48 — Unødvendig tidsbruk. Flere valg.**
-A Tydelig neste steg. B Forkorte kjent dialog/forsøkssekvenser. C Meningsfull avslutning i korte økter. D Observere elever i avtalte tester. E Elevtilbakemelding om forvirring/repetisjon. F Vurdere hver mekanikks verdi. G Uavklart.
+Select any. Written alternative/notes: ___
 
-**Q49 — Lagring. Ett valg.**
-A Ingen i første versjon. B Lokal nettleser. C Lokal med eksport/import. D På tvers av enheter. E Uavklart.
+- [ ] **A.** Hints on request.
+- [ ] **B.** Progressively more specific help.
+- [ ] **C.** Answer-specific explanations.
+- [ ] **D.** Worked solution after an attempt.
+- [ ] **E.** Unlimited retries.
+- [ ] **F.** New variant after several attempts.
+- [ ] **G.** Only educational feedback as a consequence of mistakes.
+- [ ] **H.** Other consequences.
+- [ ] **I.** Undecided.
 
-**Q50 — Tilgang og lærere. Flere valg.**
-A Uten innlogging. B Valgfri synkroniseringskonto. C Påkrevd konto med begrunnelse. D Ingen lærerfunksjoner først. E Lærer velger tema/aktivitet. F Lærer ser faglig fremdrift. G Lærer tildeler aktivitet. H Uavklart.
+## Q32 — Level, timing and understanding
 
-**Q51 — Data og frakoblet bruk. Flere valg.**
-A Ingen innsamling av elev-/bruksdata. B Bare elevkontrollert lokal fremdrift. C Begrenset innsamling med avklart formål/sletting. D Ingen elevrangering. E Uten nett etter første lasting. F Nett kan kreves. G Uavklart.
+Select any. Written alternative/notes: ___
 
-**Q52 — Lyd. Flere valg.**
-A Ingen lyd først. B Valgfri musikk. C Effekter. D Aktivt slå på først. E Kan starte etter første brukerhandling med av-knapp. F All læringsinfo også visuelt/tekst. G Uavklart.
+- [ ] **A.** Student chooses difficulty.
+- [ ] **B.** Initial prior-knowledge activity.
+- [ ] **C.** Adaptation using approved rules.
+- [ ] **D.** No time limits.
+- [ ] **E.** Optional timed exercises.
+- [ ] **F.** Explanation or transfer to a new situation distinguishes understanding from guessing.
+- [ ] **G.** Store assessment results; specify which.
+- [ ] **H.** Progress only, without scores or grade-like results.
+- [ ] **I.** Undecided.
 
-**Q53 — Språk. Ett valg.**
-A Engelsk. B Norsk med avklarte IB-termer. C Norsk grensesnitt/engelsk kjemi. D Velge norsk/engelsk. E Andre språk/grenser. F Uavklart.
+## Q33 — Unlocking
 
-## Q54–Q62
+Select any. Written alternative/notes: ___
 
-**Q54 — Minste versjon. Ett valg.**
-A Lite laboratorium/én aktivitet. B Lite område/én aktivitet/kort dialog. C Laboratorium og lite fagområde/én aktivitet. D Bare kjemiaktivitet før verden. E Annen avgrensning. F Uavklart.
+- [ ] **A.** Everything within the selected level is available.
+- [ ] **B.** Completion.
+- [ ] **C.** Understanding demonstrated against approved criteria.
+- [ ] **D.** Exploration/conversations.
+- [ ] **E.** Teacher choice.
+- [ ] **F.** Different rules for regions and equipment.
+- [ ] **G.** Undecided.
 
-**Q55 — Første læringsmål. Ett valg.**
-A Avgrenset mål fra Q03, spesifiser. B Konkret aktivitet fra eget materiale. C Diskuter kandidater før valg. D Uavklart.
+## Q34 — Prior knowledge or getting stuck
 
-**Q56 — Først eller senere. Flere valg, merk hvert med tidspunkt.**
-A Bevegelse/interaksjon. B Komplett faglig forløp. C Hint/tilbakemelding. D Mobilbruk. E Lagring. F Dialog/fortelling. G Opplåsing/belønning. H Flere områder/temaer. I Lyd. J Konto/lærerfunksjon. K Annet. L Uavklart.
+Select any. Written alternative/notes: ___
 
-**Q57 — Stegstørrelse og vurdering. Flere valg.**
-A Tekstlige skjerm-/handlingsbeskrivelser først. B Statiske skisser først. C Lite interaktivt forløp per steg. D Avgrenset funksjon per steg. E Du prøver hver versjon. F Bilder/demonstrasjon i tillegg. G Kontrollresultat og åpne spørsmål etter hvert steg. H Uavklart.
+- [ ] **A.** Short activity to skip familiar content.
+- [ ] **B.** Student can bypass locks.
+- [ ] **C.** Teacher can bypass locks.
+- [ ] **D.** Alternative activities with the same objective.
+- [ ] **E.** Guided help opens the way forward.
+- [ ] **F.** Undecided.
 
-**Q58 — Første test. Flere valg.**
-A Ny spiller forstår start. B Tid til kjemi følger Q11. C Mobil uten kontrollhjelp. D Eleven forklarer læringsmålet etterpå. E Tilbakemelding hjelper etter feil. F Du tester først. G Noen få elever etter godkjent opplegg. H Elevtest senere med vilkår. I Andre kriterier. J Uavklart.
+## Q35 — Progression and rewards
 
-**Q59 — Prosjektplassering. Ett valg.**
-A Eksisterende /workspace/chemtopia og repository. B Ny mappe i samme repo. C Ny mappe/nytt repo, spesifiser. D Avklar før opprettelse. E Uavklart.
+Select any. Written alternative/notes: ___
 
-Senere tillatelse åpnet for grunnstruktur i nåværende repo. Et svar på Q59 må tolkes sammen med den tillatelsen, ikke som at dokumentasjonsarbeidet fortsatt krever tillatelse.
+- [ ] **A.** Linear.
+- [ ] **B.** Branching.
+- [ ] **C.** Mostly open.
+- [ ] **D.** Chemistry skill tree.
+- [ ] **E.** Laboratory/equipment skill tree.
+- [ ] **F.** Educational progress without game rewards.
+- [ ] **G.** Experience points/levels.
+- [ ] **H.** Badges/achievements.
+- [ ] **I.** Currency/inventory with an educational purpose.
+- [ ] **J.** Undecided.
 
-**Q60 — Tidligere prosjekt. Ett valg.**
-A Ingen inspeksjon. B Bare gitte beskrivelser/bilder. C Skrivebeskyttet inspeksjon, spesifiser sted. D Velge deler først. E Uavklart.
+## Q36 — Story and student role
 
-**Q61 — Gjenbruk. Flere valg.**
-A Ny konkret godkjenning for alt. B Utpekte ideer. C Gjennomgått/godkjent faginnhold. D Godkjent grafikk/lyd med rettigheter. E Utvalgt kode etter særskilt godkjenning. F Bare inspirasjon uten kopiering. G Uavklart.
+Select one from each group: A–C for story; D–G for role/setting. Written alternative/notes: ___
 
-**Q62 — Hosting, kostnader, publisering. Flere valg.**
-A Alternativer senere. B Bestemt løsning, spesifiser. C Enkel nettside uten serverdel i første versjon. D Ingen betalte tjenester uten godkjenning. E Ingen offentlig publisering uten godkjenning. F Skolekrav/andre begrensninger undersøkes. G Uavklart.
+- [ ] **A.** No continuous story.
+- [ ] **B.** Light framing story.
+- [ ] **C.** Story linking the chemistry activities.
+- [ ] **D.** Pupil/student.
+- [ ] **E.** Apprentice/researcher.
+- [ ] **F.** Self-chosen character without a fixed occupation.
+- [ ] **G.** Other role/setting.
+- [ ] **H.** Undecided.
+
+## Q37 — Tone and characters
+
+Select any. Written alternative/notes: ___
+
+- [ ] **A.** Warm/calm.
+- [ ] **B.** Curious/investigative.
+- [ ] **C.** Light humour.
+- [ ] **D.** Serious/grounded.
+- [ ] **E.** Educational support.
+- [ ] **F.** Problems and perspectives.
+- [ ] **G.** Misconceptions for the student to investigate.
+- [ ] **H.** Few or no characters beyond those needed.
+- [ ] **I.** Undecided.
+
+## Q38 — Dialogue and player character
+
+Select any. Written alternative/notes: ___
+
+- [ ] **A.** Very short dialogue.
+- [ ] **B.** Longer conversations initiated by the student.
+- [ ] **C.** Skip/replay.
+- [ ] **D.** Essential chemistry information also outside dialogue.
+- [ ] **E.** Choose appearance.
+- [ ] **F.** Choose a ready-made character.
+- [ ] **G.** No customisation.
+- [ ] **H.** Own limit on required reading.
+- [ ] **I.** Undecided.
+
+## Q39 — Visual style
+
+Select any. Written alternative/notes: ___
+
+- [ ] **A.** Simple pixel art/few colours.
+- [ ] **B.** More detailed.
+- [ ] **C.** Calm/clear.
+- [ ] **D.** Bright/playful.
+- [ ] **E.** Resembles a real school laboratory.
+- [ ] **F.** Distinct regional identities.
+- [ ] **G.** Choose after style proposals.
+- [ ] **H.** Undecided.
+
+## Q40 — Colour, text and detail
+
+Select any. Written alternative/notes: ___
+
+- [ ] **A.** Colour identifies subject areas.
+- [ ] **B.** Colour signals interaction/state.
+- [ ] **C.** Alternative symbols/patterns/text.
+- [ ] **D.** Adjustable text size.
+- [ ] **E.** High-contrast option.
+- [ ] **F.** Little decoration around chemistry activities.
+- [ ] **G.** Readability requirements through sketches.
+- [ ] **H.** Undecided.
+
+## Q41 — Scientific images, animation and sources
+
+Select any. Written alternative/notes: ___
+
+- [ ] **A.** Recognisable stylised equipment.
+- [ ] **B.** More realistic apparatus in activities.
+- [ ] **C.** Approved drawing conventions for scientific models.
+- [ ] **D.** Explanatory animation.
+- [ ] **E.** Decorative animation too.
+- [ ] **F.** Original artwork.
+- [ ] **G.** Licensed resources.
+- [ ] **H.** Review generated proposals before use.
+- [ ] **I.** You approve the style and every asset package.
+- [ ] **J.** Undecided.
+
+## Q42 — Controls
+
+Select any. Written alternative/notes: ___
+
+- [ ] **A.** Keyboard.
+- [ ] **B.** Full mouse operation.
+- [ ] **C.** Tap a destination.
+- [ ] **D.** Touchscreen directional buttons.
+- [ ] **E.** All main functions using keyboard alone.
+- [ ] **F.** Customisable controls.
+- [ ] **G.** Compare sketches before choosing.
+- [ ] **H.** Undecided.
+
+## Q43 — Mobile
+
+Select any. Written alternative/notes: ___
+
+- [ ] **A.** Complete learning path on a small phone.
+- [ ] **B.** Short mobile activities.
+- [ ] **C.** Portrait and landscape.
+- [ ] **D.** One preferred orientation; specify.
+- [ ] **E.** No required hovering.
+- [ ] **F.** No precise dragging/small targets.
+- [ ] **G.** Practical chemistry input.
+- [ ] **H.** Specific devices/browsers.
+- [ ] **I.** Undecided.
+
+## Q44 — New players
+
+Select any. Written alternative/notes: ___
+
+- [ ] **A.** Short optional introduction.
+- [ ] **B.** Help on first use.
+- [ ] **C.** Control explanations available.
+- [ ] **D.** Safe practice activity without educational assessment.
+- [ ] **E.** Plain words, not unexplained gaming terms.
+- [ ] **F.** Undecided.
+
+## Q45 — Accessibility
+
+Select any. Written alternative/notes: ___
+
+- [ ] **A.** Reduced motion.
+- [ ] **B.** Separate audio settings.
+- [ ] **C.** No information only through colour/sound.
+- [ ] **D.** No mandatory time pressure.
+- [ ] **E.** Screen reader support in menus/activities.
+- [ ] **F.** Text alternative to the map.
+- [ ] **G.** Magnification without lost content.
+- [ ] **H.** Specific needs/targets.
+- [ ] **I.** Undecided.
+
+## Q46 — Travel/dialogue between activities
+
+Select one. Written alternative/notes: ___
+
+- [ ] **A.** No mandatory travel.
+- [ ] **B.** Usually under 15 seconds.
+- [ ] **C.** Usually under 30 seconds.
+- [ ] **D.** Up to one minute with a purpose.
+- [ ] **E.** Decide after an early test.
+- [ ] **F.** Undecided.
+
+## Q47 — Value beyond direct chemistry and absolute limits
+
+Select any. Written alternative/notes: ___
+
+- [ ] **A.** Short exploration offering choice/overview.
+- [ ] **B.** Short contextual dialogue.
+- [ ] **C.** Optional character customisation.
+- [ ] **D.** No mandatory fetch quests.
+- [ ] **E.** No repeated gathering as a condition for learning.
+- [ ] **F.** No reaction/gaming-skill requirement for educational progress.
+- [ ] **G.** Other values/limits.
+- [ ] **H.** Undecided.
+
+## Q48 — Unnecessary time use
+
+Select any. Written alternative/notes: ___
+
+- [ ] **A.** Clear next step.
+- [ ] **B.** Shorten familiar dialogue/experiment sequences.
+- [ ] **C.** Meaningful completion in short sessions.
+- [ ] **D.** Observe students in agreed tests.
+- [ ] **E.** Student feedback on confusion/repetition.
+- [ ] **F.** Review the value of each mechanic.
+- [ ] **G.** Undecided.
+
+## Q49 — Saving
+
+Select one. Written alternative/notes: ___
+
+- [ ] **A.** None in the first version.
+- [ ] **B.** Local browser storage.
+- [ ] **C.** Local storage with export/import.
+- [ ] **D.** Across devices.
+- [ ] **E.** Undecided.
+
+## Q50 — Access and teachers
+
+Select any. Written alternative/notes: ___
+
+- [ ] **A.** No sign-in required.
+- [ ] **B.** Optional account for synchronisation.
+- [ ] **C.** Required account, with a reason.
+- [ ] **D.** No teacher features initially.
+- [ ] **E.** Teacher chooses topics/activities.
+- [ ] **F.** Teacher sees educational progress.
+- [ ] **G.** Teacher assigns activities.
+- [ ] **H.** Undecided.
+
+## Q51 — Data and offline use
+
+Select any. Written alternative/notes: ___
+
+- [ ] **A.** No collection of student/usage data.
+- [ ] **B.** Only student-controlled local progress.
+- [ ] **C.** Limited collection with purpose/deletion clarified.
+- [ ] **D.** No student ranking.
+- [ ] **E.** Offline after first loading.
+- [ ] **F.** Internet may be required.
+- [ ] **G.** Undecided.
+
+## Q52 — Audio
+
+Select any. Written alternative/notes: ___
+
+- [ ] **A.** No audio initially.
+- [ ] **B.** Optional music.
+- [ ] **C.** Sound effects.
+- [ ] **D.** Explicitly enable audio first.
+- [ ] **E.** May start after the first user action, with an off button.
+- [ ] **F.** All learning information also visual/textual.
+- [ ] **G.** Undecided.
+
+## Q53 — Language
+
+Select one. Written alternative/notes: ___
+
+- [ ] **A.** English.
+- [ ] **B.** Norwegian with clarified IB terms.
+- [ ] **C.** Norwegian interface/English chemistry.
+- [ ] **D.** Choose Norwegian/English.
+- [ ] **E.** Other languages/boundaries.
+- [ ] **F.** Undecided.
+
+The user subsequently requested English throughout the project. The options above preserve the historical question; they do not reopen that instruction or add multilingual support.
+
+## Q54 — Smallest version
+
+Select one. Written alternative/notes: ___
+
+- [ ] **A.** Small laboratory/one activity.
+- [ ] **B.** Small area/one activity/short dialogue.
+- [ ] **C.** Laboratory and small topic region/one activity.
+- [ ] **D.** Chemistry activity before the world.
+- [ ] **E.** Another boundary.
+- [ ] **F.** Undecided.
+
+## Q55 — First learning objective
+
+Select one. Written alternative/notes: ___
+
+- [ ] **A.** Narrow objective from Q03; specify.
+- [ ] **B.** Specific activity from your own materials.
+- [ ] **C.** Discuss candidates before choosing.
+- [ ] **D.** Undecided.
+
+## Q56 — First or later
+
+Select any and mark each with its timing. Written alternative/notes: ___
+
+- [ ] **A.** Movement/interaction.
+- [ ] **B.** Complete educational flow.
+- [ ] **C.** Hints/feedback.
+- [ ] **D.** Mobile use.
+- [ ] **E.** Saving.
+- [ ] **F.** Dialogue/story.
+- [ ] **G.** Unlocks/rewards.
+- [ ] **H.** More regions/topics.
+- [ ] **I.** Audio.
+- [ ] **J.** Accounts/teacher features.
+- [ ] **K.** Other.
+- [ ] **L.** Undecided.
+
+## Q57 — Step size and review
+
+Select any. Written alternative/notes: ___
+
+- [ ] **A.** Written screen/action descriptions first.
+- [ ] **B.** Static sketches first.
+- [ ] **C.** Small interactive flow per step.
+- [ ] **D.** Bounded feature per step.
+- [ ] **E.** You try every version.
+- [ ] **F.** Images/demonstration too.
+- [ ] **G.** Check results and open questions after each step.
+- [ ] **H.** Undecided.
+
+## Q58 — First test
+
+Select any. Written alternative/notes: ___
+
+- [ ] **A.** New player understands how to start.
+- [ ] **B.** Time to chemistry follows Q11.
+- [ ] **C.** Mobile without control assistance.
+- [ ] **D.** Student explains the learning objective afterwards.
+- [ ] **E.** Feedback helps after a mistake.
+- [ ] **F.** You test first.
+- [ ] **G.** A few students after an approved test plan.
+- [ ] **H.** Student testing later, with conditions.
+- [ ] **I.** Other criteria.
+- [ ] **J.** Undecided.
+
+## Q59 — Project location
+
+Select one. Written alternative/notes: ___
+
+- [ ] **A.** Existing /workspace/chemtopia and repository.
+- [ ] **B.** New folder in the same repository.
+- [ ] **C.** New folder/new repository; specify.
+- [ ] **D.** Clarify before creation.
+- [ ] **E.** Undecided.
+
+Later permission authorised the foundation in the current repository. Interpret Q59 alongside that permission; documentation work no longer needs initial permission.
+
+## Q60 — Previous project
+
+Select one. Written alternative/notes: ___
+
+- [ ] **A.** No inspection.
+- [ ] **B.** Only supplied descriptions/images.
+- [ ] **C.** Read-only inspection; specify location.
+- [ ] **D.** Select parts first.
+- [ ] **E.** Undecided.
+
+## Q61 — Reuse
+
+Select any. Written alternative/notes: ___
+
+- [ ] **A.** Fresh specific approval for everything.
+- [ ] **B.** Identified ideas.
+- [ ] **C.** Reviewed/approved chemistry content.
+- [ ] **D.** Approved artwork/audio with rights clarified.
+- [ ] **E.** Selected code after specific approval.
+- [ ] **F.** Inspiration only, without copying.
+- [ ] **G.** Undecided.
+
+## Q62 — Hosting, costs and publication
+
+Select any. Written alternative/notes: ___
+
+- [ ] **A.** Alternatives later.
+- [ ] **B.** Specific solution; specify.
+- [ ] **C.** Simple website without a backend in the first version.
+- [ ] **D.** No paid services without approval.
+- [ ] **E.** No public deployment without approval.
+- [ ] **F.** Investigate school requirements/other limits.
+- [ ] **G.** Undecided.

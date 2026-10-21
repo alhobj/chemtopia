@@ -1,26 +1,26 @@
 # Chemtopia
 
-Et kjemilæringsspill for elever på 16–19 år i IB Diploma Programme Chemistry.
+A chemistry learning game for students aged 16–19 studying IB Diploma Programme Chemistry.
 
-Prosjektet er i designfasen. Repositoryet inneholder foreløpig dokumentasjon, ikke en kjørbar app. Ingen spillmotor, programmeringsrammeverk, avhengigheter, datalagring eller publiseringsløsning er valgt.
+The project is in its design phase. This repository currently contains documentation, not a runnable app. No game engine, framework, dependencies, data storage or hosting solution has been selected. English is the project's working language, including text and image labels.
 
-## Start her
+## Start here
 
-- [Valg og krav](docs/design/decisions.md)
-- [Originale svar Q01–Q20](docs/design/answers.md)
-- [Åpne spørsmål](docs/design/open-questions.md)
-- [Alternativnøkkel Q21–Q62](docs/design/questionnaire-options.md)
-- [Idéer til diskusjon](docs/design/ideas.md)
-- [Neste utviklingssteg](docs/design/next-step.md)
-- [Visuelle referanser V01–V13](docs/references/README.md)
-- [Genererte grafikkforslag P01–P14 og S1–S3](docs/art/README.md)
-- [Tolv nye Equipment Studies-ark P03–P14](docs/art/equipment-03-14.md)
-- [Valg til neste samtale R01–R10](docs/design/review-tomorrow.md)
-- [Arbeidsregler](AGENTS.md)
-- [Opprinnelig bestilling](docs/design/original-brief.txt)
+- [Decisions and requirements](docs/design/decisions.md)
+- [Recorded answers Q01–Q20](docs/design/answers.md)
+- [Open questions](docs/design/open-questions.md)
+- [Option key Q21–Q62](docs/design/questionnaire-options.md)
+- [Ideas for discussion](docs/design/ideas.md)
+- [Next development step](docs/design/next-step.md)
+- [Visual references V01–V13](docs/references/README.md)
+- [Generated art proposals P01–P14 and S1–S3](docs/art/README.md)
+- [Twelve additional Equipment Studies sheets P03–P14](docs/art/equipment-03-14.md)
+- [Review questions R01–R10](docs/design/review-tomorrow.md)
+- [Working rules](AGENTS.md)
+- [Original brief](docs/design/original-brief.txt)
 
-Godkjente valg, forslag og åpne spørsmål skal holdes atskilt. Detaljerte kjemiaktiviteter og visuelle løsninger skal godkjennes av prosjekteieren før implementering.
+Approved decisions, proposals and open questions must remain distinct. Detailed chemistry activities and visual solutions require the project owner's approval before implementation.
 
 ## Status
 
-Grunnstruktur for dokumentasjon er opprettet etter uttrykkelig tillatelse. Det finnes ingen app å starte og ingen apptester å kjøre. Visuell retning undersøkes nå også med 2,5D og alternativer uten pikselgrafikk. Neste designrunde kan bruke R01–R10 og fortsette ved Q21; tidligere åpne spørsmål beholdes.
+The documentation foundation was created with explicit permission. There is no app to start and no app test suite to run. Visual direction is also being explored through 2.5D and alternatives to pixel art. The next design round can use R01–R10 and continue at Q21; earlier open questions remain open.

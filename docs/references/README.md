@@ -1,201 +1,201 @@
-# Visuelle referanser til neste designsamtale
+# Visual references for the next design discussion
 
-Denne katalogen inneholder eksisterende bilder og illustrasjoner, ikke genererte bilder eller skjermbilder fra Chemtopia. Nye, genererte Chemtopia-forslag ligger separat i [grafikkforslagene](../art/README.md). Ingen retning eller spillressurs er godkjent. Velg gjerne bare enkelte egenskaper ved et bilde; et valg innebærer ikke at hele bildet eller ressurssettet skal brukes.
+This catalogue contains existing images and illustrations, not generated images or screenshots of Chemtopia. New generated Chemtopia concepts are in the separate [art proposals](../art/README.md). No direction or game asset is approved. You can choose individual properties of an image without selecting the whole image or asset set for use.
 
-Du kan svare slik: «V02: liker tydelige regionforskjeller, men ønsker mindre detalj», eller «V05 fremfor V08 for faglige aktiviteter». Vi trenger ikke velge én samlet stilpakke.
+For example: “V02: I like the clear regional differences, but want less detail,” or “V05 rather than V08 for chemistry activities.” We do not need to choose a single complete style package.
 
-## Oversikt
+## Overview
 
-| ID | Del av spillet vi kan diskutere | Hva referansen viser |
+| ID | Game aspect to discuss | What the reference shows |
 | --- | --- | --- |
-| V01 | Kart, samhandling og dialog | Svært enkel scene med tydelig dialogflate |
-| V02 | Verden og regioner | Pikselnatur med ulike fargepaletter |
-| V03 | Laboratoriets interiørstil | Benker og skap i detaljert pikselstil |
-| V04 | Interiør og små gjenstander | Vasker i samme pikselstil |
-| V05 | Faglig aktivitetsflate | Enkle, tydelige begerglass i vektorformat |
-| V06 | Faglig aktivitetsflate | En mer detaljert kolbeillustrasjon |
-| V07 | Forsøksoppsett | Byretteoppsett med flere apparatdetaljer |
-| V08 | Alternativ faglig tegnestil | Et begerglass med annen form- og fargebehandling |
+| V01 | Map, interaction and dialogue | Very simple scene with a clear dialogue area |
+| V02 | World and regions | Pixel-art nature with different palettes |
+| V03 | Laboratory interior style | Benches and cabinets in detailed pixel art |
+| V04 | Interiors and small objects | Sinks in the same pixel style |
+| V05 | Learning activity interface | Simple, clear vector beakers |
+| V06 | Learning activity interface | A more detailed flask illustration |
+| V07 | Experiment setup | A burette setup with more apparatus detail |
+| V08 | Alternative scientific illustration style | A beaker with different shape and colour treatment |
 
-## V01 — Enkel interaksjon og tydelig dialogflate
+## V01 — Simple interaction and a clear dialogue area
 
-![Godot-demonstrasjon med enkelt kart og dialogfelt](images/godot-object.png)
+![Godot demonstration with a simple map and dialogue box](images/godot-object.png)
 
-**Se på:** forholdet mellom kartet og teksten, tydelig knapp og hvor mye plass dialog tar.
+**Look at:** the map/text balance, clear button and amount of space occupied by dialogue.
 
-**Avveining:** stor dialogflate kan gjøre teksten lesbar, men dekker mye av verdenen. Selve kartet er en teknisk demonstrasjon, ikke et forslag til Chemtopias ferdige utseende.
+**Tradeoff:** a large dialogue area improves readability but covers much of the world. The map itself is a technical demonstration, not a proposal for Chemtopia's final appearance.
 
-**Ikke overfør automatisk:** rutenettbevegelse, kamp, motorvalg, engelskspråklig tekst eller akkurat denne knappestilen. Vi har valgt jevn bevegelse i Q19.
+**Do not automatically adopt:** grid movement, combat, engine choice or this particular button style. Smooth movement was selected in Q19. The English text is compatible with the later English-language instruction, but its wording is not proposed game content.
 
-Kilde: [Godots rollespilldemo](https://github.com/godotengine/godot-demo-projects/tree/master/2d/role_playing_game). Opphav: Godot Engine contributors. Repositorylisens: [MIT](credits/godot-MIT.txt). Bildet er lagret uendret som referanse.
+Source: [Godot role-playing demo](https://github.com/godotengine/godot-demo-projects/tree/master/2d/role_playing_game). Author: Godot Engine contributors. Repository licence: [MIT](credits/godot-MIT.txt). The image is stored unchanged as a reference.
 
-## V02 — Farger og regionale uttrykk
+## V02 — Colour and regional identity
 
-![LPC Revised, landskap med ulike fargepaletter](https://raw.githubusercontent.com/ElizaWy/LPC/main/GithubReadme.png)
+![LPC Revised landscape with different palettes](https://raw.githubusercontent.com/ElizaWy/LPC/main/GithubReadme.png)
 
-**Se på:** gjenkjennelige flater, kanter og sammenhengende stil på tvers av paletter.
+**Look at:** recognisable surfaces, edges and a coherent style across palettes.
 
-**Avveining:** mer detalj kan gjøre verdenen rikere, men kan skjule interaktive ting på telefon. Et særegent regionalt uttrykk kan hjelpe orientering, men kjemiske temaer må ikke reduseres til fargekoder.
+**Tradeoff:** detail can enrich the world but hide interactive objects on phones. Distinctive regional identities help orientation, but chemistry topics must not be reduced to colour codes.
 
-**Ikke overfør automatisk:** årstider, biomer eller fantasytema som faglig regionstruktur. Vi har ikke knyttet bestemte kjemitemaer til bestemte miljøer.
+**Do not automatically adopt:** seasons, biomes or fantasy themes as the educational region structure. No specific chemistry topic has been assigned to a particular environment.
 
-Kilde: [LPC Revised / Eliza Wyatt og bidragsytere](https://github.com/ElizaWy/LPC). [README med stil og lisensinformasjon](https://github.com/ElizaWy/LPC/blob/main/README.md). Kilden oppgir CC-BY 3.0 eller OGA-BY 3.0; konkrete bidrag krever individuell kreditering. Dette oversiktsbildet er eksternt lenket, ikke kopiert inn som spillressurs. Visning krever nett.
+Source: [LPC Revised / Eliza Wyatt and contributors](https://github.com/ElizaWy/LPC). [Style and licensing README](https://github.com/ElizaWy/LPC/blob/main/README.md). The source specifies CC-BY 3.0 or OGA-BY 3.0; individual contributions require their own credits. This overview is externally linked, not copied as a game asset. Viewing requires internet access.
 
-## V03 — Benker og skap i pikselstil
+## V03 — Pixel-art benches and cabinets
 
-![Pikselillustrasjoner av benker og skap](images/lpc-countertop.png)
+![Pixel-art benches and cabinets](images/lpc-countertop.png)
 
-**Se på:** perspektiv, dybde, gjenkjennelig innredning og detaljgrad.
+**Look at:** perspective, depth, recognisable furniture and detail level.
 
-**Avveining:** dette trepreget kan passe en varm verden, men er ikke et bilde av et moderne kjemilaboratorium. Det må vurderes om et slikt uttrykk passer din setting.
+**Tradeoff:** this wooden appearance may suit a warm world, but does not depict a modern chemistry laboratory. Its fit with your setting needs discussion.
 
-Kilde: [Countertop.png i LPC Revised](https://github.com/ElizaWy/LPC/blob/main/Objects/Furniture/Countertop.png). Kunstnere: Lanea Zimmerman (Sharm) og Eliza Wyatt (DeathsDarling). OGA-BY 3.0. Originalt grunnlag fra [LPC modified base tiles](https://opengameart.org/content/lpc-modified-base-tiles); endringer og farger ved Eliza Wyatt. [Kildens krediteringer](credits/lpc-furniture-credits.txt). Ingen endring av bildet er gjort her.
+Source: [Countertop.png in LPC Revised](https://github.com/ElizaWy/LPC/blob/main/Objects/Furniture/Countertop.png). Artists: Lanea Zimmerman (Sharm) and Eliza Wyatt (DeathsDarling). OGA-BY 3.0. Original basis: [LPC modified base tiles](https://opengameart.org/content/lpc-modified-base-tiles); modifications and colours by Eliza Wyatt. [Source credits](credits/lpc-furniture-credits.txt). The image is unchanged here.
 
-## V04 — Små interiørgjenstander
+## V04 — Small interior objects
 
-![Pikselillustrasjoner av vasker](images/lpc-sink.png)
+![Pixel-art sinks](images/lpc-sink.png)
 
-**Se på:** hvor mye en liten gjenstand kan fortelle, og om den er gjenkjennelig ved vanlig skjermstørrelse.
+**Look at:** how much a small object communicates and whether it is recognisable at normal screen size.
 
-**Avveining:** detaljer som ser fine ut forstørret kan være vanskelige å oppfatte på kartet. Faglig viktige deler kan trenge en egen nærvisning.
+**Tradeoff:** details that look good enlarged may be difficult to see on a map. Scientifically important parts may need a separate close-up.
 
-Kilde: [Sink, Countertop.png i LPC Revised](https://github.com/ElizaWy/LPC/blob/main/Objects/Furniture/Sink%2C%20Countertop.png). Kunstnere: Lanea Zimmerman (Sharm) og Eliza Wyatt (DeathsDarling). OGA-BY 3.0. Originalt grunnlag fra [LPC modified base tiles](https://opengameart.org/content/lpc-modified-base-tiles); endringer og varianter ved Eliza Wyatt. [Kildens krediteringer](credits/lpc-furniture-credits.txt). Bildet er uendret.
+Source: [Sink, Countertop.png in LPC Revised](https://github.com/ElizaWy/LPC/blob/main/Objects/Furniture/Sink%2C%20Countertop.png). Artists: Lanea Zimmerman (Sharm) and Eliza Wyatt (DeathsDarling). OGA-BY 3.0. Original basis: [LPC modified base tiles](https://opengameart.org/content/lpc-modified-base-tiles); modifications and variants by Eliza Wyatt. [Source credits](credits/lpc-furniture-credits.txt). Image unchanged.
 
-For V03–V04: [OGA-BY 3.0-lisens](https://static.opengameart.org/OGA-BY-3.0.txt). Krediteringene gjelder referansebildene; de er ikke en beslutning om å bruke disse ressursene i spillet.
+For V03–V04: [OGA-BY 3.0 licence](https://static.opengameart.org/OGA-BY-3.0.txt). Credits apply to the reference images; they are not a decision to use these assets in the game.
 
-## V05 — Enkle fagillustrasjoner
+## V05 — Simple scientific illustrations
 
-![Begerglass tegnet av Xavax](images/beakers.svg)
+![Beakers drawn by Xavax](images/beakers.svg)
 
-**Se på:** tydelige konturer, få distraksjoner og lesbarhet i ulike størrelser.
+**Look at:** clear outlines, few distractions and readability at different sizes.
 
-**Avveining:** skarp vektorgrafikk kan fungere godt for apparatdetaljer, men skiller seg fra kartets pikselstil.
+**Tradeoff:** sharp vector graphics can work well for apparatus details but differ from a pixel-art map.
 
-Kilde: [Bioicons, Xavax: Beakers](https://github.com/duerrsimon/bioicons/blob/master/static/icons/cc-0/Lab_apparatus/Xavax/Beakers.svg). CC0 ifølge kildens ikonregister. [CC0-tekst](credits/bioicons-CC0.txt). Uendret referanse.
+Source: [Bioicons, Xavax: Beakers](https://github.com/duerrsimon/bioicons/blob/master/static/icons/cc-0/Lab_apparatus/Xavax/Beakers.svg). CC0 according to the source icon registry. [CC0 text](credits/bioicons-CC0.txt). Unchanged reference.
 
-## V06 — Kolbe med flere detaljer
+## V06 — A flask with more detail
 
-![Erlenmeyerkolbe tegnet av Xavax](images/erlenmeyer.svg)
+![Erlenmeyer flask drawn by Xavax](images/erlenmeyer.svg)
 
-**Se på:** silhuett, apparatdetaljer og hvor mye visuell realisme du ønsker.
+**Look at:** silhouette, apparatus details and desired visual realism.
 
-**Avveining:** flere detaljer kan gjøre et apparat lettere å kjenne igjen, men kan også oppfattes som mer presist eller målbart enn den planlagte simuleringen er.
+**Tradeoff:** detail can improve recognition, but may imply more precision or measurable behaviour than the intended simulation provides.
 
-Kilde: [Bioicons, Xavax: 1000 ml Erlenmeyer flask](https://github.com/duerrsimon/bioicons/blob/master/static/icons/cc-0/Lab_apparatus/Xavax/1000_ml_Erlenmeyer_flask.svg). CC0 ifølge kildens ikonregister. [CC0-tekst](credits/bioicons-CC0.txt). Uendret referanse.
+Source: [Bioicons, Xavax: 1000 ml Erlenmeyer flask](https://github.com/duerrsimon/bioicons/blob/master/static/icons/cc-0/Lab_apparatus/Xavax/1000_ml_Erlenmeyer_flask.svg). CC0 according to the source registry. [CC0 text](credits/bioicons-CC0.txt). Unchanged reference.
 
-## V07 — Et mer sammensatt forsøksoppsett
+## V07 — A more complex apparatus setup
 
-![Byretteoppsett fra Servier Medical Art](images/burette.svg)
+![Burette setup from Servier Medical Art](images/burette.svg)
 
-**Se på:** komponentenes synlighet og hvor mye plass et oppsett trenger på en telefon.
+**Look at:** component visibility and the space a setup needs on a phone.
 
-**Avveining:** en stor apparatillustrasjon kan gi faglig oversikt, men gir mindre plass til data, tekst og kontroller.
+**Tradeoff:** a large apparatus illustration offers a scientific overview but leaves less space for data, text and controls.
 
-Kilde: [Bioicons: burette-assembled](https://github.com/duerrsimon/bioicons/blob/master/static/icons/cc-by-3.0/Chemistry/Servier/burette-assembled.svg). Opphav: [Servier Medical Art](https://smart.servier.com/), lisens [CC-BY 3.0 Unported](https://creativecommons.org/licenses/by/3.0/). [Lokalt lagret lisenstekst](credits/bioicons-CC-BY-3.0.txt). Bildet er ikke endret.
+Source: [Bioicons: burette-assembled](https://github.com/duerrsimon/bioicons/blob/master/static/icons/cc-by-3.0/Chemistry/Servier/burette-assembled.svg). Author: [Servier Medical Art](https://smart.servier.com/), licence [CC-BY 3.0 Unported](https://creativecommons.org/licenses/by/3.0/). [Local licence text](credits/bioicons-CC-BY-3.0.txt). Image unchanged.
 
-## V08 — Alternativ stil for samme type utstyr
+## V08 — Another style for the same equipment type
 
-![Begerglass fra Servier Medical Art](images/beaker-servier.svg)
+![Beaker from Servier Medical Art](images/beaker-servier.svg)
 
-**Se på:** hvordan denne fremstillingen sammenlignes med V05 i kontur, skygge og detalj.
+**Look at:** comparison with V05 in outline, shading and detail.
 
-**Avveining:** dekorative detaljer kan bidra til gjenkjennelse, men bør ikke forveksles med informasjon eleven skal tolke faglig.
+**Tradeoff:** decorative detail can aid recognition but must not be confused with information students should interpret scientifically.
 
-Kilde: [Bioicons: beaker-empty](https://github.com/duerrsimon/bioicons/blob/master/static/icons/cc-by-3.0/Chemistry/Servier/beaker-empty.svg). Opphav: [Servier Medical Art](https://smart.servier.com/), lisens [CC-BY 3.0 Unported](https://creativecommons.org/licenses/by/3.0/). [Lokalt lagret lisenstekst](credits/bioicons-CC-BY-3.0.txt). Bildet er ikke endret.
+Source: [Bioicons: beaker-empty](https://github.com/duerrsimon/bioicons/blob/master/static/icons/cc-by-3.0/Chemistry/Servier/beaker-empty.svg). Author: [Servier Medical Art](https://smart.servier.com/), licence [CC-BY 3.0 Unported](https://creativecommons.org/licenses/by/3.0/). [Local licence text](credits/bioicons-CC-BY-3.0.txt). Image unchanged.
 
-## Hva disse referansene ikke avklarer
+## What these references do not settle
 
-Figurdesign, komplett laboratorieutseende, telefonoppsett, kjemiske partikkelmodeller og produksjonsgrafikk er ikke ferdig utredet. Et apparatbilde godkjenner heller ikke en forsøksmetode, sikkerhetspraksis, skala eller kjemisk forklaring. De faglige detaljene må gjennomgås mot dine kilder.
+Character design, the complete laboratory appearance, phone layouts, chemical particle models and production art are not fully explored. An apparatus image does not approve a method, safety practice, scale or scientific explanation. Scientific details must be checked against your sources.
 
-## Kildespor
+## Source trail
 
-[sources.json](sources.json) inneholder kilde-URL, opphav, lisensopplysning og SHA-256 for innhentede bilder. Lokale bilder er uendret og ligger bare under dokumentasjon. V02 er bevisst beholdt som ekstern referanse med lenke til samlingens kreditering.
+[sources.json](sources.json) records source URLs, authors, licensing and SHA-256 checksums. Local images are unchanged and stored only under documentation. V02 deliberately remains an external reference linked to the collection's credits.
 
-Bioicons-opplysninger er kontrollert mot [icons.json](https://github.com/duerrsimon/bioicons/blob/master/static/icons/icons.json). Individuelle lisenser gjelder illustrasjonene; en samlet programvarelisens for en nettside erstatter dem ikke.
+Bioicons information was checked against [icons.json](https://github.com/duerrsimon/bioicons/blob/master/static/icons/icons.json). Individual illustration licences apply; a website's overall software licence does not replace them.
 
-## Flere retninger: 2,5D og alternativer til pixel art
+## More directions: 2.5D and alternatives to pixel art
 
-**2,5D** beskriver her et uttrykk med synlig dybde, ofte sett skrått ovenfra. Det kan lages med 2D-bilder eller med 3D-modeller. **Isometrisk** betyr et bestemt skrått perspektiv uten vanlig perspektivforminskning. **Low-poly** betyr enkle 3D-former med relativt få flater. Disse ordene beskriver ikke i seg selv kontrollene, læringsinnholdet eller hvilken teknologi vi må velge.
+**2.5D** here describes visible depth, often seen from an angled overhead view. It can use 2D images or 3D models. **Isometric** describes a particular angled projection without ordinary perspective foreshortening. **Low-poly** means simple 3D shapes with relatively few faces. These terms do not themselves decide controls, learning content or technology.
 
-Brukeren har åpnet visuell retning på nytt: pikselgrafikk er nå en kandidat sammen med andre uttrykk. Ingen av alternativene nedenfor er valgt.
+The user reopened visual direction: pixel art is one candidate alongside other styles. None of the options below has been selected.
 
-### V09 — Isometrisk 2D med illustrert dybde
+### V09 — Isometric 2D with illustrated depth
 
-![Godot isometrisk demonstrasjon med skråstilte vegger](images/godot-isometric.webp)
+![Godot isometric demonstration with angled walls](images/godot-isometric.webp)
 
-**Se på:** romfølelse, høydeforskjeller og hvordan en figur plasseres foran og bak vegger. Uttrykket er langt mer illustrert enn den enkle pikselreferansen.
+**Look at:** space, height differences and how a character appears in front of or behind walls. This is much more illustrated than the simple pixel reference.
 
-**Mulig verdi:** et laboratorium kan få tydelig dybde uten at eleven styrer et fritt kamera.
+**Potential value:** a laboratory can have clear depth without requiring a freely controlled camera.
 
-**Avveining:** vegger og benker kan skjule utstyr eller figuren. Det må løses i et eventuelt design, ikke overses fordi perspektivet ser pent ut.
+**Tradeoff:** walls and benches can hide equipment or the character. A future design must resolve this rather than overlook it because the perspective looks attractive.
 
-**Bare visuell referanse:** fantasyfigurer, skjeletter, mynter og mørk stemning er ikke foreslått som innhold i Chemtopia.
+**Visual reference only:** fantasy creatures, skeletons, coins and the dark mood are not proposed Chemtopia content.
 
-Kilde: [Godots isometriske demo](https://github.com/godotengine/godot-demo-projects/tree/master/2d/isometric). Godot Engine contributors, repositorylisens [MIT](credits/godot-MIT.txt). Skjermbildet er uendret.
+Source: [Godot isometric demo](https://github.com/godotengine/godot-demo-projects/tree/master/2d/isometric). Godot Engine contributors; repository licence [MIT](credits/godot-MIT.txt). Screenshot unchanged.
 
-### V10 — En liten, oversiktlig verden med 3D-former
+### V10 — A small, clear world with 3D shapes
 
-![Kenney City Builder med enkle bygningsformer](images/kenney-city.png)
+![Kenney City Builder with simple building shapes](images/kenney-city.png)
 
-**Se på:** lesbare tak, veier, tydelige silhuetter og behersket detaljmengde i et skrått oversiktsbilde.
+**Look at:** readable roofs, roads, clear silhouettes and restrained detail in an angled overview.
 
-**Mulig verdi:** en sammenhengende fagverden kan være lett å orientere seg i når bygninger og ruter er klare.
+**Potential value:** a connected educational world may be easy to navigate when buildings and routes are clear.
 
-**Avveining:** en kartoversikt er ikke samme utsnitt som et kamera som følger en figur. Vi må vurdere hvordan valget i Q19 eventuelt skal endres.
+**Tradeoff:** a map overview differs from a camera following a character. Any change to Q19 needs discussion.
 
-**Ikke overfør:** bybygging, veibygging, biltrafikk eller store avstander mellom kjemiaktiviteter.
+**Do not adopt:** city building, road construction, traffic or long journeys between chemistry activities.
 
-Kilde: [Kenney Starter Kit City Builder](https://github.com/kenneyNL/Starter-Kit-City-Builder). Kenney, programvare MIT og inkluderte ressurser CC0 ifølge [kildens README](credits/Starter-Kit-City-Builder-README.md). Skjermbildet er uendret.
+Source: [Kenney Starter Kit City Builder](https://github.com/kenneyNL/Starter-Kit-City-Builder). Kenney; software MIT and included assets CC0 according to the [source README](credits/Starter-Kit-City-Builder-README.md). Screenshot unchanged.
 
-### V11 — Avrundede, enkle 3D-former
+### V11 — Rounded, simple 3D shapes
 
-![Kenney 3D Platformer med myke former og pastellfarger](images/kenney-platformer.png)
+![Kenney 3D Platformer with soft shapes and pastel colours](images/kenney-platformer.png)
 
-**Se på:** store former, myke skygger, figurens tydelige silhuett og begrenset overflatedetalj.
+**Look at:** large shapes, soft shadows, a clear character silhouette and limited surface detail.
 
-**Mulig verdi:** figurer og utstyr kan fremstå vennlige og gjenkjennelige uten pikselgrafikk.
+**Potential value:** characters and equipment can feel welcoming and recognisable without pixel art.
 
-**Avveining:** akkurat dette uttrykket kan oppleves yngre enn målgruppen på 16–19 år. En roligere palett og mindre lekepreget figurdesign kan vurderes separat.
+**Tradeoff:** this particular style may feel younger than the 16–19 audience. A calmer palette and less toy-like characters could be considered separately.
 
-**Ikke overfør:** hopping, plattformer, mynter, poeng eller krav til koordinasjon. Referansen gjelder form og lys.
+**Do not adopt:** jumping, platforms, coins, points or coordination requirements. This reference concerns shape and lighting.
 
-Kilde: [Kenney Starter Kit 3D Platformer](https://github.com/kenneyNL/Starter-Kit-3D-Platformer). Kenney, MIT/CC0 ifølge [kildens README](credits/Starter-Kit-3D-Platformer-README.md). Skjermbildet er uendret.
+Source: [Kenney Starter Kit 3D Platformer](https://github.com/kenneyNL/Starter-Kit-3D-Platformer). Kenney; MIT/CC0 according to the [source README](credits/Starter-Kit-3D-Platformer-README.md). Screenshot unchanged.
 
-### V12 — Tydelig 2D-grafikk uten piksler
+### V12 — Clear non-pixel 2D graphics
 
-![Kenney Match-3 med store, tydelige 2D-symboler](images/kenney-match3.png)
+![Kenney Match-3 with large, clear 2D symbols](images/kenney-match3.png)
 
-**Se på:** avrundede konturer, symbolenes størrelse og hvordan ulik form supplerer farge.
+**Look at:** rounded outlines, symbol size and shapes supplementing colour.
 
-**Mulig verdi:** verktøyvalg og aktivitetskort kan være tydelige på telefon uten at grensesnittet må bruke pikselgrafikk.
+**Potential value:** tool selection and activity cards can be clear on a phone without pixel-art interfaces.
 
-**Avveining:** mange sterke farger, symboler og effekter samtidig kan gi for mye visuell støy rundt kjemien.
+**Tradeoff:** too many strong colours, symbols and effects can create visual noise around the chemistry.
 
-**Ikke overfør:** match-3, samling, spillbrett eller de avbildede symbolene som kjemiske modeller.
+**Do not adopt:** match-3, collecting, a game board or the pictured symbols as chemistry models.
 
-Kilde: [Kenney Starter Kit Match-3](https://github.com/kenneyNL/Starter-Kit-Match-3). Kenney; liten Godot-logo ved Kay Lousberg. MIT/CC0 ifølge [kildens README](credits/Starter-Kit-Match-3-README.md). Skjermbildet er uendret.
+Source: [Kenney Starter Kit Match-3](https://github.com/kenneyNL/Starter-Kit-Match-3). Kenney; small Godot logo by Kay Lousberg. MIT/CC0 according to the [source README](credits/Starter-Kit-Match-3-README.md). Screenshot unchanged.
 
-### V13 — Lys, materialer og enkel geometri
+### V13 — Light, materials and simple geometry
 
-![Kenney Basic Scene med enkle 3D-objekter og myke skygger](images/kenney-basic-scene.png)
+![Kenney Basic Scene with simple 3D objects and soft shadows](images/kenney-basic-scene.png)
 
-**Se på:** matte overflater, rolige bakgrunner og tydelige skygger som skiller gjenstandene fra gulvet.
+**Look at:** matte surfaces, calm backgrounds and clear shadows separating objects from the floor.
 
-**Mulig verdi:** laboratorieutstyr kan få lesbar dybde uten fotorealistiske teksturer.
+**Potential value:** laboratory equipment can have readable depth without photorealistic textures.
 
-**Avveining:** skygger som fungerer i et stort bilde kan bli mørke felt på en liten skjerm. Glass og tynne apparatdeler krever mer omtanke enn de solide formene her.
+**Tradeoff:** shadows that work in a large image may become dark patches on small screens. Glass and thin apparatus parts need more care than the solid forms here.
 
-**Ikke overfør:** middelaldersetting, våpen eller dekorative trofeer.
+**Do not adopt:** medieval settings, weapons or decorative trophies.
 
-Kilde: [Kenney Starter Kit Basic Scene](https://github.com/kenneyNL/Starter-Kit-Basic-Scene). Kenney, MIT/CC0 ifølge [kildens README](credits/Starter-Kit-Basic-Scene-README.md). Skjermbildet er uendret.
+Source: [Kenney Starter Kit Basic Scene](https://github.com/kenneyNL/Starter-Kit-Basic-Scene). Kenney; MIT/CC0 according to the [source README](credits/Starter-Kit-Basic-Scene-README.md). Screenshot unchanged.
 
-## Hvilke sammenligninger er mest nyttige?
+## Which comparisons are most useful?
 
-| Retning | Referanser | Viktig å avklare |
+| Direction | References | Important clarification |
 | --- | --- | --- |
-| Enkel pikselverden | V01–V04 og P01/P02 i grafikkforslagene | Om små apparatdetaljer fortsatt kan leses |
-| Tegnet isometrisk 2D | V09 og generert S2 | Synlighet bak innredning og enkel navigasjon |
-| Stilisert 3D med fast kamera | V10, V11, V13 og generert S3 | Om dybden hjelper, uten at kameraet blir en ekstra oppgave |
-| Ren 2D eller blandet uttrykk | V05–V08 og V12 | Hvordan kart og faglige aktiviteter kan ha forskjellige uttrykk uten å virke usammenhengende |
+| Simple pixel world | V01–V04 and P01/P02 in the art proposals | Whether small apparatus details remain readable |
+| Illustrated isometric 2D | V09 and generated S2 | Visibility behind furniture and simple navigation |
+| Stylised 3D with a fixed camera | V10, V11, V13 and generated S3 | Whether depth helps without making camera control an extra task |
+| Clean 2D or mixed style | V05–V08 and V12 | How maps and learning activities can look different without feeling disconnected |
 
-Ingen retning er objektivt «bedre» uten at vi vurderer lesbarhet, aldersuttrykk og brukervennlighet i den faktiske aktiviteten. Vi kan velge detaljer fra flere referanser uten å kopiere en eksisterende spillstil.
+No direction is objectively “better” without assessing readability, age suitability and usability in the actual activity. We can choose properties from several references without copying an existing game's style.

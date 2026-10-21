@@ -1,136 +1,156 @@
-# Valg til neste samtale
+# Choices for the next conversation
 
-Alle bokser står åpne. Dette er nye diskusjonsspørsmål **R01–R10**, ikke en omnummerering av Q01–Q62. Q21–Q62 er fortsatt ubesvart. Du kan svare i deler, med egne alternativer eller notater. Å velge en referanse betyr at du liker en egenskap, ikke at alle detaljene eller mekanikkene er godkjent.
+All boxes are unchecked. These are additional discussion questions **R01–R10**, not a renumbering of Q01–Q62. Q21–Q62 have not been answered by option letter; the subsequent English-language instruction governs project language. You can answer in sections with written alternatives or notes. Selecting a reference means liking a property, not approving all its details or mechanics.
 
-Se [nye eksterne referanser V09–V13](../references/README.md) og [genererte forslag P01, P02 og S1–S3](../art/README.md).
+See [additional external references V09–V13](../references/README.md) and [generated proposals P01, P02 and S1–S3](../art/README.md).
 
-## R01 — Hvilke visuelle retninger vil du undersøke videre? Velg så mange du vil.
+## R01 — Which visual directions would you like to explore further?
 
-- [ ] Pikselgrafikk, gjerne P01/P02 eller S1.
-- [ ] Tegnet 2,5D/isometrisk uttrykk, som deler av V09 eller S2.
-- [ ] Stilisert 3D med fast kamera, som deler av V10/V13 eller S3.
-- [ ] Flat, ren 2D uten piksler, særlig for faglige aktiviteter.
-- [ ] En blanding av uttrykk; hvilke deler: ___
-- [ ] Uavklart — diskuter med meg.
+Select any.
 
-Notater/annet: ___
+- [ ] Pixel art, such as P01/P02 or S1.
+- [ ] Illustrated 2.5D/isometric style, such as aspects of V09 or S2.
+- [ ] Stylised 3D with a fixed camera, such as aspects of V10/V13 or S3.
+- [ ] Flat, clean non-pixel 2D, particularly for chemistry activities.
+- [ ] A mixture of styles; which parts: ___
+- [ ] Undecided — discuss with me.
 
-**Avveining:** dybde gir romfølelse, men kan skjule gjenstander. Enklere bilder kan være tydelige, men trenger gjennomtenkt utforming for at utstyret skal være gjenkjennelig.
+Notes/alternative: ___
 
-## R02 — Hva liker du ved utstyrsarkene? Velg så mange du vil og angi celler.
+**Tradeoff:** depth creates a sense of space but can hide objects. Simpler images can be clear, but need deliberate design to keep equipment recognisable.
 
-- [ ] P01 rad A: enklere og grovere.
-- [ ] P01 rad B: mer detaljert, blågrønt glass.
-- [ ] P01 rad C: mer skråstilt og fiolett.
-- [ ] P02 rad A: enklere fremstilling.
-- [ ] P02 rad B: flere detaljer og mer dybde.
-- [ ] Bare enkelte objekter; for eksempel P01-B1: ___
-- [ ] Ingen av disse; endringer jeg ønsker: ___
-- [ ] Uavklart — diskuter med meg.
+## R02 — What do you like about the equipment sheets?
 
-Notater/annet: ___
+Select any and identify cells.
 
-**Avveining:** velg gjerne silhuett og detaljgrad uavhengig av palett. Bildene blander disse egenskapene, så ett radvalg skal ikke tolkes som en komplett stilgodkjenning.
+- [ ] P01 row A: simpler and chunkier.
+- [ ] P01 row B: more detailed, blue-green glass.
+- [ ] P01 row C: more angled and purple.
+- [ ] P02 row A: simpler representation.
+- [ ] P02 row B: more detail and depth.
+- [ ] Only particular objects; for example P01-B1: ___
+- [ ] None of these; changes I want: ___
+- [ ] Undecided — discuss with me.
 
-## R03 — Hvordan skal laboratoriet føles? Velg opptil to, eller skriv en kombinasjon.
+Notes/alternative: ___
 
-- [ ] Gjenkjennelig moderne skolelaboratorium.
-- [ ] Et rolig forskningsmiljø med lite dekor.
-- [ ] Varmt og personlig, men fortsatt tydelig kjemilaboratorium.
-- [ ] Mer oppdiktet og særpreget sted, med faglig korrekt utstyr.
-- [ ] Uavklart — diskuter med meg.
+**Tradeoff:** choose silhouette and detail independently of palette if you wish. The images mix these properties, so selecting a row is not full style approval.
 
-Notater/annet: ___
+## R03 — How should the laboratory feel?
 
-**Avveining:** en tydelig egenart kan gi tilhørighet; mye dekor kan gjøre det vanskeligere å finne faglig relevant utstyr. Ingen av valgene innebærer en bestemt historie.
+Select up to two, or describe a combination.
 
-## R04 — Hvordan skal utstyr vises på kartet og i en aktivitet? Velg ett.
+- [ ] A recognisable modern school laboratory.
+- [ ] A calm research setting with little decoration.
+- [ ] Warm and personal, but clearly a chemistry laboratory.
+- [ ] A more fictional, distinctive place with scientifically accurate equipment.
+- [ ] Undecided — discuss with me.
 
-- [ ] Samme bilde og detaljgrad begge steder.
-- [ ] Enkel kartfigur, med tydeligere nærvisning i aktiviteten.
-- [ ] Pikselutstyr på kartet, med skarpe fagillustrasjoner i aktiviteten.
-- [ ] Sammenlign konkrete skisser før jeg velger.
-- [ ] Uavklart — diskuter med meg.
+Notes/alternative: ___
 
-Notater/annet: ___
+**Tradeoff:** a distinctive identity can create belonging; extensive decoration can make relevant equipment harder to find. None of these choices implies a particular story.
 
-**Avveining:** nærvisning gir plass til detaljer, men må kjennes igjen som samme utstyr. Å bruke samme lille bilde overalt kan begrense lesbarheten.
+## R04 — How should equipment appear on the map and inside an activity?
 
-## R05 — Hvis vi bruker skrått perspektiv, hvordan skal skjulte objekter håndteres? Velg så mange du vil.
+Select one.
 
-- [ ] Unngå innredning som skjuler viktige arbeidsområder.
-- [ ] Gjøre fremre vegger eller enkelte møbler delvis gjennomsiktige ved behov.
-- [ ] Åpne en egen arbeidsvisning når eleven undersøker utstyret.
-- [ ] Jeg vil sammenligne dette med et mer rett ovenfra-perspektiv.
-- [ ] Uavklart — diskuter med meg.
+- [ ] The same image and detail level in both places.
+- [ ] Simple map object, with a clearer close-up during the activity.
+- [ ] Pixel equipment on the map, with sharp scientific illustrations in the activity.
+- [ ] Compare specific sketches before I choose.
+- [ ] Undecided — discuss with me.
 
-Notater/annet: ___
+Notes/alternative: ___
 
-Dette er bare aktuelt dersom du velger en retning med slik dybde. Det endrer ikke kameravalget i Q19 automatisk.
+**Tradeoff:** a close-up provides detail, but must remain recognisable as the same apparatus. Using the same small image everywhere can limit readability.
 
-## R06 — Hva skal tydeliggjøre at noe kan brukes? Velg så mange du vil.
+## R05 — If we use an angled view, how should hidden objects be handled?
 
-- [ ] En kort handlingstekst når eleven er nær, for eksempel en godkjent beskrivelse av handlingen.
-- [ ] En rolig kontur eller markør i tillegg til tekst.
-- [ ] En oversikt over tilgjengelige handlinger i rommet.
-- [ ] Minst mulig markering; hjelp først ved behov.
-- [ ] Uavklart — diskuter med meg.
+Select any.
 
-Notater/annet: ___
+- [ ] Avoid furniture that hides important work areas.
+- [ ] Make front walls or some furniture partly transparent when needed.
+- [ ] Open a separate work view when the student examines equipment.
+- [ ] Compare this with a more directly overhead view.
+- [ ] Undecided — discuss with me.
 
-**Avveining:** markører hjelper nye spillere, men mange samtidige markører kan skape rot. Dette må fortsatt passe den valgte interaksjonen i Q20.
+Notes/alternative: ___
 
-## R07 — Hvordan skal eleven velge laboratorieutstyr? Velg ett.
+This applies only if you choose this kind of depth. It does not automatically change the Q19 camera choice.
 
-- [ ] Utstyret er klart når aktiviteten starter.
-- [ ] Eleven velger mellom noen få relevante apparater og begrunner valget.
-- [ ] Eleven velger selv fra en større samling når læringsmålet krever det.
-- [ ] Forskjellig etter hvor mye støtte aktiviteten skal gi.
-- [ ] Uavklart — diskuter med meg.
+## R06 — What should signal that something can be used?
 
-Notater/annet: ___
+Select any.
 
-**Avveining:** apparatvalg kan være viktig praktisk læring, men blir ekstraarbeid hvis det bare gjentas uten et faglig poeng. Ingen bestemte riktige eller gale utstyrsvalg er laget.
+- [ ] Short action text when nearby, using an approved description of the action.
+- [ ] A subtle outline or marker alongside text.
+- [ ] An overview of available actions in the room.
+- [ ] Minimal marking; help only when needed.
+- [ ] Undecided — discuss with me.
 
-## R08 — Hva vil du først prøve for læringsverdi? Velg ett.
+Notes/alternative: ___
 
-- [ ] Ett kort undersøkelsesforløp: forventning, observasjon, forklaring.
-- [ ] Ett problem med beregning og forklarende tilbakemelding.
-- [ ] Ett valg av metode eller utstyr med faglig begrunnelse.
-- [ ] Én aktivitet som kobler to kjemiske representasjoner.
-- [ ] Diskuter kandidater først; ingen valgt ennå.
+**Tradeoff:** markers help new players, but many simultaneous markers create clutter. This must still fit the interaction selected in Q20.
 
-Notater/annet: ___
+## R07 — How should students select laboratory equipment?
 
-Dette hjelper avklaringen av Q09 og Q55. Det velger ikke kjemitema eller godkjenner konkrete oppgaver.
+Select one.
 
-## R09 — Hvilke nye idéer er verdt mer diskusjon? Velg så mange du vil.
+- [ ] Equipment is ready when the activity begins.
+- [ ] Choose between a few relevant apparatus items and justify the choice.
+- [ ] Choose from a larger collection when the learning objective requires it.
+- [ ] Vary this according to the support provided by the activity.
+- [ ] Undecided — discuss with me.
 
-- [ ] I19: Åpent innsyn i laboratoriet.
-- [ ] I20: Utstyr som velges for funksjon fremfor sjeldenhet.
-- [ ] I21: Sammenligne to forsøk eller datasett.
-- [ ] I22: Velge en faglig forbindelse mellom regioner.
-- [ ] I23: Kort oppsummering når eleven kommer tilbake.
-- [ ] I24: Skille observasjon fra tolkning i en aktivitet.
-- [ ] I25: Faglig progresjon og verktøytilgang synlig hver for seg.
-- [ ] I26: Samme oppgave i lærerforklart og utforskende form.
-- [ ] I27: En kort, valgfri forklaring av spillhandlinger.
-- [ ] I28: Vurdering av lesbarhet før stor grafikkproduksjon.
-- [ ] Ingen av disse nå.
-- [ ] Uavklart — diskuter med meg.
+Notes/alternative: ___
 
-Notater/annet: ___
+**Tradeoff:** apparatus selection can teach practical skills, but becomes busywork if repeated without an educational purpose. No specific correct or incorrect equipment choices have been created.
 
-Idéene er forklart med avveininger i [idéverkstedet](ideas.md).
+## R08 — What would you first like to test for educational value?
 
-## R10 — Hvilket lite designsteg vil du vurdere etter spørsmålene? Velg ett.
+Select one.
 
-- [ ] Et nytt grafikkark basert på noen få av mine valgte objekter.
-- [ ] To eller tre statiske skjermskisser til én faglig aktivitet.
-- [ ] Et skriftlig designpremiss med et avgrenset første spillbart steg.
-- [ ] Mer diskusjon før nye skisser eller premiss.
-- [ ] Uavklart — diskuter med meg.
+- [ ] One short investigation: expectation, observation and explanation.
+- [ ] One calculation problem with explanatory feedback.
+- [ ] One method or equipment choice with scientific justification.
+- [ ] One activity connecting two chemistry representations.
+- [ ] Discuss candidates first; none selected yet.
 
-Notater/annet: ___
+Notes/alternative: ___
 
-Et svar her er en retning for neste forslag. Spillimplementering starter fortsatt først etter at det konkrete premisset og steget er godkjent.
+This helps clarify Q09 and Q55. It does not select a chemistry topic or approve specific questions.
+
+## R09 — Which new ideas merit more discussion?
+
+Select any.
+
+- [ ] I19: An unobstructed view into the laboratory.
+- [ ] I20: Equipment chosen for function rather than rarity.
+- [ ] I21: Compare two experiments or datasets.
+- [ ] I22: Follow a subject connection between regions.
+- [ ] I23: A short summary on returning.
+- [ ] I24: Separate observation from interpretation.
+- [ ] I25: Show learning progress and tool access separately.
+- [ ] I26: The same objective in guided and exploratory forms.
+- [ ] I27: Short optional help with game actions.
+- [ ] I28: Check readability before extensive art production.
+- [ ] None of these now.
+- [ ] Undecided — discuss with me.
+
+Notes/alternative: ___
+
+The ideas and their tradeoffs are explained in the [idea workshop](ideas.md).
+
+## R10 — Which small design step would you like to consider after the questions?
+
+Select one.
+
+- [ ] A new art sheet based on a few of my selected objects.
+- [ ] Two or three static screen sketches for one chemistry activity.
+- [ ] A written design premise with a bounded first playable step.
+- [ ] More discussion before new sketches or a premise.
+- [ ] Undecided — discuss with me.
+
+Notes/alternative: ___
+
+An answer indicates a direction for the next proposal. Game implementation still begins only after the specific premise and step are approved.
