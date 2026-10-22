@@ -1,4 +1,4 @@
-import {dragStored} from './equipment-menu-helpers.mjs';
+import {dragStored,menuPoint,hoverMenu} from './equipment-menu-helpers.mjs';
 // Real Chromium input tests through CDP, without a browser automation dependency.
 import {spawn} from 'node:child_process';
 import {mkdtemp,writeFile,rm} from 'node:fs/promises';
@@ -28,7 +28,7 @@ try{
  assert.equal(await evaluate("document.querySelectorAll('.equipment-button').length"),6);
  const key=async(key,code=key)=>{const windowsVirtualKeyCode=({Enter:13,Escape:27,Tab:9,ArrowLeft:37,ArrowUp:38,ArrowRight:39,ArrowDown:40,Space:32})[code]||0;await send('Input.dispatchKeyEvent',{type:'keyDown',key,code,windowsVirtualKeyCode,text:key==='Enter'?'\r':key===' '?' ':undefined});await send('Input.dispatchKeyEvent',{type:'keyUp',key,code,windowsVirtualKeyCode});};
  const point=async(id,dx=0,dy=40)=>evaluate(`(()=>{const o=document.querySelector('[data-id="${id}"]');const p=new DOMPoint(${dx},${dy}).matrixTransform(o.getScreenCTM());return {x:p.x,y:p.y};})()`);
- const click=async selector=>{if(selector.includes('data-equipment')){await send('Input.dispatchMouseEvent',{type:'mouseMoved',x:15,y:220});await pause(250);}else{await send('Input.dispatchMouseEvent',{type:'mouseMoved',x:800,y:400});await pause(220);}const p=await evaluate(`(()=>{const e=document.querySelector(${JSON.stringify(selector)});e.scrollIntoView({block:'center'});const r=e.getBoundingClientRect();return {x:r.x+r.width/2,y:r.y+r.height/2};})()`);await send('Input.dispatchMouseEvent',{type:'mousePressed',button:'left',clickCount:1,...p});await send('Input.dispatchMouseEvent',{type:'mouseReleased',button:'left',clickCount:1,...p});};
+ const click=async selector=>{if(selector.includes('data-equipment')){await hoverMenu(send,evaluate,pause);}else{await send('Input.dispatchMouseEvent',{type:'mouseMoved',x:800,y:400});await pause(220);}const p=await evaluate(`(()=>{const e=document.querySelector(${JSON.stringify(selector)});e.scrollIntoView({block:'center'});const r=e.getBoundingClientRect();return {x:r.x+r.width/2,y:r.y+r.height/2};})()`);await send('Input.dispatchMouseEvent',{type:'mousePressed',button:'left',clickCount:1,...p});await send('Input.dispatchMouseEvent',{type:'mouseReleased',button:'left',clickCount:1,...p});};
  async function drag(id,x,y,{dx=0,dy=40,release=true,path=[]}={}){
   const stored=await dragStored({id,x,y,release,send,evaluate,pause});if(stored)return stored;
   await evaluate("document.querySelector('#bench').scrollIntoView({block:'center'})");
@@ -49,8 +49,8 @@ try{
  async function mark(id,x,y,homeX,homeY){
   const drop=await drag(id,x,y,{dy:id==='pencil'?40:30,release:false,path:[{x:homeX,y:10},{x,y:10}]});
   await key(' ','Space');
-  await send('Input.dispatchMouseEvent',{type:'mouseMoved',buttons:1,x:15,y:300});
-  await send('Input.dispatchMouseEvent',{type:'mouseReleased',button:'left',clickCount:1,x:15,y:300});
+  await send('Input.dispatchMouseEvent',{type:'mouseMoved',buttons:1,...await menuPoint(evaluate)});
+  await send('Input.dispatchMouseEvent',{type:'mouseReleased',button:'left',clickCount:1,...await menuPoint(evaluate)});
   assert.equal(await evaluate(`document.querySelector('[data-equipment="${id}"]').dataset.stored`),'true','tool returns to menu');
 
  }
@@ -73,6 +73,17 @@ try{
  await drag('ruler',p.x+90,325,{dy:80,path:[{x:1320,y:230},{x:p.x+90,y:230}]});
  const measured=await evaluate(`(()=>{const p=document.querySelector('[data-id=paper]');return{baseline:+p.querySelector('[data-mark=baseline]').dataset.y,front:+p.querySelector('[data-mark=front]').dataset.y,bands:[...p.querySelectorAll('[data-band]')].map(e=>+e.dataset.y)};})()`);
  await click('#finish');assert.ok(await evaluate("!!document.querySelector('#rf-form')"));
+ assert.ok((await evaluate("document.querySelector('#explanation legend').textContent")).includes('R_F'));
+ // Measure with a freely draggable ruler on the frozen review paper.
+ await pause(500);await evaluate("document.querySelector('#review-paper').scrollIntoView({block:'center'})");await pause(200);
+ const rulerBefore=await evaluate("document.querySelector('[data-review-ruler]').getAttribute('transform')");
+ const rp=await evaluate("(()=>{document.querySelector('#review-paper').scrollIntoView({block:'center'});const p=new DOMPoint(95,100).matrixTransform(document.querySelector('#review-paper').getScreenCTM());return{x:p.x,y:p.y};})()");
+ await send('Input.dispatchMouseEvent',{type:'mousePressed',button:'left',clickCount:1,...rp});
+ await send('Input.dispatchMouseEvent',{type:'mouseMoved',buttons:1,x:rp.x-80,y:rp.y-30});
+ await send('Input.dispatchMouseEvent',{type:'mouseReleased',button:'left',clickCount:1,x:rp.x-80,y:rp.y-30});
+ await screenshot('chemtopia-review-ruler.png');
+ assert.notEqual(await evaluate("document.querySelector('[data-review-ruler]').getAttribute('transform')"),rulerBefore);
+ assert.equal(await evaluate("+document.querySelector('#review-paper [data-mark=baseline]').dataset.y"),measured.baseline,'moving ruler preserves experiment');
  const names=await evaluate("[...document.querySelectorAll('#rf-form input[name^=distance]')].map(e=>e.name.slice(9))");
  assert.equal(names.length,7);
  await evaluate(`(()=>{for(const e of document.querySelectorAll('#rf-form input'))e.value=e.name.startsWith('rf')?'0':'1';})()`);
@@ -96,8 +107,8 @@ try{
  await click('#finish');assert.equal(await evaluate("!!document.querySelector('#rf-form')"),false);
  console.log('PASS physically possible submerged-spot mistake and unsuccessful Finish review');
  await click('#back-distillation');
- for(let i=0;i<40;i++){if(await evaluate("document.querySelectorAll('.equipment-button').length===12"))break;await pause(100);}
- assert.equal(await evaluate("document.querySelectorAll('.equipment-button').length"),12);assert.deepEqual(exceptions,[]);
+ for(let i=0;i<40;i++){if(await evaluate("document.querySelectorAll('.equipment-button').length===13"))break;await pause(100);}
+ assert.equal(await evaluate("document.querySelectorAll('.equipment-button').length"),13);assert.deepEqual(exceptions,[]);
  console.log('PASS restart, return navigation and no browser exceptions');
 }finally{
  if(ws)ws.close();chrome.kill();server.kill();await pause(300);await rm(profile,{recursive:true,force:true,maxRetries:5,retryDelay:100});

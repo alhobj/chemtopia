@@ -10,7 +10,7 @@ Add water to the impure potassium nitrate, warm the beaker on the heater, and ho
 
 ![Collected product and material accounting](../art/previews/recrystallisation-review.png)
 
-The model distinguishes undissolved starting material, dissolved solute and recrystallised solid, as well as sand and water. Catching original solid on a filter does not count as recrystallisation. Excess water, early cooling/collection, reused contaminated paper, absent paper, overflow and spills remain possible. All material is retained in the accounting.
+The model distinguishes undissolved starting material, dissolved solute and recrystallised solid, as well as sand and water. Catching original solid on a filter does not count as recrystallisation. Excess water, early cooling/collection, reused contaminated paper, absent paper, overflow and spills remain possible. Heating plain water or solution now evaporates water while leaving solute behind. Water vapour, liquids, solids and spills are all retained in the accounting.
 
 The collected crystals are wet. The reported recovery counts solute in crystals rather than dry product mass. The first version uses a labelled qualitative temperature-dependent capacity, not verified potassium-nitrate solubility data or a numerical temperature prediction. See [the specification](recrystallisation-prototype-spec.md) for defaults and limits.
 

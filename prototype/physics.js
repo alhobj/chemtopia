@@ -125,7 +125,16 @@ export class PhysicsWorld {
  }
  step(seconds,heldId){
   this.heldId=heldId;this.sync();this.syncLinks();this.accumulator+=Math.min(seconds,.05);
-  while(this.accumulator>=1/120){Engine.update(this.engine,1000/120);this.seatOnContact();this.accumulator-=1/120;}
+  while(this.accumulator>=1/120){
+   const rests=[...this.entries.values()].filter(e=>['stand','clampStand'].includes(this.state.items[e.body.label].kind)&&!e.body.isStatic).map(e=>({body:e.body,x:e.body.position.x}));
+   Engine.update(this.engine,1000/120);
+   // Resolve tiny solver creep as static friction while the stand base rests on the bench.
+   // A pickup, a real impact or tipping still releases it normally.
+   for(const {body,x} of rests)if(Math.abs(body.angle)<3*RAD&&Math.abs(body.velocity.x)<.12&&Math.abs(body.angularVelocity)<.002&&contacts(body,[this.bench]).length){
+    Body.setPosition(body,{x,y:body.position.y});Body.setVelocity(body,{x:0,y:body.velocity.y});
+   }
+   this.seatOnContact();this.accumulator-=1/120;
+  }
   this.read();
   const hadSpill=this.state.passiveFlow.length>0;this.state.passiveFlow=[];
   for(const item of Object.values(this.state.items)){

@@ -1,3 +1,5 @@
+export const menuPoint=evaluate=>evaluate("(()=>{const r=document.querySelector('#equipment-tab').getBoundingClientRect();return{x:r.left+r.width/2,y:r.top+Math.min(100,r.height/2)};})()");
+export async function hoverMenu(send,evaluate,pause){await send('Input.dispatchMouseEvent',{type:'mouseMoved',...await menuPoint(evaluate)});await pause(250);}
 // Real pointer drag from a stored inventory row to the SVG bench.
 export async function dragStored({id,x,y,release,send,evaluate,pause}){
  const stored=await evaluate(`document.querySelector('[data-equipment="${id}"]').dataset.stored==='true'`);

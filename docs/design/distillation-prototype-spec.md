@@ -6,7 +6,7 @@
 
 Collect an acetone-rich distillate from an acetone–water mixture. Acetone is the desired recovered component; one simple distillation does not promise pure acetone.
 
-Provide a feed beaker, empty distillation flask, still head, thermometer, Liebig condenser, two clamp stands, electric heater, two collecting beakers, two movable water hoses, supply tap and drain. The apparatus begins unassembled. All equipment is available, without target ghosts or correct-position guides.
+Provide a feed beaker, empty distillation flask, still head, thermometer, Liebig condenser, two clamp stands, electric heater, two collecting beakers, a removable filling funnel, two movable water hoses, supply tap and drain. The apparatus begins unassembled. All equipment is available, without target ghosts or correct-position guides.
 
 Students drag, assemble, pour, connect water, open the tap and heat. Space toggles the selected practical action; ordinary buttons remain keyboard operable. Unsupported equipment falls, collides, tips and spills. Picking up an item disconnects its glass/clamp joints. Hose ends follow their connected fittings and can be dragged off again. Restart resets the attempt; Finish ends practical work and opens review.
 
@@ -20,16 +20,15 @@ Missing glass connections, an open head, missing coolant, a missed receiver, ove
 
 ## Implemented model and explicit limits
 
-The 50:50 feed uses **model mole amounts**: 0.5 acetone and 0.5 water. Both components are volatile. Ordinary pouring transfers the current mixture proportionally. Early vapour is acetone-enriched; continued removal changes the remaining liquid and vapour composition.
+The 50:50 feed uses model amounts of 0.5 acetone and 0.5 water. Ordinary pouring transfers the mixture proportionally. Following the owner's 22 October correction, **this is an explicitly simplified two-stage model**: acetone alone vaporises at 56°C until depleted; the entire starting water amount remains in the flask while the temperature rises, and water starts vaporising only at 100°C. Switch-off or lost heater contact cools towards 20°C; vaporisation stops below the current component's boiling point. The display and material transfer use the same flask temperature.
 
-The qualitative relation is `y = αx / (1 + (α−1)x)`, using a tunable constant `α = 3`. It illustrates preferential vaporisation; it is not measured acetone–water equilibrium data and does not predict achievable laboratory purity.
+This intentionally replaces the earlier constant-relative-volatility balance. It is **not a real acetone–water vapour–liquid equilibrium calculation** and does not predict mixture boiling temperature, composition or achievable purity. Both represented components remain conserved across the flask, distillate, spills and escaped vapour.
 
 Readable simulation defaults in `prototype/distillation-model.js`:
 
 | Parameter | Prototype value |
 | --- | --- |
-| Warming / cooling rate | 0.13 / 0.055 normalised heat units per second |
-| Boiling threshold | 1 normalised heat unit |
+| Material-transfer thresholds | Acetone 56°C; water 100°C |
 | Vaporisation rate | 0.075 model amount per second |
 | Lower-fed / upper-fed jacket target | 1 / 0.35 |
 | Jacket fill/drain rate | 0.6 per second |
@@ -37,7 +36,7 @@ Readable simulation defaults in `prototype/distillation-model.js`:
 | Open thermometer joint path fraction | 0.4 |
 | Temperature display | 20°C ambient, 56°C plateau, 100°C upper limit |
 | Display warming / cooling limit | 5 / 4°C per simulation second |
-| End of acetone display plateau | Remaining flask acetone below 10% of initial acetone |
+| End of acetone plateau | No remaining acetone above numerical tolerance |
 
 These implementation defaults are tunable qualitative approximations, not owner-selected numerical measurements, real experimental times or calibrated yield predictions. The owner subsequently requested an analogue thermometer with a circular digital °C readout: 20°C initially, a 56°C acetone collection plateau, then a rise towards 100°C, and cooling towards 20°C after switch-off. This supersedes the original qualitative-only thermometer. It is a simplified teaching curve, not a prediction of the boiling temperature of a real acetone–water mixture. There is no pressure, entrainment, bumping, breakage or injury model. Jacket water and process water are separate.
 
@@ -49,10 +48,10 @@ The student chooses when to Finish. Report **acetone recovery** (distilled aceto
 
 A result with actual distilled acetone and collected acetone fraction above the 50% feed opens the explanation question; there is no arbitrary minimum yield or purity target. Reduced-yield reversed-hose results remain reviewable and can succeed. Chemistry explanations appear after Finish.
 
-**Why is the early distillate richer in acetone than the starting mixture?**
+**Why is acetone collected before water in this model?**
 
-- **A.** Acetone is more volatile, so the vapour is enriched in acetone; cooling condenses that vapour. **Correct.**
-- **B.** Water cannot enter the vapour at all.
+- **A.** Acetone has the lower boiling point; the condenser cools its vapour back to liquid. **Correct.**
+- **B.** Water is permanently unable to vaporise.
 - **C.** The condenser filters acetone molecules out of the liquid feed.
 
 Allow retry without currency. Explain that both liquids can vaporise and recovery differs from purity.
@@ -69,7 +68,7 @@ The acetone–water example, hose mistake and qualitative model are owner-select
 
 ## Verification
 
-Run `npm test` for both material models and physics regressions, and `npm run test:browser` for real Chromium mouse/Space playthroughs. Checks cover evolving two-component vapour, conservation, lower versus upper supply under identical conditions, disconnected/tap-off coolant, missed receivers, overflow, direct feed transfer, collisions/spills, assembly, question retry and fresh navigation. See [the prototype guide](../../prototype/README.md).
+Run `npm test` for both material models and physics regressions, and `npm run test:browser` for real Chromium mouse/Space playthroughs. Checks cover both boiling stages, stopped flow below each threshold, filling through the removable funnel, conservation, lower versus upper supply under identical conditions, disconnected/tap-off coolant, missed receivers, overflow, direct feed transfer, collisions/spills, assembly, question retry and fresh navigation. See [the prototype guide](../../prototype/README.md).
 
 ## History
 
@@ -80,6 +79,6 @@ The first proposal used salt solution and a cooling switch. The owner rejected i
 
 The circular digital badge remains above the analogue stem, follows it when moved and shares the analogue column's reading. It is an annotation rather than an extra rigid collision body. An assembled thermometer follows the flask temperature; detaching it cools its reading towards ambient. Heater contact is still required.
 
-The first warm-up follows the existing thermal state. During the main acetone collection stage, the display holds at 56°C. As the final 10% of starting acetone in the flask is removed, the temperature target progresses to 100°C; the rate limit gives a smooth rise. This tail threshold and visual rates are implementation defaults. Switch-off or loss of heater contact immediately starts cooling towards 20°C, independent of the collection stage. Restart returns both readings to 20°C.
+The display now follows the same temperature that gates vaporisation: warm from 20°C to 56°C, hold while acetone remains, rise towards 100°C after acetone depletion, then boil the remaining water. Switch-off or loss of contact cools towards 20°C. The earlier 10% tail transition and independent thermal-energy gate are superseded.
 
-The constant-relative-volatility material balance is unchanged: both components can enter vapour. Real acetone–water mixtures need not exhibit a flat pure-acetone boiling plateau. This owner-requested teaching display is explicitly labelled a simplified temperature curve.
+Use the removable funnel to fill the flask. Remove/store it before attaching the still head. Either component can be poured or spilled with the existing controls; coolant remains a separate circuit. Answer options are shuffled on each Finish, preserving marking and retry.

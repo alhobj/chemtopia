@@ -95,3 +95,7 @@ The rigid paper is a qualitative two-dimensional strip. Pencil, markers and rule
 ## History
 
 The first proposal offered water-soluble ink with water versus a leaf-pigment example, and asked whether to introduce R_F immediately. A preparation page and navigation were pushed first. The owner's answer selected water, coloured markers and R_F; no further approval of those same choices is required. Other separation techniques remain outside this increment.
+
+## Review revision — 22 October 2026
+
+The Finish image has a freely draggable ruler in centimetres. Its zero can be aligned with the pencil baseline; students measure the baseline-to-band-centre and baseline-to-marked-front distances and enter their own R_F calculations. Moving this ruler leaves the frozen experiment unchanged. The explanation now asks how R_F is calculated from these measurements, with retry and shuffled option order. Completion still requires correct measurements/calculations as well as the explanation.

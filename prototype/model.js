@@ -42,7 +42,7 @@ function hasAncestor(state,item,id) {
 export function receiverBelow(state,point,excluded,sourceId) {
   return Object.values(state.items).filter(o=> {
     if(o.stored||excluded.has(o.id)||o.id===sourceId||hasAncestor(state,o,sourceId))return false;
-    if(o.kind==='beaker')return Math.abs(point.x-o.x)<40&&point.y<=o.y+55;
+    if(o.kind==='beaker')return Math.abs(o.angle||0)<35&&Math.abs(point.x-o.x)<40&&point.y<=o.y+55;
     if(o.kind==='funnel'&&Math.abs(o.angle||0)<30)return Math.abs(point.x-o.x)<52&&point.y<=o.y+12;
     return false;
   }).sort((a,b)=>Math.max(0,a.y-point.y)-Math.max(0,b.y-point.y))[0]??null;
@@ -70,6 +70,15 @@ function route(state,point,water,sand,excluded,sourceId) {
   if(paper){paper.sand+=sand;sand=0;}
   route(state,{x:target.x,y:target.y+78},water,sand,excluded,sourceId);
 }
+function transferWithoutWaterSpill(state,source,point,water,sand,excluded,sourceId){
+ const materials=Object.values(state.items).map(o=>({o,water:o.water,sand:o.sand})),spills=state.spills.map(o=>({...o})),flow=state.flow;
+ const spilled=()=>state.spills.reduce((n,o)=>n+o.water,0),before=spilled();
+ const restore=()=>{for(const m of materials)for(const k of ['water','sand'])if(m[k]===undefined)delete m.o[k];else m.o[k]=m[k];state.spills=spills.map(o=>({...o}));state.flow=[];};
+ const attempt=f=>{restore();if(f===0)return;source.water=Math.max(0,(source.water||0)-water*f);source.sand=Math.max(0,(source.sand||0)-sand*f);route(state,point,water*f,sand*f,new Set(excluded),sourceId);};
+ attempt(1);let fraction=1;
+ if(spilled()>before){let low=0,high=1;for(let i=0;i<28;i++){const mid=(low+high)/2;attempt(mid);if(spilled()>before)high=mid;else low=mid;}fraction=low;attempt(fraction);}
+ state.waterBlocked=fraction<1;state.flow=[...flow,...state.flow];return fraction;
+}
 export function pour(state,id,amount) {
   state.flow=[];
   if(state.phase!=='working'||!Number.isFinite(amount)||amount<=0)return;
@@ -79,8 +88,7 @@ export function pour(state,id,amount) {
   if(total<=0)return;
   const taken=Math.min(total,amount),ratio=taken/total;
   const water=source.water*ratio,sand=source.sand*ratio;
-  source.water=Math.max(0,source.water-water);source.sand=Math.max(0,source.sand-sand);
-  route(state,pourPoint(source),water,sand,new Set([id]),id);
+  return transferWithoutWaterSpill(state,source,pourPoint(source),water,sand,new Set([id]),id);
 }
 export function totals(state) {
   return [...Object.values(state.items),...state.spills].reduce((sum,o)=>({water:sum.water+(o.water||0),sand:sum.sand+(o.sand||0)}),{water:0,sand:0});
@@ -108,8 +116,7 @@ export function physicsFor(state){
   const point={x:root.x+downhill*lip*Math.cos(angle),y:root.y+downhill*lip*Math.sin(angle)};
   const remaining=(item.water||0)+(item.sand||0);if(remaining<1e-5)fraction=1;
   const water=(item.water||0)*fraction,sand=(item.sand||0)*fraction;
-  if('water'in item)item.water-=water;if('sand'in item)item.sand-=sand;
-  const flow=state.flow;state.flow=[];route(state,point,water,sand,new Set([root.id,item.id]),root.id);state.passiveFlow.push(...state.flow);state.flow=flow;
+  const flow=state.flow;state.flow=[];transferWithoutWaterSpill(state,item,point,water,sand,new Set([root.id,item.id]),root.id);state.passiveFlow.push(...state.flow);state.flow=flow;
  });worlds.set(state,world);}
  return world;
 }

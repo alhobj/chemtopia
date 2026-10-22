@@ -1,4 +1,4 @@
-import {dragStored} from './equipment-menu-helpers.mjs';
+import {dragStored,menuPoint,hoverMenu} from './equipment-menu-helpers.mjs';
 // Real Chromium input tests through CDP, without a browser automation dependency.
 import {spawn} from 'node:child_process';
 import {mkdtemp,writeFile,rm} from 'node:fs/promises';
@@ -28,7 +28,7 @@ try{
  assert.equal(await evaluate("document.querySelectorAll('.equipment-button').length"),6);
  const key=async(key,code=key)=>{const windowsVirtualKeyCode=({Enter:13,Escape:27,Tab:9,ArrowLeft:37,ArrowUp:38,ArrowRight:39,ArrowDown:40,Space:32})[code]||0;await send('Input.dispatchKeyEvent',{type:'keyDown',key,code,windowsVirtualKeyCode,text:key==='Enter'?'\r':key===' '?' ':undefined});await send('Input.dispatchKeyEvent',{type:'keyUp',key,code,windowsVirtualKeyCode});};
  const point=async(id,dx=0,dy=40)=>evaluate(`(()=>{const o=document.querySelector('[data-id="${id}"]');const p=new DOMPoint(${dx},${dy}).matrixTransform(o.getScreenCTM());return {x:p.x,y:p.y};})()`);
- const click=async selector=>{if(selector.includes('data-equipment')){await send('Input.dispatchMouseEvent',{type:'mouseMoved',x:15,y:220});await pause(250);}else{await send('Input.dispatchMouseEvent',{type:'mouseMoved',x:800,y:400});await pause(220);}const p=await evaluate(`(()=>{const e=document.querySelector(${JSON.stringify(selector)});e.scrollIntoView({block:'center'});const r=e.getBoundingClientRect();return {x:r.x+r.width/2,y:r.y+r.height/2};})()`);await send('Input.dispatchMouseEvent',{type:'mousePressed',button:'left',clickCount:1,...p});await send('Input.dispatchMouseEvent',{type:'mouseReleased',button:'left',clickCount:1,...p});};
+ const click=async selector=>{if(selector.includes('data-equipment')){await hoverMenu(send,evaluate,pause);}else{await send('Input.dispatchMouseEvent',{type:'mouseMoved',x:800,y:400});await pause(220);}const p=await evaluate(`(()=>{const e=document.querySelector(${JSON.stringify(selector)});e.scrollIntoView({block:'center'});const r=e.getBoundingClientRect();return {x:r.x+r.width/2,y:r.y+r.height/2};})()`);await send('Input.dispatchMouseEvent',{type:'mousePressed',button:'left',clickCount:1,...p});await send('Input.dispatchMouseEvent',{type:'mouseReleased',button:'left',clickCount:1,...p});};
  async function drag(id,x,y,{dx=0,dy=40,release=true,path=[]}={}){
   const stored=await dragStored({id,x,y,release,send,evaluate,pause});if(stored)return stored;
   await evaluate("document.querySelector('#bench').scrollIntoView({block:'center'})");
@@ -47,13 +47,13 @@ try{
  await click('#back-filtration');
  for(let i=0;i<40;i++){if(await evaluate("!!document.querySelector('#go-distillation')"))break;await pause(100);}
  await click('#go-distillation');
- for(let i=0;i<60;i++){if(await evaluate("document.querySelectorAll('.equipment-button').length===12"))break;await pause(100);}
- assert.equal(await evaluate("document.querySelectorAll('.equipment-button').length"),12);
+ for(let i=0;i<60;i++){if(await evaluate("document.querySelectorAll('.equipment-button').length===13"))break;await pause(100);}
+ assert.equal(await evaluate("document.querySelectorAll('.equipment-button').length"),13);
  await click('#go-chromatography');
  for(let i=0;i<40;i++){if(await evaluate("!!document.querySelector('#equipment')&&document.querySelectorAll('.equipment-button').length===10"))break;await pause(100);}
  assert.ok(await evaluate("!!document.querySelector('#back-filtration')&&!!document.querySelector('#back-distillation')"));
  await click('#back-distillation');
- for(let i=0;i<40;i++){if(await evaluate("document.querySelectorAll('.equipment-button').length===12"))break;await pause(100);}
+ for(let i=0;i<40;i++){if(await evaluate("document.querySelectorAll('.equipment-button').length===13"))break;await pause(100);}
  console.log('PASS chromatography links from both labs and return navigation');
 
  const pose=async id=>evaluate(`(()=>{const m=document.querySelector('[data-id="${id}"]').transform.baseVal.consolidate().matrix;return{x:m.e,y:m.f,angle:Math.atan2(m.b,m.a)*180/Math.PI};})()`);
@@ -68,8 +68,13 @@ try{
  async function play(reversed=false){
  await pause(700);assert.equal(await evaluate("document.querySelector('#temperature-reading').textContent"),'20');if(!reversed)await screenshot('chemtopia-distillation-initial.png');
  await drag('flask',390,327,{dy:94,path:[{x:760,y:100},{x:390,y:100}]});await pause(500);await connected('flask','Clamp stand A');
- let f=await pose('flask');let drop=await drag('source',f.x-34.4,155,{release:false,path:[{x:95,y:120},{x:f.x-34.4,y:120}]});
+ let f=await pose('flask');await drag('funnel',f.x,f.y-76,{dy:20});await pause(200);await connected('funnel','Distillation flask');
+ let drop=await drag('source',f.x-34.4,100,{release:false,path:[{x:95,y:120},{x:f.x-34.4,y:120}]});
  await key(' ','Space');await pause(3900);await drop.move(95,140);await drop.move(95,413);await drop();await pause(300);
+ await drag('funnel',f.x,120,{dy:20,release:false});
+ await send('Input.dispatchMouseEvent',{type:'mouseMoved',buttons:1,...await menuPoint(evaluate)});await send('Input.dispatchMouseEvent',{type:'mouseReleased',button:'left',clickCount:1,...await menuPoint(evaluate)});
+ assert.equal(await evaluate("document.querySelector('[data-equipment=funnel]').dataset.stored"),'true');
+ assert.ok(Number(await evaluate("document.querySelector('[data-id=flask] [clip-path] rect').getAttribute('y')"))<120,'feed passes through the filling funnel into the flask');
  f=await pose('flask');
  await drag('head',f.x,f.y-60,{dx:2,dy:30,path:[{x:180,y:10},{x:f.x,y:10}]});await pause(300);await connected('head','Distillation flask');
  let p=await local('head',70,50);
@@ -87,13 +92,16 @@ try{
  assert.ok(Math.hypot(afterClick.x-beforeClick.x,afterClick.y-beforeClick.y)<1,'clicking heater does not lift or launch it');
  assert.ok(Math.hypot(flaskAfter.x-flaskBefore.x,flaskAfter.y-flaskBefore.y)<1,'heater click does not disturb supported glass');
  await click('[data-equipment=tap]');await key(' ','Space');assert.ok((await evaluate("document.querySelector('#action').textContent")).includes('Stop water'));
- await click('[data-equipment=heater]');await key(' ','Space');await pause(13500);
+ await click('[data-equipment=heater]');await key(' ','Space');await pause(10000);
  assert.equal(await evaluate("document.querySelector('#result').hidden"),true);
  assert.equal(await evaluate("document.querySelector('#temperature-reading').textContent"),'56','digital readout holds at acetone plateau');
  await screenshot(reversed?'chemtopia-distillation-reversed.png':'chemtopia-distillation-running.png');
  await key(' ','Space');await pause(1000);
  const cooled=Number(await evaluate("document.querySelector('#temperature-reading').textContent"));
  assert.ok(cooled<56&&cooled>20,'heater switch-off cools the thermometer');
+ const stoppedFill=await evaluate("document.querySelector('[data-id=flask] [clip-path] rect').getAttribute('y')");await pause(500);
+ assert.equal(await evaluate("document.querySelector('[data-id=flask] [clip-path] rect').getAttribute('y')"),stoppedFill,'liquid level stops falling below acetone boiling point');
+ assert.equal(await evaluate("document.querySelector('#streams').children.length"),0,'no distillate stream below boiling');
  await click('#finish');
 
  assert.ok(await evaluate("!!document.querySelector('#explanation')"),'distillation completes through real assembly');

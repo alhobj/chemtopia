@@ -11,3 +11,7 @@ Contents stay with their objects, including filter paper and sand contained in a
 Tab to access the drawer with the keyboard, Enter to retrieve a stored object into clear space, and Escape to close it. The menu remains available for inspection after Finish, but practical work stays stopped.
 
 The storage unit checks cover all three lab models, preserved materials, contained filters, powered controls, disconnected joints, shelf replacement and blocked retrieval. Chromium checks cover hover hiding, drag-in/out, loaded contents, keyboard retrieval, restart, and the full lab workflows using tools from the drawer.
+
+## Lab alignment revision — 22 October 2026
+
+The drawer now starts at the first row beside the lab, in a narrow gutter aligned with the workspace. It scrolls with that lab instead of staying at the viewport edge. Hover, retrieval, contents-preserving storage and collapse are unchanged; only the visible drawer/tab accepts a storage drop.

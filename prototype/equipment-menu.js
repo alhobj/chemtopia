@@ -3,13 +3,13 @@ export function createEquipmentMenu({getState,world,groups,select,begin,end,rend
  const bench=document.getElementById('bench'),list=document.getElementById('equipment');
  const panel=document.createElement('aside');panel.id='equipment-menu';panel.className='equipment-menu';panel.setAttribute('aria-label','Equipment storage');
  panel.innerHTML='<button id="equipment-tab" class="equipment-tab" aria-expanded="false" aria-controls="equipment-list">Equipment</button><div class="equipment-content"><h2>Equipment</h2><p>Drag out to use. Drag back here to store.</p><div id="equipment-list"></div><p id="equipment-message" aria-live="polite"></p></div>';
- document.body.append(panel);panel.querySelector('#equipment-list').append(list);
+ const workspace=document.querySelector('.workspace'),shell=document.createElement('div');shell.className='lab-shell';workspace.before(shell);shell.append(workspace,panel);panel.querySelector('#equipment-list').append(list);
  for(const b of list.children){const status=document.createElement('small');status.className='equipment-status';b.append(status);}
  let pending=null;
  const open=value=>{panel.classList.toggle('open',value);panel.querySelector('button').setAttribute('aria-expanded',String(value));};
  const inside=(e,r)=>e.clientX>=r.left&&e.clientX<=r.right&&e.clientY>=r.top&&e.clientY<=r.bottom;
- function wantsStore(e){if(!e||getState().phase!=='working')return false;const r=panel.getBoundingClientRect();return inside(e,r)||(isDragging()&&e.clientX>=0&&e.clientX<260&&e.clientY>=90&&e.clientY<innerHeight-20);}
- function over(e){const hit=inside(e,panel.getBoundingClientRect())||(isDragging()&&e.clientX<260&&e.clientY>=90&&e.clientY<innerHeight-20);panel.classList.toggle('drop-hover',hit);open(hit);}
+ function wantsStore(e){if(!e||getState().phase!=='working')return false;const r=panel.classList.contains('open')?panel.getBoundingClientRect():panel.querySelector('#equipment-tab').getBoundingClientRect();return inside(e,r);}
+ function over(e){const hit=inside(e,panel.classList.contains('open')?panel.getBoundingClientRect():panel.querySelector('#equipment-tab').getBoundingClientRect());panel.classList.toggle('drop-hover',hit);open(hit);}
  window.addEventListener('pointermove',over);
  panel.addEventListener('pointerenter',()=>open(true));panel.addEventListener('pointerleave',()=>open(false));
  panel.addEventListener('focusin',()=>open(true));panel.addEventListener('focusout',()=>{if(!panel.matches(':hover'))open(false);});

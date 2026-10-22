@@ -1,10 +1,10 @@
 import {PhysicsWorld} from './physics.js';
 export const EPS=1e-8;
 // These are qualitative prototype parameters, not measured acetone–water equilibrium data.
-export const PARAMETERS={feedAcetone:.5,feedWater:.5,ambientTemperature:20,acetoneBoilingPoint:56,waterBoilingPoint:100,temperatureRiseRate:5,temperatureFallRate:4,acetonePlateauRemaining:.1,relativeVolatility:3,warmRate:.13,coolRate:.055,boilRate:.075,fullJacketEfficiency:.94,partialJacketEfficiency:.48};
+export const PARAMETERS={feedAcetone:.5,feedWater:.5,ambientTemperature:20,acetoneBoilingPoint:56,waterBoilingPoint:100,temperatureRiseRate:5,temperatureFallRate:4,boilRate:.075,fullJacketEfficiency:.94,partialJacketEfficiency:.48};
 const box=(x,y,w,h)=>({x,y,w,h});
 const tube=(x,y,w,h)=>box(x,y,w,h);
-export const NAMES={source:'Acetone–water feed',flask:'Distillation flask',head:'Still head',thermometer:'Thermometer',condenser:'Liebig condenser',support1:'Clamp stand A',support2:'Clamp stand B',heater:'Electric heater',receiverA:'Collecting beaker A',receiverB:'Collecting beaker B',tap:'Cooling-water tap',drain:'Water drain'};
+export const NAMES={source:'Acetone–water feed',flask:'Distillation flask',head:'Still head',thermometer:'Thermometer',condenser:'Liebig condenser',support1:'Clamp stand A',support2:'Clamp stand B',heater:'Electric heater',receiverA:'Collecting beaker A',receiverB:'Collecting beaker B',funnel:'Filling funnel',tap:'Cooling-water tap',drain:'Water drain'};
 const vessel=(id,x,y,extra={})=>({id,kind:'beaker',x,y,angle:0,water:0,acetone:0,distilledAcetone:0,capacity:.8,...extra});
 export function createState(){
  const stand=id=>({id,kind:'clampStand',x:id==='support1'?300:1000,y:509,angle:0,mass:8,collision:id==='support1'?[box(0,-116,10,230),box(-20,4,90,24),box(30,-162,60,7),box(64,-162,4,20),box(116,-162,4,20)]:[box(0,-116,10,230),box(20,4,90,24),box(-83,-148,166,7),box(-221,-148,4,20),box(-169,-148,4,20)]});
@@ -12,6 +12,7 @@ export function createState(){
   items:{
    source:vessel('source',95,413,{capacity:1.3,acetone:PARAMETERS.feedAcetone,water:PARAMETERS.feedWater}),
    flask:vessel('flask',760,385,{kind:'flask',mass:.7,capacity:1.5,heat:0,temperature:PARAMETERS.ambientTemperature,collision:[tube(-12,24,4,48),tube(12,24,4,48),{x:0,y:94,radius:46}]}),
+   funnel:{id:'funnel',kind:'fillingFunnel',x:320,y:40,angle:0,mass:.15,collision:[{vertices:[{x:-40,y:0},{x:-34,y:0},{x:-5,y:34},{x:-10,y:37}]},{vertices:[{x:40,y:0},{x:34,y:0},{x:5,y:34},{x:10,y:37}]},box(-7,55,4,42),box(7,55,4,42)]},
    head:{id:'head',kind:'head',x:180,y:37,angle:0,mass:.12,collision:[box(-12,30,4,60),box(12,19,4,38),box(38,43,64,4),box(38,57,64,4)]},
    thermometer:{id:'thermometer',kind:'thermometer',temperature:PARAMETERS.ambientTemperature,x:80,y:36,angle:0,mass:.03,collision:[box(0,32.5,7,65),box(0,15,28,6)]},
    condenser:{id:'condenser',kind:'condenser',x:1060,y:430,angle:0,mass:.5,collision:[{vertices:[{x:30,y:-11},{x:205,y:42},{x:195,y:76},{x:20,y:23}]},box(8,2,24,9),box(220,67,25,9)]},
@@ -50,7 +51,7 @@ export function cooling(state){
  return supplied===lower?'lower-fed':'upper-fed';
 }
 function possibleJoints(state){
- const joints=[{id:'flask-head',a:'flask',pa:{x:0,y:0},b:'head',pb:{x:0,y:60}},{id:'head-condenser',a:'head',pa:{x:70,y:50},b:'condenser',pb:{x:0,y:0}},{id:'head-thermometer',a:'head',pa:{x:0,y:0},b:'thermometer',pb:{x:0,y:15}}];
+ const joints=[{id:'flask-funnel',a:'flask',pa:{x:0,y:0},b:'funnel',pb:{x:0,y:76}},{id:'flask-head',a:'flask',pa:{x:0,y:0},b:'head',pb:{x:0,y:60}},{id:'head-condenser',a:'head',pa:{x:70,y:50},b:'condenser',pb:{x:0,y:0}},{id:'head-thermometer',a:'head',pa:{x:0,y:0},b:'thermometer',pb:{x:0,y:15}}];
  for(const stand of ['support1','support2'])for(const [id,point]of [['flask',{x:0,y:20}],['condenser',{x:112,y:34}]])joints.push({id:`${stand}-${id}`,a:stand,pa:stand==='support1'?{x:90,y:-162}:{x:-195,y:-148},b:id,pb:id==='condenser'&&stand==='support2'?{x:145,y:44}:point});
  return joints;
 }
@@ -69,6 +70,7 @@ export function placeItem(state,id){
  if(state.phase!=='working')return;
  for(const link of possibleJoints(state).filter(l=>l.a===id||l.b===id)){
   if(state.links.some(l=>l.id===link.id))continue;
+  if(link.id==='flask-funnel'&&hasLink(state,'flask-head')||link.id==='flask-head'&&hasLink(state,'flask-funnel'))continue;
   if(link.a.startsWith('support')&&state.links.some(l=>l.a.startsWith('support')&&(l.a===link.a||l.b===link.b)))continue;
   const a=state.items[link.a],b=state.items[link.b];
   const ap=worldPoint(a,link.pa),bp=worldPoint(b,link.pb);
@@ -89,17 +91,19 @@ export function dragApparatus(state,id,x,y){
  }
  physicsFor(state).moveHeld(id,x,y);
 }
-export function detach(state,id){state.held=id;state.links=state.links.filter(l=>l.a!==id&&l.b!==id);const o=state.items[id];if(o.fixed)return;if(['beaker','flask','head','thermometer','condenser'].includes(o.kind)){o.angle=0;const bottom=o.kind==='beaker'?(id==='source'?112:96):({flask:140,head:60,thermometer:65,condenser:85}[o.kind]);o.y=Math.min(o.y,525-bottom);}physicsFor(state).syncLinks();physicsFor(state).hold(id);}
+export function detach(state,id){state.held=id;state.links=state.links.filter(l=>l.a!==id&&l.b!==id);const o=state.items[id];if(o.fixed)return;if(['beaker','flask','head','thermometer','condenser','fillingFunnel'].includes(o.kind)){o.angle=0;const bottom=o.kind==='beaker'?(id==='source'?112:96):({flask:140,head:60,thermometer:65,condenser:85,fillingFunnel:76}[o.kind]);o.y=Math.min(o.y,525-bottom);}physicsFor(state).syncLinks();physicsFor(state).hold(id);}
 export const hasLink=(state,id)=>state.links.some(l=>l.id===id);
 function spill(state,point,mixture){
  if(mixture.water+mixture.acetone<=0)return;
  let s=state.spills.find(s=>Math.abs(s.x-point.x)<24);if(!s){s={x:Math.max(25,Math.min(1375,point.x)),y:525,water:0,acetone:0,distilledAcetone:0};state.spills.push(s);}
  for(const key of ['water','acetone','distilledAcetone'])s[key]+=(mixture[key]||0);
 }
-function receive(state,point,mix,exclude){
- const target=Object.values(state.items).filter(o=>!o.stored&&['beaker','flask'].includes(o.kind)&&o.id!==exclude&&Math.abs(o.angle||0)<35&&Math.abs(o.x-point.x)<(o.kind==='flask'?14:38)&&point.y<=o.y+18).sort((a,b)=>Math.max(0,a.y-point.y)-Math.max(0,b.y-point.y))[0];
+function receive(state,point,mix,exclude,visited=new Set()){
+ visited.add(exclude);
+ const target=Object.values(state.items).filter(o=>!o.stored&&['beaker','flask','fillingFunnel'].includes(o.kind)&&!visited.has(o.id)&&Math.abs(o.angle||0)<35&&Math.abs(o.x-point.x)<(o.kind==='flask'?14:38)&&point.y<=o.y+18).sort((a,b)=>Math.max(0,a.y-point.y)-Math.max(0,b.y-point.y))[0];
  state.flow.push({from:point,to:{x:point.x,y:target?Math.max(point.y,target.y+8):525},kind:'liquid'});
  if(!target){spill(state,point,mix);return;}
+ if(target.kind==='fillingFunnel'){receive(state,worldPoint(target,{x:0,y:76}),mix,target.id,visited);return;}
  const total=mix.water+mix.acetone,room=Math.max(0,target.capacity-target.water-target.acetone),fraction=total?Math.min(1,room/total):0;
  for(const k of ['water','acetone','distilledAcetone'])target[k]+=(mix[k]||0)*fraction;
  spill(state,{x:target.x+42,y:525},Object.fromEntries(['water','acetone','distilledAcetone'].map(k=>[k,(mix[k]||0)*(1-fraction)])));
@@ -114,12 +118,8 @@ export function pour(state,id,amount){
 export function heaterContact(state){const f=state.items.flask,h=state.items.heater,bottom=worldPoint(f,{x:0,y:140});return !f.stored&&!h.stored&&Math.abs(f.angle)<20&&Math.abs(h.angle)<15&&Math.abs(bottom.x-h.x)<52&&Math.abs(bottom.y-h.y)<12;}
 function stepTemperature(state,dt,heated){
  const p=PARAMETERS,f=state.items.flask,t=state.items.thermometer;
- const tail=state.initial.acetone*p.acetonePlateauRemaining;
- const later=tail>EPS?Math.max(0,Math.min(1,1-f.acetone/tail)):1;
- // Owner-requested teaching curve, not acetone–water equilibrium thermometry.
- const target=!heated?p.ambientTemperature:f.heat<1
-  ?p.ambientTemperature+(p.acetoneBoilingPoint-p.ambientTemperature)*f.heat
-  :p.acetoneBoilingPoint+(p.waterBoilingPoint-p.acetoneBoilingPoint)*later;
+ // Two boiling stages are an explicit teaching simplification, not mixture equilibrium data.
+ const target=!heated?p.ambientTemperature:f.acetone>EPS?p.acetoneBoilingPoint:p.waterBoilingPoint;
  const approach=(value,goal)=>Math.max(p.ambientTemperature,Math.min(p.waterBoilingPoint,value+Math.max(-p.temperatureFallRate*dt,Math.min(p.temperatureRiseRate*dt,goal-value))));
  f.temperature=approach(f.temperature,target);
  const connected=hasLink(state,'head-thermometer')&&hasLink(state,'flask-head');
@@ -129,14 +129,15 @@ export function stepChemistry(state,dt){
  if(state.phase!=='working'||!Number.isFinite(dt)||dt<=0)return;
  dt=Math.min(dt,.05);state.elapsed+=dt;state.flow=[];state.vapourVisible=false;
  const f=state.items.flask,heated=state.items.heater.on&&heaterContact(state);
- f.heat=Math.max(0,Math.min(1.15,f.heat+dt*(heated?PARAMETERS.warmRate:-PARAMETERS.coolRate)));
- stepTemperature(state,dt,heated);
+ stepTemperature(state,dt,heated);f.heat=(f.temperature-PARAMETERS.ambientTemperature)/(PARAMETERS.waterBoilingPoint-PARAMETERS.ambientTemperature);
  const mode=cooling(state),target=mode==='lower-fed'?1:mode==='upper-fed'?.35:0;
  state.jacket+=Math.max(-dt*.6,Math.min(dt*.6,target-state.jacket));
- const total=f.acetone+f.water;if(f.stored||f.heat<1||total<EPS)return;
+ const total=f.acetone+f.water,component=f.acetone>EPS?'acetone':'water';
+ const boilingPoint=component==='acetone'?PARAMETERS.acetoneBoilingPoint:PARAMETERS.waterBoilingPoint;
+ if(f.stored||f.temperature<boilingPoint||total<EPS)return;
  state.vapourVisible=true;
- const x=f.acetone/total,alpha=PARAMETERS.relativeVolatility,ya=alpha*x/(1+(alpha-1)*x);
- let a=Math.min(f.acetone,PARAMETERS.boilRate*dt*ya),w=Math.min(f.water,PARAMETERS.boilRate*dt*(1-ya));
+ const amount=Math.min(f[component],PARAMETERS.boilRate*dt);
+ const a=component==='acetone'?amount:0,w=component==='water'?amount:0;
  f.acetone-=a;f.water-=w;f.distilledAcetone=Math.min(f.distilledAcetone,f.acetone);
  let route=hasLink(state,'flask-head')&&hasLink(state,'head-condenser')?1:0;
  if(!hasLink(state,'head-thermometer'))route*=.4;

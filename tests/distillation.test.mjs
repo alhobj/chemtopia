@@ -10,9 +10,9 @@ function assembled(reversed=false){
 function run(s,seconds){for(let i=0;i<seconds*60;i++)stepChemistry(s,1/60);}
 function conserved(s){const t=totals(s);assert.ok(Math.abs(t.acetone-.5)<EPS);assert.ok(Math.abs(t.water-.5)<EPS);for(const o of [...Object.values(s.items),...s.spills,s.escaped])for(const k of ['acetone','water'])if(k in o)assert.ok(o[k]>=-EPS);}
 test('50:50 feed is explicit and fresh attempts reset all process/coolant state',()=>{const s=createState();assert.deepEqual(s.initial,{acetone:.5,water:.5});assert.equal(cooling(s),'off');assert.deepEqual(s.links,[]);assert.equal(s.hoses[0].ends[0].port,undefined);assert.deepEqual(createState(),s);});
-test('early condensate contains both components and is enriched in acetone',()=>{const s=assembled();run(s,11);const r=outcome(s);assert.ok(r.success);assert.ok(r.purity>.5&&r.purity<1);assert.ok(s.items.receiverA.water>0);assert.ok(s.items.flask.water/(s.items.flask.acetone+s.items.flask.water)>.5);conserved(s);});
+test('56-degree acetone stage leaves the starting water in the flask',()=>{const s=assembled();run(s,11);assert.ok(outcome(s).success);assert.equal(s.items.receiverA.water,0);assert.equal(s.items.flask.water,.5);assert.ok(s.items.flask.acetone<.5);conserved(s);});
 test('upper-port supply remains operable and yields less acetone for identical runs',()=>{const proper=assembled(),reverse=assembled(true);run(proper,13);run(reverse,13);assert.equal(cooling(proper),'lower-fed');assert.equal(cooling(reverse),'upper-fed');assert.ok(outcome(reverse).success);assert.ok(outcome(proper).yield>outcome(reverse).yield);assert.ok(reverse.escaped.acetone>proper.escaped.acetone);assert.ok(Math.abs(proper.items.flask.acetone-reverse.items.flask.acetone)<EPS);conserved(proper);conserved(reverse);});
-test('tap off or disconnected outlet prevents forced condensation without deleting vapour',()=>{for(const mode of ['off','disconnected']){const s=assembled();if(mode==='off')s.items.tap.on=false;else s.hoses[1].ends[1]={x:1000,y:300};run(s,12);assert.equal(outcome(s).yield,0);assert.ok(s.escaped.acetone>0&&s.escaped.water>0);conserved(s);}});
+test('tap off or disconnected outlet prevents forced condensation without deleting vapour',()=>{for(const mode of ['off','disconnected']){const s=assembled();if(mode==='off')s.items.tap.on=false;else s.hoses[1].ends[1]={x:1000,y:300};run(s,12);assert.equal(outcome(s).yield,0);assert.ok(s.escaped.acetone>0&&s.escaped.water===0);conserved(s);}});
 test('water in the cooling jacket cannot enter or dilute a receiver',()=>{const s=assembled();s.items.heater.on=false;run(s,15);assert.equal(s.items.receiverA.water,0);assert.equal(s.items.receiverA.acetone,0);conserved(s);});
 test('plain feed transfer is not distilled recovery',()=>{const s=createState();Object.assign(s.items.source,{x:558,y:280,angle:0});pour(s,'source',1);assert.ok(s.items.receiverA.acetone>0);assert.equal(outcome(s).yield,0);assert.equal(outcome(s).success,false);conserved(s);});
 test('missing glass path, missed receiver and overflow remain possible',()=>{for(const mode of ['path','receiver','overflow']){const s=assembled();if(mode==='path')s.links=s.links.filter(l=>l.id!=='head-condenser');if(mode==='receiver')s.items.receiverA.x=1100;if(mode==='overflow')s.items.receiverA.capacity=.01;run(s,12);if(mode==='path')assert.equal(outcome(s).yield,0);else assert.ok(s.spills.length);conserved(s);}});
@@ -74,4 +74,16 @@ test('missing heater contact and detached thermometer cannot show a heated sampl
  const cold=assembled();cold.items.heater.x=1100;run(cold,10);assert.equal(cold.items.thermometer.temperature,20);
  const s=assembled();run(s,12);s.links=s.links.filter(l=>l.id!=='head-thermometer');run(s,20);
  assert.equal(s.items.thermometer.temperature,20);assert.ok(s.items.flask.temperature>=56);conserved(s);
+});
+
+test('only acetone leaves at 56; water waits for 100; switch-off stops each boiling stage',()=>{
+ const s=assembled();run(s,10);assert.equal(s.items.flask.temperature,56);assert.equal(s.items.flask.water,.5);
+ s.items.heater.on=false;const a=s.items.flask.acetone;run(s,1);assert.equal(s.items.flask.acetone,a);assert.ok(s.items.flask.temperature<56);
+ s.items.heater.on=true;while(s.items.flask.acetone>EPS)run(s,.1);const water=s.items.flask.water;assert.equal(water,.5);assert.ok(s.items.flask.temperature<100);
+ run(s,3);assert.equal(s.items.flask.water,water);run(s,8);assert.equal(s.items.flask.temperature,100);assert.ok(s.items.flask.water<water);
+ s.items.heater.on=false;const remaining=s.items.flask.water;run(s,1);assert.equal(s.items.flask.water,remaining);conserved(s);
+});
+test('a filling funnel transfers both feed components into the round-bottom flask',()=>{
+ const s=createState();Object.assign(s.items.flask,{x:500,y:300});Object.assign(s.items.funnel,{x:500,y:224});placeItem(s,'funnel');assert.ok(s.links.some(l=>l.id==='flask-funnel'));
+ Object.assign(s.items.source,{x:465.6,y:120,angle:35});pour(s,'source',1);assert.ok(Math.abs(s.items.flask.acetone-.5)<EPS);assert.equal(s.items.flask.water,.5);assert.equal(s.spills.length,0);conserved(s);
 });

@@ -74,3 +74,8 @@ The owner selected L05 with “Start with evaporation and salt recovery”. Foll
 ## Recrystallisation increment
 
 The owner requested “Make recrystallisation” after the L06 brief. Follow docs/design/recrystallisation-prototype-spec.md for the bounded potassium-nitrate/sand/water example, hot dissolution/filtration, cooling, clean-paper collection, material provenance and wet-product reporting. The current capacity curve is qualitative, not verified property data; a sourced quantitative solubility curve remains a future refinement. Preserve the shared equipment drawer and controls. Other planned labs still require a selected concrete step.
+
+
+## Owner-requested lab corrections (22 October 2026)
+
+The owner explicitly requested arrested stand creep, evaporation of water from heated water/solution beakers in recrystallisation, a draggable chromatography-review ruler with R_F questions, a drawer aligned beside the first lab row, varied answer positions, blocked filtration water spills, and a distillation filling funnel with separate 56°C acetone/100°C water stages that stop below boiling. These requests supersede earlier conflicting simplifications for these bounded behaviours. Preserve material accounting and explicitly label the distillation stages as a teaching simplification, not real mixture equilibrium data. See the revised specifications and decision log. Existing push authorisation applies.

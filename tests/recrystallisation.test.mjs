@@ -43,3 +43,9 @@ test('storage pauses cooling and preserves all material; tipping and spills cons
 test('finished attempts remain immutable and reset has the full starting mixture',()=>{
  const s=fixture();s.phase='finished';const snap=JSON.stringify(s);run(s,4);pour(s,'source',1);assert.equal(JSON.stringify(s),snap);conserved(createState());
 });
+
+test('heating plain water or solution evaporates water, retains solute and accounts for vapour',()=>{
+ for(const id of ['water','source']){const s=createState(),o=s.items[id];if(id==='source'){o.water=.25;s.items.water.water-=.25;}
+ Object.assign(o,{x:500,y:id==='source'?355:371,heat:1});s.items.heater.on=true;const before=o.water;run(s,3);assert.ok(o.water<before);assert.ok(s.vapour>0);assert.ok(s.evaporating.includes(id));conserved(s);
+ s.items.heater.on=false;const stopped=o.water;run(s,1);assert.equal(o.water,stopped);conserved(s);}
+});

@@ -4,7 +4,7 @@
 
 ## Objective and workflow
 
-Recover potassium nitrate crystals separated from the represented sand impurity, using water as solvent. Add water, heat to dissolve the desired solid, hot-filter the insoluble sand, cool the filtrate, then filter the crystals from mother liquor using clean paper. Products are **wet collected crystals**, not a dry weighed yield.
+Recover potassium nitrate crystals separated from the represented sand impurity, using water as solvent. Add water, heat to dissolve the desired solid, hot-filter the insoluble sand, cool the filtrate, then filter the crystals from mother liquor using clean paper. The assessed product is **wet collected crystals**, not a dry weighed yield. Heating too long can instead leave solid residue in a beaker.
 
 Supply the impure solid beaker, water beaker, electric heater, stand, funnel, two interchangeable filter papers and two receiving beakers. Labels distinguish the items without revealing placement targets. Both papers are available in the shared equipment drawer. Either can be used at either stage; the model does not force the correct order.
 
@@ -28,7 +28,7 @@ Filter paper retains sand, undissolved starting solid and crystals; dissolved so
 
 Cold filter paper can cool a small incoming portion and retain desired crystals early. Incoming hot liquid warms it. Reusing paper carrying sand can contaminate the final product. Pouring water through loaded paper can redissolve desired solid and carry it into the receiver. All represented material remains accounted for.
 
-There is no solvent evaporation, gas generation, decomposition, injury, breakage, final drying or balance in this increment. A later soluble-impurity model is not silently inferred from this insoluble-sand example.
+Water evaporates from any beaker in contact with the switched-on heater once normalised heat reaches 0.8. The rate is 0.025 × heat model water amount per second; both plain water and solution evaporate. Solute and sand remain, phase equilibrium updates as water is lost, and an explicit water-vapour pool preserves the balance. Evaporation stops on switch-off or lost contact. Visible vapour marks the active beaker. These are qualitative defaults, not boiling or kinetic data. No decomposition, injury, breakage, balance or assessed final drying is represented. A later soluble-impurity model is not silently inferred from this insoluble-sand example.
 
 ## Supported mistakes
 

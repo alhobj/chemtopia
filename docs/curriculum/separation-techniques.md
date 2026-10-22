@@ -52,7 +52,7 @@ The previously offered oil/water separating-funnel task was not selected in S01.
 | --- | --- | --- |
 | Sand and water | Recover sand by filtration | Setup, represented particle/material states, pouring controls, wrong arrangements and outcomes |
 | Salt solution: evaporation | Recover salt | Implemented bounded sodium-chloride solution prototype: qualitative heating, water-vapour balance and dry salt recovered in the basin; no calibrated mass task |
-| Acetone–water: simple distillation | Collect acetone as an acetone-enriched distillate; replaces the original salt-solution example | Approved local prototype: 50:50 model mole amounts, both components volatile, qualitative enrichment, movable hoses and reduced recovery with upper-port supply; no calibrated yield claim |
+| Acetone–water: simple distillation | Collect acetone as an acetone-enriched distillate; replaces the original salt-solution example | Approved local prototype: 50:50 model mole amounts, both components volatile in owner-requested simplified 56°C/100°C stages, movable hoses and reduced recovery with upper-port supply; no calibrated yield claim |
 | Paper chromatography | Separate mixture components | Implemented bounded prototype: water, direct marker spotting, baseline/front marks, development, ruler and R_F calculation; rates/marker components are qualitative |
 | Solvation-based separation | Newly verified requested coverage | Whether to use a combined task, sample and which component dissolves |
 | Recrystallisation | Newly verified requested coverage | Implemented bounded hot-dissolution/filtration, cooling and clean-paper collection example; no final drying or calibrated solubility curve |

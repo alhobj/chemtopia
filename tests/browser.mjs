@@ -1,4 +1,4 @@
-import {dragStored} from './equipment-menu-helpers.mjs';
+import {dragStored,menuPoint,hoverMenu} from './equipment-menu-helpers.mjs';
 // Real Chromium input tests through CDP, without a browser automation dependency.
 import {spawn} from 'node:child_process';
 import {mkdtemp,writeFile,rm} from 'node:fs/promises';
@@ -28,7 +28,7 @@ try{
  assert.equal(await evaluate("document.querySelectorAll('.equipment-button').length"),6);
  const key=async(key,code=key)=>{const windowsVirtualKeyCode=({Enter:13,Escape:27,Tab:9,ArrowLeft:37,ArrowUp:38,ArrowRight:39,ArrowDown:40,Space:32})[code]||0;await send('Input.dispatchKeyEvent',{type:'keyDown',key,code,windowsVirtualKeyCode,text:key==='Enter'?'\r':key===' '?' ':undefined});await send('Input.dispatchKeyEvent',{type:'keyUp',key,code,windowsVirtualKeyCode});};
  const point=async(id,dx=0,dy=40)=>evaluate(`(()=>{const o=document.querySelector('[data-id="${id}"]');const p=new DOMPoint(${dx},${dy}).matrixTransform(o.getScreenCTM());return {x:p.x,y:p.y};})()`);
- const click=async selector=>{if(selector.includes('data-equipment')){await send('Input.dispatchMouseEvent',{type:'mouseMoved',x:15,y:220});await pause(250);}else{await send('Input.dispatchMouseEvent',{type:'mouseMoved',x:800,y:400});await pause(220);}const p=await evaluate(`(()=>{const e=document.querySelector(${JSON.stringify(selector)});e.scrollIntoView({block:'center'});const r=e.getBoundingClientRect();return {x:r.x+r.width/2,y:r.y+r.height/2};})()`);await send('Input.dispatchMouseEvent',{type:'mousePressed',button:'left',clickCount:1,...p});await send('Input.dispatchMouseEvent',{type:'mouseReleased',button:'left',clickCount:1,...p});};
+ const click=async selector=>{if(selector.includes('data-equipment')){await hoverMenu(send,evaluate,pause);}else{await send('Input.dispatchMouseEvent',{type:'mouseMoved',x:800,y:400});await pause(220);}const p=await evaluate(`(()=>{const e=document.querySelector(${JSON.stringify(selector)});e.scrollIntoView({block:'center'});const r=e.getBoundingClientRect();return {x:r.x+r.width/2,y:r.y+r.height/2};})()`);await send('Input.dispatchMouseEvent',{type:'mousePressed',button:'left',clickCount:1,...p});await send('Input.dispatchMouseEvent',{type:'mouseReleased',button:'left',clickCount:1,...p});};
  async function drag(id,x,y,dy=40,release=true,waypoints=[]){
   const stored=await dragStored({id,x,y,release,send,evaluate,pause});if(stored)return stored;
   await evaluate("document.querySelector('#bench').scrollIntoView({block:'center'})");
@@ -83,6 +83,8 @@ try{
  assert.equal(await evaluate("document.querySelector('#result').hidden"),true);
  await screenshot('chemtopia-ring-support.png');
  await key(' ','Space');await pause(3400);await putSourceBack(drop);await pause(300);
+ await drag('receiverA',x+60,429,40,false);await send('Input.dispatchMouseEvent',{type:'mouseMoved',buttons:1,...await menuPoint(evaluate)});await send('Input.dispatchMouseEvent',{type:'mouseReleased',button:'left',clickCount:1,...await menuPoint(evaluate)});await drag('receiverB',x,429);drop=await liftSource(x);await key(' ','Space');await pause(2200);await putSourceBack(drop);
+ assert.equal(await evaluate("document.querySelector('#spills').children.length"),0,'water overflow stays in the source until a second receiver is placed');
  await screenshot('chemtopia-before-finish.png');await click('#finish');assert.ok(await evaluate("!!document.querySelector('#explanation')"),'filtration remains completable with collisions');
  await click('input[value="1"]');await click('#explanation button');assert.ok((await evaluate("document.querySelector('#question-feedback').textContent")).includes('Choose another answer'));
  await evaluate("document.querySelector('input[value=\"0\"]').focus()");await key(' ','Space');await evaluate("document.querySelector('#explanation button').focus()");await key('Enter');

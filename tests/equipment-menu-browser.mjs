@@ -1,4 +1,4 @@
-import {dragStored} from './equipment-menu-helpers.mjs';
+import {dragStored,menuPoint,hoverMenu} from './equipment-menu-helpers.mjs';
 // Real Chromium input tests through CDP, without a browser automation dependency.
 import {spawn} from 'node:child_process';
 import {mkdtemp,writeFile,rm} from 'node:fs/promises';
@@ -28,7 +28,7 @@ try{
  assert.equal(await evaluate("document.querySelectorAll('.equipment-button').length"),6);
  const key=async(key,code=key)=>{const windowsVirtualKeyCode=({Enter:13,Escape:27,Tab:9,ArrowLeft:37,ArrowUp:38,ArrowRight:39,ArrowDown:40,Space:32})[code]||0;await send('Input.dispatchKeyEvent',{type:'keyDown',key,code,windowsVirtualKeyCode,text:key==='Enter'?'\r':key===' '?' ':undefined});await send('Input.dispatchKeyEvent',{type:'keyUp',key,code,windowsVirtualKeyCode});};
  const point=async(id,dx=0,dy=40)=>evaluate(`(()=>{const o=document.querySelector('[data-id="${id}"]');const p=new DOMPoint(${dx},${dy}).matrixTransform(o.getScreenCTM());return {x:p.x,y:p.y};})()`);
- const click=async selector=>{if(selector.includes('data-equipment')){await send('Input.dispatchMouseEvent',{type:'mouseMoved',x:15,y:220});await pause(250);}else{await send('Input.dispatchMouseEvent',{type:'mouseMoved',x:800,y:400});await pause(220);}const p=await evaluate(`(()=>{const e=document.querySelector(${JSON.stringify(selector)});e.scrollIntoView({block:'center'});const r=e.getBoundingClientRect();return {x:r.x+r.width/2,y:r.y+r.height/2};})()`);await send('Input.dispatchMouseEvent',{type:'mousePressed',button:'left',clickCount:1,...p});await send('Input.dispatchMouseEvent',{type:'mouseReleased',button:'left',clickCount:1,...p});};
+ const click=async selector=>{if(selector.includes('data-equipment')){await hoverMenu(send,evaluate,pause);}else{await send('Input.dispatchMouseEvent',{type:'mouseMoved',x:800,y:400});await pause(220);}const p=await evaluate(`(()=>{const e=document.querySelector(${JSON.stringify(selector)});e.scrollIntoView({block:'center'});const r=e.getBoundingClientRect();return {x:r.x+r.width/2,y:r.y+r.height/2};})()`);await send('Input.dispatchMouseEvent',{type:'mousePressed',button:'left',clickCount:1,...p});await send('Input.dispatchMouseEvent',{type:'mouseReleased',button:'left',clickCount:1,...p});};
  async function drag(id,x,y,dy=40,release=true,waypoints=[]){
   const stored=await dragStored({id,x,y,release,send,evaluate,pause});if(stored)return stored;
   await evaluate("document.querySelector('#bench').scrollIntoView({block:'center'})");
@@ -56,15 +56,16 @@ try{
  const standAfter=await pose('stand');assert.ok(Math.hypot(standAfter.x-standBefore.x,standAfter.y-standBefore.y)<.5,'touching stand does not start it sliding');
 
  await send('Input.dispatchMouseEvent',{type:'mouseMoved',x:800,y:400});await pause(250);
- assert.ok(await evaluate("document.querySelector('#equipment-menu').getBoundingClientRect().right<45"),'menu initially collapsed');
- await send('Input.dispatchMouseEvent',{type:'mouseMoved',x:15,y:250});await pause(250);
- assert.ok(await evaluate("document.querySelector('#equipment-menu').getBoundingClientRect().left>=0"),'hover expands menu');
+ assert.ok(await evaluate("!document.querySelector('#equipment-menu').classList.contains('open')"),'menu initially collapsed');
+ await hoverMenu(send,evaluate,pause);
+ assert.ok(await evaluate("document.querySelector('#equipment-menu').classList.contains('open')"),'hover expands menu');
  await send('Input.dispatchMouseEvent',{type:'mouseMoved',x:800,y:400});await pause(250);
- assert.ok(await evaluate("document.querySelector('#equipment-menu').getBoundingClientRect().right<45"),'menu hides on mouse leave');
+ assert.ok(await evaluate("!document.querySelector('#equipment-menu').classList.contains('open')"),'menu hides on mouse leave');
+ assert.ok(await evaluate("(()=>{const tab=document.querySelector('#equipment-tab').getBoundingClientRect(),lab=document.querySelector('.workspace').getBoundingClientRect();return Math.abs(tab.top-lab.top)<2&&Math.abs(tab.right-lab.left)<2&&tab.left>0;})()"),'drawer aligns with first lab row beside workspace');
  const water=await evaluate("document.querySelector('[data-id=source] [fill=\"url(#liquid)\"]').getAttribute('height')");
  await drag('source',150,180,40,false);
- await send('Input.dispatchMouseEvent',{type:'mouseMoved',buttons:1,x:15,y:300});
- await send('Input.dispatchMouseEvent',{type:'mouseReleased',button:'left',clickCount:1,x:15,y:300});await pause(250);
+ await send('Input.dispatchMouseEvent',{type:'mouseMoved',buttons:1,...await menuPoint(evaluate)});
+ await send('Input.dispatchMouseEvent',{type:'mouseReleased',button:'left',clickCount:1,...await menuPoint(evaluate)});await pause(250);
  assert.equal(await evaluate("document.querySelector('[data-equipment=source]').dataset.stored"),'true');
  assert.equal(await evaluate("document.querySelector('[data-id=source]').style.display"),'none');
  assert.equal(await evaluate("document.querySelector('[data-id=source] [fill=\"url(#liquid)\"]').getAttribute('height')"),water,'liquid preserved');
@@ -75,14 +76,14 @@ try{
  assert.equal(await evaluate("document.querySelectorAll('[data-id=source]').length"),1);
  console.log('PASS hover open/close, drag loaded vessel into storage, drag it out, no duplication and gravity after retrieval');
  await drag('source',150,180,40,false);
- await send('Input.dispatchMouseEvent',{type:'mouseMoved',buttons:1,x:200,y:300});await send('Input.dispatchMouseEvent',{type:'mouseReleased',button:'left',clickCount:1,x:200,y:300});
+ await send('Input.dispatchMouseEvent',{type:'mouseMoved',buttons:1,...await menuPoint(evaluate)});await send('Input.dispatchMouseEvent',{type:'mouseReleased',button:'left',clickCount:1,...await menuPoint(evaluate)});
  await evaluate("document.querySelector('[data-equipment=source]').focus()");await key('Enter','Enter');
  assert.equal(await evaluate("document.querySelector('[data-equipment=source]').dataset.stored"),'false','Enter retrieves stored equipment');
- await key('Escape','Escape');await pause(250);assert.ok(await evaluate("document.querySelector('#equipment-menu').getBoundingClientRect().right<45"));
+ await key('Escape','Escape');await pause(250);assert.ok(await evaluate("!document.querySelector('#equipment-menu').classList.contains('open')"));
  console.log('PASS keyboard retrieval and Escape close');
 
  await click('#go-distillation');
- for(let i=0;i<40;i++){if(await evaluate("document.querySelectorAll('.equipment-button').length===12"))break;await pause(100);}
+ for(let i=0;i<40;i++){if(await evaluate("document.querySelectorAll('.equipment-button').length===13"))break;await pause(100);}
  assert.equal(await evaluate("document.querySelector('[data-equipment=thermometer]').dataset.stored"),'true');
  assert.ok(!(await evaluate("document.querySelector('#bench').textContent")).includes('APPARATUS SHELF'));
  assert.deepEqual(exceptions,[]);console.log('PASS shelf replacement and no browser exceptions');

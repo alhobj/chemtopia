@@ -1,3 +1,4 @@
+import {answerOptions} from './answer-options.js';
 import {initializeStorage} from './equipment-storage.js';
 import {createEquipmentMenu} from './equipment-menu.js';
 import {createState,NAMES,moveItem,detach,placeItem,pour,outcome,stepPhysics,holdItem,dragItem,releaseItem,tiltItem,physicsFor,EPS} from './model.js';
@@ -43,7 +44,7 @@ function render(){
  $('pour').classList.toggle('active',pouring);
  $('pour').setAttribute('aria-pressed',String(pouring));
  $('pour').innerHTML=`${pouring?'Stop pouring':'Start pouring'} <span aria-hidden="true">↓</span>`;
- $('pour-state').textContent=actionBlocked?'Leave room for the beaker to tilt.':state.items[selected]?.kind==='beaker'?'Press Space to start or stop pouring. Hold the beaker above a receiver while dragging.':'Select a beaker to use this control.';
+ $('pour-state').textContent=state.waterBlocked?'Pour paused: place an upright receiver with room below the outlet. Water stays in the vessel.':actionBlocked?'Leave room for the beaker to tilt.':state.items[selected]?.kind==='beaker'?'Press Space to start or stop pouring. Hold the beaker above a receiver while dragging.':'Select a beaker to use this control.';
  for(const b of $('equipment').querySelectorAll('button')){b.setAttribute('aria-pressed',String(b.dataset.equipment===selected));b.disabled=state.phase!=='working';}
  $('finish').disabled=state.phase!=='working';menu?.sync();
 }
@@ -92,11 +93,11 @@ $('finish').addEventListener('click',()=>{
  panel.innerHTML=`<p class="eyebrow">EXPERIMENT REVIEW</p><h2>${result.success?'Your materials are separated.':'The separation is not complete.'}</h2>
  ${!result.success?'<p>Compare where the sand and water ended up. Restart to try again.</p>':''}
  <div class="outcomes">${result.containers.map(o=>`<span>${NAMES[o.id]}: ${description(o.water,o.sand)}</span>`).join('')}<span>Filter paper: ${result.paperSand>EPS?'wet sand':'no sand'}</span><span>Bench: ${description(result.spilledWater,result.spilledSand)}</span></div>
- ${result.success?`<form id="explanation"><fieldset><legend>Why did filtration separate this mixture?</legend>${[
+ ${result.success?`<form id="explanation"><fieldset><legend>Why did filtration separate this mixture?</legend>${answerOptions([
  'The insoluble sand was retained by the filter paper while water passed through.',
  'The water evaporated during filtration.',
  'The sand dissolved and passed through the paper with the water.'
- ].map((text,i)=>`<label class="answer-option"><input type="radio" name="answer" value="${i}" required><span>${text}</span></label>`).join('')}</fieldset><button class="primary" type="submit">Check explanation <span>→</span></button><p id="question-feedback" class="question-feedback" aria-live="polite"></p></form>`:''}`;
+ ])}</fieldset><button class="primary" type="submit">Check explanation <span>→</span></button><p id="question-feedback" class="question-feedback" aria-live="polite"></p></form>`:''}`;
  $('explanation')?.addEventListener('submit',e=>{
   e.preventDefault();const answer=new FormData(e.target).get('answer'),feedback=$('question-feedback');
   if(answer==='0'){feedback.textContent='Activity complete. Insoluble sand particles were retained by the filter paper while water passed through. The recovered sand is wet.';state.phase='complete';e.target.querySelector('button').disabled=true;}

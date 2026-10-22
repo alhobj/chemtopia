@@ -42,3 +42,7 @@ Storage keeps the same object and its contents, including a filter contained in 
 The tab remains visible when collapsed. The drawer opens for keyboard focus; Enter on a stored row retrieves it into available bench space, and Escape closes it. Restart restores the initial arrangement, including the initially stored shelf equipment. Storage is local to the current attempt; no saving, accounts or backend are added.
 
 Verification covers storage/retrieval, loaded contents, contained filter paper, disconnected powered/glass apparatus, blocked retrieval, real hover hiding, drag-back and drag-out, and all lab playthroughs.
+
+## Resting stand correction — 22 October 2026
+
+Low-speed numerical drift of upright stands in contact with the desk is resolved as static friction at each physics step. Pickups bypass this resting contact, and larger impacts/tipping remain dynamic. Regression coverage seats a funnel, nudges the stand, checks two simulated minutes without creep, and then moves the stand again.

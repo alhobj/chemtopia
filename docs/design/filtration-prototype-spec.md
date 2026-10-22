@@ -125,3 +125,7 @@ Run meaningful material-model checks for filtering with/without paper, wrong rec
 ## Approval gate
 
 The owner approved this complete specification before coding. Wording marked “proposed” above records what was submitted for that review and is included in the approval. Further changes to scope or scientific behaviour still require review.
+
+## Water-spill revision — 22 October 2026
+
+The owner explicitly disallowed spilling water in filtration. A wet transfer now moves only the amount that an upright physical receiver can accept. If no receiver is under the funnel/outlet or it is full, the remaining mixture stays in its source, with a visible pause message. Use the second collecting beaker to finish a full starting sample. Tipping a wet beaker also retains water if it cannot be caught. Dry sand can still spill from a tipped filter. This supersedes the earlier permitted water-overflow behaviour, without deleting or inventing material.

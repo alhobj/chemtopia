@@ -1,13 +1,13 @@
 import {PhysicsWorld} from './physics.js';
 export const EPS=1e-8;
-export const PARAMETERS={solute:.2,sand:.02,water:.8,coldCapacity:.3,hotCapacity:1.6,warmRate:.22,coolRate:.035,paperHold:.002};
+export const PARAMETERS={solute:.2,sand:.02,water:.8,coldCapacity:.3,hotCapacity:1.6,warmRate:.22,coolRate:.035,paperHold:.002,evaporationRate:.025};
 export const NAMES={source:'Impure potassium nitrate',water:'Water beaker',heater:'Electric heater',stand:'Funnel stand',funnel:'Glass funnel',paper:'Filter paper A',freshPaper:'Filter paper B',receiverA:'Crystallising beaker',receiverB:'Mother-liquor beaker'};
 const species=['water','raw','dissolved','crystals','sand'];
 const mix=(extra={})=>({water:0,raw:0,dissolved:0,crystals:0,sand:0,heat:0,...extra});
 export const solute=o=>o.raw+o.dissolved+o.crystals;
 export function createState(){
  const vessel=(id,x,y,extra={})=>({id,kind:'beaker',x,y,angle:0,parent:null,capacity:1.4,...mix(),...extra});
- return {width:1400,phase:'working',held:null,spills:[],flow:[],passiveFlow:[],initial:{water:.8,solute:.2,sand:.02},items:{
+ return {width:1400,phase:'working',held:null,vapour:0,evaporating:[],spills:[],flow:[],passiveFlow:[],initial:{water:.8,solute:.2,sand:.02},items:{
  source:vessel('source',300,413,{raw:.2,sand:.02}),water:vessel('water',100,429,{water:.8}),
  heater:{id:'heater',kind:'heater',x:500,y:467,angle:0,on:false,mass:2,collision:[{x:0,y:29,w:120,h:58}]},
  stand:{id:'stand',kind:'stand',x:750,y:509,angle:0,parent:null},
@@ -23,11 +23,12 @@ export function equilibrate(o){
  if(o.dissolved>capacity){const amount=o.dissolved-capacity;o.dissolved-=amount;o.crystals+=amount;}
  else{let room=capacity-o.dissolved;for(const k of ['raw','crystals']){const amount=Math.min(o[k],room);o[k]-=amount;o.dissolved+=amount;room-=amount;}}
 }
-export function description(o){return o.crystals>EPS?(o.water>EPS?'Crystals + mother liquor':'Wet collected crystals'):o.raw>EPS?'Undissolved starting solid':o.dissolved>EPS?'Dissolved potassium nitrate':o.sand>EPS?'Retained sand':o.water>EPS?'Water':'Empty';}
+export function description(o){return o.crystals>EPS?(o.water>EPS?'Crystals + mother liquor':'Solid residue'):o.raw>EPS?'Undissolved starting solid':o.dissolved>EPS?'Dissolved potassium nitrate':o.sand>EPS?'Retained sand':o.water>EPS?'Water':'Empty';}
 export function heaterContact(s,o){const h=s.items.heater,p=worldPoint(o,{x:0,y:o.id==='source'?112:96});return !o.stored&&!h.stored&&o.kind==='beaker'&&Math.abs(o.angle)<15&&Math.abs(h.angle)<15&&Math.abs(p.x-h.x)<34&&Math.abs(p.y-h.y)<9;}
 export function stepChemistry(s,dt){
- if(s.phase!=='working'||!Number.isFinite(dt)||dt<=0)return;dt=Math.min(.05,dt);s.flow=[];
- for(const o of Object.values(s.items)){if(!('raw'in o)||o.stored)continue;const heated=s.items.heater.on&&heaterContact(s,o);o.heat=Math.max(0,Math.min(1,o.heat+dt*(heated?PARAMETERS.warmRate:-PARAMETERS.coolRate)));equilibrate(o);}
+ if(s.phase!=='working'||!Number.isFinite(dt)||dt<=0)return;dt=Math.min(.05,dt);s.flow=[];s.evaporating=[];
+ for(const o of Object.values(s.items)){if(!('raw'in o)||o.stored)continue;const heated=s.items.heater.on&&heaterContact(s,o);o.heat=Math.max(0,Math.min(1,o.heat+dt*(heated?PARAMETERS.warmRate:-PARAMETERS.coolRate)));if(heated&&o.heat>=.8&&o.water>0){const water=Math.min(o.water,PARAMETERS.evaporationRate*dt*o.heat);o.water-=water;s.vapour+=water;s.evaporating.push(o.id);}
+  equilibrate(o);}
 }
 function add(s,p,m){
  if(species.reduce((n,k)=>n+m[k],0)<=0)return;
@@ -74,7 +75,7 @@ export function placeItem(s,id){
  }
  s.held=null;physicsFor(s).release();
 }
-export function totals(s){return [...Object.values(s.items).filter(o=>'raw'in o),...s.spills].reduce((t,o)=>({water:t.water+o.water,solute:t.solute+solute(o),sand:t.sand+o.sand}),{water:0,solute:0,sand:0});}
+export function totals(s){return [...Object.values(s.items).filter(o=>'raw'in o),...s.spills].reduce((t,o)=>({water:t.water+o.water,solute:t.solute+solute(o),sand:t.sand+o.sand}),{water:s.vapour,solute:0,sand:0});}
 export function outcome(s){
  const papers=Object.values(s.items).filter(o=>o.kind==='paper');
  const recovered=papers.filter(o=>o.sand<EPS&&o.raw<EPS).reduce((n,o)=>n+o.crystals,0);

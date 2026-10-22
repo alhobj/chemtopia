@@ -32,7 +32,7 @@ The prototype uses explicitly labelled **functional placeholder artwork**, with 
 
 Amounts are internal qualitative state, not calibrated readings. Sand stays represented as insoluble particles; filter paper retains it while water passes through. Pour flow is simplified, including the homogeneous transfer of the represented batch during a pour; settling and decantation are not simulated. Filtration is represented without detailed hydraulic rates or paper moisture retention. Retained sand is described as wet, not dried.
 
-Equipment now uses local two-dimensional rigid-body collisions. The stand has separate base, rod, arm and ring shapes, and the funnel seats above the ring on contact. Falling contact causes tipping; tipped water and sand drain into actual receivers or spills. Moving a seated stand also checks its funnel against other equipment. See [the interaction details and limits](../docs/design/physics-interactions.md).
+Equipment now uses local two-dimensional rigid-body collisions. The stand has separate base, rod, arm and ring shapes, and the funnel seats above the ring on contact. Falling contact causes tipping; dry sand can spill; filtration retains water when no receiver can catch it. Other labs retain their own tipping/spill rules. Moving a seated stand also checks its funnel against other equipment. See [the interaction details and limits](../docs/design/physics-interactions.md).
 
 Collision shapes, masses, friction, ring support constraints and tipping/drain thresholds are qualitative approximations. Folded paper has a containment exception while being inserted in its funnel. No glass breakage, impact damage or additional chemistry process is simulated. Matter.js 0.20.0 is bundled locally with its [MIT licence and source record](vendor/README.md); no runtime network access is needed.
 
@@ -52,9 +52,9 @@ Browser screenshots are written to the operating system temporary directory for 
 
 The [approved distillation specification](../docs/design/distillation-prototype-spec.md) uses equal model mole amounts of acetone and water. Pour feed into the flask, assemble and support the glass path, place a collecting beaker beneath the condenser outlet, and drag both ends of each water hose onto fittings. Select the heater or tap and use Space or the action button to switch it on/off. Picking up apparatus disconnects its joints; connected hose ends follow their fittings until dragged away.
 
-Both sample liquids can vaporise. Early collected liquid is acetone-enriched, rather than pure acetone. Finish reports acetone recovery separately from collected composition, together with vessels, spills and escaped vapour. Direct feed transfer does not count as distilled recovery.
+Both sample liquids can vaporise. The requested simplified model now collects acetone at 56°C and retains water until 100°C; it does not predict real-mixture purity. Finish reports acetone recovery separately from collected composition, together with vessels, spills and escaped vapour. Direct feed transfer does not count as distilled recovery.
 
-Either coolant port accepts the supply. In this qualitative model, upper-port supply fills the jacket less effectively and collects less acetone under comparable heating conditions. Coolant stays separate from the sample. Jacket fill, relative volatility and heating rates are readable prototype approximations, not calibrated laboratory predictions.
+Either coolant port accepts the supply. In this qualitative model, upper-port supply fills the jacket less effectively and collects less acetone under comparable heating conditions. Coolant stays separate from the sample. Jacket fill and heating rates are readable prototype approximations, not calibrated laboratory predictions.
 
 Clamps and compatible glass joints attach at close contact. Temporary collision exceptions represent opening clamps and inserting joints; connected equipment forms a constrained assembly. Flexible hoses are visual connections, without hose tension or fluid-pressure simulation. The heater begins on the bench, unconnected; it remains movable. The analogue thermometer now includes a circular digital °C reading: 20°C initially, 56°C during the main acetone collection stage, then rising towards 100°C as acetone is depleted. Turning off the heater cools it towards 20°C. A detached thermometer also cools towards ambient. This is the owner-requested simplified temperature curve, not calibrated mixture thermometry. No pressure, bumping, breakage or injuries are simulated.
 
@@ -104,3 +104,13 @@ Choose Recrystallisation from any other lab. Add water to the impure potassium n
 Finish reports undissolved starting solid, dissolved solute, recrystallised solid, sand and water by location. Recovery counts crystals on paper free of the represented sand/raw-solid contamination. Collected crystals are wet; no final drying or balance is included.
 
 The temperature-dependent capacity and thermal rates are qualitative defaults, not verified potassium-nitrate solubility data. See [the bounded specification](../docs/design/recrystallisation-prototype-spec.md) and [review](../docs/design/recrystallisation-prototype-review.md). Other roadmap labs remain proposals.
+
+## Lab corrections — 22 October 2026
+
+The equipment drawer now sits beside the first lab row and scrolls with it. Review answer positions are shuffled. Resting stands resist slow numerical creep.
+
+Filtration prevents water spills: a missed/full receiver stops the transfer and leaves the remaining mixture in the source. Switch collecting beakers to finish. Dry sand can still spill.
+
+Distillation includes a removable filling funnel. Remove it before fitting the still head. The requested teaching model collects acetone at 56°C, keeps water in the flask until 100°C and stops vaporisation below the active threshold on cooling. This is not real acetone–water equilibrium behaviour or a purity prediction.
+
+Recrystallisation evaporates water from heated water or solution beakers and reports it separately; solute stays behind. In chromatography review, drag the review ruler to measure both baseline-relative distances and calculate R_F. The review ruler moves independently of the frozen practical setup.
