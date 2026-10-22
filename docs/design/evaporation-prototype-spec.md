@@ -47,9 +47,9 @@ Success means the basin contains salt and no remaining water, within numerical p
 
 **Why does salt remain when this solution is heated?**
 
-- **A.** Water evaporates while sodium chloride is non-volatile under these conditions. **Correct.**
-- **B.** The water turns into salt as it is heated.
-- **C.** Both salt and water evaporate in the same proportion.
+- **A.** Water evaporates; the non-volatile sodium chloride stays behind. **Correct.**
+- **B.** Salt evaporates; the remaining water changes into a new solid.
+- **C.** Both substances evaporate; salt vapour then settles in the basin.
 
 Allow retry without currency. Explain phase change and physical separation after submission. An incomplete attempt remains reviewable and restartable. No quantitative recovery calculation task is required from the student in this increment.
 
@@ -64,3 +64,7 @@ See [the verified separation mapping](../curriculum/separation-techniques.md) an
 All three earlier labs link to this experiment. It links back to filtration, distillation and paper chromatography. Switching starts a fresh attempt.
 
 Model/physics tests cover salt and water conservation, vapour, wet versus dry residue, contact and switch-off, ordinary transfer, misses/overflow, storage, stable heater placement, dry-residue spills and reset/finished state. Real Chromium checks cover dragging, Space pouring/heating, visible wet/dry stages, recovery, question retry, incomplete review and navigation. Existing lab and drawer checks remain regression coverage.
+
+## Three-question review
+
+The current first-question prompt is retained with balanced shuffled choices. Two harder follow-ups now apply the concepts and require typed numerical work. All three must be correct. See [the full question inventory and solutions](review-questions.md); this supersedes earlier single-question completion descriptions.

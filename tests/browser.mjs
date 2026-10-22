@@ -1,3 +1,4 @@
+import {fillFollowups} from './review-browser-helpers.mjs';
 import {dragStored,menuPoint,hoverMenu} from './equipment-menu-helpers.mjs';
 // Real Chromium input tests through CDP, without a browser automation dependency.
 import {spawn} from 'node:child_process';
@@ -86,6 +87,7 @@ try{
  await drag('receiverA',x+60,429,40,false);await send('Input.dispatchMouseEvent',{type:'mouseMoved',buttons:1,...await menuPoint(evaluate)});await send('Input.dispatchMouseEvent',{type:'mouseReleased',button:'left',clickCount:1,...await menuPoint(evaluate)});await drag('receiverB',x,429);drop=await liftSource(x);await key(' ','Space');await pause(2200);await putSourceBack(drop);
  assert.equal(await evaluate("document.querySelector('#spills').children.length"),0,'water overflow stays in the source until a second receiver is placed');
  await screenshot('chemtopia-before-finish.png');await click('#finish');assert.ok(await evaluate("!!document.querySelector('#explanation')"),'filtration remains completable with collisions');
+ await fillFollowups(evaluate,'filtration');
  await click('input[value="1"]');await click('#explanation button');assert.ok((await evaluate("document.querySelector('#question-feedback').textContent")).includes('Choose another answer'));
  await evaluate("document.querySelector('input[value=\"0\"]').focus()");await key(' ','Space');await evaluate("document.querySelector('#explanation button').focus()");await key('Enter');
  assert.ok((await evaluate("document.querySelector('#question-feedback').textContent")).includes('Activity complete'));await screenshot('chemtopia-completed.png');

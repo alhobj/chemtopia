@@ -1,0 +1,19 @@
+# Separation-lab review questions
+
+The owner requested two harder questions after each existing first question, less predictable answer lengths, and numerical R_F calculation. Each successful lab now opens three ordered questions. The original first-question prompt is retained; its choices are edited to comparable lengths. Choice order is shuffled independently for each question. Numeric answers are typed, not selected from a list. All three answers must be correct, with feedback and retry. Chromatography additionally requires the existing ruler measurements and R_F entries for the student's developed paper.
+
+These are original practice examples. Numerical values are provided in the questions, not presented as measurements from the qualitative simulation or verified potassium-nitrate solubility data. No textbook questions are reproduced.
+
+| Lab | Question 1: retained concept | Question 2: application | Question 3: harder calculation |
+| --- | --- | --- | --- |
+| Filtration | Why filtration separates sand and water | Predict the filtrate when sand and dissolved salt are both present | Recover 6.4 g sand from an initial 8.0 g sand plus 5.0 g dissolved salt: sand recovery = **80.0%**; salt is excluded from the denominator |
+| Distillation | Why acetone is collected first in the model | Explain lower recovery with upper-port coolant supply | Initial acetone 0.50 mol; collected 0.30 mol acetone and 0.10 mol water: acetone recovery = **60.0%**, collected acetone mole percentage = **75.0%** |
+| Paper chromatography | How to calculate R_F from ruler measurements | Spot travels 3.6 cm and front 8.0 cm from baseline: R_F = **0.45** | Baseline at 1.0 cm, front at 9.0 cm, R_F = 0.65: band height above bottom = **6.2 cm**; baseline-relative travel = 5.2 cm |
+| Evaporation | Why salt remains after heating | Explain why wet salt overestimates dry-salt recovery | 12.0 g solution at 20.0% salt by mass contains 2.40 g salt; 2.10 g dry salt recovered gives **87.5%** recovery |
+| Recrystallisation | Why crystals form when hot filtrate cools | Explain why excess solvent can reduce crystal formation | Hypothetical 10.0 g solute in 25.0 g water; cold solubility 20.0 g per 100 g water: 5.0 g stays dissolved, maximum crystals = **5.0 g** |
+
+For calculations, the displayed unit belongs to the input label. R_F is dimensionless. Numerical marking allows small rounding differences: ±0.005 for the two-decimal R_F example and ±0.05 in the displayed unit for the other examples. Empty or non-finite inputs are rejected. Distillation recovery and composition must both be correct. The band-position question requires adding the baseline offset; entering 5.2 cm is insufficient.
+
+The reviewed IB guide's Structure 1.1.1 covers the separation techniques; Tool 1 covers practical separation and measurement. Structure 2.2.10 explicitly includes calculating and interpreting R_F (common SL/HL). See [the verified curriculum mapping](../curriculum/separation-techniques.md). The chosen examples and progression are project exercises, not IB-prescribed questions or a complete assessment rubric.
+
+Implementation: `prototype/review-questions.js`. Tests check all five three-question sets, balanced answer lengths, numerical denominators, baseline offsets, invalid inputs and real browser retry/completion. See [the beaker endpoint revision](recrystallisation-prototype-spec.md) for recrystallisation success; these questions do not require a second filtration.

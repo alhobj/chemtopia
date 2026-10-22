@@ -49,3 +49,13 @@ test('heating plain water or solution evaporates water, retains solute and accou
  Object.assign(o,{x:500,y:id==='source'?355:371,heat:1});s.items.heater.on=true;const before=o.water;run(s,3);assert.ok(o.water<before);assert.ok(s.vapour>0);assert.ok(s.evaporating.includes(id));conserved(s);
  s.items.heater.on=false;const stopped=o.water;run(s,1);assert.equal(o.water,stopped);conserved(s);}
 });
+
+test('crystals in a clean beaker with mother liquor are a valid endpoint without a second filtration',()=>{
+ const s=fixture();hotFilter(s);run(s,32);const r=outcome(s);assert.ok(r.success);assert.ok(r.inBeakers>.1);assert.equal(r.onPaper,0);assert.ok(s.items.receiverA.water>0);assert.ok(s.items.receiverA.dissolved>0);assert.equal(r.recovered,s.items.receiverA.crystals);conserved(s);
+});
+test('beaker endpoint excludes undissolved starting material, sand and spilled crystals',()=>{
+ const s=createState();assert.ok(!outcome(s).success);s.items.source.raw-=.1;s.items.source.crystals+=.1;assert.ok(!outcome(s).success,'sand-contaminated material is not a clean product');
+ s.items.source.sand=0;s.items.receiverB.sand=.02;assert.ok(!outcome(s).success,'remaining starting solid is not a clean product');
+ s.items.source.raw=0;s.items.source.crystals=.2;assert.ok(outcome(s).success);
+ s.items.source.crystals=0;s.spills.push({x:500,water:0,raw:0,dissolved:0,crystals:.2,sand:0,heat:0});assert.ok(!outcome(s).success);conserved(s);
+});

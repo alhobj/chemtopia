@@ -78,8 +78,11 @@ export function placeItem(s,id){
 export function totals(s){return [...Object.values(s.items).filter(o=>'raw'in o),...s.spills].reduce((t,o)=>({water:t.water+o.water,solute:t.solute+solute(o),sand:t.sand+o.sand}),{water:s.vapour,solute:0,sand:0});}
 export function outcome(s){
  const papers=Object.values(s.items).filter(o=>o.kind==='paper');
- const recovered=papers.filter(o=>o.sand<EPS&&o.raw<EPS).reduce((n,o)=>n+o.crystals,0);
- return {success:recovered>EPS,recovered,yield:recovered/s.initial.solute,papers};
+ const clean=o=>o.sand<EPS&&o.raw<EPS;
+ const onPaper=papers.filter(clean).reduce((n,o)=>n+o.crystals,0);
+ const inBeakers=Object.values(s.items).filter(o=>o.kind==='beaker'&&clean(o)).reduce((n,o)=>n+o.crystals,0);
+ const recovered=onPaper+inBeakers;
+ return {success:recovered>EPS,recovered,yield:recovered/s.initial.solute,onPaper,inBeakers,papers};
 }
 const worlds=new WeakMap();
 export function physicsFor(s){

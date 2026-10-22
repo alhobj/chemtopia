@@ -50,9 +50,9 @@ A result with actual distilled acetone and collected acetone fraction above the 
 
 **Why is acetone collected before water in this model?**
 
-- **A.** Acetone has the lower boiling point; the condenser cools its vapour back to liquid. **Correct.**
-- **B.** Water is permanently unable to vaporise.
-- **C.** The condenser filters acetone molecules out of the liquid feed.
+- **A.** Acetone boils first; the condenser cools its vapour to liquid. **Correct.**
+- **B.** Water boils first; the condenser converts this water into acetone.
+- **C.** Both boil together; the condenser filters only acetone from water.
 
 Allow retry without currency. Explain that both liquids can vaporise and recovery differs from purity.
 
@@ -82,3 +82,7 @@ The circular digital badge remains above the analogue stem, follows it when move
 The display now follows the same temperature that gates vaporisation: warm from 20°C to 56°C, hold while acetone remains, rise towards 100°C after acetone depletion, then boil the remaining water. Switch-off or loss of contact cools towards 20°C. The earlier 10% tail transition and independent thermal-energy gate are superseded.
 
 Use the removable funnel to fill the flask. Remove/store it before attaching the still head. Either component can be poured or spilled with the existing controls; coolant remains a separate circuit. Answer options are shuffled on each Finish, preserving marking and retry.
+
+## Three-question review
+
+The current first-question prompt is retained with balanced shuffled choices. Two harder follow-ups now apply the concepts and require typed numerical work. All three must be correct. See [the full question inventory and solutions](review-questions.md); this supersedes earlier single-question completion descriptions.

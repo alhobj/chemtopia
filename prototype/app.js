@@ -1,4 +1,4 @@
-import {answerOptions} from './answer-options.js';
+import {reviewQuestions,bindReviewQuestions} from './review-questions.js';
 import {initializeStorage} from './equipment-storage.js';
 import {createEquipmentMenu} from './equipment-menu.js';
 import {createState,NAMES,moveItem,detach,placeItem,pour,outcome,stepPhysics,holdItem,dragItem,releaseItem,tiltItem,physicsFor,EPS} from './model.js';
@@ -93,16 +93,8 @@ $('finish').addEventListener('click',()=>{
  panel.innerHTML=`<p class="eyebrow">EXPERIMENT REVIEW</p><h2>${result.success?'Your materials are separated.':'The separation is not complete.'}</h2>
  ${!result.success?'<p>Compare where the sand and water ended up. Restart to try again.</p>':''}
  <div class="outcomes">${result.containers.map(o=>`<span>${NAMES[o.id]}: ${description(o.water,o.sand)}</span>`).join('')}<span>Filter paper: ${result.paperSand>EPS?'wet sand':'no sand'}</span><span>Bench: ${description(result.spilledWater,result.spilledSand)}</span></div>
- ${result.success?`<form id="explanation"><fieldset><legend>Why did filtration separate this mixture?</legend>${answerOptions([
- 'The insoluble sand was retained by the filter paper while water passed through.',
- 'The water evaporated during filtration.',
- 'The sand dissolved and passed through the paper with the water.'
- ])}</fieldset><button class="primary" type="submit">Check explanation <span>→</span></button><p id="question-feedback" class="question-feedback" aria-live="polite"></p></form>`:''}`;
- $('explanation')?.addEventListener('submit',e=>{
-  e.preventDefault();const answer=new FormData(e.target).get('answer'),feedback=$('question-feedback');
-  if(answer==='0'){feedback.textContent='Activity complete. Insoluble sand particles were retained by the filter paper while water passed through. The recovered sand is wet.';state.phase='complete';e.target.querySelector('button').disabled=true;}
-  else feedback.textContent='Insoluble sand particles are retained by the filter paper while water passes through. Choose another answer to complete your explanation.';
- });
+ ${result.success?reviewQuestions('filtration'):''}`;
+ bindReviewQuestions('filtration',()=>{state.phase='complete';});
  panel.focus({preventScroll:true});panel.scrollIntoView({behavior:'smooth',block:'nearest'});
 });
 function frame(time){const dt=Math.min(.05,(time-last)/1000);last=time;const moved=stepPhysics(state,dt,drag?.active?drag.id:null),didPour=pouring;if(pouring){pour(state,selected,.32*dt);if(state.items[selected].water+state.items[selected].sand<=EPS){tiltItem(state,selected,0);pouring=false;state.flow=[];}}if(moved||didPour)render();requestAnimationFrame(frame);}

@@ -85,9 +85,9 @@ If the criterion is met, ask:
 
 **Why did filtration separate this mixture?**
 
-- **A.** The insoluble sand was retained by the filter paper while water passed through. **Correct.**
-- **B.** The water evaporated during filtration.
-- **C.** The sand dissolved and passed through the paper with the water.
+- **A.** Insoluble sand stays on the paper; liquid water passes through. **Correct.**
+- **B.** Dissolved sand stays on the paper; liquid water passes through.
+- **C.** Liquid water stays on the paper; insoluble sand passes through.
 
 The question text, distractors and criterion need owner approval as new chemistry/assessment content. Proposed feedback after submission: explain that insoluble solid particles are retained by the paper, while water passes through; if the answer is wrong, allow another answer without currency or scoring. Completion requires the correct explanation. The first-try currency rule remains deferred, not removed from the eventual design.
 
@@ -129,3 +129,7 @@ The owner approved this complete specification before coding. Wording marked “
 ## Water-spill revision — 22 October 2026
 
 The owner explicitly disallowed spilling water in filtration. A wet transfer now moves only the amount that an upright physical receiver can accept. If no receiver is under the funnel/outlet or it is full, the remaining mixture stays in its source, with a visible pause message. Use the second collecting beaker to finish a full starting sample. Tipping a wet beaker also retains water if it cannot be caught. Dry sand can still spill from a tipped filter. This supersedes the earlier permitted water-overflow behaviour, without deleting or inventing material.
+
+## Three-question review
+
+The current first-question prompt is retained with balanced shuffled choices. Two harder follow-ups now apply the concepts and require typed numerical work. All three must be correct. See [the full question inventory and solutions](review-questions.md); this supersedes earlier single-question completion descriptions.

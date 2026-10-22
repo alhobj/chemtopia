@@ -4,7 +4,7 @@
   "type": "module",
   "scripts": {
     "start": "node scripts/serve.mjs",
-    "test": "node --test tests/model.test.mjs tests/distillation.test.mjs tests/chromatography.test.mjs tests/equipment-storage.test.mjs tests/evaporation.test.mjs tests/recrystallisation.test.mjs tests/answer-options.test.mjs",
+    "test": "node --test tests/model.test.mjs tests/distillation.test.mjs tests/chromatography.test.mjs tests/equipment-storage.test.mjs tests/evaporation.test.mjs tests/recrystallisation.test.mjs tests/answer-options.test.mjs tests/review-questions.test.mjs",
     "test:browser": "node tests/browser.mjs && node tests/distillation-browser.mjs && node tests/chromatography-browser.mjs && node tests/equipment-menu-browser.mjs && node tests/evaporation-browser.mjs && node tests/recrystallisation-browser.mjs"
   },
   "engines": { "node": ">=22" }

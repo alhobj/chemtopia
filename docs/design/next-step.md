@@ -2,7 +2,7 @@
 
 ## Current step — recrystallisation
 
-The owner requested recrystallisation following the L06 roadmap brief. [The bounded specification](recrystallisation-prototype-spec.md) uses the potassium-nitrate/sand/water example with hot filtration, cooling, clean-filter collection and wet-product accounting. Its capacity curve is explicitly qualitative; a verified data-calibrated solubility model remains a future refinement. See [the review](recrystallisation-prototype-review.md).
+The owner requested recrystallisation following the L06 roadmap brief. [The bounded specification](recrystallisation-prototype-spec.md) uses the potassium-nitrate/sand/water example with hot filtration, cooling, crystals in the clean beaker and optional second filtration. Its capacity curve is explicitly qualitative; a verified data-calibrated solubility model remains a future refinement. See [the review](recrystallisation-prototype-review.md).
 
 Evaporation and the earlier labs remain available, with links between experiments. This request does not imply owner acceptance of previous controls or authorise the other roadmap proposals.
 

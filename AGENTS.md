@@ -79,3 +79,8 @@ The owner requested “Make recrystallisation” after the L06 brief. Follow doc
 ## Owner-requested lab corrections (22 October 2026)
 
 The owner explicitly requested arrested stand creep, evaporation of water from heated water/solution beakers in recrystallisation, a draggable chromatography-review ruler with R_F questions, a drawer aligned beside the first lab row, varied answer positions, blocked filtration water spills, and a distillation filling funnel with separate 56°C acetone/100°C water stages that stop below boiling. These requests supersede earlier conflicting simplifications for these bounded behaviours. Preserve material accounting and explicitly label the distillation stages as a teaching simplification, not real mixture equilibrium data. See the revised specifications and decision log. Existing push authorisation applies.
+
+
+## Beaker endpoint and harder review questions
+
+The owner requested crystals in the recrystallisation beaker as a valid endpoint, optional second filtration, and two harder questions after each current first question. They explicitly asked to remove the longest-answer cue and include actual R_F calculation. Preserve the first-question prompts, use balanced shuffled choices, require typed numerical work and retain retry. See docs/design/review-questions.md and the revised recrystallisation specification. Existing commit/push authorisation applies.

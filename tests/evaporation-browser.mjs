@@ -1,3 +1,4 @@
+import {fillFollowups} from './review-browser-helpers.mjs';
 import {dragStored,menuPoint,hoverMenu} from './equipment-menu-helpers.mjs';
 // Real Chromium input tests through CDP, without a browser automation dependency.
 import {spawn} from 'node:child_process';
@@ -57,6 +58,7 @@ try{
  await screenshot('chemtopia-evaporation-dry.png');
  await click('#finish');assert.ok(await evaluate("!!document.querySelector('#explanation')"));
  assert.equal(await evaluate("document.querySelector('#recovery').textContent"),'100.0%');
+ await fillFollowups(evaluate,'evaporation');
  await click('input[value="1"]');await click('#explanation button');assert.ok((await evaluate("document.querySelector('#question-feedback').textContent")).includes('Choose another answer'));
  await click('input[value="0"]');await click('#explanation button');assert.ok((await evaluate("document.querySelector('#question-feedback').textContent")).includes('Activity complete'));
  await screenshot('chemtopia-evaporation-review.png');console.log('PASS real transfer, stable heater/basin contact, wet versus dry residue, salt recovery and explanation retry');

@@ -52,11 +52,11 @@ Do not add a pen-baseline mistake unless a pen and its solvent behaviour are sep
 
 Show the developed strip, original baseline/spot, front position and component migration distances. A visible separation opens the explanation question below, with retry and no currency. An ineffective attempt remains reviewable and restartable.
 
-**Why did the components travel different distances?**
+**How do you calculate an R_F value from ruler measurements?**
 
-- **A.** They interact differently with the mobile and stationary phases. **Correct.**
-- **B.** The paper sorts molecules only by their mass.
-- **C.** Every component must move with the solvent front.
+- **A.** Divide baseline-to-spot distance by baseline-to-front distance, using matching units. **Correct.**
+- **B.** Divide baseline-to-front distance by baseline-to-spot distance, using matching units.
+- **C.** Divide bottom-edge-to-spot distance by bottom-edge-to-front distance, using matching units.
 
 Explain that stronger relative attraction to the stationary phase generally gives less migration under the same conditions.
 
@@ -99,3 +99,7 @@ The first proposal offered water-soluble ink with water versus a leaf-pigment ex
 ## Review revision — 22 October 2026
 
 The Finish image has a freely draggable ruler in centimetres. Its zero can be aligned with the pencil baseline; students measure the baseline-to-band-centre and baseline-to-marked-front distances and enter their own R_F calculations. Moving this ruler leaves the frozen experiment unchanged. The explanation now asks how R_F is calculated from these measurements, with retry and shuffled option order. Completion still requires correct measurements/calculations as well as the explanation.
+
+## Three-question review
+
+The current first-question prompt is retained with balanced shuffled choices. Two harder follow-ups now apply the concepts and require typed numerical work. All three must be correct. See [the full question inventory and solutions](review-questions.md); this supersedes earlier single-question completion descriptions.

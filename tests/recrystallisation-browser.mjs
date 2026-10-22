@@ -1,3 +1,4 @@
+import {fillFollowups} from './review-browser-helpers.mjs';
 import {dragStored,menuPoint,hoverMenu} from './equipment-menu-helpers.mjs';
 // Real Chromium input tests through CDP, without a browser automation dependency.
 import {spawn} from 'node:child_process';
@@ -70,25 +71,15 @@ try{
  assert.ok((await evaluate("document.querySelector('[data-id=receiverA]').textContent")).includes('Crystals + mother liquor'),'cooling produces crystals');
  await screenshot('chemtopia-recrystallisation-cooling.png');
 
- // Store the cooled, filled beaker while rearranging the collection setup.
- const cooled=await pose('receiverA');
- await drag('receiverA',cooled.x+60,cooled.y,{release:false});
- await send('Input.dispatchMouseEvent',{type:'mouseMoved',buttons:1,...await menuPoint(evaluate)});await send('Input.dispatchMouseEvent',{type:'mouseReleased',button:'left',clickCount:1,...await menuPoint(evaluate)});
- assert.equal(await evaluate("document.querySelector('[data-equipment=receiverA]').dataset.stored"),'true');
- let current=await pose('funnel');
- await drag('receiverB',current.x,429);
- current=await pose('funnel');await drag('freshPaper',current.x,current.y+4,{dy:10});
- assert.ok((await evaluate("document.querySelector('[data-id=freshPaper]').getAttribute('aria-description')")).includes('Seated'),'clean paper seats in funnel');
- drop=await drag('receiverA',1100,120,{release:false});
- await drop.move(current.x-28.7,120);
- await key(' ','Space');await pause(2200);await key(' ','Space');await drop.move(1100,120);await drop.move(1000,429);await drop();
+ // Crystals in the clean beaker, with mother liquor, are already a valid endpoint.
  await click('#finish');
  if(!await evaluate("!!document.querySelector('#explanation')"))console.log(await evaluate("document.querySelector('#result').textContent"));
- assert.ok(await evaluate("!!document.querySelector('#explanation')"),'full hot-filter/cool/collect workflow succeeds');
+ assert.ok(await evaluate("!!document.querySelector('#explanation')"),'hot-filter/cool workflow succeeds with crystals still in the beaker');
  assert.ok(Number.parseFloat(await evaluate("document.querySelector('#recovery').textContent"))>0);
+ await fillFollowups(evaluate,'recrystallisation');
  await click('input[value="1"]');await click('#explanation button');assert.ok((await evaluate("document.querySelector('#question-feedback').textContent")).includes('Choose another answer'));
  await click('input[value="0"]');await click('#explanation button');assert.ok((await evaluate("document.querySelector('#question-feedback').textContent")).includes('Activity complete'));
- await screenshot('chemtopia-recrystallisation-review.png');console.log('PASS solvent addition, heating, hot filtration, cooling, clean-paper crystal collection, mother liquor and explanation retry');
+ await screenshot('chemtopia-recrystallisation-review.png');console.log('PASS hot filtration, crystals in the beaker with mother liquor, three questions and calculation retry');
  await click('#restart');await click('#finish');assert.equal(await evaluate("!!document.querySelector('#explanation')"),false);
  await click('#back-evaporation');
  for(let i=0;i<40;i++){if(await evaluate("document.querySelectorAll('.equipment-button').length===4"))break;await pause(100);}

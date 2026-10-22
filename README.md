@@ -14,6 +14,7 @@ For step-by-step terminal instructions and a file guide, see [Run and edit in VS
 
 ## Start here
 
+- [Three-question lab reviews and calculations](docs/design/review-questions.md)
 - [Equipment menu controls and preview](docs/design/equipment-menu-review.md)
 - [Further labs: proposed roadmap](docs/design/lab-roadmap.md)
 - [Curriculum evidence for proposed labs](docs/curriculum/lab-opportunities.md)

@@ -1,3 +1,4 @@
+import {fillFollowups} from './review-browser-helpers.mjs';
 import {dragStored,menuPoint,hoverMenu} from './equipment-menu-helpers.mjs';
 // Real Chromium input tests through CDP, without a browser automation dependency.
 import {spawn} from 'node:child_process';
@@ -90,9 +91,13 @@ try{
  await click('#rf-form button');assert.ok((await evaluate("document.querySelector('#rf-feedback').textContent")).includes('Check the baseline'));
  await evaluate(`(()=>{const names=${JSON.stringify(names)},m=${JSON.stringify(measured)};names.forEach((id,i)=>{const d=Number(((m.baseline-m.bands[i])/10).toFixed(1)),f=Number(((m.baseline-m.front)/10).toFixed(1));document.querySelector('[name="distance-'+id+'"]').value=d;document.querySelector('[name="front-'+id+'"]').value=f;document.querySelector('[name="rf-'+id+'"]').value=(d/f).toFixed(2);});})()`);
  await click('#rf-form button');assert.ok((await evaluate("document.querySelector('#rf-feedback').textContent")).includes('correct'));
+ await fillFollowups(evaluate,'chromatography');
  await click('input[value="1"]');await click('#explanation button');
  assert.ok((await evaluate("document.querySelector('#question-feedback').textContent")).includes('Choose another answer'));
+ await evaluate("document.querySelector('[name=q3-value]').value='5.2'");
  await click('input[value="0"]');await click('#explanation button');
+ assert.ok(!(await evaluate("document.querySelector('#question-feedback').textContent")).includes('Activity complete'),'a baseline-offset error must be corrected');
+ await fillFollowups(evaluate,'chromatography');await click('#explanation button');
  assert.ok((await evaluate("document.querySelector('#question-feedback').textContent")).includes('Activity complete'));
  await screenshot('chemtopia-chromatography-review.png');
  console.log('PASS real marker/pencil actions, water pouring, paper support/development, front marking, ruler, R_F retry and explanation');

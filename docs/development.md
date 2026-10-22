@@ -70,3 +70,5 @@ npm test
 This runs with Node alone. The optional `npm run test:browser` needs a Chromium executable; see [the prototype guide](../prototype/README.md). It is not required just to play or edit the game.
 
 The server is local, with no accounts, analytics or saved student data. It only serves the `prototype/` folder.
+
+Review-question prompts, choices, numerical example data and marking live in `prototype/review-questions.js`. Each successful lab uses its three-question set. See [the question inventory](design/review-questions.md) for progression, solutions and source boundaries.

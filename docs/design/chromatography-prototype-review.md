@@ -17,3 +17,5 @@ Students can submerge a spot, miss the chamber while pouring, overflow it, omit 
 Screenshots are captured from the local browser using project-owned SVG placeholders. No external runtime requests, accounts, saving, analytics or publication are introduced.
 
 ![Draggable ruler on the frozen review paper](../art/previews/chromatography-review-ruler.png)
+
+The first R_F question now has balanced choices; the two harder follow-ups require numerical R_F calculation and applying a baseline offset. All three answers and the measured-paper task must be correct. See [the complete question set](review-questions.md).

@@ -1,3 +1,4 @@
+import {fillFollowups} from './review-browser-helpers.mjs';
 import {dragStored,menuPoint,hoverMenu} from './equipment-menu-helpers.mjs';
 // Real Chromium input tests through CDP, without a browser automation dependency.
 import {spawn} from 'node:child_process';
@@ -106,6 +107,7 @@ try{
 
  assert.ok(await evaluate("!!document.querySelector('#explanation')"),'distillation completes through real assembly');
  const normal=Number.parseFloat(await evaluate("document.querySelector('#recovery').textContent"));assert.ok(normal>0);
+ await fillFollowups(evaluate,'distillation');
  await click('input[value="1"]');await click('#explanation button');assert.ok((await evaluate("document.querySelector('#question-feedback').textContent")).includes('Choose another answer'));
  await click('input[value="0"]');await click('#explanation button');assert.ok((await evaluate("document.querySelector('#question-feedback').textContent")).includes('Activity complete'));
  if(!reversed)await screenshot('chemtopia-distillation-review.png');

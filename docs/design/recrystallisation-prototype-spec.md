@@ -4,7 +4,7 @@
 
 ## Objective and workflow
 
-Recover potassium nitrate crystals separated from the represented sand impurity, using water as solvent. Add water, heat to dissolve the desired solid, hot-filter the insoluble sand, cool the filtrate, then filter the crystals from mother liquor using clean paper. The assessed product is **wet collected crystals**, not a dry weighed yield. Heating too long can instead leave solid residue in a beaker.
+Recover potassium nitrate crystals separated from the represented sand impurity, using water as solvent. Add water, heat to dissolve the desired solid, hot-filter the insoluble sand, cool the filtrate, then form crystals in the clean receiving beaker. Filtering them from mother liquor is optional. Crystals in a beaker, including those still in mother liquor, are an accepted endpoint; this is not a dry weighed yield. Heating too long can instead leave solid residue in a beaker.
 
 Supply the impure solid beaker, water beaker, electric heater, stand, funnel, two interchangeable filter papers and two receiving beakers. Labels distinguish the items without revealing placement targets. Both papers are available in the shared equipment drawer. Either can be used at either stage; the model does not force the correct order.
 
@@ -43,15 +43,15 @@ Water evaporates from any beaker in contact with the switched-on heater once nor
 
 ## Finish and explanation
 
-Report all five material pools by location, including mother liquor, loaded papers and spills. Recovery means recrystallised potassium nitrate collected on paper free of represented sand/undissolved starting material, divided by initial potassium nitrate. There is no arbitrary percentage pass threshold.
+Report all five material pools by location, including mother liquor, loaded papers, evaporated water and spills. A positive amount of recrystallised potassium nitrate in a beaker or on paper free of represented sand/undissolved starting solid is enough for success. A second filtration is optional. The result distinguishes crystals in beakers from crystals isolated on paper.
 
-Success requires a positive amount of such collected crystals. Dissolved solute in retained moisture is reported separately and is not added to the crystal-recovery numerator. This is solute recovery in a wet product, not measured dry crystal mass or a claim of purity against unrepresented contaminants.
+The displayed fraction is starting solute present as crystals in those accepted locations, divided by initial potassium nitrate. Dissolved solute in mother liquor or retained moisture is excluded. This is a crystal-formation fraction, not an isolated dry-product recovery, measured mass or claim about unrepresented impurities. Raw starting material and spilled crystals do not qualify.
 
 **Why did crystals form when the hot filtrate cooled?**
 
-- **A.** The solute is less soluble in colder water, so some dissolved material forms crystals while some remains in the mother liquor. **Correct.**
-- **B.** Cooling turns the sand into potassium nitrate.
-- **C.** All the dissolved solute must leave the water whenever it cools.
+- **A.** Solubility falls on cooling; some solute forms solid crystals. **Correct.**
+- **B.** Solubility rises on cooling; all solute becomes solid crystals.
+- **C.** Solubility stays unchanged; dissolved sand forms new crystals.
 
 Allow retry, without scores or currency. Explain the difference from evaporating all solvent. Incomplete and contaminated attempts remain reviewable and restartable.
 
@@ -60,3 +60,7 @@ Allow retry, without scores or currency. Explain the difference from evaporating
 The owner-supplied IB Chemistry guide, first assessment 2025, published February 2023, names recrystallisation in **Structure 1.1.1**, printed p. 33 / PDF p. 39, and Tool 1, printed p. 29 / PDF p. 35. This is common SL/HL separation/practical coverage. The particular sample and qualitative model are project examples, not a prescribed IB experiment. See [the verified mapping](../curriculum/separation-techniques.md).
 
 Checks cover hot filtration, cooling and mother liquor, excess solvent, premature collection, contaminated paper, raw-solid provenance, transfers/spills and conservation, storage, finished/reset state, and a real mouse/Space playthrough. Existing labs remain regression coverage. No backend, accounts, saving, analytics or public deployment.
+
+## Three-question review
+
+The existing cooling/solubility question remains first, with comparable-length choices. Two harder follow-ups cover excess solvent and a supplied hypothetical solubility calculation. All three must be correct; see [the question set](review-questions.md).
