@@ -63,7 +63,7 @@ try{
  async function hose(hose,index,target){
   await evaluate("document.querySelector('#bench').scrollIntoView({block:'center'})");
   const a=await evaluate(`(()=>{const e=document.querySelector('[data-hose="${hose}"][data-end="${index}"]'),m=document.querySelector('#bench').getScreenCTM(),p=new DOMPoint(+e.getAttribute('cx'),+e.getAttribute('cy')).matrixTransform(m);return{x:p.x,y:p.y};})()`);
-  const b=await evaluate(`(()=>{const p=new DOMPoint(${target.x},${target.y}).matrixTransform(document.querySelector('#bench').getScreenCTM());return{x:p.x,y:p.y};})()`);
+  const b=await evaluate(`(()=>{const p=new DOMPoint(${target.x+24},${target.y-4}).matrixTransform(document.querySelector('#bench').getScreenCTM());return{x:p.x,y:p.y};})()`);
   await send('Input.dispatchMouseEvent',{type:'mousePressed',button:'left',clickCount:1,...a});await send('Input.dispatchMouseEvent',{type:'mouseMoved',buttons:1,...b});await send('Input.dispatchMouseEvent',{type:'mouseReleased',button:'left',clickCount:1,...b});
  }
  async function play(reversed=false){
@@ -79,11 +79,12 @@ try{
  assert.equal(await evaluate("document.querySelector('[data-equipment=funnel]').dataset.stored"),'true');
  assert.ok(Number(await evaluate("document.querySelector('[data-id=flask] [clip-path] rect').getAttribute('y')"))<120,'feed passes through the filling funnel into the flask');
  f=await pose('flask');
- await drag('head',f.x,f.y-60,{dx:2,dy:30,path:[{x:180,y:10},{x:f.x,y:10}]});await pause(300);await connected('head','Distillation flask');
- let p=await local('head',70,50);
- await drag('condenser',p.x,p.y,{dx:112,dy:34,path:[{x:1060,y:170},{x:p.x,y:170}]});await pause(300);await connected('condenser','Still head');
+ assert.ok((await evaluate("document.querySelector('#setup-message').textContent")).includes('Flask–head joint is open'));
+ await drag('head',f.x+18,f.y-72,{dx:2,dy:30,path:[{x:180,y:10},{x:f.x,y:10}]});await pause(300);await connected('head','Distillation flask');
+ let p=await local('head',70,64);
+ await drag('condenser',p.x+24,p.y+10,{dx:112,dy:34,path:[{x:1060,y:170},{x:p.x,y:170}]});await pause(300);await connected('condenser','Still head');
  await drag('support2',800,509,{dx:0,dy:-120});await pause(500);await connected('condenser','Clamp stand B');
- p=await pose('head');await drag('thermometer',p.x+8,p.y-40,{dy:40,path:[{x:80,y:10},{x:p.x,y:10}]});await pause(200);await connected('thermometer','Still head');const t=await pose('thermometer'),h=await pose('head');assert.ok(Math.abs((t.y+15)-h.y)<2,'thermometer collar seats at head mouth');
+ p=await pose('head');await drag('thermometer',p.x+20,p.y-50,{dy:40,path:[{x:80,y:10},{x:p.x,y:10}]});await pause(200);await connected('thermometer','Still head');const t=await pose('thermometer'),h=await pose('head');assert.ok(Math.abs((t.y+15)-h.y)<2,'thermometer collar seats at head mouth');
  p=await local('condenser',230,70);await drag('receiverA',p.x,429);await pause(200);
  await hose('supply',0,await local('tap',0,30));await hose('supply',1,await local('condenser',reversed?45:185,reversed?-12:85));await hose('return',0,await local('condenser',reversed?185:45,reversed?85:-12));await hose('return',1,await local('drain',0,0));
  assert.equal(await evaluate("document.querySelector('[data-hose=supply][data-end=\"1\"]').dataset.port"),reversed?'condenser:high':'condenser:low');
@@ -95,6 +96,8 @@ try{
  assert.ok(Math.hypot(afterClick.x-beforeClick.x,afterClick.y-beforeClick.y)<1,'clicking heater does not lift or launch it');
  assert.ok(Math.hypot(flaskAfter.x-flaskBefore.x,flaskAfter.y-flaskBefore.y)<1,'heater click does not disturb supported glass');
  await click('[data-equipment=tap]');await key(' ','Space');assert.ok((await evaluate("document.querySelector('#action').textContent")).includes('Stop water'));
+ assert.ok((await evaluate("document.querySelector('#setup-message').textContent")).includes(reversed?'Upper-port':'Connected:')) ;
+ assert.ok(await evaluate("[...document.querySelectorAll('#connection-checks span')].every(e=>e.classList.contains('connected'))"),'roughly placed parts and hose ends all connect');
  await click('[data-equipment=heater]');await key(' ','Space');await pause(10000);
  assert.equal(await evaluate("document.querySelector('#result').hidden"),true);
  assert.equal(await evaluate("document.querySelector('#temperature-reading').textContent"),'56','digital readout holds at acetone plateau');

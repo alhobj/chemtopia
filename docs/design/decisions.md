@@ -192,3 +192,9 @@ The owner also requested two harder questions after each existing first question
 ## Distillation filling funnel drops into the flask — 22 October 2026
 
 The owner requested dropping the filling funnel into the round-bottom flask and suggested a narrower end. The stem is now narrower, and its tip enters the neck before the cone rests at the mouth. The previous tip-at-rim joint is superseded by close-contact seating after the fall. Ordinary solid collisions remain active during insertion. Pouring through the inserted stem reaches the flask; lifting/storing still detaches it. Existing push authorisation applies.
+
+## Distillation assembly and vapour diagnosis — 22 October 2026
+
+The owner reported that vapour disappeared without collected liquid, asked for more forgiving equipment placement, and requested a downward still-head outlet. Matching glass joints and coolant fittings now accept near misses and visibly seat; the head, collider geometry and condenser clamp height share the same sloped route. The narrow filling funnel remains unchanged.
+
+Live connection and material readouts explain actual open joints, coolant state, missing/full receivers, empty feed and escaped vapour rather than requiring the student to infer a hidden joint state from the artwork. Vapour is drawn along connected glass and at actual open paths. Physically possible wrong setups, upper-port coolant supply with lower recovery, student-operated heating and the existing simplified two-stage boiling model remain operable.

@@ -84,3 +84,8 @@ The owner explicitly requested arrested stand creep, evaporation of water from h
 ## Beaker endpoint and harder review questions
 
 The owner requested crystals in the recrystallisation beaker as a valid endpoint, optional second filtration, and two harder questions after each current first question. They explicitly asked to remove the longest-answer cue and include actual R_F calculation. Preserve the first-question prompts, use balanced shuffled choices, require typed numerical work and retain retry. See docs/design/review-questions.md and the revised recrystallisation specification. Existing commit/push authorisation applies.
+
+
+## Forgiving distillation assembly and diagnosis
+
+The owner requested more forgiving equipment placement, troubleshooting for escaping vapour/no collection, and a downward still-head outlet matching the Liebig condenser. This authorises nearby joint/hose seating and live actual-connection/material feedback. Preserve the narrow falling filling funnel, wrong setups, reduced recovery with upper-port coolant, student-operated actions, material conservation and existing boiling stages. Art, hitboxes and joint anchors must agree. See the revised distillation specification. Existing push authorisation applies.

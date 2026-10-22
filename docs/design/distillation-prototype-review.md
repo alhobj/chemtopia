@@ -33,3 +33,7 @@ The analogue thermometer now carries a circular digital °C number above its ste
 Release the funnel above the upright supported flask. Its narrowed stem falls into the neck until the cone rests at the mouth. Pour through it, then lift or store it before fitting the still head.
 
 ![Narrow filling funnel seated inside the flask neck](../art/previews/distillation-funnel-seated.png)
+
+## Angled head and connection feedback
+
+The head outlet now slopes down into the Liebig condenser. Matching glassware and hose fittings accept nearby placement and seat visibly. The live panel below the bench reports actual joints, coolant flow and receiver alignment, explains any open path, and separates remaining, collected, escaped and spilled model amounts. The updated running image above shows liquid collection after deliberately off-centre placement. Upper-port supply remains usable with reduced recovery.

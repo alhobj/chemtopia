@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {createState,detach,dragApparatus,placeItem,connectHose,cooling,stepChemistry,pour,outcome,totals,heaterContact,physicsFor,stepPhysics,worldPoint,EPS} from '../prototype/distillation-model.js';
+import {createState,detach,dragApparatus,placeItem,connectHose,cooling,stepChemistry,pour,outcome,totals,heaterContact,physicsFor,stepPhysics,worldPoint,apparatusStatus,HEAD_OUTLET,EPS} from '../prototype/distillation-model.js';
 function assembled(reversed=false){
  const s=createState();Object.assign(s.items.flask,{x:390,y:327,acetone:.5,water:.5});Object.assign(s.items.source,{acetone:0,water:0});
  Object.assign(s.items.heater,{x:390,y:467,on:true});Object.assign(s.items.head,{x:390,y:267});Object.assign(s.items.condenser,{x:460,y:317});Object.assign(s.items.thermometer,{x:390,y:252});Object.assign(s.items.receiverA,{x:690,y:429});Object.assign(s.items.support2,{x:800,y:509});
@@ -95,4 +95,24 @@ test('a narrow filling funnel falls into the flask neck and remains seated with 
  assert.ok(s.items.funnel.y>start+50);assert.ok(s.links.some(l=>l.id==='flask-funnel'));const tip=worldPoint(s.items.funnel,{x:0,y:76});assert.ok(tip.y>f.y+35&&tip.y<f.y+50);assert.ok(Math.abs(s.items.funnel.angle-f.angle)<2);
  const y=s.items.funnel.y;for(let i=0;i<1200;i++)stepPhysics(s,1/120);assert.ok(Math.abs(s.items.funnel.y-y)<1);conserved(s);
  detach(s,'funnel');dragApparatus(s,'funnel',f.x,f.y-150);assert.ok(!s.links.some(l=>l.id==='flask-funnel'));assert.ok(s.items.funnel.y<f.y-140);
+});
+
+test('loose glass placement seats at the angled outlet and keeps the existing assembly aligned',()=>{
+ const s=assembled();detach(s,'head');Object.assign(s.items.head,{x:408,y:255,angle:8});placeItem(s,'head');assert.ok(s.links.some(l=>l.id==='flask-head'));
+ detach(s,'condenser');const outlet=worldPoint(s.items.head,HEAD_OUTLET);Object.assign(s.items.condenser,{x:outlet.x+24,y:outlet.y+10,angle:-8});placeItem(s,'condenser');assert.ok(s.links.some(l=>l.id==='head-condenser'));assert.ok(Math.hypot(s.items.condenser.x-outlet.x,s.items.condenser.y-outlet.y)<1e-8);
+ detach(s,'thermometer');Object.assign(s.items.thermometer,{x:s.items.head.x+20,y:s.items.head.y-50});placeItem(s,'thermometer');assert.ok(s.links.some(l=>l.id==='head-thermometer'));
+ detach(s,'support2');Object.assign(s.items.support2,{x:800,y:509});placeItem(s,'support2');const before=s.items.flask.x;for(let i=0;i<1200;i++)stepPhysics(s,1/120);
+ assert.ok(heaterContact(s));assert.ok(Math.abs(s.items.flask.x-before)<1);assert.ok(apparatusStatus(s).checks.every(c=>c.ok));run(s,10);assert.ok(outcome(s).success);conserved(s);
+});
+test('live diagnosis distinguishes open glass, missing coolant, missing receivers and reversed supply',()=>{
+ const s=assembled();assert.ok(apparatusStatus(s).message.startsWith('Connected:'));
+ const links=s.links;s.links=s.links.filter(l=>l.id!=='head-condenser');assert.ok(apparatusStatus(s).message.includes('Head–condenser joint is open'));run(s,9);assert.ok(s.escaped.acetone>0);conserved(s);
+ s.links=links;s.items.tap.on=false;assert.ok(apparatusStatus(s).message.includes('tap is off'));s.items.tap.on=true;s.hoses[1].ends[1]={x:800,y:50};assert.ok(apparatusStatus(s).message.includes('circuit is incomplete'));
+ s.hoses[1].ends[1]={port:'drain:in'};s.items.receiverA.x=1200;assert.ok(apparatusStatus(s).message.includes('No collecting beaker'));
+ const reversed=assembled(true);assert.ok(apparatusStatus(reversed).message.includes('Upper-port'));assert.ok(apparatusStatus(createState()).message.includes('Flask empty'));
+});
+test('hose placement tolerates a near miss, while distant or stored apparatus cannot connect',()=>{
+ const s=assembled();s.hoses[0].ends[1]={x:900,y:50};const low=worldPoint(s.items.condenser,{x:185,y:85});connectHose(s,'supply',1,{x:low.x+24,y:low.y-4});assert.equal(cooling(s),'lower-fed');
+ detach(s,'condenser');Object.assign(s.items.condenser,{x:1100,y:100});placeItem(s,'condenser');assert.ok(!s.links.some(l=>l.id==='head-condenser'));
+ s.items.condenser.stored=true;Object.assign(s.items.head,{x:1030,y:36});placeItem(s,'head');assert.ok(!s.links.some(l=>l.id==='head-condenser'));conserved(s);
 });

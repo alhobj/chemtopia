@@ -92,3 +92,15 @@ The current first-question prompt is retained with balanced shuffled choices. Tw
 The owner requested that the filling funnel drop into the round-bottom flask instead of balancing its tip on the rim. Its narrower stem now fits inside the neck with ordinary solid collisions. Release it above an upright supported flask: gravity lowers it until the cone meets the mouth, then a close-contact joint stabilises it with the stem inside. Releasing it high above the mouth does not snap it into position. The funnel can still be lifted out or stored before fitting the still head. Its liquid outlet routes into the neck interior, preserving both feed components.
 
 Verification releases the funnel above the mouth, checks the fall, insertion depth and stable seating, lifts it out, and fills through it in the full browser playthrough. Other apparatus and laboratory physics are unchanged.
+
+## Forgiving assembly and visible vapour routing
+
+The owner reported visually aligned equipment producing no liquid and requested easier placement plus a downward still-head outlet. The head's side arm now slopes downward along the condenser axis; its art, solid hitboxes, outlet anchor and condenser support height agree.
+
+Nearby compatible glass joints now seat within 42 model pixels and 24° on release; thermometer insertion accepts 26 pixels lateral / 55 pixels vertical clearance. Hose ends attach to the nearest unused fitting within 34 model pixels. These are interface tolerances, not laboratory dimensions. The filling funnel retains its gravity-driven narrow-stem insertion and close seating threshold. Stored apparatus cannot attract a joint. Glass connections are prioritised before support contacts, and adding a second joint does not shift an already aligned assembly towards another target. Distant, incompatible and incomplete arrangements remain possible.
+
+A live panel reports actual flask–head, head–condenser and thermometer joints, coolant flow and receiver alignment. It explains an open joint, tap-off/incomplete circuit, empty flask, missing/full receiver, absent heater contact or upper-port supply. A running amount display distinguishes liquid remaining in the flask, collected liquid, escaped vapour and spills. No material is silently restored or held back in a wrong setup.
+
+The vapour graphic follows the connected glass path, with escape plumes at open outlets or missing cooling; an open thermometer joint has its own escape plume. The existing qualitative condensation efficiencies and lower recovery for upper-port coolant supply are preserved. The 56°C/100°C teaching stages, three review questions and material balances are unchanged. A beaker with limited tilt clearance may pour at an achieved angle of at least 15° rather than requiring exactly 35°; lifting it still provides more clearance.
+
+Browser verification deliberately offsets head, condenser, thermometer and hose placement, then fills, heats, collects liquid, cools and answers the review. Model checks cover distant/stored apparatus, stable assembled heating, diagnoses, incomplete coolant, reversed supply and conservation.

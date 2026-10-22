@@ -1,7 +1,7 @@
 import {reviewQuestions,bindReviewQuestions} from './review-questions.js';
 import {initializeStorage} from './equipment-storage.js';
 import {createEquipmentMenu} from './equipment-menu.js';
-import {createState,NAMES,worldPoint,ports,hosePoint,connectHose,placeItem,detach,dragApparatus,physicsFor,pour,stepPhysics,stepChemistry,outcome,EPS} from './distillation-model.js';
+import {createState,NAMES,HEAD_OUTLET,CLAMP_B_Y,apparatusStatus,hasLink,worldPoint,ports,hosePoint,connectHose,placeItem,detach,dragApparatus,physicsFor,pour,stepPhysics,stepChemistry,outcome,EPS} from './distillation-model.js';
 const $=id=>document.getElementById(id),bench=$('bench'),layer=$('apparatus'),svgNS='http://www.w3.org/2000/svg';
 document.body.classList.add('distillation-page');bench.append($('hoses'));bench.append($('streams'));
 let state=initializeStorage(createState()),selected=null,drag=null,pouring=false,last=0,blocked=false;
@@ -26,27 +26,45 @@ function art(o){
 
  if('acetone'in o)return vesselArt(o);
  if(o.kind==='clampStand'){
-  const right=o.id==='support2',cx=right?-195:90,cy=right?-148:-162;
+  const right=o.id==='support2',cx=right?-195:90,cy=right?CLAMP_B_Y:-162;
   return `<path d="M${right?-25:-65} -8H${right?57:17}L${right?65:25} 16H${right?-25:-65}Z" fill="#5d7580" ${stroke}/><rect x="-5" y="-231" width="10" height="230" rx="3" fill="url(#metal)" ${stroke}/><path d="M0 ${cy}H${cx+(right?29:-29)}" fill="none" ${stroke}/><ellipse cx="${cx}" cy="${cy}" rx="26" ry="9" fill="none" stroke="#354f60" stroke-width="4"/><circle cy="${cy}" r="7" fill="#91a8aa" ${stroke}/><rect class="select-outline" x="${right?-230:-76}" y="-245" width="${right?310:210}" height="275" rx="6"/>`;
  }
  if(o.kind==='heater')return `<rect x="-60" width="120" height="58" rx="9" fill="#d4ded5" ${stroke}/><path d="M-52 5H52" stroke="${o.on?'#d49150':'#92a3a0'}" stroke-width="8"/><circle cx="31" cy="34" r="12" fill="#506d72"/><circle cx="-32" cy="33" r="5" fill="${o.on?'#dc9459':'#879b93'}"/><text x="-4" y="39" text-anchor="middle" font-size="12" fill="#35515b">${o.on?'ON':'OFF'}</text><rect class="select-outline" x="-70" y="-10" width="140" height="80" rx="6"/>`;
- if(o.kind==='head')return `<path d="M-12 0V60H12V55H70V43H12V0Z" fill="url(#glass)" ${stroke}/><path d="M-7 5V51M18 47H65" stroke="#f8fffa" stroke-width="3"/><rect class="select-outline" x="-24" y="-12" width="108" height="85" rx="6"/>`;
+ if(o.kind==='head')return `<path d="M-12 0V60H12V54L68 72L74 56L12 37V0Z" fill="url(#glass)" ${stroke}/><path d="M-7 5V51M18 43L69 59" stroke="#f8fffa" stroke-width="3"/><rect class="select-outline" x="-24" y="-12" width="110" height="96" rx="6"/>`;
  if(o.kind==='thermometer')return `<rect x="-5" width="10" height="65" rx="5" fill="#d9eeee" ${stroke}/><path d="M0 58V${58-38*(o.temperature-20)/80}" stroke="#bd8862" stroke-width="3"/><circle cy="58" r="3" fill="#bd8862"/><rect x="-14" y="12" width="28" height="6" rx="2" fill="#55727a"/><path d="M-3 20H1M-3 30H1M-3 40H1M-3 50H1" stroke="#55727a"/><circle cx="0" cy="-17" r="19" fill="#f8f6ed" stroke="#55727a" stroke-width="2"/><text id="temperature-reading" x="0" y="-18" text-anchor="middle" font-size="13" font-weight="700" fill="#354f60">${Math.round(o.temperature)}</text><text x="0" y="-7" text-anchor="middle" font-size="8" fill="#55727a">°C</text><rect class="select-outline" x="-23" y="-40" width="46" height="115" rx="6"/>`;
  if(o.kind==='condenser')return `<path d="M0 0L230 70" stroke="#354f60" stroke-width="14"/><path d="M0 0L230 70" stroke="#d9eeec" stroke-width="9"/><path d="M30 -11L205 42L195 76L20 23Z" fill="#e0eeec80" ${stroke}/><path d="M30 -11L205 42L195 76L20 23Z" fill="#79bdcc" opacity="${state.jacket*.7}"/><path d="M28 7L200 59" stroke="#edf9f2" stroke-width="6"/><path d="M45 -12L48 8M185 85L182 62" fill="none" stroke="#354f60" stroke-width="9"/><circle cx="45" cy="-12" r="7" class="water-port"/><circle cx="185" cy="85" r="7" class="water-port"/><rect class="select-outline" x="-15" y="-30" width="260" height="132" rx="6"/>`;
  if(o.kind==='tap')return `<path d="M-30 -15H5V25H0V30" fill="none" stroke="#426573" stroke-width="16"/><path d="M-15 -30H20M3 -38V-19" stroke="${o.on?'#62b9c7':'#8da3a5'}" stroke-width="7" stroke-linecap="round"/><circle cy="30" r="9" class="water-port"/><text x="-25" y="65" class="experiment-readout">Tap ${o.on?'on':'off'}</text>`;
  return `<path d="M-42 0H42L25 20H-25Z" fill="#879e9e" ${stroke}/><ellipse rx="17" ry="6" fill="#3c5760"/><text x="-30" y="45" class="experiment-readout">Drain</text>`;
+}
+const setup=document.createElement('section');setup.id='setup-status';setup.className='setup-status';setup.setAttribute('aria-label','Distillation connections');
+setup.innerHTML='<div id="connection-checks"></div><p id="setup-message" role="status"></p><p id="process-amounts"></p>';
+bench.closest('.bench-panel').append(setup);
+function vapourArt(){
+ if(!state.vapourVisible)return '';
+ const f=state.items.flask,h=state.items.head,c=state.items.condenser;
+ const mouth=worldPoint(f,{x:0,y:0}),top=worldPoint(h,{x:0,y:42}),joint=worldPoint(h,HEAD_OUTLET),outlet=worldPoint(c,{x:230,y:70});
+ const head=hasLink(state,'flask-head'),condenser=head&&hasLink(state,'head-condenser');
+ const thermometerOpening=worldPoint(h,{x:0,y:0});
+ const points=head?[mouth,top,joint,...(condenser?[outlet]:[])]:[mouth];
+ const end=points.at(-1),cooled=['lower-fed','upper-fed'].includes(apparatusStatus(state).mode);
+ return `<path d="${points.map((p,i)=>(i?'L':'M')+p.x+' '+p.y).join(' ')}" fill="none" stroke="#b5e0da" stroke-width="5" stroke-dasharray="5 7" pointer-events="none"/>${!condenser||!cooled?`<path d="M${end.x} ${end.y}q-18 -20 0 -38t0 -32" stroke="#87a9ab" stroke-width="6" stroke-dasharray="8 9" fill="none" opacity=".8" pointer-events="none"/>`:''}${head&&!hasLink(state,'head-thermometer')?`<path d="M${thermometerOpening.x} ${thermometerOpening.y}q-18 -20 0 -38" stroke="#87a9ab" stroke-width="5" stroke-dasharray="8 9" fill="none" opacity=".7" pointer-events="none"/>`:''}`;
 }
 function render(){
  for(const [id,g]of groups){const o=state.items[id];g.setAttribute('transform',`translate(${o.x} ${o.y}) rotate(${o.angle||0})`);g.innerHTML=art(o);g.classList.toggle('selected',selected===id);if(o.kind==='thermometer')g.setAttribute('aria-label',`Thermometer, ${Math.round(o.temperature)} degrees Celsius`);g.setAttribute('aria-disabled',String(state.phase!=='working'));g.setAttribute('aria-description',state.links.filter(l=>l.a===id||l.b===id).map(l=>'Connected to '+NAMES[l.a===id?l.b:l.a]).join('. '));}
  if(selected&&groups.has(selected))layer.append(groups.get(selected));
  $('hoses').innerHTML=state.hoses.map((h,j)=>{const [a,b]=h.ends.map(e=>hosePoint(state,e));return `<path d="M${a.x} ${a.y}C${a.x+40} ${Math.max(a.y,b.y)+65},${b.x-40} ${Math.max(a.y,b.y)+65},${b.x} ${b.y}" fill="none" stroke="${j?'#557c82':'#4f9daf'}" stroke-width="9" stroke-linecap="round" pointer-events="none"/>${[a,b].map((p,i)=>`<circle data-hose="${h.id}" data-end="${i}" data-port="${h.ends[i].port||''}" cx="${p.x}" cy="${p.y}" r="12" class="hose-end" fill="${j?'#557c82':'#4f9daf'}" aria-label="Water hose ${j+1}, end ${i+1}"/>`).join('')}`;}).join('');
  $('spills').innerHTML=state.spills.map(s=>`<ellipse cx="${s.x}" cy="525" rx="${Math.min(65,10+(s.water+s.acetone)*100)}" ry="9" fill="#78b7c3" opacity=".65"/>`).join('');
- $('streams').innerHTML=state.flow.map(f=>`<path d="M${f.from.x} ${f.from.y}L${f.to.x} ${f.to.y}" stroke="#82bdc9" stroke-width="5" stroke-linecap="round"/>`).join('')+(state.vapourVisible?`<path d="M${state.items.flask.x} ${state.items.flask.y}q-25 -25 0 -45t0 -45" stroke="#e4eee7" stroke-width="7" stroke-dasharray="8 9" fill="none" opacity=".8"/>`:'');
+ $('streams').innerHTML=state.flow.map(f=>`<path d="M${f.from.x} ${f.from.y}L${f.to.x} ${f.to.y}" stroke="#82bdc9" stroke-width="5" stroke-linecap="round"/>`).join('')+vapourArt();
  $('selected-name').textContent=NAMES[selected]||(selected?.startsWith('hose')?'Water hose end':'Nothing selected');
  const o=state.items[selected],action=o?.kind==='heater'?`${o.on?'Stop':'Start'} heating`:o?.kind==='tap'?`${o.on?'Stop':'Start'} water`:o&&'acetone'in o?`${pouring?'Stop':'Start'} pouring`:'Select apparatus';
  $('action').disabled=state.phase!=='working'||o?.stored||!o||!('acetone'in o||['heater','tap'].includes(o.kind));$('action').textContent=action;$('action').setAttribute('aria-pressed',String(o?.on||pouring));
  $('action-note').textContent=blocked?'Leave room for the vessel to tilt.':o&&'acetone'in o?'Hold the vessel with the mouse. Space starts/stops pouring.':o?.kind==='heater'||o?.kind==='tap'?'Space switches this control on or off.':'Drag equipment, or drag individual hose ends onto water fittings.';
  for(const b of $('equipment').children){b.disabled=state.phase!=='working';b.setAttribute('aria-pressed',String(b.dataset.equipment===selected));}
+ const status=apparatusStatus(state);
+ $('connection-checks').innerHTML=status.checks.map(c=>`<span class="${c.ok?'connected':'open-joint'}">${c.name}: ${c.name==='Receiver'?(c.ok?'aligned':'missing / full'):c.name==='Coolant circuit'?(c.ok?'flowing':status.mode==='off'?'tap off':'incomplete'):c.ok?'connected':'open'}</span>`).join('');
+ if($('setup-message').textContent!==status.message)$('setup-message').textContent=status.message;
+ const collected=state.items.receiverA.water+state.items.receiverA.acetone+state.items.receiverB.water+state.items.receiverB.acetone;
+ $('process-amounts').textContent=`Model amounts — in flask: ${(state.items.flask.water+state.items.flask.acetone).toFixed(3)} · collected: ${collected.toFixed(3)} · escaped vapour: ${(state.escaped.water+state.escaped.acetone).toFixed(3)} · spilled: ${state.spills.reduce((n,o)=>n+o.water+o.acetone,0).toFixed(3)}`;
  $('finish').disabled=state.phase!=='working';menu?.sync();
 }
 function stopPour(){if(pouring&&selected)physicsFor(state).tilt(selected,0);pouring=false;state.flow=[];}
@@ -67,7 +85,7 @@ $('equipment').addEventListener('focusin',e=>{if(e.target.dataset.equipment&&e.t
 function action(){
  if(state.phase!=='working')return;const o=state.items[selected];if(!o||o.stored)return;
  if(o.kind==='heater'||o.kind==='tap')o.on=!o.on;
- else if('acetone'in o){if(pouring)stopPour();else if(physicsFor(state).tilt(selected,35)){pouring=true;blocked=false;}else{physicsFor(state).tilt(selected,0);blocked=true;}}
+ else if('acetone'in o){if(pouring)stopPour();else if(physicsFor(state).tilt(selected,35)||o.angle>=15&&o.angle<=35){pouring=true;blocked=false;}else{physicsFor(state).tilt(selected,0);blocked=true;}}
  render();
 }
 $('action').addEventListener('click',action);
