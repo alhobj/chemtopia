@@ -75,3 +75,14 @@ Finish shows the developed paper and the ruler, with separate inputs for compone
 The green, purple and black markers are fictional water-soluble examples. Their band colours and migration fractions are qualitative, not measurements of particular commercial brands. Paper is a rigid strip in this two-dimensional prototype. Marking tools can overlay its face; the paper can enter the hollow chamber, and a bar/clip supports it at close alignment. Lid omission does not impose an invented penalty. The ruler uses 10 drawing units per cm. See [the specification and model defaults](../docs/design/chromatography-prototype-spec.md).
 
 Switching starts a fresh attempt. All apparatus is available and there are no placement ghosts, scores or saved student data.
+
+
+## Collapsible equipment menu
+
+The owner requested replacing the apparatus shelf with an equipment menu on the left that hides when the mouse leaves and accepts equipment dragged back into it. All three labs now use the shared drawer. Hover over the visible Equipment tab to expand it; drag a stored row to open bench space, or drag a bench object back over the drawer to store it. Shelf apparatus starts in the drawer. Other initial bench equipment stays available and can be returned. “On bench” rows select existing apparatus; “Stored” rows can be dragged out. Fixed tap/drain fittings remain on the bench.
+
+Storage keeps the same object and its contents, including a filter contained in its funnel. It removes collision bodies, disconnects external joints/hoses and switches powered controls off. Stored vessels cannot catch a pour, pour, develop paper or generate vapour while hidden. Taking equipment out requires clear space and does not duplicate apparatus or discard material. Unsupported equipment falls after release as before.
+
+The tab remains visible when collapsed. The drawer opens for keyboard focus; Enter on a stored row retrieves it into available bench space, and Escape closes it. Restart restores the initial arrangement, including the initially stored shelf equipment. Storage is local to the current attempt; no saving, accounts or backend are added.
+
+Verification covers storage/retrieval, loaded contents, contained filter paper, disconnected powered/glass apparatus, blocked retrieval, real hover hiding, drag-back and drag-out, and all lab playthroughs.

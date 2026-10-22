@@ -1,6 +1,9 @@
+import {initializeStorage} from './equipment-storage.js';
+import {createEquipmentMenu} from './equipment-menu.js';
 import {createState,MARKERS,NAMES,worldPoint,detach,placeItem,applyTool,physicsFor,pour,stepPhysics,stepChemistry,outcome,measurements,checkMeasurement} from './chromatography-model.js';
 const $=id=>document.getElementById(id),bench=$('bench'),layer=$('apparatus'),NS='http://www.w3.org/2000/svg';
-let state=createState(),selected=null,drag=null,pouring=false,last=0,note='';
+let state=initializeStorage(createState()),selected=null,drag=null,pouring=false,last=0,note='';
+let menu;
 const groups=new Map(),stroke='stroke="#354f60" stroke-width="3" stroke-linejoin="round"';
 for(const id of Object.keys(state.items)){const g=document.createElementNS(NS,'g');g.dataset.id=id;g.classList.add('object');g.setAttribute('role','button');g.setAttribute('tabindex','0');g.setAttribute('aria-label',NAMES[id]);g.addEventListener('focus',()=>{if(selected!==id)select(id);});layer.append(g);groups.set(id,g);}
 $('equipment').innerHTML=Object.entries(NAMES).map(([id,n])=>`<button class="equipment-button" data-equipment="${id}" aria-pressed="false">${n}</button>`).join('');
@@ -25,10 +28,10 @@ function render(){
  $('streams').innerHTML=state.flow.map(f=>`<path d="M${f.from.x} ${f.from.y}L${f.to.x} ${f.to.y}" stroke="#80bdc8" stroke-width="4"/>`).join('');
  $('selected-name').textContent=NAMES[selected]||'Nothing selected';
  const o=state.items[selected],vessel=o&&['source','chamber'].includes(o.id),tool=o&&['pencil','marker'].includes(o.kind);
- $('action').disabled=state.phase!=='working'||!(vessel||tool);$('action').textContent=vessel?(pouring?'Stop pouring':'Start pouring'):tool?(o.id==='pencil'?'Make pencil mark':'Apply marker spot'):'Select apparatus';
+ $('action').disabled=state.phase!=='working'||o?.stored||!(vessel||tool);$('action').textContent=vessel?(pouring?'Stop pouring':'Start pouring'):tool?(o.id==='pencil'?'Make pencil mark':'Apply marker spot'):'Select apparatus';
  $('action-note').textContent=note||(vessel?'Hold the vessel and press Space to pour.':tool?'Place the tip over the paper and press Space.':'Drag apparatus to position it.');
  for(const b of $('equipment').children){b.disabled=state.phase!=='working';b.setAttribute('aria-pressed',String(b.dataset.equipment===selected));}
- $('finish').disabled=state.phase!=='working';
+ $('finish').disabled=state.phase!=='working';menu?.sync();
 }
 function stopPour(){if(pouring&&selected)physicsFor(state).tilt(selected,0);pouring=false;}
 function select(id){if(state.phase!=='working')return;stopPour();selected=id;note='';render();}
@@ -44,10 +47,10 @@ bench.addEventListener('pointermove',e=>{
  if(o.id==='paper')o.collisionMask=~128;
  physicsFor(state).moveHeld(o.id,x,y);render();
 });
-function release(){if(!drag)return;stopPour();if(drag.active)placeItem(state,drag.id);drag=null;render();}
+function release(e){if(!drag)return;const id=drag.id;stopPour();if(drag.active&&menu?.wantsStore(e)&&menu.store(id)){drag=null;selected=null;render();return;}if(drag.active)placeItem(state,drag.id);drag=null;render();}
 bench.addEventListener('pointerup',release);bench.addEventListener('pointercancel',release);
 function action(){
- if(state.phase!=='working')return;const o=state.items[selected];if(!o)return;
+ if(state.phase!=='working')return;const o=state.items[selected];if(!o||o.stored)return;
  if(['source','chamber'].includes(o.id)){if(pouring)stopPour();else if(drag?.active&&physicsFor(state).tilt(o.id,35))pouring=true;else note='Hold the vessel and leave room to tilt it.';}
  else if(['pencil','marker'].includes(o.kind))note=applyTool(state,o.id)?(o.id==='pencil'?'Pencil mark added.':'Marker spot added.'):'Place the tip over the paper.';
  render();
@@ -57,7 +60,7 @@ document.addEventListener('keydown',e=>{if(e.code!=='Space'||state.phase!=='work
 $('equipment').addEventListener('click',e=>{if(e.target.dataset.equipment)select(e.target.dataset.equipment);});
 $('equipment').addEventListener('focusin',e=>{if(e.target.dataset.equipment&&selected!==e.target.dataset.equipment)select(e.target.dataset.equipment);});
 window.addEventListener('blur',()=>{stopPour();render();});document.addEventListener('visibilitychange',()=>{if(document.hidden){stopPour();render();}});
-$('restart').addEventListener('click',()=>{state=createState();selected=null;drag=null;pouring=false;note='';$('result').hidden=true;$('result').innerHTML='';render();});
+$('restart').addEventListener('click',()=>{state=initializeStorage(createState());selected=null;drag=null;pouring=false;note='';$('result').hidden=true;$('result').innerHTML='';render();});
 $('finish').addEventListener('click',()=>{
  release();stopPour();const r=outcome(state),rows=measurements(state);state.phase='finished';render();
  const panel=$('result');panel.hidden=false;
@@ -69,4 +72,5 @@ $('finish').addEventListener('click',()=>{
  panel.focus({preventScroll:true});panel.scrollIntoView({behavior:'smooth',block:'nearest'});
 });
 function frame(time){const dt=Math.min(.05,(time-last)/1000);last=time;if(state.phase==='working'){stepPhysics(state,dt,drag?.active?drag.id:null);stepChemistry(state,dt);if(pouring)pour(state,selected,.2*dt);render();}requestAnimationFrame(frame);}
+menu=createEquipmentMenu({getState:()=>state,world:()=>physicsFor(state),groups,select,begin(id){select(id);detach(state,id);drag={id,dx:0,dy:0,active:true};},end:release,render,isDragging:()=>Boolean(drag?.active)});
 render();requestAnimationFrame(frame);

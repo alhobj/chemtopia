@@ -150,3 +150,14 @@ The owner requested starting the next paper chromatography experiment using the 
 ## Paper chromatography choices resolved and implemented
 
 The owner answered “Solvent water, sample markers of different colors. Calculate rf, yes”. This selects water-soluble coloured marker examples, water solvent, measurement and R_F in the bounded paper-chromatography step. Direct markers replace the proposed capillary spotter. The workbench carries forward dragging, Space actions, friction/gravity, solid support surfaces, wrong-action consequences, restart and Finish review. Green/purple/black examples and migration rates are explicitly qualitative implementation defaults, not measured properties of particular brands. Both earlier labs link to the playable experiment and it links back. No backend, saving, currency or publication is introduced.
+
+
+## Collapsible equipment menu
+
+The owner requested replacing the apparatus shelf with an equipment menu on the left that hides when the mouse leaves and accepts equipment dragged back into it. All three labs now use the shared drawer. Hover over the visible Equipment tab to expand it; drag a stored row to open bench space, or drag a bench object back over the drawer to store it. Shelf apparatus starts in the drawer. Other initial bench equipment stays available and can be returned. “On bench” rows select existing apparatus; “Stored” rows can be dragged out. Fixed tap/drain fittings remain on the bench.
+
+Storage keeps the same object and its contents, including a filter contained in its funnel. It removes collision bodies, disconnects external joints/hoses and switches powered controls off. Stored vessels cannot catch a pour, pour, develop paper or generate vapour while hidden. Taking equipment out requires clear space and does not duplicate apparatus or discard material. Unsupported equipment falls after release as before.
+
+The tab remains visible when collapsed. The drawer opens for keyboard focus; Enter on a stored row retrieves it into available bench space, and Escape closes it. Restart restores the initial arrangement, including the initially stored shelf equipment. Storage is local to the current attempt; no saving, accounts or backend are added.
+
+Verification covers storage/retrieval, loaded contents, contained filter paper, disconnected powered/glass apparatus, blocked retrieval, real hover hiding, drag-back and drag-out, and all lab playthroughs.

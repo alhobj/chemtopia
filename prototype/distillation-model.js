@@ -97,7 +97,7 @@ function spill(state,point,mixture){
  for(const key of ['water','acetone','distilledAcetone'])s[key]+=(mixture[key]||0);
 }
 function receive(state,point,mix,exclude){
- const target=Object.values(state.items).filter(o=>['beaker','flask'].includes(o.kind)&&o.id!==exclude&&Math.abs(o.angle||0)<35&&Math.abs(o.x-point.x)<(o.kind==='flask'?14:38)&&point.y<=o.y+18).sort((a,b)=>Math.max(0,a.y-point.y)-Math.max(0,b.y-point.y))[0];
+ const target=Object.values(state.items).filter(o=>!o.stored&&['beaker','flask'].includes(o.kind)&&o.id!==exclude&&Math.abs(o.angle||0)<35&&Math.abs(o.x-point.x)<(o.kind==='flask'?14:38)&&point.y<=o.y+18).sort((a,b)=>Math.max(0,a.y-point.y)-Math.max(0,b.y-point.y))[0];
  state.flow.push({from:point,to:{x:point.x,y:target?Math.max(point.y,target.y+8):525},kind:'liquid'});
  if(!target){spill(state,point,mix);return;}
  const total=mix.water+mix.acetone,room=Math.max(0,target.capacity-target.water-target.acetone),fraction=total?Math.min(1,room/total):0;
@@ -106,12 +106,12 @@ function receive(state,point,mix,exclude){
 }
 export function pour(state,id,amount){
  if(state.phase!=='working'||!Number.isFinite(amount)||amount<=0)return;
- const o=state.items[id];if(!o||!('acetone'in o))return;
+ const o=state.items[id];if(!o||o.stored||!('acetone'in o))return;
  const total=o.water+o.acetone;if(total<EPS)return;
  const fraction=Math.min(1,amount/total),mix={};for(const k of ['water','acetone','distilledAcetone']){mix[k]=o[k]*fraction;o[k]-=mix[k];}
  receive(state,worldPoint(o,{x:o.kind==='flask'?12:o.id==='source'?42:35,y:0}),mix,id);
 }
-export function heaterContact(state){const f=state.items.flask,h=state.items.heater,bottom=worldPoint(f,{x:0,y:140});return Math.abs(f.angle)<20&&Math.abs(h.angle)<15&&Math.abs(bottom.x-h.x)<52&&Math.abs(bottom.y-h.y)<12;}
+export function heaterContact(state){const f=state.items.flask,h=state.items.heater,bottom=worldPoint(f,{x:0,y:140});return !f.stored&&!h.stored&&Math.abs(f.angle)<20&&Math.abs(h.angle)<15&&Math.abs(bottom.x-h.x)<52&&Math.abs(bottom.y-h.y)<12;}
 function stepTemperature(state,dt,heated){
  const p=PARAMETERS,f=state.items.flask,t=state.items.thermometer;
  const tail=state.initial.acetone*p.acetonePlateauRemaining;
@@ -133,7 +133,7 @@ export function stepChemistry(state,dt){
  stepTemperature(state,dt,heated);
  const mode=cooling(state),target=mode==='lower-fed'?1:mode==='upper-fed'?.35:0;
  state.jacket+=Math.max(-dt*.6,Math.min(dt*.6,target-state.jacket));
- const total=f.acetone+f.water;if(f.heat<1||total<EPS)return;
+ const total=f.acetone+f.water;if(f.stored||f.heat<1||total<EPS)return;
  state.vapourVisible=true;
  const x=f.acetone/total,alpha=PARAMETERS.relativeVolatility,ya=alpha*x/(1+(alpha-1)*x);
  let a=Math.min(f.acetone,PARAMETERS.boilRate*dt*ya),w=Math.min(f.water,PARAMETERS.boilRate*dt*(1-ya));

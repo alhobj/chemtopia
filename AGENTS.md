@@ -59,3 +59,8 @@ The owner approved the revised distillation proposal with “Implement it” and
 ## Approved paper chromatography increment
 
 The owner requested paper chromatography with the same ideas and links from both existing labs, then answered “Solvent water, sample markers of different colors. Calculate rf, yes”. This resolves the concrete proposal's sample/solvent and R_F choices and authorises the bounded implemented step in docs/design/chromatography-prototype-spec.md. Direct markers replace the proposed capillary spotter. Keep qualitative example inks distinct from measured brand properties. Preserve the baseline, spotting, solvent contact, supported development, front marking, ruler, R_F retry, explanation and physically possible mistakes. Existing local workflow and commit/push authorisation continue; no public deployment is approved.
+
+
+## Equipment menu revision
+
+The owner requested replacing the shelf with a left-side equipment menu that hides when not hovered and stores apparatus dragged back into it. This authorises the shared drawer across the three labs. Initial shelf apparatus starts stored; other bench items keep their starting arrangement. Preserve object contents, avoid duplicates, remove hidden physics bodies and active experiment participation, and disconnect joints/switch powered controls off on storage. The small tab and keyboard focus/Enter/Escape provide access when collapsed.

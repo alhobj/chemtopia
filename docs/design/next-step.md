@@ -95,3 +95,8 @@ P01–P09 were answered. A reviewable specification now records the selected sco
 ## Approved acetone–water distillation implementation
 
 The owner approved the revised distillation proposal with “Implement it” and selected equal amounts (50:50) in the follow-up. This authorises the bounded local distillation increment in [the specification](distillation-prototype-spec.md), alongside filtration. It includes movable coolant hoses, operable upper-port supply with reduced recovery, both volatile sample components, supported glassware, student-operated pouring/heating, Finish review and the explanation question. Numerical coefficients are labelled qualitative implementation defaults, not measured data or additional owner answers. The temporary bottom navigation starts a fresh attempt on switching. Commit/push authorisation applies; public deployment remains unapproved.
+
+
+## Equipment drawer revision
+
+The owner requested a hover-revealed equipment menu replacing the apparatus shelf, with drag-back storage. The shared left drawer now serves all three labs, preserving loaded object contents and removing stored objects from collisions and active experiment actions. Initial shelf tools start stored; the other bench items retain their starting arrangement. This is an explicit authorised interface revision. Review this behaviour before additional features.

@@ -31,3 +31,14 @@ This is a two-dimensional rigid-body approximation, not a calibrated laboratory 
 Following the owner's playtest, equipment and support surfaces now use consistent friction on all compound collision parts, with stronger static friction and damping. A click selects apparatus; pickup/disconnection begins only after a short drag, so touching a stand or heater does not lift or disturb it. Heater pickup also preserves its position rather than applying a vessel-height correction.
 
 The thermometer has a shorter stem and a physical seating collar, matching the still-head opening. Near-aligned insertion seats the collar at the rim and constrains the thermometer, with the bulb at the side-arm height. No target ghost or chemistry change is introduced. Tests cover a nudged stand settling, surface friction, near-aligned thermometer seating, and clicking the assembled heater without moving the glassware.
+
+
+## Collapsible equipment menu
+
+The owner requested replacing the apparatus shelf with an equipment menu on the left that hides when the mouse leaves and accepts equipment dragged back into it. All three labs now use the shared drawer. Hover over the visible Equipment tab to expand it; drag a stored row to open bench space, or drag a bench object back over the drawer to store it. Shelf apparatus starts in the drawer. Other initial bench equipment stays available and can be returned. “On bench” rows select existing apparatus; “Stored” rows can be dragged out. Fixed tap/drain fittings remain on the bench.
+
+Storage keeps the same object and its contents, including a filter contained in its funnel. It removes collision bodies, disconnects external joints/hoses and switches powered controls off. Stored vessels cannot catch a pour, pour, develop paper or generate vapour while hidden. Taking equipment out requires clear space and does not duplicate apparatus or discard material. Unsupported equipment falls after release as before.
+
+The tab remains visible when collapsed. The drawer opens for keyboard focus; Enter on a stored row retrieves it into available bench space, and Escape closes it. Restart restores the initial arrangement, including the initially stored shelf equipment. Storage is local to the current attempt; no saving, accounts or backend are added.
+
+Verification covers storage/retrieval, loaded contents, contained filter paper, disconnected powered/glass apparatus, blocked retrieval, real hover hiding, drag-back and drag-out, and all lab playthroughs.

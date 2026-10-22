@@ -28,7 +28,7 @@ export function placeItem(state,id) {
   const item=state.items[id]; item.parent=null;item.velocity=0;
   if(item.kind==='paper') {
     const f=state.items.funnel;
-    if(Math.abs(f.angle||0)<30&&Math.abs(item.x-f.x)<50&&Math.abs(item.y-f.y)<45)attach(state,id,f.id,f.x,f.y+4);
+    if(!f.stored&&Math.abs(f.angle||0)<30&&Math.abs(item.x-f.x)<50&&Math.abs(item.y-f.y)<45)attach(state,id,f.id,f.x,f.y+4);
   }
 
 }
@@ -41,7 +41,7 @@ function hasAncestor(state,item,id) {
 // Catch by geometry alone, including a stem already inside a vessel's opening.
 export function receiverBelow(state,point,excluded,sourceId) {
   return Object.values(state.items).filter(o=> {
-    if(excluded.has(o.id)||o.id===sourceId||hasAncestor(state,o,sourceId))return false;
+    if(o.stored||excluded.has(o.id)||o.id===sourceId||hasAncestor(state,o,sourceId))return false;
     if(o.kind==='beaker')return Math.abs(point.x-o.x)<40&&point.y<=o.y+55;
     if(o.kind==='funnel'&&Math.abs(o.angle||0)<30)return Math.abs(point.x-o.x)<52&&point.y<=o.y+12;
     return false;
@@ -74,7 +74,7 @@ export function pour(state,id,amount) {
   state.flow=[];
   if(state.phase!=='working'||!Number.isFinite(amount)||amount<=0)return;
   const source=state.items[id];
-  if(source?.kind!=='beaker')return;
+  if(source?.stored||source?.kind!=='beaker')return;
   const total=source.water+source.sand;
   if(total<=0)return;
   const taken=Math.min(total,amount),ratio=taken/total;

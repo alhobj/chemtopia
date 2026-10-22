@@ -26,7 +26,7 @@ export function paperPoint(state,p){const o=state.items.paper,a=-(o.angle||0)*Ma
 const upright=o=>Math.abs(o.angle||0)<15;
 export function solventContact(s){
  const c=s.items.chamber,p=s.items.paper;
- if(!upright(c)||!upright(p)||c.water<EPS||Math.abs(p.x-c.x)>34)return null;
+ if(c.stored||p.stored||!upright(c)||!upright(p)||c.water<EPS||Math.abs(p.x-c.x)>34)return null;
  const bottom=p.y+180,surface=c.y+216-200*c.water/c.capacity;
  return bottom>=surface&&bottom<=c.y+217&&p.y<c.y+210?surface-p.y:null;
 }
@@ -47,7 +47,7 @@ export function placeItem(s,id){
 }
 export function applyTool(s,id){
  if(s.phase!=='working')return false;
- const tool=s.items[id];if(!tool||!['pencil','marker'].includes(tool.kind))return false;
+ const tool=s.items[id];if(s.items.paper.stored||!tool||tool.stored||!['pencil','marker'].includes(tool.kind))return false;
  const p=paperPoint(s,worldPoint(tool,{x:0,y:tool.kind==='pencil'?90:70})),paper=s.items.paper;
  if(Math.abs(p.x)>56||p.y<4||p.y>176)return false;
  if(id==='pencil'){
@@ -64,11 +64,11 @@ function spill(s,x,water,ink=0){
 }
 export function pour(s,id,amount){
  if(s.phase!=='working'||!Number.isFinite(amount)||amount<=0)return;
- const o=s.items[id];if(!o||!['source','chamber'].includes(id)||o.water<EPS)return;
+ const o=s.items[id];if(!o||o.stored||!['source','chamber'].includes(id)||o.water<EPS)return;
  const water=Math.min(o.water,amount),fraction=water/o.water,ink=(o.ink||0)*fraction;
  o.water-=water;if(o.ink)o.ink-=ink;
  const point=worldPoint(o,{x:id==='source'?42:98,y:0});
- const target=['source','chamber'].map(k=>s.items[k]).find(t=>t.id!==id&&upright(t)&&point.y<=t.y+12&&Math.abs(point.x-t.x)<(t.id==='source'?38:94));
+ const target=['source','chamber'].map(k=>s.items[k]).find(t=>!t.stored&&t.id!==id&&upright(t)&&point.y<=t.y+12&&Math.abs(point.x-t.x)<(t.id==='source'?38:94));
  const to={x:point.x,y:target?target.y:525};s.flow.push({from:point,to});
  if(!target){spill(s,point.x,water,ink);return;}
  const f=Math.min(1,Math.max(0,target.capacity-target.water)/water);target.water+=water*f;target.ink=(target.ink||0)+ink*f;spill(s,point.x,water*(1-f),ink*(1-f));

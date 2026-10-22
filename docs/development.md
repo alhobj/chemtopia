@@ -48,6 +48,8 @@ If the `code` command is unavailable, open the folder through VS Code's File men
 | `prototype/chromatography.html` | Paper chromatography page and experiment navigation |
 | `prototype/chromatography-app.js` | Direct marker/pencil actions, drawing and R_F task |
 | `prototype/chromatography-model.js` | Solvent contact, marker development, material and measurement model |
+| `prototype/equipment-menu.js` | Shared hover drawer, drag handling and keyboard retrieval |
+| `prototype/equipment-storage.js` | Object-preserving storage, retrieval and initial shelf replacement |
 | `scripts/serve.mjs` | Node.js static file server |
 | `tests/model.test.mjs` | Chemistry/material and movement checks |
 

@@ -1,7 +1,10 @@
+import {initializeStorage} from './equipment-storage.js';
+import {createEquipmentMenu} from './equipment-menu.js';
 import {createState,NAMES,worldPoint,ports,hosePoint,connectHose,placeItem,detach,dragApparatus,physicsFor,pour,stepPhysics,stepChemistry,outcome,EPS} from './distillation-model.js';
 const $=id=>document.getElementById(id),bench=$('bench'),layer=$('apparatus'),svgNS='http://www.w3.org/2000/svg';
 document.body.classList.add('distillation-page');bench.append($('hoses'));bench.append($('streams'));
-let state=createState(),selected=null,drag=null,pouring=false,last=0,blocked=false;
+let state=initializeStorage(createState()),selected=null,drag=null,pouring=false,last=0,blocked=false;
+let menu;
 const groups=new Map();
 for(const id of Object.keys(state.items)){
  const g=document.createElementNS(svgNS,'g');g.dataset.id=id;g.classList.add('object');g.setAttribute('tabindex','0');g.setAttribute('role','button');g.setAttribute('aria-label',NAMES[id]);layer.append(g);groups.set(id,g);
@@ -38,10 +41,10 @@ function render(){
  $('streams').innerHTML=state.flow.map(f=>`<path d="M${f.from.x} ${f.from.y}L${f.to.x} ${f.to.y}" stroke="#82bdc9" stroke-width="5" stroke-linecap="round"/>`).join('')+(state.vapourVisible?`<path d="M${state.items.flask.x} ${state.items.flask.y}q-25 -25 0 -45t0 -45" stroke="#e4eee7" stroke-width="7" stroke-dasharray="8 9" fill="none" opacity=".8"/>`:'');
  $('selected-name').textContent=NAMES[selected]||(selected?.startsWith('hose')?'Water hose end':'Nothing selected');
  const o=state.items[selected],action=o?.kind==='heater'?`${o.on?'Stop':'Start'} heating`:o?.kind==='tap'?`${o.on?'Stop':'Start'} water`:o&&'acetone'in o?`${pouring?'Stop':'Start'} pouring`:'Select apparatus';
- $('action').disabled=state.phase!=='working'||!o||!('acetone'in o||['heater','tap'].includes(o.kind));$('action').textContent=action;$('action').setAttribute('aria-pressed',String(o?.on||pouring));
+ $('action').disabled=state.phase!=='working'||o?.stored||!o||!('acetone'in o||['heater','tap'].includes(o.kind));$('action').textContent=action;$('action').setAttribute('aria-pressed',String(o?.on||pouring));
  $('action-note').textContent=blocked?'Leave room for the vessel to tilt.':o&&'acetone'in o?'Hold the vessel with the mouse. Space starts/stops pouring.':o?.kind==='heater'||o?.kind==='tap'?'Space switches this control on or off.':'Drag equipment, or drag individual hose ends onto water fittings.';
  for(const b of $('equipment').children){b.disabled=state.phase!=='working';b.setAttribute('aria-pressed',String(b.dataset.equipment===selected));}
- $('finish').disabled=state.phase!=='working';
+ $('finish').disabled=state.phase!=='working';menu?.sync();
 }
 function stopPour(){if(pouring&&selected)physicsFor(state).tilt(selected,0);pouring=false;state.flow=[];}
 function select(id){if(state.phase!=='working')return;stopPour();selected=id;blocked=false;render();}
@@ -54,12 +57,12 @@ bench.addEventListener('pointerdown',e=>{
  bench.focus({preventScroll:true});bench.setPointerCapture(e.pointerId);e.preventDefault();render();
 });
 bench.addEventListener('pointermove',e=>{if(!drag)return;const p=coords(e);blocked=false;if(drag.hose){state.hoses.find(h=>h.id===drag.hose).ends[drag.index]={x:Math.max(10,Math.min(1390,p.x)),y:Math.max(10,Math.min(525,p.y))};}else{if(!drag.active){if(Math.hypot(p.x-drag.start.x,p.y-drag.start.y)<4)return;detach(state,drag.id);drag.active=true;}dragApparatus(state,drag.id,Math.max(65,Math.min(1335,p.x-drag.dx)),Math.max(10,Math.min(510,p.y-drag.dy)));}render();});
-function release(){if(!drag)return;stopPour();if(drag.hose){const h=state.hoses.find(h=>h.id===drag.hose);connectHose(state,drag.hose,drag.index,h.ends[drag.index]);}else if(drag.active)placeItem(state,drag.id);drag=null;render();}
+function release(e){if(!drag)return;const id=drag.id;stopPour();if(drag.active&&menu?.wantsStore(e)&&menu.store(id)){drag=null;selected=null;render();return;}if(drag.hose){const h=state.hoses.find(h=>h.id===drag.hose);connectHose(state,drag.hose,drag.index,h.ends[drag.index]);}else if(drag.active)placeItem(state,drag.id);drag=null;render();}
 bench.addEventListener('pointerup',release);bench.addEventListener('pointercancel',release);
 $('equipment').addEventListener('click',e=>{if(e.target.dataset.equipment)select(e.target.dataset.equipment);});
 $('equipment').addEventListener('focusin',e=>{if(e.target.dataset.equipment&&e.target.dataset.equipment!==selected)select(e.target.dataset.equipment);});
 function action(){
- if(state.phase!=='working')return;const o=state.items[selected];if(!o)return;
+ if(state.phase!=='working')return;const o=state.items[selected];if(!o||o.stored)return;
  if(o.kind==='heater'||o.kind==='tap')o.on=!o.on;
  else if('acetone'in o){if(pouring)stopPour();else if(physicsFor(state).tilt(selected,35)){pouring=true;blocked=false;}else{physicsFor(state).tilt(selected,0);blocked=true;}}
  render();
@@ -67,7 +70,7 @@ function action(){
 $('action').addEventListener('click',action);
 document.addEventListener('keydown',e=>{if(e.code!=='Space'||state.phase!=='working')return;const c=e.target.closest?.('button,input,select,textarea,[contenteditable="true"]');if(c&&c.id!=='action'&&!c.dataset.equipment)return;e.preventDefault();if(!e.repeat)action();});
 window.addEventListener('blur',()=>{stopPour();render();});document.addEventListener('visibilitychange',()=>{if(document.hidden){stopPour();render();}});
-$('restart').addEventListener('click',()=>{state=createState();selected=null;drag=null;pouring=false;blocked=false;$('result').hidden=true;$('result').innerHTML='';render();});
+$('restart').addEventListener('click',()=>{state=initializeStorage(createState());selected=null;drag=null;pouring=false;blocked=false;$('result').hidden=true;$('result').innerHTML='';render();});
 const percent=n=>`${(n*100).toFixed(1)}%`;
 $('finish').addEventListener('click',()=>{
  stopPour();release();const r=outcome(state);state.phase='finished';state.items.heater.on=false;state.items.tap.on=false;state.flow=[];state.vapourVisible=false;render();
@@ -76,4 +79,5 @@ $('finish').addEventListener('click',()=>{
  panel.focus({preventScroll:true});panel.scrollIntoView({behavior:'smooth',block:'nearest'});
 });
 function frame(time){const dt=Math.min(.05,(time-last)/1000);last=time;if(state.phase==='working'){stepPhysics(state,dt,drag?.active?drag.id:null);stepChemistry(state,dt);if(pouring&&selected){pour(state,selected,.28*dt);if(state.items[selected].water+state.items[selected].acetone<EPS)stopPour();}render();}requestAnimationFrame(frame);}
+menu=createEquipmentMenu({getState:()=>state,world:()=>physicsFor(state),groups,select,begin(id){select(id);detach(state,id);drag={id,dx:0,dy:0,active:true};},end:release,render,isDragging:()=>Boolean(drag?.active)});
 render();requestAnimationFrame(frame);

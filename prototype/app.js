@@ -1,7 +1,10 @@
-import {createState,NAMES,moveItem,detach,placeItem,pour,outcome,stepPhysics,holdItem,dragItem,releaseItem,tiltItem,EPS} from './model.js';
+import {initializeStorage} from './equipment-storage.js';
+import {createEquipmentMenu} from './equipment-menu.js';
+import {createState,NAMES,moveItem,detach,placeItem,pour,outcome,stepPhysics,holdItem,dragItem,releaseItem,tiltItem,physicsFor,EPS} from './model.js';
 const $=id=>document.getElementById(id);
 const bench=$('bench'),layer=$('apparatus'),spillLayer=$('spills'),streams=$('streams');
-let state=createState(),selected=null,drag=null,placement=null,pouring=false,last=0,actionBlocked=false;
+let state=initializeStorage(createState()),selected=null,drag=null,placement=null,pouring=false,last=0,actionBlocked=false;
+let menu;
 const groups=new Map();
 const ORDER=['stand','source','receiverA','receiverB','funnel','paper'];
 const SVG='http://www.w3.org/2000/svg';
@@ -36,13 +39,13 @@ function render(){
  spillLayer.innerHTML=state.spills.map(o=>`<g>${o.water>EPS?`<ellipse cx="${o.x}" cy="${o.y}" rx="${Math.min(70,12+o.water*100)}" ry="${Math.min(16,4+o.water*28)}" fill="#6caab6" opacity=".65"/>`:''}${o.sand>EPS?`<g transform="translate(${o.x} ${o.y-9})">${dots(o.sand,.12,70,12)}</g>`:''}</g>`).join('');
  streams.innerHTML=[...(pouring?state.flow:[]),...state.passiveFlow].map(f=>`<path d="M${f.from.x} ${f.from.y}L${f.to.x} ${f.to.y}" stroke="${f.sand?'#8bb9ba':'#70b6c7'}" stroke-width="6" opacity=".85" stroke-linecap="round"/>`).join('');
  $('selected-name').textContent=selected?NAMES[selected]:'Nothing selected';
- $('pour').disabled=state.phase!=='working'||state.items[selected]?.kind!=='beaker';
+ $('pour').disabled=state.phase!=='working'||(state.items[selected]?.stored||state.items[selected]?.kind!=='beaker');
  $('pour').classList.toggle('active',pouring);
  $('pour').setAttribute('aria-pressed',String(pouring));
  $('pour').innerHTML=`${pouring?'Stop pouring':'Start pouring'} <span aria-hidden="true">↓</span>`;
  $('pour-state').textContent=actionBlocked?'Leave room for the beaker to tilt.':state.items[selected]?.kind==='beaker'?'Press Space to start or stop pouring. Hold the beaker above a receiver while dragging.':'Select a beaker to use this control.';
  for(const b of $('equipment').querySelectorAll('button')){b.setAttribute('aria-pressed',String(b.dataset.equipment===selected));b.disabled=state.phase!=='working';}
- $('finish').disabled=state.phase!=='working';
+ $('finish').disabled=state.phase!=='working';menu?.sync();
 }
 function stopPour(){if(pouring&&selected)tiltItem(state,selected,0);pouring=false;state.flow=[];render();}
 function select(id){if(state.phase!=='working')return;if(placement&&placement.id!==id)finishPlacement();stopPour();selected=id;actionBlocked=false;render();}
@@ -59,14 +62,15 @@ bench.addEventListener('pointerdown',e=>{
  select(id);groups.get(id).focus({preventScroll:true});const p=coords(e),o=state.items[id];drag={id,dx:p.x-o.x,dy:p.y-o.y,start:p,active:false};bench.setPointerCapture(e.pointerId);e.preventDefault();render();
 });
 bench.addEventListener('pointermove',e=>{if(!drag)return;actionBlocked=false;const p=coords(e);if(!drag.active){if(Math.hypot(p.x-drag.start.x,p.y-drag.start.y)<4)return;beginPlacement(drag.id);drag.active=true;}const o=state.items[drag.id],pos=clamp(o,p.x-drag.dx,p.y-drag.dy);dragItem(state,o.id,pos.x,pos.y);render();});
-bench.addEventListener('pointerup',()=>{if(drag){stopPour();drag=null;finishPlacement();}});
+function release(e){if(drag){const id=drag.id;stopPour();if(drag.active&&menu?.wantsStore(e)){menu.store(id);placement=null;selected=null;drag=null;render();}else{drag=null;finishPlacement();}}}
+bench.addEventListener('pointerup',release);
 bench.addEventListener('pointercancel',()=>{stopPour();drag=null;finishPlacement();});
 $('equipment').addEventListener('focusin',e=>{const id=e.target.closest('[data-equipment]')?.dataset.equipment;if(id&&id!==selected)select(id);});
 $('equipment').addEventListener('click',e=>{const id=e.target.closest('[data-equipment]')?.dataset.equipment;if(id){finishPlacement();select(id);}});
 for(const [id,g] of groups)g.addEventListener('focus',()=>{if(state.phase==='working'&&selected!==id)select(id);});
 function togglePour(){
- if(state.phase!=='working'||state.items[selected]?.kind!=='beaker')return;
- if(pouring){stopPour();return;}
+ if(state.phase!=='working'||(state.items[selected]?.stored||state.items[selected]?.kind!=='beaker'))return;
+ if(state.items[selected]?.stored)return;if(pouring){stopPour();return;}
  if(!tiltItem(state,selected,35)){tiltItem(state,selected,0);actionBlocked=true;render();return;}
  pouring=true;actionBlocked=false;render();
 }
@@ -80,7 +84,7 @@ document.addEventListener('keydown',e=>{
 $('pour').addEventListener('click',togglePour);
 window.addEventListener('blur',()=>{if(pouring)stopPour();});
 document.addEventListener('visibilitychange',()=>{if(document.hidden&&pouring)stopPour();});
-$('restart').addEventListener('click',()=>{pouring=false;drag=null;placement=null;state=createState();selected=null;actionBlocked=false;$('result').hidden=true;$('result').innerHTML='';render();});
+$('restart').addEventListener('click',()=>{pouring=false;drag=null;placement=null;state=initializeStorage(createState());selected=null;actionBlocked=false;$('result').hidden=true;$('result').innerHTML='';render();});
 const description=(water,sand)=>water>EPS&&sand>EPS?'water and sand':water>EPS?'water':sand>EPS?'sand':'empty';
 $('finish').addEventListener('click',()=>{
  stopPour();finishPlacement();const result=outcome(state);state.phase='finished';state.passiveFlow=[];render();
@@ -101,4 +105,5 @@ $('finish').addEventListener('click',()=>{
  panel.focus({preventScroll:true});panel.scrollIntoView({behavior:'smooth',block:'nearest'});
 });
 function frame(time){const dt=Math.min(.05,(time-last)/1000);last=time;const moved=stepPhysics(state,dt,drag?.active?drag.id:null),didPour=pouring;if(pouring){pour(state,selected,.32*dt);if(state.items[selected].water+state.items[selected].sand<=EPS){tiltItem(state,selected,0);pouring=false;state.flow=[];}}if(moved||didPour)render();requestAnimationFrame(frame);}
+menu=createEquipmentMenu({getState:()=>state,world:()=>physicsFor(state),groups,select,begin(id){select(id);beginPlacement(id);drag={id,dx:0,dy:0,active:true};},end:release,render,isDragging:()=>Boolean(drag?.active)});
 render();requestAnimationFrame(frame);

@@ -61,9 +61,10 @@ export class PhysicsWorld {
   Sleeping.set(entry.body,false);
  }
  sync(){
+  if(this.seat&&(this.state.items.stand?.stored||this.state.items.funnel?.stored)){for(const c of this.seat)Composite.remove(this.engine.world,c);this.seat=null;}
   for(const item of Object.values(this.state.items)){
    let entry=this.entries.get(item.id);
-   if(item.parent){if(entry){Composite.remove(this.engine.world,entry.body);this.entries.delete(item.id);}continue;}
+   if(item.parent||item.stored){if(entry){Composite.remove(this.engine.world,entry.body);this.entries.delete(item.id);}continue;}
    if(!entry){entry=shape(item);this.entries.set(item.id,entry);this.writePose(item,entry);Composite.add(this.engine.world,entry.body);}
    entry.body.collisionFilter.mask=this.heldId==='paper'&&this.state.items.paper?.kind==='paper'?(item.kind==='funnel'?~4:item.kind==='paper'?~2:~0):(item.collisionMask??~0);
    const pose=[item.x,item.y,item.angle||0];
@@ -128,6 +129,7 @@ export class PhysicsWorld {
   this.read();
   const hadSpill=this.state.passiveFlow.length>0;this.state.passiveFlow=[];
   for(const item of Object.values(this.state.items)){
+   if(item.stored)continue;
    const root=item.parent?this.state.items[item.parent]:item;
    const radians=(root.angle||0)*RAD,angle=Math.atan2(Math.sin(radians),Math.cos(radians))/RAD;
    if(Math.abs(angle)>(root.kind==='funnel'?36:65)&&(item.water||item.sand||item.acetone))this.onSpill(item,Math.min(1,seconds*4));
