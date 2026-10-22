@@ -21,6 +21,13 @@ This is a two-dimensional rigid-body approximation, not a calibrated laboratory 
 
 ## Verification
 
-`npm test` covers 20 model and physics cases: material conservation, filtration with and without paper, wrong/missing receivers, overflow, interrupted transfers, loaded paper movement, no in-air tipping, bench impact, ring seating, fast-drag collisions, vessel contact, holding/release, tipped sand/water transfer, paper insertion and moving the stand/funnel assembly.
+`npm test` covers both experiments. Filtration checks include: material conservation, filtration with and without paper, wrong/missing receivers, overflow, interrupted transfers, loaded paper movement, no in-air tipping, bench impact, ring seating, fast-drag collisions, vessel contact, holding/release, tipped sand/water transfer, paper insertion and moving the stand/funnel assembly.
 
 `npm run test:browser` uses real Chromium input for blocked dragging against the stand, a clear-bench fall/tip, corrected ring seating, paper insertion, Space toggling, a successful filtration and question, loaded-funnel tipping/spillage, restart and missing-paper failure. The support and tipped-spill screenshots in the review are captures of the app, not generated concept artwork.
+
+
+## Stability and thermometer fixes
+
+Following the owner's playtest, equipment and support surfaces now use consistent friction on all compound collision parts, with stronger static friction and damping. A click selects apparatus; pickup/disconnection begins only after a short drag, so touching a stand or heater does not lift or disturb it. Heater pickup also preserves its position rather than applying a vessel-height correction.
+
+The thermometer has a shorter stem and a physical seating collar, matching the still-head opening. Near-aligned insertion seats the collar at the rim and constrains the thermometer, with the bulb at the side-arm height. No target ghost or chemistry change is introduced. Tests cover a nudged stand settling, surface friction, near-aligned thermometer seating, and clicking the assembled heater without moving the glassware.

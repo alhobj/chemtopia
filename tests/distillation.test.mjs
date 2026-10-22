@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {createState,placeItem,connectHose,cooling,stepChemistry,pour,outcome,totals,heaterContact,physicsFor,stepPhysics,worldPoint,EPS} from '../prototype/distillation-model.js';
+import {createState,detach,dragApparatus,placeItem,connectHose,cooling,stepChemistry,pour,outcome,totals,heaterContact,physicsFor,stepPhysics,worldPoint,EPS} from '../prototype/distillation-model.js';
 function assembled(reversed=false){
  const s=createState();Object.assign(s.items.flask,{x:390,y:327,acetone:.5,water:.5});Object.assign(s.items.source,{acetone:0,water:0});
  Object.assign(s.items.heater,{x:390,y:467,on:true});Object.assign(s.items.head,{x:390,y:267});Object.assign(s.items.condenser,{x:460,y:317});Object.assign(s.items.thermometer,{x:390,y:252});Object.assign(s.items.receiverA,{x:690,y:429});Object.assign(s.items.support2,{x:800,y:509});
@@ -26,4 +26,33 @@ test('supported glass assembly remains stable during heating and collection',()=
  const s=assembled();
  for(let i=0;i<1800;i++){stepPhysics(s,1/120);stepChemistry(s,1/120);}
  assert.ok(heaterContact(s));assert.ok(Math.abs(s.items.condenser.angle)<12);assert.ok(outcome(s).success);conserved(s);
+});
+
+test('thermometer collar catches a slightly high/off-centre insertion and remains seated',()=>{
+ const s=assembled();s.links=s.links.filter(l=>l.id!=='head-thermometer');
+ Object.assign(s.items.thermometer,{x:s.items.head.x+8,y:s.items.head.y-40,angle:0});
+ placeItem(s,'thermometer');
+ assert.ok(s.links.some(l=>l.id==='head-thermometer'));
+ for(let i=0;i<600;i++)stepPhysics(s,1/120);
+ const collar=worldPoint(s.items.thermometer,{x:0,y:15}),mouth=worldPoint(s.items.head,{x:0,y:0});
+ assert.ok(Math.hypot(collar.x-mouth.x,collar.y-mouth.y)<2);conserved(s);
+});
+test('pickup preserves heater height and each contact surface has friction',()=>{
+ const s=createState(),w=physicsFor(s),y=s.items.heater.y;
+ for(const {body} of w.entries.values())for(const part of body.parts){assert.ok(part.friction>=.8);assert.ok(part.frictionStatic>=2);}
+ assert.ok(w.bench.friction>=.8);
+ w.hold('heater');w.release();assert.equal(s.items.heater.y,y);
+});
+
+test('lifting a resting tilted condenser clears the bench before swept dragging',()=>{
+ const s=createState();Object.assign(s.items.condenser,{x:1060,y:480,angle:-9});
+ detach(s,'condenser');const w=physicsFor(s);w.moveHeld('condenser',1060,220);
+ assert.ok(Math.abs(s.items.condenser.y-220)<1);assert.ok(w.overlaps().every(pair=>!pair.includes('condenser')));
+});
+
+test('thermometer collar stops a drag at the still-head rim instead of falling inside',()=>{
+ const s=assembled();detach(s,'thermometer');
+ dragApparatus(s,'thermometer',s.items.head.x,s.items.head.y+80);
+ assert.ok(s.items.thermometer.y<=s.items.head.y-15+1);
+ placeItem(s,'thermometer');assert.ok(s.links.some(l=>l.id==='head-thermometer'));
 });

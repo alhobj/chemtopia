@@ -5,7 +5,8 @@ const RAD=Math.PI/180;
 export const BENCH_Y=525;
 export const RING={x:90,y:-172,seat:32.5};
 const rotate=(p,a)=>({x:p.x*Math.cos(a)-p.y*Math.sin(a),y:p.x*Math.sin(a)+p.y*Math.cos(a)});
-const rect=(x,y,w,h)=>Bodies.rectangle(x,y,w,h);
+const SURFACE={friction:.85,frictionStatic:2,restitution:0};
+const rect=(x,y,w,h)=>Bodies.rectangle(x,y,w,h,SURFACE);
 const contacts=(body,others)=>(body.parts.length>1?body.parts.slice(1):[body]).flatMap(part=>Query.collides(part,others));
 function polygon(vertices){
  const centre=Matter.Vertices.centre(vertices);
@@ -24,7 +25,8 @@ function shape(item){
  }else{
   parts=[polygon([{x:-44,y:0},{x:44,y:0},{x:0,y:38}])];
  }
- const body=Body.create({parts,label:item.id,friction:.55,frictionStatic:1,restitution:.05,frictionAir:.012,slop:.05});
+ const body=Body.create({parts,label:item.id,...SURFACE,frictionAir:.025,slop:.05});
+ for(const part of body.parts)Object.assign(part,SURFACE);
  body.collisionFilter.category=item.kind==='funnel'?2:item.kind==='paper'?4:1;
  body.collisionFilter.mask=~0;
  Body.setMass(body,item.mass??(item.kind==='stand'?8:item.kind==='beaker'?1:item.kind==='funnel'?.35:.04));
@@ -36,7 +38,7 @@ export class PhysicsWorld {
   this.engine=Engine.create({enableSleeping:true,positionIterations:12,velocityIterations:10,constraintIterations:6});
   this.engine.gravity.y=1.5;
   const width=state.width||1000;
-  this.bench=Bodies.rectangle(width/2,BENCH_Y+50,width+1200,100,{isStatic:true,label:'bench',friction:.8});
+  this.bench=Bodies.rectangle(width/2,BENCH_Y+50,width+1200,100,{isStatic:true,label:'bench',...SURFACE});
   Composite.add(this.engine.world,[this.bench,Bodies.rectangle(-30,200,60,1500,{isStatic:true,label:'edge'}),Bodies.rectangle(width+30,200,60,1500,{isStatic:true,label:'edge'})]);
   Events.on(this.engine,'collisionStart',event=>{
    // A tiny impact asymmetry breaks the exact mathematical balance of the thin stem.

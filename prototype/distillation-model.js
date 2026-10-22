@@ -13,7 +13,7 @@ export function createState(){
    source:vessel('source',95,413,{capacity:1.3,acetone:PARAMETERS.feedAcetone,water:PARAMETERS.feedWater}),
    flask:vessel('flask',760,385,{kind:'flask',mass:.7,capacity:1.5,heat:0,collision:[tube(-12,24,4,48),tube(12,24,4,48),{x:0,y:94,radius:46}]}),
    head:{id:'head',kind:'head',x:180,y:37,angle:0,mass:.12,collision:[box(-12,30,4,60),box(12,19,4,38),box(38,43,64,4),box(38,57,64,4)]},
-   thermometer:{id:'thermometer',kind:'thermometer',x:80,y:16,angle:0,mass:.03,collision:[box(0,42.5,7,85)]},
+   thermometer:{id:'thermometer',kind:'thermometer',x:80,y:16,angle:0,mass:.03,collision:[box(0,32.5,7,65),box(0,15,28,6)]},
    condenser:{id:'condenser',kind:'condenser',x:1060,y:430,angle:0,mass:.5,collision:[{vertices:[{x:30,y:-11},{x:205,y:42},{x:195,y:76},{x:20,y:23}]},box(8,2,24,9),box(220,67,25,9)]},
    support1:stand('support1'),support2:stand('support2'),
    heater:{id:'heater',kind:'heater',x:390,y:467,angle:0,mass:2,on:false,collision:[box(0,29,120,58)]},
@@ -56,7 +56,13 @@ function possibleJoints(state){
 }
 export function contactPairs(state){
  if(!state.held)return [];
- return possibleJoints(state).filter(l=>(l.a===state.held||l.b===state.held)&&distance(worldPoint(state.items[l.a],l.pa),worldPoint(state.items[l.b],l.pb))<(l.a.startsWith('support')?165:28)).map(l=>[l.a,l.b]);
+ return possibleJoints(state).filter(l=>{
+  if(l.a!==state.held&&l.b!==state.held)return false;
+  const a=worldPoint(state.items[l.a],l.pa),b=worldPoint(state.items[l.b],l.pb);
+  // Guide the narrow stem through its matching mouth before its tip hits the rim.
+  if(l.id==='head-thermometer')return Math.abs(a.x-b.x)<18&&Math.abs(a.y-b.y)<85;
+  return distance(a,b)<(l.a.startsWith('support')?165:28);
+ }).map(l=>[l.a,l.b]);
 }
 export function placeItem(state,id){
  state.held=null;
@@ -65,14 +71,25 @@ export function placeItem(state,id){
   if(state.links.some(l=>l.id===link.id))continue;
   if(link.a.startsWith('support')&&state.links.some(l=>l.a.startsWith('support')&&(l.a===link.a||l.b===link.b)))continue;
   const a=state.items[link.a],b=state.items[link.b];
-  if(Math.abs(a.angle-b.angle)>12||distance(worldPoint(a,link.pa),worldPoint(b,link.pb))>21)continue;
+  const ap=worldPoint(a,link.pa),bp=worldPoint(b,link.pb);
+  const aligned=link.id==='head-thermometer'?Math.abs(ap.x-bp.x)<18&&Math.abs(ap.y-bp.y)<45:distance(ap,bp)<=21;
+  if(Math.abs(a.angle-b.angle)>12||!aligned)continue;
   const moving=state.items[id],other=id===link.a?b:a,target=id===link.a?link.pa:link.pb,otherPoint=id===link.a?link.pb:link.pa;
   moving.angle=other.angle;const anchor=worldPoint(other,otherPoint),local=worldPoint({...moving,x:0,y:0},target);moving.x=anchor.x-local.x;moving.y=anchor.y-local.y;
   state.links.push(link);
  }
  physicsFor(state).release();
 }
-export function detach(state,id){state.held=id;state.links=state.links.filter(l=>l.a!==id&&l.b!==id);const o=state.items[id];if(o.fixed)return;o.angle=0;o.y=Math.min(o.y,525-(o.kind==='flask'?142:o.kind==='condenser'?90:100));physicsFor(state).syncLinks();physicsFor(state).hold(id);}
+export function dragApparatus(state,id,x,y){
+ if(id==='thermometer'){
+  const head=state.items.head,mouth=worldPoint(head,{x:0,y:0});
+  // The seating collar cannot be pushed through the upright glass rim.
+  const collar=worldPoint(state.items.thermometer,{x:0,y:15});
+  if(collar.y<=mouth.y+6&&Math.abs(head.angle)<12&&Math.abs(x-mouth.x)<18)y=Math.min(y,mouth.y-15);
+ }
+ physicsFor(state).moveHeld(id,x,y);
+}
+export function detach(state,id){state.held=id;state.links=state.links.filter(l=>l.a!==id&&l.b!==id);const o=state.items[id];if(o.fixed)return;if(['beaker','flask','head','thermometer','condenser'].includes(o.kind)){o.angle=0;const bottom=o.kind==='beaker'?(id==='source'?112:96):({flask:140,head:60,thermometer:65,condenser:85}[o.kind]);o.y=Math.min(o.y,525-bottom);}physicsFor(state).syncLinks();physicsFor(state).hold(id);}
 export const hasLink=(state,id)=>state.links.some(l=>l.id===id);
 function spill(state,point,mixture){
  if(mixture.water+mixture.acetone<=0)return;
@@ -123,4 +140,10 @@ export function outcome(state){
 }
 const worlds=new WeakMap();
 export function physicsFor(state){let world=worlds.get(state);if(!world){world=new PhysicsWorld(state,(item,fraction)=>{const total=item.water+item.acetone;if(total<EPS)return;if(total<1e-5)fraction=1;const a=item.acetone*fraction,w=item.water*fraction,d=item.distilledAcetone*fraction;item.acetone-=a;item.water-=w;item.distilledAcetone-=d;spill(state,worldPoint(item,{x:(item.angle||0)>0?40:-40,y:0}),{acetone:a,water:w,distilledAcetone:d});});worlds.set(state,world);}return world;}
-export function stepPhysics(state,dt,held){return state.phase==='working'?physicsFor(state).step(dt,held):false;}
+export function stepPhysics(state,dt,held){
+ if(state.phase!=='working')return false;
+ const moved=physicsFor(state).step(dt,held),t=state.items.thermometer,h=state.items.head;
+ const collar=worldPoint(t,{x:0,y:15}),mouth=worldPoint(h,{x:0,y:0});
+ if(!held&&!hasLink(state,'head-thermometer')&&Math.abs(collar.x-mouth.x)<14&&Math.abs(collar.y-mouth.y)<7&&Math.abs(t.angle-h.angle)<12)placeItem(state,'thermometer');
+ return moved;
+}

@@ -1,4 +1,5 @@
 import test from 'node:test';
+import Matter from '../prototype/vendor/matter.js';
 import assert from 'node:assert/strict';
 import {createState,moveItem,placeItem,detach,pour,outcome,totals,stepPhysics,physicsFor,holdItem,dragItem,releaseItem,EPS} from '../prototype/model.js';
 function setup(paper=true){const s=createState();moveItem(s,'stand',442,372);moveItem(s,'funnel',500,200);s.items.funnel.angle=0;placeItem(s,'funnel');if(paper){moveItem(s,'paper',500,204);placeItem(s,'paper');}moveItem(s,'receiverA',500,300);moveItem(s,'source',465.6,100);return s;}
@@ -64,4 +65,11 @@ test('moving a stand sweeps its seated funnel as part of the collision assembly'
  assert.ok(physicsFor(s).seat);holdItem(s,'stand');const offset=s.items.funnel.x-s.items.stand.x;
  dragItem(s,'stand',800,509);assert.ok(s.items.stand.x<700);
  assert.ok(Math.abs(s.items.funnel.x-s.items.stand.x-offset)<1);assert.deepEqual(physicsFor(s).overlaps(),[]);conserved(s);
+});
+
+test('a nudged stand slows on the bench instead of continuing to slide',()=>{
+ const s=createState(),w=physicsFor(s);advance(s,2);
+ const body=w.entries.get('stand').body;Matter.Sleeping.set(body,false);Matter.Body.setVelocity(body,{x:1,y:0});
+ advance(s,2);const x=s.items.stand.x;advance(s,2);
+ assert.ok(Math.abs(s.items.stand.x-x)<.5);assert.ok(Math.abs(body.velocity.x)<.01);conserved(s);
 });

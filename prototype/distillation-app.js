@@ -1,4 +1,4 @@
-import {createState,NAMES,worldPoint,ports,hosePoint,connectHose,placeItem,detach,physicsFor,pour,stepPhysics,stepChemistry,outcome,EPS} from './distillation-model.js';
+import {createState,NAMES,worldPoint,ports,hosePoint,connectHose,placeItem,detach,dragApparatus,physicsFor,pour,stepPhysics,stepChemistry,outcome,EPS} from './distillation-model.js';
 const $=id=>document.getElementById(id),bench=$('bench'),layer=$('apparatus'),svgNS='http://www.w3.org/2000/svg';
 document.body.classList.add('distillation-page');bench.append($('hoses'));bench.append($('streams'));
 let state=createState(),selected=null,drag=null,pouring=false,last=0,blocked=false;
@@ -25,7 +25,7 @@ function art(o){
  }
  if(o.kind==='heater')return `<rect x="-60" width="120" height="58" rx="9" fill="#d4ded5" ${stroke}/><path d="M-52 5H52" stroke="${o.on?'#d49150':'#92a3a0'}" stroke-width="8"/><circle cx="31" cy="34" r="12" fill="#506d72"/><circle cx="-32" cy="33" r="5" fill="${o.on?'#dc9459':'#879b93'}"/><text x="-4" y="39" text-anchor="middle" font-size="12" fill="#35515b">${o.on?'ON':'OFF'}</text><rect class="select-outline" x="-70" y="-10" width="140" height="80" rx="6"/>`;
  if(o.kind==='head')return `<path d="M-12 0V60H12V55H70V43H12V0Z" fill="url(#glass)" ${stroke}/><path d="M-7 5V51M18 47H65" stroke="#f8fffa" stroke-width="3"/><rect class="select-outline" x="-24" y="-12" width="108" height="85" rx="6"/>`;
- if(o.kind==='thermometer')return `<rect x="-5" width="10" height="85" rx="5" fill="#d9eeee" ${stroke}/><path d="M0 78V${78-53*(state.links.some(l=>l.id==='head-thermometer')?Math.min(1,state.items.flask.heat):0)}" stroke="#bd8862" stroke-width="3"/><circle cy="78" r="3" fill="#bd8862"/><path d="M-3 20H1M-3 30H1M-3 40H1M-3 50H1" stroke="#55727a"/><rect class="select-outline" x="-16" y="-10" width="32" height="105" rx="5"/>`;
+ if(o.kind==='thermometer')return `<rect x="-5" width="10" height="65" rx="5" fill="#d9eeee" ${stroke}/><path d="M0 58V${58-38*(state.links.some(l=>l.id==='head-thermometer')?Math.min(1,state.items.flask.heat):0)}" stroke="#bd8862" stroke-width="3"/><circle cy="58" r="3" fill="#bd8862"/><rect x="-14" y="12" width="28" height="6" rx="2" fill="#55727a"/><path d="M-3 20H1M-3 30H1M-3 40H1M-3 50H1" stroke="#55727a"/><rect class="select-outline" x="-16" y="-10" width="32" height="105" rx="5"/>`;
  if(o.kind==='condenser')return `<path d="M0 0L230 70" stroke="#354f60" stroke-width="14"/><path d="M0 0L230 70" stroke="#d9eeec" stroke-width="9"/><path d="M30 -11L205 42L195 76L20 23Z" fill="#e0eeec80" ${stroke}/><path d="M30 -11L205 42L195 76L20 23Z" fill="#79bdcc" opacity="${state.jacket*.7}"/><path d="M28 7L200 59" stroke="#edf9f2" stroke-width="6"/><path d="M45 -12L48 8M185 85L182 62" fill="none" stroke="#354f60" stroke-width="9"/><circle cx="45" cy="-12" r="7" class="water-port"/><circle cx="185" cy="85" r="7" class="water-port"/><rect class="select-outline" x="-15" y="-30" width="260" height="132" rx="6"/>`;
  if(o.kind==='tap')return `<path d="M-30 -15H5V25H0V30" fill="none" stroke="#426573" stroke-width="16"/><path d="M-15 -30H20M3 -38V-19" stroke="${o.on?'#62b9c7':'#8da3a5'}" stroke-width="7" stroke-linecap="round"/><circle cy="30" r="9" class="water-port"/><text x="-25" y="65" class="experiment-readout">Tap ${o.on?'on':'off'}</text>`;
  return `<path d="M-42 0H42L25 20H-25Z" fill="#879e9e" ${stroke}/><ellipse rx="17" ry="6" fill="#3c5760"/><text x="-30" y="45" class="experiment-readout">Drain</text>`;
@@ -49,12 +49,12 @@ const coords=e=>new DOMPoint(e.clientX,e.clientY).matrixTransform(bench.getScree
 bench.addEventListener('pointerdown',e=>{
  if(e.button!==0||state.phase!=='working')return;const hose=e.target.closest('[data-hose]'),item=e.target.closest('[data-id]');const p=coords(e);
  if(hose){stopPour();const h=state.hoses.find(h=>h.id===hose.dataset.hose),i=Number(hose.dataset.end);h.ends[i]={x:p.x,y:p.y};drag={hose:h.id,index:i};selected=`hose-${h.id}-${i}`;}
- else if(item){const id=item.dataset.id;select(id);if(state.items[id].fixed)return;detach(state,id);const o=state.items[id];drag={id,dx:p.x-o.x,dy:p.y-o.y};}
+ else if(item){const id=item.dataset.id;select(id);if(state.items[id].fixed)return;const o=state.items[id];drag={id,dx:p.x-o.x,dy:p.y-o.y,start:p,active:false};}
  else return;
  bench.focus({preventScroll:true});bench.setPointerCapture(e.pointerId);e.preventDefault();render();
 });
-bench.addEventListener('pointermove',e=>{if(!drag)return;const p=coords(e);blocked=false;if(drag.hose){state.hoses.find(h=>h.id===drag.hose).ends[drag.index]={x:Math.max(10,Math.min(1390,p.x)),y:Math.max(10,Math.min(525,p.y))};}else{physicsFor(state).moveHeld(drag.id,Math.max(65,Math.min(1335,p.x-drag.dx)),Math.max(10,Math.min(510,p.y-drag.dy)));}render();});
-function release(){if(!drag)return;stopPour();if(drag.hose){const h=state.hoses.find(h=>h.id===drag.hose);connectHose(state,drag.hose,drag.index,h.ends[drag.index]);}else placeItem(state,drag.id);drag=null;render();}
+bench.addEventListener('pointermove',e=>{if(!drag)return;const p=coords(e);blocked=false;if(drag.hose){state.hoses.find(h=>h.id===drag.hose).ends[drag.index]={x:Math.max(10,Math.min(1390,p.x)),y:Math.max(10,Math.min(525,p.y))};}else{if(!drag.active){if(Math.hypot(p.x-drag.start.x,p.y-drag.start.y)<4)return;detach(state,drag.id);drag.active=true;}dragApparatus(state,drag.id,Math.max(65,Math.min(1335,p.x-drag.dx)),Math.max(10,Math.min(510,p.y-drag.dy)));}render();});
+function release(){if(!drag)return;stopPour();if(drag.hose){const h=state.hoses.find(h=>h.id===drag.hose);connectHose(state,drag.hose,drag.index,h.ends[drag.index]);}else if(drag.active)placeItem(state,drag.id);drag=null;render();}
 bench.addEventListener('pointerup',release);bench.addEventListener('pointercancel',release);
 $('equipment').addEventListener('click',e=>{if(e.target.dataset.equipment)select(e.target.dataset.equipment);});
 $('equipment').addEventListener('focusin',e=>{if(e.target.dataset.equipment&&e.target.dataset.equipment!==selected)select(e.target.dataset.equipment);});
@@ -75,5 +75,5 @@ $('finish').addEventListener('click',()=>{
  $('explanation')?.addEventListener('submit',e=>{e.preventDefault();const correct=new FormData(e.target).get('answer')==='0';$('question-feedback').textContent=correct?'Activity complete. Both liquids can vaporise. The early vapour is richer in acetone, and cooling condenses it. Recovery and purity are different measures.':'Both liquids can vaporise; acetone is more volatile. The condenser changes vapour back to liquid. Choose another answer.';if(correct){state.phase='complete';e.target.querySelector('button').disabled=true;}});
  panel.focus({preventScroll:true});panel.scrollIntoView({behavior:'smooth',block:'nearest'});
 });
-function frame(time){const dt=Math.min(.05,(time-last)/1000);last=time;if(state.phase==='working'){stepPhysics(state,dt,drag?.id);stepChemistry(state,dt);if(pouring&&selected){pour(state,selected,.28*dt);if(state.items[selected].water+state.items[selected].acetone<EPS)stopPour();}render();}requestAnimationFrame(frame);}
+function frame(time){const dt=Math.min(.05,(time-last)/1000);last=time;if(state.phase==='working'){stepPhysics(state,dt,drag?.active?drag.id:null);stepChemistry(state,dt);if(pouring&&selected){pour(state,selected,.28*dt);if(state.items[selected].water+state.items[selected].acetone<EPS)stopPour();}render();}requestAnimationFrame(frame);}
 render();requestAnimationFrame(frame);

@@ -56,9 +56,9 @@ function beginPlacement(id){
 function finishPlacement(){if(placement){placeItem(state,placement.id);releaseItem(state);placement=null;}render();}
 bench.addEventListener('pointerdown',e=>{
  const id=e.target.closest('[data-id]')?.dataset.id;if(!id||state.phase!=='working'||e.button!==0)return;
- select(id);groups.get(id).focus({preventScroll:true});beginPlacement(id);const p=coords(e),o=state.items[id];drag={id,dx:p.x-o.x,dy:p.y-o.y};bench.setPointerCapture(e.pointerId);e.preventDefault();render();
+ select(id);groups.get(id).focus({preventScroll:true});const p=coords(e),o=state.items[id];drag={id,dx:p.x-o.x,dy:p.y-o.y,start:p,active:false};bench.setPointerCapture(e.pointerId);e.preventDefault();render();
 });
-bench.addEventListener('pointermove',e=>{if(!drag)return;actionBlocked=false;const p=coords(e),o=state.items[drag.id],pos=clamp(o,p.x-drag.dx,p.y-drag.dy);dragItem(state,o.id,pos.x,pos.y);render();});
+bench.addEventListener('pointermove',e=>{if(!drag)return;actionBlocked=false;const p=coords(e);if(!drag.active){if(Math.hypot(p.x-drag.start.x,p.y-drag.start.y)<4)return;beginPlacement(drag.id);drag.active=true;}const o=state.items[drag.id],pos=clamp(o,p.x-drag.dx,p.y-drag.dy);dragItem(state,o.id,pos.x,pos.y);render();});
 bench.addEventListener('pointerup',()=>{if(drag){stopPour();drag=null;finishPlacement();}});
 bench.addEventListener('pointercancel',()=>{stopPour();drag=null;finishPlacement();});
 $('equipment').addEventListener('focusin',e=>{const id=e.target.closest('[data-equipment]')?.dataset.equipment;if(id&&id!==selected)select(id);});
@@ -100,5 +100,5 @@ $('finish').addEventListener('click',()=>{
  });
  panel.focus({preventScroll:true});panel.scrollIntoView({behavior:'smooth',block:'nearest'});
 });
-function frame(time){const dt=Math.min(.05,(time-last)/1000);last=time;const moved=stepPhysics(state,dt,drag?.id),didPour=pouring;if(pouring){pour(state,selected,.32*dt);if(state.items[selected].water+state.items[selected].sand<=EPS){tiltItem(state,selected,0);pouring=false;state.flow=[];}}if(moved||didPour)render();requestAnimationFrame(frame);}
+function frame(time){const dt=Math.min(.05,(time-last)/1000);last=time;const moved=stepPhysics(state,dt,drag?.active?drag.id:null),didPour=pouring;if(pouring){pour(state,selected,.32*dt);if(state.items[selected].water+state.items[selected].sand<=EPS){tiltItem(state,selected,0);pouring=false;state.flow=[];}}if(moved||didPour)render();requestAnimationFrame(frame);}
 render();requestAnimationFrame(frame);

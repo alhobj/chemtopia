@@ -46,6 +46,12 @@ try{
  const screenshot=async name=>{const r=await send('Page.captureScreenshot',{format:'png',captureBeyondViewport:false});await writeFile(path.join(tmpdir(),name),Buffer.from(r.data,'base64'));};
  await screenshot('chemtopia-initial.png');console.log('PASS initial workbench and all six apparatus controls');
  const pose=async id=>evaluate(`(()=>{const m=document.querySelector('[data-id="${id}"]').transform.baseVal.consolidate().matrix;return {x:m.e,y:m.f,angle:Math.atan2(m.b,m.a)*180/Math.PI};})()`);
+
+ await pause(1000);await evaluate("document.querySelector('#bench').scrollIntoView({block:'center'})");
+ const standBefore=await pose('stand'),touch=await point('stand',0,-100);
+ await send('Input.dispatchMouseEvent',{type:'mousePressed',button:'left',clickCount:1,...touch});await pause(100);
+ await send('Input.dispatchMouseEvent',{type:'mouseReleased',button:'left',clickCount:1,...touch});await pause(1200);
+ const standAfter=await pose('stand');assert.ok(Math.hypot(standAfter.x-standBefore.x,standAfter.y-standBefore.y)<.5,'touching stand does not start it sliding');
  let drop=await drag('source',150,180,40,false);await pause(200);assert.ok(Math.abs((await pose('source')).y-180)<.1);
  await drop();await pause(1700);assert.ok(Math.abs((await pose('source')).y-413)<1);
  // Swept mouse collision: trying to cross the stand is blocked.

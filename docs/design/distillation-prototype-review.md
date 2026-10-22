@@ -17,3 +17,8 @@ The implementation passed 33 Node material/physics checks and both Chromium suit
 ![Upper-port supply remains connected and operable](../art/previews/distillation-reversed.png)
 
 Review this experiment before starting another activity.
+
+
+## Stability revision
+
+The subsequent owner playtest identified stand sliding, thermometer insertion failure and heater clicks lifting the apparatus. The fixes apply friction to individual collision parts and supporting surfaces, defer pickup until a drag, preserve heater height and give the thermometer a fitting stem and seating collar. The collar cannot be pushed through the upright head's rim. Regression coverage now includes 38 model/physics checks, a real stand click and an assembled-heater click; distillation insertion is exercised slightly high/off-centre.

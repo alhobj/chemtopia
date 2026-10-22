@@ -61,10 +61,17 @@ try{
  let p=await local('head',70,50);
  await drag('condenser',p.x,p.y,{dx:112,dy:34,path:[{x:1060,y:170},{x:p.x,y:170}]});await pause(300);await connected('condenser','Still head');
  await drag('support2',800,509,{dx:0,dy:-120});await pause(500);await connected('condenser','Clamp stand B');
- p=await pose('head');await drag('thermometer',p.x,p.y-15,{dy:40,path:[{x:80,y:10},{x:p.x,y:10}]});await pause(200);await connected('thermometer','Still head');
+ p=await pose('head');await drag('thermometer',p.x+8,p.y-40,{dy:40,path:[{x:80,y:10},{x:p.x,y:10}]});await pause(200);await connected('thermometer','Still head');const t=await pose('thermometer'),h=await pose('head');assert.ok(Math.abs((t.y+15)-h.y)<2,'thermometer collar seats at head mouth');
  p=await local('condenser',230,70);await drag('receiverA',p.x,429);await pause(200);
  await hose('supply',0,await local('tap',0,30));await hose('supply',1,await local('condenser',reversed?45:185,reversed?-12:85));await hose('return',0,await local('condenser',reversed?185:45,reversed?85:-12));await hose('return',1,await local('drain',0,0));
  assert.equal(await evaluate("document.querySelector('[data-hose=supply][data-end=\"1\"]').dataset.port"),reversed?'condenser:high':'condenser:low');
+ const beforeClick=await pose('heater'),flaskBefore=await pose('flask');
+ const hp=await point('heater',31,34);
+ await send('Input.dispatchMouseEvent',{type:'mousePressed',button:'left',clickCount:1,...hp});
+ await pause(150);await send('Input.dispatchMouseEvent',{type:'mouseReleased',button:'left',clickCount:1,...hp});await pause(300);
+ const afterClick=await pose('heater'),flaskAfter=await pose('flask');
+ assert.ok(Math.hypot(afterClick.x-beforeClick.x,afterClick.y-beforeClick.y)<1,'clicking heater does not lift or launch it');
+ assert.ok(Math.hypot(flaskAfter.x-flaskBefore.x,flaskAfter.y-flaskBefore.y)<1,'heater click does not disturb supported glass');
  await click('[data-equipment=tap]');await key(' ','Space');assert.ok((await evaluate("document.querySelector('#action').textContent")).includes('Stop water'));
  await click('[data-equipment=heater]');await key(' ','Space');await pause(13500);
  assert.equal(await evaluate("document.querySelector('#result').hidden"),true);
