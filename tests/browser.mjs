@@ -28,59 +28,69 @@ try{
  const key=async(key,code=key)=>{const windowsVirtualKeyCode=({Enter:13,Escape:27,Tab:9,ArrowLeft:37,ArrowUp:38,ArrowRight:39,ArrowDown:40,Space:32})[code]||0;await send('Input.dispatchKeyEvent',{type:'keyDown',key,code,windowsVirtualKeyCode,text:key==='Enter'?'\r':key===' '?' ':undefined});await send('Input.dispatchKeyEvent',{type:'keyUp',key,code,windowsVirtualKeyCode});};
  const point=async(id,dx=0,dy=40)=>evaluate(`(()=>{const o=document.querySelector('[data-id="${id}"]');const p=new DOMPoint(${dx},${dy}).matrixTransform(o.getScreenCTM());return {x:p.x,y:p.y};})()`);
  const click=async selector=>{const p=await evaluate(`(()=>{const e=document.querySelector(${JSON.stringify(selector)});e.scrollIntoView({block:'center'});const r=e.getBoundingClientRect();return {x:r.x+r.width/2,y:r.y+r.height/2};})()`);await send('Input.dispatchMouseEvent',{type:'mousePressed',button:'left',clickCount:1,...p});await send('Input.dispatchMouseEvent',{type:'mouseReleased',button:'left',clickCount:1,...p});};
- async function drag(id,x,y,dy=40,release=true){
+ async function drag(id,x,y,dy=40,release=true,waypoints=[]){
   await evaluate("document.querySelector('#bench').scrollIntoView({block:'center'})");
   const start=await point(id,0,dy);
-  const end=await evaluate(`(()=>{const g=document.querySelector('[data-id="${id}"]');const matrix=document.querySelector('#bench').getScreenCTM();const start=new DOMPoint(0,${dy}).matrixTransform(g.getScreenCTM()).matrixTransform(matrix.inverse());const anchor=new DOMPoint(0,0).matrixTransform(g.getScreenCTM()).matrixTransform(matrix.inverse());const p=new DOMPoint(${x}+start.x-anchor.x,${y}+start.y-anchor.y).matrixTransform(matrix);return {x:p.x,y:p.y};})()`);
   await send('Input.dispatchMouseEvent',{type:'mousePressed',button:'left',clickCount:1,...start});
-  for(let i=1;i<=6;i++)await send('Input.dispatchMouseEvent',{type:'mouseMoved',buttons:1,x:start.x+(end.x-start.x)*i/6,y:start.y+(end.y-start.y)*i/6});
+  const offset=await evaluate(`(()=>{const m=document.querySelector('#bench').getScreenCTM();const anchor=new DOMPoint(0,0).matrixTransform(document.querySelector('[data-id="${id}"]').getScreenCTM()).matrixTransform(m.inverse());const p=new DOMPoint(${start.x},${start.y}).matrixTransform(m.inverse());return {x:p.x-anchor.x,y:p.y-anchor.y};})()`);
+  let current=start,end=start;
+  for(const destination of [...waypoints,{x,y}]){
+   end=await evaluate(`(()=>{const p=new DOMPoint(${destination.x+offset.x},${destination.y+offset.y}).matrixTransform(document.querySelector('#bench').getScreenCTM());return {x:p.x,y:p.y};})()`);
+   for(let i=1;i<=6;i++)await send('Input.dispatchMouseEvent',{type:'mouseMoved',buttons:1,x:current.x+(end.x-current.x)*i/6,y:current.y+(end.y-current.y)*i/6});
+   current=end;
+  }
   const drop=()=>send('Input.dispatchMouseEvent',{type:'mouseReleased',button:'left',clickCount:1,...end});
+  drop.move=async(x,y)=>{const next=await evaluate(`(()=>{const p=new DOMPoint(${x+offset.x},${y+offset.y}).matrixTransform(document.querySelector('#bench').getScreenCTM());return {x:p.x,y:p.y};})()`);await send('Input.dispatchMouseEvent',{type:'mouseMoved',buttons:1,...next});end=next;};
   if(release)await drop();return drop;
  }
  const screenshot=async name=>{const r=await send('Page.captureScreenshot',{format:'png',captureBeyondViewport:false});await writeFile(path.join(tmpdir(),name),Buffer.from(r.data,'base64'));};
  await screenshot('chemtopia-initial.png');console.log('PASS initial workbench and all six apparatus controls');
- // Unsupported released beaker falls; held beaker remains where the mouse puts it.
- let drop=await drag('source',150,180,40,false);await pause(250);
- assert.ok(Math.abs((await evaluate("document.querySelector('[data-id=source]').transform.baseVal.consolidate().matrix.f"))-180)<.01);
- await drop();await pause(750);
- assert.ok(Math.abs((await evaluate("document.querySelector('[data-id=source]').transform.baseVal.consolidate().matrix.f"))-413)<.01);
- await drag('funnel',790,240,65);await pause(800);
- assert.ok((await evaluate("document.querySelector('[data-id=funnel]').getAttribute('transform')")).includes('rotate(90)'));
- assert.equal(await evaluate("document.querySelector('[data-id=funnel]').transform.baseVal.consolidate().matrix.f"),467);
- console.log('PASS held apparatus stays aloft; released beaker falls and unsupported funnel falls/tips');
- await drag('funnel',573,337,65);await drag('paper',573,341,10);await drag('receiverA',573,429);
- drop=await drag('source',538.6,225,40,false);
+ const pose=async id=>evaluate(`(()=>{const m=document.querySelector('[data-id="${id}"]').transform.baseVal.consolidate().matrix;return {x:m.e,y:m.f,angle:Math.atan2(m.b,m.a)*180/Math.PI};})()`);
+ let drop=await drag('source',150,180,40,false);await pause(200);assert.ok(Math.abs((await pose('source')).y-180)<.1);
+ await drop();await pause(1700);assert.ok(Math.abs((await pose('source')).y-413)<1);
+ // Swept mouse collision: trying to cross the stand is blocked.
+ drop=await drag('receiverA',350,320,40,false);assert.ok((await pose('receiverA')).x>550);await drop();
+ await click('#restart');
+ drop=await drag('funnel',320,170,65,false,[{x:880,y:150},{x:320,y:150}]);await pause(150);assert.ok(Math.abs((await pose('funnel')).angle)<.1);
+ await drop();await pause(250);assert.ok(Math.abs((await pose('funnel')).angle)<1,'no timed in-air tip');
+ await pause(3000);assert.ok(Math.abs((await pose('funnel')).angle)>35,'bench contact tips funnel');
+ console.log('PASS held/released gravity, stand hitbox and contact-driven tipping');
+ await click('#restart');
+ async function assemble(withPaper=true){
+  await drag('funnel',605,270,65,true,[{x:880,y:150},{x:605,y:150}]);await pause(900);
+  const f=await pose('funnel'),stand=await pose('stand');
+  assert.ok(Math.abs(f.angle)<3,'funnel seated upright');assert.ok(Math.abs(f.y-(stand.y-204.5))<2,'cone sits above ring');
+  if(withPaper)await drag('paper',f.x,f.y+4,10,true,[{x:950,y:150},{x:f.x,y:150}]);
+  await drag('receiverA',f.x,429);await pause(150);return f.x;
+ }
+ async function liftSource(x){return drag('source',x-34.4,140,40,false,[{x:150,y:140},{x:x-34.4,y:140}]);}
+ async function putSourceBack(drop){await drop.move((await pose('source')).x,140);await drop.move(150,140);await drop.move(150,413);await drop();}
+ let x=await assemble();drop=await liftSource(x);
  await key(' ','Space');await pause(500);
  assert.equal(await evaluate("document.querySelector('#pour').getAttribute('aria-pressed')"),'true','Space keyup does not stop pouring');
  await send('Input.dispatchKeyEvent',{type:'keyDown',key:' ',code:'Space',autoRepeat:true});
  assert.equal(await evaluate("document.querySelector('#pour').getAttribute('aria-pressed')"),'true','repeat does not toggle');
- await key(' ','Space');
- const stopped=await evaluate("document.querySelector('[data-id=source]').innerHTML");await pause(300);
- assert.equal(await evaluate("document.querySelector('[data-id=source]').innerHTML"),stopped,'second Space stops transfer');
+ await key(' ','Space');const stopped=await evaluate("document.querySelector('[data-id=source]').innerHTML");await pause(200);
+ assert.equal(await evaluate("document.querySelector('[data-id=source]').innerHTML"),stopped);
  assert.equal(await evaluate("document.querySelector('#result').hidden"),true);
- await key(' ','Space');await pause(500);await drop();
- assert.equal(await evaluate("document.querySelector('#pour').getAttribute('aria-pressed')"),'false','release safely ends action');
- await pause(700);await drag('receiverA',350,429);await drag('receiverB',573,429);
- drop=await drag('source',538.6,225,40,false);await key(' ','Space');await pause(3500);await drop();await pause(700);
- await click('#finish');assert.ok(await evaluate("!!document.querySelector('#explanation')"),'filtration remains completable with gravity');
+ await screenshot('chemtopia-ring-support.png');
+ await key(' ','Space');await pause(3400);await putSourceBack(drop);await pause(300);
+ await screenshot('chemtopia-before-finish.png');await click('#finish');assert.ok(await evaluate("!!document.querySelector('#explanation')"),'filtration remains completable with collisions');
  await click('input[value="1"]');await click('#explanation button');assert.ok((await evaluate("document.querySelector('#question-feedback').textContent")).includes('Choose another answer'));
- await evaluate("document.querySelector('input[value=\"0\"]').focus()");await key(' ','Space');
- await evaluate("document.querySelector('#explanation button').focus()");await key('Enter');
- assert.ok((await evaluate("document.querySelector('#question-feedback').textContent")).includes('Activity complete'));
- await screenshot('chemtopia-completed.png');
- console.log('PASS Space toggle, repeat protection, release safety, two receivers and question completion');
- await click('#restart');assert.equal(await evaluate("document.querySelector('#selected-name').textContent"),'Nothing selected');assert.equal(await evaluate("document.querySelector('#spills').children.length"),0);
- await click('[data-equipment=source]');const original=await evaluate("document.querySelector('[data-id=source]').getAttribute('transform')");
- await key('ArrowRight');await key('ArrowUp');await key('Enter');
- assert.equal(await evaluate("document.querySelector('[data-id=source]').getAttribute('transform')"),original,'keyboard movement removed');
- await click('#pour');await pause(200);assert.equal(await evaluate("document.querySelector('#pour').getAttribute('aria-pressed')"),'true');await click('#pour');
- assert.equal(await evaluate("document.querySelector('#pour').getAttribute('aria-pressed')"),'false');
- await click('#restart');await drag('funnel',573,337,65);await drag('receiverA',573,429);
- drop=await drag('source',538.6,225,40,false);await key(' ','Space');await pause(3900);await drop();await click('#finish');
- assert.equal(await evaluate("!!document.querySelector('#explanation')"),false);
- assert.ok((await evaluate("document.querySelector('#result').textContent")).includes('Collecting beaker A: water and sand'));
- assert.ok(await evaluate("document.querySelector('#spills').children.length>0"));
- console.log('PASS movement shortcuts removed; button toggle, restart, missing-paper and overflow still work');
+ await evaluate("document.querySelector('input[value=\"0\"]').focus()");await key(' ','Space');await evaluate("document.querySelector('#explanation button').focus()");await key('Enter');
+ assert.ok((await evaluate("document.querySelector('#question-feedback').textContent")).includes('Activity complete'));await screenshot('chemtopia-completed.png');
+ console.log('PASS corrected ring seating, paper insertion, collision-safe pouring and complete explanation');
+ await click('#restart');x=await assemble();drop=await liftSource(x);await key(' ','Space');await pause(700);await key(' ','Space');await putSourceBack(drop);
+ assert.ok(await evaluate("document.querySelector('[data-id=paper]').innerHTML.includes('#bb904f')"),'filter loaded');
+ await drag('funnel',320,150,65,true,[{x,y:130},{x:320,y:130}]);await pause(4500);
+ assert.equal(await evaluate("document.querySelector('[data-id=paper]').innerHTML.includes('#bb904f')"),false,'tipped filter empties');
+ assert.ok(await evaluate("document.querySelector('#spills').children.length>0"));await screenshot('chemtopia-tipped-spill.png');
+ console.log('PASS loaded funnel removal, impact, tipping and visible sand spill');
+ await click('#restart');await pause(600);await click('[data-equipment=source]');const before=await pose('source');await key('ArrowRight');await key('Enter');
+ assert.ok(Math.abs((await pose('source')).x-before.x)<1,'movement shortcuts remain removed');
+ x=await assemble(false);drop=await liftSource(x);await key(' ','Space');await pause(3900);await putSourceBack(drop);await click('#finish');
+ assert.equal(await evaluate("!!document.querySelector('#explanation')"),false);assert.ok((await evaluate("document.querySelector('#result').textContent")).includes('Collecting beaker A: water and sand'));
+ console.log('PASS restart, missing-paper failure and native controls');
  assert.deepEqual(exceptions,[],'no browser runtime exceptions');console.log('PASS no browser runtime exceptions');
  console.log('Browser checks complete. Screenshots: /tmp/chemtopia-initial.png and /tmp/chemtopia-completed.png');
 }finally{

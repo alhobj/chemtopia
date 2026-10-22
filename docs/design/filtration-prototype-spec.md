@@ -8,6 +8,8 @@ After playtesting, the owner requested gravity for released unsupported objects,
 
 The remaining text preserves the originally approved first-build specification and questionnaire history; superseded controls are not current requirements.
 
+The later [collision revision](physics-interactions.md), explicitly requested by the owner, replaces timed tipping with collision/gravity dynamics, adds stand/equipment hitboxes and corrected ring seating, and makes tipped contents spill. Earlier statements about preserving contents through a tip are historical.
+
 ## Recorded answers
 
 ```text

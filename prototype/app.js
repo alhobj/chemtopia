@@ -1,7 +1,7 @@
-import {createState,NAMES,moveItem,detach,placeItem,pour,outcome,stepPhysics,EPS} from './model.js';
+import {createState,NAMES,moveItem,detach,placeItem,pour,outcome,stepPhysics,holdItem,dragItem,releaseItem,tiltItem,EPS} from './model.js';
 const $=id=>document.getElementById(id);
 const bench=$('bench'),layer=$('apparatus'),spillLayer=$('spills'),streams=$('streams');
-let state=createState(),selected=null,drag=null,placement=null,pouring=false,last=0;
+let state=createState(),selected=null,drag=null,placement=null,pouring=false,last=0,actionBlocked=false;
 const groups=new Map();
 const ORDER=['stand','source','receiverA','receiverB','funnel','paper'];
 const SVG='http://www.w3.org/2000/svg';
@@ -25,48 +25,50 @@ function beakerArt(o){
 }
 function art(o){
  if(o.kind==='beaker')return beakerArt(o);
- if(o.kind==='stand')return `<ellipse cx="28" cy="7" rx="87" ry="10" fill="#324b4318"/><path d="M-43 -7H72L91 4L83 16H-48L-57 6Z" fill="#4c616e" stroke="#304454" stroke-width="3"/><path d="M-43 -7H72L91 4H-57Z" fill="#7d929b"/><rect x="-5" y="-231" width="10" height="226" rx="3" fill="url(#metal)" stroke="#304454" stroke-width="2.5"/><path d="M0 -172H35" stroke="#334b5c" stroke-width="9"/><ellipse cx="58" cy="-172" rx="30" ry="9" fill="none" stroke="#334b5c" stroke-width="5"/><path d="M30 -176H1" stroke="#a9bec1" stroke-width="3"/><rect x="-12" y="-183" width="23" height="22" rx="3" fill="#4b626d" stroke="#304454" stroke-width="2"/><circle cy="-172" r="4" fill="#d8d8bf"/><rect class="select-outline" x="-63" y="-245" width="165" height="272" rx="7"/>`;
+ if(o.kind==='stand')return `<ellipse cx="-8" cy="7" rx="60" ry="10" fill="#324b4318"/><path d="M-43 -7H16L35 4L27 16H-48L-57 6Z" fill="#4c616e" stroke="#304454" stroke-width="3"/><path d="M-43 -7H16L35 4H-57Z" fill="#7d929b"/><rect x="-5" y="-231" width="10" height="226" rx="3" fill="url(#metal)" stroke="#304454" stroke-width="2.5"/><path d="M0 -172H58" stroke="#334b5c" stroke-width="9"/><ellipse cx="90" cy="-172" rx="30" ry="9" fill="none" stroke="#334b5c" stroke-width="5"/><path d="M62 -176H1" stroke="#a9bec1" stroke-width="3"/><rect x="-12" y="-183" width="23" height="22" rx="3" fill="#4b626d" stroke="#304454" stroke-width="2"/><circle cy="-172" r="4" fill="#d8d8bf"/><rect class="select-outline" x="-63" y="-245" width="200" height="272" rx="7"/>`;
  if(o.kind==='funnel')return `<path d="M-57 0H57L9 48V78H-9V48Z" fill="url(#glass)" stroke="#354f60" stroke-width="3" stroke-linejoin="bevel"/><ellipse cy="0" rx="58" ry="10" fill="#dbf3f0" fill-opacity=".6" stroke="#354f60" stroke-width="3"/><path d="M-45 10L-5 45V70" stroke="#f8fff9" stroke-width="4" fill="none" opacity=".9"/><path d="M9 48L45 9" stroke="#91bbc5" stroke-width="3" fill="none"/><rect class="select-outline" x="-70" y="-18" width="140" height="110" rx="7"/>`;
  return `<path d="M-44 0Q0 -14 44 0L0 38Z" fill="#fff8df" stroke="#8b8e7e" stroke-width="2"/><ellipse cy="0" rx="44" ry="8" fill="#fffdf0" stroke="#8b8e7e" stroke-width="2"/><path d="M-33 2L0 34L29 2" fill="none" stroke="#d5d2b8" stroke-width="2"/>
  ${o.sand>EPS?`<path d="M-22 8Q0 1 22 8L0 29Z" fill="#bb904f"/>${dots(o.sand,.12,34,13,7)}`:''}<rect class="select-outline" x="-55" y="-17" width="110" height="69" rx="7"/>`;
 }
 function render(){
- for(const id of ORDER){const o=state.items[id],g=groups.get(id);const parent=o.parent?state.items[o.parent]:null;const angle=o.angle||0;g.setAttribute('transform',parent?.angle?`translate(${parent.x} ${parent.y}) rotate(${parent.angle}) translate(${o.x-parent.x} ${o.y-parent.y})`:`translate(${o.x} ${o.y}) rotate(${pouring&&id===selected?35:angle})`);g.innerHTML=art(o);g.classList.toggle('selected',id===selected);g.classList.toggle('lifted',drag?.id===id||placement?.id===id);g.setAttribute('aria-disabled',String(state.phase!=='working'));}
+ for(const id of ORDER){const o=state.items[id],g=groups.get(id);const parent=o.parent?state.items[o.parent]:null;const angle=o.angle||0;g.setAttribute('transform',parent?.angle?`translate(${parent.x} ${parent.y}) rotate(${parent.angle}) translate(${o.x-parent.x} ${o.y-parent.y})`:`translate(${o.x} ${o.y}) rotate(${angle})`);g.innerHTML=art(o);g.classList.toggle('selected',id===selected);g.classList.toggle('lifted',drag?.id===id||placement?.id===id);g.setAttribute('aria-disabled',String(state.phase!=='working'));}
  if(selected)layer.append(groups.get(selected));
- spillLayer.innerHTML=state.spills.map(o=>`<g><ellipse cx="${o.x}" cy="${o.y}" rx="${Math.min(70,12+o.water*100)}" ry="${Math.min(16,4+o.water*28)}" fill="#6caab6" opacity=".65"/>${o.sand>EPS?`<g transform="translate(${o.x} ${o.y-9})">${dots(o.sand,.12,70,12)}</g>`:''}</g>`).join('');
- streams.innerHTML=pouring?state.flow.map(f=>`<path d="M${f.from.x} ${f.from.y}L${f.to.x} ${f.to.y}" stroke="${f.sand?'#8bb9ba':'#70b6c7'}" stroke-width="6" opacity=".85" stroke-linecap="round"/>`).join(''):'';
+ spillLayer.innerHTML=state.spills.map(o=>`<g>${o.water>EPS?`<ellipse cx="${o.x}" cy="${o.y}" rx="${Math.min(70,12+o.water*100)}" ry="${Math.min(16,4+o.water*28)}" fill="#6caab6" opacity=".65"/>`:''}${o.sand>EPS?`<g transform="translate(${o.x} ${o.y-9})">${dots(o.sand,.12,70,12)}</g>`:''}</g>`).join('');
+ streams.innerHTML=[...(pouring?state.flow:[]),...state.passiveFlow].map(f=>`<path d="M${f.from.x} ${f.from.y}L${f.to.x} ${f.to.y}" stroke="${f.sand?'#8bb9ba':'#70b6c7'}" stroke-width="6" opacity=".85" stroke-linecap="round"/>`).join('');
  $('selected-name').textContent=selected?NAMES[selected]:'Nothing selected';
  $('pour').disabled=state.phase!=='working'||state.items[selected]?.kind!=='beaker';
  $('pour').classList.toggle('active',pouring);
  $('pour').setAttribute('aria-pressed',String(pouring));
  $('pour').innerHTML=`${pouring?'Stop pouring':'Start pouring'} <span aria-hidden="true">↓</span>`;
- $('pour-state').textContent=state.items[selected]?.kind==='beaker'?'Press Space to start or stop pouring. Hold the beaker above a receiver while dragging.':'Select a beaker to use this control.';
+ $('pour-state').textContent=actionBlocked?'Leave room for the beaker to tilt.':state.items[selected]?.kind==='beaker'?'Press Space to start or stop pouring. Hold the beaker above a receiver while dragging.':'Select a beaker to use this control.';
  for(const b of $('equipment').querySelectorAll('button')){b.setAttribute('aria-pressed',String(b.dataset.equipment===selected));b.disabled=state.phase!=='working';}
  $('finish').disabled=state.phase!=='working';
 }
-function stopPour(){pouring=false;state.flow=[];render();}
-function select(id){if(state.phase!=='working')return;if(placement&&placement.id!==id)finishPlacement();stopPour();selected=id;render();}
+function stopPour(){if(pouring&&selected)tiltItem(state,selected,0);pouring=false;state.flow=[];render();}
+function select(id){if(state.phase!=='working')return;if(placement&&placement.id!==id)finishPlacement();stopPour();selected=id;actionBlocked=false;render();}
 function coords(e){return new DOMPoint(e.clientX,e.clientY).matrixTransform(bench.getScreenCTM().inverse());}
 function clamp(o,x,y){return {x:Math.max(65,Math.min(935,x)),y:Math.max(o.kind==='stand'?260:65,Math.min(o.kind==='stand'?510:o.kind==='beaker'?430:475,y))};}
 function beginPlacement(id){
  if(placement?.id===id)return;
  if(placement)placeItem(state,placement.id);
- const o=state.items[id];placement={id,x:o.x,y:o.y,parent:o.parent};detach(state,id);
+ const o=state.items[id];placement={id,x:o.x,y:o.y,parent:o.parent};detach(state,id);holdItem(state,id);
 }
-function finishPlacement(){if(placement){placeItem(state,placement.id);placement=null;}render();}
+function finishPlacement(){if(placement){placeItem(state,placement.id);releaseItem(state);placement=null;}render();}
 bench.addEventListener('pointerdown',e=>{
  const id=e.target.closest('[data-id]')?.dataset.id;if(!id||state.phase!=='working'||e.button!==0)return;
  select(id);groups.get(id).focus({preventScroll:true});beginPlacement(id);const p=coords(e),o=state.items[id];drag={id,dx:p.x-o.x,dy:p.y-o.y};bench.setPointerCapture(e.pointerId);e.preventDefault();render();
 });
-bench.addEventListener('pointermove',e=>{if(!drag)return;const p=coords(e),o=state.items[drag.id],pos=clamp(o,p.x-drag.dx,p.y-drag.dy);moveItem(state,o.id,pos.x,pos.y);render();});
+bench.addEventListener('pointermove',e=>{if(!drag)return;actionBlocked=false;const p=coords(e),o=state.items[drag.id],pos=clamp(o,p.x-drag.dx,p.y-drag.dy);dragItem(state,o.id,pos.x,pos.y);render();});
 bench.addEventListener('pointerup',()=>{if(drag){stopPour();drag=null;finishPlacement();}});
-bench.addEventListener('pointercancel',()=>{drag=null;finishPlacement();});
+bench.addEventListener('pointercancel',()=>{stopPour();drag=null;finishPlacement();});
 $('equipment').addEventListener('focusin',e=>{const id=e.target.closest('[data-equipment]')?.dataset.equipment;if(id&&id!==selected)select(id);});
 $('equipment').addEventListener('click',e=>{const id=e.target.closest('[data-equipment]')?.dataset.equipment;if(id){finishPlacement();select(id);}});
 for(const [id,g] of groups)g.addEventListener('focus',()=>{if(state.phase==='working'&&selected!==id)select(id);});
 function togglePour(){
  if(state.phase!=='working'||state.items[selected]?.kind!=='beaker')return;
- pouring=!pouring;if(!pouring)state.flow=[];render();
+ if(pouring){stopPour();return;}
+ if(!tiltItem(state,selected,35)){tiltItem(state,selected,0);actionBlocked=true;render();return;}
+ pouring=true;actionBlocked=false;render();
 }
 document.addEventListener('keydown',e=>{
  if(e.code!=='Space'||state.phase!=='working')return;
@@ -78,10 +80,10 @@ document.addEventListener('keydown',e=>{
 $('pour').addEventListener('click',togglePour);
 window.addEventListener('blur',()=>{if(pouring)stopPour();});
 document.addEventListener('visibilitychange',()=>{if(document.hidden&&pouring)stopPour();});
-$('restart').addEventListener('click',()=>{pouring=false;drag=null;placement=null;state=createState();selected=null;$('result').hidden=true;$('result').innerHTML='';render();});
+$('restart').addEventListener('click',()=>{pouring=false;drag=null;placement=null;state=createState();selected=null;actionBlocked=false;$('result').hidden=true;$('result').innerHTML='';render();});
 const description=(water,sand)=>water>EPS&&sand>EPS?'water and sand':water>EPS?'water':sand>EPS?'sand':'empty';
 $('finish').addEventListener('click',()=>{
- stopPour();finishPlacement();const result=outcome(state);state.phase='finished';render();
+ stopPour();finishPlacement();const result=outcome(state);state.phase='finished';state.passiveFlow=[];render();
  const panel=$('result');panel.hidden=false;
  panel.innerHTML=`<p class="eyebrow">EXPERIMENT REVIEW</p><h2>${result.success?'Your materials are separated.':'The separation is not complete.'}</h2>
  ${!result.success?'<p>Compare where the sand and water ended up. Restart to try again.</p>':''}
@@ -98,5 +100,5 @@ $('finish').addEventListener('click',()=>{
  });
  panel.focus({preventScroll:true});panel.scrollIntoView({behavior:'smooth',block:'nearest'});
 });
-function frame(time){const dt=Math.min(.05,(time-last)/1000);last=time;const moved=stepPhysics(state,dt,drag?.id),didPour=pouring;if(pouring){pour(state,selected,.32*dt);if(state.items[selected].water+state.items[selected].sand<=EPS){pouring=false;state.flow=[];}}if(moved||didPour)render();requestAnimationFrame(frame);}
+function frame(time){const dt=Math.min(.05,(time-last)/1000);last=time;const moved=stepPhysics(state,dt,drag?.id),didPour=pouring;if(pouring){pour(state,selected,.32*dt);if(state.items[selected].water+state.items[selected].sand<=EPS){tiltItem(state,selected,0);pouring=false;state.flow=[];}}if(moved||didPour)render();requestAnimationFrame(frame);}
 render();requestAnimationFrame(frame);

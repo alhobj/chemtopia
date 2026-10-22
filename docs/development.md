@@ -40,7 +40,8 @@ If the `code` command is unavailable, open the folder through VS Code's File men
 | `prototype/index.html` | Page structure, labels and laboratory background |
 | `prototype/style.css` | Colours, typography and layout |
 | `prototype/app.js` | Mouse and Space controls, drawing apparatus, results |
-| `prototype/model.js` | Material transfers, attachments, gravity and funnel tipping |
+| `prototype/model.js` | Material transfers, paper containment and experiment results |
+| `prototype/physics.js` | Hitboxes, gravity, contacts, ring support and tipping |
 | `scripts/serve.mjs` | Node.js static file server |
 | `tests/model.test.mjs` | Chemistry/material and movement checks |
 

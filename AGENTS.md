@@ -45,3 +45,7 @@ The owner approved docs/design/filtration-prototype-spec.md with “Yes”. Its 
 ## Owner's interaction revision
 
 After playing the prototype, the owner requested that released unsupported equipment fall to the bench, funnels tip unless supported by the stand, keyboard movement be removed for now, and Space toggle the current action (pouring). These explicit requests supersede the original keyboard-equivalence, hold-to-pour and free-air-placement requirements for this prototype. Preserve native keyboard operation of ordinary controls. This is an authorised revision, not an unanswered design question.
+
+## Owner's collision revision
+
+The owner requested non-overlapping solid hitboxes for all equipment and the stand, gravity/contact-driven tipping rather than automatic rotation, contents spilling when tipped, and corrected ring seating, followed by a Git push. docs/design/physics-interactions.md records the implemented scope. This supersedes the earlier simple tipping animation and preservation of sand through a tip. A locally bundled MIT-licensed Matter.js dependency implements the requested collisions; no package installation or deployment is required.

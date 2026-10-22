@@ -105,3 +105,9 @@ The owner liked the prototype and requested four concrete changes: unsupported o
 The revised interaction keeps the mouse held while positioning a pouring beaker; Space toggles flow without needing to hold the key. Releasing the object stops pouring and starts its fall. The visible action button also toggles flow. Selection changes, focus loss, Finish and Restart stop the action. Gravity and tipping use a small qualitative positional model, with no impact damage or new material loss from tipping. Attached paper keeps its retained sand; a tipped unsupported funnel does not act as an upright receiving opening.
 
 The owner also requested Node.js use, convenient terminal execution in VS Code, and a Git push. The existing Node.js local server is retained, with a VS Code run task and a beginner-oriented development guide. Knowing Python/HTML/CSS is recorded as context, not interpreted as a request to rewrite the game or add a Python backend.
+
+## Collision, ring support and tipped contents — requested revision
+
+The owner requested solid hitboxes for equipment and stand, gravity/contact-driven tipping instead of timed rotation, contents pouring out on tipping, and a higher funnel position in its support. These requests authorise the corresponding physical consequences and supersede the earlier “no material loss from tipping” implementation detail. The owner explicitly requested a push.
+
+The implementation uses locally bundled Matter.js 0.20.0 under MIT. The stand geometry now provides clearance for the bowl and collecting vessel, and the cone seats above the ring after contact. Glass/metal collide while real openings and paper containment remain available. See [the physics interaction record](physics-interactions.md) for behaviour, approximations and verification. This does not add new chemistry processes, impact damage or publication.

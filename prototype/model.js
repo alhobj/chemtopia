@@ -1,3 +1,5 @@
+import {PhysicsWorld,BENCH_Y} from './physics.js';
+export {BENCH_Y} from './physics.js';
 // Qualitative, deterministic transfer model. Amounts are internal, not calibrated readings.
 export const EPS = 1e-7;
 export const NAMES = {source:'Mixture beaker',receiverA:'Collecting beaker A',receiverB:'Collecting beaker B',funnel:'Glass funnel',paper:'Filter paper',stand:'Funnel stand'};
@@ -5,13 +7,13 @@ export function createState() {
   return {
     items: {
       source: {id:'source',kind:'beaker',x:150,y:413,water:1,sand:.12,capacity:1.35,parent:null},
-      receiverA: {id:'receiverA',kind:'beaker',x:350,y:429,water:0,sand:0,capacity:.65,parent:null},
-      receiverB: {id:'receiverB',kind:'beaker',x:680,y:429,water:0,sand:0,capacity:.65,parent:null},
-      funnel: {id:'funnel',kind:'funnel',x:805,y:467,angle:90,parent:null},
-      paper: {id:'paper',kind:'paper',x:910,y:487,sand:0,parent:null},
+      receiverA: {id:'receiverA',kind:'beaker',x:660,y:429,water:0,sand:0,capacity:.65,parent:null},
+      receiverB: {id:'receiverB',kind:'beaker',x:760,y:429,water:0,sand:0,capacity:.65,parent:null},
+      funnel: {id:'funnel',kind:'funnel',x:880,y:467,angle:90,parent:null},
+      paper: {id:'paper',kind:'paper',x:950,y:487,sand:0,parent:null},
       stand: {id:'stand',kind:'stand',x:515,y:509,parent:null}
     },
-    spills: [], flow: [], phase:'working', initial:{water:1,sand:.12}
+    spills: [], flow: [], passiveFlow: [], phase:'working', initial:{water:1,sand:.12}
   };
 }
 export function children(state,id) {return Object.values(state.items).filter(o=>o.parent===id);}
@@ -20,23 +22,17 @@ export function moveItem(state,id,x,y) {
   item.x=x;item.y=y;
   for(const c of children(state,id))moveItem(state,c.id,c.x+dx,c.y+dy);
 }
-export function detach(state,id) {const item=state.items[id];item.parent=null;item.velocity=0;if(item.kind==='funnel')item.angle=0;}
+export function detach(state,id) {const item=state.items[id];item.parent=null;item.velocity=0;if(item.kind==='paper')item.angle=0;if(item.kind==='funnel'){item.angle=0;moveItem(state,id,item.x,Math.min(item.y,BENCH_Y-80));}}
 function attach(state,id,parent,x,y) {moveItem(state,id,x,y);state.items[id].parent=parent;}
 export function placeItem(state,id) {
   const item=state.items[id]; item.parent=null;item.velocity=0;
   if(item.kind==='paper') {
     const f=state.items.funnel;
-    if(Math.abs(item.x-f.x)<50&&Math.abs(item.y-f.y)<45)attach(state,id,f.id,f.x,f.y+4);
+    if(Math.abs(f.angle||0)<30&&Math.abs(item.x-f.x)<50&&Math.abs(item.y-f.y)<45)attach(state,id,f.id,f.x,f.y+4);
   }
-  if(item.kind==='funnel') {
-    const s=state.items.stand;
-    if(Math.abs(item.x-(s.x+58))<36&&Math.abs(item.y-(s.y-172))<28) {
-      attach(state,id,s.id,s.x+58,s.y-172);item.angle=0; return;
-    }
 
-  }
 }
-export function pourPoint(item) {return {x:item.x+34.4,y:item.y+24.1};}
+export function pourPoint(item) {const angle=(item.angle??35)*Math.PI/180;const lip=item.id==='source'?42:35;return {x:item.x+lip*Math.cos(angle),y:item.y+lip*Math.sin(angle)};}
 function hasAncestor(state,item,id) {
   let parent=item.parent;
   while(parent){if(parent===id)return true;parent=state.items[parent]?.parent;}
@@ -47,7 +43,7 @@ export function receiverBelow(state,point,excluded,sourceId) {
   return Object.values(state.items).filter(o=> {
     if(excluded.has(o.id)||o.id===sourceId||hasAncestor(state,o,sourceId))return false;
     if(o.kind==='beaker')return Math.abs(point.x-o.x)<40&&point.y<=o.y+55;
-    if(o.kind==='funnel'&&o.parent==='stand')return Math.abs(point.x-o.x)<52&&point.y<=o.y+12;
+    if(o.kind==='funnel'&&Math.abs(o.angle||0)<30)return Math.abs(point.x-o.x)<52&&point.y<=o.y+12;
     return false;
   }).sort((a,b)=>Math.max(0,a.y-point.y)-Math.max(0,b.y-point.y))[0]??null;
 }
@@ -101,19 +97,27 @@ export function outcome(state) {
   };
 }
 
-// Simple vertical gravity; attached children travel with their support. No impact/breakage model.
-export const BENCH_Y=525;
-export function stepPhysics(state,seconds,heldId=null) {
-  if(state.phase!=='working'||!Number.isFinite(seconds)||seconds<=0)return false;
-  const dt=Math.min(seconds,.05);let changed=false;
-  for(const item of Object.values(state.items)) {
-    if(item.parent||item.id===heldId)continue;
-    const bottom=item.kind==='beaker'?(item.id==='source'?112:96):item.kind==='stand'?16:item.kind==='paper'?38:58;
-    const floor=BENCH_Y-bottom;
-    if(item.kind==='funnel'&&(item.angle||0)<90){item.angle=Math.min(90,(item.angle||0)+240*dt);changed=true;}
-    if(item.y<floor){item.velocity=(item.velocity||0)+1800*dt;moveItem(state,item.id,item.x,Math.min(floor,item.y+item.velocity*dt));changed=true;}
-    else if(item.y>floor){moveItem(state,item.id,item.x,floor);changed=true;}
-    if(item.y>=floor)item.velocity=0;
-  }
-  return changed;
+// One local physics world per attempt; restart discards the old world.
+const worlds=new WeakMap();
+export function physicsFor(state){
+ let world=worlds.get(state);
+ if(!world){world=new PhysicsWorld(state,(item,fraction)=>{
+  const root=item.parent?state.items[item.parent]:item;
+  const angle=(root.angle||0)*Math.PI/180,lip=root.kind==='funnel'?52:root.id==='source'?42:35;
+  const downhill=Math.sin(angle)>=0?1:-1;
+  const point={x:root.x+downhill*lip*Math.cos(angle),y:root.y+downhill*lip*Math.sin(angle)};
+  const remaining=(item.water||0)+(item.sand||0);if(remaining<1e-5)fraction=1;
+  const water=(item.water||0)*fraction,sand=(item.sand||0)*fraction;
+  if('water'in item)item.water-=water;if('sand'in item)item.sand-=sand;
+  const flow=state.flow;state.flow=[];route(state,point,water,sand,new Set([root.id,item.id]),root.id);state.passiveFlow.push(...state.flow);state.flow=flow;
+ });worlds.set(state,world);}
+ return world;
+}
+export function holdItem(state,id){physicsFor(state).hold(id);}
+export function dragItem(state,id,x,y){physicsFor(state).moveHeld(id,x,y);}
+export function releaseItem(state){physicsFor(state).release();}
+export function tiltItem(state,id,degrees){return physicsFor(state).tilt(id,degrees);}
+export function stepPhysics(state,seconds,heldId=null){
+ if(state.phase!=='working'||!Number.isFinite(seconds)||seconds<=0)return false;
+ return physicsFor(state).step(seconds,heldId);
 }
