@@ -161,3 +161,8 @@ Storage keeps the same object and its contents, including a filter contained in 
 The tab remains visible when collapsed. The drawer opens for keyboard focus; Enter on a stored row retrieves it into available bench space, and Escape closes it. Restart restores the initial arrangement, including the initially stored shelf equipment. Storage is local to the current attempt; no saving, accounts or backend are added.
 
 Verification covers storage/retrieval, loaded contents, contained filter paper, disconnected powered/glass apparatus, blocked retrieval, real hover hiding, drag-back and drag-out, and all lab playthroughs.
+
+
+## Further lab planning; owner review still pending
+
+The owner stated that the latest change has not yet been tested and requested planning more labs aligned with the curriculum. This authorises the roadmap and source checking, not implementation of new experiments or acceptance of the existing menu. The proposed sequence, samples, models and apparatus in lab-roadmap.md remain recommendations. New curriculum mappings distinguish common SL/HL content from AHL extensions; the supplied February 2023 guide remains the source boundary.

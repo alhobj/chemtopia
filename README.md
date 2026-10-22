@@ -15,6 +15,8 @@ For step-by-step terminal instructions and a file guide, see [Run and edit in VS
 ## Start here
 
 - [Equipment menu controls and preview](docs/design/equipment-menu-review.md)
+- [Further labs: proposed roadmap](docs/design/lab-roadmap.md)
+- [Curriculum evidence for proposed labs](docs/curriculum/lab-opportunities.md)
 - [Decisions and requirements](docs/design/decisions.md)
 - [First activity: separation techniques](docs/design/separation-activity.md)
 - [Approved filtration prototype specification](docs/design/filtration-prototype-spec.md)

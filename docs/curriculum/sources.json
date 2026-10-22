@@ -45,5 +45,15 @@
     "requires_publish": true,
     "needed_for_uploaded_guide_review": false
   },
-  "reviewed_on": "2026-10-21"
+  "reviewed_on": "2026-10-21",
+  "additional_reviews": [
+    {
+      "reviewed_on": "2026-10-22",
+      "purpose": "Further laboratory planning; no implementation approval",
+      "source_id": "IB-CHEM-GUIDE-2025",
+      "method": "Checked detailed outcomes and common SL/HL versus AHL boundaries against the local source extraction, including physical PDF page boundaries.",
+      "public_summary": "lab-opportunities.md",
+      "scope": "Solution concentration, ionic properties, calorimetry, stoichiometry, rates, equilibrium, acid-base chemistry, electrochemical cells, electrolysis and alcohol oxidation; Tool 1 practical techniques."
+    }
+  ]
 }

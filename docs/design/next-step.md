@@ -1,10 +1,12 @@
 # Work steps and verification
 
-## Current step — paper chromatography implemented
+## Current step — further labs planned; owner testing pending
 
-The owner selected water, different coloured markers and R_F calculations. [The approved bounded specification](chromatography-prototype-spec.md) now has a playable workbench with direct marker spotting, pencil baseline/front marks, water pouring, supported development, a ruler, calculation retry and the explanation question. Both existing labs link to it; switching starts a fresh attempt. Review this increment before choosing another experiment.
+The owner has not tested the latest equipment-menu change and requested planning more curriculum-aligned labs. The [proposal roadmap](lab-roadmap.md) now covers further separation, quantitative solutions, titration, calorimetry, rates, conductivity, cells and later extensions. [The evidence table](../curriculum/lab-opportunities.md) checks exact section/page references and common SL/HL versus AHL boundaries against the supplied guide.
 
-Distillation is implemented and includes movable cooling hoses, the 50:50 acetone–water feed, physical assembly and the analogue/circular digital thermometer. Earlier pending distillation statements below are historical.
+No new lab implementation is approved or started by this planning request. Review the existing drawer and three experiments first. Recommended next candidates are evaporation and combined salt/sand recovery, or solution preparation if measurement is the priority.
+
+Paper chromatography and distillation are implemented; their latest controls and scientific-display revisions remain available for owner review. Earlier pending distillation statements below are historical.
 
 ## Implemented filtration increment
 
