@@ -50,6 +50,9 @@ If the `code` command is unavailable, open the folder through VS Code's File men
 | `prototype/chromatography-model.js` | Solvent contact, marker development, material and measurement model |
 | `prototype/equipment-menu.js` | Shared hover drawer, drag handling and keyboard retrieval |
 | `prototype/equipment-storage.js` | Object-preserving storage, retrieval and initial shelf replacement |
+| `prototype/evaporation.html` | Evaporation page and lab links |
+| `prototype/evaporation-app.js` | Pouring/heating controls, residue drawing and review |
+| `prototype/evaporation-model.js` | Non-volatile salt, liquid water, vapour and basin physics |
 | `scripts/serve.mjs` | Node.js static file server |
 | `tests/model.test.mjs` | Chemistry/material and movement checks |
 

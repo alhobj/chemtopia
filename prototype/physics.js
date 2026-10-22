@@ -132,7 +132,7 @@ export class PhysicsWorld {
    if(item.stored)continue;
    const root=item.parent?this.state.items[item.parent]:item;
    const radians=(root.angle||0)*RAD,angle=Math.atan2(Math.sin(radians),Math.cos(radians))/RAD;
-   if(Math.abs(angle)>(root.kind==='funnel'?36:65)&&(item.water||item.sand||item.acetone))this.onSpill(item,Math.min(1,seconds*4));
+   if(Math.abs(angle)>(root.kind==='funnel'?36:65)&&(item.water||item.sand||item.acetone||item.salt))this.onSpill(item,Math.min(1,seconds*4));
   }
   return hadSpill||this.state.passiveFlow.length>0||[...this.entries.values()].some(e=>!e.body.isSleeping&&!e.body.isStatic);
  }

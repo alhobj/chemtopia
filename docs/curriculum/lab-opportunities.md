@@ -1,6 +1,6 @@
 # Further laboratory opportunities — curriculum evidence
 
-**Planning only.** The owner asked for further curriculum-aligned labs while the existing prototypes remain untested by the owner. This document proposes opportunities; it does not approve chemistry, models, apparatus or implementation.
+**Planning except the subsequently selected L05 increment.** The owner asked for further curriculum-aligned labs while the existing prototypes remain untested by the owner. This document proposes opportunities; L05 was subsequently selected by the owner and implemented within [its bounded specification](../design/evaporation-prototype-spec.md). The other opportunities remain proposals.
 
 Source: the owner-supplied IB *Chemistry guide*, first assessment 2025, **published February 2023**. Detailed outcomes and SL/AHL boundaries below were checked against the private local extraction for this planning round. Later online corrections have not been checked. Printed/PDF page numbers are shown together.
 
@@ -9,7 +9,7 @@ The guide supports the learning and techniques; the proposed substances and scen
 | Proposal | Curriculum anchor | Level and evidence boundary |
 | --- | --- | --- |
 | L04 — Recover both salt and sand | Structure 1.1.1, p. 33 / PDF 39; solvation, filtration and evaporation | Common SL/HL. Combining named processes into one recovery challenge is a proposed example. |
-| L05 — Recover salt by evaporation | Structure 1.1.1, p. 33 / PDF 39 | Common SL/HL; already selected in the owner's original separation scope. Material model and implementation still require review. |
+| L05 — Recover salt by evaporation | Structure 1.1.1, p. 33 / PDF 39 | Common SL/HL; already selected in the owner's original separation scope. The bounded qualitative evaporation/residue model is now implemented; further measurement tasks require a separate step. |
 | L06 — Purify a crystalline solid | Structure 1.1.1, p. 33 / PDF 39; Tool 1, p. 29 / PDF 35 | Common SL/HL separation/practical coverage. Particular solute, solvent and solubility data are not prescribed by this reference. |
 | L07 — Prepare a solution and dilute it | Structure 1.4.3, p. 36 / PDF 42; Structure 1.4.5, p. 37 / PDF 43 | Common SL/HL molar mass and concentration. The linking context explicitly connects glassware, standard solutions and serial dilution. |
 | L08 — Find an acid concentration by titration | Reactivity 3.1.7–3.1.8, p. 57 / PDF 63; Reactivity 2.1.2, p. 52 / PDF 58; Tool 1, p. 29 / PDF 35 | Common SL/HL strong-acid/strong-base neutralisation and curve interpretation. Weak-acid/base curve analysis and indicator selection are AHL 3.1.13–3.1.15, p. 58 / PDF 64. Do not classify all titration as HL. |

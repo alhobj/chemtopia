@@ -1,12 +1,10 @@
 # Work steps and verification
 
-## Current step — further labs planned; owner testing pending
+## Current step — evaporation and salt recovery
 
-The owner has not tested the latest equipment-menu change and requested planning more curriculum-aligned labs. The [proposal roadmap](lab-roadmap.md) now covers further separation, quantitative solutions, titration, calorimetry, rates, conductivity, cells and later extensions. [The evidence table](../curriculum/lab-opportunities.md) checks exact section/page references and common SL/HL versus AHL boundaries against the supplied guide.
+The owner selected evaporation/salt recovery (L05) from the proposed roadmap. [The bounded specification](evaporation-prototype-spec.md) now has a playable sodium-chloride solution workbench with manual pouring, heater contact, wet/dry residue, material accounting and an explanation question. Existing labs link to it. [The review](evaporation-prototype-review.md) records controls and limits.
 
-No new lab implementation is approved or started by this planning request. Review the existing drawer and three experiments first. Recommended next candidates are evaporation and combined salt/sand recovery, or solution preparation if measurement is the priority.
-
-Paper chromatography and distillation are implemented; their latest controls and scientific-display revisions remain available for owner review. Earlier pending distillation statements below are historical.
+The other roadmap labs remain planning proposals. Selecting evaporation is not acceptance of earlier controls or permission to start the remaining techniques.
 
 ## Implemented filtration increment
 

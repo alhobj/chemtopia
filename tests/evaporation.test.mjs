@@ -1,0 +1,17 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import {createState,pour,material,stepChemistry,stepPhysics,heaterContact,outcome,totals,physicsFor} from '../prototype/evaporation-model.js';
+import {storeItem,takeItem} from '../prototype/equipment-storage.js';
+function setup(){const s=createState();Object.assign(s.items.source,{x:565.6,y:120,angle:35});Object.assign(s.items.basin,{x:600,y:387});pour(s,'source',1);Object.assign(s.items.source,{x:110,y:413,angle:0});s.items.heater.on=true;return s;}
+function run(s,t){for(let i=0;i<t*60;i++)stepChemistry(s,1/60);}
+function conserved(s){const t=totals(s);assert.ok(Math.abs(t.water-.8)<1e-8);assert.ok(Math.abs(t.salt-.12)<1e-8);}
+test('evaporation conserves non-volatile salt and accounts for all lost water as vapour',()=>{const s=setup();run(s,18);assert.ok(outcome(s).success);assert.ok(Math.abs(s.vapour-.8)<1e-8);assert.equal(s.items.basin.salt,.12);assert.equal(s.items.basin.water,0);assert.equal(outcome(s).yield,1);conserved(s);});
+test('visible solid with water is wet residue rather than dry recovery',()=>{const s=setup();run(s,11);assert.ok(material(s.items.basin).solid>0);assert.ok(s.items.basin.water>0);assert.equal(material(s.items.basin).state,'Wet salt residue');assert.equal(outcome(s).success,false);assert.equal(outcome(s).yield,0);conserved(s);});
+test('heater off or moved away cannot begin evaporating a cold basin',()=>{for(const mode of ['off','contact']){const s=setup();if(mode==='off')s.items.heater.on=false;else s.items.heater.x=300;run(s,20);assert.equal(s.vapour,0);assert.equal(s.items.basin.water,.8);conserved(s);}});
+test('switch-off cools the basin and evaporation stops after residual heat decays',()=>{const s=setup();run(s,6);s.items.heater.on=false;run(s,3);const v=s.vapour;run(s,4);assert.equal(s.vapour,v);assert.equal(s.items.basin.heat,0);conserved(s);});
+test('ordinary pouring transfers salt and water; it does not separate them',()=>{const s=createState();Object.assign(s.items.source,{x:308,y:100,angle:0});pour(s,'source',.46);assert.ok(Math.abs(s.items.basin.water-.4)<1e-8);assert.ok(Math.abs(s.items.basin.salt-.06)<1e-8);assert.equal(outcome(s).success,false);conserved(s);});
+test('missing a receiver and overflow conserve both components in spills',()=>{const s=createState();s.items.source.x=950;pour(s,'source',.2);assert.ok(s.spills.length);Object.assign(s.items.source,{x:308,y:100});s.items.basin.capacity=.1;pour(s,'source',1);conserved(s);});
+test('storing a loaded basin pauses hidden evaporation without losing salt',()=>{const s=setup();run(s,5);storeItem(s,'basin',physicsFor(s));const v=s.vapour;run(s,20);assert.equal(s.vapour,v);assert.ok(takeItem(s,'basin',350,100,physicsFor(s)));conserved(s);});
+test('physical heater contact remains stable throughout evaporation',()=>{const s=setup();for(let i=0;i<2400;i++){stepPhysics(s,1/120);stepChemistry(s,1/120);}assert.ok(heaterContact(s));assert.ok(outcome(s).success);conserved(s);});
+test('dry residue can spill when a basin tips; it is not attached magically',()=>{const s=createState();s.items.source.salt=0;Object.assign(s.items.basin,{x:350,y:150,angle:85,salt:.12});for(let i=0;i<600;i++)stepPhysics(s,1/120);assert.ok(s.spills.some(p=>p.salt>0));conserved(s);});
+test('finished attempts stop actions and restart returns original feed',()=>{const s=setup();s.phase='finished';const snap=JSON.stringify(s);stepChemistry(s,.05);pour(s,'source',.1);assert.equal(JSON.stringify(s),snap);assert.equal(createState().items.source.water,.8);});

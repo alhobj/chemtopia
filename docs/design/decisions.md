@@ -166,3 +166,8 @@ Verification covers storage/retrieval, loaded contents, contained filter paper, 
 ## Further lab planning; owner review still pending
 
 The owner stated that the latest change has not yet been tested and requested planning more labs aligned with the curriculum. This authorises the roadmap and source checking, not implementation of new experiments or acceptance of the existing menu. The proposed sequence, samples, models and apparatus in lab-roadmap.md remain recommendations. New curriculum mappings distinguish common SL/HL content from AHL extensions; the supplied February 2023 guide remains the source boundary.
+
+
+## Evaporation selected as the next bounded lab
+
+The owner selected “Start with evaporation and salt recovery” from the proposed roadmap. The sodium-chloride/water L05 first increment now uses a source beaker, basin, electric heater and collecting beaker with the existing physics and equipment menu. Recovery is dry salt in the basin; balances, scooping and quantitative student mass tasks remain deferred. Salt, liquid water and vapour are tracked separately, and wet residue is distinguished from dry recovery. Starting model amounts and simulation rates are documented qualitative implementation defaults, not owner-selected laboratory measurements. Other roadmap labs remain proposals, and selecting this lab does not imply acceptance of previous controls.

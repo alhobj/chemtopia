@@ -86,3 +86,12 @@ Storage keeps the same object and its contents, including a filter contained in 
 The tab remains visible when collapsed. The drawer opens for keyboard focus; Enter on a stored row retrieves it into available bench space, and Escape closes it. Restart restores the initial arrangement, including the initially stored shelf equipment. Storage is local to the current attempt; no saving, accounts or backend are added.
 
 Verification covers storage/retrieval, loaded contents, contained filter paper, disconnected powered/glass apparatus, blocked retrieval, real hover hiding, drag-back and drag-out, and all lab playthroughs.
+
+
+## Evaporation and salt recovery
+
+Open `evaporation.html` using the Evaporation link from any other lab. Pour the sodium chloride solution into the basin, place it on the heater, and select the heater/press Space to heat it. The collecting beaker is available for transfers, but the objective is dry salt recovery in the basin.
+
+The visible state changes from solution to wet residue, then dry salt residue as water leaves. Finish reports material distribution and dry recovery, followed by the explanation question for a successful result. Wet residue is not counted as dry recovered salt. There is no new balance, scooping task or student calculation interface.
+
+The model conserves water across vessels, spills and vapour, and salt across vessels/spills. Its amounts, heating speeds and dissolved/solid capacity are qualitative rather than real solubility or temperature data. Gravity, spills, drawer storage, restart and fresh navigation follow the other labs. See [the specification](../docs/design/evaporation-prototype-spec.md) and [review](../docs/design/evaporation-prototype-review.md).

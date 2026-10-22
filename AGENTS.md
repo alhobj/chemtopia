@@ -64,3 +64,8 @@ The owner requested paper chromatography with the same ideas and links from both
 ## Equipment menu revision
 
 The owner requested replacing the shelf with a left-side equipment menu that hides when not hovered and stores apparatus dragged back into it. This authorises the shared drawer across the three labs. Initial shelf apparatus starts stored; other bench items keep their starting arrangement. Preserve object contents, avoid duplicates, remove hidden physics bodies and active experiment participation, and disconnect joints/switch powered controls off on storage. The small tab and keyboard focus/Enter/Escape provide access when collapsed.
+
+
+## Evaporation and salt recovery increment
+
+The owner selected L05 with “Start with evaporation and salt recovery”. Follow docs/design/evaporation-prototype-spec.md for the bounded sodium-chloride solution lab: manual pouring, heater contact, basin recovery, wet/dry distinction, water-vapour and non-volatile-salt balances, wrong actions and Finish question. The basis remains qualitative; a new balance, scooping or quantitative mass-measurement task is not included. Existing local workflow and push authorisation apply. Other roadmap labs still require a chosen concrete step.

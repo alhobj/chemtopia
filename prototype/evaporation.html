@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Chemtopia · Evaporation and salt recovery</title><link rel="stylesheet" href="style.css"></head>
+<body>
+<header class="topbar"><a class="brand" href="./"><span class="brand-icon">C</span> CHEMTOPIA</a><span class="top-label">THE LABORATORY <i></i> EVAPORATION</span><span class="prototype-badge">PLAYABLE STUDY</span></header>
+<main><section class="intro"><div><p class="eyebrow">EXPERIMENT 04 / SEPARATING MIXTURES</p><h1>The evaporation bench<span>.</span></h1></div><p class="intro-note">Pour. Heat. Recover.<br>Follow the water and the salt.</p></section>
+<div class="workspace"><aside class="sidebar">
+<section class="objective"><p class="eyebrow">YOUR OBJECTIVE</p><h2>Salt &amp; water</h2><p>Recover dry sodium chloride residue in the evaporating basin.</p><div class="sample-key">Qualitative solution · water is not collected</div></section>
+<section class="selection"><p class="eyebrow">SELECTED EQUIPMENT</p><h3 id="selected-name" aria-live="polite">Nothing selected</h3><button id="action" class="pour-button" disabled>Select apparatus</button><span id="action-note" class="control-note">Select equipment to see its controls.</span></section>
+<details class="controls" open><summary>Workbench controls</summary><dl><dt>Move</dt><dd>Click to select. Drag to pick up. The Equipment drawer stores and returns the same objects and contents.</dd><dt>Pour</dt><dd>Hold a vessel above an opening and press Space to start or stop pouring. Release the mouse to stop.</dd><dt>Heat</dt><dd>Select the electric heater and press Space to switch it on/off. It heats the basin through physical contact.</dd><dt>Observe</dt><dd>Watch the liquid level and residue. Finish records the material distribution.</dd></dl></details>
+<div class="attempt-actions"><button id="restart" class="secondary">↺ Restart</button><button id="finish" class="primary">Finish →</button></div>
+</aside><section class="bench-panel" aria-label="Interactive evaporation workbench"><div class="bench-toolbar"><span><i></i> WORKBENCH</span><span>All apparatus available</span></div>
+      <svg id="bench" viewBox="0 0 1000 610" aria-label="Equipment can be freely moved around this bench" tabindex="-1">
+        <defs>
+          <linearGradient id="wall" x2="0" y2="1"><stop stop-color="#e6ede8"/><stop offset="1" stop-color="#cadbd5"/></linearGradient>
+          <linearGradient id="surface" x2="0" y2="1"><stop stop-color="#f4eee0"/><stop offset="1" stop-color="#ddd4bf"/></linearGradient>
+          <linearGradient id="glass" x2="1" y2="0"><stop stop-color="#e7f7f5" stop-opacity=".82"/><stop offset=".45" stop-color="#f7ffff" stop-opacity=".35"/><stop offset="1" stop-color="#a3d0d7" stop-opacity=".75"/></linearGradient>
+          <linearGradient id="liquid" x2="0" y2="1"><stop stop-color="#88ccd7" stop-opacity=".75"/><stop offset="1" stop-color="#4da3b6" stop-opacity=".92"/></linearGradient>
+          <linearGradient id="metal" x2="1"><stop stop-color="#a3b5ba"/><stop offset=".45" stop-color="#e0e5de"/><stop offset="1" stop-color="#81979e"/></linearGradient>
+          <pattern id="tiles" width="100" height="64" patternUnits="userSpaceOnUse"><rect width="100" height="64" fill="url(#wall)"/><path d="M0 0H100V64" fill="none" stroke="#eff4ec" stroke-width="2"/></pattern>
+          <filter id="shadow" x="-30%" y="-30%" width="170%" height="180%"><feDropShadow dx="4" dy="6" stdDeviation="2" flood-color="#243e45" flood-opacity=".16"/></filter>
+        </defs>
+        <rect width="1000" height="610" fill="#dce6dc"/><rect width="1000" height="210" fill="url(#tiles)"/>
+        <path d="M0 210H1000V545H0Z" fill="url(#surface)"/><path d="M0 545H1000V610H0Z" fill="#526e71"/><path d="M0 545H1000V555H0Z" fill="#9aab9b"/>
+        <g opacity=".35" stroke="#243d46" fill="none"><path d="M15 570H485V610M515 610V570H985"/><path d="M232 580h35m465 0h35" stroke-width="4"/></g>
+        <g fill="#c0d1c8" stroke="#718b88" stroke-width="3"><rect x="40" y="30" width="175" height="117" rx="3"/><rect x="225" y="30" width="175" height="117" rx="3"/><rect x="800" y="30" width="160" height="117" rx="3"/></g>
+        <g fill="#e3ece2"><rect x="51" y="42" width="153" height="90"/><rect x="236" y="42" width="153" height="90"/><rect x="811" y="42" width="138" height="90"/></g>
+        <g stroke="#708c87" stroke-width="3"><path d="M128 42V132M313 42V132M880 42V132"/></g>
+        <g stroke="#6d8584" stroke-width="3"><path d="M118 83V98m20-15v15m165-15v15m20-15v15m548-15v15m18-15v15"/></g>
+        <rect x="455" y="25" width="285" height="119" fill="#8da9a2" rx="4"/><rect x="466" y="36" width="263" height="97" fill="#d7ece5"/><path d="M597 36V133M466 84H729" stroke="#f9f4e7" stroke-width="7"/>
+        <path d="M466 119L523 88L557 107L599 70L674 118L729 99V133H466Z" fill="#9db8a3" opacity=".65"/>
+        <path d="M0 199H1000" stroke="#7e9a91" stroke-width="8"/>
+        <g id="spills"></g><g id="apparatus"></g><g id="streams" pointer-events="none"></g>
+      </svg>
+
+<div id="equipment" class="equipment-dock" aria-label="Select equipment"></div><div class="bench-caption"><span>Qualitative evaporation · non-volatile salt · simplified residue</span><span>Functional placeholder artwork</span></div>
+</section></div><section id="result" class="result" hidden aria-live="polite" tabindex="-1"></section>
+<nav class="experiment-switch" aria-label="Experiments"><a id="back-filtration" class="primary experiment-link" href="./">← Filtration</a><a id="back-distillation" class="secondary experiment-link" href="distillation.html">Distillation</a><a id="back-chromatography" class="secondary experiment-link" href="chromatography.html">Paper chromatography</a><small>Switching experiments starts a fresh attempt.</small></nav>
+<footer><span>CHEMTOPIA / PRACTICAL STUDIES</span><span>No scores. No time limit. This is your experiment.</span></footer></main><script type="module" src="evaporation-app.js"></script></body></html>
