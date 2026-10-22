@@ -111,3 +111,9 @@ The owner also requested Node.js use, convenient terminal execution in VS Code, 
 The owner requested solid hitboxes for equipment and stand, gravity/contact-driven tipping instead of timed rotation, contents pouring out on tipping, and a higher funnel position in its support. These requests authorise the corresponding physical consequences and supersede the earlier “no material loss from tipping” implementation detail. The owner explicitly requested a push.
 
 The implementation uses locally bundled Matter.js 0.20.0 under MIT. The stand geometry now provides clearance for the bowl and collecting vessel, and the cone seats above the ring after contact. Glass/metal collide while real openings and paper containment remain available. See [the physics interaction record](physics-interactions.md) for behaviour, approximations and verification. This does not add new chemistry processes, impact damage or publication.
+
+## Distillation requested as the next experiment
+
+The owner requested adding a distillation experiment now, using the same ideas and interaction principles, with a temporary bottom-of-page button for entry. This selects the next increment and supersedes deferral of all additional techniques. The earlier S01 choice already identifies simple distillation of salt solution to collect water.
+
+[The concrete distillation specification](distillation-prototype-spec.md) proposes the new apparatus, heating/cooling model, scientific limits, recovery criterion, question and temporary reset-on-switch navigation. Those details are presented for owner review, not silently treated as approved chemistry decisions. No distillation simulation code is added by this documentation step.

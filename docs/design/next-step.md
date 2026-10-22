@@ -1,6 +1,10 @@
 # Work steps and verification
 
-## Current step — implemented, awaiting playtest
+## Current step — distillation requested, chemistry details for review
+
+The owner requested a new distillation experiment using the existing interaction principles, entered through a temporary button at the bottom of the page. [The concrete distillation proposal](distillation-prototype-spec.md) records apparatus, heater/cooling controls, finite scientific model, wrong actions, completion, navigation and verification. The new scientific details and question await owner review; the distillation simulation has not been coded.
+
+## Implemented filtration increment
 
 The owner approved the [filtration specification](filtration-prototype-spec.md) with “Yes”. A standalone local workbench now implements that bounded first increment, including mouse-held placement and Space action toggling, gravity/contact-driven tipping, equipment and stand hitboxes, corrected ring support, tipped-content spills, physically compatible attachments, material transfer, wrong actions, restart, Finish and the approved explanation question.
 
