@@ -10,3 +10,22 @@
 #explanation fieldset{border:0;border-top:1px solid var(--border);padding:18px 0 6px;margin-top:16px}#explanation legend{padding-right:12px}#explanation .calculation-answer{display:flex;flex-direction:column;gap:5px;max-width:420px;margin:12px 0;font-size:14px}#explanation .calculation-answer input{padding:9px;border:1px solid #a9bab0;border-radius:4px;background:#fffdf5;color:var(--ink);font:inherit}.review-feedback{min-height:22px}
 
 .setup-status{padding:10px 15px;background:#f8f7ee;border-top:1px solid var(--border);font-size:12px}.setup-status p{margin:6px 0}.setup-status #connection-checks{display:flex;flex-wrap:wrap;gap:6px 12px}.setup-status .connected{color:#286761}.setup-status .open-joint{color:#8a542e}.setup-status #process-amounts{font-size:11px;color:var(--muted)}
+
+/* The lab occupies the window; supporting controls stay in a compact side panel. */
+.visually-hidden{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap;border:0}
+main{max-width:none;margin:0;padding:6px}.lab-shell{height:calc(100dvh - 58px);min-height:440px;padding:0;overflow:visible}
+.workspace{height:100%;min-height:0;grid-template-columns:clamp(210px,17vw,250px) 36px minmax(0,1fr);overflow:visible;box-shadow:none;border-radius:6px}
+.sidebar{grid-column:1;grid-row:1;min-height:0;overflow-y:auto;padding:18px 16px 12px}.objective h2{font-size:25px}.sample-key{margin:12px 0 16px;padding-bottom:14px}.controls{margin:12px 0}.attempt-actions{position:sticky;bottom:-12px;background:#fbfaf4;padding-bottom:8px}.control-note,.distillation-page .control-note{min-height:32px}
+.bench-panel,.distillation-page .bench-panel{grid-column:3;grid-row:1;min-height:0;overflow:hidden;border-radius:0 5px 5px 0}
+#bench,.distillation-page #bench{flex:1 1 0;min-width:0;min-height:0;width:100%;height:0}#bench:focus{outline:none}
+.equipment-menu{position:relative;grid-column:2;grid-row:1;left:auto;top:auto;bottom:auto;width:36px;min-height:0;transform:none;border:0;border-radius:0;background:transparent;box-shadow:none;transition:width .18s ease}
+.equipment-menu.open{width:260px;transform:none}.equipment-tab{left:0;right:auto;width:36px;border-radius:0}.equipment-content{position:absolute;left:36px;top:0;height:100%;width:224px;padding:10px;overflow-y:auto;background:#f7f5ec;border:1px solid #bccbbf;box-shadow:4px 4px 12px #253e4820;visibility:hidden;pointer-events:none}
+.equipment-menu.open .equipment-content{visibility:visible;pointer-events:auto}.equipment-menu.drop-hover{border:0}.equipment-menu.drop-hover .equipment-tab{box-shadow:inset 0 0 0 3px #bb874a}.equipment-menu #equipment-message:empty{display:none}
+.experiment-switch{min-height:40px;margin:6px 0 0;padding:0;border:0;border-radius:0;background:transparent;justify-content:center;gap:6px}.experiment-link{padding:7px 12px;min-height:36px;font-size:12px}
+.setup-status{padding:6px 12px;font-size:11px}.setup-status p{margin:3px 0}
+@media(max-width:760px){
+ .lab-shell{height:calc(100dvh - 94px);min-height:500px}.workspace{grid-template-columns:36px minmax(0,1fr);grid-template-rows:auto minmax(0,1fr)}
+ .sidebar{grid-column:1 / -1;grid-row:1;max-height:32dvh;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:8px 16px;padding:10px 12px;border-right:0;border-bottom:1px solid var(--border)}
+ .objective h2{font-size:21px}.objective>p:last-of-type{font-size:12px}.sample-key{margin:6px 0;padding:0;border:0}.sidebar .attempt-actions{position:static;margin:0;padding:0;align-self:end}.controls{margin:0}
+ .equipment-menu{grid-column:1;grid-row:2}.bench-panel,.distillation-page .bench-panel{grid-column:2;grid-row:2}.experiment-switch{flex-direction:row;align-items:center}.experiment-link{font-size:11px;padding:5px 9px}
+}

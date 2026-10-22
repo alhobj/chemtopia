@@ -89,3 +89,8 @@ The owner requested crystals in the recrystallisation beaker as a valid endpoint
 ## Forgiving distillation assembly and diagnosis
 
 The owner requested more forgiving equipment placement, troubleshooting for escaping vapour/no collection, and a downward still-head outlet matching the Liebig condenser. This authorises nearby joint/hose seating and live actual-connection/material feedback. Preserve the narrow falling filling funnel, wrong setups, reduced recovery with upper-port coolant, student-operated actions, material conservation and existing boiling stages. Art, hitboxes and joint anchors must agree. See the revised distillation specification. Existing push authorisation applies.
+
+
+## Window-filling lab layout
+
+The owner requested removing decorative text shown in screenshots, a lab occupying almost the whole window, and the equipment drawer between objective and workbench. This authorises the shared layout revision across all five labs, collapsed Controls, compact navigation and proportional room resizing. Preserve essential objective/action controls, experiment diagnosis, review tasks and storage behaviour. No chemistry or physics-model change is part of this revision. Existing push authorisation applies.

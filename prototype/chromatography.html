@@ -2,17 +2,17 @@
 <html lang="en">
 <head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Chemtopia · Paper chromatography</title><link rel="stylesheet" href="style.css"></head>
 <body class="distillation-page chromatography-page">
-<header class="topbar"><a class="brand" href="./"><span class="brand-icon">C</span> CHEMTOPIA</a><span class="top-label">THE LABORATORY <i></i> PAPER CHROMATOGRAPHY</span><span class="prototype-badge">PLAYABLE STUDY</span></header>
+
 <main>
-<section class="intro"><div><p class="eyebrow">EXPERIMENT 03 / SEPARATING MIXTURES</p><h1>The chromatography bench<span>.</span></h1></div><p class="intro-note">Arrange. Develop. Measure.<br>Follow the colours through the paper.</p></section>
+<h1 class="visually-hidden">Paper chromatography</h1>
 <div class="workspace">
 <aside class="sidebar">
 <section class="objective"><p class="eyebrow">YOUR OBJECTIVE</p><h2>Markers &amp; water</h2><p>Separate marker inks on paper, measure the migration distances, and calculate R<sub>F</sub>.</p><div class="sample-key">Water solvent · qualitative marker examples</div></section>
 <section class="selection"><p class="eyebrow">SELECTED EQUIPMENT</p><h3 id="selected-name" aria-live="polite">Nothing selected</h3><button id="action" class="pour-button" disabled>Select apparatus</button><span id="action-note" class="control-note">Select an item to see its controls.</span></section>
-<details class="controls" open><summary>Workbench controls</summary><dl><dt>Move</dt><dd>Click to select. Drag to pick up and position equipment.</dd><dt>Pour</dt><dd>Hold a water vessel and press Space to start/stop pouring.</dd><dt>Draw and spot</dt><dd>Hold a pencil or marker tip over the paper. Space makes one mark. Use the pencil before development for the baseline and after development for the solvent front.</dd><dt>Support</dt><dd>Place the bar across the chamber and clip the top of the paper to its centre.</dd><dt>Measure</dt><dd>Move the ruler beside the developed paper. Its scale is in centimetres. Finish opens the calculation task.</dd></dl></details>
+<details class="controls"><summary>Controls</summary><dl><dt>Move</dt><dd>Click to select. Drag to pick up and position equipment.</dd><dt>Pour</dt><dd>Hold a water vessel and press Space to start/stop pouring.</dd><dt>Draw and spot</dt><dd>Hold a pencil or marker tip over the paper. Space makes one mark. Use the pencil before development for the baseline and after development for the solvent front.</dd><dt>Support</dt><dd>Place the bar across the chamber and clip the top of the paper to its centre.</dd><dt>Measure</dt><dd>Move the ruler beside the developed paper. Its scale is in centimetres. Finish opens the calculation task.</dd></dl></details>
 <div class="attempt-actions"><button id="restart" class="secondary">↺ Restart</button><button id="finish" class="primary">Finish →</button></div>
 </aside><section class="bench-panel" aria-label="Interactive chromatography workbench">
-<div class="bench-toolbar"><span><i></i> WORKBENCH</span><span>All apparatus available</span></div>
+
       <svg id="bench" viewBox="0 0 1400 610" aria-label="Paper chromatography workbench" tabindex="-1">
         <defs>
           <linearGradient id="wall" x2="0" y2="1"><stop stop-color="#e6ede8"/><stop offset="1" stop-color="#cadbd5"/></linearGradient>
@@ -39,9 +39,9 @@
       </svg>
 
 <div id="equipment" class="equipment-dock" aria-label="Select equipment"></div>
-<div class="bench-caption"><span>Qualitative marker inks · simplified capillary rise · ruler in cm</span><span>Functional placeholder artwork</span></div>
+
 </section></div>
 <section id="result" class="result" hidden aria-live="polite" tabindex="-1"></section>
-<nav class="experiment-switch" aria-label="Experiments"><a class="primary experiment-link" id="back-filtration" href="./">← Back to filtration</a><a class="secondary experiment-link" id="back-distillation" href="distillation.html">Back to distillation →</a><a id="go-evaporation" class="secondary experiment-link" href="evaporation.html">Evaporation →</a><a id="go-recrystallisation" class="secondary experiment-link" href="recrystallisation.html">Recrystallisation →</a><small>Switching experiments starts a fresh attempt.</small></nav>
-<footer><span>CHEMTOPIA / PRACTICAL STUDIES</span><span>No scores. No time limit. This is your experiment.</span></footer>
+<nav class="experiment-switch" aria-label="Experiments"><a class="primary experiment-link" id="back-filtration" href="./">Filtration</a><a class="secondary experiment-link" id="back-distillation" href="distillation.html">Back to distillation →</a><a id="go-evaporation" class="secondary experiment-link" href="evaporation.html">Evaporation</a><a id="go-recrystallisation" class="secondary experiment-link" href="recrystallisation.html">Recrystallisation</a></nav>
+
 </main><script type="module" src="chromatography-app.js"></script></body></html>

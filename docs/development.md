@@ -72,3 +72,5 @@ This runs with Node alone. The optional `npm run test:browser` needs a Chromium 
 The server is local, with no accounts, analytics or saved student data. It only serves the `prototype/` folder.
 
 Review-question prompts, choices, numerical example data and marking live in `prototype/review-questions.js`. Each successful lab uses its three-question set. See [the question inventory](design/review-questions.md) for progression, solutions and source boundaries.
+
+`prototype/workbench-layout.js` fits the room to the available pane while preserving equipment proportions and existing physics coordinates. Shared pane/drawer styling is in `prototype/style.css`, with the drawer hosted between objective and bench by `prototype/equipment-menu.js`. `tests/layout-browser.mjs` checks all five labs at desktop, wide-screen and mobile sizes.

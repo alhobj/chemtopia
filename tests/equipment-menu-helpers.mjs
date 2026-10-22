@@ -12,6 +12,8 @@ export async function dragStored({id,x,y,release,send,evaluate,pause}){
  await send('Input.dispatchMouseEvent',{type:'mousePressed',button:'left',clickCount:1,...start});
  let end=start;
  async function move(x,y){end=await evaluate(`(()=>{const p=new DOMPoint(${x},${y}).matrixTransform(document.querySelector('#bench').getScreenCTM());return{x:p.x,y:p.y};})()`);await send('Input.dispatchMouseEvent',{type:'mouseMoved',buttons:1,...end});}
+ const covered=await evaluate(`(()=>{const p=new DOMPoint(${x},${y}).matrixTransform(document.querySelector('#bench').getScreenCTM()),r=document.querySelector('#equipment-menu').getBoundingClientRect();return p.x>=r.left&&p.x<=r.right&&p.y>=r.top&&p.y<=r.bottom;})()`);
+ if(covered){const width=await evaluate("document.querySelector('#bench').viewBox.baseVal.width");await move(width*.8,80);await pause(100);await move(x,80);}
  await move(x,y);await pause(80);
  const drop=()=>send('Input.dispatchMouseEvent',{type:'mouseReleased',button:'left',clickCount:1,...end});drop.move=move;
  if(release)await drop();return drop;

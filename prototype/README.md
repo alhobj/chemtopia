@@ -124,3 +124,9 @@ Each lab keeps its existing first question and adds two harder questions. Multip
 For distillation, release the filling funnel above the upright supported flask. Its narrow stem drops into the neck and the cone rests at the mouth. Lift/store it before fitting the still head.
 
 Distillation now seats nearby matching glass joints and hose fittings more forgivingly. The still-head outlet slopes down to match the Liebig condenser. Check the live connection panel below the bench: glass joints should show connected, coolant should be flowing, and a receiving beaker should be aligned. The panel explains any open joint or missing circuit and shows flask, collected, escaped-vapour and spill amounts. Wrong setups can still lose material; upper-port water supply remains possible with reduced recovery.
+
+## Window-filling lab layout
+
+The lab now uses almost the entire window. Decorative branding bars, large page headings, slogans, prototype captions, availability labels and footers are removed. Objectives, selected-equipment actions, optional Controls, experiment feedback, review questions and compact lab-switch links remain. Controls start collapsed.
+
+The equipment drawer sits between the objective panel and the workbench. Hover opens it over the bench; moving away closes it. Drag stored equipment out into clear bench space, and drag it back to the drawer to store it. The visible room resizes without stretching equipment or changing the experiment's physics coordinates. On narrow screens, the objective/actions sit above the bench, with the drawer beside it.

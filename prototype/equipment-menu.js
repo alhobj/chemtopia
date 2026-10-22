@@ -1,9 +1,10 @@
+import {fitWorkbench} from './workbench-layout.js';
 import {storeItem,takeItem} from './equipment-storage.js';
 export function createEquipmentMenu({getState,world,groups,select,begin,end,render,isDragging=()=>false}){
  const bench=document.getElementById('bench'),list=document.getElementById('equipment');
  const panel=document.createElement('aside');panel.id='equipment-menu';panel.className='equipment-menu';panel.setAttribute('aria-label','Equipment storage');
- panel.innerHTML='<button id="equipment-tab" class="equipment-tab" aria-expanded="false" aria-controls="equipment-list">Equipment</button><div class="equipment-content"><h2>Equipment</h2><p>Drag out to use. Drag back here to store.</p><div id="equipment-list"></div><p id="equipment-message" aria-live="polite"></p></div>';
- const workspace=document.querySelector('.workspace'),shell=document.createElement('div');shell.className='lab-shell';workspace.before(shell);shell.append(workspace,panel);panel.querySelector('#equipment-list').append(list);
+ panel.innerHTML='<button id="equipment-tab" class="equipment-tab" aria-expanded="false" aria-controls="equipment-list">Equipment</button><div class="equipment-content"><h2 class="visually-hidden">Equipment</h2><div id="equipment-list"></div><p id="equipment-message" aria-live="polite"></p></div>';
+ const workspace=document.querySelector('.workspace'),shell=document.createElement('div');shell.className='lab-shell';workspace.before(shell);shell.append(workspace);workspace.insertBefore(panel,bench.closest('.bench-panel'));fitWorkbench(bench);panel.querySelector('#equipment-list').append(list);
  for(const b of list.children){const status=document.createElement('small');status.className='equipment-status';b.append(status);}
  let pending=null;
  const open=value=>{panel.classList.toggle('open',value);panel.querySelector('button').setAttribute('aria-expanded',String(value));};

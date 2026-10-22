@@ -15,3 +15,11 @@ The storage unit checks cover all three lab models, preserved materials, contain
 ## Lab alignment revision — 22 October 2026
 
 The drawer now starts at the first row beside the lab, in a narrow gutter aligned with the workspace. It scrolls with that lab instead of staying at the viewport edge. Hover, retrieval, contents-preserving storage and collapse are unchanged; only the visible drawer/tab accepts a storage drop.
+
+## Drawer between objective and workbench
+
+The latest layout places the Equipment tab in the divider immediately to the right of Your objective and to the left of the lab pane. It opens over the workbench and closes on mouse leave. Decorative page text has been removed and the laboratory now occupies nearly the whole window. The room extends to fill the pane without stretching apparatus.
+
+![Window-filling distillation layout](../art/previews/lab-layout-distillation.png)
+
+![Window-filling chromatography layout](../art/previews/lab-layout-chromatography.png)

@@ -61,7 +61,7 @@ try{
  assert.ok(await evaluate("document.querySelector('#equipment-menu').classList.contains('open')"),'hover expands menu');
  await send('Input.dispatchMouseEvent',{type:'mouseMoved',x:800,y:400});await pause(250);
  assert.ok(await evaluate("!document.querySelector('#equipment-menu').classList.contains('open')"),'menu hides on mouse leave');
- assert.ok(await evaluate("(()=>{const tab=document.querySelector('#equipment-tab').getBoundingClientRect(),lab=document.querySelector('.workspace').getBoundingClientRect();return Math.abs(tab.top-lab.top)<2&&Math.abs(tab.right-lab.left)<2&&tab.left>0;})()"),'drawer aligns with first lab row beside workspace');
+ assert.ok(await evaluate("(()=>{const tab=document.querySelector('#equipment-tab').getBoundingClientRect(),sidebar=document.querySelector('.sidebar').getBoundingClientRect(),bench=document.querySelector('.bench-panel').getBoundingClientRect();return Math.abs(tab.left-sidebar.right)<2&&Math.abs(tab.right-bench.left)<2&&tab.left>0;})()"),'drawer sits between objective and bench');
  const water=await evaluate("document.querySelector('[data-id=source] [fill=\"url(#liquid)\"]').getAttribute('height')");
  await drag('source',150,180,40,false);
  await send('Input.dispatchMouseEvent',{type:'mouseMoved',buttons:1,...await menuPoint(evaluate)});
