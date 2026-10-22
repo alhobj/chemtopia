@@ -22,7 +22,7 @@ function vesselArt(o){
  return `<path d="M${-w/2} 0H${w/2-8}L${w/2+4} -4L${w/2} 8V${h-9}Q${w/2} ${h} ${w/2-10} ${h}H${-w/2+10}Q${-w/2} ${h} ${-w/2} ${h-9}Z" fill="url(#glass)" ${stroke}/>${fill>0?`<rect x="${-w/2+6}" y="${top}" width="${w-12}" height="${fill}" rx="3" fill="url(#liquid)"/><path d="M${-w/2+6} ${top}H${w/2-6}" stroke="#b9e1e3" stroke-width="3"/>`:''}<path d="M${-w/2+8} 12V${h-12}" stroke="#f8fffa" stroke-width="4"/><rect class="select-outline" x="${-w/2-10}" y="-12" width="${w+20}" height="${h+25}" rx="6"/>`;
 }
 function art(o){
- if(o.kind==='fillingFunnel')return `<path d="M-40 0H40L9 36V76H-9V36Z" fill="url(#glass)" ${stroke}/><ellipse rx="40" ry="7" fill="#dbf3f0" fill-opacity=".6" ${stroke}/><rect class="select-outline" x="-49" y="-12" width="98" height="98" rx="6"/>`;
+ if(o.kind==='fillingFunnel')return `<path d="M-40 0H40L5 36V76H-5V36Z" fill="url(#glass)" ${stroke}/><ellipse rx="40" ry="7" fill="#dbf3f0" fill-opacity=".6" ${stroke}/><rect class="select-outline" x="-49" y="-12" width="98" height="98" rx="6"/>`;
 
  if('acetone'in o)return vesselArt(o);
  if(o.kind==='clampStand'){

@@ -84,6 +84,15 @@ test('only acetone leaves at 56; water waits for 100; switch-off stops each boil
  s.items.heater.on=false;const remaining=s.items.flask.water;run(s,1);assert.equal(s.items.flask.water,remaining);conserved(s);
 });
 test('a filling funnel transfers both feed components into the round-bottom flask',()=>{
- const s=createState();Object.assign(s.items.flask,{x:500,y:300});Object.assign(s.items.funnel,{x:500,y:224});placeItem(s,'funnel');assert.ok(s.links.some(l=>l.id==='flask-funnel'));
+ const s=createState();Object.assign(s.items.flask,{x:500,y:300});Object.assign(s.items.funnel,{x:500,y:270});placeItem(s,'funnel');assert.ok(s.links.some(l=>l.id==='flask-funnel'));
  Object.assign(s.items.source,{x:465.6,y:120,angle:35});pour(s,'source',1);assert.ok(Math.abs(s.items.flask.acetone-.5)<EPS);assert.equal(s.items.flask.water,.5);assert.equal(s.spills.length,0);conserved(s);
+});
+
+test('a narrow filling funnel falls into the flask neck and remains seated with its stem inside',()=>{
+ const s=assembled();detach(s,'head');s.items.head.stored=true;s.items.thermometer.stored=true;s.links=s.links.filter(l=>!['head','thermometer'].includes(l.a)&&!['head','thermometer'].includes(l.b));
+ const f=s.items.flask;Object.assign(s.items.funnel,{x:f.x,y:f.y-110,angle:0});placeItem(s,'funnel');assert.ok(!s.links.some(l=>l.id==='flask-funnel'),'release above the neck does not snap into place');
+ const start=s.items.funnel.y;for(let i=0;i<480;i++)stepPhysics(s,1/120);
+ assert.ok(s.items.funnel.y>start+50);assert.ok(s.links.some(l=>l.id==='flask-funnel'));const tip=worldPoint(s.items.funnel,{x:0,y:76});assert.ok(tip.y>f.y+35&&tip.y<f.y+50);assert.ok(Math.abs(s.items.funnel.angle-f.angle)<2);
+ const y=s.items.funnel.y;for(let i=0;i<1200;i++)stepPhysics(s,1/120);assert.ok(Math.abs(s.items.funnel.y-y)<1);conserved(s);
+ detach(s,'funnel');dragApparatus(s,'funnel',f.x,f.y-150);assert.ok(!s.links.some(l=>l.id==='flask-funnel'));assert.ok(s.items.funnel.y<f.y-140);
 });

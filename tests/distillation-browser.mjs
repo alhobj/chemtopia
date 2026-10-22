@@ -69,7 +69,9 @@ try{
  async function play(reversed=false){
  await pause(700);assert.equal(await evaluate("document.querySelector('#temperature-reading').textContent"),'20');if(!reversed)await screenshot('chemtopia-distillation-initial.png');
  await drag('flask',390,327,{dy:94,path:[{x:760,y:100},{x:390,y:100}]});await pause(500);await connected('flask','Clamp stand A');
- let f=await pose('flask');await drag('funnel',f.x,f.y-76,{dy:20});await pause(200);await connected('funnel','Distillation flask');
+ let f=await pose('flask');await drag('funnel',f.x,f.y-110,{dy:20});await pause(900);await connected('funnel','Distillation flask');
+ const seated=await pose('funnel');assert.ok(Math.abs(seated.y-(f.y-30))<3,'funnel drops until its cone meets the flask mouth');assert.ok(seated.y+76>f.y+35,'narrow stem sits inside the flask neck');
+ if(!reversed)await screenshot('chemtopia-distillation-funnel-seated.png');
  let drop=await drag('source',f.x-34.4,100,{release:false,path:[{x:95,y:120},{x:f.x-34.4,y:120}]});
  await key(' ','Space');await pause(3900);await drop.move(95,140);await drop.move(95,413);await drop();await pause(300);
  await drag('funnel',f.x,120,{dy:20,release:false});

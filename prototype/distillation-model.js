@@ -12,7 +12,7 @@ export function createState(){
   items:{
    source:vessel('source',95,413,{capacity:1.3,acetone:PARAMETERS.feedAcetone,water:PARAMETERS.feedWater}),
    flask:vessel('flask',760,385,{kind:'flask',mass:.7,capacity:1.5,heat:0,temperature:PARAMETERS.ambientTemperature,collision:[tube(-12,24,4,48),tube(12,24,4,48),{x:0,y:94,radius:46}]}),
-   funnel:{id:'funnel',kind:'fillingFunnel',x:320,y:40,angle:0,mass:.15,collision:[{vertices:[{x:-40,y:0},{x:-34,y:0},{x:-5,y:34},{x:-10,y:37}]},{vertices:[{x:40,y:0},{x:34,y:0},{x:5,y:34},{x:10,y:37}]},box(-7,55,4,42),box(7,55,4,42)]},
+   funnel:{id:'funnel',kind:'fillingFunnel',x:320,y:40,angle:0,mass:.15,collision:[{vertices:[{x:-40,y:0},{x:-35,y:0},{x:-3,y:34},{x:-5,y:37}]},{vertices:[{x:40,y:0},{x:35,y:0},{x:3,y:34},{x:5,y:37}]},box(-4,55,2,42),box(4,55,2,42)]},
    head:{id:'head',kind:'head',x:180,y:37,angle:0,mass:.12,collision:[box(-12,30,4,60),box(12,19,4,38),box(38,43,64,4),box(38,57,64,4)]},
    thermometer:{id:'thermometer',kind:'thermometer',temperature:PARAMETERS.ambientTemperature,x:80,y:36,angle:0,mass:.03,collision:[box(0,32.5,7,65),box(0,15,28,6)]},
    condenser:{id:'condenser',kind:'condenser',x:1060,y:430,angle:0,mass:.5,collision:[{vertices:[{x:30,y:-11},{x:205,y:42},{x:195,y:76},{x:20,y:23}]},box(8,2,24,9),box(220,67,25,9)]},
@@ -51,7 +51,7 @@ export function cooling(state){
  return supplied===lower?'lower-fed':'upper-fed';
 }
 function possibleJoints(state){
- const joints=[{id:'flask-funnel',a:'flask',pa:{x:0,y:0},b:'funnel',pb:{x:0,y:76}},{id:'flask-head',a:'flask',pa:{x:0,y:0},b:'head',pb:{x:0,y:60}},{id:'head-condenser',a:'head',pa:{x:70,y:50},b:'condenser',pb:{x:0,y:0}},{id:'head-thermometer',a:'head',pa:{x:0,y:0},b:'thermometer',pb:{x:0,y:15}}];
+ const joints=[{id:'flask-funnel',a:'flask',pa:{x:0,y:0},b:'funnel',pb:{x:0,y:30}},{id:'flask-head',a:'flask',pa:{x:0,y:0},b:'head',pb:{x:0,y:60}},{id:'head-condenser',a:'head',pa:{x:70,y:50},b:'condenser',pb:{x:0,y:0}},{id:'head-thermometer',a:'head',pa:{x:0,y:0},b:'thermometer',pb:{x:0,y:15}}];
  for(const stand of ['support1','support2'])for(const [id,point]of [['flask',{x:0,y:20}],['condenser',{x:112,y:34}]])joints.push({id:`${stand}-${id}`,a:stand,pa:stand==='support1'?{x:90,y:-162}:{x:-195,y:-148},b:id,pb:id==='condenser'&&stand==='support2'?{x:145,y:44}:point});
  return joints;
 }
@@ -59,6 +59,8 @@ export function contactPairs(state){
  if(!state.held)return [];
  return possibleJoints(state).filter(l=>{
   if(l.a!==state.held&&l.b!==state.held)return false;
+  // The filling funnel's narrow stem fits the neck with ordinary solid collisions.
+  if(l.id==='flask-funnel')return false;
   const a=worldPoint(state.items[l.a],l.pa),b=worldPoint(state.items[l.b],l.pb);
   // Guide the narrow stem through its matching mouth before its tip hits the rim.
   if(l.id==='head-thermometer')return Math.abs(a.x-b.x)<18&&Math.abs(a.y-b.y)<85;
@@ -74,7 +76,7 @@ export function placeItem(state,id){
   if(link.a.startsWith('support')&&state.links.some(l=>l.a.startsWith('support')&&(l.a===link.a||l.b===link.b)))continue;
   const a=state.items[link.a],b=state.items[link.b];
   const ap=worldPoint(a,link.pa),bp=worldPoint(b,link.pb);
-  const aligned=link.id==='head-thermometer'?Math.abs(ap.x-bp.x)<18&&Math.abs(ap.y-bp.y)<45:distance(ap,bp)<=21;
+  const aligned=link.id==='head-thermometer'?Math.abs(ap.x-bp.x)<18&&Math.abs(ap.y-bp.y)<45:distance(ap,bp)<=(link.id==='flask-funnel'?3:21);
   if(Math.abs(a.angle-b.angle)>12||!aligned)continue;
   const moving=state.items[id],other=id===link.a?b:a,target=id===link.a?link.pa:link.pb,otherPoint=id===link.a?link.pb:link.pa;
   moving.angle=other.angle;const anchor=worldPoint(other,otherPoint),local=worldPoint({...moving,x:0,y:0},target);moving.x=anchor.x-local.x;moving.y=anchor.y-local.y;
@@ -100,7 +102,7 @@ function spill(state,point,mixture){
 }
 function receive(state,point,mix,exclude,visited=new Set()){
  visited.add(exclude);
- const target=Object.values(state.items).filter(o=>!o.stored&&['beaker','flask','fillingFunnel'].includes(o.kind)&&!visited.has(o.id)&&Math.abs(o.angle||0)<35&&Math.abs(o.x-point.x)<(o.kind==='flask'?14:38)&&point.y<=o.y+18).sort((a,b)=>Math.max(0,a.y-point.y)-Math.max(0,b.y-point.y))[0];
+ const target=Object.values(state.items).filter(o=>!o.stored&&['beaker','flask','fillingFunnel'].includes(o.kind)&&!visited.has(o.id)&&Math.abs(o.angle||0)<35&&Math.abs(o.x-point.x)<(o.kind==='flask'?14:38)&&point.y<=o.y+(o.kind==='flask'&&exclude==='funnel'?48:18)).sort((a,b)=>Math.max(0,a.y-point.y)-Math.max(0,b.y-point.y))[0];
  state.flow.push({from:point,to:{x:point.x,y:target?Math.max(point.y,target.y+8):525},kind:'liquid'});
  if(!target){spill(state,point,mix);return;}
  if(target.kind==='fillingFunnel'){receive(state,worldPoint(target,{x:0,y:76}),mix,target.id,visited);return;}
@@ -158,6 +160,8 @@ export function physicsFor(state){let world=worlds.get(state);if(!world){world=n
 export function stepPhysics(state,dt,held){
  if(state.phase!=='working')return false;
  const moved=physicsFor(state).step(dt,held),t=state.items.thermometer,h=state.items.head;
+ const funnel=state.items.funnel,flask=state.items.flask;
+ if(!held&&!funnel.stored&&!flask.stored&&!hasLink(state,'flask-funnel')&&!hasLink(state,'flask-head')&&Math.abs(flask.angle)<12&&Math.abs(funnel.angle-flask.angle)<12&&distance(worldPoint(flask,{x:0,y:0}),worldPoint(funnel,{x:0,y:30}))<=3)placeItem(state,'funnel');
  const collar=worldPoint(t,{x:0,y:15}),mouth=worldPoint(h,{x:0,y:0});
  if(!held&&!hasLink(state,'head-thermometer')&&Math.abs(collar.x-mouth.x)<14&&Math.abs(collar.y-mouth.y)<7&&Math.abs(t.angle-h.angle)<12)placeItem(state,'thermometer');
  return moved;

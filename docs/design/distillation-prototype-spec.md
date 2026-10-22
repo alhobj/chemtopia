@@ -86,3 +86,9 @@ Use the removable funnel to fill the flask. Remove/store it before attaching the
 ## Three-question review
 
 The current first-question prompt is retained with balanced shuffled choices. Two harder follow-ups now apply the concepts and require typed numerical work. All three must be correct. See [the full question inventory and solutions](review-questions.md); this supersedes earlier single-question completion descriptions.
+
+## Filling-funnel seating correction
+
+The owner requested that the filling funnel drop into the round-bottom flask instead of balancing its tip on the rim. Its narrower stem now fits inside the neck with ordinary solid collisions. Release it above an upright supported flask: gravity lowers it until the cone meets the mouth, then a close-contact joint stabilises it with the stem inside. Releasing it high above the mouth does not snap it into position. The funnel can still be lifted out or stored before fitting the still head. Its liquid outlet routes into the neck interior, preserving both feed components.
+
+Verification releases the funnel above the mouth, checks the fall, insertion depth and stable seating, lifts it out, and fills through it in the full browser playthrough. Other apparatus and laboratory physics are unchanged.

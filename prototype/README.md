@@ -120,3 +120,5 @@ Recrystallisation evaporates water from heated water or solution beakers and rep
 Recrystallisation can finish once crystals form in a clean beaker, even while mother liquor remains. Filtering those crystals onto paper is optional. The result separates crystals in beakers from crystals on paper and excludes dissolved solute, sand-contaminated material, original undissolved solid and spills from the crystal fraction.
 
 Each lab keeps its existing first question and adds two harder questions. Multiple-choice options have comparable lengths and shuffled order; later numerical questions require typed calculations with feedback and retry. Chromatography retains the draggable ruler and measured R_F table, and adds numerical R_F and baseline-offset calculations. See [the complete question set](../docs/design/review-questions.md).
+
+For distillation, release the filling funnel above the upright supported flask. Its narrow stem drops into the neck and the cone rests at the mouth. Lift/store it before fitting the still head.

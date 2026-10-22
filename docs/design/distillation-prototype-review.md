@@ -27,3 +27,9 @@ The subsequent owner playtest identified stand sliding, thermometer insertion fa
 ## Temperature readout
 
 The analogue thermometer now carries a circular digital °C number above its stem. Both readings start at 20°C, warm to 56°C during the main acetone collection stage, rise towards 100°C as acetone is depleted, and cool towards 20°C after heater switch-off. The display is labelled a simplified temperature curve. Model checks exercise the full rise/plateau/rise/cool sequence; Chromium checks the visible starting number, plateau and cooling through the actual heater control.
+
+## Filling funnel inside the neck
+
+Release the funnel above the upright supported flask. Its narrowed stem falls into the neck until the cone rests at the mouth. Pour through it, then lift or store it before fitting the still head.
+
+![Narrow filling funnel seated inside the flask neck](../art/previews/distillation-funnel-seated.png)
