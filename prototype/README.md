@@ -66,6 +66,12 @@ Following the owner's playtest, equipment and support surfaces now use consisten
 The thermometer has a shorter stem and a physical seating collar, matching the still-head opening. Near-aligned insertion seats the collar at the rim and constrains the thermometer, with the bulb at the side-arm height. No target ghost or chemistry change is introduced. Tests cover a nudged stand settling, surface friction, near-aligned thermometer seating, and clicking the assembled heater without moving the glassware.
 
 
-## Paper chromatography preparation
+## Paper chromatography
 
-Both playable labs link to `chromatography.html`, which currently shows a clearly labelled preparation page with links back to both labs. It contains no chromatography simulation yet. The [concrete first-step proposal](../docs/design/chromatography-prototype-spec.md) awaits the sample/solvent and measurement-scope choices. Switching away from a playable experiment starts a fresh attempt on return, as stated beside the links.
+Both other labs link to `chromatography.html`; it links back to both. Use a pencil tip over the paper and press Space to make a baseline, then apply different marker tips with Space. Pour water into the chamber, put the support bar across its rim, and clip the top of the paper to the bar. Development follows actual paper/water contact. Remove the paper to stop, use the pencil to mark the solvent front, and move the ruler beside the strip.
+
+Finish shows the developed paper and the ruler, with separate inputs for component distance, solvent-front distance and R_F. Measure from the same pencil baseline, using spot centres. Correct measurements and the explanation complete the activity; wrong answers can be retried. Submerged spots dissolve into the chamber, missed pours and overflow spill, unsupported paper falls, and a front that reaches the paper top cannot provide a reliable front-distance measurement.
+
+The green, purple and black markers are fictional water-soluble examples. Their band colours and migration fractions are qualitative, not measurements of particular commercial brands. Paper is a rigid strip in this two-dimensional prototype. Marking tools can overlay its face; the paper can enter the hollow chamber, and a bar/clip supports it at close alignment. Lid omission does not impose an invented penalty. The ruler uses 10 drawing units per cm. See [the specification and model defaults](../docs/design/chromatography-prototype-spec.md).
+
+Switching starts a fresh attempt. All apparatus is available and there are no placement ghosts, scores or saved student data.

@@ -4,8 +4,8 @@
   "type": "module",
   "scripts": {
     "start": "node scripts/serve.mjs",
-    "test": "node --test tests/model.test.mjs tests/distillation.test.mjs",
-    "test:browser": "node tests/browser.mjs && node tests/distillation-browser.mjs"
+    "test": "node --test tests/model.test.mjs tests/distillation.test.mjs tests/chromatography.test.mjs",
+    "test:browser": "node tests/browser.mjs && node tests/distillation-browser.mjs && node tests/chromatography-browser.mjs"
   },
   "engines": { "node": ">=22" }
 }

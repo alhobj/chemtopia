@@ -45,6 +45,9 @@ If the `code` command is unavailable, open the folder through VS Code's File men
 | `prototype/distillation.html` | Distillation page and temporary return navigation |
 | `prototype/distillation-app.js` | Distillation controls, equipment drawing and review |
 | `prototype/distillation-model.js` | Acetone/water balance, coolant circuit and joints |
+| `prototype/chromatography.html` | Paper chromatography page and experiment navigation |
+| `prototype/chromatography-app.js` | Direct marker/pencil actions, drawing and R_F task |
+| `prototype/chromatography-model.js` | Solvent contact, marker development, material and measurement model |
 | `scripts/serve.mjs` | Node.js static file server |
 | `tests/model.test.mjs` | Chemistry/material and movement checks |
 

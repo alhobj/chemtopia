@@ -54,3 +54,8 @@ The owner requested non-overlapping solid hitboxes for all equipment and the sta
 ## Approved acetone–water distillation implementation
 
 The owner approved the revised distillation proposal with “Implement it” and selected equal amounts (50:50) in the follow-up. This authorises the bounded local distillation increment in [the specification](docs/design/distillation-prototype-spec.md), alongside filtration. It includes movable coolant hoses, operable upper-port supply with reduced recovery, both volatile sample components, supported glassware, student-operated pouring/heating, Finish review and the explanation question. Numerical coefficients are labelled qualitative implementation defaults, not measured data or additional owner answers. The temporary bottom navigation starts a fresh attempt on switching. Commit/push authorisation applies; public deployment remains unapproved.
+
+
+## Approved paper chromatography increment
+
+The owner requested paper chromatography with the same ideas and links from both existing labs, then answered “Solvent water, sample markers of different colors. Calculate rf, yes”. This resolves the concrete proposal's sample/solvent and R_F choices and authorises the bounded implemented step in docs/design/chromatography-prototype-spec.md. Direct markers replace the proposed capillary spotter. Keep qualitative example inks distinct from measured brand properties. Preserve the baseline, spotting, solvent contact, supported development, front marking, ruler, R_F retry, explanation and physically possible mistakes. Existing local workflow and commit/push authorisation continue; no public deployment is approved.

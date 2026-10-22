@@ -145,3 +145,8 @@ The owner requested retaining the analogue thermometer while adding a number in 
 ## Paper chromatography requested
 
 The owner requested starting the next paper chromatography experiment using the same ideas, with links from both filtration and distillation. This selects the technique and navigation, carrying forward the existing interaction direction. The linked preparation page is scaffolded. Sample, solvent, development/consequence model and whether measurement/R_F belong in the first increment remain for review in [the proposal](chromatography-prototype-spec.md); recommendations are not recorded as owner decisions.
+
+
+## Paper chromatography choices resolved and implemented
+
+The owner answered “Solvent water, sample markers of different colors. Calculate rf, yes”. This selects water-soluble coloured marker examples, water solvent, measurement and R_F in the bounded paper-chromatography step. Direct markers replace the proposed capillary spotter. The workbench carries forward dragging, Space actions, friction/gravity, solid support surfaces, wrong-action consequences, restart and Finish review. Green/purple/black examples and migration rates are explicitly qualitative implementation defaults, not measured properties of particular brands. Both earlier labs link to the playable experiment and it links back. No backend, saving, currency or publication is introduced.

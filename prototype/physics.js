@@ -27,7 +27,7 @@ function shape(item){
  }
  const body=Body.create({parts,label:item.id,...SURFACE,frictionAir:.025,slop:.05});
  for(const part of body.parts)Object.assign(part,SURFACE);
- body.collisionFilter.category=item.kind==='funnel'?2:item.kind==='paper'?4:1;
+ body.collisionFilter.category=item.collisionCategory??(item.kind==='funnel'?2:item.kind==='paper'?4:1);
  body.collisionFilter.mask=~0;
  Body.setMass(body,item.mass??(item.kind==='stand'?8:item.kind==='beaker'?1:item.kind==='funnel'?.35:.04));
  return {body,offset:{...body.position},last:null};
@@ -65,7 +65,7 @@ export class PhysicsWorld {
    let entry=this.entries.get(item.id);
    if(item.parent){if(entry){Composite.remove(this.engine.world,entry.body);this.entries.delete(item.id);}continue;}
    if(!entry){entry=shape(item);this.entries.set(item.id,entry);this.writePose(item,entry);Composite.add(this.engine.world,entry.body);}
-   entry.body.collisionFilter.mask=this.heldId==='paper'?(item.kind==='funnel'?~4:item.kind==='paper'?~2:~0):~0;
+   entry.body.collisionFilter.mask=this.heldId==='paper'&&this.state.items.paper?.kind==='paper'?(item.kind==='funnel'?~4:item.kind==='paper'?~2:~0):(item.collisionMask??~0);
    const pose=[item.x,item.y,item.angle||0];
    if(!entry.last||pose.some((v,i)=>Math.abs(v-entry.last[i])>1e-8))this.writePose(item,entry);
    if(entry.body.isStatic!==((item.fixed||item.id===this.heldId))){Body.setStatic(entry.body,Boolean(item.fixed||item.id===this.heldId));Sleeping.set(entry.body,false);}

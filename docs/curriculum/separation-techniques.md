@@ -13,7 +13,7 @@ Source: owner-supplied IB *Chemistry guide*, first assessment 2025, published Fe
 | Recrystallisation | Same; also Tool 1, p. 29 / PDF 35 | Newly verified addition to planned coverage. Choose a substance, solvent, purification objective and model before implementation. |
 | Evaporation | Structure 1.1.1; p. 33 / PDF 39 | Owner already chose salt recovery from solution. Do not treat evaporation alone as equivalent to recrystallisation. |
 | Distillation | Same; also Tool 1, p. 29 / PDF 35 | Owner now selects an acetone–water mixture to collect acetone, superseding the earlier salt-solution example. This example is owner-selected, not specifically prescribed by the guide. This general syllabus wording does not by itself name a separate compulsory fractional-distillation task. |
-| Paper chromatography | Structure 1.1.1; p. 33 / PDF 39 | Owner explicitly selected it. Sample, solvent, paper and expected results are not yet chosen. |
+| Paper chromatography | Structure 1.1.1; p. 33 / PDF 39 | Owner explicitly selected it. Owner selected water solvent, different coloured marker samples and R_F calculation; the implemented examples are explicitly qualitative. |
 
 Solvation is included because the guide explicitly names it; it is not automatically a complete isolation technique on its own. A combined dissolution/filtering/recovery task is a possible teaching approach, not a newly approved experiment.
 
@@ -53,7 +53,7 @@ The previously offered oil/water separating-funnel task was not selected in S01.
 | Sand and water | Recover sand by filtration | Setup, represented particle/material states, pouring controls, wrong arrangements and outcomes |
 | Salt solution: evaporation | Recover salt | Substance specification, heating/drying limits, observation model and feedback |
 | Acetone–water: simple distillation | Collect acetone as an acetone-enriched distillate; replaces the original salt-solution example | Approved local prototype: 50:50 model mole amounts, both components volatile, qualitative enrichment, movable hoses and reduced recovery with upper-port supply; no calibrated yield claim |
-| Paper chromatography | Separate mixture components | Sample, solvent, baseline/spotting model, development, observations and when R_F is introduced |
+| Paper chromatography | Separate mixture components | Implemented bounded prototype: water, direct marker spotting, baseline/front marks, development, ruler and R_F calculation; rates/marker components are qualitative |
 | Solvation-based separation | Newly verified requested coverage | Whether to use a combined task, sample and which component dissolves |
 | Recrystallisation | Newly verified requested coverage | Substance, solvent, purification goal, cooling/filtration/drying model and comparison with evaporation |
 

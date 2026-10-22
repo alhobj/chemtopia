@@ -1,8 +1,8 @@
 # Work steps and verification
 
-## Current step — paper chromatography requested
+## Current step — paper chromatography implemented
 
-The owner requested starting paper chromatography with the existing interaction principles and a link from both labs. [The concrete first-step proposal](chromatography-prototype-spec.md) records the proposed sample, solvent, apparatus, practical actions, development model, mistakes, review and optional R_F task. Sample/solvent and measurement scope are awaiting the owner's choices. Navigation and a clearly labelled preparation page are ready; chromatography chemistry is not implemented yet.
+The owner selected water, different coloured markers and R_F calculations. [The approved bounded specification](chromatography-prototype-spec.md) now has a playable workbench with direct marker spotting, pencil baseline/front marks, water pouring, supported development, a ruler, calculation retry and the explanation question. Both existing labs link to it; switching starts a fresh attempt. Review this increment before choosing another experiment.
 
 Distillation is implemented and includes movable cooling hoses, the 50:50 acetone–water feed, physical assembly and the analogue/circular digital thermometer. Earlier pending distillation statements below are historical.
 
