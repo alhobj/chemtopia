@@ -171,3 +171,8 @@ The owner stated that the latest change has not yet been tested and requested pl
 ## Evaporation selected as the next bounded lab
 
 The owner selected “Start with evaporation and salt recovery” from the proposed roadmap. The sodium-chloride/water L05 first increment now uses a source beaker, basin, electric heater and collecting beaker with the existing physics and equipment menu. Recovery is dry salt in the basin; balances, scooping and quantitative student mass tasks remain deferred. Salt, liquid water and vapour are tracked separately, and wet residue is distinguished from dry recovery. Starting model amounts and simulation rates are documented qualitative implementation defaults, not owner-selected laboratory measurements. Other roadmap labs remain proposals, and selecting this lab does not imply acceptance of previous controls.
+
+
+## Recrystallisation requested and implemented
+
+The owner requested “Make recrystallisation” after the L06 roadmap brief. The bounded lab uses the brief's proposed potassium-nitrate/sand/water example with hot dissolution, impurity filtration, cooling and collection on clean paper. There was no separate numerical recipe or solubility dataset supplied. This first version labels its capacity curve as qualitative; a data-calibrated solubility curve remains a future refinement. Collected product is wet, and raw undissolved starting material is distinguished from recrystallised material. The request does not authorise other roadmap labs or imply acceptance of earlier controls.

@@ -66,7 +66,7 @@ export class PhysicsWorld {
    let entry=this.entries.get(item.id);
    if(item.parent||item.stored){if(entry){Composite.remove(this.engine.world,entry.body);this.entries.delete(item.id);}continue;}
    if(!entry){entry=shape(item);this.entries.set(item.id,entry);this.writePose(item,entry);Composite.add(this.engine.world,entry.body);}
-   entry.body.collisionFilter.mask=this.heldId==='paper'&&this.state.items.paper?.kind==='paper'?(item.kind==='funnel'?~4:item.kind==='paper'?~2:~0):(item.collisionMask??~0);
+   entry.body.collisionFilter.mask=this.state.items[this.heldId]?.kind==='paper'?(item.kind==='funnel'?~4:item.kind==='paper'?~2:~0):(item.collisionMask??~0);
    const pose=[item.x,item.y,item.angle||0];
    if(!entry.last||pose.some((v,i)=>Math.abs(v-entry.last[i])>1e-8))this.writePose(item,entry);
    if(entry.body.isStatic!==((item.fixed||item.id===this.heldId))){Body.setStatic(entry.body,Boolean(item.fixed||item.id===this.heldId));Sleeping.set(entry.body,false);}
@@ -132,7 +132,7 @@ export class PhysicsWorld {
    if(item.stored)continue;
    const root=item.parent?this.state.items[item.parent]:item;
    const radians=(root.angle||0)*RAD,angle=Math.atan2(Math.sin(radians),Math.cos(radians))/RAD;
-   if(Math.abs(angle)>(root.kind==='funnel'?36:65)&&(item.water||item.sand||item.acetone||item.salt))this.onSpill(item,Math.min(1,seconds*4));
+   if(Math.abs(angle)>(root.kind==='funnel'?36:65)&&(item.water||item.sand||item.acetone||item.salt||item.raw||item.dissolved||item.crystals))this.onSpill(item,Math.min(1,seconds*4));
   }
   return hadSpill||this.state.passiveFlow.length>0||[...this.entries.values()].some(e=>!e.body.isSleeping&&!e.body.isStatic);
  }

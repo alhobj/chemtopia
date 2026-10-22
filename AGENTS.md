@@ -69,3 +69,8 @@ The owner requested replacing the shelf with a left-side equipment menu that hid
 ## Evaporation and salt recovery increment
 
 The owner selected L05 with “Start with evaporation and salt recovery”. Follow docs/design/evaporation-prototype-spec.md for the bounded sodium-chloride solution lab: manual pouring, heater contact, basin recovery, wet/dry distinction, water-vapour and non-volatile-salt balances, wrong actions and Finish question. The basis remains qualitative; a new balance, scooping or quantitative mass-measurement task is not included. Existing local workflow and push authorisation apply. Other roadmap labs still require a chosen concrete step.
+
+
+## Recrystallisation increment
+
+The owner requested “Make recrystallisation” after the L06 brief. Follow docs/design/recrystallisation-prototype-spec.md for the bounded potassium-nitrate/sand/water example, hot dissolution/filtration, cooling, clean-paper collection, material provenance and wet-product reporting. The current capacity curve is qualitative, not verified property data; a sourced quantitative solubility curve remains a future refinement. Preserve the shared equipment drawer and controls. Other planned labs still require a selected concrete step.

@@ -1,10 +1,10 @@
 # Work steps and verification
 
-## Current step — evaporation and salt recovery
+## Current step — recrystallisation
 
-The owner selected evaporation/salt recovery (L05) from the proposed roadmap. [The bounded specification](evaporation-prototype-spec.md) now has a playable sodium-chloride solution workbench with manual pouring, heater contact, wet/dry residue, material accounting and an explanation question. Existing labs link to it. [The review](evaporation-prototype-review.md) records controls and limits.
+The owner requested recrystallisation following the L06 roadmap brief. [The bounded specification](recrystallisation-prototype-spec.md) uses the potassium-nitrate/sand/water example with hot filtration, cooling, clean-filter collection and wet-product accounting. Its capacity curve is explicitly qualitative; a verified data-calibrated solubility model remains a future refinement. See [the review](recrystallisation-prototype-review.md).
 
-The other roadmap labs remain planning proposals. Selecting evaporation is not acceptance of earlier controls or permission to start the remaining techniques.
+Evaporation and the earlier labs remain available, with links between experiments. This request does not imply owner acceptance of previous controls or authorise the other roadmap proposals.
 
 ## Implemented filtration increment
 

@@ -10,7 +10,7 @@ Source: owner-supplied IB *Chemistry guide*, first assessment 2025, published Fe
 | --- | --- | --- |
 | Solvation | Structure 1.1.1; p. 33 / PDF 39 | Newly verified part of the requested syllabus coverage. Treat as a dissolution process supporting separation; the specific sample and selective-dissolution task still need approval. |
 | Filtration | Same | Owner already chose sand/water filtration to recover sand. Detailed setup/actions/outcomes remain to approve. |
-| Recrystallisation | Same; also Tool 1, p. 29 / PDF 35 | Newly verified addition to planned coverage. Choose a substance, solvent, purification objective and model before implementation. |
+| Recrystallisation | Same; also Tool 1, p. 29 / PDF 35 | The owner requested the L06 prototype; the potassium-nitrate/sand/water example uses a qualitative solubility model and wet-crystal recovery. Data-calibrated property modelling remains a later refinement. |
 | Evaporation | Structure 1.1.1; p. 33 / PDF 39 | Owner selected the L05 sodium-chloride solution prototype; it tracks evaporation and wet/dry salt recovery. Do not treat evaporation alone as equivalent to recrystallisation. |
 | Distillation | Same; also Tool 1, p. 29 / PDF 35 | Owner now selects an acetone–water mixture to collect acetone, superseding the earlier salt-solution example. This example is owner-selected, not specifically prescribed by the guide. This general syllabus wording does not by itself name a separate compulsory fractional-distillation task. |
 | Paper chromatography | Structure 1.1.1; p. 33 / PDF 39 | Owner explicitly selected it. Owner selected water solvent, different coloured marker samples and R_F calculation; the implemented examples are explicitly qualitative. |
@@ -55,7 +55,7 @@ The previously offered oil/water separating-funnel task was not selected in S01.
 | Acetone–water: simple distillation | Collect acetone as an acetone-enriched distillate; replaces the original salt-solution example | Approved local prototype: 50:50 model mole amounts, both components volatile, qualitative enrichment, movable hoses and reduced recovery with upper-port supply; no calibrated yield claim |
 | Paper chromatography | Separate mixture components | Implemented bounded prototype: water, direct marker spotting, baseline/front marks, development, ruler and R_F calculation; rates/marker components are qualitative |
 | Solvation-based separation | Newly verified requested coverage | Whether to use a combined task, sample and which component dissolves |
-| Recrystallisation | Newly verified requested coverage | Substance, solvent, purification goal, cooling/filtration/drying model and comparison with evaporation |
+| Recrystallisation | Newly verified requested coverage | Implemented bounded hot-dissolution/filtration, cooling and clean-paper collection example; no final drying or calibrated solubility curve |
 
 The current [distillation proposal](../design/distillation-prototype-spec.md) records the owner’s acetone–water and hose-connection choices. Acetone recovery and distillate purity are distinct; both process components can enter vapour. The owner approved the revised prototype and subsequently chose a 50:50 feed; implementation defaults remain explicitly qualitative.
 

@@ -1,8 +1,8 @@
 # Further labs — proposal roadmap
 
-**Status: proposals, except the subsequently selected L05 increment.** The owner asked to plan more curriculum-aligned labs and explicitly said the latest equipment-menu change has not been tested yet. The three existing labs and menu are implemented, but owner acceptance is still pending. The owner later explicitly selected evaporation/salt recovery; see [the bounded L05 specification](evaporation-prototype-spec.md). The rest of this roadmap remains planning only.
+**Status: proposals, except the subsequently selected L05 and L06 increments.** The owner asked to plan more curriculum-aligned labs and explicitly said the latest equipment-menu change has not been tested yet. The three existing labs and menu are implemented, but owner acceptance is still pending. The owner later explicitly selected evaporation/salt recovery; see [the bounded L05 specification](evaporation-prototype-spec.md). The owner then requested L06 recrystallisation; see [its bounded specification](recrystallisation-prototype-spec.md). The rest of this roadmap remains planning only.
 
-The [curriculum evidence table](../curriculum/lab-opportunities.md) records exact sections/pages and common SL/HL versus AHL boundaries from the supplied February 2023 guide, first assessment 2025. The named samples are proposed examples rather than IB-mandated experiments; L05 is now the explicitly selected bounded implementation.
+The [curriculum evidence table](../curriculum/lab-opportunities.md) records exact sections/pages and common SL/HL versus AHL boundaries from the supplied February 2023 guide, first assessment 2025. The named samples are proposed examples rather than IB-mandated experiments; L05 and L06 now have explicitly selected bounded implementations.
 
 ## Recommended sequence
 
