@@ -35,8 +35,11 @@ Readable simulation defaults in `prototype/distillation-model.js`:
 | Jacket fill/drain rate | 0.6 per second |
 | Full / partial jacket condensation efficiency | 0.94 / 0.48 |
 | Open thermometer joint path fraction | 0.4 |
+| Temperature display | 20°C ambient, 56°C plateau, 100°C upper limit |
+| Display warming / cooling limit | 5 / 4°C per simulation second |
+| End of acetone display plateau | Remaining flask acetone below 10% of initial acetone |
 
-These implementation defaults are tunable qualitative approximations, not owner-selected numerical measurements, real experimental times or calibrated yield predictions. No numerical mixture boiling temperature is asserted. The thermometer indicates qualitative heat only. There is no pressure, entrainment, bumping, breakage or injury model. Jacket water and process water are separate.
+These implementation defaults are tunable qualitative approximations, not owner-selected numerical measurements, real experimental times or calibrated yield predictions. The owner subsequently requested an analogue thermometer with a circular digital °C readout: 20°C initially, a 56°C acetone collection plateau, then a rise towards 100°C, and cooling towards 20°C after switch-off. This supersedes the original qualitative-only thermometer. It is a simplified teaching curve, not a prediction of the boiling temperature of a real acetone–water mixture. There is no pressure, entrainment, bumping, breakage or injury model. Jacket water and process water are separate.
 
 Heat requires heater/flask contact; heat decays after switch-off or separation. Compatible glass joints and clamps attach on close alignment. Local rigid-body hitboxes represent solid equipment; insertion/contact exceptions represent opening clamps and mating glass joints. Constraints approximate the connected assembly. Hoses flex visually without tension or fluid dynamics. The movable heater begins on the bench with no connection.
 
@@ -71,3 +74,12 @@ Run `npm test` for both material models and physics regressions, and `npm run te
 ## History
 
 The first proposal used salt solution and a cooling switch. The owner rejected it, requesting movable hoses and lower yield with upper-port supply, then selected acetone and water with acetone collected. The subsequent revised proposal was approved with “Implement it”. The follow-up composition answer explicitly selected 50:50. No other separation experiment or production artwork is authorised by this increment.
+
+
+## Temperature display revision
+
+The circular digital badge remains above the analogue stem, follows it when moved and shares the analogue column's reading. It is an annotation rather than an extra rigid collision body. An assembled thermometer follows the flask temperature; detaching it cools its reading towards ambient. Heater contact is still required.
+
+The first warm-up follows the existing thermal state. During the main acetone collection stage, the display holds at 56°C. As the final 10% of starting acetone in the flask is removed, the temperature target progresses to 100°C; the rate limit gives a smooth rise. This tail threshold and visual rates are implementation defaults. Switch-off or loss of heater contact immediately starts cooling towards 20°C, independent of the collection stage. Restart returns both readings to 20°C.
+
+The constant-relative-volatility material balance is unchanged: both components can enter vapour. Real acetone–water mixtures need not exhibit a flat pure-acetone boiling plateau. This owner-requested teaching display is explicitly labelled a simplified temperature curve.

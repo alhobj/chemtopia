@@ -1,7 +1,7 @@
 import {PhysicsWorld} from './physics.js';
 export const EPS=1e-8;
 // These are qualitative prototype parameters, not measured acetone–water equilibrium data.
-export const PARAMETERS={feedAcetone:.5,feedWater:.5,relativeVolatility:3,warmRate:.13,coolRate:.055,boilRate:.075,fullJacketEfficiency:.94,partialJacketEfficiency:.48};
+export const PARAMETERS={feedAcetone:.5,feedWater:.5,ambientTemperature:20,acetoneBoilingPoint:56,waterBoilingPoint:100,temperatureRiseRate:5,temperatureFallRate:4,acetonePlateauRemaining:.1,relativeVolatility:3,warmRate:.13,coolRate:.055,boilRate:.075,fullJacketEfficiency:.94,partialJacketEfficiency:.48};
 const box=(x,y,w,h)=>({x,y,w,h});
 const tube=(x,y,w,h)=>box(x,y,w,h);
 export const NAMES={source:'Acetone–water feed',flask:'Distillation flask',head:'Still head',thermometer:'Thermometer',condenser:'Liebig condenser',support1:'Clamp stand A',support2:'Clamp stand B',heater:'Electric heater',receiverA:'Collecting beaker A',receiverB:'Collecting beaker B',tap:'Cooling-water tap',drain:'Water drain'};
@@ -11,9 +11,9 @@ export function createState(){
  const state={width:1400,phase:'working',initial:{acetone:PARAMETERS.feedAcetone,water:PARAMETERS.feedWater},
   items:{
    source:vessel('source',95,413,{capacity:1.3,acetone:PARAMETERS.feedAcetone,water:PARAMETERS.feedWater}),
-   flask:vessel('flask',760,385,{kind:'flask',mass:.7,capacity:1.5,heat:0,collision:[tube(-12,24,4,48),tube(12,24,4,48),{x:0,y:94,radius:46}]}),
+   flask:vessel('flask',760,385,{kind:'flask',mass:.7,capacity:1.5,heat:0,temperature:PARAMETERS.ambientTemperature,collision:[tube(-12,24,4,48),tube(12,24,4,48),{x:0,y:94,radius:46}]}),
    head:{id:'head',kind:'head',x:180,y:37,angle:0,mass:.12,collision:[box(-12,30,4,60),box(12,19,4,38),box(38,43,64,4),box(38,57,64,4)]},
-   thermometer:{id:'thermometer',kind:'thermometer',x:80,y:16,angle:0,mass:.03,collision:[box(0,32.5,7,65),box(0,15,28,6)]},
+   thermometer:{id:'thermometer',kind:'thermometer',temperature:PARAMETERS.ambientTemperature,x:80,y:36,angle:0,mass:.03,collision:[box(0,32.5,7,65),box(0,15,28,6)]},
    condenser:{id:'condenser',kind:'condenser',x:1060,y:430,angle:0,mass:.5,collision:[{vertices:[{x:30,y:-11},{x:205,y:42},{x:195,y:76},{x:20,y:23}]},box(8,2,24,9),box(220,67,25,9)]},
    support1:stand('support1'),support2:stand('support2'),
    heater:{id:'heater',kind:'heater',x:390,y:467,angle:0,mass:2,on:false,collision:[box(0,29,120,58)]},
@@ -112,11 +112,25 @@ export function pour(state,id,amount){
  receive(state,worldPoint(o,{x:o.kind==='flask'?12:o.id==='source'?42:35,y:0}),mix,id);
 }
 export function heaterContact(state){const f=state.items.flask,h=state.items.heater,bottom=worldPoint(f,{x:0,y:140});return Math.abs(f.angle)<20&&Math.abs(h.angle)<15&&Math.abs(bottom.x-h.x)<52&&Math.abs(bottom.y-h.y)<12;}
+function stepTemperature(state,dt,heated){
+ const p=PARAMETERS,f=state.items.flask,t=state.items.thermometer;
+ const tail=state.initial.acetone*p.acetonePlateauRemaining;
+ const later=tail>EPS?Math.max(0,Math.min(1,1-f.acetone/tail)):1;
+ // Owner-requested teaching curve, not acetone–water equilibrium thermometry.
+ const target=!heated?p.ambientTemperature:f.heat<1
+  ?p.ambientTemperature+(p.acetoneBoilingPoint-p.ambientTemperature)*f.heat
+  :p.acetoneBoilingPoint+(p.waterBoilingPoint-p.acetoneBoilingPoint)*later;
+ const approach=(value,goal)=>Math.max(p.ambientTemperature,Math.min(p.waterBoilingPoint,value+Math.max(-p.temperatureFallRate*dt,Math.min(p.temperatureRiseRate*dt,goal-value))));
+ f.temperature=approach(f.temperature,target);
+ const connected=hasLink(state,'head-thermometer')&&hasLink(state,'flask-head');
+ t.temperature=approach(t.temperature,connected?f.temperature:p.ambientTemperature);
+}
 export function stepChemistry(state,dt){
  if(state.phase!=='working'||!Number.isFinite(dt)||dt<=0)return;
  dt=Math.min(dt,.05);state.elapsed+=dt;state.flow=[];state.vapourVisible=false;
  const f=state.items.flask,heated=state.items.heater.on&&heaterContact(state);
  f.heat=Math.max(0,Math.min(1.15,f.heat+dt*(heated?PARAMETERS.warmRate:-PARAMETERS.coolRate)));
+ stepTemperature(state,dt,heated);
  const mode=cooling(state),target=mode==='lower-fed'?1:mode==='upper-fed'?.35:0;
  state.jacket+=Math.max(-dt*.6,Math.min(dt*.6,target-state.jacket));
  const total=f.acetone+f.water;if(f.heat<1||total<EPS)return;

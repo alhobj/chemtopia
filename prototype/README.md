@@ -56,7 +56,7 @@ Both sample liquids can vaporise. Early collected liquid is acetone-enriched, ra
 
 Either coolant port accepts the supply. In this qualitative model, upper-port supply fills the jacket less effectively and collects less acetone under comparable heating conditions. Coolant stays separate from the sample. Jacket fill, relative volatility and heating rates are readable prototype approximations, not calibrated laboratory predictions.
 
-Clamps and compatible glass joints attach at close contact. Temporary collision exceptions represent opening clamps and inserting joints; connected equipment forms a constrained assembly. Flexible hoses are visual connections, without hose tension or fluid-pressure simulation. The heater begins on the bench, unconnected; it remains movable. The thermometer shows qualitative heat, without numerical temperature. No pressure, bumping, breakage or injuries are simulated.
+Clamps and compatible glass joints attach at close contact. Temporary collision exceptions represent opening clamps and inserting joints; connected equipment forms a constrained assembly. Flexible hoses are visual connections, without hose tension or fluid-pressure simulation. The heater begins on the bench, unconnected; it remains movable. The analogue thermometer now includes a circular digital °C reading: 20°C initially, 56°C during the main acetone collection stage, then rising towards 100°C as acetone is depleted. Turning off the heater cools it towards 20°C. A detached thermometer also cools towards ambient. This is the owner-requested simplified temperature curve, not calibrated mixture thermometry. No pressure, bumping, breakage or injuries are simulated.
 
 
 ## Stability and thermometer fixes

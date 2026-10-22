@@ -135,3 +135,8 @@ The owner approved the revised distillation proposal with “Implement it” and
 Following the owner's playtest, equipment and support surfaces now use consistent friction on all compound collision parts, with stronger static friction and damping. A click selects apparatus; pickup/disconnection begins only after a short drag, so touching a stand or heater does not lift or disturb it. Heater pickup also preserves its position rather than applying a vessel-height correction.
 
 The thermometer has a shorter stem and a physical seating collar, matching the still-head opening. Near-aligned insertion seats the collar at the rim and constrains the thermometer, with the bulb at the side-arm height. No target ghost or chemistry change is introduced. Tests cover a nudged stand settling, surface friction, near-aligned thermometer seating, and clicking the assembled heater without moving the glassware.
+
+
+## Analogue thermometer with circular digital reading
+
+The owner requested retaining the analogue thermometer while adding a number in a circle above it. It starts at 20°C, warms to acetone's approximate boiling point (56°C), holds during the main acetone collection stage, then rises towards 100°C. Heater switch-off cools towards 20°C. This explicitly authorises replacing the earlier qualitative-only readout. The analogue column and number share a reading; the display is a simplified teaching curve, with the existing two-volatile-component balance preserved. Numerical visual rates and the final-acetone transition threshold are documented implementation defaults.

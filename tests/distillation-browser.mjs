@@ -52,7 +52,7 @@ try{
   await send('Input.dispatchMouseEvent',{type:'mousePressed',button:'left',clickCount:1,...a});await send('Input.dispatchMouseEvent',{type:'mouseMoved',buttons:1,...b});await send('Input.dispatchMouseEvent',{type:'mouseReleased',button:'left',clickCount:1,...b});
  }
  async function play(reversed=false){
- await pause(700);if(!reversed)await screenshot('chemtopia-distillation-initial.png');
+ await pause(700);assert.equal(await evaluate("document.querySelector('#temperature-reading').textContent"),'20');if(!reversed)await screenshot('chemtopia-distillation-initial.png');
  await drag('flask',390,327,{dy:94,path:[{x:760,y:100},{x:390,y:100}]});await pause(500);await connected('flask','Clamp stand A');
  let f=await pose('flask');let drop=await drag('source',f.x-34.4,155,{release:false,path:[{x:95,y:120},{x:f.x-34.4,y:120}]});
  await key(' ','Space');await pause(3900);await drop.move(95,140);await drop.move(95,413);await drop();await pause(300);
@@ -75,7 +75,12 @@ try{
  await click('[data-equipment=tap]');await key(' ','Space');assert.ok((await evaluate("document.querySelector('#action').textContent")).includes('Stop water'));
  await click('[data-equipment=heater]');await key(' ','Space');await pause(13500);
  assert.equal(await evaluate("document.querySelector('#result').hidden"),true);
- await screenshot(reversed?'chemtopia-distillation-reversed.png':'chemtopia-distillation-running.png');await click('#finish');
+ assert.equal(await evaluate("document.querySelector('#temperature-reading').textContent"),'56','digital readout holds at acetone plateau');
+ await screenshot(reversed?'chemtopia-distillation-reversed.png':'chemtopia-distillation-running.png');
+ await key(' ','Space');await pause(1000);
+ const cooled=Number(await evaluate("document.querySelector('#temperature-reading').textContent"));
+ assert.ok(cooled<56&&cooled>20,'heater switch-off cools the thermometer');
+ await click('#finish');
 
  assert.ok(await evaluate("!!document.querySelector('#explanation')"),'distillation completes through real assembly');
  const normal=Number.parseFloat(await evaluate("document.querySelector('#recovery').textContent"));assert.ok(normal>0);

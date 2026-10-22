@@ -56,3 +56,22 @@ test('thermometer collar stops a drag at the still-head rim instead of falling i
  assert.ok(s.items.thermometer.y<=s.items.head.y-15+1);
  placeItem(s,'thermometer');assert.ok(s.links.some(l=>l.id==='head-thermometer'));
 });
+
+test('thermometer warms from 20, holds at 56 during acetone collection, then rises to 100',()=>{
+ const s=assembled();assert.equal(s.items.thermometer.temperature,20);
+ run(s,3);const warm=s.items.thermometer.temperature;assert.ok(warm>20&&warm<56);
+ run(s,7);assert.equal(s.items.thermometer.temperature,56);assert.ok(s.items.receiverA.acetone>0);
+ run(s,2);assert.equal(s.items.thermometer.temperature,56);
+ run(s,30);assert.equal(s.items.thermometer.temperature,100);conserved(s);
+});
+test('switch-off cools the digital/analogue reading towards 20 and reheating resumes',()=>{
+ const s=assembled();run(s,12);s.items.heater.on=false;run(s,2);
+ assert.ok(s.items.thermometer.temperature<56&&s.items.thermometer.temperature>20);
+ run(s,20);assert.equal(s.items.thermometer.temperature,20);
+ s.items.heater.on=true;run(s,2);assert.ok(s.items.thermometer.temperature>20);conserved(s);
+});
+test('missing heater contact and detached thermometer cannot show a heated sample reading',()=>{
+ const cold=assembled();cold.items.heater.x=1100;run(cold,10);assert.equal(cold.items.thermometer.temperature,20);
+ const s=assembled();run(s,12);s.links=s.links.filter(l=>l.id!=='head-thermometer');run(s,20);
+ assert.equal(s.items.thermometer.temperature,20);assert.ok(s.items.flask.temperature>=56);conserved(s);
+});
