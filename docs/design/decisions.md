@@ -117,3 +117,9 @@ The implementation uses locally bundled Matter.js 0.20.0 under MIT. The stand ge
 The owner requested adding a distillation experiment now, using the same ideas and interaction principles, with a temporary bottom-of-page button for entry. This selects the next increment and supersedes deferral of all additional techniques. The earlier S01 choice already identifies simple distillation of salt solution to collect water.
 
 [The concrete distillation specification](distillation-prototype-spec.md) proposes the new apparatus, heating/cooling model, scientific limits, recovery criterion, question and temporary reset-on-switch navigation. Those details are presented for owner review, not silently treated as approved chemistry decisions. No distillation simulation code is added by this documentation step.
+
+## Distillation corrections — real cooling connections and acetone recovery
+
+The owner explicitly rejected the first distillation proposal and welcomed being asked. Students must be able to connect cooling-water supply to the upper condenser port, keep operating the experiment and obtain a lower yield. Movable cooling-water connections replace the rejected cooling-switch simplification. Exact cooling efficiencies are not selected.
+
+The owner then selected an **acetone–water mixture**, with **acetone as the collected target**, replacing the original salt-solution/water-recovery example for this experiment. This does not imply a pure-acetone distillate, a selected feed ratio or approval of the remaining first proposal. The revised specification distinguishes acetone recovery from purity, represents both components as volatile and keeps coolant water separate. Vapour-composition rules, starting composition, numerical parameters, collection conditions and assessment remain proposed or open. See [the revised specification](distillation-prototype-spec.md).

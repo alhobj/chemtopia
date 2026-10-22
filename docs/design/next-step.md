@@ -2,7 +2,7 @@
 
 ## Current step — distillation requested, chemistry details for review
 
-The owner requested a new distillation experiment using the existing interaction principles, entered through a temporary button at the bottom of the page. [The concrete distillation proposal](distillation-prototype-spec.md) records apparatus, heater/cooling controls, finite scientific model, wrong actions, completion, navigation and verification. The new scientific details and question await owner review; the distillation simulation has not been coded.
+The owner requested a new distillation experiment using the existing interaction principles, entered through a temporary button at the bottom of the page. [The concrete distillation proposal](distillation-prototype-spec.md) records apparatus, heater/cooling controls, finite scientific model, wrong actions, completion, navigation and verification. The owner rejected the cooling-switch/salt-solution proposal. The revision now records acetone–water feed, acetone recovery and movable condenser-water hoses, with upper-port supply producing lower yield. Starting composition, the new scientific model and assessment remain for review; distillation has not been coded.
 
 ## Implemented filtration increment
 

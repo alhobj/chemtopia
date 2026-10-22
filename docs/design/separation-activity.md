@@ -16,6 +16,7 @@ S04 A
 ## Chosen content and interaction
 
 - **S01:** sand/water filtration, salt recovery by evaporation, water recovery by simple distillation, and paper chromatography. The supplied guide now verifies solvation and recrystallisation as additional named common SL/HL coverage in Structure 1.1.1. Specific materials and implementation increments remain to approve.
+- **Distillation revision:** the later explicit selection supersedes the original S01 distillation example: use acetone and water, collecting acetone. Students can connect cooling-water supply to the upper condenser port and obtain a lower yield. See [the revised distillation specification](distillation-prototype-spec.md); the overall model remains under review.
 - **Equipment:** all apparatus needed for the included activities is available immediately. This is a local exception to the broader equipment-unlock preference, not cancellation of that later system.
 - **S02-C:** no placement guides. Students arrange the setup themselves. Feedback can explain a problematic arrangement, but it must not act as a hidden correct-only placement gate.
 - **S03:** students perform the practical actions themselves, including heater controls and dragging a beaker over a funnel to pour. Do not substitute a single Run Experiment button, complete the procedure automatically or accept only the correct sequence.

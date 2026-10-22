@@ -12,7 +12,7 @@ Source: owner-supplied IB *Chemistry guide*, first assessment 2025, published Fe
 | Filtration | Same | Owner already chose sand/water filtration to recover sand. Detailed setup/actions/outcomes remain to approve. |
 | Recrystallisation | Same; also Tool 1, p. 29 / PDF 35 | Newly verified addition to planned coverage. Choose a substance, solvent, purification objective and model before implementation. |
 | Evaporation | Structure 1.1.1; p. 33 / PDF 39 | Owner already chose salt recovery from solution. Do not treat evaporation alone as equivalent to recrystallisation. |
-| Distillation | Same; also Tool 1, p. 29 / PDF 35 | Owner chose simple distillation of salt solution to collect water. This general syllabus wording does not by itself name a separate compulsory fractional-distillation task. |
+| Distillation | Same; also Tool 1, p. 29 / PDF 35 | Owner now selects an acetone–water mixture to collect acetone, superseding the earlier salt-solution example. This example is owner-selected, not specifically prescribed by the guide. This general syllabus wording does not by itself name a separate compulsory fractional-distillation task. |
 | Paper chromatography | Structure 1.1.1; p. 33 / PDF 39 | Owner explicitly selected it. Sample, solvent, paper and expected results are not yet chosen. |
 
 Solvation is included because the guide explicitly names it; it is not automatically a complete isolation technique on its own. A combined dissolution/filtering/recovery task is a possible teaching approach, not a newly approved experiment.
@@ -52,10 +52,12 @@ The previously offered oil/water separating-funnel task was not selected in S01.
 | --- | --- | --- |
 | Sand and water | Recover sand by filtration | Setup, represented particle/material states, pouring controls, wrong arrangements and outcomes |
 | Salt solution: evaporation | Recover salt | Substance specification, heating/drying limits, observation model and feedback |
-| Salt solution: simple distillation | Collect water while salt remains | Apparatus, heating/cooling controls, connections and consequences of incorrect assembly |
+| Acetone–water: simple distillation | Collect acetone as an acetone-enriched distillate; replaces the original salt-solution example | Starting composition, vapour/enrichment model, collection/success criteria and quantitative cooling/yield behaviour; movable hoses and upper-port supply as a lower-yield mistake are explicitly requested |
 | Paper chromatography | Separate mixture components | Sample, solvent, baseline/spotting model, development, observations and when R_F is introduced |
 | Solvation-based separation | Newly verified requested coverage | Whether to use a combined task, sample and which component dissolves |
 | Recrystallisation | Newly verified requested coverage | Substance, solvent, purification goal, cooling/filtration/drying model and comparison with evaporation |
+
+The current [distillation proposal](../design/distillation-prototype-spec.md) records the owner’s acetone–water and hose-connection choices. Acetone recovery and distillate purity are distinct; both process components can enter vapour. The model has not yet been approved.
 
 All needed equipment remains available from the start. No placement guides, hidden correct-only snapping or single Run Experiment button. Physically possible supported wrong actions remain available, with owner-approved simulated consequences and equivalent keyboard controls.
 
