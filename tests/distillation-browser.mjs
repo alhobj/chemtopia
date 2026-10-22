@@ -39,9 +39,21 @@ try{
   if(release)await drop();return drop;
  }
  const screenshot=async name=>{const r=await send('Page.captureScreenshot',{format:'png',captureBeyondViewport:false});await writeFile(path.join(tmpdir(),name),Buffer.from(r.data,'base64'));};
+ await click('#go-chromatography');
+ for(let i=0;i<40;i++){if(await evaluate("!!document.querySelector('#preparation-title')"))break;await pause(100);}
+ assert.ok((await evaluate("document.querySelector('#preparation-title').textContent")).includes('next separation'));
+ await click('#back-filtration');
+ for(let i=0;i<40;i++){if(await evaluate("!!document.querySelector('#go-distillation')"))break;await pause(100);}
  await click('#go-distillation');
  for(let i=0;i<60;i++){if(await evaluate("document.querySelectorAll('.equipment-button').length===12"))break;await pause(100);}
  assert.equal(await evaluate("document.querySelectorAll('.equipment-button').length"),12);
+ await click('#go-chromatography');
+ for(let i=0;i<40;i++){if(await evaluate("!!document.querySelector('#preparation-title')"))break;await pause(100);}
+ assert.ok(await evaluate("!!document.querySelector('#back-filtration')&&!!document.querySelector('#back-distillation')"));
+ await click('#back-distillation');
+ for(let i=0;i<40;i++){if(await evaluate("document.querySelectorAll('.equipment-button').length===12"))break;await pause(100);}
+ console.log('PASS chromatography preparation links from both labs and return navigation');
+
  const pose=async id=>evaluate(`(()=>{const m=document.querySelector('[data-id="${id}"]').transform.baseVal.consolidate().matrix;return{x:m.e,y:m.f,angle:Math.atan2(m.b,m.a)*180/Math.PI};})()`);
  const local=async(id,x,y)=>evaluate(`(()=>{const p=new DOMPoint(${x},${y}).matrixTransform(document.querySelector('[data-id="${id}"]').getScreenCTM()).matrixTransform(document.querySelector('#bench').getScreenCTM().inverse());return{x:p.x,y:p.y};})()`);
  const connected=async(id,name)=>assert.ok((await evaluate(`document.querySelector('[data-id="${id}"]').getAttribute('aria-description')`)).includes(name),`${id} connected to ${name}`);

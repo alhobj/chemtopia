@@ -17,6 +17,7 @@ For step-by-step terminal instructions and a file guide, see [Run and edit in VS
 - [Decisions and requirements](docs/design/decisions.md)
 - [First activity: separation techniques](docs/design/separation-activity.md)
 - [Approved filtration prototype specification](docs/design/filtration-prototype-spec.md)
+- [Next experiment: paper chromatography proposal](docs/design/chromatography-prototype-spec.md)
 - [Approved distillation specification](docs/design/distillation-prototype-spec.md)
 - [IB curriculum reference and source status](docs/curriculum/README.md)
 - [Syllabus topic index](docs/curriculum/syllabus-index.md)

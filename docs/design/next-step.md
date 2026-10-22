@@ -1,8 +1,10 @@
 # Work steps and verification
 
-## Current step — distillation requested, chemistry details for review
+## Current step — paper chromatography requested
 
-The owner requested a new distillation experiment using the existing interaction principles, entered through a temporary button at the bottom of the page. [The concrete distillation proposal](distillation-prototype-spec.md) records apparatus, heater/cooling controls, finite scientific model, wrong actions, completion, navigation and verification. The owner rejected the cooling-switch/salt-solution proposal. The revision now records acetone–water feed, acetone recovery and movable condenser-water hoses, with upper-port supply producing lower yield. Starting composition, the new scientific model and assessment remain for review; distillation has not been coded.
+The owner requested starting paper chromatography with the existing interaction principles and a link from both labs. [The concrete first-step proposal](chromatography-prototype-spec.md) records the proposed sample, solvent, apparatus, practical actions, development model, mistakes, review and optional R_F task. Sample/solvent and measurement scope are awaiting the owner's choices. Navigation and a clearly labelled preparation page are ready; chromatography chemistry is not implemented yet.
+
+Distillation is implemented and includes movable cooling hoses, the 50:50 acetone–water feed, physical assembly and the analogue/circular digital thermometer. Earlier pending distillation statements below are historical.
 
 ## Implemented filtration increment
 

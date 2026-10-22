@@ -140,3 +140,8 @@ The thermometer has a shorter stem and a physical seating collar, matching the s
 ## Analogue thermometer with circular digital reading
 
 The owner requested retaining the analogue thermometer while adding a number in a circle above it. It starts at 20°C, warms to acetone's approximate boiling point (56°C), holds during the main acetone collection stage, then rises towards 100°C. Heater switch-off cools towards 20°C. This explicitly authorises replacing the earlier qualitative-only readout. The analogue column and number share a reading; the display is a simplified teaching curve, with the existing two-volatile-component balance preserved. Numerical visual rates and the final-acetone transition threshold are documented implementation defaults.
+
+
+## Paper chromatography requested
+
+The owner requested starting the next paper chromatography experiment using the same ideas, with links from both filtration and distillation. This selects the technique and navigation, carrying forward the existing interaction direction. The linked preparation page is scaffolded. Sample, solvent, development/consequence model and whether measurement/R_F belong in the first increment remain for review in [the proposal](chromatography-prototype-spec.md); recommendations are not recorded as owner decisions.
