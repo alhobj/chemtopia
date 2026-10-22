@@ -88,3 +88,8 @@ Guide-reference checks: source publication/assessment identifiers confirmed; six
 ## Concrete filtration prototype specification prepared
 
 P01–P09 were answered. A reviewable specification now records the selected scope and proposes the finite apparatus/actions, conservation rules, recovery criterion, completion question, keyboard mapping, acceptance checks and verification plan. The owner must approve the concrete specification before coding, as promised in the questionnaire and required by AGENTS.md. No further questionnaire is needed unless that review exposes a new unresolved decision.
+
+
+## Approved acetone–water distillation implementation
+
+The owner approved the revised distillation proposal with “Implement it” and selected equal amounts (50:50) in the follow-up. This authorises the bounded local distillation increment in [the specification](distillation-prototype-spec.md), alongside filtration. It includes movable coolant hoses, operable upper-port supply with reduced recovery, both volatile sample components, supported glassware, student-operated pouring/heating, Finish review and the explanation question. Numerical coefficients are labelled qualitative implementation defaults, not measured data or additional owner answers. The temporary bottom navigation starts a fresh attempt on switching. Commit/push authorisation applies; public deployment remains unapproved.

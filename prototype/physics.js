@@ -13,7 +13,8 @@ function polygon(vertices){
 }
 function shape(item){
  let parts;
- if(item.kind==='beaker'){
+ if(item.collision){parts=item.collision.map(p=>p.vertices?polygon(p.vertices):p.radius?Bodies.circle(p.x,p.y,p.radius):rect(p.x,p.y,p.w,p.h));}
+ else if(item.kind==='beaker'){
   const w=item.id==='source'?92:78,h=item.id==='source'?112:96;
   parts=[rect(-w/2+2.5,h/2,5,h),rect(w/2-2.5,h/2,5,h),rect(0,h-2.5,w,5)];
  }else if(item.kind==='stand'){
@@ -26,16 +27,17 @@ function shape(item){
  const body=Body.create({parts,label:item.id,friction:.55,frictionStatic:1,restitution:.05,frictionAir:.012,slop:.05});
  body.collisionFilter.category=item.kind==='funnel'?2:item.kind==='paper'?4:1;
  body.collisionFilter.mask=~0;
- Body.setMass(body,item.kind==='stand'?8:item.kind==='beaker'?1:item.kind==='funnel'?.35:.04);
+ Body.setMass(body,item.mass??(item.kind==='stand'?8:item.kind==='beaker'?1:item.kind==='funnel'?.35:.04));
  return {body,offset:{...body.position},last:null};
 }
 export class PhysicsWorld {
  constructor(state,onSpill){
-  this.state=state;this.onSpill=onSpill;this.entries=new Map();this.heldId=null;this.accumulator=0;this.seat=null;
-  this.engine=Engine.create({enableSleeping:true,positionIterations:12,velocityIterations:10});
+  this.state=state;this.onSpill=onSpill;this.links=new Map();this.entries=new Map();this.heldId=null;this.accumulator=0;this.seat=null;
+  this.engine=Engine.create({enableSleeping:true,positionIterations:12,velocityIterations:10,constraintIterations:6});
   this.engine.gravity.y=1.5;
-  this.bench=Bodies.rectangle(500,BENCH_Y+50,2200,100,{isStatic:true,label:'bench',friction:.8});
-  Composite.add(this.engine.world,[this.bench,Bodies.rectangle(-30,200,60,1500,{isStatic:true,label:'edge'}),Bodies.rectangle(1030,200,60,1500,{isStatic:true,label:'edge'})]);
+  const width=state.width||1000;
+  this.bench=Bodies.rectangle(width/2,BENCH_Y+50,width+1200,100,{isStatic:true,label:'bench',friction:.8});
+  Composite.add(this.engine.world,[this.bench,Bodies.rectangle(-30,200,60,1500,{isStatic:true,label:'edge'}),Bodies.rectangle(width+30,200,60,1500,{isStatic:true,label:'edge'})]);
   Events.on(this.engine,'collisionStart',event=>{
    // A tiny impact asymmetry breaks the exact mathematical balance of the thin stem.
    // This impulse only occurs on contact; there is no in-air tipping animation.
@@ -46,6 +48,8 @@ export class PhysicsWorld {
     if(funnel&&other.label==='bench'&&!funnel.isStatic&&Math.abs(funnel.angle)<5*RAD)Body.setAngularVelocity(funnel,.035);
    }
   });
+  for(const shelf of state.shelves||[])Composite.add(this.engine.world,rect(shelf.x,shelf.y,shelf.w,shelf.h));
+  for(const body of Composite.allBodies(this.engine.world))if(!body.label||body.label==='Rectangle Body')Body.setStatic(body,true);
   this.sync();
  }
  writePose(item,entry){
@@ -62,12 +66,12 @@ export class PhysicsWorld {
    entry.body.collisionFilter.mask=this.heldId==='paper'?(item.kind==='funnel'?~4:item.kind==='paper'?~2:~0):~0;
    const pose=[item.x,item.y,item.angle||0];
    if(!entry.last||pose.some((v,i)=>Math.abs(v-entry.last[i])>1e-8))this.writePose(item,entry);
-   if(entry.body.isStatic!==(item.id===this.heldId)){Body.setStatic(entry.body,item.id===this.heldId);Sleeping.set(entry.body,false);}
+   if(entry.body.isStatic!==((item.fixed||item.id===this.heldId))){Body.setStatic(entry.body,Boolean(item.fixed||item.id===this.heldId));Sleeping.set(entry.body,false);}
    entry.last=pose;
   }
  }
  obstacles(id,excluded=[]){return Composite.allBodies(this.engine.world).filter(b=>b.label!==id&&!excluded.includes(b.label)&&!(id==='paper'&&b.label==='funnel'));}
- blocked(body,excluded=[]){return contacts(body,this.obstacles(body.label,excluded)).some(c=>c.depth>.4);}
+ blocked(body,excluded=[]){return contacts(body,this.obstacles(body.label,excluded)).some(c=>Matter.Detector.canCollide(c.bodyA.parent.collisionFilter,c.bodyB.parent.collisionFilter)&&c.depth>.4);}
  read(){
   for(const [id,entry] of this.entries){
    const item=this.state.items[id],offset=rotate(entry.offset,entry.body.angle);
@@ -81,14 +85,15 @@ export class PhysicsWorld {
  }
  hold(id){
   if(id==='funnel'&&this.seat){for(const c of this.seat)Composite.remove(this.engine.world,c);this.seat=null;}
-  this.heldId=id;this.sync();const entry=this.entries.get(id);if(!entry)return;
+  this.heldId=id;this.sync();this.syncLinks();const entry=this.entries.get(id);if(!entry)return;
   Body.setVelocity(entry.body,{x:0,y:0});Body.setAngularVelocity(entry.body,0);
  }
- release(){this.heldId=null;this.sync();}
+ release(){this.heldId=null;this.sync();this.syncLinks();}
  moveHeld(id,x,y){
   this.hold(id);const entry=this.entries.get(id);if(!entry)return;
   const item=this.state.items[id],dx=x-item.x,dy=y-item.y,steps=Math.max(1,Math.ceil(Math.hypot(dx,dy)/2));
   const assembly=[entry.body];
+  if(this.state.links){const ids=new Set([id]);let added=true;while(added){added=false;for(const link of this.state.links)if(ids.has(link.a)||ids.has(link.b)){for(const next of [link.a,link.b])if(!ids.has(next)){ids.add(next);added=true;}}}for(const next of ids)if(next!==id&&this.entries.has(next))assembly.push(this.entries.get(next).body);}
   if(id==='stand'&&this.seat)assembly.push(this.entries.get('funnel').body);
   const ids=assembly.map(b=>b.label);
   const tryStep=delta=>{
@@ -116,16 +121,29 @@ export class PhysicsWorld {
   this.read();return Math.abs(item.angle-degrees)<3;
  }
  step(seconds,heldId){
-  this.heldId=heldId;this.sync();this.accumulator+=Math.min(seconds,.05);
+  this.heldId=heldId;this.sync();this.syncLinks();this.accumulator+=Math.min(seconds,.05);
   while(this.accumulator>=1/120){Engine.update(this.engine,1000/120);this.seatOnContact();this.accumulator-=1/120;}
   this.read();
   const hadSpill=this.state.passiveFlow.length>0;this.state.passiveFlow=[];
   for(const item of Object.values(this.state.items)){
    const root=item.parent?this.state.items[item.parent]:item;
    const radians=(root.angle||0)*RAD,angle=Math.atan2(Math.sin(radians),Math.cos(radians))/RAD;
-   if(Math.abs(angle)>(root.kind==='funnel'?36:65)&&(item.water||item.sand))this.onSpill(item,Math.min(1,seconds*4));
+   if(Math.abs(angle)>(root.kind==='funnel'?36:65)&&(item.water||item.sand||item.acetone))this.onSpill(item,Math.min(1,seconds*4));
   }
   return hadSpill||this.state.passiveFlow.length>0||[...this.entries.values()].some(e=>!e.body.isSleeping&&!e.body.isStatic);
+ }
+ syncLinks(){
+  for(const {body} of this.entries.values())body.collisionFilter.group=0;
+  const components=[];for(const link of [...(this.state.links||[]),...(this.state.contactPairs?.()||[]).map(([a,b])=>({a,b}))]){const matches=components.filter(c=>c.has(link.a)||c.has(link.b));const set=new Set([link.a,link.b,...matches.flatMap(c=>[...c])]);for(const match of matches)components.splice(components.indexOf(match),1);components.push(set);}
+  components.forEach((set,i)=>{for(const id of set){const entry=this.entries.get(id);if(entry)entry.body.collisionFilter.group=-100-i;}});
+  const wanted=new Set((this.state.links||[]).map(l=>l.id));
+  for(const [id,constraints] of this.links)if(!wanted.has(id)){for(const c of constraints)Composite.remove(this.engine.world,c);this.links.delete(id);}
+  for(const link of this.state.links||[]){
+   if(this.links.has(link.id))continue;
+   const a=this.entries.get(link.a),b=this.entries.get(link.b);if(!a||!b)continue;
+   const constraints=[-28,28].map(dx=>Constraint.create({bodyA:a.body,pointA:rotate({x:link.pa.x+dx-a.offset.x,y:link.pa.y-a.offset.y},a.body.angle),bodyB:b.body,pointB:rotate({x:link.pb.x+dx-b.offset.x,y:link.pb.y-b.offset.y},b.body.angle),length:0,stiffness:.99,damping:.25}));
+   Composite.add(this.engine.world,constraints);this.links.set(link.id,constraints);
+  }
  }
  seatOnContact(){
   if(this.seat||this.heldId==='funnel')return;

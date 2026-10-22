@@ -1,4 +1,4 @@
-# Filtration prototype
+# Separation prototypes
 
 Approved first increment: a standalone sand-and-water filtration workbench. See [the approved specification](../docs/design/filtration-prototype-spec.md).
 
@@ -24,7 +24,7 @@ For VS Code terminal instructions and a file guide, see [Run and edit in VS Code
 - Changing selection, finishing, restarting, losing focus or hiding the page stops pouring. An empty beaker stops automatically.
 - **Restart** resets the whole task. **Finish** ends practical work and shows material distribution. A successful result opens the approved explanation question.
 
-There are no currency rewards, room navigation, avatar selection or additional separation activities in this increment.
+Use the bottom **Go to distillation** button for the second experiment. Switching experiments starts a fresh attempt. There are no currency rewards, room navigation or avatar selection.
 
 ## Representation and limitations
 
@@ -46,3 +46,14 @@ npm run test:browser
 Model checks use Node's built-in test runner. Browser checks need Chromium at `/usr/bin/chromium`, or set `CHROMIUM` to its executable path. They launch a disposable headless browser and a temporary static server, exercise real mouse/keyboard input and close both afterwards. They do not install browser packages.
 
 Browser screenshots are written to the operating system temporary directory for inspection. Browser support beyond the tested Chromium environment is not yet verified.
+
+
+## Distillation
+
+The [approved distillation specification](../docs/design/distillation-prototype-spec.md) uses equal model mole amounts of acetone and water. Pour feed into the flask, assemble and support the glass path, place a collecting beaker beneath the condenser outlet, and drag both ends of each water hose onto fittings. Select the heater or tap and use Space or the action button to switch it on/off. Picking up apparatus disconnects its joints; connected hose ends follow their fittings until dragged away.
+
+Both sample liquids can vaporise. Early collected liquid is acetone-enriched, rather than pure acetone. Finish reports acetone recovery separately from collected composition, together with vessels, spills and escaped vapour. Direct feed transfer does not count as distilled recovery.
+
+Either coolant port accepts the supply. In this qualitative model, upper-port supply fills the jacket less effectively and collects less acetone under comparable heating conditions. Coolant stays separate from the sample. Jacket fill, relative volatility and heating rates are readable prototype approximations, not calibrated laboratory predictions.
+
+Clamps and compatible glass joints attach at close contact. Temporary collision exceptions represent opening clamps and inserting joints; connected equipment forms a constrained assembly. Flexible hoses are visual connections, without hose tension or fluid-pressure simulation. The heater begins on the bench, unconnected; it remains movable. The thermometer shows qualitative heat, without numerical temperature. No pressure, bumping, breakage or injuries are simulated.

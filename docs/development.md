@@ -42,6 +42,9 @@ If the `code` command is unavailable, open the folder through VS Code's File men
 | `prototype/app.js` | Mouse and Space controls, drawing apparatus, results |
 | `prototype/model.js` | Material transfers, paper containment and experiment results |
 | `prototype/physics.js` | Hitboxes, gravity, contacts, ring support and tipping |
+| `prototype/distillation.html` | Distillation page and temporary return navigation |
+| `prototype/distillation-app.js` | Distillation controls, equipment drawing and review |
+| `prototype/distillation-model.js` | Acetone/water balance, coolant circuit and joints |
 | `scripts/serve.mjs` | Node.js static file server |
 | `tests/model.test.mjs` | Chemistry/material and movement checks |
 

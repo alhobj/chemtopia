@@ -49,3 +49,8 @@ After playing the prototype, the owner requested that released unsupported equip
 ## Owner's collision revision
 
 The owner requested non-overlapping solid hitboxes for all equipment and the stand, gravity/contact-driven tipping rather than automatic rotation, contents spilling when tipped, and corrected ring seating, followed by a Git push. docs/design/physics-interactions.md records the implemented scope. This supersedes the earlier simple tipping animation and preservation of sand through a tip. A locally bundled MIT-licensed Matter.js dependency implements the requested collisions; no package installation or deployment is required.
+
+
+## Approved acetone–water distillation implementation
+
+The owner approved the revised distillation proposal with “Implement it” and selected equal amounts (50:50) in the follow-up. This authorises the bounded local distillation increment in [the specification](docs/design/distillation-prototype-spec.md), alongside filtration. It includes movable coolant hoses, operable upper-port supply with reduced recovery, both volatile sample components, supported glassware, student-operated pouring/heating, Finish review and the explanation question. Numerical coefficients are labelled qualitative implementation defaults, not measured data or additional owner answers. The temporary bottom navigation starts a fresh attempt on switching. Commit/push authorisation applies; public deployment remains unapproved.

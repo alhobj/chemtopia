@@ -52,12 +52,12 @@ The previously offered oil/water separating-funnel task was not selected in S01.
 | --- | --- | --- |
 | Sand and water | Recover sand by filtration | Setup, represented particle/material states, pouring controls, wrong arrangements and outcomes |
 | Salt solution: evaporation | Recover salt | Substance specification, heating/drying limits, observation model and feedback |
-| Acetone–water: simple distillation | Collect acetone as an acetone-enriched distillate; replaces the original salt-solution example | Starting composition, vapour/enrichment model, collection/success criteria and quantitative cooling/yield behaviour; movable hoses and upper-port supply as a lower-yield mistake are explicitly requested |
+| Acetone–water: simple distillation | Collect acetone as an acetone-enriched distillate; replaces the original salt-solution example | Approved local prototype: 50:50 model mole amounts, both components volatile, qualitative enrichment, movable hoses and reduced recovery with upper-port supply; no calibrated yield claim |
 | Paper chromatography | Separate mixture components | Sample, solvent, baseline/spotting model, development, observations and when R_F is introduced |
 | Solvation-based separation | Newly verified requested coverage | Whether to use a combined task, sample and which component dissolves |
 | Recrystallisation | Newly verified requested coverage | Substance, solvent, purification goal, cooling/filtration/drying model and comparison with evaporation |
 
-The current [distillation proposal](../design/distillation-prototype-spec.md) records the owner’s acetone–water and hose-connection choices. Acetone recovery and distillate purity are distinct; both process components can enter vapour. The model has not yet been approved.
+The current [distillation proposal](../design/distillation-prototype-spec.md) records the owner’s acetone–water and hose-connection choices. Acetone recovery and distillate purity are distinct; both process components can enter vapour. The owner approved the revised prototype and subsequently chose a 50:50 feed; implementation defaults remain explicitly qualitative.
 
 All needed equipment remains available from the start. No placement guides, hidden correct-only snapping or single Run Experiment button. Physically possible supported wrong actions remain available, with owner-approved simulated consequences and equivalent keyboard controls.
 
