@@ -4,7 +4,7 @@
 
 The owner selected L07 after noting that potassium-nitrate/sand recrystallisation already covers the proposed combined-separation sequence. The five existing labs remain implemented. A separate salt-and-sand activity is not the next development step.
 
-[The concrete first-step proposal](solution-preparation-prototype-spec.md) defines a sodium-chloride stock preparation and tenfold dilution, instrument controls, quantitative material accounting, mistakes, three review questions and acceptance checks. The activity is selected; the recipe and new instrument details await owner review under AGENTS.md before implementation.
+The owner approved [the specification](solution-preparation-prototype-spec.md), requiring pouring that is easy for non-gamers. The sixth lab implements sodium-chloride stock preparation and tenfold dilution with discrete additions, quantitative material accounting and three review questions. See [the implementation review](solution-preparation-prototype-review.md). Owner playtesting is the next review step; further roadmap labs remain unselected.
 
 ## Implemented filtration increment
 

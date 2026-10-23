@@ -67,14 +67,14 @@ export function checkQuestion(question,values){
  if(question.answers)return values.answer==='0';
  return question.fields.every(f=>typeof values[f.id]==='string'&&values[f.id].trim()!==''&&Number.isFinite(Number(values[f.id]))&&Math.abs(Number(values[f.id])-f.answer)<=f.tolerance+1e-10);
 }
-export function reviewQuestions(lab){
- return `<form id="explanation"><h3>Review questions</h3><p>Answer all three questions. Questions 2 and 3 apply the ideas to harder examples. Numerical data below are practice examples.</p>${QUESTION_BANK[lab].map((q,i)=>`<fieldset data-question="${i+1}"><legend>${i+1}. ${q.prompt}</legend>${q.answers?answerOptions(q.answers,i===0?'answer':`q${i+1}-answer`):q.fields.map(f=>`<label class="calculation-answer"><span>${f.label}</span><input name="q${i+1}-${f.id}" type="number" step="any" required></label>`).join('')}<p class="review-feedback" data-review-feedback="${i+1}" aria-live="polite"></p></fieldset>`).join('')}<button class="primary" type="submit">Check answers</button><p id="question-feedback" aria-live="polite"></p></form>`;
+export function reviewQuestions(lab,questions=QUESTION_BANK[lab]){
+ return `<form id="explanation"><h3>Review questions</h3><p>Answer all three questions. Questions 2 and 3 apply the ideas to harder examples. Use the data specified in each question.</p>${questions.map((q,i)=>`<fieldset data-question="${i+1}"><legend>${i+1}. ${q.prompt}</legend>${q.answers?answerOptions(q.answers,i===0?'answer':`q${i+1}-answer`):q.fields.map(f=>`<label class="calculation-answer"><span>${f.label}</span><input name="q${i+1}-${f.id}" type="number" step="any" required></label>`).join('')}<p class="review-feedback" data-review-feedback="${i+1}" aria-live="polite"></p></fieldset>`).join('')}<button class="primary" type="submit">Check answers</button><p id="question-feedback" aria-live="polite"></p></form>`;
 }
-export function bindReviewQuestions(lab,onComplete){
+export function bindReviewQuestions(lab,onComplete,questions=QUESTION_BANK[lab]){
  const form=document.getElementById('explanation');if(!form)return;
  form.addEventListener('submit',e=>{
   e.preventDefault();const data=new FormData(form);
-  const results=QUESTION_BANK[lab].map((q,i)=>{
+  const results=questions.map((q,i)=>{
    const values=q.answers?{answer:data.get(i===0?'answer':`q${i+1}-answer`)}:Object.fromEntries(q.fields.map(f=>[f.id,data.get(`q${i+1}-${f.id}`)]));
    const correct=checkQuestion(q,values);form.querySelector(`[data-review-feedback="${i+1}"]`).textContent=correct?'Correct.':q.hint;return correct;
   });

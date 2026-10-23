@@ -130,3 +130,12 @@ Distillation now seats nearby matching glass joints and hose fittings more forgi
 The lab now uses almost the entire window. Decorative branding bars, large page headings, slogans, prototype captions, availability labels and footers are removed. Objectives, selected-equipment actions, optional Controls, experiment feedback, review questions and compact lab-switch links remain. Controls start collapsed.
 
 The equipment drawer sits between the objective panel and the workbench. Hover opens it over the bench; moving away closes it. Drag stored equipment out into clear bench space, and drag it back to the drawer to store it. The visible room resizes without stretching equipment or changing the experiment's physics coordinates. On narrow screens, the objective/actions sit above the bench, with the drawer beside it.
+
+
+## Solution preparation and dilution
+
+Open `solution.html` or use **Solutions & dilution** in the bottom navigation. Prepare 100.0 mL of 0.100 mol dm⁻³ NaCl, then dilute a 10.00 mL aliquot to 100.0 mL. Use the balance, selectable spatula portions, beaker/rod, funnel, wash bottle, two volumetric flasks, stoppers and pipette/filler.
+
+This lab uses **discrete additions**, including Space: each press adds once and stops. Bulk water additions stop at 95 mL in a flask; use 1 mL or 0.1 mL buttons near the mark. Extra presses can overfill, but waiting cannot. Place the wash bottle beside a selected vessel to expose its water buttons. Set the spatula portion before dragging. Space fits a nearby funnel/stopper and mixes a selected stoppered flask; dragging a fitting removes it. Pipette filling and delivery are separate actions.
+
+The review shows actual preparation measurements and three questions, including mass and concentration calculations. See [the practical walkthrough and limitations](../docs/design/solution-preparation-prototype-review.md). The stock's prepared volume is recorded before sampling; its remaining volume is lower after the aliquot is taken.

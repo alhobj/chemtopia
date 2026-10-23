@@ -29,3 +29,5 @@ main{max-width:none;margin:0;padding:6px}.lab-shell{height:calc(100dvh - 58px);m
  .objective h2{font-size:21px}.objective>p:last-of-type{font-size:12px}.sample-key{margin:6px 0;padding:0;border:0}.sidebar .attempt-actions{position:static;margin:0;padding:0;align-self:end}.controls{margin:0}
  .equipment-menu{grid-column:1;grid-row:2}.bench-panel,.distillation-page .bench-panel{grid-column:2;grid-row:2}.experiment-switch{flex-direction:row;align-items:center}.experiment-link{font-size:11px;padding:5px 9px}
 }
+
+#fine-controls{display:flex;flex-wrap:wrap;gap:5px;margin-top:8px}#fine-controls button{flex:1;font-size:11px;padding:7px;min-height:38px}#instrument svg{display:block;max-height:150px;width:100%}#instrument p{font-size:11px;margin:4px 0}

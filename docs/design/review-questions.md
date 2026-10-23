@@ -17,3 +17,10 @@ For calculations, the displayed unit belongs to the input label. R_F is dimensio
 The reviewed IB guide's Structure 1.1.1 covers the separation techniques; Tool 1 covers practical separation and measurement. Structure 2.2.10 explicitly includes calculating and interpreting R_F (common SL/HL). See [the verified curriculum mapping](../curriculum/separation-techniques.md). The chosen examples and progression are project exercises, not IB-prescribed questions or a complete assessment rubric.
 
 Implementation: `prototype/review-questions.js`. Tests check all five three-question sets, balanced answer lengths, numerical denominators, baseline offsets, invalid inputs and real browser retry/completion. See [the beaker endpoint revision](recrystallisation-prototype-spec.md) for recrystallisation success; these questions do not require a second filtration.
+
+
+## Solution preparation and dilution
+
+1. Explain why concentration uses final solution volume rather than added water volume. Balanced shuffled choices; correct meaning: the final solution volume includes the dissolved solute.
+2. Calculate NaCl mass for 100.0 mL of 0.100 mol dm⁻³, using M = 58.44 g mol⁻¹: 0.5844 g, accepting appropriate rounding to 0.584–0.585 g.
+3. Calculate the final diluted concentration from the attempt's displayed dissolved mass and final volume. If the attempt is incomplete/unmixed, use a clearly labelled supplied example: 10.00 mL of 0.100 mol dm⁻³ stock made up to 100.0 mL gives 0.0100 mol dm⁻³. Typed answers and retry are required; practical completion is reported separately.

@@ -209,3 +209,10 @@ The shared drawer now occupies the divider between objective and bench and expan
 ## Solution preparation and dilution selected — 23 October 2026
 
 The owner corrected the recommendation for another combined separation lab: potassium-nitrate/sand recrystallisation already exercises that sequence. They requested “Start with solution preparation and dilution”. L07 is therefore the selected next activity; the other roadmap candidates remain proposals. The concrete NaCl recipe, quantitative instrument controls and model assumptions in [the first-step specification](solution-preparation-prototype-spec.md) are proposed details, not owner-selected answers. Existing local-only and commit/push boundaries continue.
+
+
+## Solution preparation approved; no reaction-time pouring — 23 October 2026
+
+The owner approved the concrete NaCl stock/dilution proposal with “Yes”, requiring easy controls for non-gamers rather than millisecond timing. The new lab therefore uses one finite portion per Space press or button click, with coarse water delivery pausing at 95 mL and explicit 1 mL/0.1 mL additions thereafter. Overfilling remains possible; no correct concentration is imposed automatically. Spatula portions can be chosen before dragging. Pipette filling/delivery and mixing are separate actions. The five earlier labs retain their controls.
+
+The implementation preserves mass/volume pools, retained liquid films, actual concentration consequences, measured pipette source/volume and stock preparation volume before sampling. Instrument resolution/tolerances and the dilute additive-volume model are labelled prototype assumptions. No new dependencies, student data or deployment are added. See [the review](solution-preparation-prototype-review.md).

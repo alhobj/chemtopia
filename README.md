@@ -2,7 +2,7 @@
 
 A chemistry learning game for students aged 16–19 studying IB Diploma Programme Chemistry.
 
-The local prototype includes sand-and-water filtration, acetone–water distillation, marker-ink paper chromatography, evaporation/salt-recovery, and recrystallisation workbenches. English is the project's working language. The larger game remains in design.
+The local prototype includes sand-and-water filtration, acetone–water distillation, marker-ink paper chromatography, evaporation/salt-recovery, recrystallisation, and solution preparation/dilution workbenches. English is the project's working language. The larger game remains in design.
 
 ## Try the prototype
 
@@ -14,9 +14,10 @@ For step-by-step terminal instructions and a file guide, see [Run and edit in VS
 
 ## Start here
 
-- [Next activity: solution preparation and dilution proposal](docs/design/solution-preparation-prototype-spec.md)
+- [Solution preparation and dilution](docs/design/solution-preparation-prototype-spec.md)
 
 - [Three-question lab reviews and calculations](docs/design/review-questions.md)
+- [Solution preparation: controls and verification](docs/design/solution-preparation-prototype-review.md)
 - [Equipment menu controls and preview](docs/design/equipment-menu-review.md)
 - [Further labs: proposed roadmap](docs/design/lab-roadmap.md)
 - [Curriculum evidence for proposed labs](docs/curriculum/lab-opportunities.md)

@@ -94,3 +94,8 @@ The owner requested more forgiving equipment placement, troubleshooting for esca
 ## Window-filling lab layout
 
 The owner requested removing decorative text shown in screenshots, a lab occupying almost the whole window, and the equipment drawer between objective and workbench. This authorises the shared layout revision across all five labs, collapsed Controls, compact navigation and proportional room resizing. Preserve essential objective/action controls, experiment diagnosis, review tasks and storage behaviour. No chemistry or physics-model change is part of this revision. Existing push authorisation applies.
+
+
+## Approved solution preparation and dilution increment
+
+The owner selected L07 and approved [the concrete specification](docs/design/solution-preparation-prototype-spec.md) with “Yes”, requiring controls easy for non-gamers. This authorises the NaCl stock preparation and tenfold dilution, balance, spatula, volumetric glassware/pipette, quantitative transfer/rinsing, meniscus view, stoppering/mixing and three-question review. All delivery actions in this new lab are discrete; no timing challenge or continuous flow. Bulk water pauses at 95 mL, with explicit small additions that still allow overfilling. Preserve meaningful wrong actions, material accounting, shared storage/layout, and existing local-only/commit/push boundaries. Other labs retain their approved controls.
