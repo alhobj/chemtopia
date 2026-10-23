@@ -29,3 +29,8 @@ The guide supports the learning and techniques; the proposed substances and scen
 The guide's skills section, printed pp. 27–32 / PDF pp. 33–38, supports measurement, controlled variables, processing data, uncertainty, conclusions and evaluation. Proposals can introduce those progressively without turning every interaction into a large worksheet. Exact instrument precision and uncertainty models must be selected before implementation.
 
 See [the roadmap and candidate activity briefs](../design/lab-roadmap.md), [the source record](sources.json), and [the existing separation mapping](separation-techniques.md). The full PDF/extraction remain private and ignored by Git.
+
+
+## Owner-selected combustion extension to L09
+
+The owner requested heating water in an aluminium container by burning fuel, then selected an ethanol spirit burner. This is implemented alongside the neutralisation cup. Its energy-transfer/calorimetry context uses the same verified common SL/HL Reactivity 1.1.1–1.1.4 and Tool 1 references in the table above. The student's heat estimate includes water and aluminium, then divides by moles of ethanol burned for an apparent molar result. The specific fuel, apparatus and rounded release/heat-transfer constants are project examples, not an IB-prescribed recipe or verified standard-property dataset. See [the specification](../design/calorimetry-prototype-spec.md) for assumptions and source-edition limits.

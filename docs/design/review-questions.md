@@ -37,3 +37,13 @@ The owner-requested CH₃COOH and NH₃ modes retain these three titration quest
 
 
 Independent acid/base choices now adapt the same three titration questions to all four pairings in either unknown role. Indicator mistakes do not replace recorded titres with ideal ones: a 10.00 mL early endpoint for a 25.00 mL sample and 0.100 M standard gives a calculated 0.0400 M apparent concentration. The post-attempt explanation distinguishes this from a reliable endpoint and allows every indicator choice. Weak–weak observations remain reviewable.
+
+## Neutralisation and combustion calorimetry
+
+Both workbenches use the same three-step progression with their actual recorded attempt where usable:
+
+1. Explain exothermic energy transfer from reaction to measured surroundings, with balanced shuffled choices.
+2. Calculate heat from the measured temperature rise and total liquid mass. Neutralisation uses Q = mcΔT, explicitly neglecting cup heat capacity; combustion includes the 50.0 g aluminium container with c = 0.900 J g⁻¹ K⁻¹.
+3. Calculate the signed apparent molar enthalpy, −Q/n in kJ mol⁻¹. Neutralisation uses the amount reacting between temperature readings; combustion uses recorded burner mass loss / 46.07 g mol⁻¹.
+
+Poor readings remain poor readings; heat loss and lag are not silently corrected. Incomplete numerical records use a labelled example (100 g liquid, 10 °C rise; 0.050 mol reacting or 0.500 g ethanol lost). Each numerical question requires typed work with rounding tolerance and retry. See [the model and curriculum limits](calorimetry-prototype-spec.md).

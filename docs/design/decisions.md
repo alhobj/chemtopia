@@ -240,3 +240,8 @@ The owner requested “Let the students pick both acid, bases and all indicators
 Bromothymol blue, phenolphthalein and methyl red are separate finite droppers available during every attempt. Nothing chooses, filters or adds the matching indicator automatically. Students may use no indicator or mix indicators. Each dye is conserved across reserves, liquid transfers, spills and storage, with a labelled qualitative blended-colour model.
 
 The review separates a near-stoichiometric reading from reliable visual endpoint detection. Wrong indicators can change at a biased titre and all such trials remain reviewable/calculable. Weak–weak trials are allowed, with post-attempt explanation that the available indicators cannot identify a sharp equivalence jump. See the revised specification and review.
+
+
+## 23 October 2026 — Two calorimetry labs
+
+The owner approved the proposed neutralisation calorimetry and requested combustion under an aluminium water container, then selected **ethanol spirit burner** in the fuel follow-up. Implement the insulated HCl/NaOH cup and ethanol combustion workbenches with the shared interaction principles and discrete additions suitable for non-gamers. Record measured temperatures and burner masses; calculate heat and signed apparent molar enthalpy. Preserve heat loss, thermometer lag and physically possible mistakes. [The specification](calorimetry-prototype-spec.md) distinguishes selected scope from numerical implementation defaults. Prior titration has not yet received owner playtesting; implementing this request does not imply acceptance of its feel or results. Commit/push authorisation continues; deployment remains unapproved.

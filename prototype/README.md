@@ -162,3 +162,10 @@ The weak samples include buffer behaviour and non-neutral equivalence pH; their 
 The titration now has independent **Acid**, **Base** and **Unknown sample** controls. Select any HCl/CH₃COOH and NaOH/NH₃ pairing in either direction, including weak–weak. Reagent/role changes reset the attempt; Restart retains them.
 
 All three current indicators are available as separate Equipment droppers: bromothymol blue, phenolphthalein and methyl red. They are never selected or added automatically. Students may omit them, choose an unsuitable indicator or mix them. The actual colours, pH, titre and apparent concentration remain reviewable. The review distinguishes stoichiometric delivery from a reliable visual endpoint and explains weak–weak limitations after the attempt.
+
+
+## Neutralisation and ethanol combustion calorimetry
+
+Open `neutralisation.html` or `combustion.html`, or use the bottom links from any lab. Both use discrete 10 mL / 1 mL pouring and the shared drawer. Move the thermometer near a vessel and use **Clip to vessel rim**, then record initial/final temperatures deliberately. Stir with the rod. In neutralisation, remove the lid before adding reagents, then refit it to reduce heat loss. In combustion, put the aluminium can on its raised support, slide the ethanol burner beneath, and weigh the burner before and after burning. Space or its button lights/extinguishes it. Stop heating before the final weighing.
+
+Read [the walkthrough and verification](../docs/design/calorimetry-prototype-review.md) and [the model assumptions](../docs/design/calorimetry-prototype-spec.md). Three questions use measured temperature changes, total liquid mass, aluminium heat capacity where relevant, and the reacting amount/fuel mass loss. An incomplete attempt uses a labelled supplied example. No automatic ideal peak replaces a recorded reading.

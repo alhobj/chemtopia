@@ -114,3 +114,8 @@ The owner explicitly requested CH₃COOH and NH₃ options in the titration lab.
 ## Independent acid, base and indicator choices
 
 The owner requested student choice of acids, bases and all indicators, allowing mistakes. This supersedes automatically paired reagents and automatically supplied matching indicators. Offer HCl/CH₃COOH acids and NaOH/NH₃ bases independently, with acid or base as the unknown; allow every pair including weak–weak. Make all three currently modelled indicators separate available droppers, with no forced choice or dose. Preserve mixed-indicator contents, actual colour/pH consequences, biased recorded titres and reviewable wrong attempts. A colour change is not proof of equivalence, especially for weak–weak titrations. Existing discrete delivery, local-only and commit/push boundaries continue.
+
+
+## Approved calorimetry increments
+
+The owner approved the proposed HCl/NaOH insulated-cup calorimetry and requested combustion beneath water in an aluminium container, then chose an ethanol spirit burner. This authorises the bounded two workbenches in [the specification](docs/design/calorimetry-prototype-spec.md), their shared energy/material balances, analogue thermometer with digital reading, deliberate temperature/mass records, discrete pouring and three-question numerical reviews. Preserve wrong placements/amounts, real heat loss and measurement lag. Numerical coefficients are explicit teaching-model defaults, not recorded owner selections or calibrated properties. Existing local-only, English and commit/push boundaries apply. Owner playtesting of titration and these labs is pending; later roadmap labs remain unselected.

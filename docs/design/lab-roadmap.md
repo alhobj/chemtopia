@@ -114,6 +114,8 @@ Show observations during practical work. Finish can support calculations, explan
 
 ### L09 — Where did the reaction energy go?
 
+**Now selected and implemented:** the owner approved the HCl/NaOH cup and requested a second combustion calorimeter using an ethanol spirit burner beneath an aluminium water container. See [the bounded specification](calorimetry-prototype-spec.md). The candidate brief below records the broader proposal; temperature extrapolation and graphs remain outside this increment.
+
 **Question:** How can a temperature change estimate heat released by neutralisation?
 
 **Proposed example:** the same strong acid/base pair as L08 in an insulated cup with lid, probe and stirrer.
