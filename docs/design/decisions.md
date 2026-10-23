@@ -216,3 +216,11 @@ The owner corrected the recommendation for another combined separation lab: pota
 The owner approved the concrete NaCl stock/dilution proposal with “Yes”, requiring easy controls for non-gamers rather than millisecond timing. The new lab therefore uses one finite portion per Space press or button click, with coarse water delivery pausing at 95 mL and explicit 1 mL/0.1 mL additions thereafter. Overfilling remains possible; no correct concentration is imposed automatically. Spatula portions can be chosen before dragging. Pipette filling/delivery and mixing are separate actions. The five earlier labs retain their controls.
 
 The implementation preserves mass/volume pools, retained liquid films, actual concentration consequences, measured pipette source/volume and stock preparation volume before sampling. Instrument resolution/tolerances and the dilute additive-volume model are labelled prototype assumptions. No new dependencies, student data or deployment are added. See [the review](solution-preparation-prototype-review.md).
+
+
+## Acid–base titration selected — 23 October 2026
+
+The owner requested implementation after the proposed unknown-HCl/known-NaOH titration. The bounded lab uses a 25.00 mL aliquot, 0.100 M NaOH and discrete 1 mL/0.1 mL/0.05 mL additions. The hidden 0.0800 M sample concentration and 0.20 mL burette tip capacity are example implementation defaults. The optional observation preference has not been explicitly answered; both indicator and pH are the stated starting default, not an owner-recorded selection. See [the specification](titration-prototype-spec.md). Other roadmap labs and public deployment remain unselected.
+
+
+The L08 walkthrough exposed apparatus clearance problems. The functional burette proportions, clamp height and wider conical-flask neck were aligned so tools can pass over the rig and the flask can slide under the tip. Art and solid colliders share those dimensions. The tall burette uses an explicit equipment-retrieval height range; default ranges in the six earlier labs are unchanged. All 123 model tests and nine browser suites pass, including the seven-lab layout matrix.

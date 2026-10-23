@@ -1,6 +1,6 @@
 # Further laboratory opportunities — curriculum evidence
 
-**Planning except the subsequently selected L05 increment.** The owner asked for further curriculum-aligned labs while the existing prototypes remain untested by the owner. This document proposes opportunities; L05 was subsequently selected by the owner and implemented within [its bounded specification](../design/evaporation-prototype-spec.md). The other opportunities remain proposals.
+**Curriculum evidence for proposed labs.** L05 evaporation, L06 recrystallisation, L07 solution preparation/dilution and L08 acid–base titration were subsequently selected and implemented within their bounded specifications. Other entries remain proposals. See [the current roadmap](../design/lab-roadmap.md) for implementation status; the evidence below does not itself authorise a lab.
 
 Source: the owner-supplied IB *Chemistry guide*, first assessment 2025, **published February 2023**. Detailed outcomes and SL/AHL boundaries below were checked against the private local extraction for this planning round. Later online corrections have not been checked. Printed/PDF page numbers are shown together.
 

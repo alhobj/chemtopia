@@ -24,3 +24,10 @@ Implementation: `prototype/review-questions.js`. Tests check all five three-ques
 1. Explain why concentration uses final solution volume rather than added water volume. Balanced shuffled choices; correct meaning: the final solution volume includes the dissolved solute.
 2. Calculate NaCl mass for 100.0 mL of 0.100 mol dm⁻³, using M = 58.44 g mol⁻¹: 0.5844 g, accepting appropriate rounding to 0.584–0.585 g.
 3. Calculate the final diluted concentration from the attempt's displayed dissolved mass and final volume. If the attempt is incomplete/unmixed, use a clearly labelled supplied example: 10.00 mL of 0.100 mol dm⁻³ stock made up to 100.0 mL gives 0.0100 mol dm⁻³. Typed answers and retry are required; practical completion is reported separately.
+
+
+## Acid–base titration
+
+1. Explain the 1:1 mole relationship between HCl and NaOH at equivalence. Balanced shuffled choices distinguish moles from equal volumes or masses.
+2. Calculate titre from recorded final minus initial burette readings.
+3. Use the titre, 0.100 mol dm⁻³ NaOH and recorded aliquot volume to calculate apparent HCl concentration. A bad endpoint/technique can bias this estimate; it is not an automatically corrected true concentration. Without a usable trial, the supplied example uses 1.20 → 21.20 mL and a 25.00 mL aliquot, giving 20.00 mL and 0.0800 mol dm⁻³. All three require correct answers with retry.

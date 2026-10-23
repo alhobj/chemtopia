@@ -99,3 +99,8 @@ The owner requested removing decorative text shown in screenshots, a lab occupyi
 ## Approved solution preparation and dilution increment
 
 The owner selected L07 and approved [the concrete specification](docs/design/solution-preparation-prototype-spec.md) with “Yes”, requiring controls easy for non-gamers. This authorises the NaCl stock preparation and tenfold dilution, balance, spatula, volumetric glassware/pipette, quantitative transfer/rinsing, meniscus view, stoppering/mixing and three-question review. All delivery actions in this new lab are discrete; no timing challenge or continuous flow. Bulk water pauses at 95 mL, with explicit small additions that still allow overfilling. Preserve meaningful wrong actions, material accounting, shared storage/layout, and existing local-only/commit/push boundaries. Other labs retain their approved controls.
+
+
+## Acid–base titration increment
+
+The owner requested “Start implementering that” after the proposed HCl/NaOH titration. This authorises the bounded local [titration specification](docs/design/titration-prototype-spec.md), with 25.00 mL pipetting, a standard NaOH burette, clamped assembly, discrete coarse/fine/drop additions, swirling, readings, repeat trials and three calculation/concept questions. Preserve non-gamer pacing and real consequences of an unprimed tip, overshoot, dilution or missed receiver. Both indicator and pH probe are initially supplied as a stated implementation default pending the optional observation preference; do not label this an explicit owner choice. Existing commit/push and local-only boundaries apply.

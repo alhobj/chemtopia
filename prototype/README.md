@@ -139,3 +139,12 @@ Open `solution.html` or use **Solutions & dilution** in the bottom navigation. P
 This lab uses **discrete additions**, including Space: each press adds once and stops. Bulk water additions stop at 95 mL in a flask; use 1 mL or 0.1 mL buttons near the mark. Extra presses can overfill, but waiting cannot. Place the wash bottle beside a selected vessel to expose its water buttons. Set the spatula portion before dragging. Space fits a nearby funnel/stopper and mixes a selected stoppered flask; dragging a fitting removes it. Pipette filling and delivery are separate actions.
 
 The review shows actual preparation measurements and three questions, including mass and concentration calculations. See [the practical walkthrough and limitations](../docs/design/solution-preparation-prototype-review.md). The stock's prepared volume is recorded before sampling; its remaining volume is lower after the aliquot is taken.
+
+
+## Acid–base titration
+
+Open `titration.html` or choose **Titration** from the bottom navigation. Use a 25.00 mL HCl aliquot and 0.100 mol dm⁻³ NaOH to determine the unknown acid concentration. The seventh lab includes the stand, burette/funnel, pipette/filler, conical flask, indicator and immersed pH probe.
+
+Each addition stops: 1 mL, 0.1 mL or one 0.05 mL drop. Prime the tip into waste, then record your initial reading. Swirl after additions, judge the endpoint and record the final reading as a trial. Finish opens three questions, including titre and concentration calculations from your readings. An incomplete attempt uses a labelled example.
+
+For the full walkthrough, supported mistakes and model limits, see [the titration review](../docs/design/titration-prototype-review.md). No timed flow, account or new dependency is needed.

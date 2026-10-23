@@ -1,12 +1,14 @@
 # Further labs — proposal roadmap
 
-**Status: L05, L06 and L07 are implemented. Other entries remain proposals.**
+**Status: L05, L06, L07 and L08 are implemented. Other entries remain proposals.**
 
 The owner considers the potassium-nitrate/sand activity sufficient for the combined separation sequence and requested moving directly to L07. See [the approved L07 specification](solution-preparation-prototype-spec.md) and [implementation review](solution-preparation-prototype-review.md). The original dependency sequence below is retained as planning history, not the current work queue.
 
 Historical planning context: The owner asked to plan more curriculum-aligned labs and explicitly said the latest equipment-menu change has not been tested yet. The three existing labs and menu are implemented, but owner acceptance is still pending. The owner later explicitly selected evaporation/salt recovery; see [the bounded L05 specification](evaporation-prototype-spec.md). The owner then requested L06 recrystallisation; see [its bounded specification](recrystallisation-prototype-spec.md). The rest of this roadmap remains planning only.
 
 The [curriculum evidence table](../curriculum/lab-opportunities.md) records exact sections/pages and common SL/HL versus AHL boundaries from the supplied February 2023 guide, first assessment 2025. The named samples are proposed examples rather than IB-mandated experiments; L05 and L06 now have explicitly selected bounded implementations.
+
+The owner subsequently selected [L08 acid–base titration](titration-prototype-spec.md).
 
 ## Recommended sequence
 

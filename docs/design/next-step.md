@@ -1,6 +1,10 @@
 # Work steps and verification
 
-## Current step — solution preparation and dilution
+## Current step — acid–base titration
+
+The owner requested implementation of the proposed HCl/NaOH titration after solution preparation. [The specification](titration-prototype-spec.md) records its bounded scope and numerical defaults. See [the implementation review](titration-prototype-review.md) for controls and verification. Owner playtesting of the current labs is the next review step; no later roadmap activity is selected.
+
+## Implemented solution preparation and dilution
 
 The owner selected L07 after noting that potassium-nitrate/sand recrystallisation already covers the proposed combined-separation sequence. The five existing labs remain implemented. A separate salt-and-sand activity is not the next development step.
 

@@ -25,7 +25,7 @@ export function createEquipmentMenu({getState,world,groups,select,begin,end,rend
   if(!pending.started){
    if(!inside(e,r)||wantsStore(e))return;
    const p=new DOMPoint(e.clientX,e.clientY).matrixTransform(bench.getScreenCTM().inverse());
-   p.x=Math.max(65,Math.min((getState().width||1000)-65,p.x));p.y=Math.max(260,Math.min(380,p.y));
+   p.x=Math.max(65,Math.min((getState().width||1000)-65,p.x));const item=getState().items[pending.id];p.y=Math.max(item.spawnYMin??260,Math.min(item.spawnYMax??380,p.y));
    if(!takeItem(getState(),pending.id,p.x,p.y,world())){panel.querySelector('#equipment-message').textContent='Choose an open space on the bench.';return;}
    panel.querySelector('#equipment-message').textContent='';pending.started=true;begin(pending.id);bench.focus({preventScroll:true});render();
   }
