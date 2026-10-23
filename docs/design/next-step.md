@@ -1,10 +1,10 @@
 # Work steps and verification
 
-## Current step — recrystallisation
+## Current step — solution preparation and dilution
 
-The owner requested recrystallisation following the L06 roadmap brief. [The bounded specification](recrystallisation-prototype-spec.md) uses the potassium-nitrate/sand/water example with hot filtration, cooling, crystals in the clean beaker and optional second filtration. Its capacity curve is explicitly qualitative; a verified data-calibrated solubility model remains a future refinement. See [the review](recrystallisation-prototype-review.md).
+The owner selected L07 after noting that potassium-nitrate/sand recrystallisation already covers the proposed combined-separation sequence. The five existing labs remain implemented. A separate salt-and-sand activity is not the next development step.
 
-Evaporation and the earlier labs remain available, with links between experiments. This request does not imply owner acceptance of previous controls or authorise the other roadmap proposals.
+[The concrete first-step proposal](solution-preparation-prototype-spec.md) defines a sodium-chloride stock preparation and tenfold dilution, instrument controls, quantitative material accounting, mistakes, three review questions and acceptance checks. The activity is selected; the recipe and new instrument details await owner review under AGENTS.md before implementation.
 
 ## Implemented filtration increment
 
