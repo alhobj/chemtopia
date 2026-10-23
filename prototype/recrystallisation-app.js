@@ -1,3 +1,4 @@
+import {equipmentArt} from './equipment-art.js';
 import {reviewQuestions,bindReviewQuestions} from './review-questions.js';
 import {EPS,createState,NAMES,detach,placeItem,pour,stepPhysics,stepChemistry,physicsFor,outcome} from './recrystallisation-model.js';
 import {art} from './recrystallisation-art.js';
@@ -10,7 +11,7 @@ const groups=new Map();
 for(const id of Object.keys(state.items)){const g=document.createElementNS(NS,'g');g.dataset.id=id;g.classList.add('object');g.setAttribute('role','button');g.setAttribute('tabindex','0');g.setAttribute('aria-label',NAMES[id]);g.addEventListener('focus',()=>{if(selected!==id)select(id);});layer.append(g);groups.set(id,g);}
 $('equipment').innerHTML=Object.entries(NAMES).map(([id,n])=>`<button class="equipment-button" data-equipment="${id}" aria-pressed="false">${n}</button>`).join('');
 function render(){
- for(const [id,g]of groups){const o=state.items[id];const p=o.parent?state.items[o.parent]:null;g.setAttribute('transform',p?.angle?`translate(${p.x} ${p.y}) rotate(${p.angle}) translate(${o.x-p.x} ${o.y-p.y})`:`translate(${o.x} ${o.y}) rotate(${o.angle||0})`);g.setAttribute('aria-description',o.parent?'Seated in '+NAMES[o.parent]:'');g.innerHTML=art(o);g.classList.toggle('selected',id===selected);}
+ for(const [id,g]of groups){const o=state.items[id];const p=o.parent?state.items[o.parent]:null;g.setAttribute('transform',p?.angle?`translate(${p.x} ${p.y}) rotate(${p.angle}) translate(${o.x-p.x} ${o.y-p.y})`:`translate(${o.x} ${o.y}) rotate(${o.angle||0})`);g.setAttribute('aria-description',o.parent?'Seated in '+NAMES[o.parent]:'');g.innerHTML=equipmentArt(o,art(o),'recrystallisation',state);g.classList.toggle('selected',id===selected);}
  if(selected)layer.append(groups.get(selected));
  $('spills').innerHTML=state.spills.map(p=>`<g><ellipse cx="${p.x}" cy="525" rx="${Math.min(70,10+p.water*100)}" ry="8" fill="#86bdc6" opacity="${p.water>0?.65:0}"/>${p.sand>EPS?`<ellipse cx="${p.x}" cy="523" rx="${Math.min(40,8+p.sand*100)}" ry="4" fill="#b38041"/>`:''}${p.raw+p.crystals+p.dissolved>0?`<path d="M${p.x-15} 522h30m-25 -3h20" stroke="#e0d8bd" stroke-width="4"/>`:''}</g>`).join('');
  $('streams').innerHTML=state.evaporating.map(id=>{const o=state.items[id];return `<path d="M${o.x-12} ${o.y-8}q-8 -14 0 -27m24 27q8 -14 0 -27" fill="none" stroke="#94b6b6" stroke-width="4" opacity=".7"/>`;}).join('')+state.flow.map(f=>`<path d="M${f.from.x} ${f.from.y}L${f.to.x} ${f.to.y}" stroke="#82bdc8" stroke-width="5"/>`).join('');

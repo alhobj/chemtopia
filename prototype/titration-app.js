@@ -1,3 +1,4 @@
+import {equipmentArt} from './equipment-art.js';
 import {createState,modeFor,namesFor,INDICATORS,physicsFor,detach,placeItem,stepPhysics,toolTarget,point,active,pour,fillPipette,deliverPipette,attach,fillBurette,dispense,setInitial,swirl,addIndicator,probeReading,recordTrial,outcome,reading,transfer,drain,BASE_CONCENTRATION} from './titration-model.js';
 import {art,buretteView} from './titration-art.js';
 import {initializeStorage} from './equipment-storage.js';
@@ -20,7 +21,7 @@ function context(){const o=state.items[selected];if(!active(o))return{label:'Sel
  return{label:'Pour one portion',buttons:o.id==='waste'?[]:[['drain','Empty into nearby waste']],hint:'Place above a receiver and transfer a finite portion.'};
 }
 function render(){
- for(const [id,g]of groups){const o=state.items[id];g.setAttribute('transform',`translate(${o.x} ${o.y}) rotate(${o.angle||0})`);g.innerHTML=art(o,state);g.classList.toggle('selected',id===selected);}
+ for(const [id,g]of groups){const o=state.items[id];g.setAttribute('transform',`translate(${o.x} ${o.y}) rotate(${o.angle||0})`);g.innerHTML=equipmentArt(o,art(o,state),'titration',state);g.classList.toggle('selected',id===selected);}
  if(selected)layer.append(groups.get(selected));
  $('streams').innerHTML=performance.now()<flowUntil?state.flow.map(f=>`<path d="M${f.from.x} ${f.from.y}L${f.to.x} ${f.to.y}" fill="none" stroke="#79aebb" stroke-width="4" stroke-dasharray="5 3"/>`).join(''):'';
  $('spills').innerHTML=state.spills.map(p=>`<ellipse cx="${p.x}" cy="523" rx="${Math.min(65,12+p.water)}" ry="6" fill="#84bcc7"/>`).join('');

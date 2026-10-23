@@ -119,3 +119,8 @@ The owner requested student choice of acids, bases and all indicators, allowing 
 ## Approved calorimetry increments
 
 The owner approved the proposed HCl/NaOH insulated-cup calorimetry and requested combustion beneath water in an aluminium container, then chose an ethanol spirit burner. This authorises the bounded two workbenches in [the specification](docs/design/calorimetry-prototype-spec.md), their shared energy/material balances, analogue thermometer with digital reading, deliberate temperature/mass records, discrete pouring and three-question numerical reviews. Preserve wrong placements/amounts, real heat loss and measurement lag. Numerical coefficients are explicit teaching-model defaults, not recorded owner selections or calibrated properties. Existing local-only, English and commit/push boundaries apply. Owner playtesting of titration and these labs is pending; later roadmap labs remain unselected.
+
+
+## Owner-selected B equipment artwork
+
+The owner explicitly requested using the detailed pixel-art equipment marked B instead of the smooth SVG placeholders, while preserving working physics. This authorises the shared [B sprite adaptation](prototype/assets/design-b/README.md) across the existing labs, transparent/composite apparatus assets and model-driven contents/scales/readouts. Preserve the existing chemistry, collision geometry, mouth/tip/joint coordinates and practical actions; do not treat an illustration as approval for new apparatus or lab scope. See [the visual revision review](docs/design/design-b-equipment-review.md). Existing commit/push authorisation applies; deployment remains unapproved.

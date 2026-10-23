@@ -1,6 +1,10 @@
-# Art proposals — for review
+# Art proposals and selected equipment
 
 These images are original AI-generated proposals made with `image_gen` following explicit requests. They are not external reference images, finished game assets or approved scientific illustrations. The user prefers design B; it is the working reference for the latest proposals. Final asset choices and a production specification remain open.
+
+## Selected B equipment now used in the labs
+
+The owner explicitly requested replacing the smooth equipment placeholders with the detailed B drawings. The nine labs now use [a transparent sprite adaptation](../../prototype/assets/design-b/README.md), with live liquid, instrument and measurement overlays. [Review the implementation](../design/design-b-equipment-review.md). This changes the equipment selection status only; other proposals remain proposals and the originals below remain unchanged.
 
 ## Walking preview
 
@@ -69,7 +73,7 @@ Furniture, plants, benches, colours and equipment placement are proposals, not a
 - Glass colour or shine must not automatically represent a particular solution, temperature or other chemical state.
 - After a style choice, try a small set at the correct size, contrast and phone readability before producing many assets.
 
-These are quality tasks for a later approved art round. None of the illustrations is currently used in a game.
+These are quality tasks for a later approved art round. The selected B equipment is now adapted for the local labs as described above; the remaining proposals are not automatically approved.
 
 ## Origin and traceability
 

@@ -83,7 +83,11 @@ try{
  console.log('PASS keyboard retrieval and Escape close');
 
  await click('#go-distillation');
- for(let i=0;i<40;i++){if(await evaluate("document.querySelectorAll('.equipment-button').length===13"))break;await pause(100);}
+ for(let i=0;i<40;i++){
+  try{if(await evaluate("document.querySelectorAll('.equipment-button').length===13"))break;}
+  catch(error){if(error.code!==-32000||!/navigated|context.*destroyed/i.test(error.message))throw error;}
+  await pause(100);
+ }
  assert.equal(await evaluate("document.querySelector('[data-equipment=thermometer]').dataset.stored"),'true');
  assert.ok(!(await evaluate("document.querySelector('#bench').textContent")).includes('APPARATUS SHELF'));
  assert.deepEqual(exceptions,[]);console.log('PASS shelf replacement and no browser exceptions');

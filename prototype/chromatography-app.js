@@ -1,3 +1,4 @@
+import {equipmentArt} from './equipment-art.js';
 import {attachReviewRuler,reviewRulerArt} from './review-ruler.js';
 import {reviewQuestions,bindReviewQuestions} from './review-questions.js';
 import {initializeStorage} from './equipment-storage.js';
@@ -22,7 +23,7 @@ function art(o){
  return `<path d="M${-w/2} 0V${h-8}Q${-w/2} ${h} ${-w/2+8} ${h}H${w/2-8}Q${w/2} ${h} ${w/2} ${h-8}V0" fill="url(#glass)" ${stroke}/>${o.water>0?`<rect x="${-w/2+5}" y="${top}" width="${w-10}" height="${h-4-top}" fill="${o.ink?'#8f91a0':'url(#liquid)'}" opacity=".65"/><path d="M${-w/2+5} ${top}H${w/2-5}" stroke="#80bdc8" stroke-width="2"/>`:''}<rect class="select-outline" x="${-w/2-8}" y="-8" width="${w+16}" height="${h+16}" rx="6"/>`;
 }
 function render(){
- for(const [id,g]of groups){const o=state.items[id];g.setAttribute('transform',`translate(${o.x} ${o.y}) rotate(${o.angle||0})`);g.innerHTML=art(o);g.classList.toggle('selected',id===selected);g.setAttribute('aria-description',state.links.some(l=>l.a===id||l.b===id)?'Paper clipped to support bar':'');}
+ for(const [id,g]of groups){const o=state.items[id];g.setAttribute('transform',`translate(${o.x} ${o.y}) rotate(${o.angle||0})`);g.innerHTML=equipmentArt(o,art(o),'chromatography',state);g.classList.toggle('selected',id===selected);g.setAttribute('aria-description',state.links.some(l=>l.a===id||l.b===id)?'Paper clipped to support bar':'');}
  // Paper and tools must remain visible through the transparent chamber.
  for(const id of ['paper','pencil','green','purple','black','ruler'])layer.append(groups.get(id));
  if(selected)layer.append(groups.get(selected));

@@ -35,3 +35,10 @@ main{max-width:none;margin:0;padding:6px}.lab-shell{height:calc(100dvh - 58px);m
 #sample-select,.titration-choices select,#sample-role{display:block;width:100%;max-width:100%;padding:8px 5px;margin:5px 0 10px;border:1px solid #b8cbc0;border-radius:4px;background:#fffdf5;color:var(--ink);font:inherit;font-size:12px}
 
 .titration-choices{display:grid;grid-template-columns:1fr 1fr;gap:8px}.titration-choices label{min-width:0}
+
+/* The selected detailed row-B equipment is raster art; live contents/readings stay SVG. */
+.equipment-sprite { image-rendering: pixelated; pointer-events: all; }
+.equipment-sprite image { image-rendering: pixelated; }
+.pixel-measurement { shape-rendering: crispEdges; }
+
+.equipment-contents { mix-blend-mode: multiply; }

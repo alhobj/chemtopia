@@ -49,6 +49,8 @@ try{
  for(const page of ['index','distillation','chromatography','evaporation','recrystallisation','solution','titration','neutralisation','combustion']){
   await send('Page.navigate',{url:base+'/'+page+'.html'});
   for(let i=0;i<40;i++){if(await evaluate("!!document.querySelector('#equipment-menu')"))break;await pause(100);}
+  assert.ok(await evaluate("document.querySelectorAll('.equipment-sprite').length>0"),page+' uses design-B sprites');
+  assert.equal(await evaluate("new Promise(resolve=>{const image=new Image();image.onload=()=>resolve(image.naturalWidth>0);image.onerror=()=>resolve(false);image.src=document.querySelector('.equipment-sprite image').getAttribute('href');})"),true,page+' loads the local sprite atlas');
   for(const [width,height]of [[1440,900],[2383,1000],[390,844]]){
    await send('Emulation.setDeviceMetricsOverride',{width,height,deviceScaleFactor:1,mobile:false});await pause(250);
    const layout=await evaluate("(()=>{const r=e=>{const b=e.getBoundingClientRect();return{x:b.x,y:b.y,width:b.width,height:b.height,right:b.right,bottom:b.bottom};};return{workspace:r(document.querySelector('.workspace')),bench:r(document.querySelector('#bench')),sidebar:r(document.querySelector('.sidebar')),tab:r(document.querySelector('#equipment-tab')),extra:!!document.querySelector('.topbar,.intro,.bench-toolbar,.bench-caption,footer'),overflow:document.documentElement.scrollWidth>innerWidth+1};})()");

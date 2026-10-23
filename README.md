@@ -2,7 +2,7 @@
 
 A chemistry learning game for students aged 16–19 studying IB Diploma Programme Chemistry.
 
-The local prototype includes sand-and-water filtration, acetone–water distillation, marker-ink paper chromatography, evaporation/salt-recovery, recrystallisation, solution preparation/dilution, acid–base titration (independent HCl/CH₃COOH and NaOH/NH₃ choices), insulated-cup neutralisation calorimetry, and ethanol combustion calorimetry workbenches. English is the project's working language. The larger game remains in design.
+The local prototype includes sand-and-water filtration, acetone–water distillation, marker-ink paper chromatography, evaporation/salt-recovery, recrystallisation, solution preparation/dilution, acid–base titration (independent HCl/CH₃COOH and NaOH/NH₃ choices), insulated-cup neutralisation calorimetry, and ethanol combustion calorimetry workbenches. The equipment uses the selected detailed B pixel-art sprite adaptation, with live liquid and instrument overlays. English is the project's working language. The larger game remains in design.
 
 ## Try the prototype
 
@@ -13,6 +13,8 @@ Run `npm test` for the material-model checks and `npm run test:browser` for Chro
 For step-by-step terminal instructions and a file guide, see [Run and edit in VS Code](docs/development.md).
 
 ## Start here
+
+- [Selected B equipment: art and physics checks](docs/design/design-b-equipment-review.md)
 
 - [Calorimetry: controls and verification](docs/design/calorimetry-prototype-review.md)
 

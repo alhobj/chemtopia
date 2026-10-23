@@ -1,6 +1,10 @@
 # Work steps and verification
 
-## Current step — neutralisation and ethanol combustion calorimetry
+## Current step — selected B equipment visuals
+
+The owner requested replacing the smooth equipment placeholders with the detailed B pixel-art drawings while preserving physics. All nine labs now use a shared sprite adaptation. See [the art and physics review](design-b-equipment-review.md). The previous calorimetry/titration playtests remain pending; this is a visual revision, not a new lab.
+
+## Earlier step — neutralisation and ethanol combustion calorimetry
 
 The owner approved the proposed neutralisation lab and requested an aluminium-container combustion calorimeter, selecting an ethanol spirit burner. Both local workbenches are implemented; see [the specification](calorimetry-prototype-spec.md) and [the review guide](calorimetry-prototype-review.md). Owner playtesting of these and titration is pending. Further roadmap labs remain unselected.
 

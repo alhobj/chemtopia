@@ -28,7 +28,7 @@ Use the bottom **Go to distillation** button for the second experiment. Switchin
 
 ## Representation and limitations
 
-The prototype uses explicitly labelled **functional placeholder artwork**, with the palette and clarity of design B as direction. It does not yet use final production pixel sprites.
+The prototype now uses a [detailed B pixel-art sprite adaptation](assets/design-b/README.md), selected by the owner to replace the earlier smooth SVG placeholders. Contents, meaningful scales and readings remain live SVG overlays. Other scene elements remain prototype artwork.
 
 Amounts are internal qualitative state, not calibrated readings. Sand stays represented as insoluble particles; filter paper retains it while water passes through. Pour flow is simplified, including the homogeneous transfer of the represented batch during a pour; settling and decantation are not simulated. Filtration is represented without detailed hydraulic rates or paper moisture retention. Retained sand is described as wet, not dried.
 

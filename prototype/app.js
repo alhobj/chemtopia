@@ -1,3 +1,4 @@
+import {equipmentArt} from './equipment-art.js';
 import {reviewQuestions,bindReviewQuestions} from './review-questions.js';
 import {initializeStorage} from './equipment-storage.js';
 import {createEquipmentMenu} from './equipment-menu.js';
@@ -35,7 +36,7 @@ function art(o){
  ${o.sand>EPS?`<path d="M-22 8Q0 1 22 8L0 29Z" fill="#bb904f"/>${dots(o.sand,.12,34,13,7)}`:''}<rect class="select-outline" x="-55" y="-17" width="110" height="69" rx="7"/>`;
 }
 function render(){
- for(const id of ORDER){const o=state.items[id],g=groups.get(id);const parent=o.parent?state.items[o.parent]:null;const angle=o.angle||0;g.setAttribute('transform',parent?.angle?`translate(${parent.x} ${parent.y}) rotate(${parent.angle}) translate(${o.x-parent.x} ${o.y-parent.y})`:`translate(${o.x} ${o.y}) rotate(${angle})`);g.innerHTML=art(o);g.classList.toggle('selected',id===selected);g.classList.toggle('lifted',drag?.id===id||placement?.id===id);g.setAttribute('aria-disabled',String(state.phase!=='working'));}
+ for(const id of ORDER){const o=state.items[id],g=groups.get(id);const parent=o.parent?state.items[o.parent]:null;const angle=o.angle||0;g.setAttribute('transform',parent?.angle?`translate(${parent.x} ${parent.y}) rotate(${parent.angle}) translate(${o.x-parent.x} ${o.y-parent.y})`:`translate(${o.x} ${o.y}) rotate(${angle})`);g.innerHTML=equipmentArt(o,art(o),'filtration',state);g.classList.toggle('selected',id===selected);g.classList.toggle('lifted',drag?.id===id||placement?.id===id);g.setAttribute('aria-disabled',String(state.phase!=='working'));}
  if(selected)layer.append(groups.get(selected));
  spillLayer.innerHTML=state.spills.map(o=>`<g>${o.water>EPS?`<ellipse cx="${o.x}" cy="${o.y}" rx="${Math.min(70,12+o.water*100)}" ry="${Math.min(16,4+o.water*28)}" fill="#6caab6" opacity=".65"/>`:''}${o.sand>EPS?`<g transform="translate(${o.x} ${o.y-9})">${dots(o.sand,.12,70,12)}</g>`:''}</g>`).join('');
  streams.innerHTML=[...(pouring?state.flow:[]),...state.passiveFlow].map(f=>`<path d="M${f.from.x} ${f.from.y}L${f.to.x} ${f.to.y}" stroke="${f.sand?'#8bb9ba':'#70b6c7'}" stroke-width="6" opacity=".85" stroke-linecap="round"/>`).join('');

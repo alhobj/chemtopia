@@ -1,0 +1,105 @@
+// Runtime skins adapted from the owner's row-B equipment studies. Simulation geometry
+// stays authoritative: sprites use the same local mouth, tip, base and joint coordinates.
+import {atlas,sprites} from './assets/design-b/atlas.js';
+const rect=(x,y,w,h,extra='')=>`<rect x="${x}" y="${y}" width="${w}" height="${h}" ${extra}/>`;
+export function sprite(name,x,y,w,h,part=null){
+ const b=sprites[name];if(!b)throw Error('Missing design-B sprite: '+name);
+ const crop=part?{x:b.x+b.w*part[0],y:b.y+b.h*part[1],w:b.w*part[2],h:b.h*part[3]}:b;
+ return `<svg class="equipment-sprite" data-sprite="${name}" x="${x}" y="${y}" width="${w}" height="${h}" viewBox="${crop.x} ${crop.y} ${crop.w} ${crop.h}" preserveAspectRatio="none" overflow="hidden"><image href="${atlas.file}" width="${atlas.width}" height="${atlas.height}"/></svg>`;
+}
+const extracts=(html,re)=>(html.match(re)||[]).join('');
+function overlays(html,image='',id='',extra=''){
+ const maskId='contents-silhouette-'+id;
+ const mask=image?`<defs><mask id="${maskId}" maskUnits="userSpaceOnUse" x="-200" y="-100" width="500" height="500" style="mask-type:alpha">${image}</mask></defs>`:'';
+ return extracts(html,/<defs>[\s\S]*?<\/defs>/g)+mask+`<g ${image?`mask="url(#${maskId})"`:''}>`+extra+'<g class="equipment-contents">'+extracts(html,/<g clip-path="[^"]*">[\s\S]*?<\/g>/g)+'</g></g>'+extracts(html,/<text\b[^>]*>[\s\S]*?<\/text>/g)+extracts(html,/<rect class="select-outline"[^>]*\/>/g);
+}
+const metal=(x,y,w,h)=>rect(x,y,w,h,'fill="#23344e"')+rect(x+1,y+1,Math.max(1,w-2),Math.max(1,h-2),'fill="#6b8b9d"')+rect(x+1,y+1,Math.max(1,w-2),Math.min(2,h-2),'fill="#c6e6e8"');
+function supports(o,lab){
+ let bottom=[-57,-7,92,23],rod=[-5,-231,10,230],cx=90,cy=-172,ring=true;
+ if(lab==='distillation'){const right=o.id==='support2';bottom=[right?-25:-65,-8,90,24];cx=right?-195:90;cy=right?-134:-162;}
+ if(lab==='titration'){bottom=[-70,1,140,16];rod=[-5,-320,10,320];cx=130;cy=-275;ring=false;}
+ if(lab==='combustion'){bottom=[-50,2,100,16];rod=[-5,-210,10,220];cx=110;cy=-145;ring=false;}
+ let image=sprite('stand',...bottom,[0,.78,1,.22])+sprite('stand',...rod,[.43,0,.12,.80]);
+ image+=metal(Math.min(0,cx),cy-4,Math.abs(cx),8);
+ if(ring)image+=sprite('ring',cx-30,cy-9,60,18,[0,0,.70,1]);
+ else if(lab==='combustion')image+=metal(40,cy-4,140,8);
+ else image+=metal(cx-13,cy-10,4,20)+metal(cx+9,cy-10,4,20);
+ return image;
+}
+function funnel(o){
+ const filtration=o.kind==='funnel',w=filtration?114:o.kind==='fillingFunnel'?80:o.capacity===.2?66:60,neck=filtration?18:o.kind==='fillingFunnel'?10:o.capacity===.2?8:6,bowl=filtration?48:o.kind==='fillingFunnel'?36:o.capacity===.2?33:30,h=filtration?78:o.kind==='fillingFunnel'?76:o.capacity===.2?75:60;
+ return sprite('funnel',-w/2,0,w,bowl,[0,0,1,.53])+sprite('funnel',-neck/2,bowl,neck,h-bowl,[.45,.53,.10,.47]);
+}
+export function equipmentArt(o,html,lab,s){
+ let image='',extra='',width=80,height=100,top=0;
+ const k=o.kind;
+ if(k==='stand'||k==='clampStand')return supports(o,lab)+extracts(html,/<rect class="select-outline"[^>]*\/>/g);
+ if(['funnel','fillingFunnel','transferFunnel'].includes(k))return funnel(o)+overlays(html);
+ if(k==='paper'){
+  const fill=o.sand||o.raw||o.crystals;return sprite('filterPaper',-44,-5,88,43)+(fill?`<path d="M-25 10H25L0 31Z" fill="${o.sand?'#bb904f':'#f8f4dc'}"/>`:'')+extracts(html,/<rect class="select-outline"[^>]*\/>/g);
+ }
+ if(k==='chromPaper'||k==='ruler')return `<g class="pixel-measurement">${html}</g>`;
+ if(k==='bar')return metal(-115,-6,230,12)+sprite('stopper',-10,-8,20,22)+extracts(html,/<rect class="select-outline"[^>]*\/>/g);
+ if(k==='lid'){const chamber=lab==='chromatography';return sprite('lid',chamber?-100:-53,chamber?-6:0,chamber?200:106,chamber?12:10)+extracts(html,/<rect class="select-outline"[^>]*\/>/g);}
+ if(k==='tap'||k==='drain')return `<g class="pixel-measurement">${html}</g>`;
+ if(k==='head'){
+  // Separate straight stem and sloped outlet: the B drawing must follow the live joint.
+  const stem=sprite('head',-12,0,24,60,[0,0,.30,.75]);
+  return stem+`<g transform="translate(12 45) rotate(17.1)">${sprite('condenser',0,-9,63,18,[.08,.34,.84,.32])}</g>`+overlays(html);
+ }
+ if(k==='condenser'){
+  // Source tube is horizontal; its two endpoints follow the simulation's (0,0)–(230,70).
+  image=`<g transform="rotate(16.9275)">${sprite('condenser',0,-19,240.4,38,[0,.30,1,.40])}</g>`;
+  extra=`<path d="M30 -11L205 42L195 76L20 23Z" fill="#4bb6d2" opacity="${s.jacket*.32}"/>`+metal(41,-16,8,26)+metal(181,62,8,24)+extracts(html,/<circle[^>]*class="water-port"[^>]*\/>/g);
+  return image+extra+overlays(html);
+ }
+ if(k==='heater')return sprite('hotplate',-60,0,120,58)+`<circle cx="-32" cy="33" r="4" fill="${o.on?'#f3ad48':'#617481'}"/><text x="0" y="40" text-anchor="middle" font-size="10" fill="#f3f5db">${o.on?'ON':'OFF'}</text>`+extracts(html,/<rect class="select-outline"[^>]*\/>/g);
+ if(k==='balance')return sprite('balance',-75,0,150,60)+rect(-54,29,108,24,'fill="#eff5dc"')+overlays(html);
+ if(k==='thermometer'){
+  const distill=lab==='distillation',t=distill?o.temperature:o.reading;
+  image=sprite('thermometer',distill?-5:-4,distill?0:14,distill?10:8,distill?65:150);
+  const shaftTop=distill?9:35,bulb=distill?57:154,level=bulb-(distill?38:100)*Math.max(0,Math.min(1,(t-20)/80));
+  extra=rect(-1.2,shaftTop,2.4,bulb-shaftTop,'fill="#d6eced"')+`<path d="M0 ${bulb}V${level}" stroke="#bd524b" stroke-width="2"/><circle cx="0" cy="${distill?-17:0}" r="${distill?19:24}" fill="#f5f4e7" stroke="#1e3653" stroke-width="2"/><text id="temperature-reading" x="0" y="${distill?-13:4}" text-anchor="middle" font-family="monospace" font-size="${distill?12:13}">${distill?Math.round(t):t.toFixed(2)+'°'}</text>${distill?'<text x="0" y="-2" text-anchor="middle" font-size="8">°C</text>':''}`;
+  return image+extra+extracts(html,/<rect class="select-outline"[^>]*\/>/g);
+ }
+ if(k==='burette'){
+  const y=225*(1-o.water/50);
+  return sprite('rod',-12,0,24,225)+rect(-8,y,16,225-y,'fill="#72bed3" opacity=".6"')+metal(-3,225,6,25)+metal(-17,228,34,7)+extracts(html,/<path d="M-10 [^"]*"[^>]*\/>/g)+overlays(html);
+ }
+ if(k==='probe')return sprite('probe',-31,-30,62,36,[0,0,1,.23])+sprite('probe',-4,0,8,110,[.36,.23,.28,.77])+rect(-29,-28,58,31,'fill="#eff5dc"')+overlays(html);
+ if(k==='pipette'){width=lab==='titration'?28:26;height=lab==='titration'?127:116;top=lab==='titration'?-17:-16;image=sprite('pipette',-width/2,top,width,height);if(o.water>0)extra=rect(-2,10,4,85,'fill="#76bad3" opacity=".65"');}
+ else if(k==='rod'){width=6;height=100;image=sprite('rod',-3,0,6,100);}
+ else if(k==='spatula'){width=18;height=70;image=sprite('spatula',-9,0,18,70);if(o.salt>0)extra='<ellipse cy="58" rx="6" ry="9" fill="#f8f0d5"/>';}
+ else if(k==='stopper'){width=24;height=16;image=sprite('stopper',-12,0,24,16);}
+ else if(k==='marker'||k==='pencil'){width=16;height=k==='marker'?70:90;image=sprite(k,-8,0,16,height);if(k==='marker')extra=rect(-6,9,12,26,`fill="${{green:'#397e56',purple:'#77538c',black:'#34444d'}[o.id]}"`);}
+ else if(k==='dropper'){width=20;height=50;image=sprite('bottle',-10,0,20,35)+sprite('pipette',-4,34,8,16,[.4,.7,.2,.3]);}
+ else if(k==='burner'){width=70;height=60;image=sprite('burner',-35,0,70,60);if(o.on)extra='<path d="M0-48L-12-25-9-8 0-3 9-8 12-25Z" fill="#f0b44f"/><path d="M0-25L-5-11 0-6 5-11Z" fill="#76b9d2"/>';}
+ else{
+  let name;
+  if(k==='flask'&&lab==='distillation'){name='roundFlask';width=92;height=140;}
+  else if(k==='flask'){name='volumetric';width=76;height=130;}
+  else if(k==='conical'){name='conical';width=110;height=120;}
+  else if(k==='basin'){name='basin';width=160;height=80;}
+  else if(k==='cup'){name='cup';width=98;height=120;}
+  else if(k==='can'){name='can';width=100;height=100;}
+  else if(k==='cylinder'){name='cylinder';width=44;height=120;}
+  else if(k==='boat'){name='boat';width=72;height=28;}
+  else if(k==='wash'){name='wash';width=65;height=110;}
+  else if(k==='bottle'){name='bottle';width=lab==='titration'?69:65;height=110;}
+  else if(k==='chamber'){name='chamber';width=200;height=220;}
+  else if(k==='beaker'){name='beaker';const large=o.id==='source'&&!['neutralisation','combustion'].includes(lab);width=large?92:78;height=large?112:96;}
+  else throw Error('Unmapped design-B equipment: '+lab+'/'+k);
+  if(k==='beaker')image=sprite(name,-width*.66,0,width*1.21,height);
+  else if(k==='cylinder')image=sprite(name,-22,0,44,114,[.18,0,.64,.88])+sprite(name,-22,114,44,6,[0,.88,1,.12]);
+  else image=sprite(name,-width/2,0,width,height);
+  if(k==='bottle')extra+=rect(-width*.43,44,width*.86,44,'fill="#f5eed9"');
+  if(name==='volumetric')extra+=rect(-10,90,20,8,'fill="#c5e4ec"')+'<path d="M-14 20H14" stroke="#bc874a" stroke-width="2"/>';
+  // Older beakers/chamber draw liquid directly rather than in a clipping group.
+  if(!html.includes('<g clip-path=')&&o.water>0){
+   const amount=o.water+(o.acetone||0),fill=(height-18)*Math.min(1,amount/o.capacity),y=height-6-fill;
+   extra=rect(-width/2+6,y,width-12,fill,'fill="#7ebed2" opacity=".7"')+`<path d="M${-width/2+6} ${y}H${width/2-6}" stroke="#b0e3eb" stroke-width="2"/>`;
+  }
+  if(k==='cylinder')extra+=Array.from({length:11},(_,i)=>`<path d="M-20 ${114-i*9.6}h${i%5===0?19:10}" stroke="#385577"/>${i%5===0?`<text x="2" y="${117-i*9.6}" font-size="9">${i*10}</text>`:''}`).join('');
+ }
+ return image+overlays(html,('water'in o&&!['pipette','spatula','dropper'].includes(k))?image:'',o.id,extra);
+}

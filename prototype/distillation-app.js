@@ -1,3 +1,4 @@
+import {equipmentArt} from './equipment-art.js';
 import {reviewQuestions,bindReviewQuestions} from './review-questions.js';
 import {initializeStorage} from './equipment-storage.js';
 import {createEquipmentMenu} from './equipment-menu.js';
@@ -50,7 +51,7 @@ function vapourArt(){
  return `<path d="${points.map((p,i)=>(i?'L':'M')+p.x+' '+p.y).join(' ')}" fill="none" stroke="#b5e0da" stroke-width="5" stroke-dasharray="5 7" pointer-events="none"/>${!condenser||!cooled?`<path d="M${end.x} ${end.y}q-18 -20 0 -38t0 -32" stroke="#87a9ab" stroke-width="6" stroke-dasharray="8 9" fill="none" opacity=".8" pointer-events="none"/>`:''}${head&&!hasLink(state,'head-thermometer')?`<path d="M${thermometerOpening.x} ${thermometerOpening.y}q-18 -20 0 -38" stroke="#87a9ab" stroke-width="5" stroke-dasharray="8 9" fill="none" opacity=".7" pointer-events="none"/>`:''}`;
 }
 function render(){
- for(const [id,g]of groups){const o=state.items[id];g.setAttribute('transform',`translate(${o.x} ${o.y}) rotate(${o.angle||0})`);g.innerHTML=art(o);g.classList.toggle('selected',selected===id);if(o.kind==='thermometer')g.setAttribute('aria-label',`Thermometer, ${Math.round(o.temperature)} degrees Celsius`);g.setAttribute('aria-disabled',String(state.phase!=='working'));g.setAttribute('aria-description',state.links.filter(l=>l.a===id||l.b===id).map(l=>'Connected to '+NAMES[l.a===id?l.b:l.a]).join('. '));}
+ for(const [id,g]of groups){const o=state.items[id];g.setAttribute('transform',`translate(${o.x} ${o.y}) rotate(${o.angle||0})`);g.innerHTML=equipmentArt(o,art(o),'distillation',state);g.classList.toggle('selected',selected===id);if(o.kind==='thermometer')g.setAttribute('aria-label',`Thermometer, ${Math.round(o.temperature)} degrees Celsius`);g.setAttribute('aria-disabled',String(state.phase!=='working'));g.setAttribute('aria-description',state.links.filter(l=>l.a===id||l.b===id).map(l=>'Connected to '+NAMES[l.a===id?l.b:l.a]).join('. '));}
  if(selected&&groups.has(selected))layer.append(groups.get(selected));
  $('hoses').innerHTML=state.hoses.map((h,j)=>{const [a,b]=h.ends.map(e=>hosePoint(state,e));return `<path d="M${a.x} ${a.y}C${a.x+40} ${Math.max(a.y,b.y)+65},${b.x-40} ${Math.max(a.y,b.y)+65},${b.x} ${b.y}" fill="none" stroke="${j?'#557c82':'#4f9daf'}" stroke-width="9" stroke-linecap="round" pointer-events="none"/>${[a,b].map((p,i)=>`<circle data-hose="${h.id}" data-end="${i}" data-port="${h.ends[i].port||''}" cx="${p.x}" cy="${p.y}" r="12" class="hose-end" fill="${j?'#557c82':'#4f9daf'}" aria-label="Water hose ${j+1}, end ${i+1}"/>`).join('')}`;}).join('');
  $('spills').innerHTML=state.spills.map(s=>`<ellipse cx="${s.x}" cy="525" rx="${Math.min(65,10+(s.water+s.acetone)*100)}" ry="9" fill="#78b7c3" opacity=".65"/>`).join('');

@@ -208,5 +208,22 @@
     "modified": true,
     "sha256": "45362406a142fa72af0dff9cbfe75076be8e138f3cf0b5935f0113549b79bbcd",
     "bytes": 63859
+  },
+  {
+    "id": "B-runtime-01",
+    "file": "../../prototype/assets/design-b/equipment-atlas.png",
+    "origin": "Original AI-generated game-sprite adaptation using image_gen",
+    "references": [
+      "P01 row B",
+      "P02 row B",
+      "P04 row B",
+      "P07 row B",
+      "P12 row B"
+    ],
+    "brief": "Thirty transparent detailed B pixel-art apparatus sprites; individual empty apparatus, no labels or fixed liquid; five rows of six, supplemented with matching calorimetry apparatus. Runtime rendering composes pieces to fit existing physics and overlays live contents/readings.",
+    "status": "Owner-authorised use in the existing nine local labs; visual/playtest review pending; adaptation, not unchanged concept cutouts",
+    "modified": false,
+    "sha256": "a1f57ddb31a25ef9e928250c9c0e7eb38fb864637f073eb77f882efe1fdad1d6",
+    "bytes": 1022572
   }
 ]

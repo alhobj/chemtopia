@@ -1,3 +1,4 @@
+import {equipmentArt} from './equipment-art.js';
 import {reviewQuestions,bindReviewQuestions} from './review-questions.js';
 import {createState,NAMES,material,detach,placeItem,pour,stepPhysics,stepChemistry,physicsFor,outcome} from './evaporation-model.js';
 import {initializeStorage} from './equipment-storage.js';
@@ -16,7 +17,7 @@ function art(o){
  return `<defs><clipPath id="inside-${o.id}"><path d="${outline}"/></clipPath></defs><path d="${outline}" fill="${basin?'#f0ead8':'url(#glass)'}" ${stroke}/><g clip-path="url(#inside-${o.id})">${o.water>0?`<rect x="${-w/2+5}" y="${top}" width="${w-10}" height="${h-top}" fill="url(#liquid)" opacity=".7"/><path d="M${-w/2} ${top}H${w/2}" stroke="#87bdc5" stroke-width="2"/>`:''}${Array.from({length:Math.min(45,Math.ceil(m.solid/.12*40))},(_,i)=>`<rect x="${(i*17%66)-33}" y="${h-16-(i*7%12)}" width="5" height="4" rx="1" fill="#fffdf1" stroke="#c7c0aa" stroke-width=".6"/>`).join('')}</g><path d="M${-w/2} 0H${w/2}" stroke="#8d9990" stroke-width="3"/><rect class="select-outline" x="${-w/2-9}" y="-10" width="${w+18}" height="${h+25}" rx="6"/>${basin?`<text id="basin-state" class="experiment-readout" x="0" y="-18" text-anchor="middle">${m.state}</text>`:''}`;
 }
 function render(){
- for(const [id,g]of groups){const o=state.items[id];g.setAttribute('transform',`translate(${o.x} ${o.y}) rotate(${o.angle||0})`);g.innerHTML=art(o);g.classList.toggle('selected',id===selected);}
+ for(const [id,g]of groups){const o=state.items[id];g.setAttribute('transform',`translate(${o.x} ${o.y}) rotate(${o.angle||0})`);g.innerHTML=equipmentArt(o,art(o),'evaporation',state);g.classList.toggle('selected',id===selected);}
  if(selected)layer.append(groups.get(selected));
  $('spills').innerHTML=state.spills.map(p=>`<g><ellipse cx="${p.x}" cy="525" rx="${Math.min(70,10+p.water*100)}" ry="8" fill="#86bdc6" opacity="${p.water>0?.65:0}"/>${p.salt>0?`<path d="M${p.x-15} 522h30m-25 -3h20" stroke="#e0d8bd" stroke-width="4"/>`:''}</g>`).join('');
  const b=state.items.basin;
