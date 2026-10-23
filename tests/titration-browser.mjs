@@ -48,13 +48,21 @@ try{
  const screenshot=async name=>{const r=await send('Page.captureScreenshot',{format:'png',captureBeyondViewport:false});await writeFile(path.join(tmpdir(),name),Buffer.from(r.data,'base64'));};
  await send('Page.navigate',{url:base+'/titration.html'});
  for(let i=0;i<40;i++){if(await evaluate("!!document.querySelector('#equipment-menu')"))break;await pause(100);}
- assert.equal(await evaluate("document.querySelectorAll('.equipment-button').length"),11);
+ assert.equal(await evaluate("document.querySelectorAll('.equipment-button').length"),13);
  const press=async()=>{await key(' ','Space');await pause(40);};
- for(const [mode,expectedPH,formula,titrant]of [['hcl','7.00','HCl','NaOH'],['acetic','8.70','CH₃COOH','NaOH'],['ammonia','5.30','NH₃','HCl']]){
-  if(mode!=='hcl'){await evaluate("document.querySelector('#sample-select').focus()");await key('ArrowDown');await evaluate("document.querySelector('#bench').focus()");await pause(200);}
-  assert.equal(await evaluate("document.querySelector('#sample-select').value"),mode);
+ const scenarios=[
+  {name:'hcl',acid:'hcl',base:'naoh',role:'acid',formula:'HCl',titrant:'NaOH',dropper:'indicator',ph:'7.00',titre:20,appropriate:true},
+  {name:'acetic',acid:'acetic',base:'naoh',role:'acid',formula:'CH₃COOH',titrant:'NaOH',dropper:'phenolphthalein',ph:'8.70',titre:20,appropriate:true},
+  {name:'ammonia',acid:'hcl',base:'ammonia',role:'base',formula:'NH₃',titrant:'HCl',dropper:'methylRed',ph:'5.30',titre:20,appropriate:true},
+  {name:'wrong-indicator',acid:'acetic',base:'naoh',role:'acid',formula:'CH₃COOH',titrant:'NaOH',dropper:'methylRed',ph:'4.75',titre:10,appropriate:false},
+  {name:'weak-weak',acid:'acetic',base:'ammonia',role:'base',formula:'NH₃',titrant:'CH₃COOH',dropper:'indicator',ph:'7.00',titre:20,appropriate:false}
+ ];
+ async function choose(selector,value){const actual=await evaluate(`document.querySelector('${selector}').value`);if(actual===value)return;await evaluate(`document.querySelector('${selector}').focus()`);await key('ArrowDown');if(await evaluate(`document.querySelector('${selector}').value`)!==value){await key('ArrowUp');await key('ArrowUp');}await evaluate("document.querySelector('#bench').focus()");assert.equal(await evaluate(`document.querySelector('${selector}').value`),value);}
+ for(const scenario of scenarios){const {name:mode,expectedPH=scenario.ph,formula,titrant,dropper,titre}=scenario;
+  await choose('#acid-select',scenario.acid);await choose('#base-select',scenario.base);await choose('#sample-role',scenario.role);await pause(200);
   assert.ok((await evaluate("document.querySelector('#objective-text').textContent")).includes(formula));
-  assert.ok((await evaluate("document.querySelector('[data-equipment=base]').textContent")).includes(titrant==='HCl'?'Hydrochloric acid':'Sodium hydroxide'));
+  assert.ok((await evaluate("document.querySelector('[data-equipment=base]').textContent")).includes(titrant));
+  assert.equal(await evaluate("document.querySelectorAll('[data-equipment=indicator],[data-equipment=phenolphthalein],[data-equipment=methylRed]').length"),3);
  const burette=await drag('burette',800,100,40,false);await burette.move(620,145);await press();await burette();
  assert.ok((await evaluate("document.querySelector('#action-note').textContent")).includes('clamped'));
  const funnel=await drag('funnel',800,100,20,false);await funnel.move(620,85);await press();await funnel();
@@ -70,22 +78,23 @@ try{
  await drag('flask',620,405,35,true,[{x:780,y:405},{x:620,y:405}]);await pause(500);
  const pipette=await drag('pipette',300,250,40,false);await pipette.move(110,250);await pipette.move(110,400);await press();assert.ok((await evaluate("document.querySelector('#action-note').textContent")).includes('25.00'));
  await pipette.move(110,20);await pipette.move(645,20);await pipette.move(645,290);await press();assert.ok((await evaluate("document.querySelector('#action-note').textContent")).includes('Delivered 25.00'));await pipette.move(930,240);await pipette();
- const indicator=await drag('indicator',800,250,20,false);await indicator.move(645,350);await press();await indicator.move(950,200);await indicator();
- await click('[data-equipment=burette]');for(let i=0;i<19;i++)await click('#action');for(let i=0;i<9;i++)await click('[data-command=fine]');
+ const indicator=await drag(dropper,800,250,20,false);await indicator.move(645,350);await press();await indicator.move(950,200);await indicator();
+ await click('[data-equipment=burette]');for(let i=0;i<titre-1;i++)await click('#action');for(let i=0;i<9;i++)await click('[data-command=fine]');
  await click('[data-command=drop]');await pause(1000);
- assert.ok((await evaluate("document.querySelector('#burette-reading').textContent")).includes('20.15'));
+ assert.ok((await evaluate("document.querySelector('#burette-reading').textContent")).includes((titre+.15).toFixed(2)));
  await click('[data-command=drop]');
  await click('[data-equipment=flask]');await click('#action');
  const probe=await drag('probe',800,250,35,false);await probe.move(640,300);await probe.move(640,410);await press();
  assert.ok((await evaluate("document.querySelector('#ph-reading').textContent")).includes(expectedPH));
  await screenshot('chemtopia-titration-'+mode+'-ph.png');await probe.move(930,200);await probe();
  await click('[data-equipment=flask]');await click('[data-command=trial]');await screenshot('chemtopia-titration-'+mode+'-endpoint.png');await click('#finish');
- assert.ok((await evaluate("document.querySelector('#result h2').textContent")).includes('endpoint recorded'));
+ assert.ok((await evaluate("document.querySelector('#result h2').textContent")).includes(titre===20?'near equivalence':'Review your titration'));
  assert.equal(await evaluate("document.querySelectorAll('#explanation fieldset').length"),3);
- await evaluate(`(()=>{const f=document.querySelector('#explanation');f.querySelector('input[value="0"]').checked=true;f.elements['q2-value'].value='20';f.elements['q3-value'].value='0.08';f.requestSubmit();})()`);
+ assert.ok((await evaluate("document.querySelector('#indicator-review').textContent")).includes(scenario.name==='weak-weak'?'no sharp':scenario.appropriate?'within the steep':'outside the steep'));
+ await evaluate(`(()=>{const f=document.querySelector('#explanation');f.querySelector('input[value="0"]').checked=true;f.elements['q2-value'].value='${titre}';f.elements['q3-value'].value='${.1*titre/25}';f.requestSubmit();})()`);
  assert.ok((await evaluate("document.querySelector('#question-feedback').textContent")).includes('Activity complete'));
  await screenshot('chemtopia-titration-'+mode+'-review.png');
- await click('#restart');assert.equal(await evaluate("document.querySelector('#sample-select').value"),mode);await click('#finish');assert.ok((await evaluate("document.querySelector('#result').textContent")).includes('supplied example'));
+ await click('#restart');assert.equal(await evaluate("document.querySelector('#acid-select').value"),scenario.acid);assert.equal(await evaluate("document.querySelector('#base-select').value"),scenario.base);assert.equal(await evaluate("document.querySelector('#sample-role').value"),scenario.role);await click('#finish');assert.ok((await evaluate("document.querySelector('#result').textContent")).includes('supplied example'));
  assert.deepEqual(exceptions,[]);console.log('PASS '+mode+' assembly, priming, aliquot, discrete drops, indicator, pH '+expectedPH+', readings, calculation review and mode-preserving restart');
  }
 

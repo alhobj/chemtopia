@@ -109,3 +109,8 @@ The owner requested “Start implementering that” after the proposed HCl/NaOH 
 ## Owner-requested weak titration options
 
 The owner explicitly requested CH₃COOH and NH₃ options in the titration lab. This authorises ethanoic-acid/NaOH and ammonia/HCl modes, their weak equilibria, appropriate supplied indicators, mode-specific labels/reviews and a sample selector that starts a fresh attempt. Restart preserves the chosen mode. Preserve analytical material accounting, buffer/conjugate-species pH behaviour, discrete delivery and the existing local-only/push boundaries. Label the weak-titration interpretation extension as AHL using docs/curriculum/weak-titrations.md; do not treat weak reagents as fully ionised or force their equivalence points to pH 7.
+
+
+## Independent acid, base and indicator choices
+
+The owner requested student choice of acids, bases and all indicators, allowing mistakes. This supersedes automatically paired reagents and automatically supplied matching indicators. Offer HCl/CH₃COOH acids and NaOH/NH₃ bases independently, with acid or base as the unknown; allow every pair including weak–weak. Make all three currently modelled indicators separate available droppers, with no forced choice or dose. Preserve mixed-indicator contents, actual colour/pH consequences, biased recorded titres and reviewable wrong attempts. A colour change is not proof of equivalence, especially for weak–weak titrations. Existing discrete delivery, local-only and commit/push boundaries continue.

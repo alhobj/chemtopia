@@ -1,6 +1,10 @@
 # Acid–base titration — first prototype
 
-## Current sample options
+## Current independent choices
+
+The latest owner request supersedes the automatic pairings described in earlier increments: students select the acid (HCl or CH₃COOH), base (NaOH or NH₃) and whether acid or base is the unknown. Every pairing is allowed. All three current indicators are available as separate droppers, without automatic selection or dosing. See the current independent-choice extension at the end of this document; the original increments below are retained as history.
+
+## Earlier sample options
 
 The owner subsequently requested CH₃COOH and NH₃ options. A sample selector now starts a fresh attempt with HCl/NaOH, CH₃COOH/NaOH or NH₃/HCl. Restart retains the chosen sample. These additions supersede the strong-only chemistry/model limit in the original increment below. See [the weak-titration model and curriculum note](../curriculum/weak-titrations.md).
 
@@ -69,3 +73,17 @@ Rounded teaching constants at 25 °C: Kw = 10⁻¹⁴, Ka(CH₃COOH) = 1.8 × 10
 The supplied indicator follows the sample: bromothymol blue for HCl, phenolphthalein for CH₃COOH (qualitative range pH 8.2–10, colourless/pale pink/pink), methyl red for NH₃ (pH 4.4–6.2, red/orange/yellow). No indicator-choice assessment or extra equipment selector is added. The existing pH probe remains available. Completion uses the selected endpoint region, not a hard-coded demand for pH 7. In this example, equivalence is approximately pH 8.70 for CH₃COOH and 5.30 for NH₃. Indicator models remain qualitative.
 
 The three-question review keeps the 1:1 concept, measured titre and typed sample-concentration calculation, adapting reagent names and reaction equations. Feedback explains ethanoate hydrolysis or ammonium dissociation where relevant. The equilibrium-model note and learning scope distinguish the AHL weak-titration extension from the common SL/HL HCl activity. No graph, new reward, account, dependency or deployment is included.
+
+## Independent-choice extension
+
+There are eight setups: two acids × two bases × either unknown role. The unknown is the left bottle at hidden 0.0800 M; the selected counterpart is the 0.100 M standard in the other bottle. Their names/formulae, contents, objective and review all follow the choices. Changing a reagent/role starts a fresh attempt; Restart preserves the selections. This does not change any acid/base or indicator automatically when another choice changes.
+
+All three implemented indicators are available in Equipment throughout each attempt: bromothymol blue, phenolphthalein and methyl red. No indicator is pre-added. Each dropper has its own identity and finite reserve. The student may choose an unsuitable indicator, omit an indicator or add several. Individual dye counts survive material transfers, tip priming, spills and storage. Mixed colour is a qualitative weighted palette blend, not a spectral/absorbance simulation; mixing dyes does not create a new certified transition range. Dye volume and pH perturbation remain omitted.
+
+Acid/base chemistry is still solved from all strong and weak analytical species. In particular CH₃COOH/NH₃ is allowed in both directions and has a gradual equivalence region. Its proton-transfer reaction remains an equilibrium, not an assumed abrupt neutralisation jump. None of the three supplied indicators has a reliable visual endpoint for this pair. Nothing prevents running it.
+
+Trial review records the actual titre, aliquot provenance, sample moles, titrant moles reaching the flask and dyes present. A reading near stoichiometry is reported separately from indicator suitability. Practical near-equivalence tolerance is 0.25% of delivered sample equivalents (a prototype tolerance), with existing aliquot, priming, missed-delivery, mixing and standard-composition checks. This is not a claim that a weak–weak titration gives an analytically reliable endpoint. A correct observation is not conditional on selecting a prescribed indicator.
+
+The post-attempt indicator assessment compares each full transition range to the model pH interval within ±0.10 mL of analytical equivalence, including receiving-flask water. This is a labelled prototype resolution criterion, not an IB-mandated or universal indicator test. It finds all three current indicators suitable for the strong pair, phenolphthalein for the CH₃COOH/NaOH pair, methyl red for HCl/NH₃, and none for CH₃COOH/NH₃. Suitable alternatives are explained only in review, not used to filter controls. A mixed-indicator colour is not assessed as one pure indicator.
+
+Wrong endpoint attempts remain available for all three questions. Example: stopping CH₃COOH/NaOH at a methyl-red colour near 10 mL gives an apparent concentration of 0.0400 M instead of the hidden 0.0800 M. The app does not substitute a corrected reading. Probe-only observations also remain possible. No new curve, automatic endpoint, scoring, dependency, account or deployment is added.

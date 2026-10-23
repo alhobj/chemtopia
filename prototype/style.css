@@ -32,4 +32,6 @@ main{max-width:none;margin:0;padding:6px}.lab-shell{height:calc(100dvh - 58px);m
 
 #fine-controls{display:flex;flex-wrap:wrap;gap:5px;margin-top:8px}#fine-controls button{flex:1;font-size:11px;padding:7px;min-height:38px}#instrument svg{display:block;max-height:150px;width:100%}#instrument p{font-size:11px;margin:4px 0}
 
-#sample-select{display:block;width:100%;max-width:100%;padding:8px 5px;margin:5px 0 10px;border:1px solid #b8cbc0;border-radius:4px;background:#fffdf5;color:var(--ink);font:inherit;font-size:12px}
+#sample-select,.titration-choices select,#sample-role{display:block;width:100%;max-width:100%;padding:8px 5px;margin:5px 0 10px;border:1px solid #b8cbc0;border-radius:4px;background:#fffdf5;color:var(--ink);font:inherit;font-size:12px}
+
+.titration-choices{display:grid;grid-template-columns:1fr 1fr;gap:8px}.titration-choices label{min-width:0}

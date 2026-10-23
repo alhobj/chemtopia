@@ -4,7 +4,19 @@ Run `npm start` and select **Titration**, or open `titration.html`. This is the 
 
 [Endpoint workbench](../art/previews/titration-endpoint.png) · [Immersed pH probe](../art/previews/titration-ph.png) · [Calculation review](../art/previews/titration-review.png)
 
-## Choose the sample
+[Unsuitable indicator example](../art/previews/titration-wrong-indicator-ph.png) · [Weak–weak example](../art/previews/titration-weak-weak-ph.png)
+
+## Current student choices
+
+Choose **Acid** (HCl/CH₃COOH), **Base** (NaOH/NH₃) and the **Unknown sample** role independently. Reagent/role changes restart the attempt; Restart retains all three choices. The earlier automatically paired sample menu is superseded.
+
+Every attempt offers separate **bromothymol blue**, **phenolphthalein** and **methyl red** droppers in Equipment. Choose any, omit them, or add several. Nothing selects the appropriate indicator for you. Choosing a different dropper does not replace the dye already in a vessel.
+
+All four acid/base pairs work in either direction. A weak–weak pairing is allowed; its gradual pH change makes visual endpoint detection unreliable with the available indicators. The review explains this after the attempt. Wrong-indicator colour changes and their biased titre calculations remain visible and reviewable.
+
+Near-stoichiometric delivery and a reliable visual endpoint are reported separately. The current post-attempt indicator assessment uses the model pH jump within ±0.10 mL of equivalence as a prototype criterion; it is not a universal or IB-certified precision rule. Mixed dye colour is qualitative, not a measured spectrum.
+
+## Earlier paired sample version
 
 Use the **Sample** selector for HCl, CH₃COOH or NH₃. Changing sample starts a fresh attempt; Restart keeps the selection. CH₃COOH uses NaOH and phenolphthalein. NH₃ uses HCl and methyl red. The pH probe works with all three. Labels, objective, reaction and review questions update together. Weak-sample work is labelled as an AHL extension.
 
@@ -48,3 +60,9 @@ The repeated-trial checks require a fresh initial reading; merely recording the 
 The extended model tests cover initial and half-equivalence pH, conjugate-species equivalence, monotonic acid/base titration direction, overshoot, clean-flask water, analytical-material conservation through tip/spills/storage and the HCl standard required for NH₃. The native browser walkthrough is repeated for all three modes, including mode changes, labels, assembly, priming, measured aliquot, indicator, single drops, immersed probe, calculated answers and mode-preserving restart.
 
 Current extension checks: **133 model tests pass**, including 24 titration checks. All **three native browser titration scenarios** pass (HCl, CH₃COOH and NH₃), plus responsive layout checks for all seven labs at desktop, wide and phone dimensions. The previous nine-suite result above records the original HCl increment.
+
+## Independent-choice checks
+
+Model checks cover every acid/base pair in both unknown roles, all three indicators available without auto-dosing, weak–weak behaviour, an early methyl-red colour with a biased CH₃COOH titre, mixed-dye transfers and finite indicator reserves. Browser scenarios cover the original three setups, an unsuitable indicator stopping point and a weak–weak setup, with all three reagent/role choices retained on Restart.
+
+Current independent-choice verification: **146 model checks pass**, including 37 titration checks. **Five complete native browser titration scenarios pass**: HCl/NaOH, CH₃COOH/NaOH, NH₃/HCl, an early methyl-red stopping point and a weak–weak attempt. Responsive layout checks pass for all seven labs at desktop, wide and phone dimensions. The earlier verification counts above record earlier increments.

@@ -155,3 +155,10 @@ For the full walkthrough, supported mistakes and model limits, see [the titratio
 The Titration **Sample** dropdown now offers HCl, CH₃COOH (ethanoic acid) and NH₃ (ammonia). Choosing another sample resets the attempt; Restart retains the current sample. CH₃COOH uses 0.100 M NaOH and phenolphthalein. NH₃ uses 0.100 M HCl and methyl red. All three retain the immersed pH probe, discrete delivery and three calculation/concept questions.
 
 The weak samples include buffer behaviour and non-neutral equivalence pH; their interpretation is labelled as an AHL extension. See [the model and curriculum reference](../docs/curriculum/weak-titrations.md).
+
+
+### Independent reagents and indicators
+
+The titration now has independent **Acid**, **Base** and **Unknown sample** controls. Select any HCl/CH₃COOH and NaOH/NH₃ pairing in either direction, including weak–weak. Reagent/role changes reset the attempt; Restart retains them.
+
+All three current indicators are available as separate Equipment droppers: bromothymol blue, phenolphthalein and methyl red. They are never selected or added automatically. Students may omit them, choose an unsuitable indicator or mix them. The actual colours, pH, titre and apparent concentration remain reviewable. The review distinguishes stoichiometric delivery from a reliable visual endpoint and explains weak–weak limitations after the attempt.

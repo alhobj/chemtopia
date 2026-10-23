@@ -34,3 +34,6 @@ Implementation: `prototype/review-questions.js`. Tests check all five three-ques
 
 
 The owner-requested CH₃COOH and NH₃ modes retain these three titration questions, adapting sample/titrant names and balanced 1:1 reactions. NH₃ uses HCl as the standard. Their feedback distinguishes alkaline ethanoate equivalence from acidic ammonium equivalence; pH 7 is not a completion requirement.
+
+
+Independent acid/base choices now adapt the same three titration questions to all four pairings in either unknown role. Indicator mistakes do not replace recorded titres with ideal ones: a 10.00 mL early endpoint for a 25.00 mL sample and 0.100 M standard gives a calculated 0.0400 M apparent concentration. The post-attempt explanation distinguishes this from a reliable endpoint and allows every indicator choice. Weak–weak observations remain reviewable.

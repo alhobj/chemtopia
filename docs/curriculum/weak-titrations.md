@@ -6,7 +6,13 @@ The owner explicitly requested CH₃COOH and NH₃ as alternatives in the titrat
 
 Source: owner-supplied IB *Chemistry guide*, first assessment 2025, published February 2023. Reactivity **3.1.13–3.1.15**, printed p. **58** / physical PDF p. **64**, is additional HL (AHL): interpreting strong/weak titration features, buffer regions, half-equivalence relationships, indicators and endpoint/equivalence distinctions. The common strong-acid/base/practical foundation remains mapped in [lab opportunities](lab-opportunities.md). This extension does not implement a plotted curve or claim to cover every listed outcome. Later online revisions remain unchecked; see [source status](README.md).
 
-## Model choices, not prescribed IB recipes
+## Current independent choices
+
+The owner subsequently requested all acids, bases and indicators as independent student choices. The current controls allow all four pairs of HCl/CH₃COOH with NaOH/NH₃, with either reagent as the unknown. The three indicator droppers are all available. The automatically supplied indicator assignments in the earlier table below are historical examples, not restrictions in the current lab.
+
+CH₃COOH/NH₃ is a permitted weak–weak example. Its reaction forms ammonium and ethanoate in equilibrium; the computed pH near equivalence changes gradually. In this example the equivalence pH is near 7 because the selected Ka and Kb are equal, but neutral pH does not imply a sharp titration endpoint. None of the available indicators gives reliable visual equivalence detection for this pair. Incorrect indicator choices remain possible for every pair, and their colour changes can bias the apparent concentration.
+
+## Earlier model choices, not prescribed IB recipes
 
 | Sample | Standard titrant | Supplied indicator | Example equivalence pH |
 | --- | --- | --- | --- |

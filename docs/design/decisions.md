@@ -231,3 +231,12 @@ The L08 walkthrough exposed apparatus clearance problems. The functional burette
 The owner requested “Make CH3COOH and option as well as NH3”. This authorises adding both sample alternatives to the existing activity. CH₃COOH is titrated with NaOH; NH₃ with HCl. The sample dropdown resets the attempt, while Restart retains the sample. Keep the existing practical apparatus and discrete additions.
 
 A mass/charge-balance solver replaces the strong-only pH expression, preserving analytical weak-species totals and modelling buffer regions and conjugate-species hydrolysis. Rounded 25 °C equilibrium constants are explicit implementation defaults. Supply phenolphthalein for CH₃COOH and methyl red for NH₃; retain the probe and make feedback/review names and reactions mode-specific. Weak-titration interpretation is labelled AHL against the supplied February 2023 guide, not silently presented as common SL content. See [the reference](../curriculum/weak-titrations.md) and [extended specification](titration-prototype-spec.md).
+
+
+## Student-controlled titration choices — 23 October 2026
+
+The owner requested “Let the students pick both acid, bases and all indicators. Allowing mistakes”. Acid (HCl/CH₃COOH), base (NaOH/NH₃) and unknown role are independent choices. Every acid/base pair works in both directions, including CH₃COOH/NH₃. Changing reagents/role resets the attempt; Restart retains them.
+
+Bromothymol blue, phenolphthalein and methyl red are separate finite droppers available during every attempt. Nothing chooses, filters or adds the matching indicator automatically. Students may use no indicator or mix indicators. Each dye is conserved across reserves, liquid transfers, spills and storage, with a labelled qualitative blended-colour model.
+
+The review separates a near-stoichiometric reading from reliable visual endpoint detection. Wrong indicators can change at a biased titre and all such trials remain reviewable/calculable. Weak–weak trials are allowed, with post-attempt explanation that the available indicators cannot identify a sharp equivalence jump. See the revised specification and review.

@@ -2,6 +2,8 @@
 
 ## Current step — acid–base titration
 
+The latest owner revision makes acid, base and indicator choices independent, permitting unsuitable indicators and weak–weak pairings. All three current indicators are separate available droppers. See [the updated review](titration-prototype-review.md) for the current controls; earlier automatically paired modes below are historical.
+
 The owner subsequently requested CH₃COOH and NH₃ sample options. Both now use the appropriate standard titrant, weak equilibria, supplied indicators and mode-specific review. See [the reference](../curriculum/weak-titrations.md); owner playtesting remains the next review step.
 
 The owner requested implementation of the proposed HCl/NaOH titration after solution preparation. [The specification](titration-prototype-spec.md) records its bounded scope and numerical defaults. See [the implementation review](titration-prototype-review.md) for controls and verification. Owner playtesting of the current labs is the next review step; no later roadmap activity is selected.
