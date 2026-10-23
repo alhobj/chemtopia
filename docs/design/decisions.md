@@ -224,3 +224,10 @@ The owner requested implementation after the proposed unknown-HCl/known-NaOH tit
 
 
 The L08 walkthrough exposed apparatus clearance problems. The functional burette proportions, clamp height and wider conical-flask neck were aligned so tools can pass over the rig and the flask can slide under the tip. Art and solid colliders share those dimensions. The tall burette uses an explicit equipment-retrieval height range; default ranges in the six earlier labs are unchanged. All 123 model tests and nine browser suites pass, including the seven-lab layout matrix.
+
+
+## CH₃COOH and NH₃ titration options — 23 October 2026
+
+The owner requested “Make CH3COOH and option as well as NH3”. This authorises adding both sample alternatives to the existing activity. CH₃COOH is titrated with NaOH; NH₃ with HCl. The sample dropdown resets the attempt, while Restart retains the sample. Keep the existing practical apparatus and discrete additions.
+
+A mass/charge-balance solver replaces the strong-only pH expression, preserving analytical weak-species totals and modelling buffer regions and conjugate-species hydrolysis. Rounded 25 °C equilibrium constants are explicit implementation defaults. Supply phenolphthalein for CH₃COOH and methyl red for NH₃; retain the probe and make feedback/review names and reactions mode-specific. Weak-titration interpretation is labelled AHL against the supplied February 2023 guide, not silently presented as common SL content. See [the reference](../curriculum/weak-titrations.md) and [extended specification](titration-prototype-spec.md).

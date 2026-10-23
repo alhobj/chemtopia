@@ -50,6 +50,11 @@ try{
  for(let i=0;i<40;i++){if(await evaluate("!!document.querySelector('#equipment-menu')"))break;await pause(100);}
  assert.equal(await evaluate("document.querySelectorAll('.equipment-button').length"),11);
  const press=async()=>{await key(' ','Space');await pause(40);};
+ for(const [mode,expectedPH,formula,titrant]of [['hcl','7.00','HCl','NaOH'],['acetic','8.70','CH₃COOH','NaOH'],['ammonia','5.30','NH₃','HCl']]){
+  if(mode!=='hcl'){await evaluate("document.querySelector('#sample-select').focus()");await key('ArrowDown');await evaluate("document.querySelector('#bench').focus()");await pause(200);}
+  assert.equal(await evaluate("document.querySelector('#sample-select').value"),mode);
+  assert.ok((await evaluate("document.querySelector('#objective-text').textContent")).includes(formula));
+  assert.ok((await evaluate("document.querySelector('[data-equipment=base]').textContent")).includes(titrant==='HCl'?'Hydrochloric acid':'Sodium hydroxide'));
  const burette=await drag('burette',800,100,40,false);await burette.move(620,145);await press();await burette();
  assert.ok((await evaluate("document.querySelector('#action-note').textContent")).includes('clamped'));
  const funnel=await drag('funnel',800,100,20,false);await funnel.move(620,85);await press();await funnel();
@@ -72,16 +77,17 @@ try{
  await click('[data-command=drop]');
  await click('[data-equipment=flask]');await click('#action');
  const probe=await drag('probe',800,250,35,false);await probe.move(640,300);await probe.move(640,410);await press();
- assert.ok((await evaluate("document.querySelector('#ph-reading').textContent")).includes('7.00'));
- await screenshot('chemtopia-titration-ph.png');await probe.move(930,200);await probe();
- await click('[data-equipment=flask]');await click('[data-command=trial]');await screenshot('chemtopia-titration-endpoint.png');await click('#finish');
+ assert.ok((await evaluate("document.querySelector('#ph-reading').textContent")).includes(expectedPH));
+ await screenshot('chemtopia-titration-'+mode+'-ph.png');await probe.move(930,200);await probe();
+ await click('[data-equipment=flask]');await click('[data-command=trial]');await screenshot('chemtopia-titration-'+mode+'-endpoint.png');await click('#finish');
  assert.ok((await evaluate("document.querySelector('#result h2').textContent")).includes('endpoint recorded'));
  assert.equal(await evaluate("document.querySelectorAll('#explanation fieldset').length"),3);
  await evaluate(`(()=>{const f=document.querySelector('#explanation');f.querySelector('input[value="0"]').checked=true;f.elements['q2-value'].value='20';f.elements['q3-value'].value='0.08';f.requestSubmit();})()`);
  assert.ok((await evaluate("document.querySelector('#question-feedback').textContent")).includes('Activity complete'));
- await screenshot('chemtopia-titration-review.png');
- await click('#restart');await click('#finish');assert.ok((await evaluate("document.querySelector('#result').textContent")).includes('supplied example'));
- assert.deepEqual(exceptions,[]);console.log('PASS real burette assembly, filling, priming, aliquot, indicator, discrete drops, mixing, immersed pH probe, readings and calculation review');
+ await screenshot('chemtopia-titration-'+mode+'-review.png');
+ await click('#restart');assert.equal(await evaluate("document.querySelector('#sample-select').value"),mode);await click('#finish');assert.ok((await evaluate("document.querySelector('#result').textContent")).includes('supplied example'));
+ assert.deepEqual(exceptions,[]);console.log('PASS '+mode+' assembly, priming, aliquot, discrete drops, indicator, pH '+expectedPH+', readings, calculation review and mode-preserving restart');
+ }
 
 }finally{
  if(ws)ws.close();chrome.kill();server.kill();await pause(300);await rm(profile,{recursive:true,force:true,maxRetries:5,retryDelay:100});

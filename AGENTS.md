@@ -104,3 +104,8 @@ The owner selected L07 and approved [the concrete specification](docs/design/sol
 ## Acid–base titration increment
 
 The owner requested “Start implementering that” after the proposed HCl/NaOH titration. This authorises the bounded local [titration specification](docs/design/titration-prototype-spec.md), with 25.00 mL pipetting, a standard NaOH burette, clamped assembly, discrete coarse/fine/drop additions, swirling, readings, repeat trials and three calculation/concept questions. Preserve non-gamer pacing and real consequences of an unprimed tip, overshoot, dilution or missed receiver. Both indicator and pH probe are initially supplied as a stated implementation default pending the optional observation preference; do not label this an explicit owner choice. Existing commit/push and local-only boundaries apply.
+
+
+## Owner-requested weak titration options
+
+The owner explicitly requested CH₃COOH and NH₃ options in the titration lab. This authorises ethanoic-acid/NaOH and ammonia/HCl modes, their weak equilibria, appropriate supplied indicators, mode-specific labels/reviews and a sample selector that starts a fresh attempt. Restart preserves the chosen mode. Preserve analytical material accounting, buffer/conjugate-species pH behaviour, discrete delivery and the existing local-only/push boundaries. Label the weak-titration interpretation extension as AHL using docs/curriculum/weak-titrations.md; do not treat weak reagents as fully ionised or force their equivalence points to pH 7.

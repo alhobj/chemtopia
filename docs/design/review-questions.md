@@ -31,3 +31,6 @@ Implementation: `prototype/review-questions.js`. Tests check all five three-ques
 1. Explain the 1:1 mole relationship between HCl and NaOH at equivalence. Balanced shuffled choices distinguish moles from equal volumes or masses.
 2. Calculate titre from recorded final minus initial burette readings.
 3. Use the titre, 0.100 mol dm⁻³ NaOH and recorded aliquot volume to calculate apparent HCl concentration. A bad endpoint/technique can bias this estimate; it is not an automatically corrected true concentration. Without a usable trial, the supplied example uses 1.20 → 21.20 mL and a 25.00 mL aliquot, giving 20.00 mL and 0.0800 mol dm⁻³. All three require correct answers with retry.
+
+
+The owner-requested CH₃COOH and NH₃ modes retain these three titration questions, adapting sample/titrant names and balanced 1:1 reactions. NH₃ uses HCl as the standard. Their feedback distinguishes alkaline ethanoate equivalence from acidic ammonium equivalence; pH 7 is not a completion requirement.

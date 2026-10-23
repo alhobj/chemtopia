@@ -1,5 +1,9 @@
 # Acid–base titration — first prototype
 
+## Current sample options
+
+The owner subsequently requested CH₃COOH and NH₃ options. A sample selector now starts a fresh attempt with HCl/NaOH, CH₃COOH/NaOH or NH₃/HCl. Restart retains the chosen sample. These additions supersede the strong-only chemistry/model limit in the original increment below. See [the weak-titration model and curriculum note](../curriculum/weak-titrations.md).
+
 ## Authority and scope
 
 The owner requested implementation after the proposal to find an unknown HCl concentration using known NaOH, a conical flask, volumetric pipette, burette, swirling, endpoint observation and concentration calculation. Preserve discrete additions suitable for non-gamers. This is a bounded seventh local lab, not approval for later roadmap activities or deployment.
@@ -28,7 +32,7 @@ Use the shared drawer, large workbench, click/drag, gravity/friction, solid glas
 
 HCl and NaOH react in a 1:1 mole ratio. Track liquid volume and both analytical acid/base equivalents through bottles, pipette, barrel, tip, flask, waste, spills and storage. Neutralisation changes free H⁺/OH⁻, not the tracked totals of acid-derived chloride and base-derived sodium equivalents.
 
-At 25 °C use Kw = 10⁻¹⁴ and solve [H⁺] − Kw/[H⁺] = (n(acid) − n(base))/V. Use a stable numerical expression on both sides of equivalence, including pure water. Assume complete strong-electrolyte dissociation, ideal concentrations and additive dilute-solution volumes. No activity, heat, carbonate uptake, random error or weak-acid model.
+At 25 °C use Kw = 10⁻¹⁴ and solve [H⁺] − Kw/[H⁺] = (n(acid) − n(base))/V. Use a stable numerical expression on both sides of equivalence, including pure water. Assume complete strong-electrolyte dissociation, ideal concentrations and additive dilute-solution volumes. No activity, heat, carbonate uptake or random error. The later weak-sample extension below replaces the original strong-only pH equation when weak species are present.
 
 The initially empty burette tip holds **0.20 mL**. Filling this from the barrel changes the reading without delivering the same volume to the receiver. Once filled, incoming liquid displaces its contents; tip composition and volume remain explicit. Priming/rinsing therefore has a material consequence. A diluted or contaminated NaOH charge is not treated as the stated 0.100 M standard automatically.
 
@@ -53,3 +57,15 @@ An incorrect practical attempt remains reviewable. Recording multiple readings d
 Owner-supplied IB *Chemistry guide*, first assessment 2025, published February 2023: Reactivity 3.1.7–3.1.8, printed p. 57 / PDF p. 63; Reactivity 2.1.2, printed p. 52 / PDF p. 58; Tool 1, printed p. 29 / PDF p. 35. Common SL/HL strong-acid/base and practical/stoichiometric context. Weak-acid curve analysis and indicator selection theory remain AHL 3.1.13–3.1.15, printed p. 58 / PDF p. 64. See [the verified mapping](../curriculum/lab-opportunities.md) and [source status](../curriculum/README.md).
 
 Verify conservation, pH near equivalence and on both sides, tip priming, overshoot, discrete drops, sample/waste handling, storage, support physics, repeated trials and frozen finished state. Use a real browser walkthrough for assembly, filling/priming, aliquot, indicator, controlled additions, pH immersion, recorded readings and all review answers. Run existing lab and responsive-layout regressions. No new dependency installation, account, backend, analytics or publication.
+
+## Owner-requested weak sample extension
+
+Select **HCl**, **CH₃COOH** or **NH₃**. Each uses a 25.00 mL aliquot of an unknown 0.0800 M example stock, with a 0.100 M standard. CH₃COOH uses NaOH; NH₃ uses HCl. Keeping the same stoichiometric titre makes pH behaviour comparable. Formulae, bottle labels, equipment names, objectives, indicator and all review wording follow the selected mode. Changing mode resets materials, trials, assembly, selected/held items and the review. Restart retains that mode. There are no mixed inventories from different attempts.
+
+In addition to strong acid/base equivalents, track analytical ethanoic-acid/ethanoate and ammonia/ammonium totals through every transfer, tip, spill and stored vessel. Solve electroneutrality together with their mass-action equilibria and water, rather than treating the weak reagents as fully ionised. This also handles contamination containing both weak families. The solver includes the initial solution, buffer region, equivalence and excess titrant continuously.
+
+Rounded teaching constants at 25 °C: Kw = 10⁻¹⁴, Ka(CH₃COOH) = 1.8 × 10⁻⁵, Kb(NH₃) = 1.8 × 10⁻⁵, with Ka(NH₄⁺) derived as Kw/Kb. These are explicit numerical model defaults, not a sourced precision-property dataset or constants extracted from the supplied IB guide.
+
+The supplied indicator follows the sample: bromothymol blue for HCl, phenolphthalein for CH₃COOH (qualitative range pH 8.2–10, colourless/pale pink/pink), methyl red for NH₃ (pH 4.4–6.2, red/orange/yellow). No indicator-choice assessment or extra equipment selector is added. The existing pH probe remains available. Completion uses the selected endpoint region, not a hard-coded demand for pH 7. In this example, equivalence is approximately pH 8.70 for CH₃COOH and 5.30 for NH₃. Indicator models remain qualitative.
+
+The three-question review keeps the 1:1 concept, measured titre and typed sample-concentration calculation, adapting reagent names and reaction equations. Feedback explains ethanoate hydrolysis or ammonium dissociation where relevant. The equilibrium-model note and learning scope distinguish the AHL weak-titration extension from the common SL/HL HCl activity. No graph, new reward, account, dependency or deployment is included.

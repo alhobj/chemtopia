@@ -4,7 +4,15 @@ Run `npm start` and select **Titration**, or open `titration.html`. This is the 
 
 [Endpoint workbench](../art/previews/titration-endpoint.png) · [Immersed pH probe](../art/previews/titration-ph.png) · [Calculation review](../art/previews/titration-review.png)
 
-## Practical walkthrough
+## Choose the sample
+
+Use the **Sample** selector for HCl, CH₃COOH or NH₃. Changing sample starts a fresh attempt; Restart keeps the selection. CH₃COOH uses NaOH and phenolphthalein. NH₃ uses HCl and methyl red. The pH probe works with all three. Labels, objective, reaction and review questions update together. Weak-sample work is labelled as an AHL extension.
+
+[CH₃COOH pH reading](../art/previews/titration-acetic-ph.png) · [NH₃ pH reading](../art/previews/titration-ammonia-ph.png) · [CH₃COOH review](../art/previews/titration-acetic-review.png) · [NH₃ review](../art/previews/titration-ammonia-review.png)
+
+Weak reagents use actual dissociation/buffer/conjugate-species equilibria. Their equivalence points are not forced to pH 7: the current example gives about 8.70 for CH₃COOH and 5.30 for NH₃. See [the equilibrium reference](../curriculum/weak-titrations.md).
+
+## Original HCl practical walkthrough
 
 1. Retrieve the burette into an open space, bring it near the stand clamp and press Space to attach. Retrieve the funnel and fit it near the burette mouth.
 2. Bring the NaOH bottle beside the upper part of the burette and press Space to fill in finite portions. Remove/store the funnel. The bottle's fill action abstracts tilting into the funnel; there is no timed stream.
@@ -29,8 +37,14 @@ Numerical values, delivery sizes and tolerances are prototype defaults. The mode
 
 See [the specification and exact curriculum references](titration-prototype-spec.md). Both indicator and pH were supplied as the stated initial default while the optional observation preference remained unanswered; this is not recorded as an explicit owner choice. No backend, accounts, saving, analytics or deployment was added.
 
-## Verification
+## Original HCl increment verification
 
 `npm test`: **123 passing checks**, including 14 titration model checks. `npm run test:browser`: **all nine suites pass**, including a complete native mouse/keyboard titration walkthrough and all seven lab layouts at 1440×900, 2383×1000 and 390×844. Checks include a deliberate pause after one drop, observed pH 7.00 at the example equivalence point, three-question completion, incomplete review, restart and no browser runtime exceptions.
 
 The repeated-trial checks require a fresh initial reading; merely recording the previous endpoint again does not establish a new successful trial.
+
+## Weak-sample extension verification
+
+The extended model tests cover initial and half-equivalence pH, conjugate-species equivalence, monotonic acid/base titration direction, overshoot, clean-flask water, analytical-material conservation through tip/spills/storage and the HCl standard required for NH₃. The native browser walkthrough is repeated for all three modes, including mode changes, labels, assembly, priming, measured aliquot, indicator, single drops, immersed probe, calculated answers and mode-preserving restart.
+
+Current extension checks: **133 model tests pass**, including 24 titration checks. All **three native browser titration scenarios** pass (HCl, CH₃COOH and NH₃), plus responsive layout checks for all seven labs at desktop, wide and phone dimensions. The previous nine-suite result above records the original HCl increment.

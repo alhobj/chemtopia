@@ -148,3 +148,10 @@ Open `titration.html` or choose **Titration** from the bottom navigation. Use a 
 Each addition stops: 1 mL, 0.1 mL or one 0.05 mL drop. Prime the tip into waste, then record your initial reading. Swirl after additions, judge the endpoint and record the final reading as a trial. Finish opens three questions, including titre and concentration calculations from your readings. An incomplete attempt uses a labelled example.
 
 For the full walkthrough, supported mistakes and model limits, see [the titration review](../docs/design/titration-prototype-review.md). No timed flow, account or new dependency is needed.
+
+
+### Alternative titration samples
+
+The Titration **Sample** dropdown now offers HCl, CH₃COOH (ethanoic acid) and NH₃ (ammonia). Choosing another sample resets the attempt; Restart retains the current sample. CH₃COOH uses 0.100 M NaOH and phenolphthalein. NH₃ uses 0.100 M HCl and methyl red. All three retain the immersed pH probe, discrete delivery and three calculation/concept questions.
+
+The weak samples include buffer behaviour and non-neutral equivalence pH; their interpretation is labelled as an AHL extension. See [the model and curriculum reference](../docs/curriculum/weak-titrations.md).

@@ -2,7 +2,7 @@
 
 A chemistry learning game for students aged 16–19 studying IB Diploma Programme Chemistry.
 
-The local prototype includes sand-and-water filtration, acetone–water distillation, marker-ink paper chromatography, evaporation/salt-recovery, recrystallisation, solution preparation/dilution, and acid–base titration workbenches. English is the project's working language. The larger game remains in design.
+The local prototype includes sand-and-water filtration, acetone–water distillation, marker-ink paper chromatography, evaporation/salt-recovery, recrystallisation, solution preparation/dilution, and acid–base titration (HCl, CH₃COOH and NH₃) workbenches. English is the project's working language. The larger game remains in design.
 
 ## Try the prototype
 
