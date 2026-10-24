@@ -14,6 +14,17 @@ function overlays(html,image='',id='',extra=''){
  return extracts(html,/<defs>[\s\S]*?<\/defs>/g)+mask+`<g ${image?`mask="url(#${maskId})"`:''}>`+extra+'<g class="equipment-contents">'+extracts(html,/<g clip-path="[^"]*">[\s\S]*?<\/g>/g)+'</g></g>'+extracts(html,/<text\b[^>]*>[\s\S]*?<\/text>/g)+extracts(html,/<rect class="select-outline"[^>]*\/>/g);
 }
 const metal=(x,y,w,h)=>rect(x,y,w,h,'fill="#23344e"')+rect(x+1,y+1,Math.max(1,w-2),Math.max(1,h-2),'fill="#6b8b9d"')+rect(x+1,y+1,Math.max(1,w-2),Math.min(2,h-2),'fill="#c6e6e8"');
+// Seven-segment glyphs sit inside the balance sprite's recessed LCD window.
+function balanceDisplay(html){
+ const value=html.match(/id="balance-reading"[^>]*>([^<]*)</)?.[1]||'0.000 g';
+ const segments={0:'abcdef',1:'bc',2:'abdeg',3:'abcdg',4:'bcfg',5:'acdfg',6:'acdefg',7:'abc',8:'abcdefg',9:'abcdfg','-':'g'};
+ const paths={a:'M1 0H5L6 1 5 2H1L0 1Z',b:'M5 2L6 1 7 2V5L6 6 5 5Z',c:'M5 7L6 6 7 7V10L6 11 5 10Z',d:'M1 10H5L6 11 5 12H1L0 11Z',e:'M-1 7L0 6 1 7V10L0 11-1 10Z',f:'M-1 2L0 1 1 2V5L0 6-1 5Z',g:'M1 5H5L6 6 5 7H1L0 6Z'};
+ let x=0,digits='';for(const c of value.replace(/\s*g$/,'')){
+  if(c==='.'){digits+=`<rect x="${x}" y="10" width="1.6" height="2"/>`;x+=3;continue;}
+  digits+=`<g transform="translate(${x} 0)">${Object.entries(paths).map(([key,d])=>`<path d="${d}" opacity="${(segments[c]||'').includes(key)?1:.07}"/>`).join('')}</g>`;x+=9;
+ }
+ return rect(-53,32,65,16,'rx="1" fill="#163e48" stroke="#8ba1aa" stroke-width="1"')+rect(-50,34,59,12,'fill="#76b3a7"')+`<g role="img" aria-label="${value}" transform="translate(-47 35) scale(.72 .8)" fill="#153c3a">${digits}<text x="${x+1}" y="11" font-size="10" font-family="monospace">g</text></g><text id="balance-reading" visibility="hidden" aria-hidden="true">${value}</text>`;
+}
 function supports(o,lab){
  let bottom=[-57,-7,92,23],rod=[-5,-231,10,230],cx=90,cy=-172,ring=true;
  if(lab==='distillation'){const right=o.id==='support2';bottom=[right?-25:-65,-8,90,24];cx=right?-195:90;cy=right?-134:-162;}
@@ -51,10 +62,11 @@ function vesselContents(o,html,lab,w,h){
  const salt='dissolved'in o?Math.max(0,(o.salt||0)-o.dissolved):lab==='evaporation'?Math.max(0,(o.salt||0)-(o.water||0)*.3):0;
  const materials=[{amount:o.sand||0,colour:'#bd975c'}, {amount:salt+(o.raw||0)+(o.crystals||0)+(o.chips||0)+(o.powder||0),colour:'#f5eccf'}];
  for(const m of materials){if(m.amount<=1e-9)continue;
-  const count=Math.min(70,Math.max(3,Math.ceil(m.amount*(o.capacity>2?80:220))));
+  const saltBottle=k==='bottle'&&lab==='solution';
+  const count=Math.min(saltBottle?360:70,Math.max(3,Math.ceil(m.amount*(o.capacity>2?80:220))));
   const base=k==='boat'?18:k==='basin'?67:bottom-2;
   const spread=k==='flask'?w*.55:k==='conical'?w*.7:w*.65;
-  contents+=Array.from({length:count},(_,i)=>{const x=((i*37%97)/97-.5)*spread,y=base-2-(i*29%17)/17*Math.min(15,3+count*.18),r=o.powder>0?1:1.7;return `<path class="solid-grain" d="M${x} ${y-r}l${r+1} ${r} -${r} ${r+1} -${r+1}-${r}Z" fill="${i%3?m.colour:'#c7c6b3'}"/>`;}).join('');
+  contents+=Array.from({length:count},(_,i)=>{const noise=n=>{const v=Math.sin(n*127.1+17)*43758.5453;return v-Math.floor(v);},x=((saltBottle?noise(i):(i*37%97)/97)-.5)*spread,y=base-2-(saltBottle?noise(i+401):(i*29%17)/17)*Math.min(saltBottle?34:15,3+count*.18)*(saltBottle?1-Math.abs(x)/spread:1),r=saltBottle?.55+noise(i+803)*.65:o.powder>0?1:1.7;return `<path class="solid-grain" d="M${x} ${y-r}l${r+1} ${r} -${r} ${r+1} -${r+1}-${r}Z" fill="${i%3?m.colour:'#c7c6b3'}"/>`;}).join('');
  }
  return `<defs><clipPath id="${id}"><path d="${interior}"/></clipPath></defs><g class="vessel-contents" clip-path="url(#${id})">${contents}</g>`;
 }
@@ -82,7 +94,7 @@ export function equipmentArt(o,html,lab,s){
   return image+extra+overlays(html);
  }
  if(k==='heater')return sprite('hotplate',-60,0,120,58)+`<circle cx="-32" cy="33" r="4" fill="${o.on?'#f3ad48':'#617481'}"/><text x="0" y="40" text-anchor="middle" font-size="10" fill="#f3f5db">${o.on?'ON':'OFF'}</text>`+extracts(html,/<rect class="select-outline"[^>]*\/>/g);
- if(k==='balance')return sprite('balance',-75,0,150,60)+rect(-54,29,108,24,'fill="#eff5dc"')+overlays(html);
+ if(k==='balance')return sprite('balance',-75,0,150,60)+balanceDisplay(html)+extracts(html,/<rect class="select-outline"[^>]*\/>/g);
  if(k==='thermometer'){
   const distill=lab==='distillation',t=distill?o.temperature:o.reading;
   image=sprite('thermometer',distill?-5:-4,distill?0:14,distill?10:8,distill?65:150);
@@ -121,7 +133,8 @@ export function equipmentArt(o,html,lab,s){
   else if(k==='cylinder')image=sprite(name,-22,0,44,114,[.18,0,.64,.88])+sprite(name,-22,114,44,6,[0,.88,1,.12]);
   else if(name==='volumetric')image=sprite(name,-14,0,28,44,[.30,0,.40,.45])+sprite(name,-width/2,44,width,height-44,[0,.45,1,.55]);
   else image=sprite(name,-width/2,0,width,height);
-  if(k==='bottle')extra+=rect(-width*.43,44,width*.86,44,'fill="#f5eed9"');
+  if(k==='bottle'&&lab!=='solution')extra+=rect(-width*.43,44,width*.86,44,'fill="#f5eed9"');
+  if(k==='bottle'&&lab==='solution')html=html.replace(/<text y="45"[^>]*>NaCl<\/text>/,'<text y="40" text-anchor="middle" font-size="9" fill="#fff1d1">NaCl</text>');
   if(name==='volumetric')extra+='<path d="M-12 20H12" stroke="#bc874a" stroke-width="2"/>';
   if(k==='cylinder')extra+=Array.from({length:11},(_,i)=>`<path d="M-20 ${114-i*9.6}h${i%5===0?19:10}" stroke="#385577"/>${i%5===0?`<text x="2" y="${117-i*9.6}" font-size="9">${i*10}</text>`:''}`).join('');
  }

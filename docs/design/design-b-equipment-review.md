@@ -41,3 +41,7 @@ The earlier checks did not establish that every artwork anchor or practical inte
 ![Beaker weighing water and salt after taring](../art/previews/beaker-balance-correction.png)
 
 Validation: 187 model tests pass. The twelve browser harnesses were exercised across the correction run, with affected pouring workflows rerun after outlet changes. Native checks cover high-clearance liquid pouring, direct salt pouring into a tared beaker (10.050 g after 10 mL water plus 0.050 g salt), solid grains, existing experiment completion, responsive layouts, and laboratory navigation. Owner review of these corrections remains pending.
+
+### Follow-up: LCD and salt bottle
+
+The balance now uses live seven-segment digits fitted to the recessed LCD in its drawing. The salt bottle's oversized cream label is removed, leaving a small NaCl identifier and irregular fine crystals visible through the glass. Exact readings, tare, inventory and pouring are preserved. The preview above is refreshed for this correction.
