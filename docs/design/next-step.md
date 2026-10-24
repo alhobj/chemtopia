@@ -1,8 +1,12 @@
 # Work steps and verification
 
-## Current step — reaction rates
+## Current step — three measurement labs
 
-The owner selected suggested step 4. The tenth lab compares calcium carbonate chips and powder with HCl using a gas syringe, deliberate mixing, clock/readings, trial tables/graphs and three review questions. See [the walkthrough](reaction-rates-prototype-review.md) and [model/source boundaries](reaction-rates-prototype-spec.md). Existing owner playtests remain deferred; no later roadmap activity is selected.
+The owner requested conductivity, colorimetry and a zinc–copper voltaic cell together, with continued implementation and a subsequent suggestion/question list. The thirteen-lab room now includes these bounded local prototypes. See [the walkthroughs](measurement-labs-prototype-review.md), [model/source limits](measurement-labs-prototype-spec.md) and [next steps/questions N01–N12](next-review-and-questions.md). Owner playtesting is pending. Later candidate labs remain proposals; no persistence, accounts or publication has been added.
+
+## Earlier step — reaction rates
+
+The owner selected suggested step 4. The tenth lab compares calcium carbonate chips and powder with HCl using a gas syringe, deliberate mixing, clock/readings, trial tables/graphs and three review questions. See [the walkthrough](reaction-rates-prototype-review.md) and [model/source boundaries](reaction-rates-prototype-spec.md). The three measurement labs were selected subsequently; the earlier owner playtests remain pending.
 
 ## Earlier step — illustrated laboratory selection
 

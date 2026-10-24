@@ -2,7 +2,7 @@
 
 A chemistry learning game for students aged 16–19 studying IB Diploma Programme Chemistry.
 
-The local prototype includes sand-and-water filtration, acetone–water distillation, marker-ink paper chromatography, evaporation/salt-recovery, recrystallisation, solution preparation/dilution, acid–base titration (independent HCl/CH₃COOH and NaOH/NH₃ choices), insulated-cup neutralisation calorimetry, ethanol combustion calorimetry, and carbonate/HCl reaction-rate workbenches. The equipment uses the selected detailed B pixel-art sprite adaptation, with live liquid and instrument overlays. English is the project's working language. The larger game remains in design.
+The local prototype includes sand-and-water filtration, acetone–water distillation, marker-ink paper chromatography, evaporation/salt-recovery, recrystallisation, solution preparation/dilution, acid–base titration (independent HCl/CH₃COOH and NaOH/NH₃ choices), insulated-cup neutralisation calorimetry, ethanol combustion calorimetry, carbonate/HCl reaction rates, conductivity, colorimetry and zinc–copper voltaic-cell workbenches. The equipment uses the selected detailed B pixel-art sprite adaptation, with live liquid and instrument overlays. English is the project's working language. The larger game remains in design.
 
 ## Try the prototype
 
@@ -13,6 +13,9 @@ Run `npm test` for the material-model checks and `npm run test:browser` for Chro
 For step-by-step terminal instructions and a file guide, see [Run and edit in VS Code](docs/development.md).
 
 ## Start here
+
+- [Three new measurement labs: walkthroughs and previews](docs/design/measurement-labs-prototype-review.md)
+- [Next steps and questions N01–N12](docs/design/next-review-and-questions.md)
 
 - [Reaction rates: chips, powder, CO₂ collection and graphs](docs/design/reaction-rates-prototype-review.md)
 
@@ -62,4 +65,4 @@ Approved decisions, proposals and open questions must remain distinct. Detailed 
 
 ## Status
 
-The owner approved the first filtration specification with “Yes”. This increment uses functional placeholder artwork and a qualitative material model. It has no accounts, analytics, saving, backend or deployment. The owner also approved the revised acetone–water distillation increment with “Implement it”, then selected a 50:50 feed. Use the Laboratory link to return to the selection room. Paper chromatography now uses the owner-selected water solvent, coloured markers and R_F calculation task. Further techniques, production artwork and room navigation await review.
+Thirteen local laboratory activities are implemented with the selected B glassware adaptation, live contents and instrument displays, and original functional drawings for newer instruments. The latest owner-selected additions are conductivity, colorimetry and the zinc–copper voltaic cell. Owner playtesting and teacher review remain ongoing; recipes and numerical teaching-model limits are documented per lab. The prototype has no accounts, analytics, saved student records, backend or deployment.

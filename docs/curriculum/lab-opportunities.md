@@ -1,6 +1,6 @@
 # Further laboratory opportunities — curriculum evidence
 
-**Curriculum evidence for proposed labs.** L05 evaporation, L06 recrystallisation, L07 solution preparation/dilution and L08 acid–base titration were subsequently selected and implemented within their bounded specifications. Other entries remain proposals. See [the current roadmap](../design/lab-roadmap.md) for implementation status; the evidence below does not itself authorise a lab.
+**Curriculum evidence for proposed labs.** L05 evaporation, L06 recrystallisation, L07 solution preparation/dilution and L08 acid–base titration were subsequently selected and implemented within their bounded specifications. L09 calorimetry, L10 rates, L11 conductivity, L12 zinc–copper cells and L18 colorimetry have also been selected and implemented; other entries remain proposals. See [the current roadmap](../design/lab-roadmap.md) for implementation status; the evidence below does not itself authorise a lab.
 
 Source: the owner-supplied IB *Chemistry guide*, first assessment 2025, **published February 2023**. Detailed outcomes and SL/AHL boundaries below were checked against the private local extraction for this planning round. Later online corrections have not been checked. Printed/PDF page numbers are shown together.
 
@@ -39,3 +39,7 @@ The owner requested heating water in an aluminium container by burning fuel, the
 ## Selected L10 reaction-rate implementation
 
 The owner selected the proposed chips/powder versus excess-HCl gas-syringe experiment. [The implementation](../design/reaction-rates-prototype-spec.md) uses the verified common SL/HL Reactivity 2.2.1–2.2.3 context for graphs, collisions, surface area and controlled conditions (printed pp. 52–53 / PDF pp. 58–59 of the supplied February 2023 guide). The first numerical slope task is an early two-point mean collection rate; the guide's common-content tangent requirement remains a later refinement, not an AHL-only topic. Quantitative rate orders/Arrhenius work are not assessed. The recipe and uncalibrated kinetic/leak coefficients are project choices, not prescribed or experimentally sourced values.
+
+## Selected L11, L12 and L18 implementations
+
+The owner requested all three measurement labs together. [The detailed reference](measurement-labs.md) verifies ionic conductivity, molecular-property contrast, colorimetry/calibration context, common-content cell construction/charge flow and explicitly AHL standard potentials against the supplied February 2023 guide. [The specification](../design/measurement-labs-prototype-spec.md) distinguishes recipes and teaching coefficients from syllabus requirements. These implementations do not authorise electrolysis, electroplating, buffers or other candidates automatically.

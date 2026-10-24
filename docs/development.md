@@ -74,3 +74,22 @@ The server is local, with no accounts, analytics or saved student data. It only 
 Review-question prompts, choices, numerical example data and marking live in `prototype/review-questions.js`. Each successful lab uses its three-question set. See [the question inventory](design/review-questions.md) for progression, solutions and source boundaries.
 
 `prototype/workbench-layout.js` fits the room to the available pane while preserving equipment proportions and existing physics coordinates. Shared pane/drawer styling is in `prototype/style.css`, with the drawer hosted between objective and bench by `prototype/equipment-menu.js`. `tests/layout-browser.mjs` checks all five labs at desktop, wide-screen and mobile sizes.
+
+## Editing the measurement labs
+
+Run `npm start` from the VS Code terminal as before, then choose Conductivity, Colorimetry or Zn–Cu cell in the room. There is no separate build step or server for these activities. Save a file and refresh the page to start a new attempt with the changed code.
+
+| File | What to edit |
+| --- | --- |
+| [conductivity-model.js](../prototype/conductivity-model.js) | Supplied sample amounts, weak/strong electrolyte response, probe contact/films and conductance records. |
+| [colorimetry-model.js](../prototype/colorimetry-model.js) | Stock/unknown amounts, filter response defaults, blanking and measured calibration fitting. |
+| [voltaic-model.js](../prototype/voltaic-model.js) | Half-cell supplies, rounded potentials, load/resistance defaults and finite metal/ion accounting. |
+| [measurement-common.js](../prototype/measurement-common.js) | Finite liquid transfers, spills, apparatus contact, clipping and common physics handling for these three labs. |
+| [measurement-app.js](../prototype/measurement-app.js) | Their practical controls, dragging, lead connections and observation tables. |
+| [measurement-art.js](../prototype/measurement-art.js) | Original instrument drawings, LCD digits, cuvette views and wire rendering. |
+| [measurement-review.js](../prototype/measurement-review.js) | Three-question reviews and the plotted calibration. |
+| [measurement.css](../prototype/measurement.css) | Their controls, tables and responsive display. |
+
+The HTML files select the lab through `data-measurement`; they reuse the shared app without a framework. Scientific assumptions and the provenance of numerical defaults are in [the specification](design/measurement-labs-prototype-spec.md). Update that explanation when changing the model, and distinguish a teaching coefficient from real measured data.
+
+For a focused model check, run `node --test tests/measurement-labs.test.mjs`. With Chromium available, `node tests/measurement-labs-browser.mjs` exercises all three through their actual UI. `npm test` and `npm run test:browser` remain the complete project checks.

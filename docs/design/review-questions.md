@@ -54,3 +54,7 @@ Poor readings remain poor readings; heat loss and lag are not silently corrected
 1. Explain increased collision frequency at greater exposed surface area, with comparable shuffled choices.
 2. Calculate an early mean CO₂ collection rate from two actual recorded volumes/times, or an explicitly labelled supplied example if no interval was recorded. This is an interval mean, not an exact initial tangent.
 3. Calculate theoretical CO₂ from measured carbonate mass and HCl amount, using M(CaCO₃) = 100.09 g mol⁻¹, the 2:1 stoichiometry and the supplied 24 000 mL mol⁻¹ gas volume. Retain the distinction between rate and final yield. See [the specification](reaction-rates-prototype-spec.md).
+
+## Measurement labs
+
+Conductivity, colorimetry and zinc–copper cells each add a three-question review in [measurement-review.js](../../prototype/measurement-review.js). The first prompts address mobile ions, optical blanking and electron/ion paths respectively. Numerical tasks use actual recorded G/K, the measured calibration/unknown, or a clearly labelled constant-current exercise based on a recorded current magnitude. Missing usable observations use explicit supplied examples. The final cell-potential question is labelled AHL. Questions do not replace wrong measurements with ideal results or certify the practical method. See [the specification](measurement-labs-prototype-spec.md).

@@ -3,3 +3,10 @@
 .bench-experiment[data-lab="solution"] .bench-label{left:15%;transform:none}@media(max-width:760px){.bench-label{display:none}.bench-experiment.selected .bench-label,.bench-experiment:focus-visible .bench-label{display:block;z-index:3}}
 
 header button{min-height:44px}
+
+.bench-experiment[data-lab="rates"],.bench-experiment[data-lab="voltaic"],.bench-experiment[data-lab="conductivity"]{width:8%}@media(max-width:760px){.bench-experiment[data-lab="rates"],.bench-experiment[data-lab="voltaic"],.bench-experiment[data-lab="conductivity"]{width:12%}}
+
+/* Only apparatus and captions receive pointer hits; empty preview rectangles must
+   not steal clicks from a neighbouring bench. Keyboard anchors remain native. */
+.bench-experiment,.bench-experiment > svg{pointer-events:none}.bench-experiment > svg *{pointer-events:visiblePainted}.bench-experiment .bench-label{pointer-events:auto}
+.bench-experiment[data-lab="conductivity"] .bench-label{left:105%;top:70%;transform:none}

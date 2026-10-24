@@ -1,4 +1,4 @@
-# Separation prototypes
+# Chemtopia laboratory prototypes
 
 Approved first increment: a standalone sand-and-water filtration workbench. See [the approved specification](../docs/design/filtration-prototype-spec.md).
 
@@ -10,13 +10,13 @@ From the repository root, with Node.js 22 or newer:
 npm start
 ```
 
-The local entry screen shows the selected L01-1 laboratory with ten clickable experiment previews on its benches. **All experiments** opens larger choices and is open by default on phones. Each workbench has **← Laboratory** to return. Direct lab URLs still work; filtration is `index.html`. The development server reports port 4173. Open that port in a desktop browser on the same machine. Set `PORT` to use another port. The server serves only the `prototype/` directory, not private curriculum documents.
+The local entry screen shows the selected L01-1 laboratory with thirteen clickable experiment previews on its benches. **All experiments** opens larger choices and is open by default on phones. Each workbench has **← Laboratory** to return. Direct lab URLs still work; filtration is `index.html`. The development server reports port 4173. Open that port in a desktop browser on the same machine. Set `PORT` to use another port. The server serves only the `prototype/` directory, not private curriculum documents.
 
 No dependency installation is needed. The application is static and uses local HTML, CSS, JavaScript and SVG. It has no accounts, analytics, remote requests, database or saved progress. The Node server is only a local static development server, not an application backend.
 
 For VS Code terminal instructions and a file guide, see [Run and edit in VS Code](../docs/development.md).
 
-## Controls
+## Filtration controls
 
 - Drag apparatus to hold and move it. Solid parts block overlap, including the stand. On release, unsupported objects fall and collide. The funnel seats in the ring; on the bench its thin stem is unstable and contact causes it to tip.
 - Hold a beaker above an opening with room to tilt while dragging, press **Space** once to start pouring, then press it again to stop. Releasing the mouse also stops pouring and lets the beaker fall. Holding Space does not repeatedly toggle the action. Stop pouring and move the beaker to a safe resting place before releasing it.
@@ -24,7 +24,7 @@ For VS Code terminal instructions and a file guide, see [Run and edit in VS Code
 - Changing selection, finishing, restarting, losing focus or hiding the page stops pouring. An empty beaker stops automatically.
 - **Restart** resets the whole task. **Finish** ends practical work and shows material distribution. A successful result opens the approved explanation question.
 
-Return with **← Laboratory**, then select the distillation setup. Switching experiments starts a fresh attempt. There are no currency rewards, room navigation or avatar selection.
+Return with **← Laboratory**, then select the distillation setup. Switching experiments starts a fresh attempt. The room selects experiments; avatar movement and currency rewards are not implemented.
 
 ## Representation and limitations
 
@@ -68,7 +68,7 @@ The thermometer has a shorter stem and a physical seating collar, matching the s
 
 ## Paper chromatography
 
-Both other labs link to `chromatography.html`; it links back to both. Use a pencil tip over the paper and press Space to make a baseline, then apply different marker tips with Space. Pour water into the chamber, put the support bar across its rim, and clip the top of the paper to the bar. Development follows actual paper/water contact. Remove the paper to stop, use the pencil to mark the solvent front, and move the ruler beside the strip.
+Choose Chromatography in the laboratory room, or open `chromatography.html`. Use a pencil tip over the paper and press Space to make a baseline, then apply different marker tips with Space. Pour water into the chamber, put the support bar across its rim, and clip the top of the paper to the bar. Development follows actual paper/water contact. Remove the paper to stop, use the pencil to mark the solvent front, and move the ruler beside the strip.
 
 Finish shows the developed paper and the ruler, with separate inputs for component distance, solvent-front distance and R_F. Measure from the same pencil baseline, using spot centres. Correct measurements and the explanation complete the activity; wrong answers can be retried. Submerged spots dissolve into the chamber, missed pours and overflow spill, unsupported paper falls, and a front that reaches the paper top cannot provide a reliable front-distance measurement.
 
@@ -180,3 +180,9 @@ Record readings manually or enable the two-second logger. Measurements and colou
 ### Apparatus corrections after owner playtesting
 
 Beaker spouts now face the clockwise pouring direction, contents stay inside vessel interiors, and solid material is drawn as individual grains. The visible bench meets the physical resting surface. For discrete transfers, centre the source above the receiving opening or place its lip above it, then press Space; each addition stops itself. In solution preparation the salt bottle can deliver 0.050 g portions; carbonate bottles in reaction rates deliver 0.10 g portions. Spatulas remain available for finer amounts. The preparation balance now weighs/tare-corrects a beaker as well as the boat; the combustion balance also weighs a beaker. Empty beakers are modelled as 50 g, volumetric flasks as 60 g, with the existing 1 g/mL water/carrier approximation. These are teaching defaults, not calibrated real glassware masses.
+
+## Conductivity, colorimetry and zinc–copper cells
+
+Open `/conductivity.html`, `/colorimetry.html` or `/voltaic.html`, or choose the corresponding bench in the laboratory room. All three use drag/Space actions, finite materials, local in-memory observations and three review questions. The conductivity/cell wire ends can be dragged to terminals; selecting a probe or metal strip also offers lead buttons. Colorimetry fits measured standards with the concentrations you enter, not hidden model concentrations. The cell supports reversed leads, an open bridge and a loaded discharge.
+
+See [the walkthroughs](../docs/design/measurement-labs-prototype-review.md), [model assumptions](../docs/design/measurement-labs-prototype-spec.md), [common/AHL mapping](../docs/curriculum/measurement-labs.md) and [next review questions](../docs/design/next-review-and-questions.md). The new meter/cuvette/electrode drawings are original functional SVGs in the B palette; existing glassware retains the detailed B sprites. Run `node tests/measurement-labs-browser.mjs` for the native three-lab workflows; `npm test` includes their conservation and fault checks.

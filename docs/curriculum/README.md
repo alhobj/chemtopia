@@ -19,6 +19,8 @@ The private directory is ignored by Git. The public repository contains original
 
 ## Files to use
 
+- [Conductivity, colorimetry and voltaic-cell common/AHL boundaries](measurement-labs.md).
+
 - [Weak titration samples, equilibrium model and AHL scope](weak-titrations.md).
 - [Further lab opportunities and SL/AHL evidence](lab-opportunities.md) — planning candidates with checked section/page boundaries.
 - [Syllabus navigation index](syllabus-index.md) — topic codes, brief paraphrases and page locations for future questions.

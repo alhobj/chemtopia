@@ -1,5 +1,7 @@
 # Laboratory selection room
 
+**Current room:** thirteen labs, including reaction rates, conductivity, colorimetry and zinc–copper cells. The original nine-lab increment is described below as historical context; the room images now show the current collection. See [the new-lab walkthroughs](measurement-labs-prototype-review.md).
+
 Reaction rates was subsequently added as the tenth experiment; the room and list now offer ten choices.
 
 The owner selected next-step suggestion 2: replace the temporary bottom links with a lab-selection screen, use the laboratory from the three earlier pictures as the background, and show experiment previews on its benches. Their earlier explicit choice was **L01-1**, the perimeter-bench room with one central workstation. This increment implements that room and the existing nine labs; it does not add notebook features, avatars, walking, new experiments, accounts, persistence or publication.
@@ -18,7 +20,7 @@ The nine clickable bench setups reuse the selected B equipment sprites. They are
 
 ## Previews
 
-![Laboratory room with nine experiments on its benches](../art/previews/laboratory-selection-desktop.png)
+![Laboratory room with the current experiments on its benches](../art/previews/laboratory-selection-desktop.png)
 
 ![Phone layout with larger experiment choices below the room](../art/previews/laboratory-selection-mobile.png)
 
@@ -29,3 +31,5 @@ The nine clickable bench setups reuse the selected B equipment sprites. They are
 The owner's playtests of titration, calorimetry and the selected B artwork remain deferred, as requested. Automated checks do not imply owner acceptance of those activities.
 
 Verification on 24 October 2026: all **163 model tests** and **eleven browser test scripts** passed, including all nine room-to-lab round trips, keyboard entry, the phone list, existing practical walkthroughs, and responsive lab layouts. Documentation links and `git diff --check` passed. Chemistry and physics model files are unchanged.
+
+The three measurement additions use the same room and list. Adjacent previews now accept pointer hits on painted apparatus/captions rather than an invisible full preview rectangle, preventing a neighbouring experiment from intercepting a click. Native keyboard links remain available. A browser regression clicks the solution-preparation flask as well as every experiment caption, plus the phone list.

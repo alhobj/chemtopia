@@ -6,7 +6,7 @@ export async function visitLab({id,click,evaluate,pause}){
   catch(e){if(e.code!==-32000||!/navigated|context.*destroyed/i.test(e.message))throw e;}
   await pause(100);
  }
- await click(`[data-lab="${id}"]`);
+ await click(`[data-lab="${id}"] .bench-label`);
  for(let i=0;i<60;i++){
   try{if(await evaluate("!!document.querySelector('#equipment-menu')"))break;}
   catch(e){if(e.code!==-32000||!/navigated|context.*destroyed/i.test(e.message))throw e;}

@@ -54,6 +54,14 @@
       "method": "Checked detailed outcomes and common SL/HL versus AHL boundaries against the local source extraction, including physical PDF page boundaries.",
       "public_summary": "lab-opportunities.md",
       "scope": "Solution concentration, ionic properties, calorimetry, stoichiometry, rates, equilibrium, acid-base chemistry, electrochemical cells, electrolysis and alcohol oxidation; Tool 1 practical techniques."
+    },
+    {
+      "reviewed_on": "2026-10-24",
+      "purpose": "Owner-requested conductivity, colorimetry and zinc\u2013copper cell prototypes",
+      "source_id": "IB-CHEM-GUIDE-2025",
+      "method": "Checked local extraction for Structure 2.1.3, Structure 2.2.9, Tool 1/calibration context and Reactivity 3.2.5\u20133.2.6 versus AHL 3.2.12\u20133.2.13. No later online revision verified.",
+      "public_summary": "measurement-labs.md",
+      "scope": "Common ionic/molecular conductivity and primary-cell construction; practical colorimetry/calibration context; explicitly AHL standard cell potentials. Numerical recipes and instrument responses are project teaching defaults."
     }
   ]
 }

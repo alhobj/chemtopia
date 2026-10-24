@@ -46,7 +46,7 @@ try{
   if(release)await drop();return drop;
  }
  const screenshot=async name=>{const r=await send('Page.captureScreenshot',{format:'png',captureBeyondViewport:false});await writeFile(path.join(tmpdir(),name),Buffer.from(r.data,'base64'));};
- for(const page of ['index','distillation','chromatography','evaporation','recrystallisation','solution','titration','neutralisation','combustion','rates']){
+ for(const page of ['index','distillation','chromatography','evaporation','recrystallisation','solution','titration','neutralisation','combustion','rates','conductivity','colorimetry','voltaic']){
   await send('Page.navigate',{url:base+'/'+page+'.html'});
   for(let i=0;i<40;i++){if(await evaluate("!!document.querySelector('#equipment-menu')"))break;await pause(100);}
   assert.ok(await evaluate("document.querySelectorAll('.equipment-sprite').length>0"),page+' uses design-B sprites');
