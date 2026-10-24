@@ -34,7 +34,7 @@ export function pour(s,id,amount){
  const o=s.items[id];if(!o||o.stored||!('water'in o))return;
  const total=o.water+o.salt;if(total<=EPS)return;
  const f=Math.min(1,amount/total),m={water:o.water*f,salt:o.salt*f};o.water-=m.water;o.salt-=m.salt;
- receive(s,worldPoint(o,{x:o.kind==='basin'?76:o.id==='source'?42:35,y:0}),m,id);
+ receive(s,worldPoint(o,{x:o.kind==='basin'?76:o.id==='source'?61:51,y:0}),m,id);
 }
 export function heaterContact(s){
  const b=s.items.basin,h=s.items.heater,p=worldPoint(b,{x:0,y:80});

@@ -121,7 +121,7 @@ export function pour(state,id,amount){
  const o=state.items[id];if(!o||o.stored||!('acetone'in o))return;
  const total=o.water+o.acetone;if(total<EPS)return;
  const fraction=Math.min(1,amount/total),mix={};for(const k of ['water','acetone','distilledAcetone']){mix[k]=o[k]*fraction;o[k]-=mix[k];}
- receive(state,worldPoint(o,{x:o.kind==='flask'?12:o.id==='source'?42:35,y:0}),mix,id);
+ receive(state,worldPoint(o,{x:o.kind==='flask'?12:o.id==='source'?61:51,y:0}),mix,id);
 }
 export function heaterContact(state){const f=state.items.flask,h=state.items.heater,bottom=worldPoint(f,{x:0,y:140});return !f.stored&&!h.stored&&Math.abs(f.angle)<20&&Math.abs(h.angle)<15&&Math.abs(bottom.x-h.x)<52&&Math.abs(bottom.y-h.y)<12;}
 function stepTemperature(state,dt,heated){

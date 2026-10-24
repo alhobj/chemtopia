@@ -11,7 +11,7 @@ export function art(o,s){
  else if(o.kind==='spatula'){image=sprite('spatula',-9,0,18,70);if(o.chips+o.powder>0)extra=`<ellipse cy="58" rx="6" ry="8" fill="#f4e9cf"/><text x="15" y="55" font-size="10">${(o.chips+o.powder).toFixed(2)} g</text>`;w=18;h=70;}
  else{
   const flask=o.kind==='conical';w=flask?110:78;h=flask?120:96;const html=`<defs><clipPath id="liquid-${o.id}"><path d="${flask?'M-13 0V35L-52 110Q-52 119-43 119H43Q52 119 52 110L13 35V0Z':'M-35 3H35V90H-35Z'}"/></clipPath></defs><g clip-path="url(#liquid-${o.id})">${o.water>0?`<rect x="-${w/2}" y="${h-7-(h-20)*o.water/o.capacity}" width="${w}" height="${(h-20)*o.water/o.capacity}" fill="#99c9d2" opacity=".6"/>`:''}</g><text y="-12" text-anchor="middle" font-size="10">${o.id==='acid'?'HCl · 1.00 M':o.id==='water'?'Water':o.id==='waste'?'Waste':''}</text><rect class="select-outline" x="${-w/2-8}" y="-20" width="${w+16}" height="${h+30}"/>`;
-  image=equipmentArt(o,html,'reaction-rates',s);extra=Array.from({length:Math.min(25,Math.ceil((o.chips+o.powder)*90))},(_,i)=>`<rect x="${(i*19%70)-35}" y="${h-13-i*7%10}" width="${o.powder>o.chips?2:5}" height="${o.powder>o.chips?2:4}" fill="#f6e9ce" stroke="#b5ae95" stroke-width=".4"/>`).join('');
+  image=equipmentArt(o,html,'reaction-rates',s);extra='';
  }
  return image+extra+`<rect class="select-outline" x="${-w/2-8}" y="${top-8}" width="${w+16}" height="${h-top+20}"/>`;
 }

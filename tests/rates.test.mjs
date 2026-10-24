@@ -26,3 +26,12 @@ test('finished attempts freeze reaction, liquid transfer and new records',()=>{c
 test('a clamped syringe remains supported with a real collision body',()=>{const s=initializeStorage(createState());s.items.syringe.stored=false;Object.assign(s.items.syringe,{x:580,y:298});assert.ok(clampSyringe(s));for(let i=0;i<120;i++)stepPhysics(s,1/60,null);assert.ok(Math.abs(s.items.syringe.y-298)<4);assert.ok(physicsFor(s).entries.has('syringe'));});
 
 test('mixed chips and powder remain finite as the fast fraction runs out',()=>{const s=setup('chips',.1);s.items.powder.powder-=.1;s.items.flask.powder=.1;run(s,200);near(s.collected,.2/100.09*24000,1e-4);assert.ok(Number.isFinite(s.rate));check(s);});
+
+test('solid bottles pour discrete portions while preserving carbonate balance and bung closure',async()=>{
+ const {pour}=await import('../prototype/rates-model.js'),s=createState();
+ Object.assign(s.items.chips,{x:420,y:250});
+ assert.equal(pour(s,'chips'),.1);assert.equal(s.items.flask.chips,.1);
+ assert.ok(Math.abs(s.items.chips.chips+s.items.flask.chips-2)<1e-10);
+ s.items.bung.parent='flask';assert.equal(pour(s,'chips'),0);
+ assert.equal(s.items.flask.chips,.1);
+});

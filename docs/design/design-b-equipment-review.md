@@ -27,3 +27,17 @@ Run `npm test` for conservation, chemistry and physics, and `npm run test:browse
 The models and physics implementation are unchanged by this visual revision. Owner visual/playtesting review remains pending.
 
 Verified on 23 October 2026: **163/163 model tests** passed. All **ten browser test scripts** passed on the final rendering, including all nine pages at desktop, wide and phone sizes. Native checks cover assembly, supported/unsupported contacts, tipping/spilling, storage, material transfer, measurement and all lab reviews. Navigation polling now tolerates Chromium replacing its context during a page load; application exceptions still fail the checks. Documentation links and `git diff --check` passed.
+
+## Owner playtest corrections — 24 October 2026
+
+The earlier checks did not establish that every artwork anchor or practical interaction looked right. The owner found misalignment, unsupported-looking preview equipment, reversed spouts, blocked transfers and missing beaker weighing. These are corrected in the current revision:
+
+- Explicit glass-interior clips contain liquid and individual solid grains; sprites are no longer used as the contents mask for vessels. Volumetric neck/bulb pieces follow the existing model geometry.
+- Beaker spouts face right, matching clockwise pouring; continuous stream origins follow them. Discrete delivery accepts centre or lip alignment without a timing challenge. Direct solid-bottle portions supplement spatulas.
+- All lab bench drawings meet the existing physical surface at y=525 instead of y=545.
+- Solution balances weigh and tare a beaker with its contents; the combustion balance recognises a beaker too. Empty masses are teaching defaults (beaker 50 g, volumetric flask 60 g).
+- Room previews include missing support arms/clamps, a resting pencil and no hover displacement.
+
+![Beaker weighing water and salt after taring](../art/previews/beaker-balance-correction.png)
+
+Validation: 187 model tests pass. The twelve browser harnesses were exercised across the correction run, with affected pouring workflows rerun after outlet changes. Native checks cover high-clearance liquid pouring, direct salt pouring into a tared beaker (10.050 g after 10 mL water plus 0.050 g salt), solid grains, existing experiment completion, responsive layouts, and laboratory navigation. Owner review of these corrections remains pending.

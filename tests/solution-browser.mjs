@@ -70,7 +70,8 @@ try{
  const rod=await drag('rod',355,350,40,false);await press();await rod.move(940,240);await rod();
  const funnel=await drag('funnel',520,330,20,false);await press();await funnel();
  // Transfer stock, leaving the modelled wet film; rinse it into the flask.
- const beaker=await drag('beaker',520,250,40,false,[{x:355,y:200}]);for(let i=0;i<4;i++)await press();await beaker.move(355,300);await beaker();await pause(500);
+ // A visibly clear pour from high above must reach the receiver too.
+ const beaker=await drag('beaker',520,80,40,false,[{x:355,y:200}]);for(let i=0;i<4;i++)await press();await beaker.move(355,300);await beaker();await pause(500);
  await drag('water',435,300,40,true,[{x:435,y:230}]);await pause(300);
  await click('[data-equipment=beaker]');for(let i=0;i<5;i++)await click('[data-command=one]');
  const rinse=await drag('beaker',520,250,40,false,[{x:355,y:200}]);await press();await rinse.move(350,300);await rinse();
@@ -92,6 +93,21 @@ try{
  await evaluate(`(()=>{const f=document.querySelector('#explanation');f.querySelector('input[value="0"]').checked=true;f.elements['q2-value'].value='0.5844';const cells=document.querySelectorAll('#result tbody tr:last-child td');f.elements['q3-value'].value=cells[3].textContent;f.requestSubmit();})()`);
  assert.ok((await evaluate("document.querySelector('#question-feedback').textContent")).includes('Activity complete'));
  await screenshot('chemtopia-solution-review.png');
+ await click('#restart');
+ await drag('beaker',120,300,40,true,[{x:355,y:200},{x:120,y:200}]);await pause(750);
+ assert.equal(await evaluate("document.querySelector('#balance-reading').textContent"),'50.000 g');
+ await click('[data-equipment=balance]');await click('#action');
+ assert.equal(await evaluate("document.querySelector('#balance-reading').textContent"),'0.000 g');
+ await drag('water',220,300,40,true,[{x:840,y:200},{x:220,y:200}]);await pause(500);
+ await click('[data-equipment=beaker]');await click('[data-command=water]');
+ assert.equal(await evaluate("document.querySelector('#balance-reading').textContent"),'10.000 g');
+ await drag('water',435,250,40,true,[{x:220,y:170},{x:435,y:170}]);await pause(300);
+ const bottle=await drag('salt',120,220,40,false,[{x:255,y:150},{x:120,y:150}]);await press();
+ await screenshot('chemtopia-salt-pour.png');
+ assert.equal(await evaluate("document.querySelector('#balance-reading').textContent"),'10.050 g',await evaluate("document.querySelector('#action-note').textContent"));
+ assert.ok(await evaluate("document.querySelectorAll('[data-id=beaker] .solid-grain').length>0"));
+ await bottle.move(255,250);await bottle();await pause(500);
+ await screenshot('chemtopia-beaker-balance.png');
  await click('#restart');await click('#finish');assert.ok((await evaluate("document.querySelector('#result').textContent")).includes('supplied example'));
  assert.deepEqual(exceptions,[]);console.log('PASS real weighing, discrete additions, rinsing, meniscus, stopper/mixing, calibrated pipette, dilution and calculation review');
 

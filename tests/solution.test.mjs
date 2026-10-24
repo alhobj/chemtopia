@@ -22,3 +22,34 @@ test('gravity and solid contact settle the boat on the balance without lost mate
 test('fitted funnel retains a proportional wet film; rinsing transfers solute to its flask',()=>{const s=setup();Object.assign(s.items.funnel,{x:520,y:330});assert.ok(attach(s,'funnel'));transfer(s,'salt','beaker',.584,{dry:true});waterDose(s,'beaker',40);stir(s,'beaker');transfer(s,'beaker','stock',40,{drain:true});near(s.items.funnel.water,.2);const retained=s.items.funnel.salt;assert.ok(retained>0);waterDose(s,'funnel',5);assert.ok(s.items.funnel.salt<retained/20);near(totals(s).water,500);near(totals(s).salt,5);});
 test('a discarded unmixed sample does not permanently penalise a later correct aliquot',()=>{const s=setup();prepare(s);s.items.stock.mixed=false;pipetteFill(s,'stock');pipetteDeliver(s,'waste');assert.equal(s.aliquotVerified,true);stir(s,'stock');pipetteFill(s,'stock');pipetteDeliver(s,'dilution');assert.equal(s.aliquotVerified,true);});
 test('ordinary pouring cannot substitute for the required measured pipette aliquot',()=>{const s=setup();prepare(s);transfer(s,'stock','dilution',10);waterDose(s,'dilution',90);s.items.stopper2.parent='dilution';mix(s,'dilution');assert.equal(outcome(s).success,false);});
+
+test('beaker settles on the balance, can be tared and weighs its contents',()=>{
+ const s=initializeStorage(createState()),w=physicsFor(s);
+ Object.assign(s.items.beaker,{x:120,y:300});w.sync();
+ for(let i=0;i<240;i++)stepPhysics(s,1/60,null);
+ assert.ok(Math.abs(s.items.beaker.y+96-(s.items.balance.y+4))<3);
+ assert.equal(reading(s),'50.000');tare(s);assert.equal(reading(s),'0.000');
+ waterDose(s,'beaker',10);transfer(s,'salt','beaker',.584,{dry:true});
+ assert.equal(reading(s),'10.584');near(totals(s).water,500);near(totals(s).salt,5);
+});
+
+test('pouring catches both the visible spout and a centre-aligned receiver',async()=>{
+ const {pour}=await import('../prototype/solution-model.js');
+ for(const offset of [0,51]){const s=createState();Object.assign(s.items.beaker,{x:520-offset,y:250,water:20});
+ assert.equal(pour(s,'beaker',10),10);near(s.items.stock.water,10);
+ }
+ const s=createState();Object.assign(s.items.boat,{x:355,y:300,salt:.1});
+ assert.equal(pour(s,'boat',10),.05);near(s.items.beaker.salt,.05);
+});
+
+test('the salt bottle can deliver a dry portion into an open beaker',async()=>{
+ const {pour}=await import('../prototype/solution-model.js'),s=createState();
+ Object.assign(s.items.salt,{x:355,y:270});
+ near(pour(s,'salt',10),.05);near(s.items.beaker.salt,.05);near(totals(s).salt,5);
+});
+
+test('a pour can fall from high above an opening without an invisible reach limit',async()=>{
+ const {pour}=await import('../prototype/solution-model.js'),s=createState();
+ Object.assign(s.items.beaker,{x:520,y:40,water:10});
+ near(pour(s,'beaker',10),9.8);near(s.items.stock.water,9.8);near(s.items.beaker.water,.2);
+});

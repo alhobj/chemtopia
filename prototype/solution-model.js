@@ -21,8 +21,8 @@ export const active=o=>o&&!o.stored;
 export const concentration=o=>o.water>EPS?o.dissolved/MOLAR_MASS/(o.water/1000):0;
 export const solid=o=>Math.max(0,(o.salt||0)-(o.dissolved||0));
 export const stoppered=(s,id)=>Object.values(s.items).some(o=>o.kind==='stopper'&&o.parent===id&&!o.stored);
-export function targetAt(s,p,exclude,inside=false){return Object.values(s.items).filter(o=>active(o)&&o.id!==exclude&&['beaker','flask','boat'].includes(o.kind)&&!stoppered(s,o.id)&&Math.abs(o.angle)<20&&Math.abs(p.x-o.x)<(o.kind==='flask'?34:46)&&(inside?p.y>=o.y-25&&p.y<o.y+(o.kind==='flask'?125:100):p.y<=o.y+20&&o.y-p.y<180)).sort((a,b)=>Math.hypot(p.x-a.x,p.y-a.y)-Math.hypot(p.x-b.x,p.y-b.y))[0];}
-export function toolTarget(s,id){const o=s.items[id];if(!active(o))return null;const p=point(o,0,o.kind==='pipette'||o.kind==='rod'?95:40);return targetAt(s,p,id,true)||targetAt(s,p,id);}
+export function targetAt(s,p,exclude,inside=false,maxDrop=180){return Object.values(s.items).filter(o=>active(o)&&o.id!==exclude&&['beaker','flask','boat'].includes(o.kind)&&!stoppered(s,o.id)&&Math.abs(o.angle)<20&&Math.abs(p.x-o.x)<(o.kind==='flask'?34:46)&&(inside?p.y>=o.y-25&&p.y<o.y+(o.kind==='flask'?125:100):p.y<=o.y+20&&o.y-p.y<maxDrop)).sort((a,b)=>Math.hypot(p.x-a.x,p.y-a.y)-Math.hypot(p.x-b.x,p.y-b.y))[0];}
+export function toolTarget(s,id){const o=s.items[id];if(!active(o))return null;const p=point(o,0,o.kind==='pipette'||o.kind==='rod'?95:o.kind==='spatula'?60:0);return targetAt(s,p,id,true)||targetAt(s,p,id);}
 function spill(s,p,m){if(m.water+m.salt<=EPS)return;const pool=s.spills.find(o=>Math.abs(o.x-p.x)<25);if(pool){pool.water+=m.water;pool.salt+=m.salt;pool.dissolved+=m.dissolved;}else s.spills.push({x:p.x,...m});}
 function accept(s,to,m,p){
  const funnel=to?.kind==='flask'?Object.values(s.items).find(o=>active(o)&&o.kind==='transferFunnel'&&o.parent===to.id):null;
@@ -33,18 +33,21 @@ function accept(s,to,m,p){
 }
 export function transfer(s,fromId,toId,volume,{drain=false,dry=false}={}){
  const from=s.items[fromId],to=s.items[toId];if(s.phase!=='working'||!active(from)||!active(to)||from===to||stoppered(s,fromId)||stoppered(s,toId)||!Number.isFinite(volume)||volume<=0)return 0;
- if(dry){const mass=Math.min(solid(from),volume);from.salt-=mass;accept(s,to,{water:0,salt:mass,dissolved:0},point(to));return mass;}
+ if(dry){const mass=Math.min(solid(from),volume);from.salt-=mass;accept(s,to,{water:0,salt:mass,dissolved:0},point(to));s.flow=[{from:point(from,from.kind==='boat'?32:from.kind==='spatula'?0:12,from.kind==='spatula'?60:0),to:point(to),solid:true}];return mass;}
  const film=drain&&from.kind!=='pipette'?.2:0,v=Math.min(volume,Math.max(0,from.water-film));if(v<=EPS)return 0;
  const f=v/from.water,d=from.dissolved*f;from.water-=v;from.salt-=d;from.dissolved-=d;
  // Unmixed sampling is recorded, not passed off as a verified homogeneous aliquot.
  if(to.kind==='pipette')to.verified=to.water<=EPS?from.mixed:Boolean(to.verified&&from.mixed);
- accept(s,to,{water:v,salt:d,dissolved:d},point(to));s.flow=[{from:point(from),to:point(to)}];return v;
+ accept(s,to,{water:v,salt:d,dissolved:d},point(to));s.flow=[{from:point(from,from.kind==='beaker'?51:from.kind==='wash'?30:0,0),to:point(to)}];return v;
 }
-export function pour(s,id,volume){const o=s.items[id];if(!active(o)||!['beaker','flask','boat'].includes(o.kind)||stoppered(s,id))return 0;
- const p=point(o,0,-8),to=targetAt(s,p,id);if(!to)return 0;
+export function pour(s,id,volume){const o=s.items[id];if(!active(o)||!['beaker','flask','boat','bottle'].includes(o.kind)||stoppered(s,id))return 0;
+ const p=point(o,o.kind==='beaker'?51:o.kind==='boat'?32:12,0),to=targetAt(s,point(o,0,-8),id,false,Infinity)||targetAt(s,p,id,false,Infinity);if(!to)return 0;
  if(o.water>EPS)return transfer(s,id,to.id,volume,{drain:true});return transfer(s,id,to.id,Math.min(.05,volume),{dry:true});
 }
-export function weigh(s){const b=s.items.boat,k=s.items.balance;return active(b)&&active(k)&&Math.abs(b.x-k.x)<48&&Math.abs(b.y+27-(k.y+4))<10&&Math.abs(b.angle)<10?.750+b.salt+b.water:0;}
+// Empty-vessel masses are teaching defaults; water density is 1 g/mL.
+export function weigh(s){const k=s.items.balance;if(!active(k))return 0;
+ return Object.values(s.items).filter(b=>active(b)&&['boat','beaker','flask'].includes(b.kind)&&Math.abs(b.x-k.x)<48&&Math.abs(b.y+(b.kind==='boat'?27:b.kind==='flask'?130:96)-(k.y+4))<10&&Math.abs(b.angle||0)<10).reduce((mass,b)=>mass+(b.kind==='boat'?.750:b.kind==='beaker'?50:60)+b.salt+b.water,0);
+}
 export function reading(s){return (weigh(s)-s.tare).toFixed(3);}
 export function tare(s){if(s.phase==='working')s.tare=weigh(s);}
 export function scoop(s,fine=false){const o=s.items.spatula,b=s.items.salt;if(s.phase!=='working'||!active(o))return 'Take the spatula out of storage.';

@@ -11,13 +11,13 @@ for(const id of Object.keys(state.items)){const g=document.createElementNS(NS,'g
 $('equipment').innerHTML=Object.entries(NAMES).map(([id,n])=>`<button class="equipment-button" data-equipment="${id}" aria-pressed="false">${n}</button>`).join('');
 function washNearby(o){const w=state.items.water;return active(w)&&Math.abs(o.x-w.x)<200&&Math.abs(o.y-w.y)<200;}
 function context(){const o=state.items[selected];if(!active(o))return {label:'Select apparatus',buttons:[],hint:'Select equipment to see its controls.'};
- if(o.kind==='balance')return{label:'Tare balance',buttons:[],hint:'Place the weighing boat on the balance pan before taring.'};
+ if(o.kind==='balance')return{label:'Tare balance',buttons:[],hint:'Place a weighing boat or beaker on the pan before taring.'};
  if(o.kind==='spatula')return{label:o.salt>0?'Add salt to vessel':`Load ${spatulaPortion.toFixed(3)} g`,buttons:[],hint:o.salt>0?'Move above a boat or vessel; Space adds this portion.':'Place beside the NaCl bottle to load a portion.'};
  if(o.kind==='rod')return{label:'Stir to dissolve',buttons:[],hint:'Place the rod beside or inside the beaker; Space stirs.'};
  if(o.kind==='transferFunnel'||o.kind==='stopper')return{label:o.parent?'Remove fitting':'Fit to flask',buttons:[],hint:'Place near the flask mouth. Space fits or removes it.'};
  if(o.kind==='pipette')return{label:o.water>0?'Deliver aliquot':'Fill pipette · 10.00 mL',buttons:o.water>0?[]:[['partial','Take 1.00 mL']],hint:o.water>0?`${o.water.toFixed(2)} mL loaded. Place over a receiver; Space delivers once.`:'Put the tip inside the stock solution, then fill. No timing needed.'};
  if(o.kind==='wash')return{label:'Add water · up to 10 mL',buttons:[['one','Add 1 mL'],['drop','Add 0.1 mL']],hint:'Place the wash bottle above a vessel. Each press makes one addition.'};
- if(o.kind==='bottle')return{label:'Use spatula to take salt',disabled:true,buttons:[],hint:'Bring the spatula beside this bottle.'};
+ if(o.kind==='bottle')return{label:'Pour salt · 0.050 g',buttons:[],hint:'Hold above an open vessel; Space transfers one portion. Use the spatula for finer weighing.'};
  if(o.kind==='flask'&&stoppered(state,o.id))return{label:'Invert and mix',buttons:[],hint:o.mixed?'Mixed. Remove the stopper before taking an aliquot.':'Space mixes the stoppered flask.'};
  const buttons=washNearby(o)?[['water','Add water · up to 10 mL'],['one','Add 1 mL'],['drop','Add 0.1 mL']]:[];
  return{label:o.water>0?'Pour one portion':'Transfer solid',buttons,hint:'Move above a receiver to transfer. For water buttons, place the wash bottle beside this vessel.'};
@@ -25,7 +25,7 @@ function context(){const o=state.items[selected];if(!active(o))return {label:'Se
 function render(){
  for(const [id,g]of groups){const o=state.items[id];g.setAttribute('transform',`translate(${o.x} ${o.y}) rotate(${o.angle||0})`);g.innerHTML=equipmentArt(o,art(o,state),'solution',state);g.classList.toggle('selected',id===selected);}
  if(selected)layer.append(groups.get(selected));
- $('streams').innerHTML=performance.now()<flowUntil?state.flow.map(f=>`<path d="M${f.from.x} ${f.from.y}L${f.to.x} ${f.to.y}" fill="none" stroke="#79aebb" stroke-width="4" stroke-dasharray="5 3"/>`).join(''):'';
+ $('streams').innerHTML=performance.now()<flowUntil?state.flow.map(f=>`<path d="M${f.from.x} ${f.from.y}L${f.to.x} ${f.to.y}" fill="none" stroke="${f.solid?'#d9c49b':'#79aebb'}" stroke-width="4" stroke-dasharray="5 3"/>`).join(''):'';
  $('spills').innerHTML=state.spills.map(p=>`<ellipse cx="${p.x}" cy="523" rx="${Math.min(65,12+p.water)}" ry="6" fill="${p.water>0?'#84bcc7':'#e4d7b4'}"/>`).join('');
  const c=context(),o=state.items[selected];$('selected-name').textContent=NAMES[selected]||'Nothing selected';$('action').disabled=state.phase!=='working'||!active(o)||Boolean(c.disabled);$('action').textContent=c.label;
  const controls=c.buttons.map(([id,label])=>`<button class="secondary" data-command="${id}" ${state.phase!=='working'?'disabled':''}>${label}</button>`).join('');if(controlsMarkup!==controls){$('fine-controls').innerHTML=controls;controlsMarkup=controls;}

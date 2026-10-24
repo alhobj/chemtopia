@@ -25,3 +25,8 @@ test('neutralisation review uses actual recorded rise and a negative molar entha
 test('aluminium can settles on the physical support rather than floating in air',()=>{const s=initializeStorage(createState('combustion'));Object.assign(s.items.can,{x:550,y:220});for(let i=0;i<240;i++)stepPhysics(s,1/60,null);assert.ok(Math.abs(s.items.can.y-259)<3);});
 
 test('recorded burner masses match the balance display rather than hidden precision',()=>{const s=createState('combustion');Object.assign(s.items.burner,{x:120,y:409,fuel:1.23456});near(recordMass(s).mass,21.235);});
+
+test('the combustion balance also measures a beaker and its water',()=>{
+ const s=createState('combustion');Object.assign(s.items.water,{x:120,y:373});
+ near(balanceReading(s),550);assert.equal(recordMass(s).item,'water');
+});

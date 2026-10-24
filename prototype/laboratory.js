@@ -15,16 +15,16 @@ const glass=(...args)=>sprite(...args);
 function stand(x,y,h=90){return glass('stand',x-24,y+h-12,48,12,[0,.78,1,.22])+glass('stand',x-2,y,4,h-5,[.43,0,.12,.80]);}
 export function preview(id){let art='';
  switch(id){
- case'rates':art=stand(93,25,82)+glass('conical',18,64,40,46)+glass('stopper',29,61,18,7)+`<path d="M38 62V49H73M72 43H124V55H72ZM110 49H136" fill="#bce0e7" stroke="#35506d" stroke-width="2"/>`;break;
- case'filtration':art=stand(37,12)+`<path d="M37 42H82" stroke="#576d85" stroke-width="3"/>`+glass('funnel',55,18,42,55)+glass('filterPaper',59,19,34,23)+glass('beaker',58,76,38,38);break;
- case'distillation':art=glass('hotplate',20,88,44,24)+glass('roundFlask',26,40,30,48)+glass('head',37,18,18,28)+`<g transform="translate(49 39) rotate(17)">${glass('condenser',0,-10,60,24)}</g>`+glass('beaker',91,72,30,39);break;
- case'chromatography':art=glass('chamber',32,20,64,86)+`<rect x="51" y="30" width="26" height="61" fill="#fff3d5"/><path d="M53 82H75" stroke="#5f6f7b"/><circle cx="58" cy="66" r="3" fill="#d8b546"/><circle cx="67" cy="48" r="3" fill="#a47ba0"/><circle cx="58" cy="36" r="3" fill="#4f9db6"/>`+glass('pencil',106,38,7,67);break;
+ case'rates':art=stand(93,25,85)+`<path d="M93 49H111M108 41V57M115 41V57" fill="none" stroke="#576d85" stroke-width="3"/>`+glass('conical',18,64,40,46)+glass('stopper',29,61,18,7)+`<path d="M38 62V49H73M72 43H124V55H72ZM110 49H136" fill="#bce0e7" stroke="#35506d" stroke-width="2"/>`;break;
+ case'filtration':art=stand(37,12)+`<path d="M37 40H61M59 39Q76 34 91 39Q76 44 59 39" stroke="#576d85" stroke-width="3"/>`+glass('funnel',55,18,42,55)+glass('filterPaper',59,19,34,23)+glass('beaker',58,76,38,38);break;
+ case'distillation':art=stand(14,19,93)+stand(119,38,74)+`<path d="M14 67H41M98 66H119" stroke="#576d85" stroke-width="3"/>`+glass('hotplate',20,88,44,24)+glass('roundFlask',26,40,30,48)+glass('head',37,18,18,28)+`<g transform="translate(49 39) rotate(17)">${glass('condenser',0,-10,60,24)}</g>`+glass('beaker',91,72,30,39);break;
+ case'chromatography':art=glass('chamber',32,20,64,86)+`<rect x="51" y="30" width="26" height="61" fill="#fff3d5"/><path d="M53 82H75" stroke="#5f6f7b"/><circle cx="58" cy="66" r="3" fill="#d8b546"/><circle cx="67" cy="48" r="3" fill="#a47ba0"/><circle cx="58" cy="36" r="3" fill="#4f9db6"/>`+`<g transform="translate(109 109) rotate(-85)">${glass('pencil',0,-25,6,25)}</g>`;break;
  case'evaporation':art=glass('hotplate',25,79,80,31)+glass('basin',28,48,76,31)+`<path d="M48 43q-7-9 0-18t0-16m22 34q7-9 0-18t0-16" fill="none" stroke="#edf6f1" stroke-width="3"/>`;break;
  case'recrystallisation':art=glass('hotplate',15,83,53,25)+glass('beaker',22,42,40,41)+glass('beaker',83,58,39,49)+`<path d="M90 97l5-7 5 7 6-7 7 7" fill="#f0ecdc" stroke="#a5c8d7"/>`;break;
  case'solution':art=glass('balance',3,87,51,25)+glass('volumetric',61,20,37,90)+glass('wash',104,58,27,51);break;
  case'titration':art=stand(32,3,105)+`<path d="M33 24H74" stroke="#647a8a" stroke-width="3"/>`+glass('rod',72,8,5,70)+`<path d="M67 75H82" stroke="#326c86" stroke-width="4"/>`+glass('conical',61,81,35,32)+glass('bottle',107,74,20,36);break;
  case'neutralisation':art=glass('cup',43,53,50,59)+glass('thermometer',69,20,7,78)+glass('bottle',6,67,29,43)+glass('beaker',103,72,28,38);break;
- case'combustion':art=stand(29,14,95)+`<path d="M30 53H105" stroke="#5e778b" stroke-width="3"/>`+glass('can',57,14,38,39)+glass('burner',59,88,34,25)+`<path d="M75 87q-12-10 0-24 12 14 0 24" fill="#f4bc58"/>`;break;
+ case'combustion':art=stand(29,14,95)+`<rect x="29" y="50" width="76" height="6" fill="#b8ced1" stroke="#324d63" stroke-width="1.5"/>`+glass('can',57,14,38,39)+glass('burner',59,88,34,25)+`<path d="M75 87q-12-10 0-24 12 14 0 24" fill="#f4bc58"/>`;break;
  }
  return `<svg viewBox="0 0 140 120" aria-hidden="true" focusable="false">${art}</svg>`;
 }

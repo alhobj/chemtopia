@@ -65,7 +65,7 @@ export function pour(s,id,amount){
  const o=s.items[id];if(!o||o.stored||o.kind!=='beaker')return;
  equilibrate(o);const total=species.reduce((n,k)=>n+o[k],0);if(total<=EPS)return;
  const f=Math.min(1,amount/total),m=mix({heat:o.heat});for(const k of species){m[k]=o[k]*f;o[k]-=m[k];}
- route(s,worldPoint(o,{x:id==='source'?42:35,y:0}),m,new Set([id]));
+ route(s,worldPoint(o,{x:id==='source'?61:51,y:0}),m,new Set([id]));
 }
 export function detach(s,id){const o=s.items[id];o.parent=null;s.held=id;if(o.kind==='paper')o.angle=0;if(o.kind==='funnel'){o.angle=0;o.y=Math.min(o.y,445);}physicsFor(s).hold(id);}
 export function placeItem(s,id){

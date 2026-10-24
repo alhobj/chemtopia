@@ -32,7 +32,7 @@ export function placeItem(state,id) {
   }
 
 }
-export function pourPoint(item) {const angle=(item.angle??35)*Math.PI/180;const lip=item.id==='source'?42:35;return {x:item.x+lip*Math.cos(angle),y:item.y+lip*Math.sin(angle)};}
+export function pourPoint(item) {const angle=(item.angle??35)*Math.PI/180;const lip=item.id==='source'?61:51;return {x:item.x+lip*Math.cos(angle),y:item.y+lip*Math.sin(angle)};}
 function hasAncestor(state,item,id) {
   let parent=item.parent;
   while(parent){if(parent===id)return true;parent=state.items[parent]?.parent;}

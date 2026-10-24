@@ -67,7 +67,7 @@ export function pour(s,id,amount){
  const o=s.items[id];if(!o||o.stored||!['source','chamber'].includes(id)||o.water<EPS)return;
  const water=Math.min(o.water,amount),fraction=water/o.water,ink=(o.ink||0)*fraction;
  o.water-=water;if(o.ink)o.ink-=ink;
- const point=worldPoint(o,{x:id==='source'?42:98,y:0});
+ const point=worldPoint(o,{x:id==='source'?61:98,y:0});
  const target=['source','chamber'].map(k=>s.items[k]).find(t=>!t.stored&&t.id!==id&&upright(t)&&point.y<=t.y+12&&Math.abs(point.x-t.x)<(t.id==='source'?38:94));
  const to={x:point.x,y:target?target.y:525};s.flow.push({from:point,to});
  if(!target){spill(s,point.x,water,ink);return;}
