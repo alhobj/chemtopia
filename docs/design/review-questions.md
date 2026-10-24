@@ -47,3 +47,10 @@ Both workbenches use the same three-step progression with their actual recorded 
 3. Calculate the signed apparent molar enthalpy, −Q/n in kJ mol⁻¹. Neutralisation uses the amount reacting between temperature readings; combustion uses recorded burner mass loss / 46.07 g mol⁻¹.
 
 Poor readings remain poor readings; heat loss and lag are not silently corrected. Incomplete numerical records use a labelled example (100 g liquid, 10 °C rise; 0.050 mol reacting or 0.500 g ethanol lost). Each numerical question requires typed work with rounding tolerance and retry. See [the model and curriculum limits](calorimetry-prototype-spec.md).
+
+
+## Reaction rates
+
+1. Explain increased collision frequency at greater exposed surface area, with comparable shuffled choices.
+2. Calculate an early mean CO₂ collection rate from two actual recorded volumes/times, or an explicitly labelled supplied example if no interval was recorded. This is an interval mean, not an exact initial tangent.
+3. Calculate theoretical CO₂ from measured carbonate mass and HCl amount, using M(CaCO₃) = 100.09 g mol⁻¹, the 2:1 stoichiometry and the supplied 24 000 mL mol⁻¹ gas volume. Retain the distinction between rate and final yield. See [the specification](reaction-rates-prototype-spec.md).

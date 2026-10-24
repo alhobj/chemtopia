@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Chemtopia · Reaction rates</title><link rel="stylesheet" href="style.css"><style>.rates-controls{display:grid;gap:7px;margin:12px 0;font-size:12px}.rates-controls label{display:flex;align-items:center;gap:6px}.rates-controls p{margin:3px 0}.rates-graph{width:100%;max-height:350px}.rates-legend{display:flex;flex-wrap:wrap;gap:8px 20px;font-size:13px;padding:4px 20px}#rates-data h2{font-size:22px}#trial-summary p{margin:8px 0}.rates-bubble{fill:none;stroke:#c9ecdf;stroke-width:1.5}</style></head>
+<body data-lab="reaction-rates">
+
+<main><h1 class="visually-hidden">Reaction rates</h1>
+<div class="workspace"><aside class="sidebar">
+<section class="objective"><p class="eyebrow">YOUR OBJECTIVE</p><h2>Reaction rates</h2><p>Compare calcium carbonate chips and powder reacting with excess HCl. Collect CO₂ and compare volume–time graphs.</p></section>
+<section class="selection"><h3 id="selected-name" aria-live="polite">Nothing selected</h3><button id="action" class="pour-button" disabled>Select apparatus</button><div id="fine-controls"></div><p id="action-note" class="control-note" aria-live="polite"></p><div id="instrument"></div></section>
+<details class="controls"><summary>Controls</summary><dl><dt>Prepare</dt><dd>Use the spatula to take 0.10 g portions from chips or powder and deliver them into the flask. Space acts once. The small-portion button takes 0.01 g.</dd><dt>Acid</dt><dd>Hold HCl over the inner vial; Space adds 10 mL. Place the vial near the flask and fit it inside. This keeps acid separate from the solid.</dd><dt>Assemble</dt><dd>Clamp the gas syringe near its stand. Fit the bung, then select the syringe and connect the delivery tube.</dd><dt>Measure</dt><dd>Select the flask and tip the inner vial; the first mix can start the clock in the same action. The clock button and mix-only button also work independently. Record readings manually or enable the two-second logger. Stopping the clock does not stop the reaction.</dd><dt>Compare</dt><dd>Save readings, start a fresh trial and change only the solid form. Use the same mass, acid concentration and volume. Direct mixing or a loose connection can lose gas.</dd></dl></details>
+<section class="rates-controls"><button id="clock" class="secondary">Start clock</button><button id="record" class="secondary">Record reading</button><label><input id="logger" type="checkbox"> Record every 2 s</label><p id="clock-reading">0.0 s · 0.0 mL</p><p id="connection-status" role="status"></p><button id="save-trial" class="secondary">Save trial</button><button id="next-trial" class="secondary">Fresh trial</button></section>
+<div class="attempt-actions"><button id="restart" class="secondary">↺ Restart</button><button id="finish" class="primary">Finish →</button></div>
+</aside><section class="bench-panel" aria-label="Interactive reaction rates workbench">
+      <svg id="bench" viewBox="0 0 1000 610" aria-label="Equipment can be freely moved around this bench" tabindex="-1">
+        <defs>
+          <linearGradient id="wall" x2="0" y2="1"><stop stop-color="#e6ede8"/><stop offset="1" stop-color="#cadbd5"/></linearGradient>
+          <linearGradient id="surface" x2="0" y2="1"><stop stop-color="#f4eee0"/><stop offset="1" stop-color="#ddd4bf"/></linearGradient>
+          <linearGradient id="glass" x2="1" y2="0"><stop stop-color="#e7f7f5" stop-opacity=".82"/><stop offset=".45" stop-color="#f7ffff" stop-opacity=".35"/><stop offset="1" stop-color="#a3d0d7" stop-opacity=".75"/></linearGradient>
+          <linearGradient id="liquid" x2="0" y2="1"><stop stop-color="#88ccd7" stop-opacity=".75"/><stop offset="1" stop-color="#4da3b6" stop-opacity=".92"/></linearGradient>
+          <linearGradient id="metal" x2="1"><stop stop-color="#a3b5ba"/><stop offset=".45" stop-color="#e0e5de"/><stop offset="1" stop-color="#81979e"/></linearGradient>
+          <pattern id="tiles" width="100" height="64" patternUnits="userSpaceOnUse"><rect width="100" height="64" fill="url(#wall)"/><path d="M0 0H100V64" fill="none" stroke="#eff4ec" stroke-width="2"/></pattern>
+          <filter id="shadow" x="-30%" y="-30%" width="170%" height="180%"><feDropShadow dx="4" dy="6" stdDeviation="2" flood-color="#243e45" flood-opacity=".16"/></filter>
+        </defs>
+        <rect width="1000" height="610" fill="#dce6dc"/><rect width="1000" height="210" fill="url(#tiles)"/>
+        <path d="M0 210H1000V525H0Z" fill="url(#surface)"/><path d="M0 525H1000V610H0Z" fill="#526e71"/><path d="M0 525H1000V535H0Z" fill="#9aab9b"/>
+        <g opacity=".35" stroke="#243d46" fill="none"><path d="M15 570H485V610M515 610V570H985"/><path d="M232 580h35m465 0h35" stroke-width="4"/></g>
+        <g fill="#c0d1c8" stroke="#718b88" stroke-width="3"><rect x="40" y="30" width="175" height="117" rx="3"/><rect x="225" y="30" width="175" height="117" rx="3"/><rect x="800" y="30" width="160" height="117" rx="3"/></g>
+        <g fill="#e3ece2"><rect x="51" y="42" width="153" height="90"/><rect x="236" y="42" width="153" height="90"/><rect x="811" y="42" width="138" height="90"/></g>
+        <g stroke="#708c87" stroke-width="3"><path d="M128 42V132M313 42V132M880 42V132"/></g>
+        <g stroke="#6d8584" stroke-width="3"><path d="M118 83V98m20-15v15m165-15v15m20-15v15m548-15v15m18-15v15"/></g>
+        <rect x="455" y="25" width="285" height="119" fill="#8da9a2" rx="4"/><rect x="466" y="36" width="263" height="97" fill="#d7ece5"/><path d="M597 36V133M466 84H729" stroke="#f9f4e7" stroke-width="7"/>
+        <path d="M466 119L523 88L557 107L599 70L674 118L729 99V133H466Z" fill="#9db8a3" opacity=".65"/>
+        <path d="M0 199H1000" stroke="#7e9a91" stroke-width="8"/>
+        <g id="spills"></g><g id="apparatus"></g><g id="streams" pointer-events="none"></g>
+      </svg>
+
+<div id="equipment" class="equipment-dock" aria-label="Select equipment"></div>
+</section></div><section id="rates-data" class="result"><h2>Measurements</h2><div id="rates-graph"></div><div id="trial-summary"></div><table><thead><tr><th>Trial</th><th>Time / s</th><th>CO₂ / mL</th></tr></thead><tbody id="measurements"></tbody></table></section><section id="result" class="result" hidden aria-live="polite" tabindex="-1"></section>
+<nav class="experiment-switch" aria-label="Laboratory"><a id="return-laboratory" class="secondary experiment-link" href="laboratory.html">← Laboratory</a></nav>
+</main><script type="module" src="rates-app.js"></script></body></html>

@@ -48,8 +48,8 @@ try{
  const screenshot=async name=>{const r=await send('Page.captureScreenshot',{format:'png',captureBeyondViewport:false});await writeFile(path.join(tmpdir(),name),Buffer.from(r.data,'base64'));};
 
  await send('Page.navigate',{url:base});
- for(let i=0;i<60;i++){try{if(await evaluate("document.querySelectorAll('.bench-experiment').length===9"))break;}catch{}await pause(100);}
- assert.equal(await evaluate("document.querySelectorAll('.bench-experiment').length"),9);
+ for(let i=0;i<60;i++){try{if(await evaluate("document.querySelectorAll('.bench-experiment').length===10"))break;}catch{}await pause(100);}
+ assert.equal(await evaluate("document.querySelectorAll('.bench-experiment').length"),10);
  assert.equal(await evaluate("new Promise(resolve=>{const i=document.querySelector('.room-background');if(i.complete)resolve(i.naturalWidth>0);else i.onload=()=>resolve(i.naturalWidth>0);})"),true);
  const labs=await evaluate("[...document.querySelectorAll('.bench-experiment')].map(a=>({id:a.dataset.lab,href:a.getAttribute('href')}))");
  await screenshot('chemtopia-laboratory-desktop.png');
@@ -67,12 +67,12 @@ try{
  }
  await send('Emulation.setDeviceMetricsOverride',{width:390,height:844,deviceScaleFactor:1,mobile:true});await send('Page.navigate',{url:base});await pause(600);
  assert.equal(await evaluate("document.querySelector('#experiment-list').hidden"),false);
- assert.equal(await evaluate("document.querySelectorAll('.experiment-card').length"),9);
+ assert.equal(await evaluate("document.querySelectorAll('.experiment-card').length"),10);
  assert.ok(await evaluate("document.documentElement.scrollWidth<=innerWidth+1"));
  assert.ok(await evaluate("[...document.querySelectorAll('.experiment-card')].every(a=>a.getBoundingClientRect().height>=44)"));
  await screenshot('chemtopia-laboratory-mobile.png');
  await click('[data-list-lab=combustion]');await pause(400);assert.equal(await evaluate("location.pathname"),'/combustion.html');
- assert.deepEqual(exceptions,[]);console.log('PASS selected room background, nine bench previews, keyboard launch, all lab round trips, single return link and phone list');
+ assert.deepEqual(exceptions,[]);console.log('PASS selected room background, ten bench previews, keyboard launch, all lab round trips, single return link and phone list');
 }finally{
  if(ws)ws.close();chrome.kill();server.kill();await pause(300);await rm(profile,{recursive:true,force:true,maxRetries:5,retryDelay:100});
 }

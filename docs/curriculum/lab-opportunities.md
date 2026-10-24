@@ -34,3 +34,8 @@ See [the roadmap and candidate activity briefs](../design/lab-roadmap.md), [the 
 ## Owner-selected combustion extension to L09
 
 The owner requested heating water in an aluminium container by burning fuel, then selected an ethanol spirit burner. This is implemented alongside the neutralisation cup. Its energy-transfer/calorimetry context uses the same verified common SL/HL Reactivity 1.1.1–1.1.4 and Tool 1 references in the table above. The student's heat estimate includes water and aluminium, then divides by moles of ethanol burned for an apparent molar result. The specific fuel, apparatus and rounded release/heat-transfer constants are project examples, not an IB-prescribed recipe or verified standard-property dataset. See [the specification](../design/calorimetry-prototype-spec.md) for assumptions and source-edition limits.
+
+
+## Selected L10 reaction-rate implementation
+
+The owner selected the proposed chips/powder versus excess-HCl gas-syringe experiment. [The implementation](../design/reaction-rates-prototype-spec.md) uses the verified common SL/HL Reactivity 2.2.1–2.2.3 context for graphs, collisions, surface area and controlled conditions (printed pp. 52–53 / PDF pp. 58–59 of the supplied February 2023 guide). The first numerical slope task is an early two-point mean collection rate; the guide's common-content tangent requirement remains a later refinement, not an AHL-only topic. Quantitative rate orders/Arrhenius work are not assessed. The recipe and uncalibrated kinetic/leak coefficients are project choices, not prescribed or experimentally sourced values.

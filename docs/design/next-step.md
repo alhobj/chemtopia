@@ -1,6 +1,10 @@
 # Work steps and verification
 
-## Current step — illustrated laboratory selection
+## Current step — reaction rates
+
+The owner selected suggested step 4. The tenth lab compares calcium carbonate chips and powder with HCl using a gas syringe, deliberate mixing, clock/readings, trial tables/graphs and three review questions. See [the walkthrough](reaction-rates-prototype-review.md) and [model/source boundaries](reaction-rates-prototype-spec.md). Existing owner playtests remain deferred; no later roadmap activity is selected.
+
+## Earlier step — illustrated laboratory selection
 
 The owner selected suggestion 2 while deferring playtesting, requesting the earlier room behind bench previews of each lab. The selected L01-1 room is now the local entry screen, with nine clickable setups, objectives, a keyboard/phone list and a single return link from each lab. See [the review](laboratory-selection.md). No new experiment, notebook or walking is part of this step.
 

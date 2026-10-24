@@ -10,7 +10,7 @@ From the repository root, with Node.js 22 or newer:
 npm start
 ```
 
-The local entry screen shows the selected L01-1 laboratory with nine clickable experiment previews on its benches. **All experiments** opens larger choices and is open by default on phones. Each workbench has **← Laboratory** to return. Direct lab URLs still work; filtration is `index.html`. The development server reports port 4173. Open that port in a desktop browser on the same machine. Set `PORT` to use another port. The server serves only the `prototype/` directory, not private curriculum documents.
+The local entry screen shows the selected L01-1 laboratory with ten clickable experiment previews on its benches. **All experiments** opens larger choices and is open by default on phones. Each workbench has **← Laboratory** to return. Direct lab URLs still work; filtration is `index.html`. The development server reports port 4173. Open that port in a desktop browser on the same machine. Set `PORT` to use another port. The server serves only the `prototype/` directory, not private curriculum documents.
 
 No dependency installation is needed. The application is static and uses local HTML, CSS, JavaScript and SVG. It has no accounts, analytics, remote requests, database or saved progress. The Node server is only a local static development server, not an application backend.
 
@@ -169,3 +169,10 @@ All three current indicators are available as separate Equipment droppers: bromo
 Open `neutralisation.html` or `combustion.html`, or choose them from the laboratory room. Both use discrete 10 mL / 1 mL pouring and the shared drawer. Move the thermometer near a vessel and use **Clip to vessel rim**, then record initial/final temperatures deliberately. Stir with the rod. In neutralisation, remove the lid before adding reagents, then refit it to reduce heat loss. In combustion, put the aluminium can on its raised support, slide the ethanol burner beneath, and weigh the burner before and after burning. Space or its button lights/extinguishes it. Stop heating before the final weighing.
 
 Read [the walkthrough and verification](../docs/design/calorimetry-prototype-review.md) and [the model assumptions](../docs/design/calorimetry-prototype-spec.md). Three questions use measured temperature changes, total liquid mass, aluminium heat capacity where relevant, and the reacting amount/fuel mass loss. An incomplete attempt uses a labelled supplied example. No automatic ideal peak replaces a recorded reading.
+
+
+## Reaction rates
+
+Choose **Reaction rates** in the laboratory room, or open `rates.html`. Compare equal measured portions of calcium carbonate chips and powder with excess HCl. The shared drawer supplies a spatula, inner acid vial, flask, bung/delivery tube, supported 100 mL gas syringe and water/waste. Each solid/liquid action handles one portion. Assemble before tipping the inner vial; the first mix action can start timing simultaneously. Independent mixing/clock and loose connector controls allow mistakes.
+
+Record readings manually or enable the two-second logger. Measurements and coloured curves appear below the workbench. Save/Fresh trial retains comparison data only within this page attempt; Restart or leaving discards it. The three questions cover collision/surface-area reasoning, mean collection rate and theoretical CO₂ with the limiting reagent. See [the walkthrough](../docs/design/reaction-rates-prototype-review.md) and [model/source limits](../docs/design/reaction-rates-prototype-spec.md).

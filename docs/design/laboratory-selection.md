@@ -1,5 +1,7 @@
 # Laboratory selection room
 
+Reaction rates was subsequently added as the tenth experiment; the room and list now offer ten choices.
+
 The owner selected next-step suggestion 2: replace the temporary bottom links with a lab-selection screen, use the laboratory from the three earlier pictures as the background, and show experiment previews on its benches. Their earlier explicit choice was **L01-1**, the perimeter-bench room with one central workstation. This increment implements that room and the existing nine labs; it does not add notebook features, avatars, walking, new experiments, accounts, persistence or publication.
 
 ## Use

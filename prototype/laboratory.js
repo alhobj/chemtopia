@@ -8,12 +8,14 @@ export const experiments=[
  {id:'solution',name:'Prepare & dilute',file:'solution.html',objective:'Prepare a sodium chloride stock solution and make a tenfold dilution.',x:5,y:60},
  {id:'titration',name:'Titration',file:'titration.html',objective:'Choose acid, base and indicator, record titres and calculate concentration.',x:94,y:60},
  {id:'neutralisation',name:'Neutralisation',file:'neutralisation.html',objective:'Measure a temperature rise and estimate the molar enthalpy of neutralisation.',x:44,y:61},
+ {id:'rates',name:'Reaction rates',file:'rates.html',objective:'Compare chips and powder, collect carbon dioxide and investigate volume–time graphs.',x:50,y:46},
  {id:'combustion',name:'Combustion',file:'combustion.html',objective:'Use an ethanol burner to heat water and estimate the molar enthalpy of combustion.',x:56,y:64}
 ];
 const glass=(...args)=>sprite(...args);
 function stand(x,y,h=90){return glass('stand',x-24,y+h-12,48,12,[0,.78,1,.22])+glass('stand',x-2,y,4,h-5,[.43,0,.12,.80]);}
 export function preview(id){let art='';
  switch(id){
+ case'rates':art=stand(93,25,82)+glass('conical',18,64,40,46)+glass('stopper',29,61,18,7)+`<path d="M38 62V49H73M72 43H124V55H72ZM110 49H136" fill="#bce0e7" stroke="#35506d" stroke-width="2"/>`;break;
  case'filtration':art=stand(37,12)+`<path d="M37 42H82" stroke="#576d85" stroke-width="3"/>`+glass('funnel',55,18,42,55)+glass('filterPaper',59,19,34,23)+glass('beaker',58,76,38,38);break;
  case'distillation':art=glass('hotplate',20,88,44,24)+glass('roundFlask',26,40,30,48)+glass('head',37,18,18,28)+`<g transform="translate(49 39) rotate(17)">${glass('condenser',0,-10,60,24)}</g>`+glass('beaker',91,72,30,39);break;
  case'chromatography':art=glass('chamber',32,20,64,86)+`<rect x="51" y="30" width="26" height="61" fill="#fff3d5"/><path d="M53 82H75" stroke="#5f6f7b"/><circle cx="58" cy="66" r="3" fill="#d8b546"/><circle cx="67" cy="48" r="3" fill="#a47ba0"/><circle cx="58" cy="36" r="3" fill="#4f9db6"/>`+glass('pencil',106,38,7,67);break;

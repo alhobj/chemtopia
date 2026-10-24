@@ -129,3 +129,8 @@ The owner explicitly requested using the detailed pixel-art equipment marked B i
 ## Approved laboratory selection room
 
 The owner selected next-step suggestion 2 and requested the earlier laboratory illustration behind experiment previews on the benches. Use their existing **L01-1** room selection, not another layout. The local root now opens `laboratory.html`, with nine bench previews and a larger keyboard/phone-accessible list. Replace bottom cross-lab links with one return-to-room link. Preserve direct lab URLs and fresh attempts on switching; no persistence, avatar movement, notebook, new labs or deployment is authorised by this increment. See [the selection-room review](docs/design/laboratory-selection.md). Existing commit/push authorisation continues; owner playtesting remains deferred.
+
+
+## Approved reaction-rates increment
+
+The owner requested “Implement number 4. Reaction rates” after the proposed CaCO₃ chips/powder versus excess-HCl gas-syringe investigation. Follow [the bounded specification](docs/design/reaction-rates-prototype-spec.md): student-chosen measured solid/liquid portions, supported syringe and bung/tube, optional inner vial and combined mixing/clock action to avoid a timing challenge, real wrong actions/leaks, recorded observations, in-memory trial comparison/graphs and three review questions. Model rates and leakage coefficients are labelled teaching defaults, not property data or further owner answers. Preserve the ten-lab room, B equipment direction, gravity/friction/colliders and local-only boundaries. This does not implement a general notebook, accounts, persistence, other rate variables or later roadmap labs. Existing commit/push authorisation applies; public deployment remains unapproved.
