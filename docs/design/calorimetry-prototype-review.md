@@ -1,6 +1,6 @@
 # Calorimetry — controls and review
 
-Run `npm start` in the repository and open `http://127.0.0.1:4173/neutralisation.html` or `/combustion.html`. Bottom links connect all nine labs. Each switch starts a fresh attempt. No installation or accounts are needed.
+Run `npm start` in the repository and open `http://127.0.0.1:4173/neutralisation.html` or `/combustion.html`. The **Laboratory** link returns to the room with all nine experiment previews. Each switch starts a fresh attempt. No installation or accounts are needed.
 
 ## Previews
 

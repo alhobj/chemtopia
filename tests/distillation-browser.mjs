@@ -1,3 +1,4 @@
+import {visitLab as navigateLab} from './lab-navigation-helpers.mjs';
 import {fillFollowups} from './review-browser-helpers.mjs';
 import {dragStored,menuPoint,hoverMenu} from './equipment-menu-helpers.mjs';
 // Real Chromium input tests through CDP, without a browser automation dependency.
@@ -24,7 +25,7 @@ try{
  const evaluate=async expression=>{const r=await send('Runtime.evaluate',{expression,returnByValue:true,awaitPromise:true});if(r.exceptionDetails)throw Error(r.exceptionDetails.text);return r.result.value;};
  await send('Runtime.enable');await send('Page.enable');await send('Emulation.setDeviceMetricsOverride',{width:1440,height:1100,deviceScaleFactor:1,mobile:false});
  for(let i=0;i<40;i++){try{if((await fetch(base)).ok)break;}catch{}await pause(100);}
- await send('Page.navigate',{url:base});
+ await send('Page.navigate',{url:base+'/index.html'});
  for(let i=0;i<40;i++){if(await evaluate("document.querySelectorAll('.equipment-button').length===6"))break;await pause(100);}
  assert.equal(await evaluate("document.querySelectorAll('.equipment-button').length"),6);
  const key=async(key,code=key)=>{const windowsVirtualKeyCode=({Enter:13,Escape:27,Tab:9,ArrowLeft:37,ArrowUp:38,ArrowRight:39,ArrowDown:40,Space:32})[code]||0;await send('Input.dispatchKeyEvent',{type:'keyDown',key,code,windowsVirtualKeyCode,text:key==='Enter'?'\r':key===' '?' ':undefined});await send('Input.dispatchKeyEvent',{type:'keyUp',key,code,windowsVirtualKeyCode});};
@@ -41,19 +42,20 @@ try{
   const drop=()=>send('Input.dispatchMouseEvent',{type:'mouseReleased',button:'left',clickCount:1,...end});drop.move=move;
   if(release)await drop();return drop;
  }
+ const visitLab=id=>navigateLab({id,click,evaluate,pause});
  const screenshot=async name=>{const r=await send('Page.captureScreenshot',{format:'png',captureBeyondViewport:false});await writeFile(path.join(tmpdir(),name),Buffer.from(r.data,'base64'));};
- await click('#go-chromatography');
+ await visitLab('chromatography');
  for(let i=0;i<40;i++){if(await evaluate("!!document.querySelector('#equipment')&&document.querySelectorAll('.equipment-button').length===10"))break;await pause(100);}
  assert.equal(await evaluate("document.querySelectorAll('.equipment-button').length"),10);
- await click('#back-filtration');
- for(let i=0;i<40;i++){if(await evaluate("!!document.querySelector('#go-distillation')"))break;await pause(100);}
- await click('#go-distillation');
+ await visitLab('filtration');
+ for(let i=0;i<40;i++){if(await evaluate("!!document.querySelector('#pour')"))break;await pause(100);}
+ await visitLab('distillation');
  for(let i=0;i<60;i++){if(await evaluate("document.querySelectorAll('.equipment-button').length===13"))break;await pause(100);}
  assert.equal(await evaluate("document.querySelectorAll('.equipment-button').length"),13);
- await click('#go-chromatography');
+ await visitLab('chromatography');
  for(let i=0;i<40;i++){if(await evaluate("!!document.querySelector('#equipment')&&document.querySelectorAll('.equipment-button').length===10"))break;await pause(100);}
- assert.ok(await evaluate("!!document.querySelector('#back-filtration')&&!!document.querySelector('#back-distillation')"));
- await click('#back-distillation');
+ assert.ok(await evaluate("!!document.querySelector('#return-laboratory')"));
+ await visitLab('distillation');
  for(let i=0;i<40;i++){if(await evaluate("document.querySelectorAll('.equipment-button').length===13"))break;await pause(100);}
  console.log('PASS chromatography links from both labs and return navigation');
 
@@ -120,7 +122,7 @@ try{
  }
  const normal=await play();await click('#restart');const reverse=await play(true);assert.ok(reverse>0&&reverse<normal,'upper-port supply remains possible and reduces actual collected recovery');console.log('PASS real hose reversal, lower recovery',normal,reverse);
  console.log('PASS bottom navigation, real glass/support assembly, feed pour, hose connections, heat/cooling and question');
- await click('#back-filtration');
+ await visitLab('filtration');
  for(let i=0;i<40;i++){if(await evaluate("document.querySelectorAll('.equipment-button').length===6"))break;await pause(100);}
  assert.equal(await evaluate("document.querySelectorAll('.equipment-button').length"),6);assert.equal(await evaluate("document.querySelector('#selected-name').textContent"),'Nothing selected');
  assert.deepEqual(exceptions,[],'no browser runtime exceptions');console.log('PASS fresh filtration on return and no runtime exceptions');

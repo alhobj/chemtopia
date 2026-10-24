@@ -6,13 +6,15 @@ The local prototype includes sand-and-water filtration, acetone–water distilla
 
 ## Try the prototype
 
-With Node.js 22 or newer, run `npm start` from this repository and open `http://127.0.0.1:4173` on the same machine. No dependency installation is needed. Hold a beaker above a receiver while dragging, and press Space to start or stop pouring. Equipment and the stand have solid hitboxes. Unsupported equipment falls, and contact can cause tipping and spills. Hover over **Equipment** between the objective panel and the workbench to retrieve stored items, and drag objects back there to store them. Solution preparation, titration and calorimetry use discrete additions: each press delivers once and stops. Controls and limitations are in [the prototype guide](prototype/README.md).
+With Node.js 22 or newer, run `npm start` from this repository and open `http://127.0.0.1:4173` on the same machine. Choose an experiment from the apparatus setups on the illustrated laboratory benches. Use **← Laboratory** to return; switching starts a fresh attempt. No dependency installation is needed. Hold a beaker above a receiver while dragging, and press Space to start or stop pouring. Equipment and the stand have solid hitboxes. Unsupported equipment falls, and contact can cause tipping and spills. Hover over **Equipment** between the objective panel and the workbench to retrieve stored items, and drag objects back there to store them. Solution preparation, titration and calorimetry use discrete additions: each press delivers once and stops. Controls and limitations are in [the prototype guide](prototype/README.md).
 
 Run `npm test` for the material-model checks and `npm run test:browser` for Chromium mouse/keyboard checks. See the [filtration review](docs/design/filtration-prototype-review.md), [distillation review](docs/design/distillation-prototype-review.md), [chromatography review](docs/design/chromatography-prototype-review.md), [evaporation review](docs/design/evaporation-prototype-review.md), and [recrystallisation review](docs/design/recrystallisation-prototype-review.md).
 
 For step-by-step terminal instructions and a file guide, see [Run and edit in VS Code](docs/development.md).
 
 ## Start here
+
+- [Illustrated laboratory selection and bench previews](docs/design/laboratory-selection.md)
 
 - [Selected B equipment: art and physics checks](docs/design/design-b-equipment-review.md)
 
@@ -58,4 +60,4 @@ Approved decisions, proposals and open questions must remain distinct. Detailed 
 
 ## Status
 
-The owner approved the first filtration specification with “Yes”. This increment uses functional placeholder artwork and a qualitative material model. It has no accounts, analytics, saving, backend or deployment. The owner also approved the revised acetone–water distillation increment with “Implement it”, then selected a 50:50 feed. Use the bottom button to switch experiments. Paper chromatography now uses the owner-selected water solvent, coloured markers and R_F calculation task. Further techniques, production artwork and room navigation await review.
+The owner approved the first filtration specification with “Yes”. This increment uses functional placeholder artwork and a qualitative material model. It has no accounts, analytics, saving, backend or deployment. The owner also approved the revised acetone–water distillation increment with “Implement it”, then selected a 50:50 feed. Use the Laboratory link to return to the selection room. Paper chromatography now uses the owner-selected water solvent, coloured markers and R_F calculation task. Further techniques, production artwork and room navigation await review.

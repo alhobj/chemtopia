@@ -124,3 +124,8 @@ The owner approved the proposed HCl/NaOH insulated-cup calorimetry and requested
 ## Owner-selected B equipment artwork
 
 The owner explicitly requested using the detailed pixel-art equipment marked B instead of the smooth SVG placeholders, while preserving working physics. This authorises the shared [B sprite adaptation](prototype/assets/design-b/README.md) across the existing labs, transparent/composite apparatus assets and model-driven contents/scales/readouts. Preserve the existing chemistry, collision geometry, mouth/tip/joint coordinates and practical actions; do not treat an illustration as approval for new apparatus or lab scope. See [the visual revision review](docs/design/design-b-equipment-review.md). Existing commit/push authorisation applies; deployment remains unapproved.
+
+
+## Approved laboratory selection room
+
+The owner selected next-step suggestion 2 and requested the earlier laboratory illustration behind experiment previews on the benches. Use their existing **L01-1** room selection, not another layout. The local root now opens `laboratory.html`, with nine bench previews and a larger keyboard/phone-accessible list. Replace bottom cross-lab links with one return-to-room link. Preserve direct lab URLs and fresh attempts on switching; no persistence, avatar movement, notebook, new labs or deployment is authorised by this increment. See [the selection-room review](docs/design/laboratory-selection.md). Existing commit/push authorisation continues; owner playtesting remains deferred.

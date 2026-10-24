@@ -225,5 +225,18 @@
     "modified": false,
     "sha256": "a1f57ddb31a25ef9e928250c9c0e7eb38fb864637f073eb77f882efe1fdad1d6",
     "bytes": 1022572
+  },
+  {
+    "id": "L01-1-runtime",
+    "file": "../../prototype/assets/laboratory/l01-1.png",
+    "origin": "Original AI-generated adaptation with image_gen",
+    "references": [
+      "L01-1, leftmost panel of laboratory-studies-l01.png"
+    ],
+    "brief": "Adapt the previously selected perimeter-bench and central-island laboratory into a single landscape selection-room background. Preserve its identity, remove sheet headings, other layouts and loose apparatus; leave bench space for separate B equipment previews.",
+    "status": "Owner-authorised selection-screen background; visual playtest review pending",
+    "modified": false,
+    "sha256": "c78ed1600a378846873f945106ad0f683888c051d81e1e26025e5d128783bf76",
+    "bytes": 1697615
   }
 ]

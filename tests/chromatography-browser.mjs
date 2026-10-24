@@ -1,3 +1,4 @@
+import {visitLab as navigateLab} from './lab-navigation-helpers.mjs';
 import {fillFollowups} from './review-browser-helpers.mjs';
 import {dragStored,menuPoint,hoverMenu} from './equipment-menu-helpers.mjs';
 // Real Chromium input tests through CDP, without a browser automation dependency.
@@ -24,7 +25,7 @@ try{
  const evaluate=async expression=>{const r=await send('Runtime.evaluate',{expression,returnByValue:true,awaitPromise:true});if(r.exceptionDetails)throw Error(r.exceptionDetails.text);return r.result.value;};
  await send('Runtime.enable');await send('Page.enable');await send('Emulation.setDeviceMetricsOverride',{width:1440,height:1100,deviceScaleFactor:1,mobile:false});
  for(let i=0;i<40;i++){try{if((await fetch(base)).ok)break;}catch{}await pause(100);}
- await send('Page.navigate',{url:base});
+ await send('Page.navigate',{url:base+'/index.html'});
  for(let i=0;i<40;i++){if(await evaluate("document.querySelectorAll('.equipment-button').length===6"))break;await pause(100);}
  assert.equal(await evaluate("document.querySelectorAll('.equipment-button').length"),6);
  const key=async(key,code=key)=>{const windowsVirtualKeyCode=({Enter:13,Escape:27,Tab:9,ArrowLeft:37,ArrowUp:38,ArrowRight:39,ArrowDown:40,Space:32})[code]||0;await send('Input.dispatchKeyEvent',{type:'keyDown',key,code,windowsVirtualKeyCode,text:key==='Enter'?'\r':key===' '?' ':undefined});await send('Input.dispatchKeyEvent',{type:'keyUp',key,code,windowsVirtualKeyCode});};
@@ -41,9 +42,10 @@ try{
   const drop=()=>send('Input.dispatchMouseEvent',{type:'mouseReleased',button:'left',clickCount:1,...end});drop.move=move;
   if(release)await drop();return drop;
  }
+ const visitLab=id=>navigateLab({id,click,evaluate,pause});
  const screenshot=async name=>{const r=await send('Page.captureScreenshot',{format:'png',captureBeyondViewport:false});await writeFile(path.join(tmpdir(),name),Buffer.from(r.data,'base64'));};
 
- await click('#go-chromatography');
+ await visitLab('chromatography');
  for(let i=0;i<40;i++){if(await evaluate("document.querySelectorAll('.equipment-button').length===10"))break;await pause(100);}
  assert.equal(await evaluate("document.querySelectorAll('.equipment-button').length"),10);
  const pose=async id=>evaluate(`(()=>{const m=document.querySelector('[data-id="${id}"]').transform.baseVal.consolidate().matrix;return{x:m.e,y:m.f};})()`);
@@ -111,7 +113,7 @@ try{
  assert.equal(await evaluate("document.querySelectorAll('[data-band]').length"),0,'submerged sample dissolves into reservoir');
  await click('#finish');assert.equal(await evaluate("!!document.querySelector('#rf-form')"),false);
  console.log('PASS physically possible submerged-spot mistake and unsuccessful Finish review');
- await click('#back-distillation');
+ await visitLab('distillation');
  for(let i=0;i<40;i++){if(await evaluate("document.querySelectorAll('.equipment-button').length===13"))break;await pause(100);}
  assert.equal(await evaluate("document.querySelectorAll('.equipment-button').length"),13);assert.deepEqual(exceptions,[]);
  console.log('PASS restart, return navigation and no browser exceptions');

@@ -1,6 +1,10 @@
 # Work steps and verification
 
-## Current step — selected B equipment visuals
+## Current step — illustrated laboratory selection
+
+The owner selected suggestion 2 while deferring playtesting, requesting the earlier room behind bench previews of each lab. The selected L01-1 room is now the local entry screen, with nine clickable setups, objectives, a keyboard/phone list and a single return link from each lab. See [the review](laboratory-selection.md). No new experiment, notebook or walking is part of this step.
+
+## Earlier step — selected B equipment visuals
 
 The owner requested replacing the smooth equipment placeholders with the detailed B pixel-art drawings while preserving physics. All nine labs now use a shared sprite adaptation. See [the art and physics review](design-b-equipment-review.md). The previous calorimetry/titration playtests remain pending; this is a visual revision, not a new lab.
 

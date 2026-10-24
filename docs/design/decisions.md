@@ -250,3 +250,8 @@ The owner approved the proposed neutralisation calorimetry and requested combust
 ## 23 October 2026 — Use the selected B equipment artwork
 
 The owner asked whether the detailed B pixel-art drawings were being used and explicitly requested switching to them while preserving physics. The labs previously used simplified smooth SVG placeholders. Replace equipment visuals across the existing nine labs with an interactive sprite adaptation of the selected B studies; use matching extensions for the newer calorimetry apparatus. Preserve the original concept files and identify the adaptation accurately, rather than claiming pixel-identical cutouts. Keep liquids, particles, indicator colours, calibrated markings and instrument readings model-driven, and align art with existing physical/attachment coordinates. This visual request does not expand chemistry scope or approve publication. [Review and asset source](design-b-equipment-review.md).
+
+
+## 24 October 2026 — Laboratory selection room
+
+The owner could not playtest now and selected suggestion 2, asking for the laboratory from the earlier three-picture choice as the background and previews of the labs on its benches. Their recorded L01-1 choice resolves the room reference. Implement a landscape adaptation of that selected room with clickable B-equipment previews for the existing nine experiments, objectives on hover/focus, and a larger list open by default on phones. Replace the bottom cross-lab link row with a single Laboratory return link. Keep existing direct URLs and fresh attempts on switching. This does not approve avatars/walking, saving, a notebook, new chemistry or public deployment. [Review and source](laboratory-selection.md).

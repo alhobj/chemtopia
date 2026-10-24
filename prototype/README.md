@@ -10,7 +10,7 @@ From the repository root, with Node.js 22 or newer:
 npm start
 ```
 
-The development server reports port 4173. Open that port in a desktop browser on the same machine. Set `PORT` to use another port. The server serves only the `prototype/` directory, not private curriculum documents.
+The local entry screen shows the selected L01-1 laboratory with nine clickable experiment previews on its benches. **All experiments** opens larger choices and is open by default on phones. Each workbench has **← Laboratory** to return. Direct lab URLs still work; filtration is `index.html`. The development server reports port 4173. Open that port in a desktop browser on the same machine. Set `PORT` to use another port. The server serves only the `prototype/` directory, not private curriculum documents.
 
 No dependency installation is needed. The application is static and uses local HTML, CSS, JavaScript and SVG. It has no accounts, analytics, remote requests, database or saved progress. The Node server is only a local static development server, not an application backend.
 
@@ -24,7 +24,7 @@ For VS Code terminal instructions and a file guide, see [Run and edit in VS Code
 - Changing selection, finishing, restarting, losing focus or hiding the page stops pouring. An empty beaker stops automatically.
 - **Restart** resets the whole task. **Finish** ends practical work and shows material distribution. A successful result opens the approved explanation question.
 
-Use the bottom **Go to distillation** button for the second experiment. Switching experiments starts a fresh attempt. There are no currency rewards, room navigation or avatar selection.
+Return with **← Laboratory**, then select the distillation setup. Switching experiments starts a fresh attempt. There are no currency rewards, room navigation or avatar selection.
 
 ## Representation and limitations
 
@@ -134,7 +134,7 @@ The equipment drawer sits between the objective panel and the workbench. Hover o
 
 ## Solution preparation and dilution
 
-Open `solution.html` or use **Solutions & dilution** in the bottom navigation. Prepare 100.0 mL of 0.100 mol dm⁻³ NaCl, then dilute a 10.00 mL aliquot to 100.0 mL. Use the balance, selectable spatula portions, beaker/rod, funnel, wash bottle, two volumetric flasks, stoppers and pipette/filler.
+Open `solution.html` or choose **Prepare & dilute** in the laboratory room. Prepare 100.0 mL of 0.100 mol dm⁻³ NaCl, then dilute a 10.00 mL aliquot to 100.0 mL. Use the balance, selectable spatula portions, beaker/rod, funnel, wash bottle, two volumetric flasks, stoppers and pipette/filler.
 
 This lab uses **discrete additions**, including Space: each press adds once and stops. Bulk water additions stop at 95 mL in a flask; use 1 mL or 0.1 mL buttons near the mark. Extra presses can overfill, but waiting cannot. Place the wash bottle beside a selected vessel to expose its water buttons. Set the spatula portion before dragging. Space fits a nearby funnel/stopper and mixes a selected stoppered flask; dragging a fitting removes it. Pipette filling and delivery are separate actions.
 
@@ -143,7 +143,7 @@ The review shows actual preparation measurements and three questions, including 
 
 ## Acid–base titration
 
-Open `titration.html` or choose **Titration** from the bottom navigation. Use a 25.00 mL HCl aliquot and 0.100 mol dm⁻³ NaOH to determine the unknown acid concentration. The seventh lab includes the stand, burette/funnel, pipette/filler, conical flask, indicator and immersed pH probe.
+Open `titration.html` or choose **Titration** in the laboratory room. Use a 25.00 mL HCl aliquot and 0.100 mol dm⁻³ NaOH to determine the unknown acid concentration. The seventh lab includes the stand, burette/funnel, pipette/filler, conical flask, indicator and immersed pH probe.
 
 Each addition stops: 1 mL, 0.1 mL or one 0.05 mL drop. Prime the tip into waste, then record your initial reading. Swirl after additions, judge the endpoint and record the final reading as a trial. Finish opens three questions, including titre and concentration calculations from your readings. An incomplete attempt uses a labelled example.
 
@@ -166,6 +166,6 @@ All three current indicators are available as separate Equipment droppers: bromo
 
 ## Neutralisation and ethanol combustion calorimetry
 
-Open `neutralisation.html` or `combustion.html`, or use the bottom links from any lab. Both use discrete 10 mL / 1 mL pouring and the shared drawer. Move the thermometer near a vessel and use **Clip to vessel rim**, then record initial/final temperatures deliberately. Stir with the rod. In neutralisation, remove the lid before adding reagents, then refit it to reduce heat loss. In combustion, put the aluminium can on its raised support, slide the ethanol burner beneath, and weigh the burner before and after burning. Space or its button lights/extinguishes it. Stop heating before the final weighing.
+Open `neutralisation.html` or `combustion.html`, or choose them from the laboratory room. Both use discrete 10 mL / 1 mL pouring and the shared drawer. Move the thermometer near a vessel and use **Clip to vessel rim**, then record initial/final temperatures deliberately. Stir with the rod. In neutralisation, remove the lid before adding reagents, then refit it to reduce heat loss. In combustion, put the aluminium can on its raised support, slide the ethanol burner beneath, and weigh the burner before and after burning. Space or its button lights/extinguishes it. Stop heating before the final weighing.
 
 Read [the walkthrough and verification](../docs/design/calorimetry-prototype-review.md) and [the model assumptions](../docs/design/calorimetry-prototype-spec.md). Three questions use measured temperature changes, total liquid mass, aluminium heat capacity where relevant, and the reacting amount/fuel mass loss. An incomplete attempt uses a labelled supplied example. No automatic ideal peak replaces a recorded reading.

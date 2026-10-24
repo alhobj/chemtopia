@@ -1,3 +1,4 @@
+import {visitLab as navigateLab} from './lab-navigation-helpers.mjs';
 import {dragStored,menuPoint,hoverMenu} from './equipment-menu-helpers.mjs';
 // Real Chromium input tests through CDP, without a browser automation dependency.
 import {spawn} from 'node:child_process';
@@ -23,7 +24,7 @@ try{
  const evaluate=async expression=>{const r=await send('Runtime.evaluate',{expression,returnByValue:true,awaitPromise:true});if(r.exceptionDetails)throw Error(r.exceptionDetails.text);return r.result.value;};
  await send('Runtime.enable');await send('Page.enable');await send('Emulation.setDeviceMetricsOverride',{width:1440,height:1100,deviceScaleFactor:1,mobile:false});
  for(let i=0;i<40;i++){try{if((await fetch(base)).ok)break;}catch{}await pause(100);}
- await send('Page.navigate',{url:base});
+ await send('Page.navigate',{url:base+'/index.html'});
  for(let i=0;i<40;i++){if(await evaluate("document.querySelectorAll('.equipment-button').length===6"))break;await pause(100);}
  assert.equal(await evaluate("document.querySelectorAll('.equipment-button').length"),6);
  const key=async(key,code=key)=>{const windowsVirtualKeyCode=({Enter:13,Escape:27,Tab:9,ArrowLeft:37,ArrowUp:38,ArrowRight:39,ArrowDown:40,Space:32})[code]||0;await send('Input.dispatchKeyEvent',{type:'keyDown',key,code,windowsVirtualKeyCode,text:key==='Enter'?'\r':key===' '?' ':undefined});await send('Input.dispatchKeyEvent',{type:'keyUp',key,code,windowsVirtualKeyCode});};
@@ -45,6 +46,7 @@ try{
   drop.move=async(x,y)=>{const next=await evaluate(`(()=>{const p=new DOMPoint(${x+offset.x},${y+offset.y}).matrixTransform(document.querySelector('#bench').getScreenCTM());return {x:p.x,y:p.y};})()`);await send('Input.dispatchMouseEvent',{type:'mouseMoved',buttons:1,...next});end=next;};
   if(release)await drop();return drop;
  }
+ const visitLab=id=>navigateLab({id,click,evaluate,pause});
  const screenshot=async name=>{const r=await send('Page.captureScreenshot',{format:'png',captureBeyondViewport:false});await writeFile(path.join(tmpdir(),name),Buffer.from(r.data,'base64'));};
  await screenshot('chemtopia-initial.png');console.log('PASS initial workbench and all six apparatus controls');
  const pose=async id=>evaluate(`(()=>{const m=document.querySelector('[data-id="${id}"]').transform.baseVal.consolidate().matrix;return {x:m.e,y:m.f,angle:Math.atan2(m.b,m.a)*180/Math.PI};})()`);
@@ -82,7 +84,7 @@ try{
  await key('Escape','Escape');await pause(250);assert.ok(await evaluate("!document.querySelector('#equipment-menu').classList.contains('open')"));
  console.log('PASS keyboard retrieval and Escape close');
 
- await click('#go-distillation');
+ await visitLab('distillation');
  for(let i=0;i<40;i++){
   try{if(await evaluate("document.querySelectorAll('.equipment-button').length===13"))break;}
   catch(error){if(error.code!==-32000||!/navigated|context.*destroyed/i.test(error.message))throw error;}

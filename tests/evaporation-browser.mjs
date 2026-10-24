@@ -1,3 +1,4 @@
+import {visitLab as navigateLab} from './lab-navigation-helpers.mjs';
 import {fillFollowups} from './review-browser-helpers.mjs';
 import {dragStored,menuPoint,hoverMenu} from './equipment-menu-helpers.mjs';
 // Real Chromium input tests through CDP, without a browser automation dependency.
@@ -24,7 +25,7 @@ try{
  const evaluate=async expression=>{const r=await send('Runtime.evaluate',{expression,returnByValue:true,awaitPromise:true});if(r.exceptionDetails)throw Error(r.exceptionDetails.text);return r.result.value;};
  await send('Runtime.enable');await send('Page.enable');await send('Emulation.setDeviceMetricsOverride',{width:1440,height:1100,deviceScaleFactor:1,mobile:false});
  for(let i=0;i<40;i++){try{if((await fetch(base)).ok)break;}catch{}await pause(100);}
- await send('Page.navigate',{url:base});
+ await send('Page.navigate',{url:base+'/index.html'});
  for(let i=0;i<40;i++){if(await evaluate("document.querySelectorAll('.equipment-button').length===6"))break;await pause(100);}
  assert.equal(await evaluate("document.querySelectorAll('.equipment-button').length"),6);
  const key=async(key,code=key)=>{const windowsVirtualKeyCode=({Enter:13,Escape:27,Tab:9,ArrowLeft:37,ArrowUp:38,ArrowRight:39,ArrowDown:40,Space:32})[code]||0;await send('Input.dispatchKeyEvent',{type:'keyDown',key,code,windowsVirtualKeyCode,text:key==='Enter'?'\r':key===' '?' ':undefined});await send('Input.dispatchKeyEvent',{type:'keyUp',key,code,windowsVirtualKeyCode});};
@@ -41,16 +42,19 @@ try{
   const drop=()=>send('Input.dispatchMouseEvent',{type:'mouseReleased',button:'left',clickCount:1,...end});drop.move=move;
   if(release)await drop();return drop;
  }
+ const visitLab=id=>navigateLab({id,click,evaluate,pause});
  const screenshot=async name=>{const r=await send('Page.captureScreenshot',{format:'png',captureBeyondViewport:false});await writeFile(path.join(tmpdir(),name),Buffer.from(r.data,'base64'));};
 
 
- await click('#go-evaporation');
+ await visitLab('evaporation');
  for(let i=0;i<40;i++){if(await evaluate("document.querySelectorAll('.equipment-button').length===4"))break;await pause(100);}
  assert.equal(await evaluate("document.querySelectorAll('.equipment-button').length"),4);
  await screenshot('chemtopia-evaporation-initial.png');
  await drag('basin',600,387,{dy:35,path:[{x:350,y:250},{x:600,y:250}]});await pause(300);
  const drop=await drag('source',565.6,120,{release:false,path:[{x:110,y:120}]});
- await key(' ','Space');await pause(3900);await key(' ','Space');await drop.move(110,120);await drop.move(110,413);await drop();
+ await key(' ','Space');await pause(3900);
+ for(let i=0;i<30;i++){if(await evaluate("!document.querySelector('[data-id=source] [clip-path] rect')"))break;await pause(100);}
+ await key(' ','Space');await drop.move(110,120);await drop.move(110,413);await drop();
  await click('[data-equipment=heater]');await key(' ','Space');await send('Input.dispatchMouseEvent',{type:'mouseMoved',x:1000,y:350});
  await pause(11000);assert.equal(await evaluate("document.querySelector('#basin-state').textContent"),'Wet salt residue');
  await screenshot('chemtopia-evaporation-wet.png');
@@ -64,9 +68,9 @@ try{
  await screenshot('chemtopia-evaporation-review.png');console.log('PASS real transfer, stable heater/basin contact, wet versus dry residue, salt recovery and explanation retry');
  await click('#restart');await click('#finish');
  assert.equal(await evaluate("!!document.querySelector('#explanation')"),false);assert.ok((await evaluate("document.querySelector('#result').textContent")).includes('not complete'));
- await click('#back-chromatography');
+ await visitLab('chromatography');
  for(let i=0;i<40;i++){if(await evaluate("document.querySelectorAll('.equipment-button').length===10"))break;await pause(100);}
- assert.ok(await evaluate("!!document.querySelector('#go-evaporation')"));assert.deepEqual(exceptions,[]);
+ assert.ok(await evaluate("!!document.querySelector('#return-laboratory')"));assert.deepEqual(exceptions,[]);
  console.log('PASS incomplete review, restart and cross-lab navigation with no browser exceptions');
 }finally{
  if(ws)ws.close();chrome.kill();server.kill();await pause(300);await rm(profile,{recursive:true,force:true,maxRetries:5,retryDelay:100});

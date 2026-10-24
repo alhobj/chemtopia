@@ -20,6 +20,8 @@ Six student-avatar proposals, labelled **C01-1** through **C01-6**, each with fr
 
 ## L01 — Three compact laboratory layouts
 
+The selected **L01-1** is now adapted for [the laboratory selection room](../design/laboratory-selection.md), with the existing experiments represented by B-equipment previews on the benches. The original comparison sheet below remains unchanged.
+
 ![Three laboratory layout proposals](proposals/laboratory-studies-l01.png)
 
 | ID | Layout idea | Main tradeoff |

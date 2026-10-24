@@ -1,0 +1,14 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Chemtopia · Laboratory</title><link rel="stylesheet" href="laboratory.css"></head>
+<body>
+<header><a class="brand" href="laboratory.html" aria-label="Chemtopia laboratory">C<span>CHEMTOPIA</span></a><h1>Choose an experiment</h1><button id="toggle-list" aria-expanded="false" aria-controls="experiment-list">All experiments</button></header>
+<main>
+<section class="room-shell" aria-label="Laboratory with experiments on the benches">
+<div id="laboratory-room" class="laboratory-room"><img class="room-background" src="assets/laboratory/l01-1.png" alt="The selected laboratory: perimeter benches and a central island, with daylight through the rear windows." draggable="false"><div id="bench-experiments"></div></div>
+</section>
+<section id="experiment-detail" class="experiment-detail" aria-live="polite"><div><p class="eyebrow">THE LABORATORY</p><h2 id="detail-name">A bench for every investigation</h2><p id="detail-objective">Choose an apparatus setup to open its experiment.</p></div><a id="open-experiment" href="index.html" hidden>Open experiment <span aria-hidden="true">↗</span></a></section>
+<section id="experiment-list" class="experiment-list" aria-label="All experiments" hidden></section>
+</main>
+<script type="module" src="laboratory.js"></script>
+</body></html>
