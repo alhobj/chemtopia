@@ -1,3 +1,4 @@
+import {vesselInterior} from './vessel-interiors.js';
 // Runtime skins adapted from the owner's row-B equipment studies. Simulation geometry
 // stays authoritative: sprites use the same local mouth, tip, base and joint coordinates.
 import {atlas,sprites} from './assets/design-b/atlas.js';
@@ -44,31 +45,34 @@ function funnel(o){
 // Contents have their own interior, rather than using the opaque sprite as a mask.
 // This keeps particles off rims, labels and glass walls.
 function vesselContents(o,html,lab,w,h){
- const k=o.kind,id='contents-interior-'+o.id,bottom=k==='cylinder'?114:h-10;
- let interior=`M${-w/2+9} 14H${w/2-9}V${bottom-3}Q0 ${bottom+3} ${-w/2+9} ${bottom-3}Z`;
- if(k==='flask'&&lab!=='distillation')interior='M-7 5H7V44C7 61 31 65 31 94V116Q31 123 22 123H-22Q-31 123-31 116V94C-31 65-7 61-7 44Z';
- if(k==='flask'&&lab==='distillation')interior='M-7 5H7V62C52 74 52 128 15 131H-15C-52 128-52 74-7 62Z';
- if(k==='conical')interior='M-8 7H8V33L45 106Q47 111 38 112H-38Q-47 111-45 106L-8 33Z';
- if(k==='basin')interior='M-65 32Q0 17 65 32L32 67Q0 75-32 67Z';
- if(k==='boat')interior='M-26 11L-20 19H20L26 11Z';
- if(k==='cup')interior='M-36 20Q0 12 36 20L30 108H-30Z';
- if(k==='can')interior='M-39 20Q0 12 39 20V88H-39Z';
- const volume=(o.water||0)+(o.acetone||0),fraction=Math.min(1,volume/(o.capacity||1));
- let level=bottom-(k==='cylinder'?96:h-24)*fraction;
- if(k==='flask'&&lab!=='distillation')level=volume<=80?123-volume*.8:59-(volume-80)*1.95;
+ const k=o.kind,id='contents-interior-'+o.id,geometry=vesselInterior(k,lab,w,h),{path:interior,bottom,cx,half,surfaceOnly,surfaceY,surfaceRy}=geometry;
+ const volume=(o.water||0)+(o.acetone||0),fraction=Math.max(0,Math.min(1,volume/(o.capacity||1)));
+ let level=bottom-(bottom-geometry.top)*fraction;
+ // Keep the existing 100 mL calibration at y=20 in the narrow flask neck.
+ if(k==='flask'&&lab!=='distillation')level=volume<=80?115-volume*.6875:60-(volume-80)*2;
+ if(k==='flask'&&lab==='distillation')level=fraction<=.9?124-75*fraction/.9:49-40*(fraction-.9)/.1;
+ level=Math.max(geometry.top,Math.min(bottom,level));
  const original=html.match(/<g clip-path="[^"]*">([\s\S]*?)<\/g>/)?.[1]||'';
- const colour=original.match(/<rect[^>]*fill="([^"]*)"/)?.[1]||'#7ebed2';
- let contents=volume>0?`<g transform="rotate(${-(o.angle||0)} 0 ${level})">`+rect(-w,level,w*2,h*3,`fill="${colour}" opacity=".48"`)+`<ellipse cx="0" cy="${level}" rx="${w}" ry="2" fill="${colour}" opacity=".35"/><path d="M${-w} ${level}H${w}" stroke="#88bfca" stroke-width="1" opacity=".6"/></g>`:'';
+ const originalColour=original.match(/<rect[^>]*fill="([^"]*)"/)?.[1],colour=originalColour&&!originalColour.startsWith('url(')?originalColour:'#86bdce';
+ let contents='';
+ if(volume>0){
+  if(surfaceOnly){
+   // Ceramic/metal walls are opaque. Only the liquid surface inside the mouth
+   // is visible, never a translucent fill painted across the outside wall.
+   const inset=1-(1-fraction)*.20;
+   contents=`<ellipse class="liquid-surface" cx="${cx}" cy="${surfaceY+2*(1-fraction)}" rx="${half*inset}" ry="${surfaceRy*inset}" fill="${colour}" opacity=".65"/>`;
+  }else contents=`<g class="liquid-fill" transform="rotate(${-(o.angle||0)} ${cx} ${level})">`+rect(-w,level,w*2,h*3,`fill="${colour}" opacity=".42"`)+`<path class="liquid-surface" d="M${cx-half} ${level}Q${cx} ${level+2} ${cx+half} ${level}" fill="none" stroke="${colour}" stroke-width="1.4"/></g>`;
+ }
  const salt='dissolved'in o?Math.max(0,(o.salt||0)-o.dissolved):lab==='evaporation'?Math.max(0,(o.salt||0)-(o.water||0)*.3):0;
  const materials=[{amount:o.sand||0,colour:'#bd975c'}, {amount:salt+(o.raw||0)+(o.crystals||0)+(o.chips||0)+(o.powder||0),colour:'#f5eccf'}];
  for(const m of materials){if(m.amount<=1e-9)continue;
   const saltBottle=k==='bottle'&&lab==='solution';
   const count=Math.min(saltBottle?360:70,Math.max(3,Math.ceil(m.amount*(o.capacity>2?80:220))));
-  const base=k==='boat'?18:k==='basin'?67:bottom-2;
-  const spread=k==='flask'?w*.55:k==='conical'?w*.7:w*.65;
-  contents+=Array.from({length:count},(_,i)=>{const noise=n=>{const v=Math.sin(n*127.1+17)*43758.5453;return v-Math.floor(v);},x=((saltBottle?noise(i):(i*37%97)/97)-.5)*spread,y=base-2-(saltBottle?noise(i+401):(i*29%17)/17)*Math.min(saltBottle?34:15,3+count*.18)*(saltBottle?1-Math.abs(x)/spread:1),r=saltBottle?.55+noise(i+803)*.65:o.powder>0?1:1.7;return `<path class="solid-grain" d="M${x} ${y-r}l${r+1} ${r} -${r} ${r+1} -${r+1}-${r}Z" fill="${i%3?m.colour:'#c7c6b3'}"/>`;}).join('');
+  const base=surfaceOnly?surfaceY+surfaceRy*.55:k==='boat'?14:bottom-2;
+  const spread=surfaceOnly?half*1.3:k==='flask'?w*.48:k==='conical'?w*.6:half*1.65;
+  contents+=Array.from({length:count},(_,i)=>{const noise=n=>{const v=Math.sin(n*127.1+17)*43758.5453;return v-Math.floor(v);},x=cx+((saltBottle?noise(i):(i*37%97)/97)-.5)*spread,y=base-2-(saltBottle?noise(i+401):(i*29%17)/17)*Math.min(saltBottle?34:15,3+count*.18)*(saltBottle?1-Math.abs(x)/spread:1),r=saltBottle?.55+noise(i+803)*.65:o.powder>0?1:1.7;return `<path class="solid-grain" d="M${x} ${y-r}l${r+1} ${r} -${r} ${r+1} -${r+1}-${r}Z" fill="${i%3?m.colour:'#c7c6b3'}"/>`;}).join('');
  }
- return `<defs><clipPath id="${id}"><path d="${interior}"/></clipPath></defs><g class="vessel-contents" clip-path="url(#${id})">${contents}</g>`;
+ return `<defs><clipPath id="${id}"><path d="${interior}"/></clipPath></defs><g class="vessel-contents" data-interior-kind="${k}" clip-path="url(#${id})">${contents}</g>`;
 }
 export function equipmentArt(o,html,lab,s){
  let image='',extra='',width=80,height=100,top=0;
@@ -105,11 +109,11 @@ export function equipmentArt(o,html,lab,s){
   return image+extra+extracts(html,/<rect class="select-outline"[^>]*\/>/g);
  }
  if(k==='burette'){
-  const y=225*(1-o.water/50);
-  return sprite('rod',-12,0,24,225)+rect(-8,y,16,225-y,'fill="#72bed3" opacity=".6"')+metal(-3,225,6,25)+metal(-17,228,34,7)+extracts(html,/<path d="M-10 [^"]*"[^>]*\/>/g)+overlays(html);
+  const y=225*(1-o.water/50),clip='burette-interior-'+o.id;
+  return sprite('rod',-12,0,24,225)+`<defs><clipPath id="${clip}"><rect x="-3" y="2" width="6" height="221"/></clipPath></defs><g class="vessel-contents" clip-path="url(#${clip})">`+rect(-3,y,6,225-y,'fill="#72bed3" opacity=".5"')+'</g>'+metal(-3,225,6,25)+metal(-17,228,34,7)+extracts(html,/<path d="M-10 [^"]*"[^>]*\/>/g)+overlays(html);
  }
  if(k==='probe')return sprite('probe',-31,-30,62,36,[0,0,1,.23])+sprite('probe',-4,0,8,110,[.36,.23,.28,.77])+rect(-29,-28,58,31,'fill="#eff5dc"')+overlays(html);
- if(k==='pipette'){width=lab==='titration'?28:26;height=lab==='titration'?127:116;top=lab==='titration'?-17:-16;image=sprite('pipette',-width/2,top,width,height);if(o.water>0)extra=rect(-2,10,4,85,'fill="#76bad3" opacity=".65"');}
+ if(k==='pipette'){width=lab==='titration'?28:26;height=lab==='titration'?127:116;top=lab==='titration'?-17:-16;image=sprite('pipette',-width/2,top,width,height);if(o.water>0){const clip='pipette-interior-'+o.id,f=Math.min(1,o.water/(o.capacity||o.water));extra=`<defs><clipPath id="${clip}"><path d="M-1.1 0V24C-7 29-7 41-1.1 46V94H1.1V46C7 41 7 29 1.1 24V0Z"/></clipPath></defs><g class="vessel-contents" clip-path="url(#${clip})">`+rect(-9,94-94*f,18,94*f,'fill="#76bad3" opacity=".5"')+'</g>'; }}
  else if(k==='rod'){width=6;height=100;image=sprite('rod',-3,0,6,100);}
  else if(k==='spatula'){width=18;height=70;image=sprite('spatula',-9,0,18,70);if(o.salt>0)extra='<ellipse cy="58" rx="6" ry="9" fill="#f8f0d5"/>';}
  else if(k==='stopper'){width=24;height=16;image=sprite('stopper',-12,0,24,16);}
@@ -132,6 +136,7 @@ export function equipmentArt(o,html,lab,s){
   else if(k==='beaker'){name='beaker';const large=o.id==='source'&&!['neutralisation','combustion'].includes(lab);width=large?92:78;height=large?112:96;}
   else throw Error('Unmapped design-B equipment: '+lab+'/'+k);
   if(k==='beaker')image=`<g transform="scale(-1 1)">${sprite(name,-width*.66,0,width*1.21,height)}</g>`;
+  else if(k==='chamber')image=sprite(name,-100,0,200,216,[0,.24,1,.62])+sprite(name,-100,216,200,4,[0,.86,1,.14])+sprite(name,-100,-24,200,40,[0,0,1,.24]);
   else if(k==='cylinder')image=sprite(name,-22,0,44,114,[.18,0,.64,.88])+sprite(name,-22,114,44,6,[0,.88,1,.12]);
   else if(name==='volumetric')image=sprite(name,-14,0,28,44,[.30,0,.40,.45])+sprite(name,-width/2,44,width,height-44,[0,.45,1,.55]);
   else image=sprite(name,-width/2,0,width,height);
@@ -140,6 +145,6 @@ export function equipmentArt(o,html,lab,s){
   if(name==='volumetric')extra+='<path d="M-12 20H12" stroke="#bc874a" stroke-width="2"/>';
   if(k==='cylinder')extra+=Array.from({length:11},(_,i)=>`<path d="M-20 ${114-i*9.6}h${i%5===0?19:10}" stroke="#385577"/>${i%5===0?`<text x="2" y="${117-i*9.6}" font-size="9">${i*10}</text>`:''}`).join('');
  }
- if(['beaker','flask','conical','basin','boat','cup','can','cylinder','chamber','bottle'].includes(k))return image+vesselContents(o,html,lab,width,height)+extra+extracts(html,/<text\b[^>]*>[\s\S]*?<\/text>/g)+extracts(html,/<rect class="select-outline"[^>]*\/>/g);
+ if(['beaker','flask','conical','basin','boat','cup','can','cylinder','chamber','bottle','wash'].includes(k))return image+vesselContents(o,html,lab,width,height)+extra+extracts(html,/<text\b[^>]*>[\s\S]*?<\/text>/g)+extracts(html,/<rect class="select-outline"[^>]*\/>/g);
  return image+overlays(html,('water'in o&&!['pipette','spatula','dropper'].includes(k))?image:'',o.id,extra);
 }

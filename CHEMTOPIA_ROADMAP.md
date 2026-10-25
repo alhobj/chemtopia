@@ -74,7 +74,7 @@ Read AGENTS.md and CHEMTOPIA_ROADMAP.md. Preserve existing lab chemistry and the
 ## Commands
 
 - `npm start` — local game, port 4173.
-- `npm test` — 268 chemistry/model/save/progression/animation/rendering/network tests.
+- `npm test` — 271 chemistry/model/save/progression/animation/rendering/network tests.
 - `npm run test:browser` — existing Chromium practical workflows plus six-character/town/tutorial/shop checks.
 - `npm run check` — JavaScript syntax and catalogue validation.
 - `npm run build` — static files in `dist/`; serve through HTTP and open `adventure.html`.
@@ -165,3 +165,19 @@ All **42** reusable equipment catalogue entries have labelled previews in the sh
 Verified: **268 model tests pass**, build/static checks pass, and both the updated adventure browser workflow and unrestricted laboratory-room browser workflow pass. Model checks cover exact dependency coverage (all and only the actual equipment for every existing lab), branch/convergence validity, acyclicity, focus/layout, exact ownership states and all 42 finite labelled previews. Native browser checks pass for starting-room visibility, real purchases revealing filtration, missing supplies hiding experiments, restocking restoring both room/list entries, focused/whole map and catalogue previews. Existing unrestricted room/navigation also checked. Next: owner review of map readability and shop previews, alongside the pending desktop town walking recheck.
 
 Map polish: desktop has an adjacent, independently scrollable requirements inspector; phone layouts stack it below the map. Equipment groups support keyboard inspection and links to their consuming labs. The initial focused view keeps labels readable; overview is intended for planning with zoom/pan. Routing checks verify no network arrow crosses an unrelated equipment or lab box. Scope validation reran the affected town/room browsers, not all fifteen lab/animation harnesses in this increment. All existing lab model tests remain in the 268-test suite; their chemistry and physics were not changed.
+
+## Container-interior correction
+
+Owner reported that liquid still appeared to fill the sprite rather than the vessel cavity. Investigation found generic rectangular clips reaching into beaker rims/bases, incorrect flask/chamber/cylinder bounds, a wash bottle still using an alpha-silhouette mask (including dispensing hardware), and opaque ceramic/metal vessels being shaded through their exterior walls.
+
+Implemented `vessel-interiors.js` with separate source-art traces for beakers (both sizes), volumetric and round-bottom flasks, conical flasks, cylinders, chromatography chambers, reagent bottles and wash bottles. Their liquid stays in the cavity and preserves the sprite's rim, walls, spout, base and hardware. Opaque basins, cups and aluminium cans show liquid only through their opening; solid deposits also stay within that opening. Narrow pipette, burette and inner-vial fills now have their own bounded interiors. Original PNG artwork is unchanged, including its pale blue glass shading. This is a liquid-overlay correction, not a replacement of the selected B art.
+
+The volumetric 100 mL visual level still meets the existing calibration at y=20. Chemistry, quantities, capacities, boiling stages, temperatures, collision bodies, assembly anchors, storage and save data are unchanged. The source traces describe appearance, not new physics or a calibrated three-dimensional fluid simulation.
+
+`/vessel-preview.html` shows 56 comparisons: empty, half-full, nearly full and tilted for fourteen apparatus styles. This review page uses the same renderer as the real labs. `tests/vessel-browser.mjs` rasterises isolated live contents and checks **294 protected rim/wall/base/spout/hardware points**, plus **30 visible interior samples**, across fill levels and tilt angles; it also checks phone layout and runtime errors. `npm run test:browser` now includes this sixteenth harness. This pixel check prevents the specific overlay leakage from being treated as resolved solely because the lab can still be completed.
+
+Verification: model suite currently **271 tests passing**, build/static checks pass, liquid pixel checks pass. Relevant native lab checks are being completed; final results recorded below. Next: owner compares the actual empty/filled vessels and opening-only ceramic/metal rendering. The source glass remains tinted blue, so an empty container is not colourless.
+
+Final container verification: **271 model tests pass**, build/static and whitespace checks pass. Native browser checks pass for filtration, distillation, chromatography, evaporation, recrystallisation, solution preparation/dilution, all five titration scenarios, both calorimetry labs, reaction rates, all three measurement labs and all thirteen responsive lab layouts. The new 56-study browser harness passes 294 protected-region exclusions plus 30 visible interior samples. One initial titration run failed its post-restart example-text assertion; the complete five-scenario rerun passed without changes to restart or question logic. No full town/animation browser rerun is claimed for this renderer-only correction.
+
+Visual follow-up caught the wash bottle's asymmetric source bounds: the pump projects right of its body, so the cavity is deliberately offset left rather than centred in the sprite rectangle. A protected point beside the actual bottle now catches that specific leakage. The chromatography shell is composited to align its front cavity with the existing solvent surface `216 − 200 × water/capacity`; actual paper-contact logic is unchanged and the visible height is tested against it.

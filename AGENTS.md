@@ -170,3 +170,7 @@ The owner reported lag, town sprite jumping, poor liquid/filter/funnel presentat
 ## Equipment network and catalogue preview increment
 
 The owner requested a branching/merging dependency-map idea from their examples, explicitly without copying structure, colours or design; unavailable labs hidden in the lab room; and shop equipment previews. This authorises the actual equipment-group dependency network, readable focus/overview modes, availability-filtered adventure room and previews reusing existing art. Preserve shared eligibility, unrestricted practice, existing chemistry/physics, individual ownership, prices, saves and deferred quest status. Existing commit/push authorisation continues.
+
+## Container interior follow-up
+
+The owner again reported liquid filling whole sprites. This authorises source-matched interior clipping and opening-only contents for opaque vessels, preserving the selected B source art, quantities, calibration, chemistry, collisions and anchors. A developer comparison page and rasterised clipping checks are within this bounded correction. Existing commit/push authorisation continues.

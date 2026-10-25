@@ -45,3 +45,13 @@ Validation: 187 model tests pass. The twelve browser harnesses were exercised ac
 ### Follow-up: LCD and salt bottle
 
 The balance now uses live seven-segment digits fitted to the recessed LCD in its drawing. The salt bottle's oversized cream label is removed, leaving a small NaCl identifier and irregular fine crystals visible through the glass. Exact readings, tare, inventory and pouring are preserved. The preview above is refreshed for this correction.
+
+## Source-traced container interiors
+
+The owner reported continued liquid painting over the sprite. Container-specific cavity traces now replace the remaining generic bounds and the wash-bottle silhouette mask. Beaker rim/base/spout, flask shoulders/necks, the narrow cylinder bore, chamber face, bottle neck/cap and wash-bottle pump are excluded. Pipettes, burettes and the inner vial have narrow liquid clips too. Ceramic basins/cups and metal cans show contents through the opening rather than through opaque front walls. Their solids are drawn inside that opening as well.
+
+Original B PNGs retain their pale-blue glass appearance. No sprite, collision body, material amount or capacity was replaced. The numerical volumetric calibration is preserved.
+
+Run `npm start`, then open `/vessel-preview.html` for 56 empty/filled/tilted comparisons. The new `node tests/vessel-browser.mjs` check rasterises the live contents, testing protected regions of the rim/walls/base/hardware and visible interior samples. It supplements practical workflow tests; it does not replace owner visual review.
+
+The wash bottle's cavity is offset to its actual body, not the bounds of its projecting nozzle. The chamber shell follows its physical front cavity, preserving the original paper-contact solvent height. Verification: 271 model tests, the 294-region/30-interior raster check, affected practical workflows and responsive lab layouts pass.
