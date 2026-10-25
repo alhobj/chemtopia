@@ -18,3 +18,7 @@ Names and saves stay in the current browser. There are no accounts, analytics or
 All six selected characters now have front/back/right walk cycles and mirrored left frames. Move in each direction using WASD/arrows, touch arrows or click-to-walk. Releasing controls, opening a dialogue or reaching an obstacle stops the animation. The last facing direction survives saving. Reduced-motion preference keeps directional facing while freezing the gait. `/walking-preview.html` shows all 24 character/direction combinations together with a Pause/Play control.
 
 Future quest direction has changed: NPCs will give practical laboratory tasks, completed for credits or equipment. The owner explicitly deferred implementation. Existing review completion is still in place for this playtest; it does not award quest rewards or implement future practical-success checks. Free supply-packet restocking remains confirmed.
+
+## Idle animation playtest
+
+Stand still in town for about 7–11 seconds while facing south. The player should breathe, blink and perform a brief personal gesture; press a movement key to interrupt it immediately. The guide has independent timing. Open Options → Preview character idles or `/idle-preview.html` to compare all 24 actors and use Show gestures without waiting. Side/front-facing blinks and breathing retain direction; personality actions currently use south-facing art. Pause and reduced-motion controls keep characters still.

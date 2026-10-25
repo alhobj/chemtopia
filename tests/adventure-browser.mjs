@@ -68,6 +68,9 @@ try{
 
  }
  assert.equal(dialogs,5);await screenshot('chemtopia-adventure-town.png');
+ await waitFor("document.querySelector('#player .idle-sprite')?.dataset.idlePhase==='gesture'",'natural town player idle gesture');assert.ok(await evaluate("!!document.querySelector('#guide-idle .idle-sprite')"));await screenshot('chemtopia-town-idle-gesture.png');
+ await send('Input.dispatchKeyEvent',{type:'keyDown',key:'d',code:'KeyD'});await waitFor("document.querySelector('#player .walk-sprite')?.dataset.moving==='true'",'walking immediately interrupts idle');await send('Input.dispatchKeyEvent',{type:'keyUp',key:'d',code:'KeyD'});await waitFor("document.querySelector('#player .idle-sprite')?.dataset.idlePhase==='neutral'",'stopping restarts idle grace period');
+
  // Cancelled New Game leaves the same profile and town intact.
  await click('#options-button');acceptDialogs=false;await click('[data-action=new-game]');await pause(100);assert.equal(await evaluate("document.querySelector('#game').hidden"),false);acceptDialogs=true;await close();
  const before=await evaluate("document.querySelector('#player').getAttribute('transform')");await send('Input.dispatchKeyEvent',{type:'keyDown',key:'d',code:'KeyD',windowsVirtualKeyCode:68});await pause(550);await send('Input.dispatchKeyEvent',{type:'keyUp',key:'d',code:'KeyD',windowsVirtualKeyCode:68});await pause(600);assert.notEqual(await evaluate("document.querySelector('#player').getAttribute('transform')"),before);

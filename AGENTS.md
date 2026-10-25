@@ -158,3 +158,7 @@ The owner requested more characters for NPCs, including children, adults and che
 ## Four-direction standing NPC graphics
 
 The owner requested every NPC stand facing east, north, west and south. Updating all eighteen existing NPC appearances to four-direction standing atlases, their catalogue/renderer and review gallery is authorised. Preserve stable IDs and character identities. This does not add NPC walking, placements, quests or rewards.
+
+## Character idle animation increment
+
+The owner requested breathing, blinking and logical personal idle actions, including checking time, gum, ball tossing and a comic underarm check. A shared cosmetic idle system, matching generated animation frames, town player/guide integration and actor previews are authorised. Preserve existing identities, four-direction standing/walking, movement responsiveness, reduced-motion support and local-only progress. Gesture assignments are reversible visual defaults; do not turn props into equipment grants or implement quests. See docs/art/idle-animations.md. Existing commit/push authorisation continues.

@@ -76,3 +76,5 @@ Adventure supplies are reserved once per attempt; reloading restarts that attemp
 The six selected characters now walk up, down, left and right in town. Open `/walking-preview.html` on the local server to compare all four directions together. Future NPC-issued practical quests and equipment/credit rewards are recorded in the roadmap and remain unimplemented at the owner's request.
 
 New NPC art: eighteen child, adult and chemist designs with standing views in all four cardinal directions are available at `/npc-preview.html`. See [the character sheets and IDs](docs/art/npc-character-studies.md). These are additional NPC appearances; town placement and quests remain deferred.
+
+Character idles: `/idle-preview.html` shows breathing, blinking and personality gestures for all six players and eighteen NPCs. The town player and guide use the same idle system. See [animation notes](docs/art/idle-animations.md).

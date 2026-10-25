@@ -20,3 +20,7 @@ Run the game and open `/walking-preview.html` to inspect all six identities in a
 ## Four-direction NPC standing revision
 
 The `npc-*-directions-n0*.png` sheets update all eighteen existing NPCs to south, north, east and west standing views. Column identity order is unchanged. East and west are separate drawings, not runtime reflections, so asymmetric accessories can remain consistent. Original two-view sheets above are retained as source history. `npc-atlases.js` stores inspected source-pixel frame bounds; `npcArt()` supports cardinal directions and legacy front/back calls. The gallery now shows all 72 views, with direction labels. Generation prompts and checksums are recorded in `npc-direction-sources.json`. No NPC walking, town placements or quests are introduced.
+
+## Idle animation frames
+
+Nine `idle-*.png` atlases add 192 matching full-body frames: neutral four-direction player standing, four-direction blink frames for players and all NPC groups, and three-step south-facing personality gestures for each actor. Source PNGs are unchanged generated files. `idle-sources.json` records exact prompts, reference sheets, original generated filenames, dimensions and checksums. `idle-atlases.js` stores inspected cell/silhouette coordinates; runtime SVG registers feet and clips upper/lower body for subtle breathing. `/idle-preview.html` demonstrates the shared idle renderer and controls. See `docs/art/idle-animations.md` for actions and current direction support.

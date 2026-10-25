@@ -54,3 +54,7 @@ These are younger town residents and visitors, not replacements for the IB stude
 - No town NPCs, dialogue, quests, practical success checks or rewards are added. The owner explicitly deferred quest implementation.
 - Generation prompts, unchanged source filenames and checksums are recorded with the assets. The source C01 sheet provides the style reference; the new NPCs are distinct identities.
 - Later review: choose favourite IDs, assign town positions and names, then decide who gives which practical task before implementing quests.
+
+## Idle behaviour
+
+All eighteen NPCs now share the [idle animation system](idle-animations.md): breathing, blinks wherever eyes are visible, and occasional south-facing personality actions. The four-direction NPC gallery animates its portraits; `/idle-preview.html` also includes the six players and an immediate gesture demonstration.

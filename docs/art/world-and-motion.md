@@ -103,3 +103,7 @@ All four sheets were generated using `image_gen`, with P02 as the style referenc
 ## Additional NPC appearances
 
 The owner requested children, adults and chemists. See [N01–N03: eighteen NPC character studies](npc-character-studies.md), now with east, north, west and south standing views and a local browser gallery. Existing C01 player selections are preserved; NPC roles and quests are not assigned by these images.
+
+## Idle animations
+
+The owner requested breathing, blinking and logical personal actions. See [the 24-character idle animation implementation](idle-animations.md), with four-direction breathing/visible-eye blinking, south-facing gesture keyframes and an immediate local demonstration page.

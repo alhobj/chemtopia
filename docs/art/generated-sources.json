@@ -298,5 +298,95 @@
     "modified": false,
     "sha256": "18235f6abbf3dd7b5c91496d5444490b9eb5da2c333e2c0c18e30c204f2a7a6a",
     "bytes": 1765301
+  },
+  {
+    "id": "IDLE-c01-standing",
+    "file": "../../prototype/assets/world/idle-c01-standing.png",
+    "origin": "AI-generated original idle animation art using image_gen and existing character identity reference",
+    "brief": "standing frames for c01 actors; see idle-sources.json for exact prompts and source records",
+    "status": "owner-requested cosmetic character animation; no quest or inventory effects",
+    "modified": false,
+    "sha256": "49081984fd92aa7eac9d3d8c1c615e83e57f0e044e9d23fd139324f22a5c22a6",
+    "bytes": 1453377
+  },
+  {
+    "id": "IDLE-c01-blink",
+    "file": "../../prototype/assets/world/idle-c01-blink.png",
+    "origin": "AI-generated original idle animation art using image_gen and existing character identity reference",
+    "brief": "blink frames for c01 actors; see idle-sources.json for exact prompts and source records",
+    "status": "owner-requested cosmetic character animation; no quest or inventory effects",
+    "modified": false,
+    "sha256": "e9dcee92cb28886426b5b140daf181b7d19ea160bb1839255c5ed6c41bb35eab",
+    "bytes": 1551002
+  },
+  {
+    "id": "IDLE-c01-gesture",
+    "file": "../../prototype/assets/world/idle-c01-gesture.png",
+    "origin": "AI-generated original idle animation art using image_gen and existing character identity reference",
+    "brief": "gesture frames for c01 actors; see idle-sources.json for exact prompts and source records",
+    "status": "owner-requested cosmetic character animation; no quest or inventory effects",
+    "modified": false,
+    "sha256": "c4806cd38745247b5a8e5df61cba85f8bd417e342d10ba92c5342645319a1a26",
+    "bytes": 1537609
+  },
+  {
+    "id": "IDLE-n01-blink",
+    "file": "../../prototype/assets/world/idle-n01-blink.png",
+    "origin": "AI-generated original idle animation art using image_gen and existing character identity reference",
+    "brief": "blink frames for n01 actors; see idle-sources.json for exact prompts and source records",
+    "status": "owner-requested cosmetic character animation; no quest or inventory effects",
+    "modified": false,
+    "sha256": "a7791323552ca6b8f0ffcde5d5b667e0a84a804ac6b218fc9d5a85285f2a61f8",
+    "bytes": 1581497
+  },
+  {
+    "id": "IDLE-n01-gesture",
+    "file": "../../prototype/assets/world/idle-n01-gesture.png",
+    "origin": "AI-generated original idle animation art using image_gen and existing character identity reference",
+    "brief": "gesture frames for n01 actors; see idle-sources.json for exact prompts and source records",
+    "status": "owner-requested cosmetic character animation; no quest or inventory effects",
+    "modified": false,
+    "sha256": "64633d9ee36b1d67f7496e99718aab1d7c00ce09e06aa759a7c59c1b409db234",
+    "bytes": 1728966
+  },
+  {
+    "id": "IDLE-n02-blink",
+    "file": "../../prototype/assets/world/idle-n02-blink.png",
+    "origin": "AI-generated original idle animation art using image_gen and existing character identity reference",
+    "brief": "blink frames for n02 actors; see idle-sources.json for exact prompts and source records",
+    "status": "owner-requested cosmetic character animation; no quest or inventory effects",
+    "modified": false,
+    "sha256": "4df136c434885b85d71039457335dfa8a7ab9f99535b138b60377635b31a2dcf",
+    "bytes": 1526044
+  },
+  {
+    "id": "IDLE-n02-gesture",
+    "file": "../../prototype/assets/world/idle-n02-gesture.png",
+    "origin": "AI-generated original idle animation art using image_gen and existing character identity reference",
+    "brief": "gesture frames for n02 actors; see idle-sources.json for exact prompts and source records",
+    "status": "owner-requested cosmetic character animation; no quest or inventory effects",
+    "modified": false,
+    "sha256": "cae3ae82d0a6dbdb7947d5ea6c30987458a8808e2139f165a70402797d2e702a",
+    "bytes": 1484995
+  },
+  {
+    "id": "IDLE-n03-blink",
+    "file": "../../prototype/assets/world/idle-n03-blink.png",
+    "origin": "AI-generated original idle animation art using image_gen and existing character identity reference",
+    "brief": "blink frames for n03 actors; see idle-sources.json for exact prompts and source records",
+    "status": "owner-requested cosmetic character animation; no quest or inventory effects",
+    "modified": false,
+    "sha256": "32424cadce408a9f1d43104f5a53a464d245aa7fb0d69772d32c299e665d9817",
+    "bytes": 1732798
+  },
+  {
+    "id": "IDLE-n03-gesture",
+    "file": "../../prototype/assets/world/idle-n03-gesture.png",
+    "origin": "AI-generated original idle animation art using image_gen and existing character identity reference",
+    "brief": "gesture frames for n03 actors; see idle-sources.json for exact prompts and source records",
+    "status": "owner-requested cosmetic character animation; no quest or inventory effects",
+    "modified": false,
+    "sha256": "62271f560e2522025e9ab32b87bc94f0fe08e2c12ef1bbdec00af77c19aaa15f",
+    "bytes": 1915227
   }
 ]

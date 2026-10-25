@@ -186,3 +186,7 @@ Beaker spouts now face the clockwise pouring direction, contents stay inside ves
 Open `/conductivity.html`, `/colorimetry.html` or `/voltaic.html`, or choose the corresponding bench in the laboratory room. All three use drag/Space actions, finite materials, local in-memory observations and three review questions. The conductivity/cell wire ends can be dragged to terminals; selecting a probe or metal strip also offers lead buttons. Colorimetry fits measured standards with the concentrations you enter, not hidden model concentrations. The cell supports reversed leads, an open bridge and a loaded discharge.
 
 See [the walkthroughs](../docs/design/measurement-labs-prototype-review.md), [model assumptions](../docs/design/measurement-labs-prototype-spec.md), [common/AHL mapping](../docs/curriculum/measurement-labs.md) and [next review questions](../docs/design/next-review-and-questions.md). The new meter/cuvette/electrode drawings are original functional SVGs in the B palette; existing glassware retains the detailed B sprites. Run `node tests/measurement-labs-browser.mjs` for the native three-lab workflows; `npm test` includes their conservation and fault checks.
+
+## Character animation previews
+
+Open `/idle-preview.html` for all 24 character idles, direction selection, pause, natural timing and immediate gesture demonstration. `/walking-preview.html` shows player walking; `/npc-preview.html` compares the NPCs in four directions. The town player and guide use the idle renderer, and movement interrupts personality gestures immediately.
