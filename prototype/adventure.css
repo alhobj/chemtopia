@@ -3,3 +3,12 @@
 .experiment-node text{font-size:14px}.experiment-node .node-status{font-size:10px}.experiment-node.acquisition rect{stroke-dasharray:5 3}.experiment-node.starter rect{fill:#c2e1d9;stroke:#286b65}
 
 .walk-sprite{image-rendering:pixelated}
+/* Chemtopia's paper, teal and brass palette; graph form follows apparatus needs. */
+dialog:has(#progression-map){width:min(1440px,96vw)}
+#progression-map{height:min(62dvh,650px);min-height:360px;background-color:#edf0e4;background-image:radial-gradient(#bdccbc 1px,transparent 1px);background-size:22px 22px}
+.network-tools{display:flex;align-items:center;gap:7px;flex-wrap:wrap;margin:12px 0}.network-tools button{min-height:36px;padding:6px 10px}.network-tools span{font-size:12px;color:#5a7477;margin-left:auto}
+.network-explanation{max-width:85ch;font-size:13px}.network-equipment rect{stroke-dasharray:4 3}.network-experiment.on-path rect{stroke-width:4}.network-edge{stroke:#9bad9f;stroke-width:1.5;opacity:.65}.network-edge.on-path{stroke:#286d67;stroke-width:3;opacity:1}
+.experiment-node text{font-size:12px}.experiment-node .node-status{font-size:10px}.catalog-preview{display:block;width:100%;height:115px;margin-bottom:12px;image-rendering:pixelated;pointer-events:none;background:#edf0e4;border-radius:4px}.catalog-preview .select-outline{display:none}.equipment-shop-card{display:flex;flex-direction:column}.equipment-shop-card button{margin-top:auto}.equipment-shop-card p{font-size:13px}.equipment-shop-card small{margin-bottom:8px}
+@media(max-width:800px){dialog:has(#progression-map){width:96vw}#progression-map{min-height:300px;height:48dvh}.catalog-preview{height:100px}.network-tools span{width:100%;margin:0}}
+.network-workspace{display:grid;grid-template-columns:minmax(0,1fr) 310px;gap:16px;align-items:start}.network-board{min-width:0}.network-workspace .network-inspector{position:sticky;top:0;max-height:76dvh;overflow:auto;min-width:0;font-size:13px}.network-inspector h3{margin-top:0}.network-inspector .panel-actions{display:grid}.network-board .map-accessible-list{margin:10px 0}.network-board #progression-map{height:min(54dvh,570px)}
+@media(max-width:1050px){.network-workspace{grid-template-columns:1fr}.network-workspace .network-inspector{position:static;max-height:none}.network-board #progression-map{height:48dvh}}

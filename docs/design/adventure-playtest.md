@@ -28,3 +28,9 @@ Stand still in town for about 7–11 seconds while facing south. The player shou
 The progression map now connects strictly smaller reusable equipment kits to larger ones, with arrows. Select distillation to see evaporation equipment reused and the additional glassware/support requirements listed. Select recrystallisation to see the filtration connection. These links do not require completing the earlier experiment. Buying the listed apparatus and restocking supplies still allows immediate entry.
 
 Recheck all four walking directions and the start/stop transition. Frame registration now keeps the torso centred and feet on one baseline, and walking retains its image node. In filtration, check the narrower funnel stem, individual sand grains inside paper and the water surface during tilting. Unchanged laboratory artwork is retained between physics updates. Report the device/browser and affected lab if lag remains.
+
+## Shared equipment dependency network
+
+Open Progression map. The selected lab shows its incoming equipment requirements; **Show whole network** reveals how shared apparatus branches into several labs and multiple inputs converge on one lab. Every incoming required group is needed. Count milestones represent total ownership, not extra consumed items. Click equipment groups to inspect their contents and uses. Select a different experiment, then use **Focus selected lab** to simplify the view; zoom/pan remain available. Locked labs are discoverable here even though they are absent from your adventure lab room.
+
+Visit Equipment & supplies to see matching apparatus previews for all 42 reusable items. Buy the second beaker, filtration funnel and stand and obtain sand–water/filter-paper supplies: filtration appears in your room. Missing supplies hide an experiment until restocked. The direct unrestricted practice room remains unchanged for chemistry testing.

@@ -24,7 +24,7 @@
 2. **Implemented — actual equipment audit:** all 13 experiments / 129 apparatus instances mapped; reusable counts, core/optional materials, provided facilities, assemblies and uncertainties recorded in `docs/design/experiment-equipment-audit.*`.
 3. **Implemented — progression map:** shared eligibility, a data-generated graph of reusable equipment dependencies with arrows and exact additions, selectable requirements, available/completed/missing equipment/missing supplies states, zoom/pan and accessible experiment selector. No experiment-completion prerequisites.
 4. **Implemented — ownership and acquisition:** persistent counted inventory; configurable prices; atomic validated purchases; idempotent future reward API; one-time testing allowance; adventure-only apparatus enforcement and per-attempt supply reservations. Review completion is saved without invented currency rewards.
-5. **Latest validation:** all 264 model/save/animation/rendering tests pass; all 15 browser harnesses pass, including all thirteen practical labs, town/tutorial/save/shop/map, character animation and phone layouts. Build/static checks, the 13-lab/129-apparatus audit and whitespace checks pass. Owner feedback P01–P10 is recorded below; the rendering corrections need owner recheck.
+5. **Rendering correction validation (previous increment):** all 264 model/save/animation/rendering tests passed; all 15 browser harnesses passed, including all thirteen practical labs, town/tutorial/save/shop/map, character animation and phone layouts. Build/static checks, the 13-lab/129-apparatus audit and whitespace checks pass. Owner feedback P01–P10 is recorded below; the rendering corrections need owner recheck.
 
 ## Reversible defaults
 
@@ -74,7 +74,7 @@ Read AGENTS.md and CHEMTOPIA_ROADMAP.md. Preserve existing lab chemistry and the
 ## Commands
 
 - `npm start` — local game, port 4173.
-- `npm test` — 264 chemistry/model/save/progression/animation/rendering tests.
+- `npm test` — 268 chemistry/model/save/progression/animation/rendering/network tests.
 - `npm run test:browser` — existing Chromium practical workflows plus six-character/town/tutorial/shop checks.
 - `npm run check` — JavaScript syntax and catalogue validation.
 - `npm run build` — static files in `dist/`; serve through HTTP and open `adventure.html`.
@@ -151,3 +151,17 @@ Remaining visual work: owner recheck on the device that lagged; verify whether a
 Next concrete step: owner recheck of desktop town walking, filtration contents/funnel and the equipment dependency map after this correction. Later quest design needs the reward item, inspection criteria and first-attempt bonus definition before quest implementation.
 
 Verification for the P01–P10 correction: `npm test` passes all **264** tests; `npm run test:browser` passes all **15** harnesses; `npm run build`, `npm run audit:labs` and `git diff --check` pass. Native browser assertions verify the same decoded walking image is retained across gait frames and unchanged stand artwork survives physics updates. Added graph tests validate exact counted equipment additions, no new completion gates, non-overlapping node layout and arrows avoiding unrelated boxes. The final routed map and town renderer also pass a separate adventure-browser rerun. Automated checks establish functional behaviour, not guaranteed frame rates on the owner's desktop.
+
+## Equipment dependency network, available lab room and shop previews
+
+Owner requested the branching/merging dependency idea illustrated by reference diagrams, without copying their structure, colours or design. Replaced the map's single experiment-kit view with a data-derived network of **23 reusable equipment groups and 13 experiments**. Shared equipment branches into multiple labs; all incoming required groups converge on each lab. Count milestones distinguish one, two, three and six beakers, and one/two stands. Apparatus used by precisely the same labs is bundled; there are no invented topic prerequisites or equipment-purchase prerequisites. Higher ownership counts imply lower counts, not additional purchases or consumption.
+
+The map opens with the selected lab's requirement network so labels remain readable. **Show whole network** reveals all branches; selecting another lab and **Focus selected lab** narrows the view again. Equipment groups can be inspected to show exact ownership counts and the labs using them. Existing smaller-kit reuse relationships remain in the lab detail panel (including evaporation → distillation). Layout is derived from actual dependencies. Chemtopia's existing paper/teal/brass presentation is retained, along with pan/zoom and the accessible experiment selector. Supplies are still checked and listed separately in the shared requirements panel.
+
+In the adventure laboratory room, both bench previews and accessible list entries are hidden unless the experiment is currently eligible. Missing consumables hide a lab too. Purchases/restocking reveal newly available experiments; storage and page-return events refresh the room. An empty-room message points back to map/shop. Future labs remain visible on the map. The unrestricted practice selector is retained for independent playtesting.
+
+All **42** reusable equipment catalogue entries have labelled previews in the shop. They reuse the current Design-B apparatus rendering and matching measurement/rates drawings, with stable per-item coordinates. No new images, equipment, chemistry, prices, saves or quests were introduced.
+
+Verified: **268 model tests pass**, build/static checks pass, and both the updated adventure browser workflow and unrestricted laboratory-room browser workflow pass. Model checks cover exact dependency coverage (all and only the actual equipment for every existing lab), branch/convergence validity, acyclicity, focus/layout, exact ownership states and all 42 finite labelled previews. Native browser checks pass for starting-room visibility, real purchases revealing filtration, missing supplies hiding experiments, restocking restoring both room/list entries, focused/whole map and catalogue previews. Existing unrestricted room/navigation also checked. Next: owner review of map readability and shop previews, alongside the pending desktop town walking recheck.
+
+Map polish: desktop has an adjacent, independently scrollable requirements inspector; phone layouts stack it below the map. Equipment groups support keyboard inspection and links to their consuming labs. The initial focused view keeps labels readable; overview is intended for planning with zoom/pan. Routing checks verify no network arrow crosses an unrelated equipment or lab box. Scope validation reran the affected town/room browsers, not all fifteen lab/animation harnesses in this increment. All existing lab model tests remain in the 268-test suite; their chemistry and physics were not changed.

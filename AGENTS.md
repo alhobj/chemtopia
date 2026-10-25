@@ -166,3 +166,7 @@ The owner requested breathing, blinking and logical personal idle actions, inclu
 ## Owner playtest corrections P01–P10
 
 The owner reported lag, town sprite jumping, poor liquid/filter/funnel presentation and an equipment tree which did not communicate equipment dependencies. This authorises bounded rendering, frame registration and equipment-map corrections while preserving chemistry, physics, existing unlock calculations and saves. Record quest preferences (salt recovery, NPC product submission/inspection, guaranteed base reward plus first-attempt bonus, equipment reward, optional hints) without implementing quests, which remain explicitly deferred.
+
+## Equipment network and catalogue preview increment
+
+The owner requested a branching/merging dependency-map idea from their examples, explicitly without copying structure, colours or design; unavailable labs hidden in the lab room; and shop equipment previews. This authorises the actual equipment-group dependency network, readable focus/overview modes, availability-filtered adventure room and previews reusing existing art. Preserve shared eligibility, unrestricted practice, existing chemistry/physics, individual ownership, prices, saves and deferred quest status. Existing commit/push authorisation continues.
