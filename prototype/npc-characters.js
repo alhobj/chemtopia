@@ -1,20 +1,27 @@
+import {NPC_ATLASES} from './npc-atlases.js';
 // New NPC appearances; suggested jobs do not assign quests or rewards.
 export const NPC_GROUPS = [
-  {id:'n01', name:'Children and younger students', file:'npc-children-n01.png', splits:[466,473,467,467,468,470], roles:['Curious child','Young nature explorer','Library visitor','School visitor','Science-club member','Young town explorer']},
-  {id:'n02', name:'Adult townspeople', file:'npc-adults-n02.png', splits:[467,458,463,460,464,461], roles:['Town resident','Workshop keeper','Town visitor','Retired teacher','Local organiser','Equipment caretaker']},
-  {id:'n03', name:'Chemists and laboratory staff', file:'npc-chemists-n03.png', splits:[468,460,471,459,468,472], roles:['Research chemist','Senior chemist','Laboratory technician','Analytical chemist','Chemistry teacher','Laboratory mentor']},
+  {id:'n01', name:'Children and younger students', file:NPC_ATLASES.n01.file, legacyFile:'npc-children-n01.png', roles:['Curious child','Young nature explorer','Library visitor','School visitor','Science-club member','Young town explorer']},
+  {id:'n02', name:'Adult townspeople', file:NPC_ATLASES.n02.file, legacyFile:'npc-adults-n02.png', roles:['Town resident','Workshop keeper','Town visitor','Retired teacher','Local organiser','Equipment caretaker']},
+  {id:'n03', name:'Chemists and laboratory staff', file:NPC_ATLASES.n03.file, legacyFile:'npc-chemists-n03.png', roles:['Research chemist','Senior chemist','Laboratory technician','Analytical chemist','Chemistry teacher','Laboratory mentor']},
 ];
 export const NPC_CHARACTERS = NPC_GROUPS.flatMap(group => group.roles.map((suggestedRole,column)=>({
   id:`${group.id}-${column+1}`, groupId:group.id, column, suggestedRole,
-  name:`${group.id.toUpperCase()}-${column+1}`, file:group.file, split:group.splits[column],
+  name:`${group.id.toUpperCase()}-${column+1}`, file:NPC_ATLASES[group.id].file, legacyFile:group.legacyFile,
 })));
 export const npcById=id=>NPC_CHARACTERS.find(npc=>npc.id===id)||null;
 
-export function npcArt(id,back=false){
+export const NPC_DIRECTIONS = [
+  {id:'east',label:'East'}, {id:'north',label:'North'},
+  {id:'west',label:'West'}, {id:'south',label:'South'},
+];
+const aliases={front:'south',back:'north',right:'east',left:'west',up:'north',down:'south'};
+export function npcArt(id,direction='south'){
   const npc=npcById(id);if(!npc)return '';
-  const clip=`npc-${id}-${back?'back':'front'}`;
-  // Six columns; inspected per-column row boundaries preserve shoes/hair.
-  // Clip actual source pixels to exclude neighbouring characters.
-  const width=1774/6,x=npc.column*width,y=back?npc.split:0,height=back?887-npc.split:npc.split;
-  return `<svg class="npc-art" data-npc="${id}" viewBox="${x} ${y} ${width} ${height}" preserveAspectRatio="xMidYMax meet" role="img" aria-label="${npc.name}, ${back?'back':'front'} view"><defs><clipPath id="${clip}" clipPathUnits="userSpaceOnUse"><rect x="${x}" y="${y}" width="${width}" height="${height}"/></clipPath></defs><image href="assets/world/${npc.file}" width="1774" height="887" preserveAspectRatio="none" clip-path="url(#${clip})"/></svg>`;
+  // Preserve the original npcArt(id, backBoolean) API for callers.
+  direction=direction===true?'north':direction===false?'south':aliases[direction]||direction;
+  if(!NPC_DIRECTIONS.some(d=>d.id===direction))direction='south';
+  const atlas=NPC_ATLASES[npc.groupId],frame=atlas.characters[npc.column][direction];
+  const {x,y,w,h,body}=frame,clip=`npc-${id}-${direction}`,scale=Math.min(130/body.h,92/body.w),tx=50-(body.x+body.w/2)*scale,ty=145-(body.y+body.h)*scale;
+  return `<svg class="npc-art" data-npc="${id}" data-facing="${direction}" viewBox="0 0 100 150" preserveAspectRatio="xMidYMax meet" role="img" aria-label="${npc.name}, facing ${direction}"><defs><clipPath id="${clip}" clipPathUnits="userSpaceOnUse"><rect x="${x}" y="${y}" width="${w}" height="${h}"/></clipPath></defs><g transform="translate(${tx} ${ty}) scale(${scale})"><image href="assets/world/${atlas.file}" width="${atlas.width}" height="${atlas.height}" clip-path="url(#${clip})"/></g></svg>`;
 }

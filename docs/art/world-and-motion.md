@@ -102,4 +102,4 @@ All four sheets were generated using `image_gen`, with P02 as the style referenc
 
 ## Additional NPC appearances
 
-The owner requested children, adults and chemists. See [N01–N03: eighteen NPC character studies](npc-character-studies.md), with matching front/back views and a local browser gallery. Existing C01 player selections are preserved; NPC roles and quests are not assigned by these images.
+The owner requested children, adults and chemists. See [N01–N03: eighteen NPC character studies](npc-character-studies.md), now with east, north, west and south standing views and a local browser gallery. Existing C01 player selections are preserved; NPC roles and quests are not assigned by these images.

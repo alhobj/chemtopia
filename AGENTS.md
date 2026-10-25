@@ -154,3 +154,7 @@ The owner requested four-direction walking for the existing selected characters.
 ## Additional NPC character appearances
 
 The owner requested more characters for NPCs, including children, adults and chemists. N01–N03 assets, a stable appearance catalogue and a front/back review gallery are within this art increment. Suggested roles are not confirmed identities or quest assignments. Preserve the existing player avatars and deferred-quest boundary. Existing commit/push authorisation continues.
+
+## Four-direction standing NPC graphics
+
+The owner requested every NPC stand facing east, north, west and south. Updating all eighteen existing NPC appearances to four-direction standing atlases, their catalogue/renderer and review gallery is authorised. Preserve stable IDs and character identities. This does not add NPC walking, placements, quests or rewards.

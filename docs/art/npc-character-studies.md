@@ -2,13 +2,13 @@
 
 The owner requested more NPC characters: children, adults, chemists and others. These eighteen new appearances follow the detailed B pixel-art direction and the existing C01 character rendering. They do not replace any of the six selected player avatars.
 
-Each sheet has six characters, front views across the top and matching back views below. IDs run left to right. Roles below are suggestions, not assigned quests, fixed personalities or final names.
+Each updated sheet has six characters across four rows: south/front, north/back, east/right profile, west/left profile. IDs run left to right. All poses are standing still; the east and west views are separately drawn. Roles below are suggestions, not assigned quests, fixed personalities or final names.
 
-Run `npm start` and open **http://127.0.0.1:4173/npc-preview.html** to compare all eighteen front/back pairs, including on a phone.
+Run `npm start` and open **http://127.0.0.1:4173/npc-preview.html** to compare all eighteen characters in all four directions, including on a phone.
 
 ## N01 — Children and younger students
 
-![Six child NPC designs, front and back](../../prototype/assets/world/npc-children-n01.png)
+![Six child NPC designs, all four directions](../../prototype/assets/world/npc-children-directions-n01.png)
 
 | ID | Suggested role |
 | --- | --- |
@@ -23,7 +23,7 @@ These are younger town residents and visitors, not replacements for the IB stude
 
 ## N02 — Adult townspeople
 
-![Six adult NPC designs, front and back](../../prototype/assets/world/npc-adults-n02.png)
+![Six adult NPC designs, all four directions](../../prototype/assets/world/npc-adults-directions-n02.png)
 
 | ID | Suggested role |
 | --- | --- |
@@ -36,7 +36,7 @@ These are younger town residents and visitors, not replacements for the IB stude
 
 ## N03 — Chemists and laboratory staff
 
-![Six chemist NPC designs, front and back](../../prototype/assets/world/npc-chemists-n03.png)
+![Six chemist NPC designs, all four directions](../../prototype/assets/world/npc-chemists-directions-n03.png)
 
 | ID | Suggested role |
 | --- | --- |
@@ -49,8 +49,8 @@ These are younger town residents and visitors, not replacements for the IB stude
 
 ## Status and reuse
 
-- New generated character appearances with static front/back views. NPC walking cycles are not included in this increment; the six playable characters retain their existing four-direction animations.
-- Stable definitions and a reusable SVG renderer live in `prototype/npc-characters.js`. The gallery uses those definitions rather than duplicating character mappings.
+- Updated generated character appearances with static east, north, west and south views. NPC walking cycles are not included in this increment; the six playable characters retain their existing four-direction animations.
+- Inspected silhouette bounds align standing height and foot baseline across directions. Stable definitions and a reusable SVG renderer live in `prototype/npc-characters.js`. The gallery uses those definitions rather than duplicating character mappings.
 - No town NPCs, dialogue, quests, practical success checks or rewards are added. The owner explicitly deferred quest implementation.
 - Generation prompts, unchanged source filenames and checksums are recorded with the assets. The source C01 sheet provides the style reference; the new NPCs are distinct identities.
 - Later review: choose favourite IDs, assign town positions and names, then decide who gives which practical task before implementing quests.

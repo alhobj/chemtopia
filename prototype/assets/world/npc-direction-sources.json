@@ -1,0 +1,51 @@
+{
+  "generator": "OpenAI image_gen",
+  "date": "2026-10-25",
+  "purpose": "Owner-requested four cardinal standing directions for every existing NPC",
+  "layout": {
+    "columns": 6,
+    "rows": [
+      "south",
+      "north",
+      "east",
+      "west"
+    ]
+  },
+  "processing": "Unchanged generated PNGs. Inspected source-pixel clipping and silhouette bounds in npc-atlases.js; runtime aligns standing height and foot baseline across views without changing source pixels or mirroring.",
+  "note": "Children sheet regenerated after visual inspection found cropped west-facing feet in the first attempt. Only the complete corrected revision is used.",
+  "sheets": [
+    {
+      "id": "n01",
+      "file": "npc-children-directions-n01.png",
+      "reference": "npc-children-n01.png",
+      "source": "exec-f686194a-f3d6-4158-86b7-e70b03f33f45.png",
+      "prompt": "Fix this Chemtopia child NPC four-direction sheet. The WEST/BOTTOM ROW is CUT OFF at the bottom: missing lower legs and shoes. Regenerate the entire sheet with ALL24 COMPLETE full body standing sprites, especially all six west-facing children feet/shoes fully visible. Preserve EXACT same six child identities, column order, clothes, proportions, hairstyle and pixel-art style. Reference2 is their original front/back design. SIX columns FOUR rows. Row1 SOUTH straight front, row2 NORTH straight back, row3 EAST right profile, row4 WEST left profile. Idle standing both feet planted no walking. CRITICAL FIT: each figure may occupy ONLY70% of its equal grid cell height, with15%empty padding at TOP and15%at BOTTOM of EVERY cell. No sprite may touch any boundary. All4 rows evenly spaced across the FULL square canvas, no overflow; final bottom-row shoes finish at least45pixels ABOVE bottomcanvasedge. Make characters SMALLER if necessary to fit all feet. Transparent background no text labels gridlines shadows. Complete full-body four-direction standing sheet with all limbs and shoes.",
+      "sha256": "0fe7205bc5baf1500dea5f53050f33af451d7a7360cbcbd5dc37e6bba804619d",
+      "bytes": 1575500,
+      "width": 1254,
+      "height": 1254
+    },
+    {
+      "id": "n02",
+      "file": "npc-adults-directions-n02.png",
+      "reference": "npc-adults-n02.png",
+      "source": "exec-bdaf4cd2-b97d-47b1-be70-f8fde5adf53d.png",
+      "prompt": "Update these EXACT six existing adult town NPCs from the reference into a four-direction STANDING IDLE sprite atlas for Chemtopia. Preserve each existing identity, age, body shape, skin tone, face, hair, outfit, colors, glasses, accessories and carried notebook where present. Same detailed crisp pixel-art B style. EXACTLY SIX COLUMNS and FOUR ROWS = 24 full-body sprites, transparent background. Column 1 is reference character1, column2 character2 and so on through6; retain same character in each column in all four rows. ROW1 = SOUTH, directly facing viewer, straight front view. ROW2 = NORTH, directly facing away, straight back view. ROW3 = EAST, strict right-facing side profile. ROW4 = WEST, strict left-facing side profile. Standing still with both feet planted and relaxed arms; NO walk poses, no stepping, no diagonals, no three-quarter angles. East and west must be real corresponding opposite views of the same character, keeping asymmetric clothing and notebook physically consistent, not changing identity or swapping columns. Match character height, head size and baseline across directions for each individual. At least12 percent clear margins on every side INSIDE EACH CELL; all hair, shoes and props fully inside own cell, never touch neighboring rows. Precisely even6-column4-row grid, NO lines labels numbers text borders shadows scenery. Square canvas ideally1536x1536 or2048x2048 so cells are tall rectangles2:3 ratio. Original reference front/back sheet is for identity; this output must have FOUR rows and true four cardinal directions, not the reference's two rows.",
+      "sha256": "bfda2cd54218872ecc811440c932f7d77ec680de84c0ef049d6ea2062fd5d9c1",
+      "bytes": 1601822,
+      "width": 1254,
+      "height": 1254
+    },
+    {
+      "id": "n03",
+      "file": "npc-chemists-directions-n03.png",
+      "reference": "npc-chemists-n03.png",
+      "source": "exec-0f2719a7-9ca1-4a38-8475-645a5451ad0f.png",
+      "prompt": "Update these EXACT six existing chemist NPCs from the reference into a four-direction STANDING IDLE sprite atlas for Chemtopia. Preserve each existing identity, age, body shape, skin tone, face, hair, outfit, colors, glasses, accessories and carried notebook where present. Same detailed crisp pixel-art B style. EXACTLY SIX COLUMNS and FOUR ROWS = 24 full-body sprites, transparent background. Column 1 is reference character1, column2 character2 and so on through6; retain same character in each column in all four rows. ROW1 = SOUTH, directly facing viewer, straight front view. ROW2 = NORTH, directly facing away, straight back view. ROW3 = EAST, strict right-facing side profile. ROW4 = WEST, strict left-facing side profile. Standing still with both feet planted and relaxed arms; NO walk poses, no stepping, no diagonals, no three-quarter angles. East and west must be real corresponding opposite views of the same character, keeping asymmetric clothing and notebook physically consistent, not changing identity or swapping columns. Match character height, head size and baseline across directions for each individual. At least12 percent clear margins on every side INSIDE EACH CELL; all hair, shoes and props fully inside own cell, never touch neighboring rows. Precisely even6-column4-row grid, NO lines labels numbers text borders shadows scenery. Square canvas ideally1536x1536 or2048x2048 so cells are tall rectangles2:3 ratio. Original reference front/back sheet is for identity; this output must have FOUR rows and true four cardinal directions, not the reference's two rows.",
+      "sha256": "18235f6abbf3dd7b5c91496d5444490b9eb5da2c333e2c0c18e30c204f2a7a6a",
+      "bytes": 1765301,
+      "width": 1254,
+      "height": 1254
+    }
+  ]
+}

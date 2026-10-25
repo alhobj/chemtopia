@@ -268,5 +268,35 @@
     "modified": false,
     "sha256": "422bff34f8193611cd6a16e3343ee9a94c601a519ddd38c91bf680c70c68a9b9",
     "bytes": 1423286
+  },
+  {
+    "id": "N01-standing-four-directions",
+    "file": "../../prototype/assets/world/npc-children-directions-n01.png",
+    "origin": "AI-generated four-direction standing revision using image_gen and existing NPC sheet as identity reference",
+    "brief": "Same six existing NPC identities, columns 1–6; rows south, north, east and west; standing idle poses.",
+    "status": "owner-requested four-direction graphics update; no quests or NPC walking",
+    "modified": false,
+    "sha256": "0fe7205bc5baf1500dea5f53050f33af451d7a7360cbcbd5dc37e6bba804619d",
+    "bytes": 1575500
+  },
+  {
+    "id": "N02-standing-four-directions",
+    "file": "../../prototype/assets/world/npc-adults-directions-n02.png",
+    "origin": "AI-generated four-direction standing revision using image_gen and existing NPC sheet as identity reference",
+    "brief": "Same six existing NPC identities, columns 1–6; rows south, north, east and west; standing idle poses.",
+    "status": "owner-requested four-direction graphics update; no quests or NPC walking",
+    "modified": false,
+    "sha256": "bfda2cd54218872ecc811440c932f7d77ec680de84c0ef049d6ea2062fd5d9c1",
+    "bytes": 1601822
+  },
+  {
+    "id": "N03-standing-four-directions",
+    "file": "../../prototype/assets/world/npc-chemists-directions-n03.png",
+    "origin": "AI-generated four-direction standing revision using image_gen and existing NPC sheet as identity reference",
+    "brief": "Same six existing NPC identities, columns 1–6; rows south, north, east and west; standing idle poses.",
+    "status": "owner-requested four-direction graphics update; no quests or NPC walking",
+    "modified": false,
+    "sha256": "18235f6abbf3dd7b5c91496d5444490b9eb5da2c333e2c0c18e30c204f2a7a6a",
+    "bytes": 1765301
   }
 ]

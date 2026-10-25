@@ -16,3 +16,7 @@ Run the game and open `/walking-preview.html` to inspect all six identities in a
 ## Additional NPC appearances
 
 `npc-children-n01.png`, `npc-adults-n02.png` and `npc-chemists-n03.png` are new, unchanged `image_gen` character sheets: six distinct NPCs per group, with front/back views. They reference C01 for the detailed B style and add new identities. `npc-sources.json` records briefs, original source filenames, dimensions and checksums. The SVG catalogue uses inspected per-column row boundaries to display portraits without altering source pixels. `/npc-preview.html` is the review gallery. These are static appearance assets; NPC animation, town placement, names and quest assignments remain later work.
+
+## Four-direction NPC standing revision
+
+The `npc-*-directions-n0*.png` sheets update all eighteen existing NPCs to south, north, east and west standing views. Column identity order is unchanged. East and west are separate drawings, not runtime reflections, so asymmetric accessories can remain consistent. Original two-view sheets above are retained as source history. `npc-atlases.js` stores inspected source-pixel frame bounds; `npcArt()` supports cardinal directions and legacy front/back calls. The gallery now shows all 72 views, with direction labels. Generation prompts and checksums are recorded in `npc-direction-sources.json`. No NPC walking, town placements or quests are introduced.
