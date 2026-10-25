@@ -1,2 +1,3 @@
 # User-supplied curriculum sources and full extracted text are local only.
 /docs/curriculum/private/
+/dist/

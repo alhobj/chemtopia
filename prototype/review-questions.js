@@ -80,7 +80,8 @@ export function bindReviewQuestions(lab,onComplete,questions=QUESTION_BANK[lab])
   });
   const feedback=document.getElementById('question-feedback');
   if(results.every(Boolean)){
-   feedback.textContent=onComplete()===false?'All three questions are correct. Complete the ruler measurements to finish.':'Activity complete. All three questions are correct.';
+   const completed=onComplete()!==false;if(completed)document.dispatchEvent(new CustomEvent('chemtopia:experiment-completed',{detail:{lab}}));
+   feedback.textContent=!completed?'All three questions are correct. Complete the ruler measurements to finish.':'Activity complete. All three questions are correct.';
    for(const field of form.querySelectorAll('fieldset'))field.disabled=true;form.querySelector('button').disabled=true;
   }else feedback.textContent='Check the feedback for each question. Choose another answer or revise the calculation, then try again.';
  });

@@ -10,7 +10,7 @@ From the repository root, with Node.js 22 or newer:
 npm start
 ```
 
-The local entry screen shows the selected L01-1 laboratory with thirteen clickable experiment previews on its benches. **All experiments** opens larger choices and is open by default on phones. Each workbench has **← Laboratory** to return. Direct lab URLs still work; filtration is `index.html`. The development server reports port 4173. Open that port in a desktop browser on the same machine. Set `PORT` to use another port. The server serves only the `prototype/` directory, not private curriculum documents.
+The local root now opens character selection and the saved town adventure; see [the playtest guide](../docs/design/adventure-playtest.md). For unrestricted practical testing, open `/laboratory.html`: it shows the selected L01-1 laboratory with thirteen clickable experiment previews on its benches. **All experiments** opens larger choices and is open by default on phones. Each workbench has **← Laboratory** to return. Direct lab URLs still work; filtration is `index.html`. The development server reports port 4173. Open that port in a desktop browser on the same machine. Set `PORT` to use another port. The server serves only the `prototype/` directory, not private curriculum documents.
 
 No dependency installation is needed. The application is static and uses local HTML, CSS, JavaScript and SVG. It has no accounts, analytics, remote requests, database or saved progress. The Node server is only a local static development server, not an application backend.
 

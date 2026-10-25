@@ -8,7 +8,7 @@ const types={'.html':'text/html; charset=utf-8','.js':'text/javascript; charset=
 http.createServer(async(req,res)=>{
   try {
     const url=new URL(req.url,'http://localhost');
-    const relative=decodeURIComponent(url.pathname)==='/'?'laboratory.html':decodeURIComponent(url.pathname).slice(1);
+    const relative=decodeURIComponent(url.pathname)==='/'?'adventure.html':decodeURIComponent(url.pathname).slice(1);
     const target=path.resolve(root,relative);
     if(!target.startsWith(root)){res.writeHead(403);res.end();return;}
     const data=await readFile(target);

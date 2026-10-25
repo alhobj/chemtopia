@@ -52,7 +52,7 @@ export function createEquipmentMenu({getState,world,groups,select,begin,end,rend
   sync(){
    const s=getState();
    for(const [id,g]of groups){g.style.display=s.items[id].stored?'none':'';g.setAttribute('aria-hidden',String(Boolean(s.items[id].stored)));}
-   for(const b of list.children){const o=s.items[b.dataset.equipment];b.dataset.stored=String(Boolean(o.stored));b.querySelector('.equipment-status').textContent=o.stored?'Stored · drag to bench':o.fixed?'Fixed fitting':'On bench';}
+   for(const b of list.children){const o=s.items[b.dataset.equipment];b.dataset.stored=String(Boolean(o.stored));b.dataset.unavailable=String(Boolean(o.adventureUnavailable));if(o.adventureUnavailable)b.disabled=true;b.querySelector('.equipment-status').textContent=o.adventureUnavailable?'Not in your adventure inventory':o.stored?'Stored · drag to bench':o.fixed?'Fixed fitting':'On bench';}
   }
  };
 }

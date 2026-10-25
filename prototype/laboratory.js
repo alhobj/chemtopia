@@ -1,19 +1,10 @@
 import {sprite} from './equipment-art.js';
-export const experiments=[
- {id:'filtration',name:'Filtration',file:'index.html',objective:'Separate sand from water using a funnel and filter paper.',x:29,y:21},
- {id:'distillation',name:'Distillation',file:'distillation.html',objective:'Separate an acetone–water mixture and collect acetone-rich distillate.',x:66,y:21},
- {id:'chromatography',name:'Chromatography',file:'chromatography.html',objective:'Separate marker inks with water, measure distances and calculate Rf values.',x:43,y:21},
- {id:'evaporation',name:'Evaporation',file:'evaporation.html',objective:'Evaporate water and recover dry salt from a solution.',x:13,y:35},
- {id:'recrystallisation',name:'Recrystallisation',file:'recrystallisation.html',objective:'Purify potassium nitrate by hot filtration and cooling.',x:87,y:35},
- {id:'solution',name:'Prepare & dilute',file:'solution.html',objective:'Prepare a sodium chloride stock solution and make a tenfold dilution.',x:5,y:60},
- {id:'titration',name:'Titration',file:'titration.html',objective:'Choose acid, base and indicator, record titres and calculate concentration.',x:94,y:60},
- {id:'neutralisation',name:'Neutralisation',file:'neutralisation.html',objective:'Measure a temperature rise and estimate the molar enthalpy of neutralisation.',x:44,y:61},
- {id:'rates',name:'Reaction rates',file:'rates.html',objective:'Compare chips and powder, collect carbon dioxide and investigate volume–time graphs.',x:46,y:46},
- {id:'conductivity',name:'Conductivity',file:'conductivity.html',objective:'Compare mobile charge carriers, probe geometry and conductance.',x:7,y:52},
- {id:'colorimetry',name:'Colorimetry',file:'colorimetry.html',objective:'Prepare standards, blank the instrument and estimate an unknown from a calibration.',x:92,y:47},
- {id:'voltaic',name:'Zn–Cu cell',file:'voltaic.html',objective:'Build half-cells and a salt bridge, measure polarity and investigate discharge.',x:55,y:47},
- {id:'combustion',name:'Combustion',file:'combustion.html',objective:'Use an ethanol burner to heat water and estimate the molar enthalpy of combustion.',x:56,y:64}
-];
+import {experiments as definitions,eligibility} from './experiment-definitions.js';
+import {playerStore} from './player-store.js';
+import {launchExperiment} from './progression.js';
+import {requirementDetails} from './progression-ui.js';
+export const experiments=definitions.map(e=>({...e,name:e.shortName||e.name}));
+const adventure=new URL(location.href).searchParams.get('adventure')==='1';
 const glass=(...args)=>sprite(...args);
 function stand(x,y,h=90){return glass('stand',x-24,y+h-12,48,12,[0,.78,1,.22])+glass('stand',x-2,y,4,h-5,[.43,0,.12,.80]);}
 export function preview(id){let art='';
@@ -42,3 +33,16 @@ for(const e of experiments){const a=room.querySelector(`[data-lab="${e.id}"]`);a
 function showList(show){list.hidden=!show;toggle.setAttribute('aria-expanded',String(show));toggle.textContent=show?'Hide list':'All experiments';}
 toggle.addEventListener('click',()=>showList(list.hidden));
 if(matchMedia('(max-width:760px)').matches)showList(true);
+
+// The direct room remains the existing unrestricted practice selector.
+if(adventure){
+ const l=playerStore.load();if(!l.player){location.replace('adventure.html');}else{
+  const nav=document.createElement('nav');nav.className='adventure-room-nav';nav.innerHTML='<a href="adventure.html">← Town</a><a href="adventure.html?panel=map">Progression map</a><a href="adventure.html?panel=shop">Equipment & supplies</a><span id="room-profile"></span>';document.querySelector('header').after(nav);
+  const dialog=document.createElement('dialog');dialog.id='room-requirements';dialog.innerHTML='<div id="room-requirement-detail"></div><div class="room-actions"><button id="room-launch">Start experiment</button><a href="adventure.html?panel=shop">Obtain equipment / supplies</a><button id="room-close">Close</button></div><p id="room-error" role="status"></p>';document.body.append(dialog);let current=null;
+  function refresh(){const p=playerStore.load().player;if(!p)return;document.querySelector('#room-profile').textContent=p.name+' · '+p.currency+' Lab credits';for(const e of experiments){const r=eligibility(p,e.id);for(const a of [room.querySelector(`[data-lab="${e.id}"]`),list.querySelector(`[data-list-lab="${e.id}"]`)]){a.dataset.state=r.state;a.setAttribute('aria-label',e.name+': '+r.label);a.href=e.file+'?adventure=1';}}}
+  async function inspect(id){const p=playerStore.load().player,e=definitions.find(e=>e.id===id);if(!p||!e)return;current=e;await playerStore.transact(p=>{if(!p.tutorial.flags.includes('enter-lab'))p.tutorial.flags.push('enter-lab');});const {tutorialEvent}=await import('./tutorial.js');await playerStore.transact(p=>tutorialEvent(p,'view-requirements'));document.querySelector('#room-requirement-detail').innerHTML=requirementDetails(playerStore.load().player,e);document.querySelector('#room-launch').disabled=!eligibility(p,e.id).available;document.querySelector('#room-error').textContent='';dialog.showModal();}
+  for(const e of experiments)for(const a of [room.querySelector(`[data-lab="${e.id}"]`),list.querySelector(`[data-list-lab="${e.id}"]`)])a.addEventListener('click',event=>{event.preventDefault();inspect(e.id);});
+  document.querySelector('#open-experiment').addEventListener('click',event=>{event.preventDefault();const e=experiments.find(e=>document.querySelector(`[data-lab="${e.id}"]`).classList.contains('selected'));if(e)inspect(e.id);});
+  document.querySelector('#room-close').addEventListener('click',()=>dialog.close());document.querySelector('#room-launch').addEventListener('click',async()=>{try{await launchExperiment(playerStore,current.id);location.href=current.file+'?adventure=1';}catch(err){document.querySelector('#room-error').textContent=err.message;refresh();}});window.addEventListener('storage',refresh);refresh();
+ }
+}else{const a=document.createElement('a');a.href='adventure.html';a.className='practice-adventure-link';a.textContent='Town adventure';document.querySelector('header').append(a);}

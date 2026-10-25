@@ -1,5 +1,7 @@
 # Further labs — proposal roadmap
 
+For the implemented town, tutorial, inventory and equipment progression, use the current [Chemtopia roadmap](../../CHEMTOPIA_ROADMAP.md). The sequence below is historical chemistry planning; it does not impose experiment-completion gates.
+
 **Status: L05–L12 and L18 are implemented within their bounded specifications, including two L09 calorimetry activities. L13–L17 remain proposals. See [the measurement lab review](measurement-labs-prototype-review.md) and [next review/questions](next-review-and-questions.md).**
 
 The owner considers the potassium-nitrate/sand activity sufficient for the combined separation sequence and requested moving directly to L07. See [the approved L07 specification](solution-preparation-prototype-spec.md) and [implementation review](solution-preparation-prototype-review.md). The original dependency sequence below is retained as planning history, not the current work queue.

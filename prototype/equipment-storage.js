@@ -1,10 +1,11 @@
+import {prepareAdventureState} from './adventure-lab.js';
 // Storage preserves each item's material state; it is not a source of replacement apparatus.
 export function initializeStorage(state){
  for(const o of Object.values(state.items))if(!o.fixed&&o.y<200)o.stored=true;
- state.shelves=[];return state;
+ state.shelves=[];return prepareAdventureState(state);
 }
 export function storeItem(state,id,world){
- const o=state.items[id];if(!o||o.fixed||state.phase!=='working')return false;
+ const o=state.items[id];if(!o||o.fixed||o.adventureUnavailable||state.phase!=='working')return false;
  const ids=new Set([id]);let changed=true;
  while(changed){changed=false;for(const item of Object.values(state.items))if(item.parent&&ids.has(item.parent)&&!ids.has(item.id)){ids.add(item.id);changed=true;}}
  if(state.links)state.links=state.links.filter(l=>!ids.has(l.a)&&!ids.has(l.b));
@@ -14,7 +15,7 @@ export function storeItem(state,id,world){
  state.held=null;state.flow=[];world.release();return true;
 }
 export function takeItem(state,id,x,y,world){
- const o=state.items[id];if(!o||o.fixed||state.phase!=='working')return false;
+ const o=state.items[id];if(!o||o.fixed||o.adventureUnavailable||state.phase!=='working')return false;
  const snapshot=Object.values(state.items).filter(v=>v.id===id||v.parent===id).map(v=>[v,{x:v.x,y:v.y,angle:v.angle,stored:v.stored,parent:v.parent}]);
  o.parent=null;
  const dx=x-o.x,dy=y-o.y;

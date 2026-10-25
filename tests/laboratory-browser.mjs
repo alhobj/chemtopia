@@ -47,7 +47,7 @@ try{
  }
  const screenshot=async name=>{const r=await send('Page.captureScreenshot',{format:'png',captureBeyondViewport:false});await writeFile(path.join(tmpdir(),name),Buffer.from(r.data,'base64'));};
 
- await send('Page.navigate',{url:base});
+ await send('Page.navigate',{url:base+'/laboratory.html'});
  for(let i=0;i<60;i++){try{if(await evaluate("document.querySelectorAll('.bench-experiment').length===13"))break;}catch{}await pause(100);}
  assert.equal(await evaluate("document.querySelectorAll('.bench-experiment').length"),13);
  assert.equal(await evaluate("new Promise(resolve=>{const i=document.querySelector('.room-background');if(i.complete)resolve(i.naturalWidth>0);else i.onload=()=>resolve(i.naturalWidth>0);})"),true);
@@ -71,7 +71,7 @@ try{
  for(let i=0;i<60;i++){try{if(await evaluate("!!document.querySelector('#equipment-menu')"))break;}catch{}await pause(100);}
  assert.equal(await evaluate("location.pathname"),'/solution.html');
  await click('#return-laboratory');await pause(350);
- await send('Emulation.setDeviceMetricsOverride',{width:390,height:844,deviceScaleFactor:1,mobile:true});await send('Page.navigate',{url:base});await pause(600);
+ await send('Emulation.setDeviceMetricsOverride',{width:390,height:844,deviceScaleFactor:1,mobile:true});await send('Page.navigate',{url:base+'/laboratory.html'});await pause(600);
  assert.equal(await evaluate("document.querySelector('#experiment-list').hidden"),false);
  assert.equal(await evaluate("document.querySelectorAll('.experiment-card').length"),13);
  assert.ok(await evaluate("document.documentElement.scrollWidth<=innerWidth+1"));
