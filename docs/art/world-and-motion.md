@@ -99,3 +99,7 @@ For example: “C01-3 silhouette, L01-3 layout, H01-1 exterior; explore A02 and 
 ## Source and status
 
 All four sheets were generated using `image_gen`, with P02 as the style reference. [world-generation.json](world-generation.json) preserves the prompts and IDs; [generated-sources.json](generated-sources.json) records checksums and files. Images are unchanged copies of the generated originals. No previous-project assets were used. Selection status is recorded above and in the design log. No game code has been implemented; the separate W01 GIF is a motion preview, not an in-game animation.
+
+## Additional NPC appearances
+
+The owner requested children, adults and chemists. See [N01–N03: eighteen NPC character studies](npc-character-studies.md), with matching front/back views and a local browser gallery. Existing C01 player selections are preserved; NPC roles and quests are not assigned by these images.

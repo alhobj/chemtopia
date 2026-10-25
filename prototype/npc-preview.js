@@ -1,0 +1,2 @@
+import {NPC_GROUPS,NPC_CHARACTERS,npcArt} from './npc-characters.js';
+document.getElementById('npc-groups').innerHTML=NPC_GROUPS.map(group=>`<section><h2>${group.name}</h2><div class="npc-grid">${NPC_CHARACTERS.filter(n=>n.groupId===group.id).map(n=>`<article class="npc-card"><div class="npc-views">${npcArt(n.id)}${npcArt(n.id,true)}</div><h3>${n.name}</h3><p>${n.suggestedRole}</p></article>`).join('')}</div></section>`).join('');

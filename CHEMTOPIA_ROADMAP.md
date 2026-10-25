@@ -103,3 +103,9 @@ Quest direction only: NPC gives a practical task → player completes laboratory
 - `git diff --check`: passed.
 - Preview: `http://127.0.0.1:4173/walking-preview.html` after `npm start`.
 - The prior full 14-harness lab regression run remains recorded above; this walking-only increment reran the full model suite and relevant adventure browser workflow rather than claiming another full lab-browser run.
+
+## NPC character art increment
+
+Owner requested more NPCs, including children, adults and chemists. N01–N03 provide eighteen new static front/back designs (six per group), with a reusable stable-ID catalogue in `npc-characters.js` and `/npc-preview.html` gallery. See `docs/art/npc-character-studies.md`. Roles are suggestions for review; no new town actors, dialogue, quests or rewards are implemented. Existing six playable characters and their walking cycles are unchanged. Next: owner chooses design IDs and later assigns town roles/quest premises before quest implementation.
+
+NPC verification: build/static checks passed; all 18 stable IDs and front/back mappings validated; native Chromium gallery check passed for 36 clipped portraits, all three PNG decodes, phone layout and no runtime exceptions. Source sheets remain unchanged, with inspected display boundaries and recorded checksums. This art/gallery-only increment does not change laboratory or save logic.

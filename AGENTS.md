@@ -150,3 +150,7 @@ The owner explicitly authorised implementing six existing C01 character selectio
 ## Four-direction walking and deferred practical quests
 
 The owner requested four-direction walking for the existing selected characters. Dedicated directional animation atlases, runtime gait/facing and compatible saved facing are authorised. Future completion should be through NPC-issued practical laboratory quests with credits or equipment rewards; the owner explicitly said not to implement quests yet. Record that direction without adding quest logic, practical success gates or rewards now. Existing lab/review behaviour remains for the imminent playtest; free supply-packet restocking remains confirmed.
+
+## Additional NPC character appearances
+
+The owner requested more characters for NPCs, including children, adults and chemists. N01–N03 assets, a stable appearance catalogue and a front/back review gallery are within this art increment. Suggested roles are not confirmed identities or quest assignments. Preserve the existing player avatars and deferred-quest boundary. Existing commit/push authorisation continues.

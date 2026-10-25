@@ -1,0 +1,42 @@
+{
+  "generator": "OpenAI image_gen",
+  "date": "2026-10-25",
+  "reference": "docs/art/proposals/character-studies-c01.png",
+  "layout": "Six columns, front row then matching back row. Per-column display boundaries inspected for complete silhouettes; original PNGs unchanged.",
+  "status": "New NPC appearances for owner review; suggested jobs only; no quests implemented",
+  "sheets": [
+    {
+      "id": "N01",
+      "name": "Children and younger students",
+      "brief": "Six NEW different child NPCs, roughly ages 8\u201314, visibly shorter younger proportions than reference teenagers: 1 dark-skinned boy with short curls in mustard cardigan and navy shorts, 2 light-skinned girl with red braided hair in teal dungarees over cream shirt, 3 East Asian child with round glasses in rust hoodie and dark trousers, 4 brown-skinned girl with black ponytail in plum jacket and olive trousers, 5 light-skinned blond boy in blue striped sweater and grey trousers, 6 brown-skinned child with short wavy hair in green raincoat and navy trousers. All closed sneakers, natural relaxed full-body standing poses, no lab chemicals or weapons.",
+      "file": "npc-children-n01.png",
+      "source": "exec-7747a02e-fef6-4967-ad63-219195163b3d.png",
+      "sha256": "adff68e6a76183b04395d8bda373894aac58a127705d66f9a40552cc34b496df",
+      "bytes": 1252433,
+      "width": 1774,
+      "height": 887
+    },
+    {
+      "id": "N02",
+      "name": "Adult townspeople",
+      "brief": "Six NEW adult town NPCs with distinct adult faces and varied adult/older body shapes, not teenagers: 1 older dark-skinned woman with silver curls and teal cardigan, cream blouse and navy skirt with closed shoes; 2 middle-aged light-skinned man with sandy beard, rolled-sleeve cream shirt and olive apron, dark trousers; 3 brown-skinned woman in dark teal headscarf, long rust coat and navy trousers; 4 East Asian older man with grey hair and glasses in navy blazer and tan trousers; 5 light-skinned middle-aged woman with short auburn hair, mustard jacket, plum scarf and dark jeans; 6 dark-skinned middle-aged man with bald head, round glasses, blue work jacket and cream trousers. Empty hands, closed shoes, ordinary friendly townspeople, no costume stereotypes or weapons.",
+      "file": "npc-adults-n02.png",
+      "source": "exec-dfd717ca-42b0-4e11-baa0-7525779ab583.png",
+      "sha256": "7a8b4d9cde414d0e86ffb31873dcd0f5cdc346aeca3e0c52a4d259b9ac735ad1",
+      "bytes": 1324468,
+      "width": 1774,
+      "height": 887
+    },
+    {
+      "id": "N03",
+      "name": "Chemists and laboratory staff",
+      "brief": "Six NEW adult scientist and laboratory staff NPCs with distinct faces, ages and body shapes: 1 dark-skinned woman with tied-back natural hair, closed white lab coat over teal shirt and navy trousers; 2 light-skinned older man with silver short beard and hair, closed white lab coat over blue shirt and olive trousers; 3 East Asian woman with black hair in bun, closed pale blue lab coat and dark trousers; 4 brown-skinned man with short black hair and neat beard, closed cream lab coat and burgundy trousers; 5 light-skinned woman with short curly red hair, closed white lab coat over plum shirt and teal trousers; 6 older brown-skinned woman with grey tied-back hair, glasses and closed pale teal lab coat, navy trousers. All wear clear safety goggles over eyes and closed flat shoes. Hands relaxed, some may hold a closed notebook at side; no chemicals, flasks, exposed skin on legs, experiments or weapons. Friendly real scientists, not mad-scientist caricatures.",
+      "file": "npc-chemists-n03.png",
+      "source": "exec-3bf3daab-48d1-4d24-a8c0-a4b144bfd41c.png",
+      "sha256": "422bff34f8193611cd6a16e3343ee9a94c601a519ddd38c91bf680c70c68a9b9",
+      "bytes": 1423286,
+      "width": 1774,
+      "height": 887
+    }
+  ]
+}

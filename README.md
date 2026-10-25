@@ -74,3 +74,5 @@ See [CHEMTOPIA_ROADMAP.md](CHEMTOPIA_ROADMAP.md) for current status, decisions, 
 Adventure supplies are reserved once per attempt; reloading restarts that attempt with its existing reservation. Town progress, inventory and review completion persist; live laboratory physics do not. Practice pages do not spend supplies or record progression. Names and progress are kept in this browser only; clearing browser storage removes them.
 
 The six selected characters now walk up, down, left and right in town. Open `/walking-preview.html` on the local server to compare all four directions together. Future NPC-issued practical quests and equipment/credit rewards are recorded in the roadmap and remain unimplemented at the owner's request.
+
+New NPC art: eighteen child, adult and chemist designs with front/back views are available at `/npc-preview.html`. See [the character sheets and IDs](docs/art/npc-character-studies.md). These are additional NPC appearances; town placement and quests remain deferred.
