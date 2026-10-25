@@ -32,3 +32,13 @@ test('all six identities render their own directional atlas and saved facing sur
   }
   assert.equal(walkingArt('unknown',walkingPose('front')),'');
 });
+
+test('every walking frame registers its torso and feet to the same screen anchor',async()=>{
+ const {WALK_ATLASES}=await import('../prototype/walking-atlases.js');
+ for(const [id,atlas]of Object.entries(WALK_ATLASES))for(const [row,frames]of atlas.rows.entries())for(const [frame,cell]of frames.entries()){
+  assert.ok(cell.height>100&&cell.bottom<cell.h);assert.ok(cell.cx>0&&cell.cx<cell.w);
+  const scale=(130/150)/cell.height,x=.5-cell.cx*scale,y=145/150-cell.bottom*scale;
+  assert.ok(Math.abs(x+cell.cx*scale-.5)<1e-9);assert.ok(Math.abs(y+cell.bottom*scale-145/150)<1e-9);
+  assert.ok(walkingArt(id,{row,frame,direction:'front',moving:true,mirror:false}).includes(`viewBox="${cell.x} ${cell.y} ${cell.w} ${cell.h}"`));
+ }
+});

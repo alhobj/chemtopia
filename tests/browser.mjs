@@ -51,10 +51,10 @@ try{
  const pose=async id=>evaluate(`(()=>{const m=document.querySelector('[data-id="${id}"]').transform.baseVal.consolidate().matrix;return {x:m.e,y:m.f,angle:Math.atan2(m.b,m.a)*180/Math.PI};})()`);
 
  await pause(1000);await evaluate("document.querySelector('#bench').scrollIntoView({block:'center'})");
- const standBefore=await pose('stand'),touch=await point('stand',0,-100);
+ await evaluate("window.__standImage=document.querySelector('[data-id=stand] image')");const standBefore=await pose('stand'),touch=await point('stand',0,-100);
  await send('Input.dispatchMouseEvent',{type:'mousePressed',button:'left',clickCount:1,...touch});await pause(100);
  await send('Input.dispatchMouseEvent',{type:'mouseReleased',button:'left',clickCount:1,...touch});await pause(1200);
- const standAfter=await pose('stand');assert.ok(Math.hypot(standAfter.x-standBefore.x,standAfter.y-standBefore.y)<.5,'touching stand does not start it sliding');
+ assert.equal(await evaluate("window.__standImage===document.querySelector('[data-id=stand] image')"),true,'unchanged apparatus keeps its live sprite while physics updates');const standAfter=await pose('stand');assert.ok(Math.hypot(standAfter.x-standBefore.x,standAfter.y-standBefore.y)<.5,'touching stand does not start it sliding');
  let drop=await drag('source',150,180,40,false);await pause(200);assert.ok(Math.abs((await pose('source')).y-180)<.1);
  await drop();await pause(1700);assert.ok(Math.abs((await pose('source')).y-413)<1);
  // Swept mouse collision: trying to cross the stand is blocked.
@@ -93,9 +93,9 @@ try{
  assert.ok((await evaluate("document.querySelector('#question-feedback').textContent")).includes('Activity complete'));await screenshot('chemtopia-completed.png');
  console.log('PASS corrected ring seating, paper insertion, collision-safe pouring and complete explanation');
  await click('#restart');x=await assemble();drop=await liftSource(x);await key(' ','Space');await pause(700);await key(' ','Space');await putSourceBack(drop);
- assert.ok(await evaluate("document.querySelector('[data-id=paper]').innerHTML.includes('#bb904f')"),'filter loaded');
+ assert.ok(await evaluate("!!document.querySelector('[data-id=paper] .solid-grain')"),'filter loaded');
  await drag('funnel',320,150,65,true,[{x,y:130},{x:320,y:130}]);await pause(4500);
- assert.equal(await evaluate("document.querySelector('[data-id=paper]').innerHTML.includes('#bb904f')"),false,'tipped filter empties');
+ assert.equal(await evaluate("!!document.querySelector('[data-id=paper] .solid-grain')"),false,'tipped filter empties');
  assert.ok(await evaluate("document.querySelector('#spills').children.length>0"));await screenshot('chemtopia-tipped-spill.png');
  console.log('PASS loaded funnel removal, impact, tipping and visible sand spill');
  await click('#restart');await pause(600);await click('[data-equipment=source]');const before=await pose('source');await key('ArrowRight');await key('Enter');

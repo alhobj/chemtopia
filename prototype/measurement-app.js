@@ -1,3 +1,4 @@
+import {setArtwork} from './svg-render.js';
 import * as conductivity from './conductivity-model.js';
 import * as colorimetry from './colorimetry-model.js';
 import * as voltaic from './voltaic-model.js';
@@ -28,7 +29,7 @@ function renderData(){const signature=JSON.stringify([state.records,state.unknow
 }
 function escape(v){return v.replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;');}
 function render(){const r=M.reading(state);
- for(const [id,g]of groups){const o=state.items[id];g.setAttribute('transform',`translate(${o.x} ${o.y}) rotate(${o.angle||0})`);g.innerHTML=art(o,state,r);g.classList.toggle('selected',id===selected);}
+ for(const [id,g]of groups){const o=state.items[id];g.setAttribute('transform',`translate(${o.x} ${o.y}) rotate(${o.angle||0})`);setArtwork(g,art(o,state,r));g.classList.toggle('selected',id===selected);}
  if(selected)layer.append(groups.get(selected));for(const [id,o] of Object.entries(state.items))if(o.parent)layer.append(groups.get(id));
  $('cables').innerHTML=wires(state,'cables');$('wires').innerHTML=wires(state,'ends');$('streams').innerHTML=performance.now()<flowUntil?state.flow.map(f=>`<path d="M${f.from.x} ${f.from.y}L${f.to.x} ${f.to.y}" fill="none" stroke="${f.solid?'#d9c79c':'#7db9c7'}" stroke-width="4" stroke-dasharray="5 3"/>`).join(''):'';
  $('spills').innerHTML=state.spills.map(p=>`<ellipse cx="${p.x}" cy="523" rx="${Math.min(60,7+p.water)}" ry="5" fill="${p.water>0?'#86bdcc':'#e6dec3'}"/>`).join('');

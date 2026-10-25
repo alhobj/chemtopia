@@ -23,13 +23,46 @@ export const experiments=[
 export const experimentById=id=>experiments.find(e=>e.id===id)||null;
 export const experimentByFile=file=>experiments.find(e=>e.file===file)||null;
 export function eligibility(player,id){const e=experimentById(id);if(!e)throw Error('Unknown experiment.');const missingEquipment=Object.fromEntries(Object.entries(e.equipment).map(([id,n])=>[id,Math.max(0,n-(player.equipment[id]||0))]).filter(([,n])=>n)),missingMaterials=Object.fromEntries(Object.entries(e.materials).map(([id,n])=>[id,Math.max(0,n-(player.materials[id]||0))]).filter(([,n])=>n)),prerequisites=e.prerequisites.filter(id=>!player.completed.includes(id)),completed=player.completed.includes(id),available=!Object.keys(missingEquipment).length&&!Object.keys(missingMaterials).length&&!prerequisites.length,state=completed?'completed':prerequisites.length?'locked':Object.keys(missingEquipment).length?'missing-equipment':Object.keys(missingMaterials).length?'missing-materials':'available',label={available:'Available',completed:'Completed',locked:'Locked','missing-equipment':'Missing equipment','missing-materials':'Missing consumables'}[state],reasons=[...Object.entries(missingEquipment).map(([id,n])=>`Missing ${n} × ${EQUIPMENT[id].name}`),...Object.entries(missingMaterials).map(([id,n])=>`Missing ${n} × ${MATERIALS[id].name}`),...prerequisites.map(id=>'Complete '+id)];return{available,state,label,completed,missingEquipment,missingMaterials,prerequisites,reasons};}
+// A kit includes the equipment already supplied at the start. An edge means
+// reusable equipment containment, never a requirement to complete the parent lab.
 export function experimentGraph(definitions=experiments){
- const nodes=[{id:'starter',type:'starter',name:'Starter laboratory'}],edges=[];
- for(const e of definitions){const additions=Object.fromEntries(Object.entries(e.equipment).map(([id,n])=>[id,Math.max(0,n-(STARTER_EQUIPMENT[id]||0))]).filter(([,n])=>n));nodes.push({id:e.id,type:'experiment',name:e.shortName||e.name});if(Object.keys(additions).length){const id='acquire:'+e.id;nodes.push({id,type:'acquisition',experiment:e.id,equipment:additions,name:'Equip: '+(e.shortName||e.name)});edges.push({from:'starter',to:id,type:'acquisition',label:'Acquire '+Object.entries(additions).map(([id,n])=>`${n} × ${EQUIPMENT[id].name}`).join(', ')});edges.push({from:id,to:e.id,type:'equipment',label:'Required reusable equipment; supplies are checked separately'});}else edges.push({from:'starter',to:e.id,type:'equipment',label:'Uses the starter equipment'});for(const id of e.prerequisites||[])edges.push({from:id,to:e.id,type:'prerequisite',label:'Explicit prerequisite'});}
+ const kit=e=>({...STARTER_EQUIPMENT,...Object.fromEntries(Object.entries(e.equipment).map(([id,n])=>[id,Math.max(n,STARTER_EQUIPMENT[id]||0)]))});
+ const kits=new Map(definitions.map(e=>[e.id,kit(e)]));
+ const subset=(a,b)=>Object.entries(a).every(([id,n])=>(b[id]||0)>=n);
+ const strict=(a,b)=>subset(a,b)&&!subset(b,a);
+ const nodes=[{id:'starter',type:'starter',name:'Starter laboratory'},...definitions.map(e=>({id:e.id,type:'experiment',name:e.shortName||e.name}))],edges=[];
+ for(const e of definitions){
+  const target=kits.get(e.id),parents=definitions.filter(p=>strict(kits.get(p.id),target));
+  // Transitive reduction: keep only the closest smaller kits, including branches
+  // which converge on a shared apparatus set. Equal kits are peers, not cycles.
+  const direct=parents.filter(p=>!parents.some(q=>strict(kits.get(p.id),kits.get(q.id))));
+  for(const parent of direct.length?direct:[null]){
+   const base=parent?kits.get(parent.id):STARTER_EQUIPMENT;
+   const additions=Object.fromEntries(Object.entries(target).map(([id,n])=>[id,Math.max(0,n-(base[id]||0))]).filter(([,n])=>n));
+   edges.push({from:parent?.id||'starter',to:e.id,type:'equipment',equipment:additions,label:Object.keys(additions).length?'Add '+Object.entries(additions).map(([id,n])=>`${n} × ${EQUIPMENT[id]?.name||id}`).join(', '):'Uses the starter equipment'});
+  }
+  for(const id of e.prerequisites||[])edges.push({from:id,to:e.id,type:'prerequisite',label:'Explicit prerequisite'});
+ }
  const graph={nodes,edges};assertAcyclic(graph);return graph;
 }
 export function assertAcyclic(graph){const ids=new Set(graph.nodes.map(n=>n.id));if(ids.size!==graph.nodes.length)throw Error('Duplicate graph node.');const indegree=new Map([...ids].map(id=>[id,0]));for(const e of graph.edges){if(!ids.has(e.from)||!ids.has(e.to))throw Error('Unknown graph dependency.');indegree.set(e.to,indegree.get(e.to)+1);}const queue=[...ids].filter(id=>!indegree.get(id));let count=0;for(let i=0;i<queue.length;i++){const id=queue[i];count++;for(const e of graph.edges.filter(e=>e.from===id)){indegree.set(e.to,indegree.get(e.to)-1);if(!indegree.get(e.to))queue.push(e.to);}}if(count!==ids.size)throw Error('Cyclic experiment dependency.');return true;}
-export function graphLayout(graph){assertAcyclic(graph);const rank=new Map(graph.nodes.map(n=>[n.id,n.type==='experiment'?2:0]));for(let i=0;i<graph.nodes.length;i++)for(const e of graph.edges)rank.set(e.to,Math.max(rank.get(e.to),rank.get(e.from)+1));const ordered=graph.nodes.filter(n=>n.type==='experiment').map(n=>n.id),rows=new Map(),nodes=graph.nodes.map(n=>{const r=rank.get(n.id);let row=n.type==='starter'?0:n.type==='acquisition'?ordered.indexOf(n.experiment):n.type==='experiment'?ordered.indexOf(n.id):rows.get(r)||0;rows.set(r,row+1);return{...n,x:25+r*250,y:25+row*105,rank:r};});return{nodes,edges:graph.edges};}
+export function graphLayout(graph){
+ assertAcyclic(graph);
+ const rank=new Map(graph.nodes.map(n=>[n.id,0]));
+ for(let i=0;i<graph.nodes.length;i++)for(const e of graph.edges)rank.set(e.to,Math.max(rank.get(e.to),rank.get(e.from)+1));
+ // Cap each column at six nodes so a growing branch does not become an
+ // extremely tall list. Rank groups still advance left-to-right through the DAG.
+ const counts=new Map();for(const n of graph.nodes){const r=rank.get(n.id);counts.set(r,(counts.get(r)||0)+1);}
+ const offsets=new Map();let x=25;for(const r of [...counts.keys()].sort((a,b)=>a-b)){offsets.set(r,x);x+=Math.ceil(counts.get(r)/6)*215+45;}
+ const rows=new Map(),nodes=graph.nodes.map(n=>{const r=rank.get(n.id),index=rows.get(r)||0;rows.set(r,index+1);return{...n,x:offsets.get(r)+Math.floor(index/6)*215,y:25+(index%6)*95,rank:r};});
+ return{nodes,edges:graph.edges};
+}
+// Route long links through the gaps above nodes rather than across unrelated
+// boxes in a second column of the same rank group.
+export function graphEdgePath(nodes,edge){
+ const a=nodes.find(n=>n.id===edge.from),b=nodes.find(n=>n.id===edge.to),sx=a.x+165,sy=a.y+33,gutter=sx+20;
+ return b.x-a.x>300?`M${sx} ${sy}L${gutter} ${sy}L${gutter} ${b.y-12}L${b.x+82.5} ${b.y-12}L${b.x+82.5} ${b.y}`:`M${sx} ${sy}L${gutter} ${sy}L${gutter} ${b.y+33}L${b.x} ${b.y+33}`;
+}
 export function equipmentUnlocks(player,equipmentId){return experiments.filter(e=>e.equipment[equipmentId]&&(player.equipment[equipmentId]||0)<e.equipment[equipmentId]).map(e=>({id:e.id,name:e.name,quantity:e.equipment[equipmentId]-(player.equipment[equipmentId]||0),missing:eligibility(player,e.id).reasons}));}
 export function validateDefinitions(definitions=experiments){const ids=new Set();for(const e of definitions){if(ids.has(e.id))throw Error('Duplicate experiment.');ids.add(e.id);for(const [id,n]of Object.entries(e.equipment))if(!EQUIPMENT[id]||!Number.isInteger(n)||n<1)throw Error('Invalid equipment requirement: '+e.id+'/'+id);for(const [id,n]of Object.entries(e.materials))if(!MATERIALS[id]||!Number.isInteger(n)||n<1)throw Error('Invalid material requirement.');for(const [id,item]of Object.entries(e.apparatus)){if(item.equipment&&!EQUIPMENT[item.equipment]||item.material&&!MATERIALS[item.material])throw Error('Unknown apparatus mapping.');if(item.required&&item.equipment&&(e.equipment[item.equipment]||0)<item.ordinal)throw Error('Core apparatus exceeds requirement: '+e.id+'/'+id);}}experimentGraph(definitions);return true;}
 validateDefinitions();

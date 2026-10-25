@@ -1,3 +1,4 @@
+import {setArtwork} from './svg-render.js';
 import {equipmentArt} from './equipment-art.js';
 import {createState,NAMES,physicsFor,detach,placeItem,stepPhysics,stepThermal,toolTarget,active,pour,stir,fitLid,clipProbe,immersed,recordTemperature,balanceReading,recordMass,toggleBurner,outcome,THERMAL,objective,energyBalance} from './calorimetry-model.js';
 import {art} from './calorimetry-art.js';
@@ -20,7 +21,7 @@ function context(){const o=state.items[selected];if(!active(o))return {label:'Se
  return{label:'Pour 10 mL',buttons:[['fine','Pour 1 mL']],hint:'Position above an open receiver. Each press adds one finite portion and stops.'};
 }
 function render(){
- for(const [id,g]of groups){const o=state.items[id];g.setAttribute('transform',`translate(${o.x} ${o.y}) rotate(${o.angle||0})`);g.innerHTML=equipmentArt(o,art(o,state),mode,state);g.classList.toggle('selected',id===selected);}
+ for(const [id,g]of groups){const o=state.items[id];g.setAttribute('transform',`translate(${o.x} ${o.y}) rotate(${o.angle||0})`);setArtwork(g,equipmentArt(o,art(o,state),mode,state));g.classList.toggle('selected',id===selected);}
  if(selected)layer.append(groups.get(selected));
  $('streams').innerHTML=performance.now()<flowUntil?state.flow.map(f=>`<path d="M${f.from.x} ${f.from.y}L${f.to.x} ${f.to.y}" fill="none" stroke="#79aebb" stroke-width="4" stroke-dasharray="5 3"/>`).join(''):'';
  $('spills').innerHTML=state.spills.map(p=>`<ellipse cx="${p.x}" cy="523" rx="${Math.min(65,12+p.water)}" ry="6" fill="#84bcc7"/>`).join('');

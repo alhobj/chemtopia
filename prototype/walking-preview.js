@@ -1,5 +1,5 @@
 import {CHARACTERS} from './characters.js';
-import {walkingPose,walkingArt} from './walking-animation.js';
+import {walkingPose,renderWalking} from './walking-animation.js';
 
 const directions=[['front','Down'],['back','Up'],['left','Left'],['right','Right']];
 const reduced=matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -10,5 +10,5 @@ const toggle=document.getElementById('toggle');
 function label(){toggle.textContent=moving?'Pause walking':'Play walking';}
 toggle.addEventListener('click',()=>{moving=!moving;distance=0;label();});
 label();
-function frame(time){if(moving)distance+=Math.min(50,time-(last||time))*.18;last=time;const key=walkingPose('front',distance,moving).frame+':'+moving;if(key!==previous){for(const cell of container.querySelectorAll('.walk-cell'))cell.querySelector('.sprite').innerHTML=walkingArt(cell.dataset.id,walkingPose(cell.dataset.direction,distance,moving));previous=key;}requestAnimationFrame(frame);}
+function frame(time){if(moving)distance+=Math.min(50,time-(last||time))*.18;last=time;const key=walkingPose('front',distance,moving).frame+':'+moving;if(key!==previous){for(const cell of container.querySelectorAll('.walk-cell'))renderWalking(cell.querySelector('.sprite'),cell.dataset.id,walkingPose(cell.dataset.direction,distance,moving));previous=key;}requestAnimationFrame(frame);}
 requestAnimationFrame(frame);

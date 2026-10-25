@@ -39,7 +39,7 @@ function supports(o,lab){
 }
 function funnel(o){
  const filtration=o.kind==='funnel',w=filtration?114:o.kind==='fillingFunnel'?80:o.capacity===.2?66:60,neck=filtration?18:o.kind==='fillingFunnel'?10:o.capacity===.2?8:6,bowl=filtration?48:o.kind==='fillingFunnel'?36:o.capacity===.2?33:30,h=filtration?78:o.kind==='fillingFunnel'?76:o.capacity===.2?75:60;
- return sprite('funnel',-w/2,0,w,bowl,[0,0,1,.53])+sprite('funnel',-neck/2,bowl,neck,h-bowl,[.45,.53,.10,.47]);
+ return sprite('funnel',-w/2,0,w,bowl,[0,0,1,.45])+sprite('funnel',-neck/2,bowl,neck,h-bowl,[.40,.45,.20,.55]);
 }
 // Contents have their own interior, rather than using the opaque sprite as a mask.
 // This keeps particles off rims, labels and glass walls.
@@ -58,7 +58,7 @@ function vesselContents(o,html,lab,w,h){
  if(k==='flask'&&lab!=='distillation')level=volume<=80?123-volume*.8:59-(volume-80)*1.95;
  const original=html.match(/<g clip-path="[^"]*">([\s\S]*?)<\/g>/)?.[1]||'';
  const colour=original.match(/<rect[^>]*fill="([^"]*)"/)?.[1]||'#7ebed2';
- let contents=volume>0?rect(-w/2,level,w,h-level,`fill="${colour}" opacity=".65"`)+`<path d="M${-w/2} ${level}H${w/2}" stroke="#88bfca" stroke-width="1.5"/>`:'';
+ let contents=volume>0?`<g transform="rotate(${-(o.angle||0)} 0 ${level})">`+rect(-w,level,w*2,h*3,`fill="${colour}" opacity=".48"`)+`<ellipse cx="0" cy="${level}" rx="${w}" ry="2" fill="${colour}" opacity=".35"/><path d="M${-w} ${level}H${w}" stroke="#88bfca" stroke-width="1" opacity=".6"/></g>`:'';
  const salt='dissolved'in o?Math.max(0,(o.salt||0)-o.dissolved):lab==='evaporation'?Math.max(0,(o.salt||0)-(o.water||0)*.3):0;
  const materials=[{amount:o.sand||0,colour:'#bd975c'}, {amount:salt+(o.raw||0)+(o.crystals||0)+(o.chips||0)+(o.powder||0),colour:'#f5eccf'}];
  for(const m of materials){if(m.amount<=1e-9)continue;
@@ -76,7 +76,9 @@ export function equipmentArt(o,html,lab,s){
  if(k==='stand'||k==='clampStand')return supports(o,lab)+extracts(html,/<rect class="select-outline"[^>]*\/>/g);
  if(['funnel','fillingFunnel','transferFunnel'].includes(k))return funnel(o)+overlays(html);
  if(k==='paper'){
-  const fill=o.sand||o.raw||o.crystals;return sprite('filterPaper',-44,-5,88,43)+(fill?`<path d="M-25 10H25L0 31Z" fill="${o.sand?'#bb904f':'#f8f4dc'}"/>`:'')+extracts(html,/<rect class="select-outline"[^>]*\/>/g);
+  const fill=(o.sand||0)+(o.raw||0)+(o.crystals||0),count=Math.min(100,Math.ceil(fill*450));
+  const grains=Array.from({length:count},(_,i)=>{const t=(i*.61803398875)%1,y=13+((i*37)%17),half=(32-y)*.85,x=(t-.5)*2*half,r=1+(i%3)*.25;return `<path class="solid-grain" d="M${x-r} ${y}l${r} -${r} ${r} ${r} -${r} ${r}Z" fill="${o.sand?['#b98c51','#d4b273','#98713f'][i%3]:['#efe7c9','#fff7e3','#d7cfb1'][i%3]}"/>`;}).join('');
+  return sprite('filterPaper',-44,-5,88,43)+grains+extracts(html,/<rect class="select-outline"[^>]*\/>/g);
  }
  if(k==='chromPaper'||k==='ruler')return `<g class="pixel-measurement">${html}</g>`;
  if(k==='bar')return metal(-115,-6,230,12)+sprite('stopper',-10,-8,20,22)+extracts(html,/<rect class="select-outline"[^>]*\/>/g);

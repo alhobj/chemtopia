@@ -22,9 +22,9 @@
 
 1. **Implemented — playable onboarding:** six actual C01 avatars, validated local nickname, confirmed New Game with archived save, returning profile, navigable town, five event-based tutorial stages with replay/resume.
 2. **Implemented — actual equipment audit:** all 13 experiments / 129 apparatus instances mapped; reusable counts, core/optional materials, provided facilities, assemblies and uncertainties recorded in `docs/design/experiment-equipment-audit.*`.
-3. **Implemented — progression map:** shared eligibility, data-generated acquisition-kit branches, selectable requirements, available/completed/missing equipment/missing supplies states, zoom/pan and accessible experiment selector. No experiment-completion prerequisites.
+3. **Implemented — progression map:** shared eligibility, a data-generated graph of reusable equipment dependencies with arrows and exact additions, selectable requirements, available/completed/missing equipment/missing supplies states, zoom/pan and accessible experiment selector. No experiment-completion prerequisites.
 4. **Implemented — ownership and acquisition:** persistent counted inventory; configurable prices; atomic validated purchases; idempotent future reward API; one-time testing allowance; adventure-only apparatus enforcement and per-attempt supply reservations. Review completion is saved without invented currency rewards.
-5. **Validated:** all 249 model/save/progression tests pass; all 14 browser harnesses pass, including the existing practical workflows, all six selected characters, confirmed/cancelled New Game, tutorial resume, actual starter evaporation/review completion, purchases, one-time grant and phone map. Static checks, build, audit regeneration and whitespace checks pass. Owner playtesting remains.
+5. **Latest validation:** all 264 model/save/animation/rendering tests pass; all 15 browser harnesses pass, including all thirteen practical labs, town/tutorial/save/shop/map, character animation and phone layouts. Build/static checks, the 13-lab/129-apparatus audit and whitespace checks pass. Owner feedback P01–P10 is recorded below; the rendering corrections need owner recheck.
 
 ## Reversible defaults
 
@@ -47,7 +47,7 @@ No blocking question remains for this increment. Confirmed choices above settle 
 - Live lab physics is not serialised. Reopening an active reservation restarts its setup with the reserved supplies; town/tutorial/inventory/completion persist. Starting another attempt reserves another packet.
 - Consumable stocks are activity packets, not persisted per-pour mL/g. Free supply-packet restocking is owner-confirmed for now; no per-pour stock accounting or supply charges are introduced.
 - Current implemented completion follows the existing successful review (and chromatography ruler condition) pending future quest work. The newly selected future direction is NPC-issued practical tasks with credit/equipment rewards; no quests, new success checks or rewards are implemented in this walking increment.
-- The map shows per-experiment acquisition milestones. Shared apparatus counts across branches, so these are shopping requirements, not separate mandatory kit purchases or a linear curriculum sequence.
+- The map connects strictly smaller reusable equipment kits to larger kits, assuming the minimal starter kit remains owned. Shared apparatus counts across branches. Links show equipment reuse, not mandatory earlier experiment completion; consumables are checked separately.
 - Bare laboratory pages remain separate unrestricted practice, without progression recording. Adventure attempts enforce ownership.
 - Corrupt/future saves are protected; a confirmed New Game archives the original. Local-only saves can still be lost if browser storage is cleared. No export/cloud service is added.
 - Next concrete step after validation: owner plays the town/tutorial and starter evaporation, then tests a shop branch and reviews the new walking cycles. Supply packets remain freely restockable; economy balancing and practical quest design remain future work. Future implementation: design NPC-issued practical quests and success criteria before implementing quest/reward integration; owner explicitly deferred quests.
@@ -74,7 +74,7 @@ Read AGENTS.md and CHEMTOPIA_ROADMAP.md. Preserve existing lab chemistry and the
 ## Commands
 
 - `npm start` — local game, port 4173.
-- `npm test` — 252 chemistry/model/save/progression/walking tests.
+- `npm test` — 264 chemistry/model/save/progression/animation/rendering tests.
 - `npm run test:browser` — existing Chromium practical workflows plus six-character/town/tutorial/shop checks.
 - `npm run check` — JavaScript syntax and catalogue validation.
 - `npm run build` — static files in `dist/`; serve through HTTP and open `adventure.html`.
@@ -123,3 +123,31 @@ Owner requested breathing, blinking and logical personality actions for players 
 Idle verification: all 258 model/save/catalogue/animation tests pass. Native idle browser checks pass for 24 actor idles, real PNG decoding, breathing, gesture anticipation/action/recovery, side-facing blinks, pause, all 72 NPC gallery views, phone layout and reduced motion. The adventure browser workflow also passes, including a natural town gesture interrupted immediately by walking, all six selected avatars, tutorial/save/shop and actual starter evaporation/review completion. Build/static checks and whitespace checks pass. No full lab-browser rerun is claimed for this character-only increment.
 
 Next concrete art refinement after owner playtesting: assess gesture frequency and scale, then consider additional east/west/north gesture keyframes. Current special actions are south-facing; breathing and appropriate blinking support all four facings.
+
+## Owner playtest P01–P10 — 25 October 2026
+
+Recorded answers (these supersede older open questions):
+
+- P01: Character selection, movement controls and tutorial were clear and easy to use.
+- P02/P09/P10: Prioritise town movement, animation transitions, visual consistency and lag. Lab liquid/solution and filter contents look wrong; the funnel needs improvement. Town walking skips back and forth. The progression view must show equipment relationships, such as evaporation equipment being reused for distillation with extra apparatus.
+- P03: First future NPC task should recover dry salt from salt water by evaporation.
+- P04/P08: Return to the NPC and submit the recovered product. NPC inspection judges the result; mistakes affect rewards.
+- P05: A guaranteed basic reward with a bonus for a successful first attempt. How mistake penalties interact with that guaranteed base remains to be specified; no penalty thresholds are invented.
+- P06: First quest rewards equipment that opens another experiment. Exact item and bonus amount remain undecided.
+- P07: Give the goal, with optional hints on request.
+
+**Quests remain deferred.** No quest, NPC inspection, bonus or reward was implemented in this correction. Existing review completion and free restocking remain operational for playtesting.
+
+Follow-up performance clarification: the lag and character jumping were most noticeable **while walking in town on a laptop/desktop in a regular browser**. Prioritise this path before adding new game features.
+
+### Implemented corrections
+
+- Equipment graph now derives strict reusable-kit containment from the actual counted requirements plus the starter kit. Redundant transitive links are removed; equal kits cannot introduce a cycle. Evaporation leads to distillation; filtration leads to recrystallisation. Arrows and requirement details explain the additional items. These are equipment-sharing links, not new experiment-completion gates. Consumables remain separate eligibility checks.
+- Walking frames are registered to measured torso centres and foot baselines, with the same visible height as standing players. The live SVG image is retained across gait frames instead of replaced each step. Click routes clamp the final step to the waypoint to avoid overshooting at low frame rates. Source PNGs are unchanged; `scripts/measure-walking.py` only reads alpha and writes metadata.
+- Shared lab artwork updates retain identical SVG subtrees across physics frames, avoiding repeated parsing and image/layout churn for unchanged equipment. Vessel surfaces counter-rotate within their existing interior clips. Filter deposits are separate grains instead of a flat solid triangle. Funnel source crops separate the bowl from the narrow stem at the correct source boundary. No chemistry, material accounting, collisions or joint anchors changed.
+
+Remaining visual work: owner recheck on the device that lagged; verify whether any particular gesture still changes pose/appearance abruptly. The separate generated gesture frames may still need individual art refinement. This correction is not a claim that every visual issue has been resolved.
+
+Next concrete step: owner recheck of desktop town walking, filtration contents/funnel and the equipment dependency map after this correction. Later quest design needs the reward item, inspection criteria and first-attempt bonus definition before quest implementation.
+
+Verification for the P01–P10 correction: `npm test` passes all **264** tests; `npm run test:browser` passes all **15** harnesses; `npm run build`, `npm run audit:labs` and `git diff --check` pass. Native browser assertions verify the same decoded walking image is retained across gait frames and unchanged stand artwork survives physics updates. Added graph tests validate exact counted equipment additions, no new completion gates, non-overlapping node layout and arrows avoiding unrelated boxes. The final routed map and town renderer also pass a separate adventure-browser rerun. Automated checks establish functional behaviour, not guaranteed frame rates on the owner's desktop.

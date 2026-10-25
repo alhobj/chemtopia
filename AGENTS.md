@@ -162,3 +162,7 @@ The owner requested every NPC stand facing east, north, west and south. Updating
 ## Character idle animation increment
 
 The owner requested breathing, blinking and logical personal idle actions, including checking time, gum, ball tossing and a comic underarm check. A shared cosmetic idle system, matching generated animation frames, town player/guide integration and actor previews are authorised. Preserve existing identities, four-direction standing/walking, movement responsiveness, reduced-motion support and local-only progress. Gesture assignments are reversible visual defaults; do not turn props into equipment grants or implement quests. See docs/art/idle-animations.md. Existing commit/push authorisation continues.
+
+## Owner playtest corrections P01–P10
+
+The owner reported lag, town sprite jumping, poor liquid/filter/funnel presentation and an equipment tree which did not communicate equipment dependencies. This authorises bounded rendering, frame registration and equipment-map corrections while preserving chemistry, physics, existing unlock calculations and saves. Record quest preferences (salt recovery, NPC product submission/inspection, guaranteed base reward plus first-attempt bonus, equipment reward, optional hints) without implementing quests, which remain explicitly deferred.

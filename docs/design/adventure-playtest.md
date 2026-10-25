@@ -7,7 +7,7 @@ Run `npm start` with Node 22+, then open `http://127.0.0.1:4173`.
 3. Inventory distinguishes reusable apparatus from consumable supplies. Inspect both. Open the credit balance to read the provisional economy introduction.
 4. Walk to the laboratory. Inspect evaporation: its beaker, basin and heater are owned. Start it, reserving one salt-solution packet. Other labs show their exact missing requirements. The extra evaporation receiver is optional and unavailable until a second beaker is owned.
 5. Pour the salt solution into the basin and heat it using the existing controls. Completing the existing review records completion locally. Reloading a reservation restarts the apparatus setup without charging another supply packet; it does not restore a running physical simulation.
-6. Open the progression map. Select any experiment, inspect requirements, zoom and pan. The accessible selector brings distant nodes into view. Equipment milestones describe additional apparatus, not mandatory earlier experiments.
+6. Open the progression map. Select any experiment, inspect requirements, zoom and pan. The accessible selector brings distant nodes into view. Arrows connect smaller equipment kits to larger ones; selecting a lab lists the additions, without making earlier experiments mandatory.
 7. Visit the equipment shop. The one-time testing allowance is provisional. Buy a second beaker, filtration funnel and stand; obtain sand–water and filter-paper supplies. Filtration becomes available immediately without requiring evaporation completion. Apparatus stays owned after use.
 8. Replay the tutorial from Options; it retains inventory, credits and completions. Existing unrestricted labs remain at `/laboratory.html` for independent chemistry playtesting, without changing adventure progress.
 
@@ -22,3 +22,9 @@ Future quest direction has changed: NPCs will give practical laboratory tasks, c
 ## Idle animation playtest
 
 Stand still in town for about 7–11 seconds while facing south. The player should breathe, blink and perform a brief personal gesture; press a movement key to interrupt it immediately. The guide has independent timing. Open Options → Preview character idles or `/idle-preview.html` to compare all 24 actors and use Show gestures without waiting. Side/front-facing blinks and breathing retain direction; personality actions currently use south-facing art. Pause and reduced-motion controls keep characters still.
+
+## Equipment-sharing and rendering recheck
+
+The progression map now connects strictly smaller reusable equipment kits to larger ones, with arrows. Select distillation to see evaporation equipment reused and the additional glassware/support requirements listed. Select recrystallisation to see the filtration connection. These links do not require completing the earlier experiment. Buying the listed apparatus and restocking supplies still allows immediate entry.
+
+Recheck all four walking directions and the start/stop transition. Frame registration now keeps the torso centred and feet on one baseline, and walking retains its image node. In filtration, check the narrower funnel stem, individual sand grains inside paper and the water surface during tilting. Unchanged laboratory artwork is retained between physics updates. Report the device/browser and affected lab if lag remains.

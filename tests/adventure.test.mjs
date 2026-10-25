@@ -4,9 +4,9 @@ import {CHARACTERS} from '../prototype/characters.js';
 import {newPlayer,createPlayerStore,validateName,migrateSave,SAVE_KEY,RECOVERY_KEY} from '../prototype/player-store.js';
 import {tutorialEvent,replayTutorial,TUTORIAL_STAGES} from '../prototype/tutorial.js';
 import {routeTo,walkable,movePlayer,PLACES,placePoint} from '../prototype/town-model.js';
-import {experiments,eligibility,assertAcyclic,experimentGraph,validateDefinitions} from '../prototype/experiment-definitions.js';
+import {experiments,eligibility,assertAcyclic,graphLayout,graphEdgePath,experimentGraph,validateDefinitions} from '../prototype/experiment-definitions.js';
 import {purchase,applyReward,claimTrialGrant,reserveAttempt,completeAttempt,apparatusAccess} from '../prototype/progression.js';
-import {EQUIPMENT} from '../prototype/equipment-catalog.js';
+import {EQUIPMENT,STARTER_EQUIPMENT} from '../prototype/equipment-catalog.js';
 const memory=()=>{const m=new Map();return{getItem:k=>m.get(k)||null,setItem:(k,v)=>m.set(k,v),removeItem:k=>m.delete(k)}};
 const player=()=>newPlayer('Ada','c01-3');
 test('all six existing identities can start and persist a local adventure',()=>{assert.equal(CHARACTERS.length,6);for(const c of CHARACTERS){const storage=memory(),store=createPlayerStore(storage);store.start('Åse',c.id);assert.equal(createPlayerStore(storage).load().player.characterId,c.id);}});
@@ -27,9 +27,40 @@ test('reservations consume supplies once, keep equipment and record completion i
 test('queued transactions preserve combined currency and ownership changes',async()=>{const store=createPlayerStore(memory());store.start('Ada','c01-1');await store.transact(claimTrialGrant);await Promise.all([store.transact(p=>purchase(p,'beaker')),store.transact(p=>purchase(p,'beaker'))]);assert.equal(store.load().player.equipment.beaker,3);assert.equal(store.load().player.currency,1004);});
 
 test('every runtime apparatus instance is covered by the inspected adventure mapping',async()=>{const {LAB_FACTORIES}=await import('../scripts/lab-fixtures.mjs');for(const e of experiments){const state=LAB_FACTORIES[e.id]();assert.deepEqual(Object.keys(e.apparatus).sort(),Object.keys(state.items).sort(),e.id);const p=player();p.equipment={...e.equipment};const access=apparatusAccess(p,e,{supplies:{...e.materials}});for(const [id,part]of Object.entries(e.apparatus))if(part.required)assert.equal(access[id],true,e.id+'/'+id);}});
-test('only genuine explicit prerequisites can gate experiments',()=>{assert.ok(experiments.every(e=>e.prerequisites.length===0));const graph=experimentGraph();assert.equal(graph.nodes.filter(n=>n.type==='experiment').length,13);assert.ok(graph.edges.filter(e=>e.from==='starter').length>3);const cycle=experiments.slice(0,2).map(e=>({...e,prerequisites:[experiments[e.id===experiments[0].id?1:0].id]}));assert.throws(()=>experimentGraph(cycle),/Cyclic/);});
+test('only genuine explicit prerequisites can gate experiments',()=>{assert.ok(experiments.every(e=>e.prerequisites.length===0));const graph=experimentGraph();assert.equal(graph.nodes.filter(n=>n.type==='experiment').length,13);assert.ok(graph.edges.some(e=>e.from==='evaporation'&&e.to==='distillation'));assert.ok(!graph.edges.some(e=>e.from==='starter'&&e.to==='distillation'));assert.ok(graph.edges.some(e=>e.from==='filtration'&&e.to==='recrystallisation'));const cycle=experiments.slice(0,2).map(e=>({...e,prerequisites:[experiments[e.id===experiments[0].id?1:0].id]}));assert.throws(()=>experimentGraph(cycle),/Cyclic/);});
 test('acquiring equipment updates eligibility without requiring another topic completion',()=>{const p=player();for(const id of ['beaker','filter-funnel','stand'])applyReward(p,{id:'gear-'+id,equipment:{[id]:1}});applyReward(p,{id:'filter-supplies',materials:{'sand-water':1,'filter-paper':1}});assert.equal(p.completed.length,0);assert.equal(eligibility(p,'filtration').available,true);});
 test('one paper sheet enables first filtration while fresh paper stays optional and unavailable',()=>{const e=experiments.find(e=>e.id==='recrystallisation'),p=player();p.equipment={...e.equipment};p.materials={...e.materials};const a=reserveAttempt(p,e.id),access=apparatusAccess(p,e,a);assert.equal(p.materials['filter-paper'],0);assert.equal(access.paper,true);assert.equal(access.freshPaper,false);assert.equal(access.receiverB,false);});
 test('invalid saved attempt reservations protect the save instead of crashing the lab',()=>{const s=memory(),p=player();p.attempts.evaporation={id:'bad',experiment:'evaporation',status:'active'};s.setItem(SAVE_KEY,JSON.stringify(p));assert.equal(createPlayerStore(s).load().status,'protected');});
 test('invalid multi-item reward does not partially grant credits or equipment',()=>{const p=player(),before=JSON.stringify(p);assert.equal(applyReward(p,{id:'bad',credits:100,equipment:{balance:1,unknown:2}}).ok,false);assert.equal(JSON.stringify(p),before);});
 test('game re-creation has a different profile identity and old v2 data gets a stable compatibility identity',()=>{const a=player(),b=player();assert.notEqual(a.profileId,b.profileId);delete a.profileId;assert.equal(migrateSave(a).profileId,migrateSave(a).profileId);});
+
+test('equipment map edges represent strict reusable kit containment with exact additions, not completion gates',()=>{
+ const graph=experimentGraph(),kit=id=>id==='starter'?STARTER_EQUIPMENT:{...STARTER_EQUIPMENT,...Object.fromEntries(Object.entries(experiments.find(e=>e.id===id).equipment).map(([key,n])=>[key,Math.max(n,STARTER_EQUIPMENT[key]||0)]))};
+ for(const edge of graph.edges){
+  const from=kit(edge.from),to=kit(edge.to);
+  for(const [id,n]of Object.entries(from))assert.ok((to[id]||0)>=n,edge.from+' → '+edge.to+' retains '+id);
+  const additions=Object.fromEntries(Object.entries(to).map(([id,n])=>[id,Math.max(0,n-(from[id]||0))]).filter(([,n])=>n));assert.deepEqual(edge.equipment,additions);
+  const p=player();p.equipment={...to};p.materials={...experiments.find(e=>e.id===edge.to).materials};p.completed=[];assert.equal(eligibility(p,edge.to).available,true);
+ }
+ const distillation=graph.edges.find(e=>e.from==='evaporation'&&e.to==='distillation');assert.equal(distillation.equipment.heater,undefined);assert.equal(distillation.equipment.condenser,1);assert.equal(distillation.equipment.beaker,1);assert.equal(distillation.equipment.stand,2);
+});
+
+test('dependency map layout separates nodes and places every dependency before its target',()=>{
+ const layout=graphLayout(experimentGraph());
+ for(let i=0;i<layout.nodes.length;i++)for(let j=i+1;j<layout.nodes.length;j++){
+  const a=layout.nodes[i],b=layout.nodes[j];assert.ok(Math.abs(a.x-b.x)>=165||Math.abs(a.y-b.y)>=66,'nodes do not overlap');
+ }
+ for(const edge of layout.edges)assert.ok(layout.nodes.find(n=>n.id===edge.from).x<layout.nodes.find(n=>n.id===edge.to).x);
+ assert.ok(Math.max(...layout.nodes.map(n=>n.y+66))<=620,'branches fit the viewport height');
+});
+
+test('equipment arrows never pass through unrelated experiment boxes',()=>{
+ const layout=graphLayout(experimentGraph());
+ for(const edge of layout.edges){
+  const points=[...graphEdgePath(layout.nodes,edge).matchAll(/[ML]([\d.]+) ([\d.]+)/g)].map(m=>({x:Number(m[1]),y:Number(m[2])}));
+  for(let i=1;i<points.length;i++)for(let step=0;step<=100;step++){
+   const a=points[i-1],b=points[i],x=a.x+(b.x-a.x)*step/100,y=a.y+(b.y-a.y)*step/100;
+   assert.ok(!layout.nodes.some(n=>n.id!==edge.from&&n.id!==edge.to&&x>n.x&&x<n.x+165&&y>n.y&&y<n.y+66),edge.from+' → '+edge.to+' stays clear');
+  }
+ }
+});
