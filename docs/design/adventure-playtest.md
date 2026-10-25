@@ -12,3 +12,9 @@ Run `npm start` with Node 22+, then open `http://127.0.0.1:4173`.
 8. Replay the tutorial from Options; it retains inventory, credits and completions. Existing unrestricted labs remain at `/laboratory.html` for independent chemistry playtesting, without changing adventure progress.
 
 Names and saves stay in the current browser. There are no accounts, analytics or external progress services. Clearing browser storage deletes the local profile. The roadmap records remaining questions, limitations and implementation commands.
+
+## Four-direction walking playtest
+
+All six selected characters now have front/back/right walk cycles and mirrored left frames. Move in each direction using WASD/arrows, touch arrows or click-to-walk. Releasing controls, opening a dialogue or reaching an obstacle stops the animation. The last facing direction survives saving. Reduced-motion preference keeps directional facing while freezing the gait. `/walking-preview.html` shows all 24 character/direction combinations together with a Pause/Play control.
+
+Future quest direction has changed: NPCs will give practical laboratory tasks, completed for credits or equipment. The owner explicitly deferred implementation. Existing review completion is still in place for this playtest; it does not award quest rewards or implement future practical-success checks. Free supply-packet restocking remains confirmed.

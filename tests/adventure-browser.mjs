@@ -60,6 +60,12 @@ try{
   await click(`[data-character-choice="c01-${i}"]`);await type('#player-name','Player '+i);await click('#start-adventure');
   await waitFor("!document.querySelector('#game').hidden",'town');assert.equal(await evaluate("document.querySelector('#player svg').dataset.character"),'c01-'+i);
   await send('Page.reload');await waitFor("!document.querySelector('#game').hidden",'returning player');assert.equal(await evaluate("document.querySelector('#player-summary').textContent"),'Player '+i);
+  for(const [keyName,code,direction]of [['d','KeyD','right'],['a','KeyA','left'],['w','KeyW','back'],['s','KeyS','front']]){
+   await send('Input.dispatchKeyEvent',{type:'keyDown',key:keyName,code});const frames=new Set();for(let n=0;n<5;n++){await pause(55);frames.add(await evaluate("document.querySelector('#player .walk-sprite').dataset.frame"));}
+   assert.equal(await evaluate("document.querySelector('#player .walk-sprite').dataset.facing"),direction);assert.ok(frames.size>1,'walking advances actual sprite frames');await send('Input.dispatchKeyEvent',{type:'keyUp',key:keyName,code});await waitFor("document.querySelector('#player .walk-sprite').dataset.moving==='false'",'idle');assert.equal(await evaluate("document.querySelector('#player .walk-sprite').dataset.frame"),'1');
+  }
+  assert.equal(await evaluate(`new Promise(resolve=>{const image=new Image();image.onload=()=>resolve(true);image.onerror=()=>resolve(false);image.src='assets/world/walk-c01-${i}.png';})`),true,'actual walk atlas loads');
+
  }
  assert.equal(dialogs,5);await screenshot('chemtopia-adventure-town.png');
  // Cancelled New Game leaves the same profile and town intact.
@@ -84,6 +90,10 @@ try{
  const credits=await evaluate("JSON.parse(localStorage.getItem('chemtopia.player')).currency");await click('[data-action=grant]');await waitFor("JSON.parse(localStorage.getItem('chemtopia.player')).currency==="+(credits+1000),'testing allowance');await click('[data-action=grant]');assert.equal(await evaluate("JSON.parse(localStorage.getItem('chemtopia.player')).currency"),credits+1000);
  await click('[data-buy=beaker]');await waitFor("JSON.parse(localStorage.getItem('chemtopia.player')).equipment.beaker===2",'purchase ownership');await close();
  await send('Emulation.setDeviceMetricsOverride',{width:390,height:844,deviceScaleFactor:1,mobile:true});await click('#map-button');await click('[data-map-zoom="1.2"]');await click('[data-map-pan=down]');assert.equal(await evaluate("document.documentElement.scrollWidth<=innerWidth+1"),true,'phone has no horizontal page overflow');await screenshot('chemtopia-adventure-phone-map.png');await close();
- console.log('PASS six actual characters, local returning profiles, confirmed/cancelled New Game, native movement/interactions, inventory, tutorial resume, starter lab ownership, reservation reload and progression map');
- assert.deepEqual(exceptions,[]);await screenshot('chemtopia-adventure-tutorial-complete.png');
+ console.log('PASS all six four-direction walk cycles, idle frames and atlas loading; six actual characters, local returning profiles, confirmed/cancelled New Game, native movement/interactions, inventory, tutorial resume, starter lab ownership, reservation reload and progression map');
+ await screenshot('chemtopia-adventure-tutorial-complete.png');
+ await send('Page.navigate',{url:base+'/walking-preview.html'});await waitFor("document.querySelectorAll('.walk-sprite').length===24",'all directions preview');await click('#toggle');await pause(80);assert.equal(await evaluate("[...document.querySelectorAll('.walk-sprite')].every(e=>e.dataset.moving==='false'&&e.dataset.frame==='1')"),true);await screenshot('chemtopia-walking-preview.png');
+ await send('Emulation.setEmulatedMedia',{features:[{name:'prefers-reduced-motion',value:'reduce'}]});await send('Page.navigate',{url:base+'/adventure.html'});await waitFor("!!document.querySelector('#player .walk-sprite')",'reduced motion town');await send('Input.dispatchKeyEvent',{type:'keyDown',key:'d',code:'KeyD'});await pause(220);assert.equal(await evaluate("document.querySelector('#player .walk-sprite').dataset.facing"),'right');assert.equal(await evaluate("document.querySelector('#player .walk-sprite').dataset.frame"),'1');await send('Input.dispatchKeyEvent',{type:'keyUp',key:'d',code:'KeyD'});
+ assert.deepEqual(exceptions,[]);console.log('PASS 24-direction preview, pause control and reduced-motion directional movement');
+
 }finally{if(ws)ws.close();chrome.kill();server.kill();await pause(300);await rm(profile,{recursive:true,force:true,maxRetries:5,retryDelay:100});}

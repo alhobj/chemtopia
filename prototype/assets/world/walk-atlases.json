@@ -1,0 +1,50 @@
+{
+  "created": "2026-10-25",
+  "generator": "OpenAI image_gen",
+  "reference": "docs/art/proposals/character-studies-c01.png",
+  "purpose": "Owner-requested four-direction walking for all six existing C01 identities",
+  "layout": {
+    "columns": 4,
+    "rows": [
+      "front/down",
+      "back/up",
+      "right"
+    ],
+    "left": "Mirror right row at runtime",
+    "frames": "Four alternating chronological step poses per direction"
+  },
+  "promptSummary": "Preserve the referenced C01 character identity, clothing, hair and detailed pixel-art B style. Transparent equally spaced four-column, three-row grid; front, back and right four-frame walk cycles, consistent scale, centered full body, no text/background/other characters.",
+  "processing": "Runtime files are unchanged copies of generated PNGs. SVG selects normalized cells; no pixel editing or source deletion.",
+  "files": [
+    {
+      "character": "c01-1",
+      "source": "exec-6b215ec6-7d8e-4d22-87a9-8d2258f3cb68.png",
+      "runtime": "walk-c01-1.png"
+    },
+    {
+      "character": "c01-2",
+      "source": "exec-4e025b18-b6da-4b66-a126-ca942722569d.png",
+      "runtime": "walk-c01-2.png"
+    },
+    {
+      "character": "c01-3",
+      "source": "exec-65c94444-4679-4f47-9252-20bd57fb09fc.png",
+      "runtime": "walk-c01-3.png"
+    },
+    {
+      "character": "c01-4",
+      "source": "exec-fecdb977-7cee-4ed8-a6f5-a86aa874889a.png",
+      "runtime": "walk-c01-4.png"
+    },
+    {
+      "character": "c01-5",
+      "source": "exec-9c0ba834-843c-4ba5-9610-ad2488cfcdae.png",
+      "runtime": "walk-c01-5.png"
+    },
+    {
+      "character": "c01-6",
+      "source": "exec-8c3a7087-9611-42a6-a2e1-f76af973306c.png",
+      "runtime": "walk-c01-6.png"
+    }
+  ]
+}

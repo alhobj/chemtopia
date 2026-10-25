@@ -146,3 +146,7 @@ The owner explicitly requested work on all three labs together, continued implem
 ## Approved town and equipment progression expansion
 
 The owner explicitly authorised implementing six existing C01 character selections, local nickname/save/resume, selected avatar movement in town, a modular tutorial, equipment/material ownership, a data-driven progression map covering all thirteen existing labs, configurable purchasing and future reward APIs. One local profile, individual ownership and equipment/material-only unlocks are confirmed. This supersedes earlier no-avatar/no-persistence/increment-by-increment gates within this expansion. Preserve chemistry mechanics, original practice URLs and B equipment. No external player data, deployment or permanent mission economy is authorised. See CHEMTOPIA_ROADMAP.md and the experiment equipment audit. Existing commit/push authorisation continues.
+
+## Four-direction walking and deferred practical quests
+
+The owner requested four-direction walking for the existing selected characters. Dedicated directional animation atlases, runtime gait/facing and compatible saved facing are authorised. Future completion should be through NPC-issued practical laboratory quests with credits or equipment rewards; the owner explicitly said not to implement quests yet. Record that direction without adding quest logic, practical success gates or rewards now. Existing lab/review behaviour remains for the imminent playtest; free supply-packet restocking remains confirmed.
