@@ -14,6 +14,8 @@
 
 - One local profile per browser for now.
 - Individual equipment ownership.
+- Keep existing review-based completion rules for now, including existing lab-specific conditions; do not add a new practical-success gate.
+- Keep free restocking of complete experiment supply packets for now.
 - Availability depends on equipment/materials only; no arbitrary completed-topic prerequisites.
 
 ## Priorities / status
@@ -29,7 +31,7 @@
 - Local save schema v2 under `chemtopia.player`; validated migration for a v1-shaped local save, protected unrecognised/corrupt data, backup/recovery keys and confirmed New Game. No previous runtime save system exists to migrate automatically.
 - Names are local nicknames, 1–24 characters starting with a letter; Unicode supported. No identity is sent to a server.
 - Town controls: WASD/arrows, click-to-walk with obstacle routing, E / Interact, and touch controls. Existing lab Space/drag controls remain independent.
-- Smallest core setup identified so far: evaporation requires one beaker, basin and electric heater, plus a salt-solution batch; its extra receiving beaker is optional. Starter supply: two batches, with accessible basic restocking planned to prevent tutorial softlocks.
+- Smallest core setup identified so far: evaporation requires one beaker, basin and electric heater, plus a salt-solution batch; its extra receiving beaker is optional. Starter supply: two batches, with free packet restocking available to prevent tutorial softlocks.
 - Currency placeholder: “Lab credits”, starting 20. Prices and an optional one-time 1000-credit testing allowance are configurable, not permanent mission rewards. No completion rewards or mission campaign is being invented. The current combined core apparatus beyond the starter kit costs 695 credits, so the testing allowance covers all 13 core setups.
 - Character art is the actual concept-sheet appearance, displayed through cropped viewports on matching ground. A final directional walking sprite atlas remains a visual refinement; do not claim W01 provides all-six four-direction cycles.
 - Lab ownership enforcement will apply to explicitly launched adventure attempts. Bare lab URLs and bare laboratory selection remain a clearly separate practice/playtest route so existing labs/tests remain usable.
@@ -37,13 +39,13 @@
 
 ## Questions
 
-No blocking question remains for this increment. Confirmed choices above settle save slots, ownership and prerequisites. Two follow-up questions have been sent about practical-success completion and future material restocking; current defaults remain unchanged pending answers. Later decisions: final currency name/balance/prices; mission rewards and first-try bonus amounts; character customisation/production animations; how freely to restock materials; whether review completion should additionally require a verified practical outcome; future upgrades versus distinct apparatus; town size and NPC roles. Defaults remain configurable and are not presented as final selections.
+No blocking question remains for this increment. Confirmed choices above settle save slots, ownership and prerequisites. The owner subsequently confirmed retaining existing review rules and free supply-packet restocking for now. Later decisions: final currency name/balance/prices; mission rewards and first-try bonus amounts; character customisation/production animations; future upgrades versus distinct apparatus; town size and NPC roles. Defaults remain configurable and are not presented as final selections.
 
 ## Known limitations / next concrete step
 
 - Town uses the approved C01 front/back concept appearances with a walking bob; full directional sprite animations are still future art work.
 - Live lab physics is not serialised. Reopening an active reservation restarts its setup with the reserved supplies; town/tutorial/inventory/completion persist. Starting another attempt reserves another packet.
-- Consumable stocks are activity packets, not persisted per-pour mL/g. Basic supplies currently restock free to prevent softlocks; prices and policy remain provisional.
+- Consumable stocks are activity packets, not persisted per-pour mL/g. Free supply-packet restocking is owner-confirmed for now; no per-pour stock accounting or supply charges are introduced.
 - Completion follows the existing successful review (and chromatography ruler condition). No new chemistry/practical success condition or mission reward has been invented.
 - The map shows per-experiment acquisition milestones. Shared apparatus counts across branches, so these are shopping requirements, not separate mandatory kit purchases or a linear curriculum sequence.
 - Bare laboratory pages remain separate unrestricted practice, without progression recording. Adventure attempts enforce ownership.
@@ -62,10 +64,8 @@ Starter: evaporation (beaker + basin + heater; two salt-solution supplies). Bran
 
 ## Prioritised questions for the owner
 
-1. Should review success continue to record completion, or should each lab also require a verified practical outcome? This affects future completion rules; existing mechanics are preserved now.
-2. Should basic material supplies remain freely restockable, become purchased packets, or eventually use actual quantities? Current packets avoid silently converting qualitative models to real units.
-3. What should final credit prices, initial balance, mission rewards and first-try bonuses be? All current values and the testing grant are replaceable.
-4. Which NPC roles/town destinations and character customisation should come next? Full walk cycles need final art, not additional character identities.
+1. What should final equipment prices, initial credit balance, mission rewards and first-try bonuses be? Current equipment prices and the testing grant are replaceable; supplies remain freely restockable for now.
+2. Which NPC roles/town destinations and character customisation should come next? Full walk cycles need final art, not additional character identities.
 
 ## Continuation prompt
 
