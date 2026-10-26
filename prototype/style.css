@@ -42,3 +42,4 @@ main{max-width:none;margin:0;padding:6px}.lab-shell{height:calc(100dvh - 58px);m
 .pixel-measurement { shape-rendering: crispEdges; }
 
 .equipment-contents { mix-blend-mode: multiply; }
+.store-equipment{display:block;width:100%;margin:6px 0 10px;font-size:12px;min-height:36px}.store-feedback{font-size:11px;color:var(--teal);margin:0 0 8px}.store-feedback:empty{display:none}

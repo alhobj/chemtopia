@@ -23,3 +23,11 @@ The latest layout places the Equipment tab in the divider immediately to the rig
 ![Window-filling distillation layout](../art/previews/lab-layout-distillation.png)
 
 ![Window-filling chromatography layout](../art/previews/lab-layout-chromatography.png)
+
+## Explicit storage and occupied pickups
+
+Every lab now has **Store selected equipment** in the selected-item controls. Select an apparatus directly or through the Equipment list, then click Store to recover it from a crowded setup. Its contents are retained; powered equipment turns off and connections detach as in drag-to-storage. Retrieve it from Equipment afterward. Fixed fittings cannot be stored.
+
+A container/support can now be lifted with a loose tool or vessel resting on/in it. Those initial occupants no longer lock the initial pickup; unrelated obstacles still collide. Loose objects wake and fall when their support is stored, while explicitly attached children retain their existing storage behaviour.
+
+Checks: 275 model tests pass; native checks cover all thirteen Store buttons, retrieval and content preservation, plus a loaded heater lift and a basin falling when the heater is stored. Existing filtration, calorimetry and responsive lab checks pass.

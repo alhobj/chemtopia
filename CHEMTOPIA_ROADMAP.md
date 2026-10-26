@@ -74,7 +74,7 @@ Read AGENTS.md and CHEMTOPIA_ROADMAP.md. Preserve existing lab chemistry and the
 ## Commands
 
 - `npm start` — local game, port 4173.
-- `npm test` — 271 chemistry/model/save/progression/animation/rendering/network tests.
+- `npm test` — 275 chemistry/model/save/progression/animation/rendering/network tests.
 - `npm run test:browser` — existing Chromium practical workflows plus six-character/town/tutorial/shop checks.
 - `npm run check` — JavaScript syntax and catalogue validation.
 - `npm run build` — static files in `dist/`; serve through HTTP and open `adventure.html`.
@@ -181,3 +181,15 @@ Verification: model suite currently **271 tests passing**, build/static checks p
 Final container verification: **271 model tests pass**, build/static and whitespace checks pass. Native browser checks pass for filtration, distillation, chromatography, evaporation, recrystallisation, solution preparation/dilution, all five titration scenarios, both calorimetry labs, reaction rates, all three measurement labs and all thirteen responsive lab layouts. The new 56-study browser harness passes 294 protected-region exclusions plus 30 visible interior samples. One initial titration run failed its post-restart example-text assertion; the complete five-scenario rerun passed without changes to restart or question logic. No full town/animation browser rerun is claimed for this renderer-only correction.
 
 Visual follow-up caught the wash bottle's asymmetric source bounds: the pump projects right of its body, so the cavity is deliberately offset left rather than centred in the sprite rectangle. A protected point beside the actual bottle now catches that specific leakage. The chromatography shell is composited to align its front cavity with the existing solvent surface `216 − 200 × water/capacity`; actual paper-contact logic is unchanged and the visible height is tested against it.
+
+## Lifting occupied equipment and explicit Store control
+
+Owner requested lifting equipment even when another item rests on or inside it, plus a button for returning trapped equipment to storage. Implemented a shared **Store selected equipment** button beside the selected-item controls in all thirteen laboratories. It stops the current manipulation/action, uses existing storage, preserves contents and attached children, disconnects existing connections and switches powered equipment off. Fixed fittings, unavailable adventure apparatus, stored items and finished reviews cannot be stored. A visible confirmation points to Equipment for retrieval. No extra equipment is created.
+
+Pickup now recognises movable bodies already inside the selected container or resting above it. Those bodies do not veto the initial lift; physical contact/gravity remain active. This temporary movement clearance expires when separated or released, so new obstacles and fixed fittings still block movement. Retrieving stored apparatus retains strict collision validation and cannot use pickup clearance to spawn inside another vessel.
+
+Testing exposed a related sleeping-body bug: removing a support could leave its loose occupant suspended. Storing the support now wakes nearby affected bodies before removal; initial occupants also wake when their support/container is picked up. Unattached items remain on the bench and fall naturally rather than being silently stored. Existing explicitly attached children retain their original storage behaviour.
+
+Verification: **275 model tests pass**, build/static and whitespace checks pass. Added model checks cover loaded support lifting, contained tools, clearance expiry, blocking by a new fixed obstacle, unsupported items falling after storage, material preservation and strict blocked retrieval. Native browser tests pass for the Store button and retrieval in all thirteen labs, preserved content artwork, no duplication and fixed-tap protection. The actual heater-with-basin lift, Store removal and falling basin are exercised before a complete evaporation workflow. Filtration collision/pouring/spill workflows, both calorimetry workflows and all thirteen desktop/wide/phone lab layouts pass. No full sixteen-harness rerun is claimed for this increment.
+
+Next owner check: select a trapped item directly or from Equipment, click **Store selected equipment**, then drag it back from the menu into a clear space. Recheck lifting supports and containers with other apparatus resting on/in them. Quests remain deferred; chemistry, prices, progression and saves are unchanged.

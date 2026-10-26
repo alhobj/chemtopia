@@ -174,3 +174,7 @@ The owner requested a branching/merging dependency-map idea from their examples,
 ## Container interior follow-up
 
 The owner again reported liquid filling whole sprites. This authorises source-matched interior clipping and opening-only contents for opaque vessels, preserving the selected B source art, quantities, calibration, chemistry, collisions and anchors. A developer comparison page and rasterised clipping checks are within this bounded correction. Existing commit/push authorisation continues.
+
+## Occupied-equipment pickup and Store button
+
+The owner requested lifting apparatus despite loose equipment resting on/in it and a button for storing trapped apparatus. This authorises initial-occupant movement clearance, waking unsupported items, and an explicit selected-item Store control shared by the labs. Preserve new-obstacle/fixed-fitting collision checks, contents, ownership and existing storage/retrieval rules. Existing commit/push authorisation continues.

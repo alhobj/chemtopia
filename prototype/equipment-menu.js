@@ -1,12 +1,21 @@
 import {fitWorkbench} from './workbench-layout.js';
 import {storeItem,takeItem} from './equipment-storage.js';
-export function createEquipmentMenu({getState,world,groups,select,begin,end,render,isDragging=()=>false}){
+export function createEquipmentMenu({getState,world,groups,select,begin,end,render,isDragging=()=>false,getSelected=()=>null}){
  const bench=document.getElementById('bench'),list=document.getElementById('equipment');
  const panel=document.createElement('aside');panel.id='equipment-menu';panel.className='equipment-menu';panel.setAttribute('aria-label','Equipment storage');
  panel.innerHTML='<button id="equipment-tab" class="equipment-tab" aria-expanded="false" aria-controls="equipment-list">Equipment</button><div class="equipment-content"><h2 class="visually-hidden">Equipment</h2><div id="equipment-list"></div><p id="equipment-message" aria-live="polite"></p></div>';
  const workspace=document.querySelector('.workspace'),shell=document.createElement('div');shell.className='lab-shell';workspace.before(shell);shell.append(workspace);workspace.insertBefore(panel,bench.closest('.bench-panel'));fitWorkbench(bench);panel.querySelector('#equipment-list').append(list);
  for(const b of list.children){const status=document.createElement('small');status.className='equipment-status';b.append(status);}
- let pending=null;
+ const storeButton=document.createElement('button');storeButton.id='store-equipment';storeButton.type='button';storeButton.className='store-equipment secondary';storeButton.textContent='Store selected equipment';storeButton.disabled=true;
+ const storeFeedback=document.createElement('p');storeFeedback.id='store-feedback';storeFeedback.className='store-feedback';storeFeedback.setAttribute('aria-live','polite');
+ const selection=document.querySelector('#selected-name');selection.after(storeButton,storeFeedback);
+ storeButton.addEventListener('click',()=>{
+  const id=getSelected(),item=getState().items[id];if(!item||item.fixed||item.stored||item.adventureUnavailable||getState().phase!=='working')return;
+  const name=selection.textContent;select(null);end();pending=null;
+  if(storeItem(getState(),id,world()))storeFeedback.textContent=name+' stored. Retrieve it from Equipment.';
+  render();
+ });
+ let pending=null,lastSelection=null,lastState=null;
  const open=value=>{panel.classList.toggle('open',value);panel.querySelector('button').setAttribute('aria-expanded',String(value));};
  const inside=(e,r)=>e.clientX>=r.left&&e.clientX<=r.right&&e.clientY>=r.top&&e.clientY<=r.bottom;
  function wantsStore(e){if(!e||getState().phase!=='working')return false;const r=panel.classList.contains('open')?panel.getBoundingClientRect():panel.querySelector('#equipment-tab').getBoundingClientRect();return inside(e,r);}
@@ -50,7 +59,7 @@ export function createEquipmentMenu({getState,world,groups,select,begin,end,rend
   wantsStore,
   store(id){return storeItem(getState(),id,world());},
   sync(){
-   const s=getState();
+   const s=getState(),id=getSelected(),selected=s.items[id];if(id!==lastSelection||s!==lastState)storeFeedback.textContent='';lastSelection=id;lastState=s;storeButton.disabled=!selected||selected.fixed||selected.stored||selected.adventureUnavailable||s.phase!=='working';
    for(const [id,g]of groups){g.style.display=s.items[id].stored?'none':'';g.setAttribute('aria-hidden',String(Boolean(s.items[id].stored)));}
    for(const b of list.children){const o=s.items[b.dataset.equipment];b.dataset.stored=String(Boolean(o.stored));b.dataset.unavailable=String(Boolean(o.adventureUnavailable));if(o.adventureUnavailable)b.disabled=true;b.querySelector('.equipment-status').textContent=o.adventureUnavailable?'Not in your adventure inventory':o.stored?'Stored · drag to bench':o.fixed?'Fixed fitting':'On bench';}
   }

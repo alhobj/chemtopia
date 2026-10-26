@@ -64,13 +64,13 @@ try{
  await send('Input.dispatchMouseEvent',{type:'mouseMoved',x:800,y:400});await pause(250);
  assert.ok(await evaluate("!document.querySelector('#equipment-menu').classList.contains('open')"),'menu hides on mouse leave');
  assert.ok(await evaluate("(()=>{const tab=document.querySelector('#equipment-tab').getBoundingClientRect(),sidebar=document.querySelector('.sidebar').getBoundingClientRect(),bench=document.querySelector('.bench-panel').getBoundingClientRect();return Math.abs(tab.left-sidebar.right)<2&&Math.abs(tab.right-bench.left)<2&&tab.left>0;})()"),'drawer sits between objective and bench');
- const water=await evaluate("document.querySelector('[data-id=source] [fill=\"url(#liquid)\"]').getAttribute('height')");
+ const water=await evaluate("document.querySelector('[data-id=source] .liquid-fill rect').getAttribute('y')");
  await drag('source',150,180,40,false);
  await send('Input.dispatchMouseEvent',{type:'mouseMoved',buttons:1,...await menuPoint(evaluate)});
  await send('Input.dispatchMouseEvent',{type:'mouseReleased',button:'left',clickCount:1,...await menuPoint(evaluate)});await pause(250);
  assert.equal(await evaluate("document.querySelector('[data-equipment=source]').dataset.stored"),'true');
  assert.equal(await evaluate("document.querySelector('[data-id=source]').style.display"),'none');
- assert.equal(await evaluate("document.querySelector('[data-id=source] [fill=\"url(#liquid)\"]').getAttribute('height')"),water,'liquid preserved');
+ assert.equal(await evaluate("document.querySelector('[data-id=source] .liquid-fill rect').getAttribute('y')"),water,'liquid preserved');
  await screenshot('chemtopia-equipment-menu.png');
  const drop=await dragStored({id:'source',x:150,y:180,release:false,send,evaluate,pause});
  assert.equal(await evaluate("document.querySelector('[data-equipment=source]').dataset.stored"),'false');
@@ -92,7 +92,23 @@ try{
  }
  assert.equal(await evaluate("document.querySelector('[data-equipment=thermometer]').dataset.stored"),'true');
  assert.ok(!(await evaluate("document.querySelector('#bench').textContent")).includes('APPARATUS SHELF'));
- assert.deepEqual(exceptions,[]);console.log('PASS shelf replacement and no browser exceptions');
+
+ const storeCases=[['filtration','source'],['evaporation','source'],['chromatography','source'],['recrystallisation','source'],['solution','beaker'],['titration','acid'],['neutralisation','acid'],['combustion','water'],['rates','acid'],['conductivity','salt'],['colorimetry','stock'],['voltaic','left'],['distillation','source']];
+ for(const [lab,id]of storeCases){
+  await visitLab(lab);await click('[data-equipment='+id+']');
+  assert.equal(await evaluate("document.querySelector('#store-equipment').disabled"),false,lab+' selected item can be stored');
+  const markup=await evaluate(`document.querySelector('[data-id="${id}"]').innerHTML.replace(/rotate\([^)]+\)/g,'rotate')`);
+  await click('#store-equipment');assert.equal(await evaluate(`document.querySelector('[data-equipment="${id}"]').dataset.stored`),'true',lab+' button stores equipment');
+  assert.equal(await evaluate("document.querySelector('#store-equipment').disabled"),true);
+  assert.match(await evaluate("document.querySelector('#store-feedback').textContent"),/Retrieve it from Equipment/);
+  await hoverMenu(send,evaluate,pause);await evaluate(`document.querySelector('[data-equipment="${id}"]').focus()`);await key('Enter');await pause(100);
+  assert.equal(await evaluate(`document.querySelector('[data-equipment="${id}"]').dataset.stored`),'false',lab+' stored item is retrievable');
+  assert.equal(await evaluate(`document.querySelectorAll('[data-id="${id}"]').length`),1,'no duplicate item');
+  assert.equal(await evaluate(`document.querySelector('[data-id="${id}"]').innerHTML.replace(/rotate\([^)]+\)/g,'rotate')`),markup,'contents unchanged across storage');
+ }
+ await click('[data-equipment=tap]');assert.equal(await evaluate("document.querySelector('#store-equipment').disabled"),true,'fixed tap cannot be stored');
+ assert.deepEqual(exceptions,[]);console.log('PASS explicit Store button, loaded contents, retrieval and no duplication across all 13 labs; fixed fittings protected');
+
 }finally{
  if(ws)ws.close();chrome.kill();server.kill();await pause(300);await rm(profile,{recursive:true,force:true,maxRetries:5,retryDelay:100});
 }

@@ -51,6 +51,12 @@ try{
  assert.equal(await evaluate("document.querySelectorAll('.equipment-button').length"),4);
  await screenshot('chemtopia-evaporation-initial.png');
  await drag('basin',600,387,{dy:35,path:[{x:350,y:250},{x:600,y:250}]});await pause(300);
+ const lift=await drag('heater',600,350,{dy:40,release:false});
+ assert.ok(await evaluate("document.querySelector('[data-id=heater]').transform.baseVal.consolidate().matrix.f<390"),'heater can be lifted with basin resting on it');await lift();
+ await click('[data-equipment=heater]');await click('#store-equipment');assert.equal(await evaluate("document.querySelector('[data-equipment=heater]').dataset.stored"),'true');await pause(1600);
+ assert.ok(await evaluate("document.querySelector('[data-id=basin]').transform.baseVal.consolidate().matrix.f>430"),'loose basin wakes and falls when its support is stored');
+ await click('#restart');await drag('basin',600,387,{dy:35,path:[{x:350,y:250},{x:600,y:250}]});await pause(300);
+ console.log('PASS lifting a loaded support and Store recovery without suspending its loose equipment');
  const drop=await drag('source',565.6,120,{release:false,path:[{x:110,y:120}]});
  await key(' ','Space');await pause(3900);
  for(let i=0;i<30;i++){if(await evaluate("!document.querySelector('[data-id=source] [clip-path] rect')"))break;await pause(100);}

@@ -100,5 +100,5 @@ $('finish').addEventListener('click',()=>{
  panel.focus({preventScroll:true});panel.scrollIntoView({behavior:'smooth',block:'nearest'});
 });
 function frame(time){const dt=Math.min(.05,(time-last)/1000);last=time;const moved=stepPhysics(state,dt,drag?.active?drag.id:null),didPour=pouring;if(pouring){pour(state,selected,.32*dt);if(state.items[selected].water+state.items[selected].sand<=EPS){tiltItem(state,selected,0);pouring=false;state.flow=[];}}if(moved||didPour)render();requestAnimationFrame(frame);}
-menu=createEquipmentMenu({getState:()=>state,world:()=>physicsFor(state),groups,select,begin(id){select(id);beginPlacement(id);drag={id,dx:0,dy:0,active:true};},end:release,render,isDragging:()=>Boolean(drag?.active)});
+menu=createEquipmentMenu({getState:()=>state,getSelected:()=>selected,world:()=>physicsFor(state),groups,select,begin(id){select(id);beginPlacement(id);drag={id,dx:0,dy:0,active:true};},end:release,render,isDragging:()=>Boolean(drag?.active)});
 render();requestAnimationFrame(frame);

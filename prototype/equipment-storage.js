@@ -8,6 +8,7 @@ export function storeItem(state,id,world){
  const o=state.items[id];if(!o||o.fixed||o.adventureUnavailable||state.phase!=='working')return false;
  const ids=new Set([id]);let changed=true;
  while(changed){changed=false;for(const item of Object.values(state.items))if(item.parent&&ids.has(item.parent)&&!ids.has(item.id)){ids.add(item.id);changed=true;}}
+ world.wakeAfterRemoval(ids);
  if(state.links)state.links=state.links.filter(l=>!ids.has(l.a)&&!ids.has(l.b));
  for(const key of ids){state.items[key].stored=true;if('on'in state.items[key])state.items[key].on=false;}
  if(o.parent&&!ids.has(o.parent))o.parent=null;
@@ -22,7 +23,7 @@ export function takeItem(state,id,x,y,world){
  for(const [v]of snapshot){v.x+=dx;v.y+=dy;v.stored=false;}
  o.angle=0;state.held=id;world.hold(id);
  const entry=world.entries.get(id);
- if(entry&&world.blocked(entry.body,snapshot.map(([v])=>v.id))){
+ if(entry&&world.blocked(entry.body,snapshot.map(([v])=>v.id),false)){
   for(const [v,pose]of snapshot)Object.assign(v,pose);
   state.held=null;world.release();return false;
  }

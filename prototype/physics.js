@@ -34,7 +34,7 @@ function shape(item){
 }
 export class PhysicsWorld {
  constructor(state,onSpill){
-  this.state=state;this.onSpill=onSpill;this.links=new Map();this.entries=new Map();this.heldId=null;this.accumulator=0;this.seat=null;
+  this.state=state;this.onSpill=onSpill;this.links=new Map();this.entries=new Map();this.heldId=null;this.pickupClearance=new Set();this.accumulator=0;this.seat=null;
   this.engine=Engine.create({enableSleeping:true,positionIterations:12,velocityIterations:10,constraintIterations:6});
   this.engine.gravity.y=1.5;
   const width=state.width||1000;
@@ -73,8 +73,8 @@ export class PhysicsWorld {
    entry.last=pose;
   }
  }
- obstacles(id,excluded=[]){return Composite.allBodies(this.engine.world).filter(b=>b.label!==id&&!excluded.includes(b.label)&&!(id==='paper'&&b.label==='funnel'));}
- blocked(body,excluded=[]){return contacts(body,this.obstacles(body.label,excluded)).some(c=>Matter.Detector.canCollide(c.bodyA.parent.collisionFilter,c.bodyB.parent.collisionFilter)&&c.depth>.4);}
+ obstacles(id,excluded=[],pickup=true){return Composite.allBodies(this.engine.world).filter(b=>b.label!==id&&!excluded.includes(b.label)&&!(pickup&&id===this.heldId&&this.pickupClearance.has(b.label))&&!(id==='paper'&&b.label==='funnel'));}
+ blocked(body,excluded=[],pickup=true){return contacts(body,this.obstacles(body.label,excluded,pickup)).some(c=>Matter.Detector.canCollide(c.bodyA.parent.collisionFilter,c.bodyB.parent.collisionFilter)&&c.depth>.4);}
  read(){
   for(const [id,entry] of this.entries){
    const item=this.state.items[id],offset=rotate(entry.offset,entry.body.angle);
@@ -88,10 +88,33 @@ export class PhysicsWorld {
  }
  hold(id){
   if(id==='funnel'&&this.seat){for(const c of this.seat)Composite.remove(this.engine.world,c);this.seat=null;}
+  const starting=this.heldId!==id;
+  if(starting)this.pickupClearance.clear();
   this.heldId=id;this.sync();this.syncLinks();const entry=this.entries.get(id);if(!entry)return;
+  if(starting){
+   const bounds=entry.body.bounds;
+   for(const other of this.obstacles(id)){
+    if(other.isStatic||!this.state.items[other.label])continue;
+    const b=other.bounds;
+    const within=b.min.x>=bounds.min.x-1&&b.max.x<=bounds.max.x+1&&b.max.y<=bounds.max.y+2&&b.max.y>bounds.min.y;
+    const restingAbove=other.position.y<entry.body.position.y&&contacts(entry.body,[other]).some(c=>Math.abs(c.normal.y)>.55);
+    if(within||restingAbove){this.pickupClearance.add(other.label);Sleeping.set(other,false);}
+   }
+  }
+  this.prunePickupClearance();
   Body.setVelocity(entry.body,{x:0,y:0});Body.setAngularVelocity(entry.body,0);
  }
- release(){this.heldId=null;this.sync();this.syncLinks();}
+ prunePickupClearance(){
+  const bounds=this.entries.get(this.heldId)?.body.bounds;
+  for(const id of this.pickupClearance){const body=this.entries.get(id)?.body;
+   if(!bounds||!body||body.bounds.max.x<bounds.min.x-2||body.bounds.min.x>bounds.max.x+2||body.bounds.max.y<bounds.min.y-2||body.bounds.min.y>bounds.max.y+2)this.pickupClearance.delete(id);
+  }
+ }
+ wakeAfterRemoval(ids){
+  const removed=[...ids].map(id=>this.entries.get(id)?.body).filter(Boolean);
+  for(const {body}of this.entries.values())if(!ids.has(body.label)&&removed.some(r=>body.bounds.max.x>=r.bounds.min.x-2&&body.bounds.min.x<=r.bounds.max.x+2&&body.bounds.max.y>=r.bounds.min.y-2&&body.bounds.min.y<=r.bounds.max.y+2))Sleeping.set(body,false);
+ }
+ release(){this.heldId=null;this.pickupClearance.clear();this.sync();this.syncLinks();}
  moveHeld(id,x,y){
   this.hold(id);const entry=this.entries.get(id);if(!entry)return;
   const item=this.state.items[id],dx=x-item.x,dy=y-item.y,steps=Math.max(1,Math.ceil(Math.hypot(dx,dy)/2));
@@ -110,6 +133,7 @@ export class PhysicsWorld {
    tryStep({x:dx/steps,y:0});tryStep({x:0,y:dy/steps});
   }
   this.read();
+  this.prunePickupClearance();
  }
  tilt(id,degrees){
   this.sync();const entry=this.entries.get(id);if(!entry)return false;
@@ -136,6 +160,7 @@ export class PhysicsWorld {
    this.seatOnContact();this.accumulator-=1/120;
   }
   this.read();
+  this.prunePickupClearance();
   const hadSpill=this.state.passiveFlow.length>0;this.state.passiveFlow=[];
   for(const item of Object.values(this.state.items)){
    if(item.stored)continue;
