@@ -34,3 +34,7 @@ Recheck all four walking directions and the start/stop transition. Frame registr
 Open Progression map. The selected lab shows its incoming equipment requirements; **Show whole network** reveals how shared apparatus branches into several labs and multiple inputs converge on one lab. Every incoming required group is needed. Count milestones represent total ownership, not extra consumed items. Click equipment groups to inspect their contents and uses. Select a different experiment, then use **Focus selected lab** to simplify the view; zoom/pan remain available. Locked labs are discoverable here even though they are absent from your adventure lab room.
 
 Visit Equipment & supplies to see matching apparatus previews for all 42 reusable items. Buy the second beaker, filtration funnel and stand and obtain sand–water/filter-paper supplies: filtration appears in your room. Missing supplies hide an experiment until restocked. The direct unrestricted practice room remains unchanged for chemistry testing.
+
+## Quickly unlock everything for testing
+
+In your adventure laboratory room, click **Testing: stock & unlock all labs** below the navigation. This gives your local inventory at least 100 of every equipment item and supply packet, revealing all thirteen experiments. Click again whenever you need to restock. Larger counts, existing progress and credits are preserved; the stock survives reloading.

@@ -1,7 +1,7 @@
 import {sprite} from './equipment-art.js';
 import {experiments as definitions,eligibility} from './experiment-definitions.js';
 import {playerStore} from './player-store.js';
-import {launchExperiment} from './progression.js';
+import {launchExperiment,stockAllLabsForTesting} from './progression.js';
 import {requirementDetails} from './progression-ui.js';
 export const experiments=definitions.map(e=>({...e,name:e.shortName||e.name}));
 const adventure=new URL(location.href).searchParams.get('adventure')==='1';
@@ -38,6 +38,12 @@ if(matchMedia('(max-width:760px)').matches)showList(true);
 if(adventure){
  const l=playerStore.load();if(!l.player){location.replace('adventure.html');}else{
   const nav=document.createElement('nav');nav.className='adventure-room-nav';nav.innerHTML='<a href="adventure.html">← Town</a><a href="adventure.html?panel=map">Progression map</a><a href="adventure.html?panel=shop">Equipment & supplies</a><span id="room-profile"></span>';document.querySelector('header').after(nav);
+  const testing=document.createElement('div');testing.className='room-testing';testing.innerHTML='<button id="stock-all-labs" type="button">Testing: stock & unlock all labs</button><span id="testing-stock-status" role="status"></span>';nav.after(testing);
+  testing.querySelector('button').addEventListener('click',async()=>{
+   const button=testing.querySelector('button'),status=testing.querySelector('[role=status]');button.disabled=true;
+   try{const {result}=await playerStore.transact(p=>{if(p.profileId!==l.player.profileId)throw Error('The local player changed. Return to town and reopen the laboratory.');return stockAllLabsForTesting(p);});refresh();status.textContent=result.message;}
+   catch(error){status.textContent=error.message;}finally{button.disabled=false;}
+  });
   const dialog=document.createElement('dialog');dialog.id='room-requirements';dialog.innerHTML='<div id="room-requirement-detail"></div><div class="room-actions"><button id="room-launch">Start experiment</button><a href="adventure.html?panel=shop">Obtain equipment / supplies</a><button id="room-close">Close</button></div><p id="room-error" role="status"></p>';document.body.append(dialog);let current=null;
   function refresh(){document.querySelector('#detail-name').textContent='Your available investigations';document.querySelector('#detail-objective').textContent='Choose a bench setup. Find future labs and missing supplies on the progression map.';document.querySelector('#open-experiment').hidden=true;document.querySelectorAll('.bench-experiment.selected').forEach(a=>a.classList.remove('selected'));const p=playerStore.load().player;if(!p){location.replace('adventure.html');return;}list.setAttribute('aria-label','Available experiments');document.querySelector('#room-profile').textContent=p.name+' · '+p.currency+' Lab credits';for(const e of experiments){const r=eligibility(p,e.id);for(const a of [room.querySelector(`[data-lab="${e.id}"]`),list.querySelector(`[data-list-lab="${e.id}"]`)]){a.hidden=!r.available;a.dataset.state=r.state;a.setAttribute('aria-label',e.name+': '+r.label);a.href=e.file+'?adventure=1';}}const count=experiments.filter(e=>eligibility(p,e.id).available).length;if(!count)document.querySelector('#detail-objective').textContent='No experiments are ready yet. Visit the progression map to see missing equipment or restock supplies in the shop.';}
   async function inspect(id){const p=playerStore.load().player,e=definitions.find(e=>e.id===id);if(!p||!e)return;current=e;await playerStore.transact(p=>{if(!p.tutorial.flags.includes('enter-lab'))p.tutorial.flags.push('enter-lab');});const {tutorialEvent}=await import('./tutorial.js');await playerStore.transact(p=>tutorialEvent(p,'view-requirements'));document.querySelector('#room-requirement-detail').innerHTML=requirementDetails(playerStore.load().player,e);document.querySelector('#room-launch').disabled=!eligibility(p,e.id).available;document.querySelector('#room-error').textContent='';dialog.showModal();}

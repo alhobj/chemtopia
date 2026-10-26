@@ -178,3 +178,7 @@ The owner again reported liquid filling whole sprites. This authorises source-ma
 ## Occupied-equipment pickup and Store button
 
 The owner requested lifting apparatus despite loose equipment resting on/in it and a button for storing trapped apparatus. This authorises initial-occupant movement clearance, waking unsupported items, and an explicit selected-item Store control shared by the labs. Preserve new-obstacle/fixed-fitting collision checks, contents, ownership and existing storage/retrieval rules. Existing commit/push authorisation continues.
+
+## Lab-room testing stock shortcut
+
+The owner explicitly requested a testing button that unlocks all labs/gives many of each needed item. This authorises a repeatable, labelled local inventory top-up in the adventure lab room. Preserve existing progress, larger stock counts, currency and normal eligibility rules; do not turn it into a mission reward. Existing commit/push authorisation continues.

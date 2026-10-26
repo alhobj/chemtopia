@@ -5,7 +5,7 @@ import {newPlayer,createPlayerStore,validateName,migrateSave,SAVE_KEY,RECOVERY_K
 import {tutorialEvent,replayTutorial,TUTORIAL_STAGES} from '../prototype/tutorial.js';
 import {routeTo,walkable,movePlayer,PLACES,placePoint} from '../prototype/town-model.js';
 import {experiments,eligibility,assertAcyclic,graphLayout,graphEdgePath,experimentGraph,validateDefinitions} from '../prototype/experiment-definitions.js';
-import {purchase,applyReward,claimTrialGrant,reserveAttempt,completeAttempt,apparatusAccess} from '../prototype/progression.js';
+import {purchase,stockAllLabsForTesting,TESTING_STOCK,applyReward,claimTrialGrant,reserveAttempt,completeAttempt,apparatusAccess} from '../prototype/progression.js';
 import {EQUIPMENT,STARTER_EQUIPMENT} from '../prototype/equipment-catalog.js';
 const memory=()=>{const m=new Map();return{getItem:k=>m.get(k)||null,setItem:(k,v)=>m.set(k,v),removeItem:k=>m.delete(k)}};
 const player=()=>newPlayer('Ada','c01-3');
@@ -63,4 +63,13 @@ test('equipment arrows never pass through unrelated experiment boxes',()=>{
    assert.ok(!layout.nodes.some(n=>n.id!==edge.from&&n.id!==edge.to&&x>n.x&&x<n.x+165&&y>n.y&&y<n.y+66),edge.from+' → '+edge.to+' stays clear');
   }
  }
+});
+
+test('testing stock unlocks every lab, persists and replenishes without erasing progress or larger inventories',async()=>{
+ const store=createPlayerStore(memory());store.start('Ada','c01-1');
+ await store.transact(p=>{p.equipment.beaker=200;p.completed=['evaporation'];stockAllLabsForTesting(p);});
+ let p=store.load().player;assert.equal(p.equipment.beaker,200);assert.equal(p.currency,20);assert.deepEqual(p.completed,['evaporation']);
+ for(const e of experiments)assert.equal(eligibility(p,e.id).available,true,e.id);
+ const before=JSON.stringify(p);stockAllLabsForTesting(p);assert.equal(JSON.stringify(p),before);
+ await store.transact(p=>{p.materials['salt-solution']=2;stockAllLabsForTesting(p);});assert.equal(store.load().player.materials['salt-solution'],TESTING_STOCK);
 });

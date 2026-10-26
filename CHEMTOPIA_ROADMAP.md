@@ -74,7 +74,7 @@ Read AGENTS.md and CHEMTOPIA_ROADMAP.md. Preserve existing lab chemistry and the
 ## Commands
 
 - `npm start` — local game, port 4173.
-- `npm test` — 275 chemistry/model/save/progression/animation/rendering/network tests.
+- `npm test` — 276 chemistry/model/save/progression/animation/rendering/network tests.
 - `npm run test:browser` — existing Chromium practical workflows plus six-character/town/tutorial/shop checks.
 - `npm run check` — JavaScript syntax and catalogue validation.
 - `npm run build` — static files in `dist/`; serve through HTTP and open `adventure.html`.
@@ -193,3 +193,9 @@ Testing exposed a related sleeping-body bug: removing a support could leave its 
 Verification: **275 model tests pass**, build/static and whitespace checks pass. Added model checks cover loaded support lifting, contained tools, clearance expiry, blocking by a new fixed obstacle, unsupported items falling after storage, material preservation and strict blocked retrieval. Native browser tests pass for the Store button and retrieval in all thirteen labs, preserved content artwork, no duplication and fixed-tap protection. The actual heater-with-basin lift, Store removal and falling basin are exercised before a complete evaporation workflow. Filtration collision/pouring/spill workflows, both calorimetry workflows and all thirteen desktop/wide/phone lab layouts pass. No full sixteen-harness rerun is claimed for this increment.
 
 Next owner check: select a trapped item directly or from Equipment, click **Store selected equipment**, then drag it back from the menu into a clear space. Recheck lifting supports and containers with other apparatus resting on/in them. Quests remain deferred; chemistry, prices, progression and saves are unchanged.
+
+## Lab-room testing stock button
+
+Owner requested a lab-screen testing button to unlock everything and give many of each required item. Added **Testing: stock & unlock all labs** immediately below the navigation in the adventure laboratory room. It transactionally tops up every reusable catalogue item and every consumable supply packet to at least **100**, including optional equipment. All current experiments become eligible through the existing requirements model and appear immediately. Stock persists locally. Repeated clicks replenish the floor rather than multiply inventory; existing counts above 100 are preserved. Currency, completion records, character and tutorial are not changed. The unrestricted practice room already has all experiments available and retains its existing behaviour.
+
+Verification: **276 model tests pass** and build/static checks pass. Added coverage proves eligibility for every actual experiment, local-save persistence, preservation of larger inventory/progress and repeatable replenishment. Native adventure browser checks include clicking the button, revealing all thirteen lab previews, verifying equipment/material counts and retaining availability after reload. The full adventure browser workflow passes, including the new button and reload checks. Quests remain deferred.
