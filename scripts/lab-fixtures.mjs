@@ -1,3 +1,4 @@
+import {createState as equilibrium} from '../prototype/equilibrium-model.js';
 // Inspection/testing only: production progression definitions do not load lab physics.
 import {createState as filtration} from '../prototype/model.js';
 import {createState as evaporation} from '../prototype/evaporation-model.js';
@@ -11,4 +12,4 @@ import {createState as rates} from '../prototype/rates-model.js';
 import {createState as conductivity} from '../prototype/conductivity-model.js';
 import {createState as colorimetry} from '../prototype/colorimetry-model.js';
 import {createState as voltaic} from '../prototype/voltaic-model.js';
-export const LAB_FACTORIES={filtration,evaporation,chromatography,recrystallisation,solution,titration,distillation,neutralisation:()=>calorimetry('neutralisation'),combustion:()=>calorimetry('combustion'),rates,conductivity,colorimetry,voltaic};
+export const LAB_FACTORIES={filtration,evaporation,chromatography,recrystallisation,solution,titration,distillation,neutralisation:()=>calorimetry('neutralisation'),combustion:()=>calorimetry('combustion'),rates,conductivity,colorimetry,voltaic,equilibrium};

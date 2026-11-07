@@ -182,3 +182,7 @@ The owner requested lifting apparatus despite loose equipment resting on/in it a
 ## Lab-room testing stock shortcut
 
 The owner explicitly requested a testing button that unlocks all labs/gives many of each needed item. This authorises a repeatable, labelled local inventory top-up in the adventure lab room. Preserve existing progress, larger stock counts, currency and normal eligibility rules; do not turn it into a mission reward. Existing commit/push authorisation continues.
+
+## Authorised advanced practical increment
+
+The owner explicitly authorises sequential, complete local additions: Fe³⁺/SCN⁻ quantitative equilibrium through existing colorimetry, ethanoic acid/ethanoate buffer investigation reusing the numerical acid–base solver, then controlled carbonate-rate extensions. This supersedes approval gates within that bounded scope. Verify supplied-guide curriculum codes/levels; document teaching constants and limitations; preserve existing labs/IDs/saves/reservations; separate optional HL analysis. Do not deploy, change Chemistree, create quests, rebalance the economy or add external services/AI calls.

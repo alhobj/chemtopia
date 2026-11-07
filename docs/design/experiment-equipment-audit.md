@@ -19,6 +19,7 @@ All apparatus was supplied by the original standalone practice labs. Adventure o
 | Conductivity | Beaker × 6; Conductivity meter and leads × 1; Conductivity probe × 2 | Conductivity sample set × 1; Water supply × 1 | Beaker × 5; Conductivity meter and leads × 1; Conductivity probe × 2 | No |
 | Colorimetry | Beaker × 6; Cuvette × 2; Colorimeter × 1 | Colorimetry stock and unknown × 1; Water supply × 1 | Beaker × 5; Cuvette × 2; Colorimeter × 1 | No |
 | Zinc–copper voltaic cell | Beaker × 2; Voltmeter / load and leads × 1; Salt-bridge tube × 1 | Zinc/copper sulfate solutions × 1; Zinc strip supply × 1; Copper strip supply × 1; KNO₃ bridge electrolyte × 1 | Beaker × 1; Voltmeter / load and leads × 1; Salt-bridge tube × 1 | No |
+| Iron–thiocyanate equilibrium | Beaker × 8; Cuvette × 2; Colorimeter × 1 | Iron–thiocyanate activity supply × 1; Water supply × 1 | Beaker × 7; Cuvette × 2; Colorimeter × 1 | No |
 
 ## Important boundaries
 

@@ -7,7 +7,7 @@ import {newPlayer} from '../prototype/player-store.js';
 import {equipmentPreview} from '../prototype/equipment-previews.js';
 import {mapMarkup,gearDetails} from '../prototype/dependency-map.js';
 test('network expresses shared equipment branches and converging lab requirements without completion gates',()=>{
- const graph=dependencyNetwork();assert.ok(assertAcyclic(graph));assert.equal(graph.nodes.filter(n=>n.type==='experiment').length,13);
+ const graph=dependencyNetwork();assert.ok(assertAcyclic(graph));assert.equal(graph.nodes.filter(n=>n.type==='experiment').length,experiments.length);
  assert.ok(graph.nodes.some(n=>n.type==='equipment'&&graph.edges.filter(e=>e.from===n.id&&e.type==='required').length>3));
  assert.ok(graph.edges.filter(e=>e.to==='distillation').length>3);
  for(const lab of experiments){
