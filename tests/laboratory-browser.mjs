@@ -80,7 +80,7 @@ try{
  assert.ok(await evaluate("[...document.querySelectorAll('.experiment-card')].every(a=>a.getBoundingClientRect().height>=44)"));
  await screenshot('chemtopia-laboratory-mobile.png');
  await click('[data-list-lab=combustion]');await pause(400);assert.equal(await evaluate("location.pathname"),'/combustion.html');
- assert.deepEqual(exceptions,[]);console.log('PASS selected room background, thirteen bench previews, keyboard launch, all lab round trips, single return link and phone list');
+ assert.deepEqual(exceptions,[]);console.log('PASS selected room background, catalogue bench previews, keyboard launch, all lab round trips, single return link and phone list');
 }finally{
  if(ws)ws.close();chrome.kill();server.kill();await pause(300);await rm(profile,{recursive:true,force:true,maxRetries:5,retryDelay:100});
 }
