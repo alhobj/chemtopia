@@ -58,7 +58,7 @@ export const MATERIALS=Object.fromEntries([
  material('neutralisation-solutions','Neutralisation solutions','The existing 100 mL HCl and 100 mL NaOH solutions; optional additional water is provided by this activity batch.'),
  material('ethanol-fuel','Ethanol fuel','The original 2 g model fuel charge; the burner body stays owned.'),
  material('acetone-water','Acetone–water feed','The existing 50:50 distillation feed; qualitative model amounts unchanged.'),
- material('carbonate-reactants','Carbonate and acid batch','The existing chips, powder and HCl supplies for rate comparisons, including in-lab trial resets.'),
+ material('carbonate-reactants','Carbonate and acid batch','Chips/powder and 0.100–1.00 M HCl choices for rate comparisons, including in-lab trial resets.'),
  material('conductivity-samples','Conductivity sample set','The existing NaCl, sucrose, HCl, CH₃COOH and dry salt comparison samples.'),
  material('copper-optical-samples','Colorimetry stock and unknown','The existing CuSO₄ stock and hidden unknown; concentrations unchanged.'),
  material('cell-solutions','Zinc/copper sulfate solutions','The original 100 mL of each 0.100 M sulfate solution.'),

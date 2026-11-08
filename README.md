@@ -2,7 +2,7 @@
 
 A chemistry learning game for students aged 16–19 studying IB Diploma Programme Chemistry.
 
-The local prototype includes sand-and-water filtration, acetone–water distillation, marker-ink paper chromatography, evaporation/salt-recovery, recrystallisation, solution preparation/dilution, acid–base titration (independent HCl/CH₃COOH and NaOH/NH₃ choices), insulated-cup neutralisation calorimetry, ethanol combustion calorimetry, carbonate/HCl reaction rates, conductivity, colorimetry and zinc–copper voltaic-cell workbenches. The equipment uses the selected detailed B pixel-art sprite adaptation, with live liquid and instrument overlays. English is the project's working language. The town/adventure foundation now uses local browser saves; missions and final economic balancing remain in design.
+The local prototype includes sand-and-water filtration, acetone–water distillation, marker-ink paper chromatography, evaporation/salt-recovery, recrystallisation, solution preparation/dilution, acid–base titration (independent HCl/CH₃COOH and NaOH/NH₃ choices), insulated-cup neutralisation calorimetry, ethanol combustion calorimetry, carbonate/HCl reaction rates, conductivity, colorimetry, zinc–copper voltaic cells, iron–thiocyanate equilibrium and ethanoic-acid/ethanoate buffer workbenches. The equipment uses the selected detailed B pixel-art sprite adaptation, with live liquid and instrument overlays. English is the project's working language. The town/adventure foundation now uses local browser saves; missions and final economic balancing remain in design.
 
 ## Try the prototype
 
@@ -13,6 +13,11 @@ Run `npm test` for the material-model checks and `npm run test:browser` for Chro
 For step-by-step terminal instructions and a file guide, see [Run and edit in VS Code](docs/development.md).
 
 ## Start here
+
+- [Quantitative equilibrium: preparation, calibration and optional HL analysis](docs/design/equilibrium-practical.md)
+- [Buffer preparation, pH response and capacity (AHL)](docs/design/buffer-practical.md)
+- [Controlled concentration and early-rate comparisons](docs/design/rates-controlled-extensions.md)
+- [Source-checked curriculum connections and scientific boundaries](docs/curriculum/equilibrium-buffers-rates.md)
 
 - [Three new measurement labs: walkthroughs and previews](docs/design/measurement-labs-prototype-review.md)
 - [Next steps and questions N01–N12](docs/design/next-review-and-questions.md)

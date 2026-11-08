@@ -190,3 +190,14 @@ See [the walkthroughs](../docs/design/measurement-labs-prototype-review.md), [mo
 ## Character animation previews
 
 Open `/idle-preview.html` for all 24 character idles, direction selection, pause, natural timing and immediate gesture demonstration. `/walking-preview.html` shows player walking; `/npc-preview.html` compares the NPCs in four directions. The town player and guide use the idle renderer, and movement interrupts personality gestures immediately.
+
+
+## Quantitative equilibrium and buffers
+
+Open `/equilibrium.html` for the Fe³⁺/SCN⁻ investigation. Use finite metered additions or drag/Space handling; prepare known mixtures, blank the existing colorimeter with the matched carrier solvent, measure two reference solutions using their model-certified equilibrium concentrations, then measure a mixture. A measured calibration graph and records support the review; optional HL composition/Kc/Q is separate. One-complex, fixed-temperature assumptions and reference limitations are explained in [the practical guide](../docs/design/equilibrium-practical.md).
+
+Open `/buffer.html` for ethanoic acid/ethanoate buffer preparation and a water control. Mix known stocks, fit the pH probe, record readings and compare matched strong-acid/base additions. Test dilution and exhaustion; recorded pH curves are actual measurement sequences. The existing numerical titration solver handles pure components and excess strong reagent too. Buffers and the optional calculation are AHL, not required SL content. See [the practical guide](../docs/design/buffer-practical.md).
+
+Both appear in the laboratory room and the shared equipment progression model. Adventure uses owned apparatus and one new finite reagent packet per activity plus the existing water supply. Reload/reset retain the existing reservation behaviour. Direct practice URLs remain unrestricted. No quests or new completion rewards are added.
+
+Reaction rates now also offers fresh-trial HCl concentrations, controlled-comparison feedback and saved-data early-slope tasks. Keep form/mass/acid volume fixed when comparing concentration. Compare speed separately from limiting-reagent final volume. Temperature, catalysts and quantitative rate laws remain deferred; see [controlled rates](../docs/design/rates-controlled-extensions.md).

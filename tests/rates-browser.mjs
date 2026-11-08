@@ -52,7 +52,7 @@ try{
  assert.equal(await evaluate("document.querySelectorAll('.equipment-button').length"),11);await pause(300);
  const press=async()=>{await key(' ','Space');await pause(50);};
  const cmd=async command=>{await evaluate(`document.querySelector('[data-command="${command}"]').focus()`);await key('Enter');await evaluate("document.querySelector('#bench').focus()");};
- const select=async id=>click('[data-equipment='+id+']');
+ const select=async id=>{await evaluate("document.querySelector('#equipment-tab').focus()");await evaluate(`document.querySelector('[data-equipment="${id}"]').focus()`);await key('Enter');};
  async function prepare(kind){
   await drag(kind,600,300,40);await pause(500);
   const spatula=await drag('spatula',600,330,40,false);
@@ -72,11 +72,19 @@ try{
  const powder=await evaluate("parseFloat(document.querySelector('#gas-reading').textContent)");assert.ok(powder>chips*1.25,`${powder} should exceed ${chips}`);
  await click('#save-trial');assert.equal(await evaluate("document.querySelectorAll('#rates-graph polyline').length"),2);
  assert.match(await evaluate("document.querySelector('#trial-summary').textContent"),/matched amounts/);
- await screenshot('chemtopia-rates-comparison.png');await click('#finish');assert.equal(await evaluate("document.querySelectorAll('#explanation fieldset').length"),3);
+ await screenshot('chemtopia-rates-comparison.png');
+ // Keep form/mass/volume fixed while changing only the supplied stock concentration.
+ await evaluate("document.querySelector('#trial-concentration').value='0.5'");await click('#next-trial');await pause(300);await prepare('powder');await pause(7000);await click('#record');const half=await evaluate("parseFloat(document.querySelector('#gas-reading').textContent)");await click('#save-trial');
+ await evaluate("document.querySelector('#trial-concentration').value='1'");await click('#next-trial');await pause(300);await prepare('powder');await pause(7000);await click('#record');const full=await evaluate("parseFloat(document.querySelector('#gas-reading').textContent)");assert.ok(full>half*1.25,'higher matched concentration gives faster collection');await click('#save-trial');
+ assert.match(await evaluate("document.querySelector('.controlled-comparison').textContent"),/Controlled concentration comparison/);assert.match(await evaluate("document.querySelector('.controlled-comparison').textContent"),/same theoretical endpoint/);assert.ok(await evaluate("document.querySelectorAll('.early-tangent').length>=4"));
+ const early=await evaluate("document.querySelector('#early-tasks .early-calculation p').textContent"),points=[...early.matchAll(/\(([0-9.]+) s, ([0-9.]+) mL\)/g)];assert.equal(points.length,2);const slope=(+points[1][2]-+points[0][2])/(+points[1][1]-+points[0][1]);
+ await evaluate(`document.querySelector('#early-tasks input').value=${slope}`);await click('#early-tasks button');assert.match(await evaluate("document.querySelector('#early-tasks [role=status]').textContent"),/Correct/);
+ await screenshot('chemtopia-rates-concentration.png');await send('Emulation.setDeviceMetricsOverride',{width:390,height:844,deviceScaleFactor:1,mobile:true});assert.equal(await evaluate("document.documentElement.scrollWidth<=innerWidth+1"),true);await screenshot('chemtopia-rates-concentration-phone.png');await send('Emulation.setDeviceMetricsOverride',{width:1440,height:1100,deviceScaleFactor:1,mobile:false});
+ await click('#finish');assert.equal(await evaluate("document.querySelectorAll('#explanation fieldset').length"),3);
  await evaluate(`(()=>{const f=document.querySelector('#explanation');f.querySelector('input[value="0"]').checked=true;const p=[...document.querySelectorAll('#explanation legend')].map(e=>e.textContent);const nums=p[1].match(/At ([0-9.]+) s.*?([0-9.]+) mL; at ([0-9.]+) s.*?([0-9.]+) mL/);f.elements['q2-value'].value=(Number(nums[4])-Number(nums[2]))/(Number(nums[3])-Number(nums[1]));f.elements['q3-value'].value=.2/100.09*24000;f.requestSubmit();})()`);
  assert.match(await evaluate("document.querySelector('#question-feedback').textContent"),/Activity complete/);
  await screenshot('chemtopia-rates-review.png');await click('#restart');await click('#finish');assert.match(await evaluate("document.querySelector('#result').textContent"),/Supplied example/);
- assert.deepEqual(exceptions,[]);console.log('PASS real solid portions, inner vial, clamp, bung/tube, clock/logger, chips–powder curves, saved trials and numerical review');
+ assert.deepEqual(exceptions,[]);console.log('PASS real solid portions, inner vial, clamp, bung/tube, clock/logger, controlled surface-area/concentration comparisons, early slope, narrow layout, saved trials, numerical review and reset');
 }finally{
  if(ws)ws.close();chrome.kill();server.kill();await pause(300);await rm(profile,{recursive:true,force:true,maxRetries:5,retryDelay:100});
 }

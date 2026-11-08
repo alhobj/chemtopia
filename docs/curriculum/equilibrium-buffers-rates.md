@@ -15,7 +15,8 @@ Checked against the owner-supplied IB *Chemistry guide*, first assessment 2025, 
 | R3.1.12 salt hydrolysis | AHL, printed 58 / PDF 64 | Pure ethanoate limit and comparison with acid/water support this connection. |
 | R3.1.16–3.1.17 buffer action and composition/pH | AHL, printed 58–59 / PDF 64–65 | Buffer preparation, response, capacity and dilution; not required SL buffer content. |
 | R2.2.1 rate and graphical slopes | Shared, printed 52–53 / PDF 58–59 | Recorded mean rates and early-slope/tangent interpretation. |
-| R2.2.2–2.2.4 collisions, activation energy and controlled variables | Shared, printed 53 / PDF 59 | Existing surface area and bounded concentration comparisons. No inference of rate order from the illustrative carbonate model. |
+| R2.2.2–2.2.3 collisions and controlled variables | Shared, printed 53 / PDF 59 | Surface-area and bounded concentration comparisons; no temperature/catalyst investigation or inference of rate order from the illustrative carbonate model. |
+| R2.2.4 activation energy and Maxwell–Boltzmann distributions | Shared, printed 53 / PDF 59 | Background connection only; no activation-energy or distribution investigation is implemented. |
 | R2.1.1–2.1.3 equation ratios, limiting reactants and yield | Shared, printed 52 / PDF 58 | Carbonate/HCl stoichiometry and theoretical final CO₂, distinguished from speed and collected yield. |
 
 These are partial practical connections, not claims that completing a review demonstrates mastery of every element of a syllabus node. Numerical simulations may use a quadratic or charge-balance solver internally without implying that the syllabus requires students to solve that algorithm.

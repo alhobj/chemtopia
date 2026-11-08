@@ -22,7 +22,7 @@ export function createEquipmentMenu({getState,world,groups,select,begin,end,rend
  function over(e){const hit=inside(e,panel.classList.contains('open')?panel.getBoundingClientRect():panel.querySelector('#equipment-tab').getBoundingClientRect());panel.classList.toggle('drop-hover',hit);open(hit);}
  window.addEventListener('pointermove',over);
  panel.addEventListener('pointerenter',()=>open(true));panel.addEventListener('pointerleave',()=>open(false));
- panel.addEventListener('focusin',()=>open(true));panel.addEventListener('focusout',()=>{if(!panel.matches(':hover'))open(false);});
+ panel.addEventListener('focusin',()=>open(true));panel.addEventListener('focusout',e=>{if(!panel.contains(e.relatedTarget)&&!panel.matches(':hover'))open(false);});
  panel.querySelector('#equipment-tab').addEventListener('click',()=>open(true));
  panel.addEventListener('pointerdown',e=>{
   const b=e.target.closest('[data-equipment]');if(!b||e.button!==0||getState().phase!=='working'||(getState().items[b.dataset.equipment].fixed||!getState().items[b.dataset.equipment].stored))return;

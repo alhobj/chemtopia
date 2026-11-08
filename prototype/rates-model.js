@@ -3,8 +3,9 @@ export const CHEM={molarMass:100.09,molarVolume:24000,chipsK:.055,powderK:.18,ca
 export const NAMES={acid:'HCl · 1.00 M',water:'Water supply',chips:'Calcium carbonate chips',powder:'Calcium carbonate powder',spatula:'Spatula',vial:'Inner acid vial',flask:'Reaction flask',bung:'Bung and delivery tube',syringe:'Gas syringe · 100 mL',stand:'Syringe stand',waste:'Waste beaker'};
 const box=(x,y,w,h)=>({x,y,w,h});
 const pool=(id,kind,x,y,capacity,water=0,acid=0)=>({id,kind,x,y,angle:0,capacity,water,acid,chips:0,powder:0});
-export function createState(){return {phase:'working',width:1000,held:null,links:[],flow:[],passiveFlow:[],spills:[],time:0,elapsed:0,clock:false,logger:false,nextLog:0,records:[],trials:[],trialId:1,charge:null,reacted:0,escaped:0,collected:0,hose:false,tight:true,rate:0,items:{
- acid:pool('acid','beaker',140,429,250,200,.2),water:pool('water','beaker',270,429,500,300),
+export const STOCK_CONCENTRATIONS=[.1,.25,.5,1];
+export function createState({acidConcentration=1}={}){if(!STOCK_CONCENTRATIONS.includes(acidConcentration))throw Error('Choose a supplied HCl concentration.');return {supplyConcentration:acidConcentration,temperature:20,phase:'working',width:1000,held:null,links:[],flow:[],passiveFlow:[],spills:[],time:0,elapsed:0,clock:false,logger:false,nextLog:0,records:[],trials:[],trialId:1,charge:null,reacted:0,escaped:0,collected:0,hose:false,tight:true,rate:0,items:{
+ acid:pool('acid','beaker',140,429,250,200,.2*acidConcentration),water:pool('water','beaker',270,429,500,300),
  chips:{id:'chips',kind:'solidBottle',x:90,y:100,angle:0,chips:2,powder:0,collision:[box(0,50,60,100)]},powder:{id:'powder',kind:'solidBottle',x:180,y:100,angle:0,chips:0,powder:2,collision:[box(0,50,60,100)]},
  spatula:{id:'spatula',kind:'spatula',x:270,y:100,angle:0,chips:0,powder:0,collision:[box(0,35,12,70)]},
  vial:{...pool('vial','vial',360,100,20),collision:[box(-12,24,4,48),box(12,24,4,48),box(0,47,28,4)]},
@@ -35,15 +36,15 @@ export function connected(s){const b=s.items.bung,g=s.items.syringe;return s.hos
 export function zeroSyringe(s){if(s.phase!=='working')return;s.escaped+=s.collected/CHEM.molarVolume;s.collected=0;}
 export function toggleClock(s){if(s.phase!=='working')return false;if(s.clock&&s.rate>0&&s.charge)s.charge.clockPaused=true;s.clock=!s.clock;if(s.clock&&s.records.length===0){record(s);s.nextLog=s.elapsed+2;}return s.clock;}
 export function record(s){if(s.phase!=='working'||!active(s.items.syringe))return null;const r={time:Number(s.elapsed.toFixed(1)),volume:Number(s.collected.toFixed(1))};const last=s.records.at(-1);if(last&&last.time===r.time&&last.volume===r.volume)return last;s.records.push(r);return r;}
-export function stepChemistry(s,dt){if(s.phase!=='working'||!Number.isFinite(dt)||dt<=0)return;dt=Math.min(dt,.05);s.time+=dt;if(s.clock)s.elapsed+=dt;if(!connected(s))s.hose=false;const f=s.items.flask;s.rate=0;
- for(const f of [...Object.values(s.items).filter(o=>'water'in o),...s.spills]){if(active(f)&&f.water>0&&f.acid>1e-12&&f.chips+f.powder>1e-9){if(f.id==='flask'&&!s.charge)s.charge={chips:f.chips,powder:f.powder,acid:f.acid,water:f.water,clock:s.clock,sealed:connected(s)&&s.tight,time:s.time};
+export function stepChemistry(s,dt){if(s.phase!=='working'||!Number.isFinite(dt)||dt<=0)return;dt=Math.min(dt,.05);s.time+=dt;if(s.clock)s.elapsed+=dt;if(!connected(s))s.hose=false;if(s.charge&&(!connected(s)||!s.tight))s.charge.collectionChanged=true;const f=s.items.flask;s.rate=0;
+ for(const f of [...Object.values(s.items).filter(o=>'water'in o),...s.spills]){if(active(f)&&f.water>0&&f.acid>1e-12&&f.chips+f.powder>1e-9){if(f.id==='flask'&&!s.charge)s.charge={chips:f.chips,powder:f.powder,acid:f.acid,water:f.water,clock:s.clock,sealed:connected(s)&&s.tight,time:s.time,temperature:s.temperature};
  const basis=f.id==='flask'?s.charge:(f.reactionStart||=({chips:f.chips,powder:f.powder}));
  for(const k of ['chips','powder']){const initial=Math.max(basis[k],f[k]),n=Math.max(0,f[k])/CHEM.molarMass,available=Math.max(0,Math.min(n,f.acid/2)),rate=CHEM[k+'K']*initial/CHEM.molarMass*Math.pow(initial?Math.max(0,f[k])/initial:0,2/3)*Math.min(1,f.acid/f.water*1000),extent=Math.min(available,rate*dt);f[k]=Math.max(0,f[k]-extent*CHEM.molarMass);f.acid=Math.max(0,f.acid-extent*2);s.reacted+=extent;const gas=extent*CHEM.molarVolume,captured=(f.id==='flask'||f.parent==='flask')&&connected(s)?Math.min(gas*(s.tight?1:.35),CHEM.capacity-s.collected):0;s.collected+=captured;s.escaped+=(gas-captured)/CHEM.molarVolume;if(f.id==='flask')s.rate+=gas/dt;}}}
  if(active(s.items.syringe)&&connected(s)&&!s.tight){const loss=s.collected*(1-Math.exp(-.06*dt));s.collected-=loss;s.escaped+=loss/CHEM.molarVolume;}
  if(s.clock&&s.logger&&s.elapsed>=s.nextLog){record(s);s.nextLog=s.elapsed+2;}
 }
 export function saveTrial(s){if(!s.records.length)return null;const t={id:s.trialId,charge:s.charge?{...s.charge}:null,records:s.records.map(r=>({...r})),collected:s.collected,escaped:s.escaped,reacted:s.reacted,tight:s.tight};const i=s.trials.findIndex(t=>t.id===s.trialId);if(i<0)s.trials.push(t);else s.trials[i]=t;return t;}
-export function nextTrial(s){saveTrial(s);const n=createState();n.trials=s.trials;n.trialId=s.trialId+1;return n;}
+export function nextTrial(s,{acidConcentration=s.supplyConcentration??1}={}){saveTrial(s);const n=createState({acidConcentration});n.trials=s.trials;n.trialId=s.trialId+1;return n;}
 export function balances(s){const pools=Object.values(s.items).filter(o=>('chips'in o)).concat(s.spills);return{solid:pools.reduce((a,o)=>a+(o.chips||0)+(o.powder||0),0)+s.reacted*CHEM.molarMass,acid:pools.reduce((a,o)=>a+(o.acid||0),0)+2*s.reacted,water:pools.reduce((a,o)=>a+(o.water||0),0),gas:s.collected/CHEM.molarVolume+s.escaped-s.reacted};}
 export function meanRate(records){for(let i=1;i<records.length;i++){const a=records[0],b=records[i];if(b.time>a.time)return{a,b,value:(b.volume-a.volume)/(b.time-a.time)};}return null;}
 export function fairPair(a,b){const x=a?.charge,y=b?.charge;if(!x||!y)return false;const pure=z=>(z.chips>0&&z.powder===0)||(z.powder>0&&z.chips===0);return pure(x)&&pure(y)&&Boolean(x.powder)!==Boolean(y.powder)&&Math.abs(x.chips+x.powder-y.chips-y.powder)<.001&&Math.abs(x.acid-y.acid)<1e-6&&Math.abs(x.water-y.water)<.01&&x.sealed&&y.sealed&&x.clock&&y.clock&&!x.changedAfterStart&&!y.changedAfterStart&&!x.clockPaused&&!y.clockPaused;}
@@ -52,3 +53,19 @@ export function physicsFor(s){let w=worlds.get(s);if(!w){w=new PhysicsWorld(s,(o
 export function detach(s,id){if(s.phase!=='working')return;s.items[id].parent=null;if(['syringe','stand'].includes(id)&&id==='syringe')s.links=[];if(['bung','syringe','flask'].includes(id))s.hose=false;s.held=id;physicsFor(s).hold(id);}
 export function placeItem(s){s.held=null;physicsFor(s).release();}
 export function stepPhysics(s,dt,id){if(s.phase!=='working')return;physicsFor(s).step(dt,id);const f=s.items.flask;for(const [key,x,y]of [['bung',0,-8],['vial',15,55]]){const o=s.items[key];if(o.parent==='flask'){Object.assign(o,point(f,x,y));o.angle=f.angle;}}}
+
+export function theoreticalVolume(charge){return charge?Math.min((charge.chips+charge.powder)/CHEM.molarMass,charge.acid/2)*CHEM.molarVolume:null;}
+export function initialRate(records){
+ const points=[];for(const r of records)if(Number.isFinite(r.time)&&Number.isFinite(r.volume)&&!points.some(p=>p.time===r.time)){points.push(r);if(points.length===3)break;}
+ if(points.length<3)return null;const t=points.reduce((n,r)=>n+r.time,0)/3,v=points.reduce((n,r)=>n+r.volume,0)/3,den=points.reduce((n,r)=>n+(r.time-t)**2,0);if(!den)return null;
+ const slope=points.reduce((n,r)=>n+(r.time-t)*(r.volume-v),0)/den;return{slope,intercept:v-slope*t,start:points[0].time,end:points[2].time,n:3};
+}
+export function compareTrials(a,b){
+ const x=a?.charge,y=b?.charge;
+ if(!x||!y)return{kind:'uncontrolled',message:'Record starting charges for two trials before comparing a variable.'};
+ const pure=z=>(z.chips>0&&z.powder===0)||(z.powder>0&&z.chips===0),safe=z=>z.sealed&&z.clock&&!z.changedAfterStart&&!z.clockPaused&&!z.collectionChanged;
+ const massSame=Math.abs(x.chips+x.powder-y.chips-y.powder)<.001,volumeSame=Math.abs(x.water-y.water)<.01,tempSame=(x.temperature??20)===(y.temperature??20),formSame=Boolean(x.powder)===Boolean(y.powder),concentrationSame=Math.abs(x.acid/x.water-y.acid/y.water)<1e-8;
+ const kind=!pure(x)||!pure(y)||!safe(x)||!safe(y)||!massSame||!volumeSame||!tempSame||(a.escaped||0)>1e-9||(b.escaped||0)>1e-9?'uncontrolled':formSame&&!concentrationSame?'concentration':!formSame&&concentrationSame?'surface-area':'uncontrolled';
+ const yields=[theoreticalVolume(x),theoreticalVolume(y)],sameYield=Math.abs(yields[0]-yields[1])<.05;
+ return{kind,yields,sameYield,message:(kind==='concentration'?'Controlled concentration comparison: solid form/mass, acid volume, temperature and collection conditions match.':kind==='surface-area'?'Controlled surface-area comparison: matched amounts, acid concentration/volume, temperature and collection conditions.':'A single-variable interpretation is not supported: check mass, volume, form, temperature, start timing and any collection loss.')+` Theoretical final CO₂: ${yields.map(v=>v.toFixed(2)).join(' vs ')} mL. `+(sameYield?'The same theoretical endpoint does not imply the same speed.':'The limiting amount changed, so the final volume also changes; speed alone cannot explain it.')};
+}
