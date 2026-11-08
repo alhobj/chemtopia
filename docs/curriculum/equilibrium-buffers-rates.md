@@ -10,8 +10,8 @@ Checked against the owner-supplied IB *Chemistry guide*, first assessment 2025, 
 | R2.3.3 equilibrium extent and K | Shared, printed 55 / PDF 61 | Fixed-temperature extent and incomplete conversion illustrated. Temperature dependence and reverse-reaction K exercises are not implemented. |
 | R2.3.4 Le Châtelier concentration changes | Shared, printed 55 / PDF 61 | Fe, SCN and dilution changes only. No temperature/pressure investigation. |
 | R2.3.5–2.3.6 Q, direction and quantitative composition | AHL, printed 55 / PDF 61 | Separate optional quantitative Kc/Q and composition section, not shared compulsory workflow. |
-| R3.1.10 weak-acid constants | AHL, printed 57 / PDF 63 | Buffer extension can use the existing ethanoic-acid Ka and pKa. |
-| R3.1.11 conjugate-pair constants | AHL, printed 57 / PDF 63 | A connection only where KaKb = Kw is explicitly discussed; preparation alone does not cover this node. |
+| R3.1.10 weak-acid constants | AHL, printed 57 / PDF 63 | Buffer calculation uses the existing ethanoic-acid Ka and pKa. |
+| R3.1.11 conjugate-pair constants | AHL, printed 57 / PDF 63 | Optional AHL calculation explicitly uses Kb = Kw/Ka for ethanoate; preparation alone does not cover this node. |
 | R3.1.12 salt hydrolysis | AHL, printed 58 / PDF 64 | Pure ethanoate limit and comparison with acid/water support this connection. |
 | R3.1.16–3.1.17 buffer action and composition/pH | AHL, printed 58–59 / PDF 64–65 | Buffer preparation, response, capacity and dilution; not required SL buffer content. |
 | R2.2.1 rate and graphical slopes | Shared, printed 52–53 / PDF 58–59 | Recorded mean rates and early-slope/tangent interpretation. |

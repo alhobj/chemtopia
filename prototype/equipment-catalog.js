@@ -65,6 +65,7 @@ export const MATERIALS=Object.fromEntries([
  material('zinc-strip','Zinc strip supply','The original 0.030 mol zinc strip; zinc is consumed by redox.'),
  material('copper-strip','Copper strip supply','The original 0.030 mol copper strip for an attempt; deposition is tracked by the lab.'),
  material('iron-thiocyanate-kit','Iron–thiocyanate activity supply','Finite Fe³⁺/SCN⁻ stocks and two model-certified equilibrium references; fixed matched acidic medium.'),
+ material('buffer-reagents','Buffer investigation supply','Finite 0.100 M ethanoic acid, sodium ethanoate, HCl and NaOH stocks.'),
  material('bridge-gel','KNO₃ bridge electrolyte','The original bridge-ion reserves; the tube stays owned.')
 ].map(o=>[o.id,o]));
 export const STARTER_EQUIPMENT={beaker:1,basin:1,heater:1};

@@ -1,7 +1,7 @@
 // Finite liquid pools and apparatus handling shared only by the three measurement labs.
 import {PhysicsWorld} from './physics.js';
 export const EPS=1e-10;
-export const SPECIES=['NaCl','sucrose','hcl','ethanoic','Cu','Zn','sulfate','K','nitrate','FeTotal','SCNTotal'];
+export const SPECIES=['NaCl','sucrose','hcl','ethanoic','Cu','Zn','sulfate','K','nitrate','FeTotal','SCNTotal','acetateTotal','sodium','chloride'];
 export const active=o=>Boolean(o&&!o.stored);
 export const point=(o,x=0,y=0)=>{const a=(o.angle||0)*Math.PI/180;return{x:o.x+x*Math.cos(a)-y*Math.sin(a),y:o.y+x*Math.sin(a)+y*Math.cos(a)};};
 export const box=(x,y,w,h)=>({x,y,w,h});
