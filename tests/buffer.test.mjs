@@ -27,3 +27,9 @@ test('optional buffer approximation is restricted to ordinary initial mixtures, 
  const s=prepared();B.fitProbe(s,'sample1');B.record(s);const h=B.hlExample(s);assert.ok(h.row);near(h.pH,-Math.log10(B.CHEMISTRY.kaAcetic));near(h.concentration,.1);
  const pure=B.createState();B.transfer(pure,'acid','sample1',20);B.fitProbe(pure,'sample1');B.record(pure);assert.equal(B.hlExample(pure).row,undefined);
 });
+
+test('withdrawing a recorded sample flags the changed preparation without losing matter',()=>{
+ const s=prepared();B.fitProbe(s,'sample1');B.record(s);const before=B.totals(s);
+ B.transfer(s,'sample1','waste',2);assert.equal(s.items.sample1.changedPreparation,true);near(s.items.sample1.water,18);
+ const after=B.totals(s);for(const k of Object.keys(before))near(before[k],after[k]);
+});

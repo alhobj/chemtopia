@@ -17,6 +17,7 @@ export function createState(){
 export function transfer(s,from,to,ml){
  const a=s.items[from],b=s.items[to];if(!a?.solutes||!b?.solutes)return 0;
  const before=b.water,Na=common.concentration(a,'sodium'),Cl=common.concentration(a,'chloride'),n=common.transfer(s,from,to,ml);if(!n)return 0;
+ if((from==='sample1'||from==='sample2')&&s.records.some(r=>r.sample===from))a.changedPreparation=true;
  if(to==='sample1'||to==='sample2'){
   const received=b.water-before;
   if(from==='hcl'||from==='naoh'){
